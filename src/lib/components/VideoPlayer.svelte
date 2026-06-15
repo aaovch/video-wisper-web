@@ -149,8 +149,9 @@
 		aspect-ratio: 16 / 9;
 		border-radius: var(--radius);
 		overflow: hidden;
-		border: 1px solid var(--border);
-		background: #000;
+		background: var(--screen);
+		border: 1px solid var(--screen-edge);
+		box-shadow: var(--shadow);
 	}
 
 	iframe,
@@ -170,9 +171,16 @@
 		gap: 10px;
 		align-items: center;
 		justify-content: center;
-		color: var(--text-muted);
-		font-size: 15px;
+		color: #b8b0a0;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 		text-align: center;
 		padding: 16px;
+	}
+
+	.state a {
+		color: var(--accent-2);
 	}
 </style>
