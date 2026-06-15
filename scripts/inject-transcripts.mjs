@@ -20,6 +20,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Методичка к семинару _Вакцина от ударов по рукам_/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/berezhnoy-ai.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Искусственный интеллект, найм и образование ｜ Сергей Бережной, CTO Практикума, директор в Яндексе [V3fahH0XA0M]/transcript.json'
+		)
 	}
 ];
 
