@@ -23,6 +23,14 @@ export type VideoSource =
 			provider: 'yadisk';
 			/** Публичная ссылка вида https://disk.yandex.ru/i/XXXX */
 			publicKey: string;
+	  }
+	| {
+			/** Локальный файл в самом сайте (static/), отдаётся с того же домена. */
+			provider: 'file';
+			/** Путь относительно base, напр. "media/metodichka.mp4" */
+			src: string;
+			/** Постер-кадр относительно base, напр. "media/metodichka.jpg" */
+			poster?: string;
 	  };
 
 export interface Report {

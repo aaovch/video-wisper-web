@@ -7,8 +7,9 @@
 	"duration": 427.14,
 	"tags": ["HEMA", "Методика", "8 блоков"],
 	"video": {
-		"provider": "yadisk",
-		"publicKey": "https://disk.yandex.ru/i/aQqSziJlJIkk9g"
+		"provider": "file",
+		"src": "media/metodichka.mp4",
+		"poster": "media/metodichka.jpg"
 	},
 	"overview_theses": [
 		"Методичка — «вакцина» от контратак в руки: защиты плюс провокации для перехвата.",

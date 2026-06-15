@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { VideoSource } from '$lib/types';
 
 	let { video, seekTo = 0 }: { video: VideoSource; seekTo?: number } = $props();
 
 	const start = $derived(Math.max(0, Math.floor(seekTo)));
+
+	const isNative = $derived(video.provider === 'file' || video.provider === 'yadisk');
 
 	// --- Встраиваемые провайдеры (iframe) ---
 	const iframeSrc = $derived.by(() => {
@@ -20,13 +23,21 @@
 		return '';
 	});
 
-	// --- Яндекс.Диск: прямая ссылка резолвится в браузере ---
+	// --- Нативное видео (file / yadisk) ---
 	let videoEl = $state<HTMLVideoElement | null>(null);
 	let directSrc = $state<string | null>(null);
 	let poster = $state<string | null>(null);
 	let failed = $state(false);
-	const fallbackUrl = $derived(video.provider === 'yadisk' ? video.publicKey : '');
 
+	// Локальный файл — путь известен сразу.
+	$effect(() => {
+		if (video.provider !== 'file') return;
+		directSrc = `${base}/${video.src}`;
+		poster = video.poster ? `${base}/${video.poster}` : null;
+		failed = false;
+	});
+
+	// Яндекс.Диск — прямую ссылку резолвим в браузере.
 	type YaSize = { url: string; name: string };
 	function pickPoster(sizes?: YaSize[], preview?: string): string | null {
 		if (sizes?.length) {
@@ -46,10 +57,10 @@
 		directSrc = null;
 		poster = null;
 
-		const base = 'https://cloud-api.yandex.net/v1/disk/public/resources';
+		const apiBase = 'https://cloud-api.yandex.net/v1/disk/public/resources';
 		const key = encodeURIComponent(publicKey);
 
-		fetch(`${base}/download?public_key=${key}`)
+		fetch(`${apiBase}/download?public_key=${key}`)
 			.then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
 			.then((data: { href?: string }) => {
 				if (cancelled) return;
@@ -60,8 +71,7 @@
 				if (!cancelled) failed = true;
 			});
 
-		// Постер-превью (необязательно — без него тоже работает).
-		fetch(`${base}?public_key=${key}`)
+		fetch(`${apiBase}?public_key=${key}`)
 			.then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
 			.then((data: { sizes?: YaSize[]; preview?: string }) => {
 				if (!cancelled) poster = pickPoster(data.sizes, data.preview);
@@ -75,10 +85,12 @@
 		};
 	});
 
+	const fallbackUrl = $derived(video.provider === 'yadisk' ? video.publicKey : '');
+
 	// Перемотка нативного видео по тайм-коду блока.
 	$effect(() => {
 		const t = start;
-		if (video.provider === 'yadisk' && videoEl && directSrc && t >= 0) {
+		if (isNative && videoEl && directSrc && t >= 0) {
 			const el = videoEl;
 			const seek = () => {
 				try {
@@ -95,7 +107,7 @@
 </script>
 
 <div class="player">
-	{#if video.provider === 'yadisk'}
+	{#if isNative}
 		{#if directSrc}
 			<!-- svelte-ignore a11y_media_has_caption -->
 			<video
@@ -108,9 +120,11 @@
 		{:else if failed}
 			<div class="state">
 				<p>Не удалось загрузить видео в плеере.</p>
-				<a href={fallbackUrl} target="_blank" rel="noopener noreferrer"
-					>Открыть на Яндекс.Диске →</a
-				>
+				{#if fallbackUrl}
+					<a href={fallbackUrl} target="_blank" rel="noopener noreferrer"
+						>Открыть на Яндекс.Диске →</a
+					>
+				{/if}
 			</div>
 		{:else}
 			<div class="state"><p>Загрузка видео…</p></div>
