@@ -15,7 +15,7 @@
 
 	function seekVideo(start: number) {
 		seekTo = start;
-		if (window.matchMedia('(max-width: 1024px)').matches) {
+		if (window.matchMedia('(max-width: 960px)').matches) {
 			playerEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
@@ -32,41 +32,39 @@
 </svelte:head>
 
 <article class="report container">
-	<a class="back label" href="{base}/">← Указатель</a>
-
-	<header class="report-head reveal" {@attach reveal()}>
-		<div class="tags">
-			{#each report.tags as tag (tag)}
-				<span class="tag">{tag}</span>
-			{/each}
-		</div>
-		<h1>{report.title}</h1>
-		<p class="subtitle">{report.subtitle}</p>
-		<p class="meta label">
-			{formatDuration(report.duration)} · {report.chapters.length} блоков · {report.source_name}
-		</p>
-	</header>
-
-	<hr class="rule" />
-
 	<div class="layout" class:no-video={!report.video}>
-		<!-- Боковая закреплённая колонка: плеер + навигация -->
+		<!-- Слева: плеер + содержание (sticky с самого верха) -->
 		<aside class="rail">
 			<div class="rail-sticky">
 				{#if report.video}
 					<div class="video-wrap" bind:this={playerEl}>
 						<VideoPlayer video={report.video} {seekTo} />
-						<p class="video-hint label">Кликните блок — видео перемотается</p>
+						<p class="video-hint label">Клик по блоку — перемотка</p>
 					</div>
 				{/if}
-				<div class="nav-desktop">
-					<ChapterNav chapters={report.chapters} onSelect={selectChapter} />
-				</div>
+				<ChapterNav chapters={report.chapters} onSelect={selectChapter} />
 			</div>
 		</aside>
 
-		<!-- Основная колонка чтения -->
+		<!-- Справа: заголовок и текст -->
 		<div class="content">
+			<a class="back label" href="{base}/">← Указатель</a>
+
+			<header class="report-head reveal" {@attach reveal()}>
+				<div class="tags">
+					{#each report.tags as tag (tag)}
+						<span class="tag">{tag}</span>
+					{/each}
+				</div>
+				<h1>{report.title}</h1>
+				<p class="subtitle">{report.subtitle}</p>
+				<p class="meta label">
+					{formatDuration(report.duration)} · {report.chapters.length} блоков
+				</p>
+			</header>
+
+			<hr class="rule head-rule" />
+
 			<section class="overview reveal" {@attach reveal()}>
 				<h2 class="label section-label">Главные тезисы</h2>
 				<ul class="overview-list">
@@ -97,18 +95,53 @@
 					</details>
 				</section>
 			{/if}
+
+			<p class="source label">{report.source_name}</p>
 		</div>
 	</div>
 </article>
 
 <style>
 	.report {
-		padding-top: 28px;
+		padding-top: 20px;
+		padding-bottom: 48px;
+		max-width: 1320px;
+	}
+
+	.layout {
+		display: grid;
+		grid-template-columns: minmax(300px, 36%) minmax(0, 1fr);
+		gap: clamp(32px, 4vw, 56px);
+		align-items: start;
+	}
+
+	.layout.no-video {
+		grid-template-columns: minmax(240px, 28%) minmax(0, 1fr);
+	}
+
+	.rail-sticky {
+		position: sticky;
+		top: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		max-height: calc(100vh - 40px);
+	}
+
+	.video-wrap {
+		scroll-margin-top: 16px;
+		flex-shrink: 0;
+	}
+
+	.video-hint {
+		margin: 8px 0 0;
+		text-align: center;
+		font-size: 10px;
 	}
 
 	.back {
 		display: inline-block;
-		margin-bottom: 26px;
+		margin-bottom: 18px;
 		color: var(--ink-soft);
 		border-bottom: 1px solid transparent;
 		padding-bottom: 2px;
@@ -119,71 +152,45 @@
 		border-color: var(--accent);
 	}
 
-	.report-head {
-		max-width: 24ch;
-	}
-
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px;
-		margin-bottom: 18px;
+		margin-bottom: 14px;
 	}
 
 	.report-head h1 {
-		font-size: clamp(36px, 6vw, 68px);
+		font-size: clamp(28px, 3.2vw, 44px);
 		font-weight: 500;
-		margin: 0 0 14px;
-		max-width: 18ch;
+		margin: 0 0 10px;
+		max-width: 22ch;
+		line-height: 1.08;
 	}
 
 	.subtitle {
-		font-size: 21px;
+		font-size: clamp(17px, 1.6vw, 20px);
 		color: var(--ink-soft);
 		max-width: 52ch;
-		margin: 0 0 16px;
+		margin: 0 0 10px;
+		line-height: 1.45;
 	}
 
 	.meta {
-		margin: 0 0 24px;
+		margin: 0;
 	}
 
-	.layout {
-		display: grid;
-		grid-template-columns: 380px minmax(0, 1fr);
-		gap: 56px;
-		margin-top: 36px;
-	}
-
-	.layout.no-video {
-		grid-template-columns: 300px minmax(0, 1fr);
-	}
-
-	.rail-sticky {
-		position: sticky;
-		top: 24px;
-		display: flex;
-		flex-direction: column;
-		gap: 22px;
-	}
-
-	.video-wrap {
-		scroll-margin-top: 16px;
-	}
-
-	.video-hint {
-		margin: 10px 0 0;
-		text-align: center;
+	.head-rule {
+		margin: 22px 0 28px;
 	}
 
 	.section-label {
-		margin: 0 0 22px;
+		margin: 0 0 18px;
 		padding-bottom: 8px;
 		border-bottom: 1px solid var(--line);
 	}
 
 	.overview {
-		margin-bottom: 52px;
+		margin-bottom: 40px;
 	}
 
 	.overview-list {
@@ -192,13 +199,13 @@
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 14px;
 	}
 
 	.overview-list li {
 		position: relative;
-		padding-left: 30px;
-		font-size: 21px;
+		padding-left: 28px;
+		font-size: 19px;
 		line-height: 1.5;
 		max-width: var(--measure);
 	}
@@ -210,15 +217,15 @@
 		top: 0.05em;
 		font-family: var(--font-display);
 		color: var(--accent-2);
-		font-size: 22px;
+		font-size: 20px;
 	}
 
 	.chapters {
-		margin-top: 8px;
+		margin-top: 4px;
 	}
 
 	.transcript {
-		margin-top: 48px;
+		margin-top: 40px;
 	}
 
 	.transcript details {
@@ -227,11 +234,10 @@
 
 	.transcript summary {
 		cursor: pointer;
-		padding: 18px 0;
+		padding: 16px 0;
 		list-style: none;
 		display: flex;
 		align-items: center;
-		gap: 10px;
 	}
 
 	.transcript summary::after {
@@ -251,24 +257,29 @@
 	}
 
 	.transcript p {
-		margin: 0 0 28px;
+		margin: 0 0 24px;
 		color: var(--ink-soft);
-		font-size: 18px;
+		font-size: 17px;
 		line-height: 1.85;
 		max-width: var(--measure);
-		columns: 1;
 	}
 
-	/* Планшет/мобайл: одна колонка, навигация уезжает вниз плеера */
-	@media (max-width: 1024px) {
+	.source {
+		margin: 32px 0 0;
+		color: var(--ink-faint);
+		word-break: break-all;
+	}
+
+	@media (max-width: 960px) {
 		.layout,
 		.layout.no-video {
 			grid-template-columns: 1fr;
-			gap: 32px;
+			gap: 24px;
 		}
 
 		.rail-sticky {
 			position: static;
+			max-height: none;
 		}
 
 		.video-wrap {
@@ -277,8 +288,8 @@
 			z-index: 5;
 		}
 
-		.nav-desktop {
-			display: none;
+		.report-head h1 {
+			max-width: none;
 		}
 	}
 </style>

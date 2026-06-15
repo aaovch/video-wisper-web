@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { base } from '$app/paths';
+	import SearchBox from '$lib/components/SearchBox.svelte';
 
 	let { children } = $props();
 
@@ -24,6 +25,9 @@
 				<span class="wordmark-main">Video Wisper</span>
 				<span class="wordmark-sub label">архив транскрипций</span>
 			</a>
+
+			<SearchBox />
+
 			<nav class="nav">
 				<a href="{base}/">Указатель</a>
 				<span class="nav-dot" aria-hidden="true">·</span>
@@ -70,11 +74,11 @@
 
 	.masthead-inner {
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
 		gap: 16px;
-		padding-top: 22px;
-		padding-bottom: 16px;
+		padding-top: 18px;
+		padding-bottom: 14px;
 	}
 
 	.wordmark {
@@ -82,12 +86,13 @@
 		flex-direction: column;
 		gap: 3px;
 		color: var(--ink);
+		flex-shrink: 0;
 	}
 
 	.wordmark-main {
 		font-family: var(--font-display);
 		font-weight: 600;
-		font-size: 25px;
+		font-size: 22px;
 		letter-spacing: -0.02em;
 		line-height: 1;
 	}
@@ -104,7 +109,7 @@
 		font-size: 12px;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		padding-bottom: 2px;
+		flex-shrink: 0;
 	}
 
 	.nav a {
@@ -140,9 +145,14 @@
 		margin: 0;
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 900px) {
+		.masthead-inner {
+			flex-wrap: wrap;
+			align-items: flex-start;
+		}
+
 		.wordmark-main {
-			font-size: 21px;
+			font-size: 20px;
 		}
 	}
 </style>
