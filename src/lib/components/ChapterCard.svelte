@@ -2,13 +2,28 @@
 	import type { Chapter } from '$lib/types';
 	import { formatTime } from '$lib/utils';
 
-	let { chapter, index }: { chapter: Chapter; index: number } = $props();
+	let {
+		chapter,
+		index,
+		onSeek
+	}: { chapter: Chapter; index: number; onSeek?: (start: number) => void } = $props();
 </script>
 
 <article class="chapter" id="ch-{index + 1}">
 	<div class="chapter-aside">
 		<span class="num mono">{String(index + 1).padStart(2, '0')}</span>
-		<span class="time mono">{formatTime(chapter.start)}</span>
+		{#if onSeek}
+			<button
+				type="button"
+				class="time mono is-button"
+				onclick={() => onSeek?.(chapter.start)}
+				title="Смотреть с этого момента"
+			>
+				{formatTime(chapter.start)}
+			</button>
+		{:else}
+			<span class="time mono">{formatTime(chapter.start)}</span>
+		{/if}
 	</div>
 
 	<div class="chapter-body">
@@ -56,6 +71,19 @@
 		color: var(--accent);
 		background: var(--accent-glow);
 		border: 1px solid rgba(94, 234, 212, 0.2);
+	}
+
+	.time.is-button {
+		cursor: pointer;
+		font-family: var(--mono);
+		transition:
+			background 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.time.is-button:hover {
+		background: rgba(94, 234, 212, 0.22);
+		border-color: rgba(94, 234, 212, 0.5);
 	}
 
 	.chapter-title {

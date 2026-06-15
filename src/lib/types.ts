@@ -8,6 +8,23 @@ export interface Chapter {
 	theses: string[];
 }
 
+export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo';
+
+/** Видео встраивается одним из двух способов: */
+export type VideoSource =
+	| {
+			/** Встраиваемый плеер (iframe). */
+			provider: EmbedProvider;
+			/** ID видео у провайдера (YouTube — 11-символьный id, Rutube/Vimeo — id ролика) */
+			id: string;
+	  }
+	| {
+			/** Публичный файл на Яндекс.Диске: прямая ссылка резолвится в браузере. */
+			provider: 'yadisk';
+			/** Публичная ссылка вида https://disk.yandex.ru/i/XXXX */
+			publicKey: string;
+	  };
+
 export interface Report {
 	/** URL-идентификатор отчёта */
 	slug: string;
@@ -27,6 +44,8 @@ export interface Report {
 	overview_theses: string[];
 	/** Смысловые блоки */
 	chapters: Chapter[];
+	/** Видео для встраивания (опционально) */
+	video?: VideoSource;
 	/** Полная расшифровка (опционально) */
 	transcript?: string;
 }

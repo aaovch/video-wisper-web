@@ -1,11 +1,20 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
+	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import { formatDuration } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const report = $derived(data.report);
+
+	let seekTo = $state(0);
+	let playerEl = $state<HTMLElement | null>(null);
+
+	function handleSeek(start: number) {
+		seekTo = start;
+		playerEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
 </script>
 
 <svelte:head>
@@ -28,6 +37,13 @@
 			{formatDuration(report.duration)} · {report.chapters.length} блоков · {report.source_name}
 		</p>
 	</header>
+
+	{#if report.video}
+		<section class="video" bind:this={playerEl}>
+			<VideoPlayer video={report.video} {seekTo} />
+			<p class="video-hint">Нажимайте на тайм-коды блоков ниже, чтобы перемотать видео.</p>
+		</section>
+	{/if}
 
 	<section class="overview">
 		<h2>Главные тезисы</h2>
@@ -52,7 +68,7 @@
 	<section class="chapters">
 		<h2>Смысловые блоки</h2>
 		{#each report.chapters as chapter, i (chapter.start)}
-			<ChapterCard {chapter} index={i} />
+			<ChapterCard {chapter} index={i} onSeek={report.video ? handleSeek : undefined} />
 		{/each}
 	</section>
 
@@ -115,6 +131,16 @@
 
 	section {
 		margin-top: 40px;
+	}
+
+	.video {
+		scroll-margin-top: 72px;
+	}
+
+	.video-hint {
+		margin: 12px 0 0;
+		font-size: 14px;
+		color: var(--text-dim);
 	}
 
 	section h2 {
