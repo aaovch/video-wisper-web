@@ -27,6 +27,10 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Искусственный интеллект, найм и образование ｜ Сергей Бережной, CTO Практикума, директор в Яндексе [V3fahH0XA0M]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/hema-reflections.json'),
+		transcriptPath: join(pipelineRoot, 'output/Что такое HEMA？ Размышления [5gfdZi36pgU]/transcript.json')
 	}
 ];
 
