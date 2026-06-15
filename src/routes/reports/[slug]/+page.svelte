@@ -2,8 +2,10 @@
 	import { base } from '$app/paths';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
+	import ReportSearch from '$lib/components/ReportSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import { reveal } from '$lib/attachments';
+	import type { SearchHit } from '$lib/search';
 	import { formatDuration } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -24,6 +26,14 @@
 		seekVideo(start);
 		document.getElementById(`ch-${index + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
+
+	function onSearchHit(hit: SearchHit) {
+		if (hit.chapterIndex != null) {
+			selectChapter(hit.chapterIndex, hit.start ?? report.chapters[hit.chapterIndex].start);
+			return;
+		}
+		document.querySelector('.report-head')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
 </script>
 
 <svelte:head>
@@ -42,6 +52,7 @@
 				</div>
 			{/if}
 			<div class="nav-scroll">
+				<ReportSearch {report} onHit={onSearchHit} />
 				<ChapterNav chapters={report.chapters} onSelect={selectChapter} />
 			</div>
 		</aside>
@@ -141,6 +152,9 @@
 		overflow-y: auto;
 		overscroll-behavior: contain;
 		-webkit-overflow-scrolling: touch;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 	}
 
 	.video-hint {

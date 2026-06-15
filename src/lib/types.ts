@@ -1,3 +1,9 @@
+export interface TranscriptSegment {
+	/** Тайм-код фразы в секундах */
+	start: number;
+	text: string;
+}
+
 export interface Chapter {
 	/** Тайм-код начала блока в секундах */
 	start: number;
@@ -6,6 +12,8 @@ export interface Chapter {
 	title: string;
 	summary: string;
 	theses: string[];
+	/** Фрагменты распознанной речи внутри блока (для поиска и перемотки) */
+	segments?: TranscriptSegment[];
 }
 
 export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo';

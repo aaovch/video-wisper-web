@@ -1,14 +1,22 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-	import { searchReports, type SearchHit } from '$lib/search';
+	import type { Report } from '$lib/types';
+	import { searchReport, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
+
+	let {
+		report,
+		onHit
+	}: {
+		report: Report;
+		onHit: (hit: SearchHit) => void;
+	} = $props();
 
 	let query = $state('');
 	let open = $state(false);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
-	const results = $derived(searchReports(query));
+	const results = $derived(searchReport(report, query));
 
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
@@ -17,12 +25,14 @@
 		transcript: 'речь'
 	};
 
-	function href(hit: SearchHit) {
-		return `${base}${hit.href}`;
-	}
-
 	function close() {
 		open = false;
+	}
+
+	function pick(hit: SearchHit) {
+		close();
+		query = '';
+		onHit(hit);
 	}
 
 	function onDocClick(e: MouseEvent) {
@@ -36,7 +46,7 @@
 			return;
 		}
 		const tag = (document.activeElement as HTMLElement | null)?.tagName;
-		if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
+		if (e.key === 'f' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
 			e.preventDefault();
 			open = true;
 			inputEl?.focus();
@@ -52,36 +62,35 @@
 		<input
 			bind:this={inputEl}
 			type="search"
-			name="q"
-			placeholder="Поиск по архиву…"
+			name="q-local"
+			placeholder="Поиск в этом видео…"
 			autocomplete="off"
 			spellcheck="false"
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
 		/>
-		<kbd class="hint" aria-hidden="true">/</kbd>
+		<kbd class="hint" aria-hidden="true">f</kbd>
 	</label>
 
 	{#if open && query.trim().length >= 2}
-		<div class="panel" role="listbox" aria-label="Результаты поиска">
+		<div class="panel" role="listbox" aria-label="Результаты поиска в видео">
 			{#if results.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
 				<ul>
-					{#each results as hit (hit.href + hit.title + hit.snippet)}
+					{#each results as hit (hit.kind + hit.href + (hit.start ?? '') + hit.snippet)}
 						<li role="option" aria-selected="false">
-							<a href={href(hit)} onclick={close}>
+							<button type="button" onclick={() => pick(hit)}>
 								<span class="row-top">
 									<span class="kind label">{kindLabel[hit.kind]}</span>
-									<span class="from">
-										{hit.reportTitle}{#if hit.start != null}
-											· {formatTime(hit.start)}{/if}
-									</span>
+									{#if hit.start != null}
+										<span class="tc mono">{formatTime(hit.start)}</span>
+									{/if}
 								</span>
 								<span class="title">{hit.title}</span>
 								<span class="snippet">{hit.snippet}</span>
-							</a>
+							</button>
 						</li>
 					{/each}
 				</ul>
@@ -93,19 +102,17 @@
 <style>
 	.search {
 		position: relative;
-		flex: 1;
-		max-width: 420px;
-		margin: 0 20px;
+		flex-shrink: 0;
 	}
 
 	.field {
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		height: 38px;
-		padding: 0 12px;
+		height: 36px;
+		padding: 0 10px;
 		border: 1px solid var(--line-strong);
-		border-radius: 999px;
+		border-radius: var(--radius-sm);
 		background: var(--paper);
 		transition:
 			border-color 0.2s ease,
@@ -118,7 +125,7 @@
 	}
 
 	.icon {
-		font-size: 16px;
+		font-size: 15px;
 		color: var(--ink-faint);
 		line-height: 1;
 	}
@@ -129,7 +136,7 @@
 		border: 0;
 		background: transparent;
 		font-family: var(--font-body);
-		font-size: 15px;
+		font-size: 14px;
 		color: var(--ink);
 		outline: none;
 	}
@@ -141,7 +148,7 @@
 	.hint {
 		font-family: var(--font-mono);
 		font-size: 10px;
-		padding: 2px 6px;
+		padding: 2px 5px;
 		border: 1px solid var(--line);
 		border-radius: 4px;
 		color: var(--ink-faint);
@@ -150,11 +157,11 @@
 
 	.panel {
 		position: absolute;
-		top: calc(100% + 8px);
+		top: calc(100% + 6px);
 		left: 0;
 		right: 0;
 		z-index: 40;
-		max-height: min(420px, 60vh);
+		max-height: min(360px, 45vh);
 		overflow: auto;
 		background: var(--paper);
 		border: 1px solid var(--line-strong);
@@ -172,69 +179,56 @@
 		margin-top: 2px;
 	}
 
-	a {
+	button {
 		display: block;
-		padding: 10px 12px;
+		width: 100%;
+		text-align: left;
+		padding: 9px 10px;
+		border: 0;
 		border-radius: var(--radius-sm);
+		background: transparent;
 		color: var(--ink);
+		cursor: pointer;
 		transition: background 0.15s ease;
 	}
 
-	a:hover {
+	button:hover {
 		background: var(--paper-2);
-		text-decoration: none;
 	}
 
 	.row-top {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 10px;
-		margin-bottom: 4px;
+		gap: 8px;
+		margin-bottom: 3px;
 	}
 
-	.from {
-		font-family: var(--font-mono);
+	.tc {
 		font-size: 10px;
 		color: var(--ink-faint);
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
 	}
 
 	.title {
 		display: block;
 		font-family: var(--font-display);
-		font-size: 17px;
+		font-size: 15px;
 		font-weight: 500;
 		line-height: 1.25;
-		margin-bottom: 3px;
+		margin-bottom: 2px;
 	}
 
 	.snippet {
 		display: block;
-		font-size: 14px;
+		font-size: 13px;
 		color: var(--ink-soft);
-		line-height: 1.4;
+		line-height: 1.35;
 	}
 
 	.empty {
 		margin: 0;
-		padding: 16px;
+		padding: 14px;
 		text-align: center;
 		color: var(--ink-faint);
-	}
-
-	@media (max-width: 900px) {
-		.search {
-			max-width: none;
-			margin: 12px 0 0;
-			order: 3;
-			width: 100%;
-		}
-
-		.hint {
-			display: none;
-		}
 	}
 </style>

@@ -1,15 +1,20 @@
 import { reports } from '$lib/data';
+import type { Report } from '$lib/types';
 
-export type SearchHitKind = 'report' | 'chapter' | 'thesis';
+export type SearchHitKind = 'report' | 'chapter' | 'thesis' | 'transcript';
 
 export interface SearchHit {
 	kind: SearchHitKind;
 	reportSlug: string;
 	reportTitle: string;
+	/** Индекс блока (0-based), если попадание внутри отчёта */
+	chapterIndex?: number;
 	title: string;
 	snippet: string;
 	/** Якорь блока, напр. #ch-3 */
 	href: string;
+	/** Тайм-код для перемотки видео */
+	start?: number;
 	score: number;
 }
 
@@ -26,7 +31,74 @@ function snippet(text: string, q: string, max = 88): string {
 	return (start > 0 ? '…' : '') + chunk + (end < text.length ? '…' : '');
 }
 
-/** Поиск по записям, блокам и тезисам (простой substring, без fuzzy). */
+function pushChapterHits(
+	hits: SearchHit[],
+	report: Report,
+	query: string,
+	chapterIndex: number,
+	baseHref: string
+) {
+	const ch = report.chapters[chapterIndex];
+	const q = norm(query);
+	const chHay = norm([ch.title, ch.summary, ...ch.theses].join(' '));
+	if (chHay.includes(q)) {
+		const titleMatch = norm(ch.title).includes(q);
+		hits.push({
+			kind: 'chapter',
+			reportSlug: report.slug,
+			reportTitle: report.title,
+			chapterIndex,
+			title: ch.title,
+			snippet: snippet(ch.summary, query),
+			href: `${baseHref}#ch-${chapterIndex + 1}`,
+			start: ch.start,
+			score: titleMatch ? 90 : 60
+		});
+	}
+
+	for (const seg of ch.segments ?? []) {
+		if (!norm(seg.text).includes(q)) continue;
+		hits.push({
+			kind: 'transcript',
+			reportSlug: report.slug,
+			reportTitle: report.title,
+			chapterIndex,
+			title: ch.title,
+			snippet: snippet(seg.text, query),
+			href: `${baseHref}#ch-${chapterIndex + 1}`,
+			start: seg.start,
+			score: 45
+		});
+	}
+}
+
+/** Поиск внутри одного отчёта: блоки, тезисы, фразы транскрипта. */
+export function searchReport(report: Report, query: string, limit = 14): SearchHit[] {
+	const q = norm(query);
+	if (q.length < 2) return [];
+
+	const hits: SearchHit[] = [];
+	const baseHref = `/reports/${report.slug}/`;
+
+	for (const thesis of report.overview_theses) {
+		if (!norm(thesis).includes(q)) continue;
+		hits.push({
+			kind: 'thesis',
+			reportSlug: report.slug,
+			reportTitle: report.title,
+			title: 'Главный тезис',
+			snippet: snippet(thesis, query),
+			href: baseHref,
+			score: 55
+		});
+	}
+
+	report.chapters.forEach((_, i) => pushChapterHits(hits, report, query, i, baseHref));
+
+	return dedupeAndSort(hits, limit);
+}
+
+/** Глобальный поиск по архиву (все отчёты). */
 export function searchReports(query: string, limit = 12): SearchHit[] {
 	const q = norm(query);
 	if (q.length < 2) return [];
@@ -37,7 +109,7 @@ export function searchReports(query: string, limit = 12): SearchHit[] {
 		const baseHref = `/reports/${report.slug}/`;
 
 		const reportHay = norm(
-			[report.title, report.subtitle, report.source_name, ...report.tags, report.transcript ?? ''].join(' ')
+			[report.title, report.subtitle, report.source_name, ...report.tags].join(' ')
 		);
 		if (reportHay.includes(q)) {
 			hits.push({
@@ -52,36 +124,37 @@ export function searchReports(query: string, limit = 12): SearchHit[] {
 		}
 
 		for (const thesis of report.overview_theses) {
-			if (norm(thesis).includes(q)) {
-				hits.push({
-					kind: 'thesis',
-					reportSlug: report.slug,
-					reportTitle: report.title,
-					title: 'Главный тезис',
-					snippet: snippet(thesis, query),
-					href: baseHref,
-					score: 55
-				});
-			}
-		}
-
-		report.chapters.forEach((ch, i) => {
-			const chHay = norm([ch.title, ch.summary, ...ch.theses].join(' '));
-			if (!chHay.includes(q)) return;
-			const titleMatch = norm(ch.title).includes(q);
+			if (!norm(thesis).includes(q)) continue;
 			hits.push({
-				kind: 'chapter',
+				kind: 'thesis',
 				reportSlug: report.slug,
 				reportTitle: report.title,
-				title: ch.title,
-				snippet: snippet(ch.summary, query),
-				href: `${baseHref}#ch-${i + 1}`,
-				score: titleMatch ? 90 : 60
+				title: 'Главный тезис',
+				snippet: snippet(thesis, query),
+				href: baseHref,
+				score: 55
 			});
-		});
+		}
+
+		report.chapters.forEach((_, i) => pushChapterHits(hits, report, query, i, baseHref));
 	}
 
-	return hits
-		.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, 'ru'))
-		.slice(0, limit);
+	return dedupeAndSort(hits, limit);
+}
+
+function dedupeAndSort(hits: SearchHit[], limit: number): SearchHit[] {
+	const seen = new Set<string>();
+	const unique: SearchHit[] = [];
+
+	for (const hit of hits.sort(
+		(a, b) => b.score - a.score || a.title.localeCompare(b.title, 'ru')
+	)) {
+		const key = `${hit.kind}|${hit.href}|${hit.start ?? ''}|${hit.snippet}`;
+		if (seen.has(key)) continue;
+		seen.add(key);
+		unique.push(hit);
+		if (unique.length >= limit) break;
+	}
+
+	return unique;
 }
