@@ -35,13 +35,13 @@
 	<div class="layout" class:no-video={!report.video}>
 		<!-- Слева: плеер + содержание (sticky с самого верха) -->
 		<aside class="rail">
-			<div class="rail-sticky">
-				{#if report.video}
-					<div class="video-wrap" bind:this={playerEl}>
-						<VideoPlayer video={report.video} {seekTo} />
-						<p class="video-hint label">Клик по блоку — перемотка</p>
-					</div>
-				{/if}
+			{#if report.video}
+				<div class="video-pin" bind:this={playerEl}>
+					<VideoPlayer video={report.video} {seekTo} />
+					<p class="video-hint label">Клик по блоку — перемотка</p>
+				</div>
+			{/if}
+			<div class="nav-scroll">
 				<ChapterNav chapters={report.chapters} onSelect={selectChapter} />
 			</div>
 		</aside>
@@ -119,18 +119,28 @@
 		grid-template-columns: minmax(240px, 28%) minmax(0, 1fr);
 	}
 
-	.rail-sticky {
+	.rail {
 		position: sticky;
-		top: 20px;
+		top: 12px;
+		align-self: start;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
-		max-height: calc(100vh - 40px);
+		gap: 14px;
+		max-height: calc(100vh - 24px);
+		min-height: 0;
 	}
 
-	.video-wrap {
-		scroll-margin-top: 16px;
+	.video-pin {
 		flex-shrink: 0;
+		scroll-margin-top: 12px;
+	}
+
+	.nav-scroll {
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
 	}
 
 	.video-hint {
@@ -277,12 +287,17 @@
 			gap: 24px;
 		}
 
-		.rail-sticky {
+		.rail {
 			position: static;
 			max-height: none;
 		}
 
-		.video-wrap {
+		.nav-scroll {
+			overflow: visible;
+			max-height: none;
+		}
+
+		.video-pin {
 			position: sticky;
 			top: 8px;
 			z-index: 5;

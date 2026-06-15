@@ -68,11 +68,6 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		max-height: min(52vh, 560px);
-		overflow-y: auto;
-		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
-		mask-image: linear-gradient(transparent, #000 8px, #000 calc(100% - 10px), transparent);
 	}
 
 	li {
