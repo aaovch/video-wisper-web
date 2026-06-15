@@ -23,8 +23,20 @@
 	// --- Яндекс.Диск: прямая ссылка резолвится в браузере ---
 	let videoEl = $state<HTMLVideoElement | null>(null);
 	let directSrc = $state<string | null>(null);
+	let poster = $state<string | null>(null);
 	let failed = $state(false);
 	const fallbackUrl = $derived(video.provider === 'yadisk' ? video.publicKey : '');
+
+	type YaSize = { url: string; name: string };
+	function pickPoster(sizes?: YaSize[], preview?: string): string | null {
+		if (sizes?.length) {
+			for (const name of ['XXXL', 'XXL', 'XL', 'L', 'M']) {
+				const hit = sizes.find((s) => s.name === name);
+				if (hit) return hit.url;
+			}
+		}
+		return preview ?? null;
+	}
 
 	$effect(() => {
 		if (video.provider !== 'yadisk') return;
@@ -32,12 +44,12 @@
 		let cancelled = false;
 		failed = false;
 		directSrc = null;
+		poster = null;
 
-		const api =
-			'https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=' +
-			encodeURIComponent(publicKey);
+		const base = 'https://cloud-api.yandex.net/v1/disk/public/resources';
+		const key = encodeURIComponent(publicKey);
 
-		fetch(api)
+		fetch(`${base}/download?public_key=${key}`)
 			.then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
 			.then((data: { href?: string }) => {
 				if (cancelled) return;
@@ -46,6 +58,16 @@
 			})
 			.catch(() => {
 				if (!cancelled) failed = true;
+			});
+
+		// Постер-превью (необязательно — без него тоже работает).
+		fetch(`${base}?public_key=${key}`)
+			.then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+			.then((data: { sizes?: YaSize[]; preview?: string }) => {
+				if (!cancelled) poster = pickPoster(data.sizes, data.preview);
+			})
+			.catch(() => {
+				/* постер опционален */
 			});
 
 		return () => {
@@ -76,7 +98,13 @@
 	{#if video.provider === 'yadisk'}
 		{#if directSrc}
 			<!-- svelte-ignore a11y_media_has_caption -->
-			<video bind:this={videoEl} src={directSrc} controls preload="metadata"></video>
+			<video
+				bind:this={videoEl}
+				src={directSrc}
+				poster={poster ?? undefined}
+				controls
+				preload="metadata"
+			></video>
 		{:else if failed}
 			<div class="state">
 				<p>Не удалось загрузить видео в плеере.</p>
