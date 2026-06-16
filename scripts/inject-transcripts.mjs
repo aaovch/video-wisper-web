@@ -31,6 +31,10 @@ const SOURCES = [
 	{
 		reportPath: join(root, 'src/lib/data/reports/hema-reflections.json'),
 		transcriptPath: join(pipelineRoot, 'output/Что такое HEMA？ Размышления [5gfdZi36pgU]/transcript.json')
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/software-3-0.json'),
+		transcriptPath: join(pipelineRoot, 'output/Software 3.0： код будущего [CDpnhKypevg]/transcript.json')
 	}
 ];
 
