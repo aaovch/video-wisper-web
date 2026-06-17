@@ -164,8 +164,12 @@ html.js .reveal {
 	opacity: 0;
 }
 
+/* Финальное состояние держим классом (opacity:1), а не fill-forwards:
+   иначе остаётся transform: matrix(…) → лишний стэкинг-контекст, и абсолютные
+   оверлеи (панель поиска) застревают под соседними reveal-блоками. */
 html.js .reveal.is-visible {
-	animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+	opacity: 1;
+	animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
