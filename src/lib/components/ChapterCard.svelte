@@ -6,9 +6,15 @@
 		chapter,
 		index,
 		onSeek,
-		playing = false
-	}: { chapter: Chapter; index: number; onSeek?: (start: number) => void; playing?: boolean } =
-		$props();
+		playing = false,
+		live = false
+	}: {
+		chapter: Chapter;
+		index: number;
+		onSeek?: (start: number) => void;
+		playing?: boolean;
+		live?: boolean;
+	} = $props();
 </script>
 
 <article class="chapter" class:playing id="ch-{index + 1}">
@@ -25,7 +31,8 @@
 			<span class="tc tc-static mono">{formatTime(chapter.start)}</span>
 		{/if}
 		{#if playing}
-			<span class="now" aria-label="Сейчас воспроизводится"><span class="now-dot"></span>сейчас</span>
+			<span class="now" class:live aria-label={live ? 'Сейчас воспроизводится' : 'Плеер остановлен здесь'}>
+				<span class="now-dot"></span>{live ? 'сейчас' : 'пауза'}</span>
 		{/if}
 	</header>
 
@@ -43,15 +50,28 @@
 
 <style>
 	.chapter {
+		position: relative;
 		padding: 26px 0;
 		border-top: 1px solid var(--line);
 		scroll-margin-top: 18px;
-		transition: background 0.3s ease;
 	}
 
-	/* Блок, на котором сейчас воспроизведение — тонкий штрих слева, без заливки */
-	.chapter.playing {
-		box-shadow: inset 2px 0 0 var(--accent);
+	/* Блок, на котором сейчас воспроизведение — тонкая пометка на полях, без заливки */
+	.chapter.playing::before {
+		content: '';
+		position: absolute;
+		left: -16px;
+		top: 28px;
+		bottom: 28px;
+		width: 2px;
+		border-radius: 2px;
+		background: var(--accent);
+	}
+
+	@media (max-width: 960px) {
+		.chapter.playing::before {
+			left: -10px;
+		}
 	}
 
 	.head {
@@ -70,6 +90,10 @@
 		font-weight: 500;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+
+	.now.live {
 		color: var(--accent);
 	}
 
@@ -77,6 +101,10 @@
 		width: 7px;
 		height: 7px;
 		border-radius: 50%;
+		background: var(--ink-faint);
+	}
+
+	.now.live .now-dot {
 		background: var(--accent);
 		box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent);
 		animation: now-pulse 1.8s ease-out infinite;

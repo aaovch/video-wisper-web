@@ -16,10 +16,12 @@
 	// --- Подсветка блока по позиции воспроизведения ---
 	let videoTime = $state(0);
 	let videoPlaying = $state(false);
+	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 
 	function onVideoTime(t: number) {
 		videoTime = t;
+		if (!playbackStarted && t > 0.3) playbackStarted = true;
 	}
 
 	function chapterIndexAt(t: number): number {
@@ -32,8 +34,8 @@
 		return idx;
 	}
 
-	// Блок, на котором сейчас плеер (только пока идёт воспроизведение; иначе -1).
-	const playingIndex = $derived(videoPlaying ? chapterIndexAt(videoTime) : -1);
+	// Блок на позиции плеера: держится и на паузе (пока воспроизведение хоть раз начиналось).
+	const playingIndex = $derived(playbackStarted ? chapterIndexAt(videoTime) : -1);
 	// Активный пункт в «Содержании»: воспроизведение приоритетнее скролла.
 	const navActive = $derived(playingIndex >= 0 ? playingIndex : scrollIndex);
 
@@ -128,6 +130,7 @@
 							index={i}
 							onSeek={report.video ? seekVideo : undefined}
 							playing={playingIndex === i}
+							live={videoPlaying && playingIndex === i}
 						/>
 					</div>
 				{/each}
