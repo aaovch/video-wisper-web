@@ -3,6 +3,15 @@
 	import { goto } from '$app/navigation';
 	import { searchReports, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
+	import type { Report } from '$lib/types';
+
+	let {
+		reports: scope,
+		placeholder = 'Поиск по архиву…',
+		hotkey = '/'
+	}: { reports?: Report[]; placeholder?: string; hotkey?: string | null } = $props();
+
+	const uid = $props.id();
 
 	let query = $state('');
 	let open = $state(false);
@@ -10,7 +19,7 @@
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
-	const results = $derived(searchReports(query));
+	const results = $derived(searchReports(query, 12, scope));
 
 	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
@@ -19,7 +28,7 @@
 	});
 
 	function scrollActiveIntoView() {
-		rootEl?.querySelector(`#gs-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
+		rootEl?.querySelector(`#${uid}-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
 	}
 
 	function onInputKey(e: KeyboardEvent) {
@@ -69,7 +78,7 @@
 			return;
 		}
 		const tag = (document.activeElement as HTMLElement | null)?.tagName;
-		if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
+		if (hotkey && e.key === hotkey && tag !== 'INPUT' && tag !== 'TEXTAREA') {
 			e.preventDefault();
 			open = true;
 			inputEl?.focus();
@@ -86,29 +95,31 @@
 			bind:this={inputEl}
 			type="search"
 			name="q"
-			placeholder="Поиск по архиву…"
+			{placeholder}
 			autocomplete="off"
 			spellcheck="false"
 			role="combobox"
 			aria-expanded={open && results.length > 0}
-			aria-controls="gs-panel"
-			aria-activedescendant={open && results.length ? `gs-opt-${activeIndex}` : undefined}
+			aria-controls="{uid}-panel"
+			aria-activedescendant={open && results.length ? `${uid}-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
 			onkeydown={onInputKey}
 		/>
-		<kbd class="hint" aria-hidden="true">/</kbd>
+		{#if hotkey}
+			<kbd class="hint" aria-hidden="true">{hotkey}</kbd>
+		{/if}
 	</label>
 
 	{#if open && query.trim().length >= 2}
-		<div class="panel" id="gs-panel" role="listbox" aria-label="Результаты поиска">
+		<div class="panel" id="{uid}-panel" role="listbox" aria-label="Результаты поиска">
 			{#if results.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
 				<ul>
 					{#each results as hit, i (hit.href + hit.title + hit.snippet)}
-						<li role="option" id="gs-opt-{i}" aria-selected={i === activeIndex}>
+						<li role="option" id="{uid}-opt-{i}" aria-selected={i === activeIndex}>
 							<a
 								href={href(hit)}
 								class:is-active={i === activeIndex}

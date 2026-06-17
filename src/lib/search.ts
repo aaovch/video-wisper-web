@@ -98,14 +98,14 @@ export function searchReport(report: Report, query: string, limit = 14): SearchH
 	return dedupeAndSort(hits, limit);
 }
 
-/** Глобальный поиск по архиву (все отчёты). */
-export function searchReports(query: string, limit = 12): SearchHit[] {
+/** Поиск по архиву. По умолчанию — все отчёты; можно сузить до подмножества (коллекции). */
+export function searchReports(query: string, limit = 12, source: Report[] = reports): SearchHit[] {
 	const q = norm(query);
 	if (q.length < 2) return [];
 
 	const hits: SearchHit[] = [];
 
-	for (const report of reports) {
+	for (const report of source) {
 		const baseHref = `/reports/${report.slug}/`;
 
 		const reportHay = norm(

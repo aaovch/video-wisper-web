@@ -1,7 +1,8 @@
 <script lang="ts">
-	import ReportCard from '$lib/components/ReportCard.svelte';
+	import CollectionCard from '$lib/components/CollectionCard.svelte';
 	import { reveal } from '$lib/attachments';
 	import { reports } from '$lib/data';
+	import { collections } from '$lib/data/collections';
 
 	const totalChapters = reports.reduce((acc, r) => acc + r.chapters.length, 0);
 </script>
@@ -10,7 +11,7 @@
 	<title>Video Wisper — архив транскрипций</title>
 	<meta
 		name="description"
-		content="Видео, разобранные по смыслу: смысловые блоки, тезисы и расшифровки, сгенерированные Video Wisper."
+		content="Видео, разобранные по смыслу: тематические коллекции, смысловые блоки, тезисы и расшифровки."
 	/>
 </svelte:head>
 
@@ -21,10 +22,14 @@
 	</h1>
 	<div class="hero-foot reveal" {@attach reveal({ delay: 160 })}>
 		<p class="lede">
-			Речь распознаётся через Whisper&nbsp;Turbo, затем размечается на смысловые блоки с тезисами и
-			саммари. Каждая запись — это карта: что, где и зачем сказано.
+			Речь распознаётся через Whisper&nbsp;Turbo и размечается на смысловые блоки с тезисами.
+			Записи собраны в тематические коллекции — а поиск вверху ищет сразу по всему архиву.
 		</p>
 		<dl class="ledger">
+			<div>
+				<dt class="label">коллекций</dt>
+				<dd>{String(collections.length).padStart(2, '0')}</dd>
+			</div>
 			<div>
 				<dt class="label">записей</dt>
 				<dd>{String(reports.length).padStart(2, '0')}</dd>
@@ -39,14 +44,14 @@
 
 <section class="container index">
 	<div class="index-head">
-		<h2 class="label">Указатель записей</h2>
-		<span class="label">{String(reports.length).padStart(2, '0')} / {String(reports.length).padStart(2, '0')}</span>
+		<h2 class="label">Коллекции</h2>
+		<span class="label">{String(collections.length).padStart(2, '0')} тем</span>
 	</div>
 	<hr class="rule" />
-	<ul class="index-list">
-		{#each reports as report, i (report.slug)}
+	<ul class="grid">
+		{#each collections as collection, i (collection.slug)}
 			<li class="reveal" {@attach reveal({ delay: i * 90 })}>
-				<ReportCard {report} index={i + 1} />
+				<CollectionCard {collection} index={i + 1} />
 			</li>
 		{/each}
 	</ul>
@@ -54,14 +59,15 @@
 
 <style>
 	.hero {
-		padding: 64px 28px 40px;
+		padding: 40px 28px 8px;
 	}
 
 	.hero h1 {
-		font-size: clamp(44px, 9vw, 104px);
+		font-size: clamp(38px, 5.5vw, 64px);
 		font-weight: 500;
-		margin: 14px 0 0;
-		max-width: 14ch;
+		margin: 10px 0 0;
+		max-width: 18ch;
+		line-height: 1.04;
 	}
 
 	.hero h1 em {
@@ -71,23 +77,23 @@
 	}
 
 	.hero-foot {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 48px;
-		align-items: end;
-		margin-top: 36px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px 56px;
+		align-items: flex-end;
+		margin-top: 24px;
 	}
 
 	.lede {
-		max-width: 46ch;
-		font-size: 20px;
+		max-width: 44ch;
+		font-size: 18px;
 		color: var(--ink-soft);
 		margin: 0;
 	}
 
 	.ledger {
 		display: flex;
-		gap: 36px;
+		gap: 32px;
 		margin: 0;
 	}
 
@@ -98,14 +104,14 @@
 	.ledger dd {
 		margin: 0;
 		font-family: var(--font-display);
-		font-size: 44px;
+		font-size: 34px;
 		font-weight: 500;
 		line-height: 1;
 		color: var(--ink);
 	}
 
 	.index {
-		padding-top: 40px;
+		padding-top: 28px;
 	}
 
 	.index-head {
@@ -115,15 +121,22 @@
 		margin-bottom: 14px;
 	}
 
-	.index-list {
+	.grid {
 		list-style: none;
-		margin: 0;
+		margin: 28px 0 0;
 		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 20px;
 	}
 
 	@media (max-width: 720px) {
 		.hero-foot {
 			grid-template-columns: 1fr;
+			gap: 28px;
+		}
+
+		.ledger {
 			gap: 28px;
 		}
 

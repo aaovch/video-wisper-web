@@ -6,10 +6,12 @@ import metodichka from './reports/metodichka.json';
 import retention from './reports/retention.json';
 import sablyaA2 from './reports/sablya-a-2.json';
 import sablyaA3 from './reports/sablya-a-3.json';
+import sablyaVvodnaya from './reports/sablya-vvodnaya.json';
 import software30 from './reports/software-3-0.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	sablyaVvodnaya as Report,
 	sablyaA2 as Report,
 	sablyaA3 as Report,
 	longswordA as Report,
