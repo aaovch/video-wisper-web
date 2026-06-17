@@ -5,7 +5,7 @@
 	--paper-3: #e6dfcc;
 	--ink: #1f1c17;
 	--ink-soft: #524d43;
-	--ink-faint: #8d8674;
+	--ink-faint: #6f6857; /* затемнён до WCAG AA (~4.6:1 на бумаге) */
 	--line: #d9d1be;
 	--line-strong: #c3b9a0;
 	--accent: #8a2b22; /* охра-кровь */
@@ -66,6 +66,17 @@ body > * {
 a {
 	color: var(--accent);
 	text-decoration: none;
+}
+
+/* Единый видимый фокус для клавиатуры */
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
 }
 
 h1,
@@ -144,11 +155,16 @@ p {
 	}
 }
 
+/* Без JS контент виден сразу; прячем только когда JS активен (html.js) */
 .reveal {
+	opacity: 1;
+}
+
+html.js .reveal {
 	opacity: 0;
 }
 
-.reveal.is-visible {
+html.js .reveal.is-visible {
 	animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
 
@@ -156,8 +172,8 @@ p {
 	html {
 		scroll-behavior: auto;
 	}
-	.reveal,
-	.reveal.is-visible {
+	html.js .reveal,
+	html.js .reveal.is-visible {
 		opacity: 1;
 		animation: none;
 	}

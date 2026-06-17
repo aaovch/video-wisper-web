@@ -4,43 +4,40 @@
 
 	let {
 		chapters,
-		onSelect
-	}: { chapters: Chapter[]; onSelect: (index: number, start: number) => void } = $props();
+		onSelect,
+		active = 0
+	}: { chapters: Chapter[]; onSelect: (index: number, start: number) => void; active?: number } =
+		$props();
 
-	let active = $state(0);
+	let navEl = $state<HTMLElement | null>(null);
+	// Открыто по умолчанию (для SSR/десктопа); на мобильном схлопываем после монтирования.
+	let open = $state(true);
 
-	// Подсветка блока, который сейчас в зоне чтения (скролл-спай).
 	$effect(() => {
-		const ids = chapters.map((_, i) => `ch-${i + 1}`);
-		const nodes = ids
-			.map((id) => document.getElementById(id))
-			.filter((n): n is HTMLElement => Boolean(n));
-		if (!nodes.length || typeof IntersectionObserver === 'undefined') return;
+		if (window.matchMedia('(max-width: 960px)').matches) open = false;
+	});
 
-		const visible = new Set<number>();
-		const io = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					const idx = Number((entry.target as HTMLElement).dataset.idx);
-					if (entry.isIntersecting) visible.add(idx);
-					else visible.delete(idx);
-				}
-				if (visible.size) active = Math.min(...visible);
-			},
-			{ rootMargin: '-18% 0px -72% 0px', threshold: 0 }
-		);
-
-		nodes.forEach((n, i) => {
-			n.dataset.idx = String(i);
-			io.observe(n);
-		});
-
-		return () => io.disconnect();
+	// Держим активный пункт в зоне видимости списка (без влияния на скролл страницы).
+	$effect(() => {
+		active; // переоценивать при смене активного блока
+		const btn = navEl?.querySelector<HTMLElement>('li.active button');
+		const container = navEl?.closest<HTMLElement>('.nav-scroll');
+		if (!btn || !container) return;
+		if (container.scrollHeight <= container.clientHeight) return; // список не прокручивается (мобильный)
+		const cr = container.getBoundingClientRect();
+		const br = btn.getBoundingClientRect();
+		if (br.top < cr.top) container.scrollBy({ top: br.top - cr.top - 8, behavior: 'smooth' });
+		else if (br.bottom > cr.bottom)
+			container.scrollBy({ top: br.bottom - cr.bottom + 8, behavior: 'smooth' });
 	});
 </script>
 
-<nav class="chapter-nav" aria-label="Содержание">
-	<p class="label nav-title">Содержание</p>
+<details class="chapter-nav" bind:open bind:this={navEl}>
+	<summary class="nav-title label" aria-label="Содержание">
+		Содержание
+		<span class="count mono">{chapters.length}</span>
+		<span class="chevron" aria-hidden="true">▸</span>
+	</summary>
 	<ol>
 		{#each chapters as chapter, i (chapter.start)}
 			<li class:active={active === i}>
@@ -52,7 +49,7 @@
 			</li>
 		{/each}
 	</ol>
-</nav>
+</details>
 
 <style>
 	.chapter-nav {
@@ -61,12 +58,37 @@
 	}
 
 	.nav-title {
-		margin: 0 0 10px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
+		list-style: none;
+		user-select: none;
+	}
+
+	.nav-title::-webkit-details-marker {
+		display: none;
+	}
+
+	.count {
+		font-size: 11px;
+		color: var(--ink-faint);
+	}
+
+	.chevron {
+		margin-left: auto;
+		font-size: 10px;
+		color: var(--ink-faint);
+		transition: transform 0.2s ease;
+	}
+
+	.chapter-nav[open] .chevron {
+		transform: rotate(90deg);
 	}
 
 	ol {
 		list-style: none;
-		margin: 0;
+		margin: 12px 0 0;
 		padding: 0;
 	}
 
@@ -114,7 +136,7 @@
 
 	.tc {
 		font-size: 11px;
-		color: var(--line-strong);
+		color: var(--ink-faint);
 	}
 
 	.active button {

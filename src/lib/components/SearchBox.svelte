@@ -1,14 +1,47 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { goto } from '$app/navigation';
 	import { searchReports, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
 
 	let query = $state('');
 	let open = $state(false);
+	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
 	const results = $derived(searchReports(query));
+
+	// Сброс выделения при смене запроса/состава результатов.
+	$effect(() => {
+		results;
+		activeIndex = 0;
+	});
+
+	function scrollActiveIntoView() {
+		rootEl?.querySelector(`#gs-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
+	}
+
+	function onInputKey(e: KeyboardEvent) {
+		if (!open || results.length === 0) return;
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			activeIndex = (activeIndex + 1) % results.length;
+			scrollActiveIntoView();
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			activeIndex = (activeIndex - 1 + results.length) % results.length;
+			scrollActiveIntoView();
+		} else if (e.key === 'Enter') {
+			const hit = results[activeIndex];
+			if (hit) {
+				e.preventDefault();
+				close();
+				query = '';
+				goto(href(hit));
+			}
+		}
+	}
 
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
@@ -56,22 +89,32 @@
 			placeholder="Поиск по архиву…"
 			autocomplete="off"
 			spellcheck="false"
+			role="combobox"
+			aria-expanded={open && results.length > 0}
+			aria-controls="gs-panel"
+			aria-activedescendant={open && results.length ? `gs-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
+			onkeydown={onInputKey}
 		/>
 		<kbd class="hint" aria-hidden="true">/</kbd>
 	</label>
 
 	{#if open && query.trim().length >= 2}
-		<div class="panel" role="listbox" aria-label="Результаты поиска">
+		<div class="panel" id="gs-panel" role="listbox" aria-label="Результаты поиска">
 			{#if results.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
 				<ul>
-					{#each results as hit (hit.href + hit.title + hit.snippet)}
-						<li role="option" aria-selected="false">
-							<a href={href(hit)} onclick={close}>
+					{#each results as hit, i (hit.href + hit.title + hit.snippet)}
+						<li role="option" id="gs-opt-{i}" aria-selected={i === activeIndex}>
+							<a
+								href={href(hit)}
+								class:is-active={i === activeIndex}
+								onmouseenter={() => (activeIndex = i)}
+								onclick={close}
+							>
 								<span class="row-top">
 									<span class="kind label">{kindLabel[hit.kind]}</span>
 									<span class="from">
@@ -180,9 +223,14 @@
 		transition: background 0.15s ease;
 	}
 
-	a:hover {
+	a:hover,
+	a.is-active {
 		background: var(--paper-2);
 		text-decoration: none;
+	}
+
+	a.is-active {
+		box-shadow: inset 2px 0 0 var(--accent);
 	}
 
 	.row-top {

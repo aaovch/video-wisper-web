@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
 	import ReportSearch from '$lib/components/ReportSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import { reveal } from '$lib/attachments';
 	import type { SearchHit } from '$lib/search';
-	import { formatDuration } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -14,6 +12,59 @@
 
 	let seekTo = $state(0);
 	let playerEl = $state<HTMLElement | null>(null);
+
+	// --- Подсветка блока по позиции воспроизведения ---
+	let videoTime = $state(0);
+	let videoPlaying = $state(false);
+	let scrollIndex = $state(0);
+
+	function onVideoTime(t: number) {
+		videoTime = t;
+	}
+
+	function chapterIndexAt(t: number): number {
+		const ch = report.chapters;
+		let idx = 0;
+		for (let i = 0; i < ch.length; i++) {
+			if (ch[i].start <= t + 0.25) idx = i;
+			else break;
+		}
+		return idx;
+	}
+
+	// Блок, на котором сейчас плеер (только пока идёт воспроизведение; иначе -1).
+	const playingIndex = $derived(videoPlaying ? chapterIndexAt(videoTime) : -1);
+	// Активный пункт в «Содержании»: воспроизведение приоритетнее скролла.
+	const navActive = $derived(playingIndex >= 0 ? playingIndex : scrollIndex);
+
+	// Скролл-спай: какой блок сейчас в зоне чтения (когда видео не играет).
+	$effect(() => {
+		const ids = report.chapters.map((_, i) => `ch-${i + 1}`);
+		const nodes = ids
+			.map((id) => document.getElementById(id))
+			.filter((n): n is HTMLElement => Boolean(n));
+		if (!nodes.length || typeof IntersectionObserver === 'undefined') return;
+
+		const visible = new Set<number>();
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					const idx = Number((entry.target as HTMLElement).dataset.idx);
+					if (entry.isIntersecting) visible.add(idx);
+					else visible.delete(idx);
+				}
+				if (visible.size) scrollIndex = Math.min(...visible);
+			},
+			{ rootMargin: '-18% 0px -72% 0px', threshold: 0 }
+		);
+
+		nodes.forEach((n, i) => {
+			n.dataset.idx = String(i);
+			io.observe(n);
+		});
+
+		return () => io.disconnect();
+	});
 
 	function seekVideo(start: number) {
 		seekTo = start;
@@ -47,52 +98,36 @@
 		<aside class="rail">
 			{#if report.video}
 				<div class="video-pin" bind:this={playerEl}>
-					<VideoPlayer video={report.video} {seekTo} />
+					<VideoPlayer
+						video={report.video}
+						{seekTo}
+						onTime={onVideoTime}
+						onPlaying={(p) => (videoPlaying = p)}
+					/>
 					<p class="video-hint label">Клик по блоку — перемотка</p>
 				</div>
 			{/if}
 			<div class="nav-scroll">
 				<ReportSearch {report} onHit={onSearchHit} />
-				<ChapterNav chapters={report.chapters} onSelect={selectChapter} />
+				<ChapterNav chapters={report.chapters} onSelect={selectChapter} active={navActive} />
 			</div>
 		</aside>
 
 		<!-- Справа: заголовок и текст -->
 		<div class="content">
-			<a class="back label" href="{base}/">← Указатель</a>
-
 			<header class="report-head reveal" {@attach reveal()}>
-				<div class="tags">
-					{#each report.tags as tag (tag)}
-						<span class="tag">{tag}</span>
-					{/each}
-				</div>
 				<h1>{report.title}</h1>
 				<p class="subtitle">{report.subtitle}</p>
-				<p class="meta label">
-					{formatDuration(report.duration)} · {report.chapters.length} блоков
-				</p>
 			</header>
 
-			<hr class="rule head-rule" />
-
-			<section class="overview reveal" {@attach reveal()}>
-				<h2 class="label section-label">Главные тезисы</h2>
-				<ul class="overview-list">
-					{#each report.overview_theses as thesis (thesis)}
-						<li>{thesis}</li>
-					{/each}
-				</ul>
-			</section>
-
 			<section class="chapters">
-				<h2 class="label section-label">Смысловые блоки</h2>
 				{#each report.chapters as chapter, i (chapter.start)}
 					<div class="reveal" {@attach reveal()}>
 						<ChapterCard
 							{chapter}
 							index={i}
 							onSeek={report.video ? seekVideo : undefined}
+							playing={playingIndex === i}
 						/>
 					</div>
 				{/each}
@@ -150,37 +185,39 @@
 		flex: 1;
 		min-height: 0;
 		overflow-y: auto;
+		overflow-x: hidden;
 		overscroll-behavior: contain;
 		-webkit-overflow-scrolling: touch;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		/* Тонкий скроллбар «под бумагу» */
+		scrollbar-width: thin;
+		scrollbar-color: var(--line-strong) transparent;
+	}
+
+	.nav-scroll::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	.nav-scroll::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.nav-scroll::-webkit-scrollbar-thumb {
+		background: var(--line-strong);
+		border-radius: 999px;
+		border: 2px solid var(--paper);
+	}
+
+	.nav-scroll::-webkit-scrollbar-thumb:hover {
+		background: var(--ink-faint);
 	}
 
 	.video-hint {
 		margin: 8px 0 0;
 		text-align: center;
 		font-size: 10px;
-	}
-
-	.back {
-		display: inline-block;
-		margin-bottom: 18px;
-		color: var(--ink-soft);
-		border-bottom: 1px solid transparent;
-		padding-bottom: 2px;
-		transition: border-color 0.2s ease;
-	}
-
-	.back:hover {
-		border-color: var(--accent);
-	}
-
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 6px;
-		margin-bottom: 14px;
 	}
 
 	.report-head h1 {
@@ -195,57 +232,12 @@
 		font-size: clamp(17px, 1.6vw, 20px);
 		color: var(--ink-soft);
 		max-width: 52ch;
-		margin: 0 0 10px;
+		margin: 0;
 		line-height: 1.45;
 	}
 
-	.meta {
-		margin: 0;
-	}
-
-	.head-rule {
-		margin: 22px 0 28px;
-	}
-
-	.section-label {
-		margin: 0 0 18px;
-		padding-bottom: 8px;
-		border-bottom: 1px solid var(--line);
-	}
-
-	.overview {
-		margin-bottom: 40px;
-	}
-
-	.overview-list {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: 14px;
-	}
-
-	.overview-list li {
-		position: relative;
-		padding-left: 28px;
-		font-size: 19px;
-		line-height: 1.5;
-		max-width: var(--measure);
-	}
-
-	.overview-list li::before {
-		content: '§';
-		position: absolute;
-		left: 0;
-		top: 0.05em;
-		font-family: var(--font-display);
-		color: var(--accent-2);
-		font-size: 20px;
-	}
-
 	.chapters {
-		margin-top: 4px;
+		margin-top: 32px;
 	}
 
 	.transcript {

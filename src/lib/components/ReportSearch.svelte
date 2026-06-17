@@ -13,10 +13,40 @@
 
 	let query = $state('');
 	let open = $state(false);
+	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
 	const results = $derived(searchReport(report, query));
+
+	// Сброс выделения при смене запроса/состава результатов.
+	$effect(() => {
+		results;
+		activeIndex = 0;
+	});
+
+	function scrollActiveIntoView() {
+		rootEl?.querySelector(`#rs-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
+	}
+
+	function onInputKey(e: KeyboardEvent) {
+		if (!open || results.length === 0) return;
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			activeIndex = (activeIndex + 1) % results.length;
+			scrollActiveIntoView();
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			activeIndex = (activeIndex - 1 + results.length) % results.length;
+			scrollActiveIntoView();
+		} else if (e.key === 'Enter') {
+			const hit = results[activeIndex];
+			if (hit) {
+				e.preventDefault();
+				pick(hit);
+			}
+		}
+	}
 
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
@@ -66,22 +96,32 @@
 			placeholder="Поиск в этом видео…"
 			autocomplete="off"
 			spellcheck="false"
+			role="combobox"
+			aria-expanded={open && results.length > 0}
+			aria-controls="rs-panel"
+			aria-activedescendant={open && results.length ? `rs-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
+			onkeydown={onInputKey}
 		/>
 		<kbd class="hint" aria-hidden="true">f</kbd>
 	</label>
 
 	{#if open && query.trim().length >= 2}
-		<div class="panel" role="listbox" aria-label="Результаты поиска в видео">
+		<div class="panel" id="rs-panel" role="listbox" aria-label="Результаты поиска в видео">
 			{#if results.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
 				<ul>
-					{#each results as hit (hit.kind + hit.href + (hit.start ?? '') + hit.snippet)}
-						<li role="option" aria-selected="false">
-							<button type="button" onclick={() => pick(hit)}>
+					{#each results as hit, i (hit.kind + hit.href + (hit.start ?? '') + hit.snippet)}
+						<li role="option" id="rs-opt-{i}" aria-selected={i === activeIndex}>
+							<button
+								type="button"
+								class:is-active={i === activeIndex}
+								onmouseenter={() => (activeIndex = i)}
+								onclick={() => pick(hit)}
+							>
 								<span class="row-top">
 									<span class="kind label">{kindLabel[hit.kind]}</span>
 									{#if hit.start != null}
@@ -192,8 +232,13 @@
 		transition: background 0.15s ease;
 	}
 
-	button:hover {
+	button:hover,
+	button.is-active {
 		background: var(--paper-2);
+	}
+
+	button.is-active {
+		box-shadow: inset 2px 0 0 var(--accent);
 	}
 
 	.row-top {
