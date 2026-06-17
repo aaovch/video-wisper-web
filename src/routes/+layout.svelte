@@ -27,12 +27,6 @@
 			</a>
 
 			<SearchBox />
-
-			<nav class="nav">
-				<a href="{base}/">Указатель</a>
-				<span class="nav-dot" aria-hidden="true">·</span>
-				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>
-			</nav>
 		</div>
 		<hr class="rule" />
 	</header>
@@ -45,7 +39,11 @@
 		<hr class="rule" />
 		<div class="container colophon-inner">
 			<p class="label">Video Wisper · Whisper Turbo + смысловая LLM-разметка</p>
-			<p class="label">собрано на SvelteKit · {new Date().getFullYear()}</p>
+			<p class="label">
+				собрано на SvelteKit ·
+				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>
+				· {new Date().getFullYear()}
+			</p>
 		</div>
 	</footer>
 </div>
@@ -75,8 +73,7 @@
 	.masthead-inner {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
+		gap: 28px;
 		padding-top: 18px;
 		padding-bottom: 14px;
 	}
@@ -101,35 +98,19 @@
 		font-size: 10px;
 	}
 
-	.nav {
-		display: flex;
-		align-items: center;
-		gap: 14px;
-		font-family: var(--font-mono);
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		flex-shrink: 0;
+	.colophon {
+		margin-top: 80px;
 	}
 
-	.nav a {
+	.colophon a {
 		color: var(--ink-soft);
-		padding-bottom: 2px;
 		border-bottom: 1px solid transparent;
 		transition: border-color 0.2s ease;
 	}
 
-	.nav a:hover {
+	.colophon a:hover {
 		border-color: var(--accent);
 		color: var(--ink);
-	}
-
-	.nav-dot {
-		color: var(--line-strong);
-	}
-
-	.colophon {
-		margin-top: 80px;
 	}
 
 	.colophon-inner {

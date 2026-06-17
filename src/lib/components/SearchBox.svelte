@@ -147,9 +147,9 @@
 <style>
 	.search {
 		position: relative;
-		flex: 1;
-		max-width: 420px;
-		margin: 0 20px;
+		flex: 0 1 560px;
+		max-width: 560px;
+		margin: 0 auto;
 	}
 
 	.field {
