@@ -208,6 +208,30 @@
 			else el.addEventListener('loadedmetadata', seek, { once: true });
 		}
 	});
+
+	// Императивная перемотка прямо в обработчике клика. Это важно для мобильных:
+	// play() должен вызываться синхронно внутри жеста пользователя, иначе браузер
+	// блокирует запуск (через отложенный $effect он бы не сработал).
+	export function seekAndPlay(t: number) {
+		const s = Math.max(0, Math.floor(t));
+		if (isNative) {
+			const el = videoEl;
+			if (!el) return;
+			const go = () => {
+				try {
+					el.currentTime = s;
+					void el.play();
+				} catch {
+					/* применится по loadedmetadata */
+				}
+			};
+			if (el.readyState >= 1) go();
+			else el.addEventListener('loadedmetadata', go, { once: true });
+		} else if (video.provider === 'youtube' && ytPlayer?.seekTo) {
+			ytPlayer.seekTo(s, true);
+			ytPlayer.playVideo?.();
+		}
+	}
 </script>
 
 <div class="player">

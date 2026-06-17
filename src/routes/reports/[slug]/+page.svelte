@@ -12,6 +12,7 @@
 
 	let seekTo = $state(0);
 	let playerEl = $state<HTMLElement | null>(null);
+	let playerComp = $state<{ seekAndPlay?: (t: number) => void } | null>(null);
 
 	// --- Подсветка блока по позиции воспроизведения ---
 	let videoTime = $state(0);
@@ -70,6 +71,8 @@
 
 	function seekVideo(start: number) {
 		seekTo = start;
+		// Синхронно, внутри жеста — иначе на мобильных play() блокируется.
+		playerComp?.seekAndPlay?.(start);
 		if (window.matchMedia('(max-width: 960px)').matches) {
 			playerEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
@@ -101,6 +104,7 @@
 			{#if report.video}
 				<div class="video-pin" bind:this={playerEl}>
 					<VideoPlayer
+						bind:this={playerComp}
 						video={report.video}
 						{seekTo}
 						onTime={onVideoTime}
