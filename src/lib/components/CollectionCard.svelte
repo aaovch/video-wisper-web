@@ -12,7 +12,7 @@
 <a class="collection" href="{base}/collections/{collection.slug}/">
 	<div class="head">
 		<span class="numeral" aria-hidden="true">{String(index).padStart(2, '0')}</span>
-		<span class="count mono">{stats.videos} видео · {stats.chapters} блоков</span>
+		<span class="count mono">{stats.videos} видео</span>
 	</div>
 
 	<h3 class="title">{collection.title}</h3>

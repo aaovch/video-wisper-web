@@ -3,8 +3,6 @@
 	import { reveal } from '$lib/attachments';
 	import { reports } from '$lib/data';
 	import { collections } from '$lib/data/collections';
-
-	const totalChapters = reports.reduce((acc, r) => acc + r.chapters.length, 0);
 </script>
 
 <svelte:head>
@@ -16,14 +14,12 @@
 </svelte:head>
 
 <section class="hero container">
-	<p class="label reveal" {@attach reveal()}>Том I · разбор по смыслу</p>
-	<h1 class="reveal" {@attach reveal({ delay: 80 })}>
+	<h1 class="reveal" {@attach reveal()}>
 		Видео,<br /><em>разобранные</em> по смыслу
 	</h1>
-	<div class="hero-foot reveal" {@attach reveal({ delay: 160 })}>
+	<div class="hero-foot reveal" {@attach reveal({ delay: 100 })}>
 		<p class="lede">
-			Речь распознаётся через Whisper&nbsp;Turbo и размечается на смысловые блоки с тезисами.
-			Записи собраны в тематические коллекции — а поиск вверху ищет сразу по всему архиву.
+			Тематические коллекции видео, разобранных на смысловые блоки с тезисами и таймкодами.
 		</p>
 		<dl class="ledger">
 			<div>
@@ -34,19 +30,12 @@
 				<dt class="label">записей</dt>
 				<dd>{String(reports.length).padStart(2, '0')}</dd>
 			</div>
-			<div>
-				<dt class="label">блоков</dt>
-				<dd>{totalChapters}</dd>
-			</div>
 		</dl>
 	</div>
 </section>
 
 <section class="container index">
-	<div class="index-head">
-		<h2 class="label">Коллекции</h2>
-		<span class="label">{String(collections.length).padStart(2, '0')} тем</span>
-	</div>
+	<h2 class="label index-head">Коллекции</h2>
 	<hr class="rule" />
 	<ul class="grid">
 		{#each collections as collection, i (collection.slug)}
@@ -115,15 +104,13 @@
 	}
 
 	.index-head {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		margin-bottom: 14px;
+		display: block;
+		margin: 0 0 14px;
 	}
 
 	.grid {
 		list-style: none;
-		margin: 28px 0 0;
+		margin: 18px 0 0;
 		padding: 0;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
