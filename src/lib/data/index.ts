@@ -1,12 +1,14 @@
 import type { Report } from '$lib/types';
 import berezhnoyAi from './reports/berezhnoy-ai.json';
 import hemaReflections from './reports/hema-reflections.json';
+import longswordA from './reports/longsword-a.json';
 import metodichka from './reports/metodichka.json';
 import retention from './reports/retention.json';
 import software30 from './reports/software-3-0.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	longswordA as Report,
 	software30 as Report,
 	hemaReflections as Report,
 	berezhnoyAi as Report,

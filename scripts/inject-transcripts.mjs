@@ -35,6 +35,10 @@ const SOURCES = [
 	{
 		reportPath: join(root, 'src/lib/data/reports/software-3-0.json'),
 		transcriptPath: join(pipelineRoot, 'output/Software 3.0： код будущего [CDpnhKypevg]/transcript.json')
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/longsword-a.json'),
+		transcriptPath: join(pipelineRoot, 'output/Longsword A [Mg780unogxM]/transcript.json')
 	}
 ];
 
