@@ -4,10 +4,12 @@ import hemaReflections from './reports/hema-reflections.json';
 import longswordA from './reports/longsword-a.json';
 import metodichka from './reports/metodichka.json';
 import retention from './reports/retention.json';
+import sablyaA3 from './reports/sablya-a-3.json';
 import software30 from './reports/software-3-0.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	sablyaA3 as Report,
 	longswordA as Report,
 	software30 as Report,
 	hemaReflections as Report,
