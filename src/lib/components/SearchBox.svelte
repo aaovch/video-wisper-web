@@ -20,6 +20,7 @@
 	let rootEl = $state<HTMLElement | null>(null);
 
 	const results = $derived(searchReports(query, 12, scope));
+	const showPanel = $derived(open && query.trim().length >= 2);
 
 	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
@@ -88,7 +89,11 @@
 
 <svelte:window onkeydown={onWindowKey} onclick={onDocClick} />
 
-<div class="search" bind:this={rootEl}>
+{#if showPanel}
+	<div class="scrim" aria-hidden="true"></div>
+{/if}
+
+<div class="search" class:open={showPanel} bind:this={rootEl}>
 	<label class="field">
 		<span class="icon" aria-hidden="true">⌕</span>
 		<input
@@ -112,7 +117,7 @@
 		{/if}
 	</label>
 
-	{#if open && query.trim().length >= 2}
+	{#if showPanel}
 		<div class="panel" id="{uid}-panel" role="listbox" aria-label="Результаты поиска">
 			{#if results.length === 0}
 				<p class="empty label">Ничего не найдено</p>
@@ -145,11 +150,39 @@
 </div>
 
 <style>
+	.scrim {
+		position: fixed;
+		inset: 0;
+		z-index: 40;
+		background: color-mix(in srgb, var(--ink) 18%, transparent);
+		animation: scrim-in 0.18s ease;
+	}
+
+	@keyframes scrim-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.scrim {
+			animation: none;
+		}
+	}
+
 	.search {
 		position: relative;
 		flex: 0 1 560px;
 		max-width: 560px;
 		margin: 0 auto;
+	}
+
+	/* Над скримом, чтобы поле и панель оставались «подсвеченными» */
+	.search.open {
+		z-index: 50;
 	}
 
 	.field {
