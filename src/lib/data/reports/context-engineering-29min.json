@@ -1,0 +1,2000 @@
+{
+	"slug": "context-engineering-29min",
+	"title": "Context Engineering in 29 Minutes",
+	"subtitle": "Marina (Twitch) — полный курс по контексту агентов",
+	"source_name": "Context Engineering in 29 Minutes： Complete Course [-h9VVJIqtvA].mp4",
+	"note": "Смысловая разметка по транскрипту. Marina — Context Engineering: WSCI, failure modes, production patterns. 12 блоков, ~30 мин.",
+	"duration": 1778.08,
+	"tags": [
+		"AI",
+		"Agents",
+		"Context Engineering",
+		"LLM",
+		"12 блоков"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "-h9VVJIqtvA"
+	},
+	"overview_theses": [
+		"Агенты «ломаются» на шаге 15–20 не из‑за модели, а из‑за переполненного и плохо организованного контекста.",
+		"Context engineering — про всю информационную систему вокруг LLM: system prompt, tools, история, память, state — не только про промпт.",
+		"Контекст деградирует градиентно (Chroma, Anthropic): «lost in the middle» и U‑образная кривая внимания.",
+		"Четыре стратегии LangChain: Write, Select, Compress, Isolate — каркас всех практик.",
+		"Четыре failure mode (Breunig): poisoning, distraction, confusion, clash — каждый лечится одной из стратегий.",
+		"System prompt агента = архитектура и control flow; tools — через MCP, masking или RAG-MCP для масштаба.",
+		"Production-паттерн: фазовая работа с compaction (research → plan → implement) и чистыми context reset.",
+		"Claude Code, Manus, ChatGPT Agent и Google ADK решают одну задачу разными инженерными компромиссами."
+	],
+	"chapters": [
+		{
+			"start": 0,
+			"title": "Вступление: почему агенты «сыпятся»",
+			"summary": "Marina объясняет типичную деградацию агента после 15–20 шагов и представляет курс по context engineering.",
+			"theses": [
+				"Проблема чаще в том, что видит модель, а не в «слабой» LLM.",
+				"Курс собран из engineering blogs, talks, papers и practitioner reports.",
+				"План: определение, 4 стратегии, failure modes, сравнение платформ."
+			],
+			"anchor": "If you've been building AI agents",
+			"segments": [
+				{
+					"start": 0,
+					"text": "If you've been building AI agents, you've probably noticed something."
+				},
+				{
+					"start": 3.3,
+					"text": "Your agent works fine for the first two steps."
+				},
+				{
+					"start": 5.68,
+					"text": "It picks the right tools, reasons clearly, and stays on track."
+				},
+				{
+					"start": 8.7,
+					"text": "But somewhere around step 15 or 20, it starts getting a little sloppy."
+				},
+				{
+					"start": 12.76,
+					"text": "It forgets what you asked for, calls tools that don't make sense,"
+				},
+				{
+					"start": 15.64,
+					"text": "or starts producing low-quality outputs."
+				},
+				{
+					"start": 17.88,
+					"text": "And most people's first assumption is that the model is the problem."
+				},
+				{
+					"start": 21.02,
+					"text": "But it's usually not."
+				},
+				{
+					"start": 22.1,
+					"text": "It's more often what the model is seeing."
+				},
+				{
+					"start": 24.46,
+					"text": "Organizing what the model sees is called context engineering,"
+				},
+				{
+					"start": 27.2,
+					"text": "and it's quickly becoming one of the most important skills for anyone working in this space."
+				},
+				{
+					"start": 31.4,
+					"text": "I'm Marina, a senior applied scientist at Twitch working on Gen AI."
+				},
+				{
+					"start": 34.68,
+					"text": "I went through dozens of sources for this video."
+				},
+				{
+					"start": 37,
+					"text": "Engineering blogs, talks from conferences, academic papers, and practitioner reports,"
+				},
+				{
+					"start": 41.3,
+					"text": "and distilled all of the best practices I can find into this one video."
+				},
+				{
+					"start": 45.02,
+					"text": "Here's what we'll cover."
+				},
+				{
+					"start": 45.96,
+					"text": "First, what context engineering is and why agents specifically need it."
+				},
+				{
+					"start": 49.98,
+					"text": "Then, the four core strategies that you need to know."
+				},
+				{
+					"start": 52.66,
+					"text": "After that, the ways agents fail when context goes wrong and how to prevent it."
+				},
+				{
+					"start": 56.04,
+					"text": "And finally, we'll compare how platforms like Cloud Code, ChatGPT, and Manus each approach this differently."
+				},
+				{
+					"start": 61.76,
+					"text": "All right, let's start by actually defining what we're talking about."
+				}
+			]
+		},
+		{
+			"start": 64.68,
+			"title": "Context vs prompt engineering",
+			"summary": "Prompt engineering хватает для чатбота; агенту нужен контекст целиком — system prompt, tools, history на каждом шаге.",
+			"theses": [
+				"Агент действует автономно: web, API, code, commands — каждый шаг добавляет output в контекст.",
+				"Anthropic: context = tokens при sampling; CE = оптимизация utility этих tokens.",
+				"Prompt engineering — подмножество context engineering."
+			],
+			"anchor": "All right, let's start by actually defining",
+			"segments": [
+				{
+					"start": 64.68,
+					"text": "You've definitely heard of prompt engineering."
+				},
+				{
+					"start": 66.6,
+					"text": "That's the skill of writing good instructions for an LLM,"
+				},
+				{
+					"start": 69.36,
+					"text": "like phrasing things clearly, giving good examples, and telling the model what role to play."
+				},
+				{
+					"start": 73.64,
+					"text": "And that works great when you're having a conversation with ChatGPT."
+				},
+				{
+					"start": 76.58,
+					"text": "But when you move from chatbots to agents, prompt engineering stops being enough."
+				},
+				{
+					"start": 80.86,
+					"text": "And the reason is pretty simple."
+				},
+				{
+					"start": 82.1,
+					"text": "An agent doesn't just answer one question."
+				},
+				{
+					"start": 84.14,
+					"text": "It takes actions like browsing the web, calling APIs, writing code, and running commands."
+				},
+				{
+					"start": 88.92,
+					"text": "And it does all of this autonomously, step after step, sometimes for dozens of steps."
+				},
+				{
+					"start": 94.28,
+					"text": "Every single one of those steps produces output that gets added to the model's context."
+				},
+				{
+					"start": 98.04,
+					"text": "And that context is finite."
+				},
+				{
+					"start": 99.56,
+					"text": "So context engineering is the discipline of designing the entire information system around the model."
+				},
+				{
+					"start": 104.34,
+					"text": "Not just that initial instruction, but everything the model sees at every step."
+				},
+				{
+					"start": 108.26,
+					"text": "The system prompt, tool definitions, the results from previous calls, conversation history, and more."
+				},
+				{
+					"start": 113.08,
+					"text": "Anthropic's engineering team defines it like this."
+				},
+				{
+					"start": 115.9,
+					"text": "Context is the set of tokens included when you sample from an LLM."
+				},
+				{
+					"start": 119.4,
+					"text": "And context engineering is optimizing the utility of those tokens to consistently achieve a desired outcome."
+				},
+				{
+					"start": 125,
+					"text": "So basically, it's making sure your agent sees the right information in the right format at the right time."
+				},
+				{
+					"start": 129.42,
+					"text": "Anthropic actually describes context engineering as the natural progression of prompt engineering."
+				},
+				{
+					"start": 133.66,
+					"text": "It includes everything prompt engineering does, like clear instructions, good examples, and structured formatting."
+				},
+				{
+					"start": 139.48,
+					"text": "But it adds a whole layer on top."
+				},
+				{
+					"start": 141.36,
+					"text": "Managing tools, external data, message history, memory systems, and dynamic state."
+				},
+				{
+					"start": 146.02,
+					"text": "You can think of prompt engineering as a subset of context engineering."
+				},
+				{
+					"start": 149.4,
+					"text": "Getting good at context engineering matters right now because agent adoption is accelerating really, really fast."
+				},
+				{
+					"start": 154.48,
+					"text": "Gartner projects that 40% of enterprise applications will integrate task-specific AI agents by the end of 2026, up from less than 5% in 2025."
+				},
+				{
+					"start": 163.64,
+					"text": "Teams that figure out context engineering are the ones whose agents will actually work reliably."
+				},
+				{
+					"start": 167.5,
+					"text": "This is because agents move us from static prompts and RAG pipelines to a dynamic system."
+				},
+				{
+					"start": 172.1,
+					"text": "Now every tool call, retrieved document, and decision the agent makes gets packed into a context window that's filling up with operations the user never explicitly asked for."
+				},
+				{
+					"start": 180.96,
+					"text": "And context has a fixed size, which is a problem if it's filling up with a bunch of random stuff."
+				}
+			]
+		},
+		{
+			"start": 185.6,
+			"title": "Context rot и lost in the middle",
+			"summary": "LLM как OS: модель = CPU, context window = RAM; исследования Chroma и Anthropic показывают градиентную деградацию.",
+			"theses": [
+				"Производительность падает уже при ~50k tokens у модели с 200k окном.",
+				"U‑образная кривая внимания: начало и конец помнятся, середина теряется (−30 pp accuracy).",
+				"Инструкции под 50k tokens tool outputs «исчезают» для модели."
+			],
+			"anchor": "Langchain has a nice analogy for this",
+			"segments": [
+				{
+					"start": 185.6,
+					"text": "Langchain has a nice analogy for this."
+				},
+				{
+					"start": 187.54,
+					"text": "Think of an LLM as a new kind of operating system."
+				},
+				{
+					"start": 190.28,
+					"text": "The model itself is the CPU."
+				},
+				{
+					"start": 192.2,
+					"text": "It does the thinking."
+				},
+				{
+					"start": 193.18,
+					"text": "And the context window is RAM, the working memory where everything the model can currently see and reason about lives."
+				},
+				{
+					"start": 199.08,
+					"text": "Just like your computer slows down when RAM fills up, your agent's reasoning degrades when your context window gets crowded."
+				},
+				{
+					"start": 204.68,
+					"text": "This is called context drop."
+				},
+				{
+					"start": 206.08,
+					"text": "Chroma published a really important study where they evaluated 18 frontier models."
+				},
+				{
+					"start": 211,
+					"text": "GPT 4.1, CLOD 4, Gemini 2.5, QUINT 3, and others."
+				},
+				{
+					"start": 215.22,
+					"text": "What they found is that every single model's performance degrades as input length increases, even well below the stated context window limit."
+				},
+				{
+					"start": 222.86,
+					"text": "A model with a 200k token window might start showing significant degradation at 50k tokens."
+				},
+				{
+					"start": 227.84,
+					"text": "The decline is continuous, not like a sudden cliff."
+				},
+				{
+					"start": 230.32,
+					"text": "Anthropic also talks about this in their engineering blog, confirming that context degradation is a gradient."
+				},
+				{
+					"start": 235.62,
+					"text": "The technical reason has to do with how transformers work."
+				},
+				{
+					"start": 238.58,
+					"text": "Every token attends to every other token, creating n-squared pairwise relationships."
+				},
+				{
+					"start": 244.44,
+					"text": "As the context grows, the model's ability to capture all those relationships gets stretched thinner and thinner."
+				},
+				{
+					"start": 249.66,
+					"text": "It's like asking a person to keep track of an increasingly large number of things simultaneously."
+				},
+				{
+					"start": 254.12,
+					"text": "At some point, stuff gets dropped."
+				},
+				{
+					"start": 255.42,
+					"text": "There's also a well-studied phenomenon called lost in the middle."
+				},
+				{
+					"start": 258.36,
+					"text": "A research team found that LLMs exhibit a U-shaped attention curve."
+				},
+				{
+					"start": 262.32,
+					"text": "They remember information at the beginning of the context well, and at the end well, but information in the middle gets missed."
+				},
+				{
+					"start": 268,
+					"text": "The team measured a 30-plus percentage point drop in accuracy when relevant information moved from the beginning of the context to the middle."
+				},
+				{
+					"start": 274.94,
+					"text": "So you can think about what that means for an agent whose original instructions are buried under 50,000 tokens of tool outputs."
+				},
+				{
+					"start": 281.3,
+					"text": "Those instructions effectively disappear."
+				},
+				{
+					"start": 283.42,
+					"text": "So we know the context window is finite and degrades as it fills."
+				},
+				{
+					"start": 286.24,
+					"text": "But what's actually competing for that space?"
+				}
+			]
+		},
+		{
+			"start": 289,
+			"title": "Семь категорий контекста",
+			"summary": "Разбор того, что конкурирует за окно: system prompt, tools, tool results, RAG, history, memory, agent state.",
+			"theses": [
+				"System prompt задаёт identity, rules и control flow — не «helpful assistant».",
+				"Tool definitions и их outputs могут съедать тысячи tokens на шаг.",
+				"Memory и agent state (plan, todo, scratchpad) растут вместе с сессией."
+			],
+			"anchor": "There are basically seven categories",
+			"segments": [
+				{
+					"start": 289,
+					"text": "There are basically seven categories of information in an agent's context window."
+				},
+				{
+					"start": 293.16,
+					"text": "First, the system prompt."
+				},
+				{
+					"start": 294.38,
+					"text": "This is the agent's identity, its behavioral rules, control flow logic, and instructions for how it should approach different types of tasks."
+				},
+				{
+					"start": 301.42,
+					"text": "In an agent, this isn't just like, you are a helpful assistant."
+				},
+				{
+					"start": 304.86,
+					"text": "It can define the entire architecture of how the agent operates."
+				},
+				{
+					"start": 308.6,
+					"text": "Next, we have tool definitions."
+				},
+				{
+					"start": 310.46,
+					"text": "Every tool the agent could potentially call needs a schema in the context describing what it does, what parameters it takes, and when to use it."
+				},
+				{
+					"start": 317.88,
+					"text": "Then we have the results of those tool calls."
+				},
+				{
+					"start": 320.04,
+					"text": "Every time the agent calls a tool, the result gets added to the context."
+				},
+				{
+					"start": 323.82,
+					"text": "A web page retrieval might be 5,000 to 10,000 tokens."
+				},
+				{
+					"start": 327.1,
+					"text": "A file read could also be similar."
+				},
+				{
+					"start": 328.8,
+					"text": "Fourth, we have retrieved knowledge from RAG."
+				},
+				{
+					"start": 331.16,
+					"text": "These are documents pulled from vector databases, search results, or API responses."
+				},
+				{
+					"start": 336.3,
+					"text": "Anything the agent or the system retrieves to inform the agent's decisions."
+				},
+				{
+					"start": 340.44,
+					"text": "Fifth, conversation history."
+				},
+				{
+					"start": 341.86,
+					"text": "The full transcript of everything that's happened in the session, including the user's messages, the agent's responses, its reasoning, and its prior decision."
+				},
+				{
+					"start": 350.4,
+					"text": "This grows linearly with every turn."
+				},
+				{
+					"start": 352.68,
+					"text": "Sixth, memory."
+				},
+				{
+					"start": 353.68,
+					"text": "Both short-term memory from the current session and long-term memory from previous sessions."
+				},
+				{
+					"start": 357.78,
+					"text": "That would be things like user preferences, prior task outcomes, and learned patterns."
+				},
+				{
+					"start": 362.58,
+					"text": "And finally, agent state."
+				},
+				{
+					"start": 364.02,
+					"text": "This is the agent's current plan, its to-do list, progress markers, and scratchpad notes."
+				},
+				{
+					"start": 369.16,
+					"text": "All of that meta information that helps the agent track where it is in a multi-step task."
+				},
+				{
+					"start": 373.72,
+					"text": "So now we know what the problem is."
+				},
+				{
+					"start": 375.42,
+					"text": "The rest of this video is all about how to effectively make that context work well together."
+				},
+				{
+					"start": 380.04,
+					"text": "But even with perfect context engineering, we're still going to benefit from a model that's built for this kind of work."
+				},
+				{
+					"start": 385.26,
+					"text": "Kimi just released K2.6, an open-source LLM that hit state-of-the-art on SuiBench Pro."
+				},
+				{
+					"start": 390.82,
+					"text": "The reason it's relevant here is that it was built for this exact kind of agentic problem that we've been talking about."
+				},
+				{
+					"start": 395.98,
+					"text": "Their team demonstrated it on a task where an agent ran autonomously for 13 hours, made over 1,000 tool calls, modified 4,000 lines of code, and nearly tripled throughput on a code base that was already optimized."
+				},
+				{
+					"start": 407.96,
+					"text": "It did all that while being significantly more cost-effective, especially for long-horizon agentic tasks."
+				},
+				{
+					"start": 413.2,
+					"text": "K2.6 reaches the same outcomes in about 35 fewer steps than the previous version."
+				},
+				{
+					"start": 418.08,
+					"text": "Fewer unnecessary tool calls means less junk in the context window, which means the model stays sharp for even longer."
+				},
+				{
+					"start": 423.38,
+					"text": "They also have an agent swarm where you can spin up 300 sub-agents in parallel."
+				},
+				{
+					"start": 427.32,
+					"text": "Each one gets its own clean context window, does focused work, and reports back."
+				},
+				{
+					"start": 431.44,
+					"text": "We'll talk more about these strategies and how to implement them next."
+				},
+				{
+					"start": 434.22,
+					"text": "And the product is a full stack."
+				},
+				{
+					"start": 435.82,
+					"text": "Kimi Code is a CLI agent like Claude Code."
+				},
+				{
+					"start": 438.02,
+					"text": "They've got a website builder with solid front-end design and slide generation."
+				},
+				{
+					"start": 441.58,
+					"text": "Plus, K2.6 is open source if you want to run it locally."
+				},
+				{
+					"start": 444.6,
+					"text": "I'll link Kimi in the description if you want to check it out."
+				},
+				{
+					"start": 446.92,
+					"text": "Thanks to Kimi for sponsoring this video."
+				}
+			]
+		},
+		{
+			"start": 448.68,
+			"title": "Framework WSCI и стратегия Write",
+			"summary": "LangChain: Write, Select, Compress, Isolate; Write — scratchpads, CLAUDE.md, memory extraction вне окна.",
+			"theses": [
+				"Write решает «agents forget things» при compaction.",
+				"Scratchpads и Think Tool (+54% на benchmark); rules files как procedural memory.",
+				"Память вне окна бесполезна без Select на следующем шаге."
+			],
+			"anchor": "Now let's start talking about how to effectively engineer our context",
+			"segments": [
+				{
+					"start": 448.68,
+					"text": "Now let's start talking about how to effectively engineer our context."
+				},
+				{
+					"start": 451.96,
+					"text": "How do you decide what goes in, what stays out, and what gets compressed?"
+				},
+				{
+					"start": 455.48,
+					"text": "Langchain published a widely cited framework that organizes every context engineering technique into four categories."
+				},
+				{
+					"start": 461.72,
+					"text": "Write, Select, Compress, and Isolate."
+				},
+				{
+					"start": 464.16,
+					"text": "Once you're familiar with these four buckets, every technique you encounter will fit into one of them, more or less."
+				},
+				{
+					"start": 469.98,
+					"text": "Let me walk through each one."
+				},
+				{
+					"start": 471.3,
+					"text": "The first strategy is write."
+				},
+				{
+					"start": 473.38,
+					"text": "And the problem it solves is really simple."
+				},
+				{
+					"start": 475.2,
+					"text": "Agents forget things."
+				},
+				{
+					"start": 476.4,
+					"text": "When an agent's context fills up and gets compacted, which we'll talk about more later, it loses information."
+				},
+				{
+					"start": 481.94,
+					"text": "And if the agent didn't write anything down before that happened, that information is just gone."
+				},
+				{
+					"start": 486.38,
+					"text": "So write means giving the agent ways to persist information outside the context window."
+				},
+				{
+					"start": 491.14,
+					"text": "There are a few forms this takes."
+				},
+				{
+					"start": 492.76,
+					"text": "The first is scratchpads."
+				},
+				{
+					"start": 494.16,
+					"text": "This is literally giving the agent a tool that lets it take notes during a task."
+				},
+				{
+					"start": 497.9,
+					"text": "It can jot down intermediate findings, track decisions it made, or save information it knows it'll need later."
+				},
+				{
+					"start": 503.54,
+					"text": "Anthropic built something called the Think Tool, which gives Claude a dedicated workspace for working through these kinds of problems."
+				},
+				{
+					"start": 509.3,
+					"text": "On one benchmark, this improved performance by 54% on certain tasks."
+				},
+				{
+					"start": 513.34,
+					"text": "The second form is rules files, which are a kind of persistent procedural memory."
+				},
+				{
+					"start": 517.64,
+					"text": "If you've used Claude code, you've probably seen Claude.md."
+				},
+				{
+					"start": 520.7,
+					"text": "These are instructions that get loaded at the start of every agent session."
+				},
+				{
+					"start": 524.3,
+					"text": "Basically, the agent's standing orders."
+				},
+				{
+					"start": 526.46,
+					"text": "They define things like the project structure, its conventions, how to run tests, and what to be careful about."
+				},
+				{
+					"start": 531.94,
+					"text": "The agent reads them every time it starts up so it never forgets the fundamentals."
+				},
+				{
+					"start": 535.64,
+					"text": "The third form is memory extraction, which is the agent's saving facts, user preferences, or learned patterns so it can retrieve them across sessions."
+				},
+				{
+					"start": 542.86,
+					"text": "It's a file-based system that lets the agent store and consult information that lives outside the context window entirely."
+				},
+				{
+					"start": 548.84,
+					"text": "But writing things down only helps if the agent pulls the right stuff back in at the right time."
+				}
+			]
+		},
+		{
+			"start": 553.72,
+			"title": "Стратегия Select",
+			"summary": "Не всё в контекст — только релевантное; agentic RAG, три типа памяти и RAG over tool definitions.",
+			"theses": [
+				"Agentic RAG: модель сама решает, что искать на каждом шаге.",
+				"Episodic / semantic / procedural memory — разные источники для select.",
+				"RAG-MCP: accuracy tool selection 14% → 43%, tokens ≈ −50%."
+			],
+			"anchor": "That's the second strategy, select",
+			"segments": [
+				{
+					"start": 553.72,
+					"text": "That's the second strategy, select."
+				},
+				{
+					"start": 556.04,
+					"text": "The core idea is simple."
+				},
+				{
+					"start": 557.64,
+					"text": "Don't give the agent everything, give it what it needs for this step."
+				},
+				{
+					"start": 560.64,
+					"text": "An agent with access to dozens of tools, a large knowledge base, and several sessions of conversation history can't load all of that into the context at once."
+				},
+				{
+					"start": 569.14,
+					"text": "So something has to decide what's relevant right now."
+				},
+				{
+					"start": 572.04,
+					"text": "And the key question is, what makes that decision?"
+				},
+				{
+					"start": 574.7,
+					"text": "In traditional RAG, the system makes it."
+				},
+				{
+					"start": 576.84,
+					"text": "The user asks a question, you retrieve some documents, you stuff them into the prompt, and you're done."
+				},
+				{
+					"start": 581.64,
+					"text": "It's a static pipeline where the model has no say in what gets pulled in."
+				},
+				{
+					"start": 585.16,
+					"text": "A gentic RAG flips this around."
+				},
+				{
+					"start": 587.46,
+					"text": "Now the agent itself decides what to search for, what tools to use, how to refine its queries, and when it has enough information."
+				},
+				{
+					"start": 593.96,
+					"text": "It's retrieval as an iterative process instead of a one-shot pipeline."
+				},
+				{
+					"start": 597.7,
+					"text": "And that matters because what's relevant changes at every step of a multi-step task, and the agent is the only one who knows what it needs next."
+				},
+				{
+					"start": 604.96,
+					"text": "So what does the agent actually select from?"
+				},
+				{
+					"start": 607.34,
+					"text": "Langchain and Pinecone both distinguish three types of memory it can draw on."
+				},
+				{
+					"start": 611.48,
+					"text": "Episodic memory is basically few-shot examples."
+				},
+				{
+					"start": 613.84,
+					"text": "Here's how you handled something similar before."
+				},
+				{
+					"start": 616.08,
+					"text": "Semantic memory is a repository of facts the agent has learned or been told."
+				},
+				{
+					"start": 619.86,
+					"text": "And procedural memory is standing behavioral instructions, like the rule files we talked about."
+				},
+				{
+					"start": 624.3,
+					"text": "A well-designed agent draws from all three depending on the step."
+				},
+				{
+					"start": 627.42,
+					"text": "But there's one selection problem that trips people up more than any other."
+				},
+				{
+					"start": 630.92,
+					"text": "Tools."
+				},
+				{
+					"start": 631.56,
+					"text": "If your agent has access to 40-something tools, that's potentially 10,000 tokens of tool definitions sitting in the context before any work has even started."
+				},
+				{
+					"start": 639.54,
+					"text": "And as we'll see in the failure mode section, too many tools doesn't just waste space, it actively confuses the model."
+				},
+				{
+					"start": 645.56,
+					"text": "The fix is to use RAG over the tool definitions themselves."
+				},
+				{
+					"start": 648.78,
+					"text": "Instead of dumping every tool definition into the context every time, you use semantic search to surface just the relevant tools for the current step."
+				},
+				{
+					"start": 656.46,
+					"text": "A paper called RAG MCP tested this and found tool selection accuracy jumped from 14% to 43%, while cutting prompt tokens roughly in half."
+				},
+				{
+					"start": 664.64,
+					"text": "Anthropics' general advice here is what they call a hybrid strategy."
+				},
+				{
+					"start": 668.42,
+					"text": "Load some essential information up front for speed, like the claw.md file, but let the agent do just-in-time retrieval for everything else."
+				},
+				{
+					"start": 676.28,
+					"text": "Front load the basics and retrieve the rest on demand."
+				},
+				{
+					"start": 678.5,
+					"text": "But even with good selection, context still accumulates."
+				},
+				{
+					"start": 681.62,
+					"text": "Every tool call the agent makes, document it retrieves, and decision it records all stays in that window."
+				}
+			]
+		},
+		{
+			"start": 687.1,
+			"title": "Стратегия Compress",
+			"summary": "Сжатие на трёх этапах: до входа (chunking), во время работы (summarization, auto-compaction), после действия (tool result clearing).",
+			"theses": [
+				"80k tokens tool outputs после 20 calls — большинство уже irrelevant.",
+				"Hybrid: последние N сообщений verbatim, старое — summary.",
+				"Claude Code auto-compaction при 95% capacity — safety net, не стратегия."
+			],
+			"anchor": "And that brings us to the third strategy, compress",
+			"segments": [
+				{
+					"start": 687.1,
+					"text": "And that brings us to the third strategy, compress."
+				},
+				{
+					"start": 689.86,
+					"text": "This one directly addresses the context rot problem that we talked about earlier."
+				},
+				{
+					"start": 693.72,
+					"text": "Imagine your agent has made 20 tool calls."
+				},
+				{
+					"start": 696.7,
+					"text": "Its context now contains, let's say, 80,000 tokens of accumulated tool outputs, conversation history, and reasoning traces."
+				},
+				{
+					"start": 704.08,
+					"text": "Most of those tool outputs are no longer relevant, since the agent already acted on them."
+				},
+				{
+					"start": 708.66,
+					"text": "But they're still sitting there, taking up space, degrading the model's attention, and driving up cost and latency."
+				},
+				{
+					"start": 713.76,
+					"text": "So compression is about reducing token count while preserving the information that actually matters for whatever you're working on."
+				},
+				{
+					"start": 719.9,
+					"text": "And you can compress at three different points in the pipeline."
+				},
+				{
+					"start": 722.26,
+					"text": "First, before information enters the context at all."
+				},
+				{
+					"start": 725.06,
+					"text": "This is where chunking comes in, which is breaking large documents into smaller, coherent pieces before retrieval and re-ranking them so that only the most useful chunks make it into the window at all."
+				},
+				{
+					"start": 733.64,
+					"text": "You can also summarize tool outputs on the fly before they enter the main context."
+				},
+				{
+					"start": 737.6,
+					"text": "The second opportunity to compress context is while the agent is working."
+				},
+				{
+					"start": 741.34,
+					"text": "The most common technique here is summarization of conversation history."
+				},
+				{
+					"start": 744.9,
+					"text": "A running summary gets continuously updated after each exchange, so you always have a compact version of everything that's happened."
+				},
+				{
+					"start": 751.86,
+					"text": "A popular pattern is a hybrid approach, where you keep, say, the last 10 messages verbatim, since the agent might still need the exact details."
+				},
+				{
+					"start": 759.6,
+					"text": "But you summarize everything older than that."
+				},
+				{
+					"start": 761.7,
+					"text": "Beyond summarization, there's plain trimming, using hard-coded heuristics that remove older messages once the context hits a certain size."
+				},
+				{
+					"start": 769.2,
+					"text": "And Claude Code has auto-compaction built in."
+				},
+				{
+					"start": 772.12,
+					"text": "When the context hits 95% capacity, it automatically summarizes the full trajectory."
+				},
+				{
+					"start": 777.36,
+					"text": "That's a safety net, but ideally you're compressing proactively and not waiting for that emergency trigger."
+				},
+				{
+					"start": 782.24,
+					"text": "And finally, you can use compression after the agent has acted on something."
+				},
+				{
+					"start": 786.2,
+					"text": "An easy win here is tool result clearing."
+				},
+				{
+					"start": 788.7,
+					"text": "Once a tool was called 15 steps ago and the agent already used the result, you can just drop the raw output."
+				},
+				{
+					"start": 793.84,
+					"text": "The agent doesn't need the full text of a web page it fetched ages ago, for example."
+				},
+				{
+					"start": 798.54,
+					"text": "You can replace it with a one-line summary or remove it entirely."
+				}
+			]
+		},
+		{
+			"start": 801.46,
+			"title": "Стратегия Isolate",
+			"summary": "Sub-agents с отдельными окнами: parent получает condensed summary, «грязный» research не contaminates implementation.",
+			"theses": [
+				"Contamination хуже, чем просто нехватка места: старый research мешает писать код.",
+				"Sub-agent изолирует grep/search; parent видит только summary.",
+				"WSCI — каркас для всего дальнейшего материала."
+			],
+			"anchor": "Now let's move on to the fourth and final strategy",
+			"segments": [
+				{
+					"start": 801.46,
+					"text": "Now let's move on to the fourth and final strategy, which is arguably the most powerful one."
+				},
+				{
+					"start": 805.82,
+					"text": "Isolation is the strategy that makes multi-agent systems possible."
+				},
+				{
+					"start": 809.34,
+					"text": "So here's the problem."
+				},
+				{
+					"start": 810.34,
+					"text": "If a single agent tries to do everything, like research, plan, code, test, and debug, all in one long conversation, it will inevitably fill up its context."
+				},
+				{
+					"start": 819.86,
+					"text": "But the deeper issue isn't just space, it's actually contamination."
+				},
+				{
+					"start": 822.44,
+					"text": "The detailed file searches from the research phase are still sitting in the context when the agent moves to implementation."
+				},
+				{
+					"start": 828.76,
+					"text": "That old research context is now just noise."
+				},
+				{
+					"start": 831.86,
+					"text": "It's distracting the model during a phase where it needs to be focused on writing clean code."
+				},
+				{
+					"start": 836.1,
+					"text": "The solution is context isolation, which means giving different parts of the work their own separate context windows."
+				},
+				{
+					"start": 841.82,
+					"text": "The most obvious form of this is using sub-agents."
+				},
+				{
+					"start": 844.76,
+					"text": "A parent agent delegates a focused subtask, like search the code base for all files related to authentication, to a sub-agent."
+				},
+				{
+					"start": 852.74,
+					"text": "That sub-agent works on its own clean context window."
+				},
+				{
+					"start": 855.7,
+					"text": "When it reports back to the parent, it returns only a condensed summary, and all the messy search operations stay isolated in the sub-agent's context and never pollute the parent."
+				},
+				{
+					"start": 863.76,
+					"text": "Okay, so to sum up, the four key strategies are write, select, compress, and isolate."
+				},
+				{
+					"start": 868.9,
+					"text": "Everything we cover from here forward is an application of one or more of them."
+				}
+			]
+		},
+		{
+			"start": 872.64,
+			"title": "Четыре failure mode контекста",
+			"summary": "Breunig: poisoning, distraction, confusion, clash — и fixes через prune, summarize, dynamic tools, authority ordering.",
+			"theses": [
+				"Poisoning: bad tool output каскадирует — prune и validate inputs.",
+				"Confusion: 46 tools vs 19 — Geoengine fail; RAG-MCP и phase-specific tools.",
+				"Clash: system prompt > retrieved facts > history; XML sections для источников."
+			],
+			"anchor": "Now that we understand the strategies for managing context well",
+			"segments": [
+				{
+					"start": 872.64,
+					"text": "Now that we understand the strategies for managing context well, let's look at what happens when we don't do a good job."
+				},
+				{
+					"start": 877.9,
+					"text": "Because understanding failure modes is a really good way to proactively learn what we're trying to avoid."
+				},
+				{
+					"start": 882.18,
+					"text": "Drew Breunig published an influential two-part series in mid-2025, identifying four distinct ways that agents fail as their context grows."
+				},
+				{
+					"start": 889.6,
+					"text": "The first failure mode is context poisoning."
+				},
+				{
+					"start": 892.2,
+					"text": "Sounds very serious."
+				},
+				{
+					"start": 893.3,
+					"text": "This is when a hallucination or an error enters the agent's context and then gets referenced over and over in subsequent steps."
+				},
+				{
+					"start": 900.02,
+					"text": "Like if a tool returned bad data or the agent itself made a flawed inference five steps ago, that bad information is now sitting in the context, and the agent keeps building on top of it."
+				},
+				{
+					"start": 909.14,
+					"text": "This is a problem because agents iterate on their own output, so each bad step compounds into the next one."
+				},
+				{
+					"start": 914.38,
+					"text": "The fix is context pruning, or actively removing outdated or conflicting information as new details arrive."
+				},
+				{
+					"start": 920.12,
+					"text": "You should also validate tool outputs before they enter the context, especially from external sources."
+				},
+				{
+					"start": 925.04,
+					"text": "And after the agent recovers from an error, compress the failed attempt history."
+				},
+				{
+					"start": 928.86,
+					"text": "Don't leave 10 steps of dead-end debugging visible in the context when only the resolution matters."
+				},
+				{
+					"start": 933.6,
+					"text": "The second failure mode is context distraction."
+				},
+				{
+					"start": 936.56,
+					"text": "This is when the context gets so long that the model starts over-relying on its recent history and under-relying on what it learned during training."
+				},
+				{
+					"start": 943.48,
+					"text": "The agent basically stops thinking for itself and just repeats patterns from what it's recently seen."
+				},
+				{
+					"start": 948.44,
+					"text": "So instead of synthesizing a novel plan, it rehashes past actions."
+				},
+				{
+					"start": 952.3,
+					"text": "The fix is the same as the general advice we've been discussing."
+				},
+				{
+					"start": 955.12,
+					"text": "Summarize and prune aggressively, even when you have a large context window available."
+				},
+				{
+					"start": 959.34,
+					"text": "The third failure mode is context confusion."
+				},
+				{
+					"start": 961.6,
+					"text": "This is when superfluous content gets in the context and ends up leading to low-quality responses."
+				},
+				{
+					"start": 967.3,
+					"text": "The classic example is tool confusion."
+				},
+				{
+					"start": 969.34,
+					"text": "The agent sees 46 tool definitions in its context and starts calling tools that have nothing to do with the task."
+				},
+				{
+					"start": 975.2,
+					"text": "There's a really good example of this from a benchmark study."
+				},
+				{
+					"start": 977.56,
+					"text": "A quantized LAMA 3.18 billion model failed on Geoengine benchmark when given all 46 available tools,"
+				},
+				{
+					"start": 984.12,
+					"text": "even though the context was well within its window limit."
+				},
+				{
+					"start": 986.48,
+					"text": "But it worked fine when only given 19 tools."
+				},
+				{
+					"start": 988.88,
+					"text": "The tools weren't too many for the context to hold, but they were too many for the model to reason about clearly."
+				},
+				{
+					"start": 993.88,
+					"text": "The fix is dynamic tool management."
+				},
+				{
+					"start": 996.42,
+					"text": "Keep the tool set relevant to the current phase."
+				},
+				{
+					"start": 998.9,
+					"text": "Use approaches like RAG MCP, which we talked about earlier,"
+				},
+				{
+					"start": 1001.94,
+					"text": "which does semantic retrieval over tool descriptions to surface only the relevant tools for each step."
+				},
+				{
+					"start": 1006.88,
+					"text": "The fourth and final failure mode is context clash."
+				},
+				{
+					"start": 1009.84,
+					"text": "This is when new information the agent has gathered during its run contradicts something already in the context."
+				},
+				{
+					"start": 1015.54,
+					"text": "Maybe the system prompt says one thing, but a retrieved document says something different."
+				},
+				{
+					"start": 1019.76,
+					"text": "The agent can't reconcile the contradiction, so it produces inconsistent behavior."
+				},
+				{
+					"start": 1023.32,
+					"text": "Sometimes following one source, sometimes the other, and sometimes doing something that doesn't match either one."
+				},
+				{
+					"start": 1028.52,
+					"text": "The fix here is to establish a clear authority ordering in your context."
+				},
+				{
+					"start": 1032.64,
+					"text": "For example, the system prompt takes priority over retrieved facts, which take priority over conversation history."
+				},
+				{
+					"start": 1037.8,
+					"text": "When new information comes in, validate it against what's already in the context before injecting it."
+				},
+				{
+					"start": 1042.66,
+					"text": "And use structured section."
+				},
+				{
+					"start": 1044.28,
+					"text": "When new information comes in, validate it against what's already in the context before injecting it."
+				},
+				{
+					"start": 1049.6,
+					"text": "And use structured sections, XML tags, clear headers, so the model can parse which information comes from which source and which source to trust."
+				},
+				{
+					"start": 1057.92,
+					"text": "These four failure modes, poisoning, distraction, confusion, and clash, cover most of the ways agents break down in practice."
+				},
+				{
+					"start": 1065.44,
+					"text": "And the good news is, once you can name the failure, the solution maps to one of the four strategies we just covered."
+				}
+			]
+		},
+		{
+			"start": 1082.26,
+			"title": "System prompt и tool definitions",
+			"summary": "«Right altitude» для system prompt; MCP для tools; Manus tool masking vs RAG для KV-cache и больших tool sets.",
+			"theses": [
+				"Agent system prompt = job description с control flow, не tone chatbot.",
+				"Stable prefix (prompt + tools) сверху, dynamic content снизу — для KV-cache.",
+				"Cached tokens Sonnet: $0.30 vs $3/M — 10× разница на длинных agent runs."
+			],
+			"anchor": "So now that we have the strategies and the failure modes",
+			"segments": [
+				{
+					"start": 1082.26,
+					"text": "So now that we have the strategies and the failure modes, let's get into the practical stuff."
+				},
+				{
+					"start": 1086.92,
+					"text": "Starting with two things you'll work on first when building an agent."
+				},
+				{
+					"start": 1090.36,
+					"text": "The system prompt and tool definitions."
+				},
+				{
+					"start": 1092.12,
+					"text": "The way you approach these for an agent is really different from a chatbot."
+				},
+				{
+					"start": 1095.9,
+					"text": "A system prompt for a chatbot basically sets the tone, like you are a helpful assistant, be concise and friendly, that kind of thing."
+				},
+				{
+					"start": 1102.18,
+					"text": "On the other hand, an agent system prompt defines its architecture."
+				},
+				{
+					"start": 1105.36,
+					"text": "It specifies control flow, like how the agent should approach different types of tasks, what tools to use in what situations,"
+				},
+				{
+					"start": 1111.62,
+					"text": "what to do when it encounters an error, and what safety guardrails to follow."
+				},
+				{
+					"start": 1115.04,
+					"text": "It's closer to kind of writing a job description for an autonomous employee."
+				},
+				{
+					"start": 1118.54,
+					"text": "Anthropic has a useful concept here that they call writing at the right altitude."
+				},
+				{
+					"start": 1123.18,
+					"text": "There's kind of a Goldilocks zone for agent system prompts."
+				},
+				{
+					"start": 1126.56,
+					"text": "Too prescriptive is bad."
+				},
+				{
+					"start": 1127.86,
+					"text": "If you write something like, if the user mentions billing and also mentions a refund and the amount is over $100, call tool X."
+				},
+				{
+					"start": 1135.56,
+					"text": "That's just way too fragile and it will break on every edge case you didn't anticipate."
+				},
+				{
+					"start": 1139.88,
+					"text": "On the other hand, too vague is also bad."
+				},
+				{
+					"start": 1142.14,
+					"text": "Be helpful and use the appropriate tools gives the agent nothing to work with."
+				},
+				{
+					"start": 1145.82,
+					"text": "It doesn't know which tools are appropriate for what, and it can't make good autonomous decisions without concrete signals."
+				},
+				{
+					"start": 1151.46,
+					"text": "So the sweet spot is specific enough to guide autonomous behavior, but flexible enough to let the model apply its own judgment in novel situations."
+				},
+				{
+					"start": 1158.52,
+					"text": "You're giving the agent strong heuristics, not rigid rules."
+				},
+				{
+					"start": 1161.78,
+					"text": "Here are a few more practical tips on writing system prompts."
+				},
+				{
+					"start": 1165.1,
+					"text": "Organize your system prompt with structure like XML tags or markdown headers that break it into sections that are distinct,"
+				},
+				{
+					"start": 1171.44,
+					"text": "like background information, instructions, and tool guidance."
+				},
+				{
+					"start": 1174.38,
+					"text": "Start minimal and iterate on failures."
+				},
+				{
+					"start": 1177,
+					"text": "Don't try to anticipate every edge case up front."
+				},
+				{
+					"start": 1179.5,
+					"text": "Run the agent against real tasks, observe where it breaks, and add instructions to address those specific failure modes."
+				},
+				{
+					"start": 1185.66,
+					"text": "Remember that minimal doesn't necessarily mean short."
+				},
+				{
+					"start": 1188.18,
+					"text": "An agent system prompt for a complex workflow might be thousands of tokens,"
+				},
+				{
+					"start": 1192.26,
+					"text": "and that's fine as long as every token is relevant and necessary."
+				},
+				{
+					"start": 1196.06,
+					"text": "And use few-shot examples."
+				},
+				{
+					"start": 1197.68,
+					"text": "Instead of trying to articulate every rule in words, show the agent what good behavior looks like."
+				},
+				{
+					"start": 1202.18,
+					"text": "Give the agent diverse, canonical examples of correct tool selection, good reasoning, and proper multi-step execution."
+				},
+				{
+					"start": 1208.02,
+					"text": "Beyond the system prompt, you'll also need to think about tool definitions."
+				},
+				{
+					"start": 1211.42,
+					"text": "Every tool the agent could potentially call needs a schema that describes what it does, what parameters it takes, and when to use it."
+				},
+				{
+					"start": 1217.74,
+					"text": "Each definition should be self-contained, robust to error, and have clear instruction."
+				},
+				{
+					"start": 1222.54,
+					"text": "This means tool definitions can use a lot of context."
+				},
+				{
+					"start": 1225.18,
+					"text": "In production, this is increasingly handled through MCP, the Model Context Protocol,"
+				},
+				{
+					"start": 1229.68,
+					"text": "which is basically a standard way for agents to connect to external tools and data sources."
+				},
+				{
+					"start": 1233.74,
+					"text": "You hook your agent up to an MCP server for GitHub, another for your database, another for your file system,"
+				},
+				{
+					"start": 1239.04,
+					"text": "and each one exposes its tools through a consistent interface."
+				},
+				{
+					"start": 1242.88,
+					"text": "The catch is that MCP makes it really easy to plug in a lot of tools, and that's exactly the trap."
+				},
+				{
+					"start": 1247.84,
+					"text": "When you've got four or five MCP servers connected,"
+				},
+				{
+					"start": 1250.84,
+					"text": "tool definitions can eat thousands of tokens before any work has even started."
+				},
+				{
+					"start": 1254.2,
+					"text": "The default advice is to curate a minimal viable set of tools."
+				},
+				{
+					"start": 1258.36,
+					"text": "But what if your agent legitimately needs a lot of tools?"
+				},
+				{
+					"start": 1261.42,
+					"text": "There are two main approaches to scaling."
+				},
+				{
+					"start": 1263.44,
+					"text": "The first comes from Manus, a production agent platform."
+				},
+				{
+					"start": 1266.68,
+					"text": "They explicitly warn against dynamically adding and removing tools mid-conversation."
+				},
+				{
+					"start": 1271.7,
+					"text": "And the reason has to do with something that most people building agents don't even know about,"
+				},
+				{
+					"start": 1275.74,
+					"text": "the KV cache."
+				},
+				{
+					"start": 1277.14,
+					"text": "Here's how it works."
+				},
+				{
+					"start": 1278.1,
+					"text": "When you send tokens to an LLM,"
+				},
+				{
+					"start": 1280.26,
+					"text": "the model computes key value representations for each token."
+				},
+				{
+					"start": 1284.2,
+					"text": "This is computationally expensive."
+				},
+				{
+					"start": 1286.16,
+					"text": "So inference providers cache these representations."
+				},
+				{
+					"start": 1289.24,
+					"text": "If the beginning of your context, the prefix, stays the same between API calls,"
+				},
+				{
+					"start": 1294.42,
+					"text": "the provider can reuse the cached computation and only process the new tokens at the end,"
+				},
+				{
+					"start": 1299.64,
+					"text": "which is much faster and cheaper."
+				},
+				{
+					"start": 1301.34,
+					"text": "But if you rearrange or change the early part of your context between calls,"
+				},
+				{
+					"start": 1305.38,
+					"text": "you invalidate the cache, and the provider has to recompute everything from scratch."
+				},
+				{
+					"start": 1309.58,
+					"text": "For example, with Claude Sonnet, cached input tokens cost $0.30 per million,"
+				},
+				{
+					"start": 1314.6,
+					"text": "while uncached tokens cost $3 per million, a 10 times difference."
+				},
+				{
+					"start": 1318.86,
+					"text": "For an agent making 30 or 40 API calls per task, that adds up really fast."
+				},
+				{
+					"start": 1323.06,
+					"text": "This is why Manus recommends tool masking instead of tool removal."
+				},
+				{
+					"start": 1326.96,
+					"text": "You keep all the tool definitions stable in the context."
+				},
+				{
+					"start": 1330.02,
+					"text": "They sit near the top in that prefix that gets cached."
+				},
+				{
+					"start": 1332.54,
+					"text": "But you mark certain tools as unavailable for the current phase."
+				},
+				{
+					"start": 1336.1,
+					"text": "The definitions are still there for cache stability, but the agent knows not to use them."
+				},
+				{
+					"start": 1340.38,
+					"text": "They also use consistent naming prefixes, which help the agent to reason about tool categories."
+				},
+				{
+					"start": 1345.42,
+					"text": "The second approach when dealing with lots of tools is RAG-based tool selection,"
+				},
+				{
+					"start": 1348.9,
+					"text": "which we touched on earlier."
+				},
+				{
+					"start": 1350.14,
+					"text": "Instead of including every tool in every call,"
+				},
+				{
+					"start": 1352.6,
+					"text": "you use semantic retrieval to pre-select only the tools relevant to the current step."
+				},
+				{
+					"start": 1356.46,
+					"text": "The RAG-MCP paper showed this improved accuracy by over three times while cutting token usage in half."
+				},
+				{
+					"start": 1362.5,
+					"text": "These two approaches aren't mutually exclusive."
+				},
+				{
+					"start": 1364.9,
+					"text": "Masking works well when your tool set is moderate,"
+				},
+				{
+					"start": 1367.64,
+					"text": "and RAG-based selection works well when you have a really large number of tools."
+				},
+				{
+					"start": 1371.78,
+					"text": "The broader principle behind all of this is simple."
+				},
+				{
+					"start": 1374.56,
+					"text": "Stable content goes at the top of your context."
+				},
+				{
+					"start": 1377.26,
+					"text": "This includes the system prompt, tool definitions, and anything that doesn't change between turns."
+				},
+				{
+					"start": 1382.1,
+					"text": "Then dynamic content like conversation history, the current step,"
+				},
+				{
+					"start": 1385.3,
+					"text": "and the agent state go at the bottom."
+				},
+				{
+					"start": 1387.18,
+					"text": "So we've covered the four strategies for context engineering,"
+				},
+				{
+					"start": 1390.12,
+					"text": "common failure modes, and how to engineer system prompts and tools."
+				},
+				{
+					"start": 1393.62,
+					"text": "Now let's see what all of this looks like when you actually sit down to build something."
+				},
+				{
+					"start": 1397.34,
+					"text": "This next part applies whether you're using a coding assistant or building your own agent from scratch."
+				},
+				{
+					"start": 1402.06,
+					"text": "The principles are the same."
+				},
+				{
+					"start": 1403.86,
+					"text": "The only difference is whether you're structuring the workflow yourself or programming the agent to do it."
+				}
+			]
+		},
+		{
+			"start": 1409.16,
+			"title": "Фазовая compaction: research → plan → code",
+			"summary": "Dex Horthy (Human Layer): intentional compaction, subagents на research, context reset между фазами, progress.md.",
+			"theses": [
+				"Research artifact сжимает 60–80% raw context до 15–20%.",
+				"Phase 2 (plan) — главная точка human review до implementation.",
+				"Держать utilization ниже 40–60% окна — осознанная цель."
+			],
+			"anchor": "Dex Horthy, the CEO of Human Layer",
+			"segments": [
+				{
+					"start": 1409.16,
+					"text": "Dex Horthy, the CEO of Human Layer,"
+				},
+				{
+					"start": 1411.2,
+					"text": "presented a methodology at the AI Engineer Code Summit that's a really clean example of this."
+				},
+				{
+					"start": 1416.04,
+					"text": "His team reportedly used it to ship around 35,000 lines of code to a large Rust codebase in a single 7-hour session."
+				},
+				{
+					"start": 1423.2,
+					"text": "The core idea is what Horthy calls frequent intentional compaction."
+				},
+				{
+					"start": 1426.8,
+					"text": "Basically, you should proactively structure your agent's work into phases,"
+				},
+				{
+					"start": 1430.4,
+					"text": "where each phase produces a compacted artifact, like a structured markdown summary,"
+				},
+				{
+					"start": 1434.76,
+					"text": "and each new phase starts with a fresh context window containing only that artifact."
+				},
+				{
+					"start": 1438.76,
+					"text": "This way you're deliberately staying below that 40-60% of the context window."
+				},
+				{
+					"start": 1443.24,
+					"text": "Here's how it works in practice, and I'll mention which strategies show up at each step."
+				},
+				{
+					"start": 1447.38,
+					"text": "Phase 1 is research."
+				},
+				{
+					"start": 1448.72,
+					"text": "Before any code gets written, the agent explores the codebase."
+				},
+				{
+					"start": 1452.32,
+					"text": "It reads files, traces data flows, and maps out the architecture relevant to the task."
+				},
+				{
+					"start": 1457.16,
+					"text": "Subagents handle the raw file searches and code analysis."
+				},
+				{
+					"start": 1460.38,
+					"text": "All those grep results and file contents stay in the subagent's context windows and never pollute the parents."
+				},
+				{
+					"start": 1466.44,
+					"text": "That's the isolate strategy."
+				},
+				{
+					"start": 1467.86,
+					"text": "The output of this phase is a research file."
+				},
+				{
+					"start": 1470.56,
+					"text": "A compact markdown document with file paths, function signatures, existing patterns, and gotchas."
+				},
+				{
+					"start": 1476.58,
+					"text": "That's the right strategy."
+				},
+				{
+					"start": 1478.2,
+					"text": "The agent persists its findings externally, so they go on to the next step."
+				},
+				{
+					"start": 1482.12,
+					"text": "And the next step is a context reset."
+				},
+				{
+					"start": 1484.44,
+					"text": "The raw research might have consumed 60-80% of the context,"
+				},
+				{
+					"start": 1488.06,
+					"text": "but the research artifact compresses all of that down to maybe 15-20%."
+				},
+				{
+					"start": 1491.6,
+					"text": "That's the compressed strategy."
+				},
+				{
+					"start": 1493.42,
+					"text": "Phase 2 is planning."
+				},
+				{
+					"start": 1494.18,
+					"text": "A brand new context window opens, containing only the research document and the problem definition."
+				},
+				{
+					"start": 1499.72,
+					"text": "The agent uses this clean context to produce a detailed implementation plan."
+				},
+				{
+					"start": 1504.42,
+					"text": "This is also the most important point for human review."
+				},
+				{
+					"start": 1507.56,
+					"text": "If there's a logical error, you catch it here, where fixing it is easy."
+				},
+				{
+					"start": 1511.16,
+					"text": "If you're building your own agent, this is where you'd build in the human-in-the-loop checkpoint if it's relevant."
+				},
+				{
+					"start": 1515.96,
+					"text": "Phase 3 is implementation."
+				},
+				{
+					"start": 1517.04,
+					"text": "At this point, we use another fresh context window, this time containing only the plan."
+				},
+				{
+					"start": 1522,
+					"text": "The agent follows it step by step."
+				},
+				{
+					"start": 1524.18,
+					"text": "For complex tasks that require multiple compaction cycles,"
+				},
+				{
+					"start": 1527.6,
+					"text": "a progress.md file tracks what's been completed and what remains."
+				},
+				{
+					"start": 1531.46,
+					"text": "That's the right strategy again."
+				},
+				{
+					"start": 1533.08,
+					"text": "This approach is really similar to what I do in my daily work at Twitch,"
+				},
+				{
+					"start": 1535.92,
+					"text": "and you'll see some version of it in most production systems."
+				}
+			]
+		},
+		{
+			"start": 1538.62,
+			"title": "Платформы и общий pipeline",
+			"summary": "Claude Code (hybrid JIT), Manus (KV-cache, masking), ChatGPT Agent (visual), Google ADK (pipeline); collect → select → compress → arrange → call.",
+			"theses": [
+				"Claude Code: CLAUDE.md upfront + Glob/Grep JIT + sub-agents + auto-compaction.",
+				"Manus: observation compression, todo state, filesystem overflow; tool masking не removal.",
+				"ADK: separate storage/presentation, explicit transformations, scope by default."
+			],
+			"anchor": "So now let's spend a few minutes looking at how some of the big boys",
+			"segments": [
+				{
+					"start": 1538.62,
+					"text": "So now let's spend a few minutes looking at how some of the big boys approach context engineering."
+				},
+				{
+					"start": 1542.6,
+					"text": "Claude Code is Anthropik's CLI-based coding agent, obviously,"
+				},
+				{
+					"start": 1546.56,
+					"text": "and it's one of the best documented examples of context engineering in practice."
+				},
+				{
+					"start": 1550.62,
+					"text": "It uses a hybrid retrieval model where Claude.md files are loaded up front"
+				},
+				{
+					"start": 1554.78,
+					"text": "at the start of every session for foundational context,"
+				},
+				{
+					"start": 1557.44,
+					"text": "and then the agent uses tools like Glob and Grep for just-in-time navigation of the code base."
+				},
+				{
+					"start": 1562,
+					"text": "It doesn't try to pre-index everything, but just explores on demand."
+				},
+				{
+					"start": 1565.56,
+					"text": "It also has auto-compaction that triggers at 95% context utilization,"
+				},
+				{
+					"start": 1569.38,
+					"text": "preserving architectural decisions in the five most recently accessed files."
+				},
+				{
+					"start": 1573.42,
+					"text": "It can spawn sub-agents for complex tasks, giving each one a clean context window."
+				},
+				{
+					"start": 1577.9,
+					"text": "And it has a memory tool for persisting information across sessions."
+				},
+				{
+					"start": 1581.32,
+					"text": "Anthropik's overall philosophy here is do the simplest thing that works."
+				},
+				{
+					"start": 1584.86,
+					"text": "They don't over-engineer the context pipeline."
+				},
+				{
+					"start": 1587.26,
+					"text": "They let the model be smart about what it needs and give it the tools to go find it."
+				},
+				{
+					"start": 1591,
+					"text": "Manus takes a more infrastructure-heavy approach than Anthropik."
+				},
+				{
+					"start": 1594.2,
+					"text": "They've served hundreds of thousands of users with a general-purpose agent,"
+				},
+				{
+					"start": 1597.74,
+					"text": "so efficiency at scale is important."
+				},
+				{
+					"start": 1600.16,
+					"text": "Their standout contribution is KVCache-aware context ordering that we talked about earlier."
+				},
+				{
+					"start": 1604.68,
+					"text": "This is structuring every context so the prefix stays stable across turns"
+				},
+				{
+					"start": 1608.16,
+					"text": "to maximize cache reuse and using tool masking rather than dynamic removal."
+				},
+				{
+					"start": 1612.8,
+					"text": "They have an observation compression pipeline that processes every tool output"
+				},
+				{
+					"start": 1616.56,
+					"text": "before it enters the agent's context."
+				},
+				{
+					"start": 1618.64,
+					"text": "They maintain a persistent to-do list for state tracking."
+				},
+				{
+					"start": 1621.36,
+					"text": "And they use the file system as overflow memory for evicted context."
+				},
+				{
+					"start": 1624.96,
+					"text": "OpenAI's approach with ChatGPT Agent, which evolved from the operator product,"
+				},
+				{
+					"start": 1629.52,
+					"text": "is architecturally different from both Cloud Code and Manus."
+				},
+				{
+					"start": 1632.62,
+					"text": "It's powered by a computer-using agent model, and it takes a GUI-first approach."
+				},
+				{
+					"start": 1637.12,
+					"text": "Instead of text-based tool calls, the agent interacts with a visual browser."
+				},
+				{
+					"start": 1641.34,
+					"text": "Screenshots get added to the context as visual snapshots,"
+				},
+				{
+					"start": 1644.24,
+					"text": "and the model reasons over what it sees on the screen,"
+				},
+				{
+					"start": 1646.54,
+					"text": "plus its history of past screenshots and actions."
+				},
+				{
+					"start": 1649.08,
+					"text": "The context engineering challenge here is different, of course."
+				},
+				{
+					"start": 1651.62,
+					"text": "Visual tokens are expensive, so the agent needs to be selective about how many screenshots to keep."
+				},
+				{
+					"start": 1656.92,
+					"text": "OpenAI uses reinforcement learning to discover optimal tool-use strategies."
+				},
+				{
+					"start": 1660.74,
+					"text": "Rather than explicitly programming when to use each tool,"
+				},
+				{
+					"start": 1663.62,
+					"text": "they train the agent across thousands of virtual machines and let it learn what works."
+				},
+				{
+					"start": 1667.78,
+					"text": "Deep research and operators share state,"
+				},
+				{
+					"start": 1669.88,
+					"text": "enabling fluid transitions between browsing, text analysis, and code execution."
+				},
+				{
+					"start": 1673.88,
+					"text": "The contrast with Cloud Code is really interesting."
+				},
+				{
+					"start": 1676.38,
+					"text": "Cloud Code is code-centric with large context windows and text-based tool calls."
+				},
+				{
+					"start": 1680.52,
+					"text": "Chachy-Pichy agent is visual and general purpose."
+				},
+				{
+					"start": 1683.24,
+					"text": "Both need context engineering, but the specific challenges and solutions are, of course, different."
+				},
+				{
+					"start": 1687.54,
+					"text": "Lastly, Google's ADK takes the most principled architectural approach."
+				},
+				{
+					"start": 1691.26,
+					"text": "They've codified three design principles for agent context."
+				},
+				{
+					"start": 1694.3,
+					"text": "First, separate storage from presentation."
+				},
+				{
+					"start": 1696.62,
+					"text": "The agent's durable state is not the same as what appears in each API call."
+				},
+				{
+					"start": 1700.6,
+					"text": "Second, use explicit transformations."
+				},
+				{
+					"start": 1702.5,
+					"text": "Named, ordered processors that transform context into testable, composable steps rather than ad hoc string concatenation."
+				},
+				{
+					"start": 1710.76,
+					"text": "And third, scope context by default."
+				},
+				{
+					"start": 1713.12,
+					"text": "Every model calls these only the minimum required information and nothing lands in context unless it's explicitly included."
+				},
+				{
+					"start": 1719.56,
+					"text": "This is a more engineering discipline approach to context assembly,"
+				},
+				{
+					"start": 1723,
+					"text": "treating it as a pipeline with clear stages rather than a prompt you just keep appending to."
+				},
+				{
+					"start": 1727.18,
+					"text": "When you look across all these platforms, a common pipeline emerges."
+				},
+				{
+					"start": 1730.88,
+					"text": "On every single agent turn, the system goes through roughly the same steps."
+				},
+				{
+					"start": 1735.3,
+					"text": "First, collect all the candidate information like user input, conversation history, tool results, retrieve documents, and agent state."
+				},
+				{
+					"start": 1742.18,
+					"text": "Then select what's relevant for the current step and the remaining token budget."
+				},
+				{
+					"start": 1745.9,
+					"text": "Then compress."
+				},
+				{
+					"start": 1746.8,
+					"text": "So summarize, truncate, or restructure selected content to fit in the context."
+				},
+				{
+					"start": 1750.86,
+					"text": "Arrange everything for maximum KV cash reuse, stable content first, and dynamic content last."
+				},
+				{
+					"start": 1755.88,
+					"text": "Then assemble the final context and make the API call."
+				},
+				{
+					"start": 1758.7,
+					"text": "This stuff is changing quickly, and there's still so much to learn."
+				},
+				{
+					"start": 1761.82,
+					"text": "As usual, the best way to get good at this stuff is just to try things out."
+				},
+				{
+					"start": 1765.56,
+					"text": "Experiment and build and see what works."
+				},
+				{
+					"start": 1767.68,
+					"text": "I've linked all my sources in the description, so if you want to go deeper on any of this, those are really good starting points."
+				},
+				{
+					"start": 1772.58,
+					"text": "And if you're interested in the fundamentals of agents, I have a comprehensive course on that as well."
+				},
+				{
+					"start": 1776.84,
+					"text": "Check that out up next."
+				},
+				{
+					"start": 1777.84,
+					"text": "Check that out next."
+				},
+				{
+					"start": 1777.86,
+					"text": "Check that out next."
+				},
+				{
+					"start": 1777.94,
+					"text": "Продолжение следует..."
+				}
+			]
+		}
+	],
+	"transcript": "If you've been building AI agents, you've probably noticed something. Your agent works fine for the first two steps. It picks the right tools, reasons clearly, and stays on track. But somewhere around step 15 or 20, it starts getting a little sloppy. It forgets what you asked for, calls tools that don't make sense, or starts producing low-quality outputs. And most people's first assumption is that the model is the problem. But it's usually not. It's more often what the model is seeing. Organizing what the model sees is called context engineering, and it's quickly becoming one of the most important skills for anyone working in this space. I'm Marina, a senior applied scientist at Twitch working on Gen AI. I went through dozens of sources for this video. Engineering blogs, talks from conferences, academic papers, and practitioner reports, and distilled all of the best practices I can find into this one video. Here's what we'll cover. First, what context engineering is and why agents specifically need it. Then, the four core strategies that you need to know. After that, the ways agents fail when context goes wrong and how to prevent it. And finally, we'll compare how platforms like Cloud Code, ChatGPT, and Manus each approach this differently. All right, let's start by actually defining what we're talking about. You've definitely heard of prompt engineering. That's the skill of writing good instructions for an LLM, like phrasing things clearly, giving good examples, and telling the model what role to play. And that works great when you're having a conversation with ChatGPT. But when you move from chatbots to agents, prompt engineering stops being enough. And the reason is pretty simple. An agent doesn't just answer one question. It takes actions like browsing the web, calling APIs, writing code, and running commands. And it does all of this autonomously, step after step, sometimes for dozens of steps. Every single one of those steps produces output that gets added to the model's context. And that context is finite. So context engineering is the discipline of designing the entire information system around the model. Not just that initial instruction, but everything the model sees at every step. The system prompt, tool definitions, the results from previous calls, conversation history, and more. Anthropic's engineering team defines it like this. Context is the set of tokens included when you sample from an LLM. And context engineering is optimizing the utility of those tokens to consistently achieve a desired outcome. So basically, it's making sure your agent sees the right information in the right format at the right time. Anthropic actually describes context engineering as the natural progression of prompt engineering. It includes everything prompt engineering does, like clear instructions, good examples, and structured formatting. But it adds a whole layer on top. Managing tools, external data, message history, memory systems, and dynamic state. You can think of prompt engineering as a subset of context engineering. Getting good at context engineering matters right now because agent adoption is accelerating really, really fast. Gartner projects that 40% of enterprise applications will integrate task-specific AI agents by the end of 2026, up from less than 5% in 2025. Teams that figure out context engineering are the ones whose agents will actually work reliably. This is because agents move us from static prompts and RAG pipelines to a dynamic system. Now every tool call, retrieved document, and decision the agent makes gets packed into a context window that's filling up with operations the user never explicitly asked for. And context has a fixed size, which is a problem if it's filling up with a bunch of random stuff. Langchain has a nice analogy for this. Think of an LLM as a new kind of operating system. The model itself is the CPU. It does the thinking. And the context window is RAM, the working memory where everything the model can currently see and reason about lives. Just like your computer slows down when RAM fills up, your agent's reasoning degrades when your context window gets crowded. This is called context drop. Chroma published a really important study where they evaluated 18 frontier models. GPT 4.1, CLOD 4, Gemini 2.5, QUINT 3, and others. What they found is that every single model's performance degrades as input length increases, even well below the stated context window limit. A model with a 200k token window might start showing significant degradation at 50k tokens. The decline is continuous, not like a sudden cliff. Anthropic also talks about this in their engineering blog, confirming that context degradation is a gradient. The technical reason has to do with how transformers work. Every token attends to every other token, creating n-squared pairwise relationships. As the context grows, the model's ability to capture all those relationships gets stretched thinner and thinner. It's like asking a person to keep track of an increasingly large number of things simultaneously. At some point, stuff gets dropped. There's also a well-studied phenomenon called lost in the middle. A research team found that LLMs exhibit a U-shaped attention curve. They remember information at the beginning of the context well, and at the end well, but information in the middle gets missed. The team measured a 30-plus percentage point drop in accuracy when relevant information moved from the beginning of the context to the middle. So you can think about what that means for an agent whose original instructions are buried under 50,000 tokens of tool outputs. Those instructions effectively disappear. So we know the context window is finite and degrades as it fills. But what's actually competing for that space? There are basically seven categories of information in an agent's context window. First, the system prompt. This is the agent's identity, its behavioral rules, control flow logic, and instructions for how it should approach different types of tasks. In an agent, this isn't just like, you are a helpful assistant. It can define the entire architecture of how the agent operates. Next, we have tool definitions. Every tool the agent could potentially call needs a schema in the context describing what it does, what parameters it takes, and when to use it. Then we have the results of those tool calls. Every time the agent calls a tool, the result gets added to the context. A web page retrieval might be 5,000 to 10,000 tokens. A file read could also be similar. Fourth, we have retrieved knowledge from RAG. These are documents pulled from vector databases, search results, or API responses. Anything the agent or the system retrieves to inform the agent's decisions. Fifth, conversation history. The full transcript of everything that's happened in the session, including the user's messages, the agent's responses, its reasoning, and its prior decision. This grows linearly with every turn. Sixth, memory. Both short-term memory from the current session and long-term memory from previous sessions. That would be things like user preferences, prior task outcomes, and learned patterns. And finally, agent state. This is the agent's current plan, its to-do list, progress markers, and scratchpad notes. All of that meta information that helps the agent track where it is in a multi-step task. So now we know what the problem is. The rest of this video is all about how to effectively make that context work well together. But even with perfect context engineering, we're still going to benefit from a model that's built for this kind of work. Kimi just released K2.6, an open-source LLM that hit state-of-the-art on SuiBench Pro. The reason it's relevant here is that it was built for this exact kind of agentic problem that we've been talking about. Their team demonstrated it on a task where an agent ran autonomously for 13 hours, made over 1,000 tool calls, modified 4,000 lines of code, and nearly tripled throughput on a code base that was already optimized. It did all that while being significantly more cost-effective, especially for long-horizon agentic tasks. K2.6 reaches the same outcomes in about 35 fewer steps than the previous version. Fewer unnecessary tool calls means less junk in the context window, which means the model stays sharp for even longer. They also have an agent swarm where you can spin up 300 sub-agents in parallel. Each one gets its own clean context window, does focused work, and reports back. We'll talk more about these strategies and how to implement them next. And the product is a full stack. Kimi Code is a CLI agent like Claude Code. They've got a website builder with solid front-end design and slide generation. Plus, K2.6 is open source if you want to run it locally. I'll link Kimi in the description if you want to check it out. Thanks to Kimi for sponsoring this video. Now let's start talking about how to effectively engineer our context. How do you decide what goes in, what stays out, and what gets compressed? Langchain published a widely cited framework that organizes every context engineering technique into four categories. Write, Select, Compress, and Isolate. Once you're familiar with these four buckets, every technique you encounter will fit into one of them, more or less. Let me walk through each one. The first strategy is write. And the problem it solves is really simple. Agents forget things. When an agent's context fills up and gets compacted, which we'll talk about more later, it loses information. And if the agent didn't write anything down before that happened, that information is just gone. So write means giving the agent ways to persist information outside the context window. There are a few forms this takes. The first is scratchpads. This is literally giving the agent a tool that lets it take notes during a task. It can jot down intermediate findings, track decisions it made, or save information it knows it'll need later. Anthropic built something called the Think Tool, which gives Claude a dedicated workspace for working through these kinds of problems. On one benchmark, this improved performance by 54% on certain tasks. The second form is rules files, which are a kind of persistent procedural memory. If you've used Claude code, you've probably seen Claude.md. These are instructions that get loaded at the start of every agent session. Basically, the agent's standing orders. They define things like the project structure, its conventions, how to run tests, and what to be careful about. The agent reads them every time it starts up so it never forgets the fundamentals. The third form is memory extraction, which is the agent's saving facts, user preferences, or learned patterns so it can retrieve them across sessions. It's a file-based system that lets the agent store and consult information that lives outside the context window entirely. But writing things down only helps if the agent pulls the right stuff back in at the right time. That's the second strategy, select. The core idea is simple. Don't give the agent everything, give it what it needs for this step. An agent with access to dozens of tools, a large knowledge base, and several sessions of conversation history can't load all of that into the context at once. So something has to decide what's relevant right now. And the key question is, what makes that decision? In traditional RAG, the system makes it. The user asks a question, you retrieve some documents, you stuff them into the prompt, and you're done. It's a static pipeline where the model has no say in what gets pulled in. A gentic RAG flips this around. Now the agent itself decides what to search for, what tools to use, how to refine its queries, and when it has enough information. It's retrieval as an iterative process instead of a one-shot pipeline. And that matters because what's relevant changes at every step of a multi-step task, and the agent is the only one who knows what it needs next. So what does the agent actually select from? Langchain and Pinecone both distinguish three types of memory it can draw on. Episodic memory is basically few-shot examples. Here's how you handled something similar before. Semantic memory is a repository of facts the agent has learned or been told. And procedural memory is standing behavioral instructions, like the rule files we talked about. A well-designed agent draws from all three depending on the step. But there's one selection problem that trips people up more than any other. Tools. If your agent has access to 40-something tools, that's potentially 10,000 tokens of tool definitions sitting in the context before any work has even started. And as we'll see in the failure mode section, too many tools doesn't just waste space, it actively confuses the model. The fix is to use RAG over the tool definitions themselves. Instead of dumping every tool definition into the context every time, you use semantic search to surface just the relevant tools for the current step. A paper called RAG MCP tested this and found tool selection accuracy jumped from 14% to 43%, while cutting prompt tokens roughly in half. Anthropics' general advice here is what they call a hybrid strategy. Load some essential information up front for speed, like the claw.md file, but let the agent do just-in-time retrieval for everything else. Front load the basics and retrieve the rest on demand. But even with good selection, context still accumulates. Every tool call the agent makes, document it retrieves, and decision it records all stays in that window. And that brings us to the third strategy, compress. This one directly addresses the context rot problem that we talked about earlier. Imagine your agent has made 20 tool calls. Its context now contains, let's say, 80,000 tokens of accumulated tool outputs, conversation history, and reasoning traces. Most of those tool outputs are no longer relevant, since the agent already acted on them. But they're still sitting there, taking up space, degrading the model's attention, and driving up cost and latency. So compression is about reducing token count while preserving the information that actually matters for whatever you're working on. And you can compress at three different points in the pipeline. First, before information enters the context at all. This is where chunking comes in, which is breaking large documents into smaller, coherent pieces before retrieval and re-ranking them so that only the most useful chunks make it into the window at all. You can also summarize tool outputs on the fly before they enter the main context. The second opportunity to compress context is while the agent is working. The most common technique here is summarization of conversation history. A running summary gets continuously updated after each exchange, so you always have a compact version of everything that's happened. A popular pattern is a hybrid approach, where you keep, say, the last 10 messages verbatim, since the agent might still need the exact details. But you summarize everything older than that. Beyond summarization, there's plain trimming, using hard-coded heuristics that remove older messages once the context hits a certain size. And Claude Code has auto-compaction built in. When the context hits 95% capacity, it automatically summarizes the full trajectory. That's a safety net, but ideally you're compressing proactively and not waiting for that emergency trigger. And finally, you can use compression after the agent has acted on something. An easy win here is tool result clearing. Once a tool was called 15 steps ago and the agent already used the result, you can just drop the raw output. The agent doesn't need the full text of a web page it fetched ages ago, for example. You can replace it with a one-line summary or remove it entirely. Now let's move on to the fourth and final strategy, which is arguably the most powerful one. Isolation is the strategy that makes multi-agent systems possible. So here's the problem. If a single agent tries to do everything, like research, plan, code, test, and debug, all in one long conversation, it will inevitably fill up its context. But the deeper issue isn't just space, it's actually contamination. The detailed file searches from the research phase are still sitting in the context when the agent moves to implementation. That old research context is now just noise. It's distracting the model during a phase where it needs to be focused on writing clean code. The solution is context isolation, which means giving different parts of the work their own separate context windows. The most obvious form of this is using sub-agents. A parent agent delegates a focused subtask, like search the code base for all files related to authentication, to a sub-agent. That sub-agent works on its own clean context window. When it reports back to the parent, it returns only a condensed summary, and all the messy search operations stay isolated in the sub-agent's context and never pollute the parent. Okay, so to sum up, the four key strategies are write, select, compress, and isolate. Everything we cover from here forward is an application of one or more of them. Now that we understand the strategies for managing context well, let's look at what happens when we don't do a good job. Because understanding failure modes is a really good way to proactively learn what we're trying to avoid. Drew Breunig published an influential two-part series in mid-2025, identifying four distinct ways that agents fail as their context grows. The first failure mode is context poisoning. Sounds very serious. This is when a hallucination or an error enters the agent's context and then gets referenced over and over in subsequent steps. Like if a tool returned bad data or the agent itself made a flawed inference five steps ago, that bad information is now sitting in the context, and the agent keeps building on top of it. This is a problem because agents iterate on their own output, so each bad step compounds into the next one. The fix is context pruning, or actively removing outdated or conflicting information as new details arrive. You should also validate tool outputs before they enter the context, especially from external sources. And after the agent recovers from an error, compress the failed attempt history. Don't leave 10 steps of dead-end debugging visible in the context when only the resolution matters. The second failure mode is context distraction. This is when the context gets so long that the model starts over-relying on its recent history and under-relying on what it learned during training. The agent basically stops thinking for itself and just repeats patterns from what it's recently seen. So instead of synthesizing a novel plan, it rehashes past actions. The fix is the same as the general advice we've been discussing. Summarize and prune aggressively, even when you have a large context window available. The third failure mode is context confusion. This is when superfluous content gets in the context and ends up leading to low-quality responses. The classic example is tool confusion. The agent sees 46 tool definitions in its context and starts calling tools that have nothing to do with the task. There's a really good example of this from a benchmark study. A quantized LAMA 3.18 billion model failed on Geoengine benchmark when given all 46 available tools, even though the context was well within its window limit. But it worked fine when only given 19 tools. The tools weren't too many for the context to hold, but they were too many for the model to reason about clearly. The fix is dynamic tool management. Keep the tool set relevant to the current phase. Use approaches like RAG MCP, which we talked about earlier, which does semantic retrieval over tool descriptions to surface only the relevant tools for each step. The fourth and final failure mode is context clash. This is when new information the agent has gathered during its run contradicts something already in the context. Maybe the system prompt says one thing, but a retrieved document says something different. The agent can't reconcile the contradiction, so it produces inconsistent behavior. Sometimes following one source, sometimes the other, and sometimes doing something that doesn't match either one. The fix here is to establish a clear authority ordering in your context. For example, the system prompt takes priority over retrieved facts, which take priority over conversation history. When new information comes in, validate it against what's already in the context before injecting it. And use structured section. When new information comes in, validate it against what's already in the context before injecting it. And use structured sections, XML tags, clear headers, so the model can parse which information comes from which source and which source to trust. These four failure modes, poisoning, distraction, confusion, and clash, cover most of the ways agents break down in practice. And the good news is, once you can name the failure, the solution maps to one of the four strategies we just covered. So now that we have the strategies and the failure modes, let's get into the practical stuff. Starting with two things you'll work on first when building an agent. The system prompt and tool definitions. The way you approach these for an agent is really different from a chatbot. A system prompt for a chatbot basically sets the tone, like you are a helpful assistant, be concise and friendly, that kind of thing. On the other hand, an agent system prompt defines its architecture. It specifies control flow, like how the agent should approach different types of tasks, what tools to use in what situations, what to do when it encounters an error, and what safety guardrails to follow. It's closer to kind of writing a job description for an autonomous employee. Anthropic has a useful concept here that they call writing at the right altitude. There's kind of a Goldilocks zone for agent system prompts. Too prescriptive is bad. If you write something like, if the user mentions billing and also mentions a refund and the amount is over $100, call tool X. That's just way too fragile and it will break on every edge case you didn't anticipate. On the other hand, too vague is also bad. Be helpful and use the appropriate tools gives the agent nothing to work with. It doesn't know which tools are appropriate for what, and it can't make good autonomous decisions without concrete signals. So the sweet spot is specific enough to guide autonomous behavior, but flexible enough to let the model apply its own judgment in novel situations. You're giving the agent strong heuristics, not rigid rules. Here are a few more practical tips on writing system prompts. Organize your system prompt with structure like XML tags or markdown headers that break it into sections that are distinct, like background information, instructions, and tool guidance. Start minimal and iterate on failures. Don't try to anticipate every edge case up front. Run the agent against real tasks, observe where it breaks, and add instructions to address those specific failure modes. Remember that minimal doesn't necessarily mean short. An agent system prompt for a complex workflow might be thousands of tokens, and that's fine as long as every token is relevant and necessary. And use few-shot examples. Instead of trying to articulate every rule in words, show the agent what good behavior looks like. Give the agent diverse, canonical examples of correct tool selection, good reasoning, and proper multi-step execution. Beyond the system prompt, you'll also need to think about tool definitions. Every tool the agent could potentially call needs a schema that describes what it does, what parameters it takes, and when to use it. Each definition should be self-contained, robust to error, and have clear instruction. This means tool definitions can use a lot of context. In production, this is increasingly handled through MCP, the Model Context Protocol, which is basically a standard way for agents to connect to external tools and data sources. You hook your agent up to an MCP server for GitHub, another for your database, another for your file system, and each one exposes its tools through a consistent interface. The catch is that MCP makes it really easy to plug in a lot of tools, and that's exactly the trap. When you've got four or five MCP servers connected, tool definitions can eat thousands of tokens before any work has even started. The default advice is to curate a minimal viable set of tools. But what if your agent legitimately needs a lot of tools? There are two main approaches to scaling. The first comes from Manus, a production agent platform. They explicitly warn against dynamically adding and removing tools mid-conversation. And the reason has to do with something that most people building agents don't even know about, the KV cache. Here's how it works. When you send tokens to an LLM, the model computes key value representations for each token. This is computationally expensive. So inference providers cache these representations. If the beginning of your context, the prefix, stays the same between API calls, the provider can reuse the cached computation and only process the new tokens at the end, which is much faster and cheaper. But if you rearrange or change the early part of your context between calls, you invalidate the cache, and the provider has to recompute everything from scratch. For example, with Claude Sonnet, cached input tokens cost $0.30 per million, while uncached tokens cost $3 per million, a 10 times difference. For an agent making 30 or 40 API calls per task, that adds up really fast. This is why Manus recommends tool masking instead of tool removal. You keep all the tool definitions stable in the context. They sit near the top in that prefix that gets cached. But you mark certain tools as unavailable for the current phase. The definitions are still there for cache stability, but the agent knows not to use them. They also use consistent naming prefixes, which help the agent to reason about tool categories. The second approach when dealing with lots of tools is RAG-based tool selection, which we touched on earlier. Instead of including every tool in every call, you use semantic retrieval to pre-select only the tools relevant to the current step. The RAG-MCP paper showed this improved accuracy by over three times while cutting token usage in half. These two approaches aren't mutually exclusive. Masking works well when your tool set is moderate, and RAG-based selection works well when you have a really large number of tools. The broader principle behind all of this is simple. Stable content goes at the top of your context. This includes the system prompt, tool definitions, and anything that doesn't change between turns. Then dynamic content like conversation history, the current step, and the agent state go at the bottom. So we've covered the four strategies for context engineering, common failure modes, and how to engineer system prompts and tools. Now let's see what all of this looks like when you actually sit down to build something. This next part applies whether you're using a coding assistant or building your own agent from scratch. The principles are the same. The only difference is whether you're structuring the workflow yourself or programming the agent to do it. Dex Horthy, the CEO of Human Layer, presented a methodology at the AI Engineer Code Summit that's a really clean example of this. His team reportedly used it to ship around 35,000 lines of code to a large Rust codebase in a single 7-hour session. The core idea is what Horthy calls frequent intentional compaction. Basically, you should proactively structure your agent's work into phases, where each phase produces a compacted artifact, like a structured markdown summary, and each new phase starts with a fresh context window containing only that artifact. This way you're deliberately staying below that 40-60% of the context window. Here's how it works in practice, and I'll mention which strategies show up at each step. Phase 1 is research. Before any code gets written, the agent explores the codebase. It reads files, traces data flows, and maps out the architecture relevant to the task. Subagents handle the raw file searches and code analysis. All those grep results and file contents stay in the subagent's context windows and never pollute the parents. That's the isolate strategy. The output of this phase is a research file. A compact markdown document with file paths, function signatures, existing patterns, and gotchas. That's the right strategy. The agent persists its findings externally, so they go on to the next step. And the next step is a context reset. The raw research might have consumed 60-80% of the context, but the research artifact compresses all of that down to maybe 15-20%. That's the compressed strategy. Phase 2 is planning. A brand new context window opens, containing only the research document and the problem definition. The agent uses this clean context to produce a detailed implementation plan. This is also the most important point for human review. If there's a logical error, you catch it here, where fixing it is easy. If you're building your own agent, this is where you'd build in the human-in-the-loop checkpoint if it's relevant. Phase 3 is implementation. At this point, we use another fresh context window, this time containing only the plan. The agent follows it step by step. For complex tasks that require multiple compaction cycles, a progress.md file tracks what's been completed and what remains. That's the right strategy again. This approach is really similar to what I do in my daily work at Twitch, and you'll see some version of it in most production systems. So now let's spend a few minutes looking at how some of the big boys approach context engineering. Claude Code is Anthropik's CLI-based coding agent, obviously, and it's one of the best documented examples of context engineering in practice. It uses a hybrid retrieval model where Claude.md files are loaded up front at the start of every session for foundational context, and then the agent uses tools like Glob and Grep for just-in-time navigation of the code base. It doesn't try to pre-index everything, but just explores on demand. It also has auto-compaction that triggers at 95% context utilization, preserving architectural decisions in the five most recently accessed files. It can spawn sub-agents for complex tasks, giving each one a clean context window. And it has a memory tool for persisting information across sessions. Anthropik's overall philosophy here is do the simplest thing that works. They don't over-engineer the context pipeline. They let the model be smart about what it needs and give it the tools to go find it. Manus takes a more infrastructure-heavy approach than Anthropik. They've served hundreds of thousands of users with a general-purpose agent, so efficiency at scale is important. Their standout contribution is KVCache-aware context ordering that we talked about earlier. This is structuring every context so the prefix stays stable across turns to maximize cache reuse and using tool masking rather than dynamic removal. They have an observation compression pipeline that processes every tool output before it enters the agent's context. They maintain a persistent to-do list for state tracking. And they use the file system as overflow memory for evicted context. OpenAI's approach with ChatGPT Agent, which evolved from the operator product, is architecturally different from both Cloud Code and Manus. It's powered by a computer-using agent model, and it takes a GUI-first approach. Instead of text-based tool calls, the agent interacts with a visual browser. Screenshots get added to the context as visual snapshots, and the model reasons over what it sees on the screen, plus its history of past screenshots and actions. The context engineering challenge here is different, of course. Visual tokens are expensive, so the agent needs to be selective about how many screenshots to keep. OpenAI uses reinforcement learning to discover optimal tool-use strategies. Rather than explicitly programming when to use each tool, they train the agent across thousands of virtual machines and let it learn what works. Deep research and operators share state, enabling fluid transitions between browsing, text analysis, and code execution. The contrast with Cloud Code is really interesting. Cloud Code is code-centric with large context windows and text-based tool calls. Chachy-Pichy agent is visual and general purpose. Both need context engineering, but the specific challenges and solutions are, of course, different. Lastly, Google's ADK takes the most principled architectural approach. They've codified three design principles for agent context. First, separate storage from presentation. The agent's durable state is not the same as what appears in each API call. Second, use explicit transformations. Named, ordered processors that transform context into testable, composable steps rather than ad hoc string concatenation. And third, scope context by default. Every model calls these only the minimum required information and nothing lands in context unless it's explicitly included. This is a more engineering discipline approach to context assembly, treating it as a pipeline with clear stages rather than a prompt you just keep appending to. When you look across all these platforms, a common pipeline emerges. On every single agent turn, the system goes through roughly the same steps. First, collect all the candidate information like user input, conversation history, tool results, retrieve documents, and agent state. Then select what's relevant for the current step and the remaining token budget. Then compress. So summarize, truncate, or restructure selected content to fit in the context. Arrange everything for maximum KV cash reuse, stable content first, and dynamic content last. Then assemble the final context and make the API call. This stuff is changing quickly, and there's still so much to learn. As usual, the best way to get good at this stuff is just to try things out. Experiment and build and see what works. I've linked all my sources in the description, so if you want to go deeper on any of this, those are really good starting points. And if you're interested in the fundamentals of agents, I have a comprehensive course on that as well. Check that out up next. Check that out next. Check that out next. Продолжение следует..."
+}

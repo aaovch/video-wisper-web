@@ -144,6 +144,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Tales From Woodcreek： Chapter 1 (D&D w⧸ Deborah Ann Woll & Iman Vellani) [hmY-MyQhWCk]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/context-engineering-29min.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Context Engineering in 29 Minutes： Complete Course [-h9VVJIqtvA]/transcript.json'
+		)
 	}
 ];
 

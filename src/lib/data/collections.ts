@@ -52,7 +52,14 @@ export const collections: Collection[] = [
 		slug: 'podcasts',
 		title: 'Подкасты: ИИ и индустрия',
 		subtitle: 'Разговоры про искусственный интеллект, найм и будущее разработки.',
-		items: ['llm-deep-dive-karpathy', 'software-3-0', 'podlodka-vector-search', 'podlodka-slm-468', 'berezhnoy-ai']
+		items: [
+			'context-engineering-29min',
+			'llm-deep-dive-karpathy',
+			'software-3-0',
+			'podlodka-vector-search',
+			'podlodka-slm-468',
+			'berezhnoy-ai'
+		]
 	},
 	{
 		slug: 'nri',

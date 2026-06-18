@@ -1,4 +1,5 @@
 import type { Report } from '$lib/types';
+import contextEngineering29min from './reports/context-engineering-29min.json';
 import berezhnoyAi from './reports/berezhnoy-ai.json';
 import hemaReflections from './reports/hema-reflections.json';
 import llmDeepDiveKarpathy from './reports/llm-deep-dive-karpathy.json';
@@ -37,6 +38,7 @@ const all: Report[] = [
 	longswordA as Report,
 	software30 as Report,
 	llmDeepDiveKarpathy as Report,
+	contextEngineering29min as Report,
 	podlodkaVectorSearch as Report,
 	podlodkaSlm468 as Report,
 	hemaReflections as Report,
