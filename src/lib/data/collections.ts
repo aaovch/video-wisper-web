@@ -41,7 +41,7 @@ export const collections: Collection[] = [
 		slug: 'podcasts',
 		title: 'Подкасты: ИИ и индустрия',
 		subtitle: 'Разговоры про искусственный интеллект, найм и будущее разработки.',
-		items: ['software-3-0', 'podlodka-vector-search', 'berezhnoy-ai']
+		items: ['software-3-0', 'podlodka-vector-search', 'podlodka-slm-468', 'berezhnoy-ai']
 	}
 ];
 

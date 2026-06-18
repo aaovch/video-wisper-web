@@ -3,6 +3,7 @@ import berezhnoyAi from './reports/berezhnoy-ai.json';
 import hemaReflections from './reports/hema-reflections.json';
 import longswordA from './reports/longsword-a.json';
 import metodichka from './reports/metodichka.json';
+import podlodkaSlm468 from './reports/podlodka-slm-468.json';
 import retention from './reports/retention.json';
 import sablyaA2 from './reports/sablya-a-2.json';
 import sablyaA3 from './reports/sablya-a-3.json';
@@ -34,6 +35,7 @@ const all: Report[] = [
 	longswordA as Report,
 	software30 as Report,
 	podlodkaVectorSearch as Report,
+	podlodkaSlm468 as Report,
 	hemaReflections as Report,
 	berezhnoyAi as Report,
 	retention as Report,

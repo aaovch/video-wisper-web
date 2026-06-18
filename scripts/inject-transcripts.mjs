@@ -123,6 +123,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Почему текстовый поиск устарел ｜ Векторные базы, эмбеддинги, RAG ｜ Podlodka Podcast #445 [BOWq8JI-XNg]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/podlodka-slm-468.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Маленькие языковые модели ｜ Open source, локальный ИИ, SLM ｜ Podlodka Podcast #468 [x-zjqz1NKic]/transcript.json'
+		)
 	}
 ];
 
