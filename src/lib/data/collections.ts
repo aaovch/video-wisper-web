@@ -54,6 +54,7 @@ export const collections: Collection[] = [
 		subtitle: 'Разговоры про искусственный интеллект, найм и будущее разработки.',
 		items: [
 			'context-engineering-29min',
+			'obsidian-wiki-karpathy',
 			'llm-deep-dive-karpathy',
 			'software-3-0',
 			'podlodka-vector-search',

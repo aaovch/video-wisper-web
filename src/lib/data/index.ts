@@ -21,6 +21,7 @@ import sablyaVvodnaya from './reports/sablya-vvodnaya.json';
 import podlodkaVectorSearch from './reports/podlodka-vector-search.json';
 import software30 from './reports/software-3-0.json';
 import woodcreekCh1 from './reports/woodcreek-ch1.json';
+import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
@@ -39,6 +40,7 @@ const all: Report[] = [
 	software30 as Report,
 	llmDeepDiveKarpathy as Report,
 	contextEngineering29min as Report,
+	obsidianWikiKarpathy as Report,
 	podlodkaVectorSearch as Report,
 	podlodkaSlm468 as Report,
 	hemaReflections as Report,

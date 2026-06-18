@@ -151,6 +151,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Context Engineering in 29 Minutes： Complete Course [-h9VVJIqtvA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/obsidian-wiki-karpathy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Карпатый Wiki Вместо RAG — Полный Obsidian Сетап Для Новичка [2ZHHzfMSeWc]/transcript.json'
+		)
 	}
 ];
 
