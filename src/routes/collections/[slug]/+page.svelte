@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import ReportCard from '$lib/components/ReportCard.svelte';
+	import Lock from '$lib/components/Lock.svelte';
 	import { reveal } from '$lib/attachments';
+	import { lock } from '$lib/lock.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
 	const totalChapters = $derived(reports.reduce((acc, r) => acc + r.chapters.length, 0));
+	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
 </script>
 
 <svelte:head>
@@ -15,6 +18,13 @@
 	<meta name="description" content={collection.subtitle} />
 </svelte:head>
 
+{#if locked}
+	<Lock
+		targets={[collection]}
+		title={collection.title}
+		subtitle="Коллекция закрыта. Введите пароль, чтобы открыть доступ."
+	/>
+{:else}
 <section class="container head-wrap reveal" {@attach reveal()}>
 	<a class="back label" href="{base}/">← Все коллекции</a>
 	<h1>{collection.title}</h1>
@@ -32,6 +42,7 @@
 		{/each}
 	</ul>
 </section>
+{/if}
 
 <style>
 	.head-wrap {

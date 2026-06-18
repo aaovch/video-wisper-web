@@ -8,6 +8,12 @@ export interface Collection {
 	subtitle: string;
 	/** Slug'и отчётов в порядке показа внутри коллекции. */
 	items: string[];
+	/**
+	 * Пароль-«ключ». Если задан — и коллекция, и её отчёты закрыты до ввода пароля.
+	 * Внимание: это «лёгкий замок» на клиенте, а не настоящая защита: контент всё
+	 * равно лежит в JS-бандле. Достаточно, чтобы отсечь случайных людей.
+	 */
+	password?: string;
 }
 
 // Порядок здесь = порядок карточек на главной.
@@ -35,7 +41,9 @@ export const collections: Collection[] = [
 		slug: 'hema-theory',
 		title: 'HEMA: теория и тренерство',
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',
-		items: ['hema-reflections', 'metodichka', 'retention']
+		items: ['hema-reflections', 'metodichka', 'retention'],
+		// Пример закрытой коллекции. Поменяй пароль на свой (или убери строку, чтобы открыть).
+		password: 'hema'
 	},
 	{
 		slug: 'podcasts',
@@ -63,6 +71,19 @@ export function collectionReports(collection: Collection): Report[] {
 /** Коллекции, в которые входит отчёт (для крошек на странице отчёта). */
 export function collectionsForReport(slug: string): Collection[] {
 	return collections.filter((c) => c.items.includes(slug));
+}
+
+/**
+ * Коллекции-«замки», закрывающие доступ к отчёту.
+ * Отчёт открыт (пустой массив), если он не входит ни в одну коллекцию или хотя бы
+ * одна из его коллекций без пароля. Иначе — список всех коллекций под паролем
+ * (подойдёт пароль от любой из них).
+ */
+export function reportGate(slug: string): Collection[] {
+	const containing = collectionsForReport(slug);
+	if (containing.length === 0) return [];
+	if (containing.some((c) => !c.password)) return [];
+	return containing;
 }
 
 export interface CollectionStats {

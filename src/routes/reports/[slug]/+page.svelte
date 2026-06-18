@@ -3,12 +3,17 @@
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
 	import ReportSearch from '$lib/components/ReportSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
+	import Lock from '$lib/components/Lock.svelte';
 	import { reveal } from '$lib/attachments';
+	import { reportGate } from '$lib/data/collections';
+	import { lock } from '$lib/lock.svelte';
 	import type { SearchHit } from '$lib/search';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const report = $derived(data.report);
+	const gate = $derived(reportGate(report.slug));
+	const locked = $derived(gate.length > 0 && !gate.some((c) => lock.isUnlocked(c.slug)));
 
 	let seekTo = $state(0);
 	let playerEl = $state<HTMLElement | null>(null);
@@ -97,6 +102,13 @@
 	<meta name="description" content={report.subtitle} />
 </svelte:head>
 
+{#if locked}
+	<Lock
+		targets={gate}
+		title={report.title}
+		subtitle="Это видео из закрытой коллекции. Введите пароль, чтобы открыть доступ."
+	/>
+{:else}
 <article class="report container">
 	<div class="layout" class:no-video={!report.video}>
 		<!-- Слева: плеер + содержание (sticky с самого верха) -->
@@ -153,6 +165,7 @@
 		</div>
 	</div>
 </article>
+{/if}
 
 <style>
 	.report {

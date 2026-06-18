@@ -12,7 +12,10 @@
 <a class="collection" href="{base}/collections/{collection.slug}/">
 	<div class="head">
 		<span class="numeral" aria-hidden="true">{String(index).padStart(2, '0')}</span>
-		<span class="count mono">{stats.videos} видео</span>
+		<span class="count mono">
+			{#if collection.password}<span class="lock" title="Закрыто паролем" aria-label="Закрыто паролем">🔒</span>{/if}{stats.videos}
+			видео
+		</span>
 	</div>
 
 	<h3 class="title">{collection.title}</h3>
@@ -77,6 +80,10 @@
 		font-size: 12px;
 		color: var(--ink-faint);
 		white-space: nowrap;
+	}
+
+	.lock {
+		margin-right: 6px;
 	}
 
 	.title {
