@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Report } from '$lib/types';
-	import { searchReport, type SearchHit } from '$lib/search';
+	import { searchReport, groupByChapter, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
 
 	let {
@@ -17,11 +17,20 @@
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
-	const results = $derived(searchReport(report, query));
+	// Группы по блокам + сквозная нумерация для клавиатуры.
+	const view = $derived.by(() => {
+		const groups = groupByChapter(searchReport(report, query));
+		let n = 0;
+		return groups.map((g) => ({
+			...g,
+			rows: g.hits.map((hit) => ({ hit, i: n++ }))
+		}));
+	});
+	const flat = $derived(view.flatMap((g) => g.rows.map((r) => r.hit)));
 
 	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
-		results;
+		flat;
 		activeIndex = 0;
 	});
 
@@ -30,17 +39,17 @@
 	}
 
 	function onInputKey(e: KeyboardEvent) {
-		if (!open || results.length === 0) return;
+		if (!open || flat.length === 0) return;
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
-			activeIndex = (activeIndex + 1) % results.length;
+			activeIndex = (activeIndex + 1) % flat.length;
 			scrollActiveIntoView();
 		} else if (e.key === 'ArrowUp') {
 			e.preventDefault();
-			activeIndex = (activeIndex - 1 + results.length) % results.length;
+			activeIndex = (activeIndex - 1 + flat.length) % flat.length;
 			scrollActiveIntoView();
 		} else if (e.key === 'Enter') {
-			const hit = results[activeIndex];
+			const hit = flat[activeIndex];
 			if (hit) {
 				e.preventDefault();
 				pick(hit);
@@ -51,7 +60,6 @@
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
 		chapter: 'блок',
-		thesis: 'тезис',
 		transcript: 'речь'
 	};
 
@@ -97,9 +105,9 @@
 			autocomplete="off"
 			spellcheck="false"
 			role="combobox"
-			aria-expanded={open && results.length > 0}
+			aria-expanded={open && flat.length > 0}
 			aria-controls="rs-panel"
-			aria-activedescendant={open && results.length ? `rs-opt-${activeIndex}` : undefined}
+			aria-activedescendant={open && flat.length ? `rs-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
@@ -110,30 +118,34 @@
 
 	{#if open && query.trim().length >= 2}
 		<div class="panel" id="rs-panel" role="listbox" aria-label="Результаты поиска в видео">
-			{#if results.length === 0}
+			{#if flat.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
-				<ul>
-					{#each results as hit, i (hit.kind + hit.href + (hit.start ?? '') + hit.snippet)}
-						<li role="option" id="rs-opt-{i}" aria-selected={i === activeIndex}>
-							<button
-								type="button"
-								class:is-active={i === activeIndex}
-								onmouseenter={() => (activeIndex = i)}
-								onclick={() => pick(hit)}
-							>
-								<span class="row-top">
-									<span class="kind label">{kindLabel[hit.kind]}</span>
-									{#if hit.start != null}
-										<span class="tc mono">{formatTime(hit.start)}</span>
-									{/if}
-								</span>
-								<span class="title">{hit.title}</span>
-								<span class="snippet">{hit.snippet}</span>
-							</button>
-						</li>
-					{/each}
-				</ul>
+				{#each view as group (group.chapterIndex ?? 'overview')}
+					<div class="group">
+						<p class="group-head">{group.title}</p>
+						<ul>
+							{#each group.rows as { hit, i } (hit.kind + hit.href + (hit.start ?? '') + hit.snippet)}
+								<li role="option" id="rs-opt-{i}" aria-selected={i === activeIndex}>
+									<button
+										type="button"
+										class:is-active={i === activeIndex}
+										onmouseenter={() => (activeIndex = i)}
+										onclick={() => pick(hit)}
+									>
+										<span class="row-top">
+											<span class="kind label">{kindLabel[hit.kind]}</span>
+											{#if hit.start != null}
+												<span class="tc mono">{formatTime(hit.start)}</span>
+											{/if}
+										</span>
+										<span class="snippet">{hit.snippet}</span>
+									</button>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
 			{/if}
 		</div>
 	{/if}
@@ -209,10 +221,23 @@
 		box-shadow: var(--shadow);
 	}
 
+	.group + .group {
+		border-top: 1px solid var(--line);
+	}
+
+	.group-head {
+		margin: 0;
+		padding: 8px 12px 4px;
+		font-family: var(--font-display);
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--ink-soft);
+	}
+
 	ul {
 		list-style: none;
 		margin: 0;
-		padding: 6px;
+		padding: 2px 6px 6px;
 	}
 
 	li + li {
@@ -252,15 +277,6 @@
 	.tc {
 		font-size: 10px;
 		color: var(--ink-faint);
-	}
-
-	.title {
-		display: block;
-		font-family: var(--font-display);
-		font-size: 15px;
-		font-weight: 500;
-		line-height: 1.25;
-		margin-bottom: 2px;
 	}
 
 	.snippet {

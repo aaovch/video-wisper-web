@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
-	import { searchReports, type SearchHit } from '$lib/search';
+	import { page } from '$app/state';
+	import { searchReports, groupByReport, type SearchHit } from '$lib/search';
+	import { getCollection, collectionReports } from '$lib/data/collections';
 	import { formatTime } from '$lib/utils';
-	import type { Report } from '$lib/types';
 
-	let {
-		reports: scope,
-		placeholder = 'Поиск по архиву…',
-		hotkey = '/'
-	}: { reports?: Report[]; placeholder?: string; hotkey?: string | null } = $props();
-
+	const hotkey = '/';
 	const uid = $props.id();
 
 	let query = $state('');
@@ -19,12 +15,42 @@
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
 
-	const results = $derived(searchReports(query, 12, scope));
+	// Узкий скоуп выводится из маршрута: на странице коллекции — её отчёты.
+	const narrowScope = $derived.by(() => {
+		const slug = page.params.slug;
+		if (page.route.id === '/collections/[slug]' && slug) {
+			const col = getCollection(slug);
+			if (col) return { label: col.title, reports: collectionReports(col) };
+		}
+		return null;
+	});
+
+	// Переключатель «в коллекции / везде». Сбрасывается при смене маршрута.
+	let wide = $state(false);
+	$effect(() => {
+		page.url.pathname;
+		wide = false;
+	});
+
+	const scoped = $derived(Boolean(narrowScope) && !wide);
+	const placeholder = $derived(scoped ? 'Поиск в коллекции…' : 'Поиск по архиву…');
+
+	// Группы по отчётам + сквозная нумерация попаданий для клавиатуры.
+	const view = $derived.by(() => {
+		const scope = scoped ? narrowScope!.reports : undefined;
+		const groups = groupByReport(searchReports(query, 40, scope));
+		let n = 0;
+		return groups.map((g) => ({
+			...g,
+			rows: g.hits.map((hit) => ({ hit, i: n++ }))
+		}));
+	});
+	const flat = $derived(view.flatMap((g) => g.rows.map((r) => r.hit)));
 	const showPanel = $derived(open && query.trim().length >= 2);
 
 	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
-		results;
+		flat;
 		activeIndex = 0;
 	});
 
@@ -33,17 +59,17 @@
 	}
 
 	function onInputKey(e: KeyboardEvent) {
-		if (!open || results.length === 0) return;
+		if (!open || flat.length === 0) return;
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
-			activeIndex = (activeIndex + 1) % results.length;
+			activeIndex = (activeIndex + 1) % flat.length;
 			scrollActiveIntoView();
 		} else if (e.key === 'ArrowUp') {
 			e.preventDefault();
-			activeIndex = (activeIndex - 1 + results.length) % results.length;
+			activeIndex = (activeIndex - 1 + flat.length) % flat.length;
 			scrollActiveIntoView();
 		} else if (e.key === 'Enter') {
-			const hit = results[activeIndex];
+			const hit = flat[activeIndex];
 			if (hit) {
 				e.preventDefault();
 				close();
@@ -56,7 +82,6 @@
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
 		chapter: 'блок',
-		thesis: 'тезис',
 		transcript: 'речь'
 	};
 
@@ -104,9 +129,9 @@
 			autocomplete="off"
 			spellcheck="false"
 			role="combobox"
-			aria-expanded={open && results.length > 0}
+			aria-expanded={open && flat.length > 0}
 			aria-controls="{uid}-panel"
-			aria-activedescendant={open && results.length ? `${uid}-opt-${activeIndex}` : undefined}
+			aria-activedescendant={open && flat.length ? `${uid}-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
 			oninput={() => (open = true)}
@@ -119,31 +144,48 @@
 
 	{#if showPanel}
 		<div class="panel" id="{uid}-panel" role="listbox" aria-label="Результаты поиска">
-			{#if results.length === 0}
+			{#if narrowScope}
+				<div class="scope" role="group" aria-label="Область поиска">
+					<button type="button" class:active={scoped} onclick={() => (wide = false)}>
+						В коллекции
+					</button>
+					<button type="button" class:active={!scoped} onclick={() => (wide = true)}>
+						Везде
+					</button>
+				</div>
+			{/if}
+			{#if flat.length === 0}
 				<p class="empty label">Ничего не найдено</p>
 			{:else}
-				<ul>
-					{#each results as hit, i (hit.href + hit.title + hit.snippet)}
-						<li role="option" id="{uid}-opt-{i}" aria-selected={i === activeIndex}>
-							<a
-								href={href(hit)}
-								class:is-active={i === activeIndex}
-								onmouseenter={() => (activeIndex = i)}
-								onclick={close}
-							>
-								<span class="row-top">
-									<span class="kind label">{kindLabel[hit.kind]}</span>
-									<span class="from">
-										{hit.reportTitle}{#if hit.start != null}
-											· {formatTime(hit.start)}{/if}
-									</span>
-								</span>
-								<span class="title">{hit.title}</span>
-								<span class="snippet">{hit.snippet}</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
+				{#each view as group (group.reportSlug)}
+					<div class="group">
+						<a class="group-head" href="{base}{group.href}" onclick={close}>
+							<span class="group-title">{group.reportTitle}</span>
+							<span class="group-count label">{group.hits.length}</span>
+						</a>
+						<ul>
+							{#each group.rows as { hit, i } (hit.href + hit.title + hit.snippet)}
+								<li role="option" id="{uid}-opt-{i}" aria-selected={i === activeIndex}>
+									<a
+										href={href(hit)}
+										class:is-active={i === activeIndex}
+										onmouseenter={() => (activeIndex = i)}
+										onclick={close}
+									>
+										<span class="row-top">
+											<span class="kind label">{kindLabel[hit.kind]}</span>
+											{#if hit.start != null}
+												<span class="from">{formatTime(hit.start)}</span>
+											{/if}
+										</span>
+										<span class="title">{hit.title}</span>
+										<span class="snippet">{hit.snippet}</span>
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
 			{/if}
 		</div>
 	{/if}
@@ -249,10 +291,76 @@
 		box-shadow: var(--shadow);
 	}
 
+	.scope {
+		display: flex;
+		gap: 6px;
+		padding: 8px 10px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.scope button {
+		flex: 1;
+		padding: 5px 10px;
+		border: 1px solid var(--line-strong);
+		border-radius: 999px;
+		background: var(--paper);
+		font-family: var(--font-body);
+		font-size: 12px;
+		color: var(--ink-soft);
+		cursor: pointer;
+		transition:
+			background 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.scope button:hover {
+		border-color: var(--accent);
+	}
+
+	.scope button.active {
+		background: var(--accent);
+		border-color: var(--accent);
+		color: var(--paper);
+	}
+
+	.group + .group {
+		border-top: 1px solid var(--line);
+	}
+
+	.group-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		padding: 8px 14px 4px;
+		color: var(--ink-soft);
+	}
+
+	.group-head:hover {
+		text-decoration: none;
+		color: var(--accent);
+	}
+
+	.group-title {
+		font-family: var(--font-display);
+		font-size: 13px;
+		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.group-count {
+		flex-shrink: 0;
+		font-size: 10px;
+		color: var(--ink-faint);
+	}
+
 	ul {
 		list-style: none;
 		margin: 0;
-		padding: 6px;
+		padding: 2px 6px 6px;
 	}
 
 	li + li {
@@ -297,7 +405,7 @@
 	.title {
 		display: block;
 		font-family: var(--font-display);
-		font-size: 17px;
+		font-size: 15px;
 		font-weight: 500;
 		line-height: 1.25;
 		margin-bottom: 3px;
@@ -305,7 +413,7 @@
 
 	.snippet {
 		display: block;
-		font-size: 14px;
+		font-size: 13px;
 		color: var(--ink-soft);
 		line-height: 1.4;
 	}

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import ReportCard from '$lib/components/ReportCard.svelte';
-	import SearchBox from '$lib/components/SearchBox.svelte';
 	import { reveal } from '$lib/attachments';
 	import type { PageData } from './$types';
 
@@ -21,10 +20,6 @@
 	<h1>{collection.title}</h1>
 	<p class="subtitle">{collection.subtitle}</p>
 	<p class="meta label">{reports.length} видео · {totalChapters} блоков</p>
-
-	<div class="search-slot">
-		<SearchBox {reports} placeholder="Поиск в этой коллекции…" hotkey={null} />
-	</div>
 </section>
 
 <section class="container index">
@@ -74,10 +69,6 @@
 
 	.meta {
 		margin: 0 0 22px;
-	}
-
-	.search-slot {
-		max-width: 460px;
 	}
 
 	.index {
