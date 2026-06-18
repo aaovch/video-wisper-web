@@ -14,6 +14,8 @@ export interface Collection {
 	 * равно лежит в JS-бандле. Достаточно, чтобы отсечь случайных людей.
 	 */
 	password?: string;
+	/** Подсказка под полем пароля: как его получить. */
+	passwordHint?: string;
 }
 
 // Порядок здесь = порядок карточек на главной.
@@ -43,7 +45,8 @@ export const collections: Collection[] = [
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',
 		items: ['hema-reflections', 'metodichka', 'retention'],
 		// Пример закрытой коллекции. Поменяй пароль на свой (или убери строку, чтобы открыть).
-		password: 'hema'
+		password: 'hema',
+		passwordHint: 'Чтобы получить пароль — напиши Васильеву Петру.'
 	},
 	{
 		slug: 'podcasts',

@@ -9,6 +9,8 @@
 		subtitle = 'Введите пароль, чтобы открыть доступ.'
 	}: { targets: Collection[]; title?: string; subtitle?: string } = $props();
 
+	const hint = $derived(targets.find((c) => c.passwordHint)?.passwordHint);
+
 	let value = $state('');
 	let failed = $state(false);
 
@@ -43,6 +45,8 @@
 		</form>
 		{#if failed}
 			<p class="err label" role="alert">Неверный пароль</p>
+		{:else if hint}
+			<p class="hint">{hint}</p>
 		{/if}
 	</div>
 </section>
@@ -139,5 +143,12 @@
 	.err {
 		margin: 12px 0 0;
 		color: var(--accent);
+	}
+
+	.hint {
+		margin: 14px 0 0;
+		font-size: 14px;
+		color: var(--ink-faint);
+		line-height: 1.45;
 	}
 </style>

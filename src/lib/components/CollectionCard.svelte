@@ -68,6 +68,8 @@
 		</form>
 		{#if failed}
 			<p class="err mono" role="alert">Неверный пароль</p>
+		{:else if collection.passwordHint}
+			<p class="hint">{collection.passwordHint}</p>
 		{/if}
 	</div>
 {:else}
@@ -226,5 +228,12 @@
 		margin: 10px 0 0;
 		font-size: 11px;
 		color: var(--accent);
+	}
+
+	.hint {
+		margin: 10px 0 0;
+		font-size: 13px;
+		color: var(--ink-faint);
+		line-height: 1.4;
 	}
 </style>
