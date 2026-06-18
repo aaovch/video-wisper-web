@@ -32,9 +32,9 @@
 	<div class="head">
 		<span class="numeral" aria-hidden="true">{String(index).padStart(2, '0')}</span>
 		<span class="count mono">
-			{#if collection.password}<span class="lock" title="Закрыто паролем" aria-label="Закрыто паролем"
-					>🔒</span
-				>{/if}{stats.videos} видео
+			{#if collection.password && !locked}<span class="badge open">🔓 Открыто</span> ·{' '}{:else if collection.password}<span
+					class="badge">🔒</span
+				>{' '}{/if}{stats.videos} видео
 		</span>
 	</div>
 
@@ -128,8 +128,8 @@
 		white-space: nowrap;
 	}
 
-	.lock {
-		margin-right: 6px;
+	.badge.open {
+		color: var(--accent);
 	}
 
 	.title {

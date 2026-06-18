@@ -29,7 +29,10 @@
 	<a class="back label" href="{base}/">← Все коллекции</a>
 	<h1>{collection.title}</h1>
 	<p class="subtitle">{collection.subtitle}</p>
-	<p class="meta label">{reports.length} видео · {totalChapters} блоков</p>
+	<p class="meta label">
+		{#if collection.password}<span class="unlocked">🔓 Открыто паролем</span> ·{' '}{/if}{reports.length} видео
+		· {totalChapters} блоков
+	</p>
 </section>
 
 <section class="container index">
@@ -76,6 +79,10 @@
 		max-width: 54ch;
 		margin: 0 0 12px;
 		line-height: 1.45;
+	}
+
+	.unlocked {
+		color: var(--accent);
 	}
 
 	.meta {
