@@ -15,8 +15,21 @@ export const collections: Collection[] = [
 	{
 		slug: 'almaty-2026',
 		title: 'Фехтовальный лагерь «Алматы 2026»',
-		subtitle: 'Семинары и тренировки лагеря: длинный меч и сабля.',
-		items: ['longsword-a', 'sablya-a-2', 'sablya-a-3']
+		subtitle: 'Семинары и тренировки лагеря: сабля (общая и «А») и длинный меч.',
+		items: [
+			'sablya-vvodnaya',
+			'sablya-a-2',
+			'sablya-a-3',
+			'sablya-4',
+			'sablya-a-5',
+			'sablya-6',
+			'sablya-a-7',
+			'sablya-8',
+			'sablya-a-9',
+			'sablya-10',
+			'sablya-12',
+			'longsword-a'
+		]
 	},
 	{
 		slug: 'hema-theory',
