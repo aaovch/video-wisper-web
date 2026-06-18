@@ -116,6 +116,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Сабля, ＂А＂, 9 тренировка [BBh8dYGlbLY]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/podlodka-vector-search.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Почему текстовый поиск устарел ｜ Векторные базы, эмбеддинги, RAG ｜ Podlodka Podcast #445 [BOWq8JI-XNg]/transcript.json'
+		)
 	}
 ];
 
