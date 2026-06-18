@@ -67,6 +67,20 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Сабля, общая, 4 тренировка [atO8AQMPVtk]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/sablya-a-5.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Сабля, ＂А＂, 5 тренировка [xpS4HVZJAgg]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/sablya-6.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Сабля, общая, 6 тренировка [YDoVTkB6H3o]/transcript.json'
+		)
 	}
 ];
 
