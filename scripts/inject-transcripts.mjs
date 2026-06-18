@@ -132,6 +132,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/llm-deep-dive-karpathy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Deep Dive into LLMs like ChatGPT [7xTGNNLPyMI]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/woodcreek-ch1.json'),
 		transcriptPath: join(
 			pipelineRoot,
