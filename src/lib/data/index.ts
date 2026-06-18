@@ -6,6 +6,7 @@ import metodichka from './reports/metodichka.json';
 import retention from './reports/retention.json';
 import sablyaA2 from './reports/sablya-a-2.json';
 import sablyaA3 from './reports/sablya-a-3.json';
+import sablya4 from './reports/sablya-4.json';
 import sablyaVvodnaya from './reports/sablya-vvodnaya.json';
 import software30 from './reports/software-3-0.json';
 
@@ -14,6 +15,7 @@ const all: Report[] = [
 	sablyaVvodnaya as Report,
 	sablyaA2 as Report,
 	sablyaA3 as Report,
+	sablya4 as Report,
 	longswordA as Report,
 	software30 as Report,
 	hemaReflections as Report,
