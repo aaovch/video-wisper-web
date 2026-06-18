@@ -18,6 +18,7 @@ import sablya6 from './reports/sablya-6.json';
 import sablyaVvodnaya from './reports/sablya-vvodnaya.json';
 import podlodkaVectorSearch from './reports/podlodka-vector-search.json';
 import software30 from './reports/software-3-0.json';
+import woodcreekCh1 from './reports/woodcreek-ch1.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
@@ -39,7 +40,8 @@ const all: Report[] = [
 	hemaReflections as Report,
 	berezhnoyAi as Report,
 	retention as Report,
-	metodichka as Report
+	metodichka as Report,
+	woodcreekCh1 as Report
 ];
 
 export const reports: Report[] = all;

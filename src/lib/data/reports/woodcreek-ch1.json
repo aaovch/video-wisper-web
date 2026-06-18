@@ -1,0 +1,4298 @@
+{
+	"slug": "woodcreek-ch1",
+	"title": "Tales from Wood Creek: Глава 1",
+	"subtitle": "D&D с Deborah Ann Woll, Iman Vellani и Dungeon Dudes",
+	"source_name": "Tales From Woodcreek： Chapter 1 (D&D w⧸ Deborah Ann Woll & Iman Vellani) [hmY-MyQhWCk].mp4",
+	"note": "Смысловая разметка + тезисы (LLM по транскрипту). Первая глава кампании в проклятом Wood Creek.",
+	"duration": 2704.42,
+	"tags": [
+		"D&D",
+		"Tales from Wood Creek",
+		"Dungeon Dudes",
+		"Deborah Ann Woll",
+		"Iman Vellani",
+		"19 блоков"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "hmY-MyQhWCk"
+	},
+	"overview_theses": [
+		"Эпизод совмещает рекламу Dungeons of Drakkenheim (Daggerheart) и первую главу кампании в проклятом Wood Creek.",
+		"Потомки четырёх семей несут метку ведьмы; Becky Laskay зовёт героев снять проклятие через заклинательную книгу.",
+		"Паладин Victor и бард Valentine (Dungeon Dudes) встречают Becky, гигантессу Una и шпионку Vix у школьного дома.",
+		"Школа — ключевая локация: компас указывает на книгу, но призрак учительницы Miss Vickers и дух Tommy мешают поиску.",
+		"Расследование через урок, записки Tommy и «доску духов» выводит к Reverend Dixon и тайнику за партой.",
+		"Финал — бой с призраком учительницы, divine smite Виктора и сейф с буквенными дисками — клиффхэнгер на главу 2."
+	],
+	"chapters": [
+		{
+			"start": 0.11,
+			"title": "Спонсор: Dungeons of Drakkenheim",
+			"summary": "Ведущие рекламируют Kickstarter Dungeons of Drakkenheim на системе Daggerheart — тёмное фэнтези Drakkenheim в новом издании.",
+			"theses": [
+				"Eldritch contamination распространяется на новую игровую систему Daggerheart.",
+				"Кампания переносит мир Drakkenheim с наградами ENnie в формат, где игроки ведут нарратив.",
+				"Призыв подписаться на Kickstarter до 4 ноября за бесплатные миниатюры Drakkenforce."
+			],
+			"anchor": "Thank you for joining us for Tales from Woodcreek",
+			"segments": [
+				{
+					"start": 0.11,
+					"text": "Thank you for joining us for Tales from Woodcreek, but first, a word from our sponsor."
+				},
+				{
+					"start": 6.71,
+					"text": "Eldritch contamination of our dark fantasy world of Drakkenheim is spreading."
+				},
+				{
+					"start": 12.91,
+					"text": "No, no, I thought we fixed that last time."
+				},
+				{
+					"start": 16.07,
+					"text": "No, not at all, because it is spreading to a brand new game system."
+				},
+				{
+					"start": 21.51,
+					"text": "This is Dungeons of Drakkenheim, the Daggerheart edition, and this is a way to experience Drakkenheim like never before."
+				},
+				{
+					"start": 30.49,
+					"text": "Yes, so this episode of Tales from Woodcreek is sponsored by Dungeons of Drakkenheim, Daggerheart, which is launching on Kickstarter on November 4th."
+				},
+				{
+					"start": 39.97,
+					"text": "Yes, we are bringing our dark fantasy world of Drakkenheim to a new system."
+				},
+				{
+					"start": 44.65,
+					"text": "And when we first built the world of Drakkenheim, we wanted to create a world that feels alive, chaotic, and dangerous, and full of heart."
+				},
+				{
+					"start": 52.05,
+					"text": "And Daggerheart is the perfect way for it."
+				},
+				{
+					"start": 54.89,
+					"text": "Now in Daggerheart, it just lives and breathes the way that we always imagine Drakkenheim doing."
+				},
+				{
+					"start": 60.45,
+					"text": "This is our any award-winning dark fantasy adventure rebuilt for a brand new system where players are going to really drive the narrative."
+				},
+				{
+					"start": 67.73,
+					"text": "Yeah, and the Dungeon Dudes and Ghostfire Gaming are even teaming up with Darrington Press to bring Drakkenheim into Daggerheart."
+				},
+				{
+					"start": 74.65,
+					"text": "So if you've ever walked those haunted streets, and I have, you know that every step already feels like a roll of the dice between hope and absolute fear."
+				},
+				{
+					"start": 82.13,
+					"text": "So to make it all work seamlessly, they've brought in Daggerheart contributing author Mike Underwood to help ensure the mechanics of Daggerheart feel right at home in this new version of Drakkenheim."
+				},
+				{
+					"start": 92.17,
+					"text": "Yes, the fear will reign in Daggerheart because the city of Drakkenheim itself is your enemy."
+				},
+				{
+					"start": 99.57,
+					"text": "Every ruin and mutation fuels your GM's power."
+				},
+				{
+					"start": 103.19,
+					"text": "And hope dies."
+				},
+				{
+					"start": 104.89,
+					"text": "Factions rise and fall as your party's choices shape the fate of Drakkenheim."
+				},
+				{
+					"start": 109.29,
+					"text": "Fate calls."
+				},
+				{
+					"start": 110.45,
+					"text": "Power always has a price."
+				},
+				{
+					"start": 111.87,
+					"text": "Will you embrace Eldritch Contamination or let it consume you?"
+				},
+				{
+					"start": 115.63,
+					"text": "This is the world we dreamed of sharing, and now it's yours to explore in a completely new way."
+				},
+				{
+					"start": 121.63,
+					"text": "Okay."
+				},
+				{
+					"start": 122.29,
+					"text": "So you can follow the Kickstarter right now to help us unlock free miniatures of our original Drakkenforce characters that will be added to every pledge."
+				},
+				{
+					"start": 131.39,
+					"text": "You get the STLs for digital and the physical minis for a physical pledge."
+				},
+				{
+					"start": 135.03,
+					"text": "And if we hit our goals before we launch on November 4th, those will be added to every pledge."
+				},
+				{
+					"start": 139.59,
+					"text": "So click the link in the description below right now."
+				},
+				{
+					"start": 142.33,
+					"text": "Drakkenheim and Daggerheart is waiting for your story."
+				}
+			]
+		},
+		{
+			"start": 150.57,
+			"title": "Легенда Wood Creek",
+			"summary": "Повествование о Heartstone, проклятии ведьмы и потомках основателей, которым Becky обещает шанс снять проклятие.",
+			"theses": [
+				"Жители нашли Heartstone в шахтах; ведьма прокляла детей основателей и превратила взрослых в монстров.",
+				"Потомки несут метку ведьмы — без любви, удачи и процветания, но иммунны к порче внутри города.",
+				"Becky Laskay пишет, что знает способ сломать проклятие и вернуть Wood Creek."
+			],
+			"anchor": "Hello, friends.",
+			"segments": [
+				{
+					"start": 150.57,
+					"text": "Hello, friends."
+				},
+				{
+					"start": 152.17,
+					"text": "I invite you to join us on an adventure."
+				},
+				{
+					"start": 155.03,
+					"text": "It takes place in a town called Wood Creek."
+				},
+				{
+					"start": 157.73,
+					"text": "Perhaps you've heard of it."
+				},
+				{
+					"start": 159.07,
+					"text": "The tales of its fall from grace have spread far and wide."
+				},
+				{
+					"start": 163.15,
+					"text": "As the story goes, it all began when the good people of Wood Creek found a glowing red gem buried deep within the mines on the outskirts of town."
+				},
+				{
+					"start": 171.77,
+					"text": "This powerful relic offered them true riches and access to magic beyond their wildest imaginings."
+				},
+				{
+					"start": 178.69,
+					"text": "They called it the Heartstone, and the four founding families vowed to share it equally."
+				},
+				{
+					"start": 184.63,
+					"text": "The town prospered, but not for long."
+				},
+				{
+					"start": 188.73,
+					"text": "An evil witch heard of this discovery and demanded that the founders hand over the Heartstone to her."
+				},
+				{
+					"start": 194.53,
+					"text": "When they refused, she cursed their children, giving them nightmarish visions of the destruction of Wood Creek"
+				},
+				{
+					"start": 201.41,
+					"text": "and branding their palms with her fiendish mark."
+				},
+				{
+					"start": 205.03,
+					"text": "In a final confrontation, she unleashed a wave of corrupt energy,"
+				},
+				{
+					"start": 209.83,
+					"text": "transforming every living resident of Wood Creek into a monster"
+				},
+				{
+					"start": 213.31,
+					"text": "and desecrating the land so that nothing could live there without succumbing to her corruption."
+				},
+				{
+					"start": 218.79,
+					"text": "Except for the children."
+				},
+				{
+					"start": 221.73,
+					"text": "In a strange twist of fate, the magic she inflicted upon the children rendered them immune to the corrupting forces of Wood Creek."
+				},
+				{
+					"start": 229.45,
+					"text": "However, the curse persisted, and even as the children of Wood Creek grew old and left town,"
+				},
+				{
+					"start": 235.55,
+					"text": "they passed the curse down through generations,"
+				},
+				{
+					"start": 238.83,
+					"text": "dooming each descendant to a life without love, luck, or prosperity."
+				},
+				{
+					"start": 245.54,
+					"text": "Soon we will meet some of these unfortunate souls."
+				},
+				{
+					"start": 248.66,
+					"text": "They bear the witch's mark, and nothing in life seems to go their way."
+				},
+				{
+					"start": 252.36,
+					"text": "But finally, they have hope."
+				},
+				{
+					"start": 254.38,
+					"text": "A message from Becky Laskay, a descendant of Wood Creek herself,"
+				},
+				{
+					"start": 258.38,
+					"text": "suggests she has information that can help them break the curse,"
+				},
+				{
+					"start": 261.7,
+					"text": "restore the town riches, and perhaps save Wood Creek once and for all."
+				},
+				{
+					"start": 266.84,
+					"text": "These are the tales from Wood Creek."
+				}
+			]
+		},
+		{
+			"start": 269.12,
+			"title": "Встреча у границы",
+			"summary": "Герои прибывают к Becky; она уверяет, что за сотней ярдов безопасная зона, и благодарит за помощь.",
+			"theses": [
+				"Граница Wood Creek в ста ярдах — здесь относительно безопасно.",
+				"Vix уже работала с частью группы; Victor и Valentine — новые лица для Becky.",
+				"Becky называет себя потомком мэра Harlan Laskay и носитницей проклятия."
+			],
+			"anchor": "You made it.",
+			"segments": [
+				{
+					"start": 269.12,
+					"text": "You made it."
+				},
+				{
+					"start": 357.71,
+					"text": "Thank you, thank you so much for coming."
+				},
+				{
+					"start": 359.31,
+					"text": "Please, yes, I assure you we are safe here."
+				},
+				{
+					"start": 362.21,
+					"text": "The boundary of Wood Creek is a hundred yards in that direction."
+				},
+				{
+					"start": 365.45,
+					"text": "I cannot believe you're here."
+				},
+				{
+					"start": 368.56,
+					"text": "I'm so grateful that you've come."
+				},
+				{
+					"start": 370.26,
+					"text": "I know Vix has spoken with you and worked with you, and she's a dear friend of ours."
+				},
+				{
+					"start": 375.62,
+					"text": "I have not met the two of you before, but I've heard of your exports."
+				},
+				{
+					"start": 378.82,
+					"text": "Now, are you Victor or Valentine?"
+				},
+				{
+					"start": 380.76,
+					"text": "Victor."
+				},
+				{
+					"start": 381.34,
+					"text": "Victor Gravesong."
+				}
+			]
+		},
+		{
+			"start": 382.38,
+			"title": "Victor и Valentine",
+			"summary": "Monty Martin и Kelly McLaughlin представляют братьев Gravesong — паладина Victor и тифлинг-барда Valentine.",
+			"theses": [
+				"Monty (Dungeon Dudes) играет паладина Victor Gravesong — впервые в дуо-кампании с со-ведущей.",
+				"Kelly играет Valentine Flynn Gravesong, тифлинг-барда и младшего брата Victor.",
+				"Братья годами искали источник проклятия, пока слухи не привели к Becky."
+			],
+			"anchor": "Hey, I'm Monty Martin.",
+			"segments": [
+				{
+					"start": 382.38,
+					"text": "Hey, I'm Monty Martin."
+				},
+				{
+					"start": 384.02,
+					"text": "I'm one of the Dungeon Dudes here on YouTube."
+				},
+				{
+					"start": 386.32,
+					"text": "Together with my co-host, Kelly McLaughlin,"
+				},
+				{
+					"start": 388.58,
+					"text": "we are finally getting the chance to play a duo of characters in a campaign together."
+				},
+				{
+					"start": 394.86,
+					"text": "And so for Tales of Wood Creek, that is one of the things that I am super excited about."
+				},
+				{
+					"start": 398.54,
+					"text": "So I'm going to be rocking my paladin, Victor Gravesong."
+				},
+				{
+					"start": 403.3,
+					"text": "My little brother, Valentine."
+				},
+				{
+					"start": 406.3,
+					"text": "Yes, we've been traveling around for a while trying to find the source of this curse."
+				},
+				{
+					"start": 410.38,
+					"text": "Hi, my name's Kelly McLaughlin, and I am so excited to be participating in the Tales from Wood Creek."
+				},
+				{
+					"start": 416.34,
+					"text": "We have such an amazing group of people here, and I'm really excited to play with a bunch of them,"
+				},
+				{
+					"start": 420.82,
+					"text": "including my longtime DM, Monty, who I finally get to play alongside, so that's very exciting."
+				},
+				{
+					"start": 425.94,
+					"text": "I'm playing Valentine Flynn Gravesong, who is a tiefling bard."
+				},
+				{
+					"start": 432.44,
+					"text": "Seems our luck was running out until we stumbled upon these rumors that brought us to you."
+				},
+				{
+					"start": 438.14,
+					"text": "The truth is, the struggle is all we've ever known."
+				},
+				{
+					"start": 441.88,
+					"text": "My survival doesn't matter, only our success."
+				},
+				{
+					"start": 445.34,
+					"text": "That is inspiring."
+				},
+				{
+					"start": 447.62,
+					"text": "I won't waste your time."
+				}
+			]
+		},
+		{
+			"start": 449.34,
+			"title": "Rebecca Laskay",
+			"summary": "Becky рассказывает о семье Laskay, отчаянии и решимости бороться за жизнь без проклятия.",
+			"theses": [
+				"Прадед Becky — мэр Harlan Laskay, один из основателей Wood Creek.",
+				"Una помогла ей поверить, что каждый день стоит борьбы за желаемую жизнь.",
+				"Becky нашла описание книги заклинаний ведьмы — ключ к снятию порчи."
+			],
+			"anchor": "My name is Rebecca Laskay.",
+			"segments": [
+				{
+					"start": 449.34,
+					"text": "My name is Rebecca Laskay."
+				},
+				{
+					"start": 451.82,
+					"text": "My great-grandfather was Mayor Harlan Laskay."
+				},
+				{
+					"start": 455.06,
+					"text": "He was a leader of Wood Creek."
+				},
+				{
+					"start": 457.62,
+					"text": "And like you, I am a descendant of the leaders of Wood Creek."
+				},
+				{
+					"start": 462.1,
+					"text": "I bear the witch's sigil and her curse."
+				},
+				{
+					"start": 466.2,
+					"text": "Every day has been a struggle in my life, and up until recently, speaking with Una, I had languished in despair."
+				},
+				{
+					"start": 475.24,
+					"text": "But I am sick of it."
+				},
+				{
+					"start": 477.72,
+					"text": "I will not live in this life without luck, without love, without prosperity, without belonging any longer."
+				},
+				{
+					"start": 485.72,
+					"text": "Una has taught me that every day is precious, and we must fight for the life that we want."
+				}
+			]
+		},
+		{
+			"start": 491.44,
+			"title": "Una — гигантесса",
+			"summary": "Iman Vellani представляет Una: семифутовую застенчивую союзницу, обязанную Becky спасением жизни.",
+			"theses": [
+				"Una — дружелюбный гигант; Becky спасла ей жизнь после трагедии.",
+				"Becky купила зелье защиты на 8 часов — без него Una уязвима к порче.",
+				"Una согласилась сопровождать группу: «Anything for a friend?»"
+			],
+			"anchor": "I'm Iman Valani",
+			"segments": [
+				{
+					"start": 491.44,
+					"text": "I'm Iman Valani, and I played Ms."
+				},
+				{
+					"start": 494.32,
+					"text": "Marvel in Marvel Studios' Ms."
+				},
+				{
+					"start": 497.72,
+					"text": "Marvel, and Marvel Comics, also writing Ms."
+				},
+				{
+					"start": 501.5,
+					"text": "Marvel."
+				},
+				{
+					"start": 502.32,
+					"text": "Una is a shy, seven-foot-tall, friendly giant."
+				},
+				{
+					"start": 507.92,
+					"text": "And Becky Laskay is a very important figure in Una's life."
+				},
+				{
+					"start": 512,
+					"text": "She's the reason Una is alive today."
+				},
+				{
+					"start": 514.4,
+					"text": "Stuff went down, and she lost her man, and now Una has vowed that if Becky ever needs anything, she will be there in a heartbeat."
+				},
+				{
+					"start": 523.14,
+					"text": "And here I am."
+				},
+				{
+					"start": 524.64,
+					"text": "I believe that I know a way to end this curse."
+				},
+				{
+					"start": 529.64,
+					"text": "I have found a description of the witch's spellbook."
+				},
+				{
+					"start": 532.72,
+					"text": "I think if we can find it, and find the curse that caused this corruption, we could perhaps save ourselves, as well as the rest of Wood Creek."
+				}
+			]
+		},
+		{
+			"start": 541.7,
+			"title": "Компас и школа",
+			"summary": "Дедовский компас Becky указывает на старую школу; Vix уже разведывает там, куда направляется отряд.",
+			"theses": [
+				"Компас иногда шепчет — возможно, из-за порчи Wood Creek.",
+				"По описанию предмета компас показывает направление; сейчас — schoolhouse.",
+				"Трое потомков иммунны к порче; мёртвые-испорченные остаются опасны."
+			],
+			"anchor": "This, this here, this is my grandfather's compass.",
+			"segments": [
+				{
+					"start": 541.7,
+					"text": "This, this here, this is my grandfather's compass."
+				},
+				{
+					"start": 545.16,
+					"text": "It was passed down through generations to me."
+				},
+				{
+					"start": 547.5,
+					"text": "It must have been tainted by the corruption, because sometimes I can hear it whispering."
+				},
+				{
+					"start": 552.16,
+					"text": "I don't like to use it."
+				},
+				{
+					"start": 554.18,
+					"text": "But if I can describe an object to it, it will show me where that object is."
+				},
+				{
+					"start": 559.48,
+					"text": "And it has pointed me towards the old schoolhouse, within the bounds of Wood Creek."
+				},
+				{
+					"start": 564.56,
+					"text": "Now, the three of us are, are protected by the witch's curse."
+				},
+				{
+					"start": 568.82,
+					"text": "In some strange twist of fate, we will not be touched by her corruption, although we are, of course, still vulnerable to the corrupt dead."
+				},
+				{
+					"start": 575.84,
+					"text": "Now, Una here, not so much."
+				},
+				{
+					"start": 578.32,
+					"text": "However, at great expense, I have procured a potion of protection."
+				},
+				{
+					"start": 582.48,
+					"text": "It will protect her for eight hours, and she has generously agreed to join us."
+				},
+				{
+					"start": 587,
+					"text": "Anything for a friend?"
+				},
+				{
+					"start": 587.96,
+					"text": "Are you ready?"
+				},
+				{
+					"start": 590.38,
+					"text": "Danger's my middle name."
+				},
+				{
+					"start": 591.76,
+					"text": "It's not, but I like to say that."
+				},
+				{
+					"start": 594.78,
+					"text": "All right."
+				},
+				{
+					"start": 595.76,
+					"text": "Well, then, together, we shall go meet Vix."
+				},
+				{
+					"start": 598.46,
+					"text": "Our friend has agreed to scout ahead, taking on that very dangerous mission."
+				},
+				{
+					"start": 602.9,
+					"text": "She is currently at the schoolhouse, which is where this has pointed us to."
+				},
+				{
+					"start": 607.76,
+					"text": "We will see her there, and discover what we may."
+				},
+				{
+					"start": 612.14,
+					"text": "Onward."
+				},
+				{
+					"start": 613.14,
+					"text": "Onward."
+				},
+				{
+					"start": 614.1,
+					"text": "Onward."
+				},
+				{
+					"start": 614.94,
+					"text": "Onward."
+				}
+			]
+		},
+		{
+			"start": 617,
+			"title": "Vix — разведчица",
+			"summary": "Anjali Bhimani играет Vix, перевёртыша-колдуна, которая пошла вперёд и зовёт остальных в школу.",
+			"theses": [
+				"Vix — shapeshifter warlock; пообещала разведать и поняла, что одной не справиться.",
+				"У Valentine и Vix сложные отношения — схожие характеры конфликтуют.",
+				"С Victor у Vix сложилось лучше; она зовёт группу на «Onward» к школе."
+			],
+			"anchor": "I'm Anjali Bhimani",
+			"segments": [
+				{
+					"start": 617,
+					"text": "I'm Anjali Bhimani, and I am playing Vix."
+				},
+				{
+					"start": 620.58,
+					"text": "She is a shapeshifter warlock."
+				},
+				{
+					"start": 623.66,
+					"text": "What I imagined she was doing was, yes, saying to everybody, I'm just going to scout ahead."
+				},
+				{
+					"start": 628.96,
+					"text": "Let me just, let me just, you know, handle this."
+				},
+				{
+					"start": 630.88,
+					"text": "And then, once she saw how bad it was, knew that she couldn't do it alone."
+				},
+				{
+					"start": 636.38,
+					"text": "I have no idea what to expect."
+				},
+				{
+					"start": 639.34,
+					"text": "I have absolutely no idea what to expect."
+				}
+			]
+		},
+		{
+			"start": 648.2,
+			"title": "Вход в Wood Creek",
+			"summary": "Мастер описывает туман, мёртвую природу, шёпот в тумане и рассадку за партами предков героев.",
+			"theses": [
+				"За границей — мгла, нет животных, слышны рычания и шёпот, пытающийся проникнуть в разум.",
+				"Гости садятся за стол Roblin; у каждого — фамилия одного из четырёх родов.",
+				"Атмосфера нарастает по пути к schoolhouse."
+			],
+			"anchor": "As you cross over the border into Wood Creek",
+			"segments": [
+				{
+					"start": 648.2,
+					"text": "As you cross over the border into Wood Creek, you immediately sense this, this pall above."
+				},
+				{
+					"start": 655.38,
+					"text": "There's mist that's very hard, difficult to see through."
+				},
+				{
+					"start": 659.18,
+					"text": "You are welcome to take your seats if you would like."
+				},
+				{
+					"start": 661.46,
+					"text": "You will see your family names at these desks."
+				},
+				{
+					"start": 665.64,
+					"text": "Because you are a guest here, you can sit at the Roblin desk, my dear friend."
+				},
+				{
+					"start": 670.14,
+					"text": "I am very clueless about what my role is going to be and how I can help everyone achieve their goals."
+				},
+				{
+					"start": 677,
+					"text": "But, you know, if someone does need, they're nail clipped."
+				},
+				{
+					"start": 680.62,
+					"text": "Yes, so as you come through the town and you notice that everything has died, there is no wildlife."
+				},
+				{
+					"start": 686.58,
+					"text": "But in the distance, you can hear snarls and shadows moving."
+				},
+				{
+					"start": 690.9,
+					"text": "But most pressing, in the mist above you, you hear whispers as if something is trying to enter your mind."
+				}
+			]
+		},
+		{
+			"start": 700.08,
+			"title": "Школа и встреча с Vix",
+			"summary": "У одноклассной школы герои встречают Vix; внутри — карта Wood Creek, портрет и парты предков.",
+			"theses": [
+				"Vix осмотрела экстерьер: других входов нет, внутри слышны звуки.",
+				"Класс — общая школа для детей разных возрастов; на партах имена предков.",
+				"Valentine спрашивает, что ищут — книгу заклинаний ведьмы."
+			],
+			"anchor": "You finally come to the schoolhouse",
+			"segments": [
+				{
+					"start": 700.08,
+					"text": "You finally come to the schoolhouse and there, outside, you meet Vix."
+				},
+				{
+					"start": 703.56,
+					"text": "Now, Vix has scouted the exterior."
+				},
+				{
+					"start": 705.76,
+					"text": "There are no other entrances into this building."
+				},
+				{
+					"start": 708.02,
+					"text": "But she heard noises inside."
+				},
+				{
+					"start": 710.46,
+					"text": "Obviously, I didn't want to come here on my own."
+				},
+				{
+					"start": 712.56,
+					"text": "These hands aren't built for manual labor."
+				},
+				{
+					"start": 714.4,
+					"text": "So naturally, you called us."
+				},
+				{
+					"start": 717.42,
+					"text": "Naturally, I called him and you're part of the deal."
+				},
+				{
+					"start": 719.62,
+					"text": "Yeah."
+				},
+				{
+					"start": 720.6,
+					"text": "So Valentine and Vix have a bit of a history."
+				},
+				{
+					"start": 723.92,
+					"text": "She ran with us previously."
+				},
+				{
+					"start": 726.2,
+					"text": "And she got along great with Victor."
+				},
+				{
+					"start": 728.38,
+					"text": "But it's almost because Valentine and Vix's personalities are similar."
+				},
+				{
+					"start": 734.58,
+					"text": "So they don't get along that great."
+				},
+				{
+					"start": 737.4,
+					"text": "We're supposed to be here to end a curse."
+				},
+				{
+					"start": 739.7,
+					"text": "What are we looking for?"
+				},
+				{
+					"start": 741.84,
+					"text": "So yes, you enter and you see essentially what you see here."
+				},
+				{
+					"start": 745.44,
+					"text": "This is an old one-room schoolhouse where many children of many ages would have come to learn together."
+				},
+				{
+					"start": 750.64,
+					"text": "There are indeed names on this desk."
+				},
+				{
+					"start": 753.16,
+					"text": "These are the very chairs that your ancestors would have sat in so many generations ago."
+				},
+				{
+					"start": 759.18,
+					"text": "There is a map of Wood Creek on the chalkboard."
+				},
+				{
+					"start": 764.16,
+					"text": "Various things have been written as if they've stayed here over the centuries."
+				},
+				{
+					"start": 768.92,
+					"text": "An extremely interesting portrait of a man here, if I do say myself."
+				},
+				{
+					"start": 773.78,
+					"text": "As you begin to kind of take in the space, is there anything that you would like to do?"
+				}
+			]
+		},
+		{
+			"start": 780.02,
+			"title": "Поиск книги заклинаний",
+			"summary": "Компас крутится — цель близко; герои обсуждают сжечь школу, но Becky настаивает на поиске заклинания.",
+			"theses": [
+				"Компас не даёт точного направления — объект слишком близко или под магией.",
+				"Valentine шутит про сжечь здание; Rebecca против — нужна история и само заклинание.",
+				"Monty признаётся, что ему трудно не быть «задним DM» за столом."
+			],
+			"anchor": "So the compass is supposed to be directing us",
+			"segments": [
+				{
+					"start": 780.02,
+					"text": "So the compass is supposed to be directing us towards the witch's spell book."
+				},
+				{
+					"start": 785.3,
+					"text": "Yes."
+				},
+				{
+					"start": 786.12,
+					"text": "So that means it's here somewhere."
+				},
+				{
+					"start": 788.24,
+					"text": "It is here somewhere."
+				},
+				{
+					"start": 788.92,
+					"text": "I can take a look."
+				},
+				{
+					"start": 791.46,
+					"text": "I'm sorry."
+				},
+				{
+					"start": 792.4,
+					"text": "It's spinning wildly."
+				},
+				{
+					"start": 793.94,
+					"text": "It's not giving me any direction here."
+				},
+				{
+					"start": 795.74,
+					"text": "So that means that this is the place, but it's too close."
+				},
+				{
+					"start": 800.4,
+					"text": "There's something about it that it won't point us right to where it is pinpoint."
+				},
+				{
+					"start": 805.38,
+					"text": "Perhaps."
+				},
+				{
+					"start": 806.54,
+					"text": "Could be blocked."
+				},
+				{
+					"start": 807.62,
+					"text": "Who?"
+				},
+				{
+					"start": 808.06,
+					"text": "Could be a magical effect."
+				},
+				{
+					"start": 811.36,
+					"text": "Schoolhouse is a great place to hide a book."
+				},
+				{
+					"start": 813.88,
+					"text": "There's going to be lots of books around."
+				},
+				{
+					"start": 815.54,
+					"text": "Just in case I have to ask, we need the spell out of the book?"
+				},
+				{
+					"start": 819.98,
+					"text": "Yes."
+				},
+				{
+					"start": 820.42,
+					"text": "We couldn't just burn this whole place down and be done with it, right?"
+				},
+				{
+					"start": 823.4,
+					"text": "I don't believe that that would end the curse."
+				},
+				{
+					"start": 824.94,
+					"text": "History here."
+				},
+				{
+					"start": 825.46,
+					"text": "People lived here."
+				},
+				{
+					"start": 826.86,
+					"text": "History be damned."
+				},
+				{
+					"start": 828,
+					"text": "People are cursed."
+				},
+				{
+					"start": 829.3,
+					"text": "Well, we've been cursed long enough."
+				},
+				{
+					"start": 832.5,
+					"text": "We can figure this out without burning the whole place down."
+				},
+				{
+					"start": 835.38,
+					"text": "I'll be completely honest."
+				},
+				{
+					"start": 836.64,
+					"text": "I cannot stand being a player."
+				},
+				{
+					"start": 838.32,
+					"text": "One of the biggest challenges for me as a player is not being the backseat DM."
+				}
+			]
+		},
+		{
+			"start": 846.66,
+			"title": "Призрак Miss Vickers",
+			"summary": "Появляется синий призрак учительницы с линейкой; начинается урок о Wood Creek и credo «good, better, best».",
+			"theses": [
+				"Miss Vickers — высокий синий аппарition в очках с yardstick.",
+				"Урок: карта города, семейные имена на партах, credo «good, better, best».",
+				"Игроки узнают фамилию Vickers из семейных воспоминаний предков."
+			],
+			"anchor": "From the head of the class, you see a tall blue apparition",
+			"segments": [
+				{
+					"start": 846.66,
+					"text": "From the head of the class, you see a tall blue apparition appear before you."
+				},
+				{
+					"start": 850.98,
+					"text": "She has a yardstick and she wears tiny little glasses."
+				},
+				{
+					"start": 855.16,
+					"text": "Okay."
+				},
+				{
+					"start": 856.22,
+					"text": "She looks at all of you."
+				},
+				{
+					"start": 857,
+					"text": "She says, children, I'm so glad that you're on time today."
+				},
+				{
+					"start": 860.26,
+					"text": "Oh, it has been such a long vacation this summer."
+				},
+				{
+					"start": 863.32,
+					"text": "Have you been doing your practicing today?"
+				},
+				{
+					"start": 865.96,
+					"text": "Oh, there better not be math homework."
+				},
+				{
+					"start": 867.6,
+					"text": "Uh, yes, of course."
+				},
+				{
+					"start": 870.84,
+					"text": "Oh, dear."
+				},
+				{
+					"start": 873.7,
+					"text": "Excuse me."
+				},
+				{
+					"start": 875,
+					"text": "Young Roblin."
+				},
+				{
+					"start": 876.38,
+					"text": "Did you entice Tommy to drop those books?"
+				},
+				{
+					"start": 879.96,
+					"text": "Did I entice Tommy to drop those books?"
+				},
+				{
+					"start": 881.92,
+					"text": "Yes."
+				},
+				{
+					"start": 882.82,
+					"text": "Tommy's a very bad little boy."
+				},
+				{
+					"start": 885.64,
+					"text": "Should I apologize?"
+				},
+				{
+					"start": 886.84,
+					"text": "I would like you to please go pick up the books, put them back, and we're going to read"
+				},
+				{
+					"start": 890.08,
+					"text": "the credo, please."
+				},
+				{
+					"start": 890.72,
+					"text": "Oh, I don't like her going alone."
+				},
+				{
+					"start": 895.12,
+					"text": "Oh, you may join her?"
+				},
+				{
+					"start": 897.14,
+					"text": "Please."
+				},
+				{
+					"start": 897.84,
+					"text": "Young Miss Storm."
+				},
+				{
+					"start": 898.82,
+					"text": "If we must pick up the books, then we must pick up the books."
+				},
+				{
+					"start": 901.3,
+					"text": "Can we all go?"
+				},
+				{
+					"start": 902.28,
+					"text": "If you would like."
+				},
+				{
+					"start": 904.1,
+					"text": "I'm so excited to be playing with Iman because when we worked on Ms."
+				},
+				{
+					"start": 908.54,
+					"text": "Marvel together, she just"
+				},
+				{
+					"start": 909.98,
+					"text": "became one of my favorite people, period."
+				},
+				{
+					"start": 911.6,
+					"text": "And I love the idea of pulling her deeply into our nerdy world."
+				},
+				{
+					"start": 917.74,
+					"text": "There isn't any chance that one of these books could be the spell book itself, is there?"
+				},
+				{
+					"start": 921.96,
+					"text": "Can we make a check?"
+				},
+				{
+					"start": 923.62,
+					"text": "Yes, you may."
+				},
+				{
+					"start": 924.28,
+					"text": "Can we do an investigation check, perhaps, to see if any of these names are familiar?"
+				},
+				{
+					"start": 932.12,
+					"text": "So either that or history."
+				},
+				{
+					"start": 933.46,
+					"text": "Fantastic."
+				},
+				{
+					"start": 934.18,
+					"text": "Roll a history check."
+				},
+				{
+					"start": 935.48,
+					"text": "Ah!"
+				},
+				{
+					"start": 936.06,
+					"text": "That doesn't count."
+				},
+				{
+					"start": 936.76,
+					"text": "Add a D4."
+				},
+				{
+					"start": 937.1,
+					"text": "Add a D4."
+				},
+				{
+					"start": 938.1,
+					"text": "Light be with you."
+				},
+				{
+					"start": 939.9,
+					"text": "Oh."
+				},
+				{
+					"start": 940.94,
+					"text": "I didn't."
+				},
+				{
+					"start": 941.76,
+					"text": "I just dropped it."
+				},
+				{
+					"start": 942.82,
+					"text": "Yeah, roll that and then you can roll this."
+				},
+				{
+					"start": 944.94,
+					"text": "A 12."
+				},
+				{
+					"start": 945.76,
+					"text": "Okay, 12 plus."
+				},
+				{
+					"start": 947.4,
+					"text": "3, 15."
+				},
+				{
+					"start": 948.14,
+					"text": "3, 15 plus whatever."
+				},
+				{
+					"start": 949.76,
+					"text": "I think my modifier might be a 1."
+				},
+				{
+					"start": 953.18,
+					"text": "You absolutely do recognize some of the names here."
+				},
+				{
+					"start": 956.7,
+					"text": "These are names of people in this town."
+				},
+				{
+					"start": 959.56,
+					"text": "They might even be some of your own ancestors' names."
+				},
+				{
+					"start": 962.56,
+					"text": "They do not seem to have any particular meaning to you."
+				},
+				{
+					"start": 966.1,
+					"text": "They are not particularly your ancestors, but they do bear your family name."
+				},
+				{
+					"start": 970.52,
+					"text": "We've got four families."
+				},
+				{
+					"start": 972.4,
+					"text": "The four main families here."
+				},
+				{
+					"start": 974.82,
+					"text": "Roblins."
+				},
+				{
+					"start": 975.38,
+					"text": "I'm from the house of Flynn."
+				},
+				{
+					"start": 978.08,
+					"text": "I don't like this."
+				},
+				{
+					"start": 979.26,
+					"text": "Did anyone hear that?"
+				},
+				{
+					"start": 980.3,
+					"text": "Yes."
+				},
+				{
+					"start": 983.44,
+					"text": "Tommy?"
+				},
+				{
+					"start": 986.47,
+					"text": "Tommy?"
+				},
+				{
+					"start": 987.87,
+					"text": "Tommy, are you distracting the children?"
+				},
+				{
+					"start": 992.93,
+					"text": "All right."
+				},
+				{
+					"start": 993.57,
+					"text": "Young Miss Roblin, I need you to come here, please."
+				},
+				{
+					"start": 995.71,
+					"text": "Oh."
+				},
+				{
+					"start": 996.65,
+					"text": "I'm coming with you."
+				},
+				{
+					"start": 997.63,
+					"text": "That's not okay."
+				},
+				{
+					"start": 998.49,
+					"text": "Thank you."
+				},
+				{
+					"start": 998.77,
+					"text": "Please, please."
+				},
+				{
+					"start": 999.81,
+					"text": "Oh, no, no, no."
+				},
+				{
+					"start": 1003.33,
+					"text": "That's supposed to go on my head."
+				},
+				{
+					"start": 1004.67,
+					"text": "Okay."
+				},
+				{
+					"start": 1005.33,
+					"text": "Here you are."
+				},
+				{
+					"start": 1006.39,
+					"text": "Fantastic."
+				},
+				{
+					"start": 1007.09,
+					"text": "Right here."
+				},
+				{
+					"start": 1008.91,
+					"text": "Can I blame Tommy for this?"
+				},
+				{
+					"start": 1011.25,
+					"text": "Oh, of course."
+				},
+				{
+					"start": 1012.05,
+					"text": "Tommy's a very, very poor little boy."
+				},
+				{
+					"start": 1014.03,
+					"text": "Here we go."
+				},
+				{
+					"start": 1014.51,
+					"text": "Ready?"
+				},
+				{
+					"start": 1015.27,
+					"text": "Maria."
+				},
+				{
+					"start": 1015.89,
+					"text": "Yes, please."
+				},
+				{
+					"start": 1016.33,
+					"text": "Okay."
+				},
+				{
+					"start": 1016.93,
+					"text": "Good."
+				},
+				{
+					"start": 1017.83,
+					"text": "Better."
+				},
+				{
+					"start": 1018.19,
+					"text": "Better best."
+				},
+				{
+					"start": 1019.17,
+					"text": "Never let it rest until your good is better and your better best."
+				},
+				{
+					"start": 1024.87,
+					"text": "Oh, that was lovely."
+				},
+				{
+					"start": 1025.77,
+					"text": "Cheese."
+				},
+				{
+					"start": 1026.65,
+					"text": "Cheese."
+				},
+				{
+					"start": 1027.65,
+					"text": "Cheese."
+				},
+				{
+					"start": 1028.39,
+					"text": "That was fantastic."
+				},
+				{
+					"start": 1029.29,
+					"text": "You were very loud spoken."
+				},
+				{
+					"start": 1030.45,
+					"text": "I appreciate that."
+				},
+				{
+					"start": 1031.37,
+					"text": "And a young person, you may go and take your seat."
+				},
+				{
+					"start": 1033.33,
+					"text": "Like for Tommy to hear me this time."
+				},
+				{
+					"start": 1034.73,
+					"text": "Deb has been really, really chill."
+				},
+				{
+					"start": 1037.23,
+					"text": "It's a really cool thing to see other dungeon masters and how they run the game, how they design"
+				},
+				{
+					"start": 1042.75,
+					"text": "their adventures, how they do things."
+				},
+				{
+					"start": 1044.77,
+					"text": "As you see her stand there and sort of float as she moves, I will offer that you notice that"
+				},
+				{
+					"start": 1051.61,
+					"text": "she will gesture, she will gesture, she will say hello, welcome back class."
+				},
+				{
+					"start": 1054.39,
+					"text": "I'm Miss Vickers."
+				},
+				{
+					"start": 1055.23,
+					"text": "Today, we are going to talk about Wood Creek, our very own town."
+				},
+				{
+					"start": 1060.85,
+					"text": "Here's the map of Wood Creek that you see before you."
+				},
+				{
+					"start": 1064.09,
+					"text": "Now, tell me, what do you know of your hometown, little ones?"
+				},
+				{
+					"start": 1069.57,
+					"text": "I mean, I don't know very much."
+				},
+				{
+					"start": 1070.83,
+					"text": "I rely on you."
+				},
+				{
+					"start": 1072.07,
+					"text": "I've never been here before."
+				},
+				{
+					"start": 1074.17,
+					"text": "I know that there were..."
+				},
+				{
+					"start": 1076.53,
+					"text": "Is that Tommy?"
+				},
+				{
+					"start": 1077.63,
+					"text": "Tommy, I don't like this kid."
+				},
+				{
+					"start": 1082.41,
+					"text": "Tommy, I said stop it or I will send the Reverend Dixon after you again."
+				},
+				{
+					"start": 1088.01,
+					"text": "Our dear Reverend Dixon, as you can see."
+				},
+				{
+					"start": 1090.75,
+					"text": "That would have been my family's ancestor."
+				},
+				{
+					"start": 1093.61,
+					"text": "All right, I'd like you to make a quick stealth check if you are going to sneak over there for"
+				},
+				{
+					"start": 1098.09,
+					"text": "me, please."
+				},
+				{
+					"start": 1099.63,
+					"text": "Stealth, okay, we got a plus three."
+				},
+				{
+					"start": 1101.89,
+					"text": "That's going to be a nine."
+				},
+				{
+					"start": 1103.31,
+					"text": "A nine, fantastic."
+				},
+				{
+					"start": 1104.57,
+					"text": "As you start to move over there, Miss Vickers sort of says, excuse me."
+				},
+				{
+					"start": 1109.51,
+					"text": "Excuse me, young man."
+				},
+				{
+					"start": 1110.43,
+					"text": "We are in the middle of a lesson."
+				},
+				{
+					"start": 1113.25,
+					"text": "Sorry, something's making noise over here."
+				},
+				{
+					"start": 1115.35,
+					"text": "I just..."
+				},
+				{
+					"start": 1115.63,
+					"text": "I know, it's just Tommy."
+				},
+				{
+					"start": 1116.81,
+					"text": "He likes to disrupt things."
+				}
+			]
+		},
+		{
+			"start": 1119.05,
+			"title": "Tommy и тихое чтение",
+			"summary": "Дух Tommy стучит и отвлекает класс; учительница отпускает детей читать, герои начинают расследование.",
+			"theses": [
+				"Стуки Tommy кажутся настойчивыми — возможно, он пытается передать сообщение.",
+				"Insight и history проверки: Tommy не родственник, но может быть союзником.",
+				"Патрон Vix, возможно, сама ведьма — усложняет мотивацию снять проклятие."
+			],
+			"anchor": "Tommy, sit down and stopped distracting the class.",
+			"segments": [
+				{
+					"start": 1119.05,
+					"text": "Tommy, sit down and stopped distracting the class."
+				},
+				{
+					"start": 1123.63,
+					"text": "At this moment, she's going to say, all right, why don't you all do some of your own quiet"
+				},
+				{
+					"start": 1127.71,
+					"text": "reading?"
+				},
+				{
+					"start": 1128.51,
+					"text": "I'm going to prepare for our next lesson."
+				},
+				{
+					"start": 1131.09,
+					"text": "And she will turn her back for the moment."
+				},
+				{
+					"start": 1133.43,
+					"text": "Does the saying here, or the last name Vickers, do either of those ring a bell to me?"
+				},
+				{
+					"start": 1139.69,
+					"text": "Have I heard them somewhere before?"
+				},
+				{
+					"start": 1141.31,
+					"text": "History."
+				},
+				{
+					"start": 1144.38,
+					"text": "You're going to be a 21."
+				},
+				{
+					"start": 1145.88,
+					"text": "21."
+				},
+				{
+					"start": 1147.2,
+					"text": "It's your mother, right?"
+				},
+				{
+					"start": 1149.42,
+					"text": "Who is the descendant?"
+				},
+				{
+					"start": 1150.72,
+					"text": "You remember her in her sleep."
+				},
+				{
+					"start": 1152.7,
+					"text": "It's coming back to you, because this was a long time ago, muttering over and over, good,"
+				},
+				{
+					"start": 1157.84,
+					"text": "better, best, good, better, best, good, better, best, good, better, best."
+				},
+				{
+					"start": 1160.8,
+					"text": "And maybe once you asked her about it, and she had said it was something that her father,"
+				},
+				{
+					"start": 1166.98,
+					"text": "grandfather used to say."
+				},
+				{
+					"start": 1169.3,
+					"text": "It's obvious that our ancestors came to school here."
+				},
+				{
+					"start": 1172.52,
+					"text": "This is something that's ingrained in our family trees, passed down."
+				},
+				{
+					"start": 1180.22,
+					"text": "Tommy, suck it."
+				},
+				{
+					"start": 1181.28,
+					"text": "Shut up."
+				},
+				{
+					"start": 1183.22,
+					"text": "Would you like to make a perception check?"
+				},
+				{
+					"start": 1185.06,
+					"text": "Yes, I would."
+				},
+				{
+					"start": 1186.2,
+					"text": "Actually, I'd like to make an insight check."
+				},
+				{
+					"start": 1187.58,
+					"text": "Please make an insight check."
+				},
+				{
+					"start": 1188.68,
+					"text": "I want to see if Tommy is trying to talk to us."
+				},
+				{
+					"start": 1190.84,
+					"text": "Fantastic."
+				},
+				{
+					"start": 1191.06,
+					"text": "That's what I want to see."
+				},
+				{
+					"start": 1191.86,
+					"text": "Make an insight check."
+				},
+				{
+					"start": 1195.68,
+					"text": "Do I get it?"
+				},
+				{
+					"start": 1196.66,
+					"text": "Again, just because you're here?"
+				},
+				{
+					"start": 1198.22,
+					"text": "Okay."
+				},
+				{
+					"start": 1200.02,
+					"text": "Guidance be yours."
+				},
+				{
+					"start": 1201.06,
+					"text": "Okay, plus three, so that's ten plus."
+				},
+				{
+					"start": 1205.4,
+					"text": "I should be giving out my inspiration."
+				},
+				{
+					"start": 1208.52,
+					"text": "Eleven."
+				},
+				{
+					"start": 1209.28,
+					"text": "A lonely eleven."
+				},
+				{
+					"start": 1210.14,
+					"text": "Yeah."
+				},
+				{
+					"start": 1210.46,
+					"text": "So, it's hard to tell, right?"
+				},
+				{
+					"start": 1212.06,
+					"text": "Like, these are just noises and knocks, but they feel insistent to you."
+				},
+				{
+					"start": 1216.7,
+					"text": "Tommy, are you trying to talk to us?"
+				},
+				{
+					"start": 1217.66,
+					"text": "And they keep coming from the same places."
+				},
+				{
+					"start": 1219.72,
+					"text": "Do we think he's trying to tell us something?"
+				},
+				{
+					"start": 1220.96,
+					"text": "Does he know something?"
+				},
+				{
+					"start": 1222.38,
+					"text": "Is Tommy related to any one of..."
+				},
+				{
+					"start": 1224.82,
+					"text": "That's a great question."
+				},
+				{
+					"start": 1226.3,
+					"text": "Would you like to make a history check?"
+				},
+				{
+					"start": 1227.38,
+					"text": "I would love to."
+				},
+				{
+					"start": 1228.04,
+					"text": "Yes, yes."
+				},
+				{
+					"start": 1228.64,
+					"text": "My first rule."
+				},
+				{
+					"start": 1229.7,
+					"text": "Do a roll."
+				},
+				{
+					"start": 1230.58,
+					"text": "Okay."
+				},
+				{
+					"start": 1230.96,
+					"text": "You're going to roll a d20, and you're going to add your history bonus."
+				},
+				{
+					"start": 1234,
+					"text": "Ooh, I like these dice."
+				},
+				{
+					"start": 1238.49,
+					"text": "13 minus one, 12."
+				},
+				{
+					"start": 1239.71,
+					"text": "Minus one, 12."
+				},
+				{
+					"start": 1240.73,
+					"text": "So, you aren't from this town."
+				},
+				{
+					"start": 1243.17,
+					"text": "Your family isn't from this town."
+				},
+				{
+					"start": 1244.21,
+					"text": "However, you do pose that question to the rest of the group."
+				},
+				{
+					"start": 1247.69,
+					"text": "And he just got excited."
+				},
+				{
+					"start": 1249.35,
+					"text": "I don't know, it sounds like he's excited."
+				},
+				{
+					"start": 1250.81,
+					"text": "Yeah."
+				},
+				{
+					"start": 1251.77,
+					"text": "Are you related to one of the three of us, Tommy?"
+				},
+				{
+					"start": 1256.94,
+					"text": "I think Leskay is sort of listening."
+				},
+				{
+					"start": 1262.22,
+					"text": "We are here looking for something."
+				},
+				{
+					"start": 1264.06,
+					"text": "Do we feel Tommy is an ally?"
+				},
+				{
+					"start": 1266.58,
+					"text": "Do we feel he's helpful to us?"
+				},
+				{
+					"start": 1267.88,
+					"text": "I don't know."
+				},
+				{
+					"start": 1268.78,
+					"text": "Well, it's the children who suffer."
+				},
+				{
+					"start": 1270.34,
+					"text": "Tommy, are you here to help us?"
+				},
+				{
+					"start": 1275.42,
+					"text": "Well, I'm going to trust him."
+				},
+				{
+					"start": 1277.72,
+					"text": "To trust Tommy?"
+				},
+				{
+					"start": 1278.74,
+					"text": "Would you like to make an insight?"
+				},
+				{
+					"start": 1279.94,
+					"text": "Or can I just decide?"
+				},
+				{
+					"start": 1281.38,
+					"text": "I'll make an insight."
+				},
+				{
+					"start": 1282,
+					"text": "There's not much insight."
+				},
+				{
+					"start": 1282.56,
+					"text": "Can I also, while that's happening, can I do a little, like, internal check-in?"
+				},
+				{
+					"start": 1286.72,
+					"text": "Yeah."
+				},
+				{
+					"start": 1287.34,
+					"text": "And see if I'm getting any vibey vibes from my..."
+				},
+				{
+					"start": 1292.9,
+					"text": "Yeah, just roll a d20 and maybe add your, like, spellcasting bonus."
+				},
+				{
+					"start": 1295.68,
+					"text": "I think for a long time she did not really know who her patron was."
+				},
+				{
+					"start": 1300.48,
+					"text": "I think she suspects at this point that her patron may be the witch, which obviously adds a layer of complication to all of this, to the desire to get rid of the curse, to what it means to have these powers, to what it means to not tell people."
+				},
+				{
+					"start": 1322.02,
+					"text": "And the only people that she really has had history with, who she may feel even remotely safe with, are our two boys."
+				},
+				{
+					"start": 1332.84,
+					"text": "21."
+				},
+				{
+					"start": 1333.72,
+					"text": "21 and a 19."
+				},
+				{
+					"start": 1335,
+					"text": "Fantastic."
+				},
+				{
+					"start": 1335.82,
+					"text": "So, you get an overwhelming feeling of almost deja vu, that you are in the right place right now."
+				},
+				{
+					"start": 1346.22,
+					"text": "That you are doing the right thing."
+				},
+				{
+					"start": 1348.66,
+					"text": "You are following the right path."
+				},
+				{
+					"start": 1350.66,
+					"text": "And as you are sort of watching her and that emotion come through, you're able to sort of intuit, with your insight, that this feels trustworthy."
+				},
+				{
+					"start": 1363.92,
+					"text": "He seems to be going in a pattern, too."
+				},
+				{
+					"start": 1366.22,
+					"text": "Quick stealth check from whoever goes over there."
+				},
+				{
+					"start": 1367.88,
+					"text": "I'm not going to be stealthy about it."
+				},
+				{
+					"start": 1369.6,
+					"text": "You're not going to be stealthy about it."
+				},
+				{
+					"start": 1370.94,
+					"text": "I was prepared to say to the school teacher, just try to stop me."
+				},
+				{
+					"start": 1374.52,
+					"text": "I'm a Dixon."
+				},
+				{
+					"start": 1375.22,
+					"text": "What are you going to do?"
+				},
+				{
+					"start": 1376.58,
+					"text": "No."
+				},
+				{
+					"start": 1376.94,
+					"text": "Miss Vickers turns."
+				},
+				{
+					"start": 1379.72,
+					"text": "She sees you stride over there."
+				},
+				{
+					"start": 1381.8,
+					"text": "She says, oh, young Master Dixon, I suppose your father would want me to give you every opening."
+				},
+				{
+					"start": 1393,
+					"text": "Please, proceed, whatever you would like to do, sir."
+				},
+				{
+					"start": 1396.18,
+					"text": "That's right, Mrs."
+				},
+				{
+					"start": 1397.1,
+					"text": "Vickers."
+				},
+				{
+					"start": 1397.34,
+					"text": "Yes, of course, I understand."
+				},
+				{
+					"start": 1398.52,
+					"text": "Please, of course."
+				},
+				{
+					"start": 1399.26,
+					"text": "I will tell my great-grandfather on you, or however the relation is."
+				},
+				{
+					"start": 1404.8,
+					"text": "So, we are calling these Secrets."
+				},
+				{
+					"start": 1410.42,
+					"text": "As you explore through this adventure, this campaign, you will find secrets."
+				},
+				{
+					"start": 1414.4,
+					"text": "You are welcome to them."
+				},
+				{
+					"start": 1417.12,
+					"text": "It's a note."
+				}
+			]
+		},
+		{
+			"start": 1418.86,
+			"title": "Записки Tommy о Dixon",
+			"summary": "Герои находят записки: Reverend Dixon пугает Miss Vickers; Tommy прятал его счастливую монету.",
+			"theses": [
+				"Записка: Miss Vickers ведёт себя странно с портретом Reverend Dixon.",
+				"Tommy когда-то украл lucky coin Dixon и спрятал в спальне бабушек.",
+				"Vix маскируется под ребёнка и пытается выведать страх учительницы."
+			],
+			"anchor": "Reverend Dixon gives me the willies",
+			"segments": [
+				{
+					"start": 1418.86,
+					"text": "Reverend Dixon gives me the willies."
+				},
+				{
+					"start": 1421.4,
+					"text": "And ever since Tommy disappeared, Miss Vickers has been acting so peculiar."
+				},
+				{
+					"start": 1428.38,
+					"text": "She jumps every time she so much as looks at the portrait of Reverend Dixon."
+				},
+				{
+					"start": 1435.32,
+					"text": "So, he is my employer and my uncle, and he is a stern fellow, and I do what I am told,"
+				},
+				{
+					"start": 1441.72,
+					"text": "much as you children should do."
+				},
+				{
+					"start": 1442.98,
+					"text": "Of course, you do whatever you would like."
+				},
+				{
+					"start": 1444.76,
+					"text": "I'm a lot like my uncle."
+				},
+				{
+					"start": 1446.06,
+					"text": "There is another one."
+				},
+				{
+					"start": 1448.58,
+					"text": "Oh, dear."
+				},
+				{
+					"start": 1449.36,
+					"text": "Tommy, you are quite disruptive today."
+				},
+				{
+					"start": 1452.44,
+					"text": "Tommy?"
+				},
+				{
+					"start": 1453.58,
+					"text": "Oh, dear."
+				},
+				{
+					"start": 1456.69,
+					"text": "I'm going to read this."
+				},
+				{
+					"start": 1458.13,
+					"text": "I'm keeping a very close eye on this woman."
+				},
+				{
+					"start": 1461.69,
+					"text": "I miss Tommy every day."
+				},
+				{
+					"start": 1463.65,
+					"text": "He made me laugh."
+				},
+				{
+					"start": 1464.81,
+					"text": "He told me once that he'd nicked Reverend Dixon's lucky coin."
+				},
+				{
+					"start": 1468.41,
+					"text": "Said he hid it somewhere in his grandparents' bedroom."
+				},
+				{
+					"start": 1471.37,
+					"text": "The Reverend got so mad, he turned purple."
+				},
+				{
+					"start": 1474.81,
+					"text": "This spirit could be just as cursed as any of us."
+				},
+				{
+					"start": 1479.25,
+					"text": "I am not cursed."
+				},
+				{
+					"start": 1480.99,
+					"text": "I do what I am told."
+				},
+				{
+					"start": 1482.89,
+					"text": "Your father may be my employer."
+				},
+				{
+					"start": 1486.03,
+					"text": "But you, I am still your teacher."
+				},
+				{
+					"start": 1488.69,
+					"text": "And you will still treat me with respect, as you will see."
+				},
+				{
+					"start": 1492.47,
+					"text": "Respect the teacher."
+				},
+				{
+					"start": 1494.43,
+					"text": "Miss Vickers."
+				},
+				{
+					"start": 1495.51,
+					"text": "Yes, young Miss Stahl."
+				},
+				{
+					"start": 1497.87,
+					"text": "Are you afraid of Reverend Dixon?"
+				},
+				{
+					"start": 1501.73,
+					"text": "And I want to say that in a voice that sounds like a child."
+				},
+				{
+					"start": 1505.77,
+					"text": "And I want my visage to kind of glamour out and look much more like a young child that she may have had in her school."
+				},
+				{
+					"start": 1515.17,
+					"text": "And I would like to make a persuasion check."
+				},
+				{
+					"start": 1517.03,
+					"text": "Persuasion check."
+				},
+				{
+					"start": 1517.73,
+					"text": "You can do it there."
+				},
+				{
+					"start": 1518.71,
+					"text": "Here."
+				},
+				{
+					"start": 1523.58,
+					"text": "With guidance?"
+				},
+				{
+					"start": 1524.72,
+					"text": "Yeah."
+				},
+				{
+					"start": 1525.32,
+					"text": "Oh yeah, of course."
+				},
+				{
+					"start": 1528.68,
+					"text": "It's not a great roll, but it was..."
+				},
+				{
+					"start": 1530.78,
+					"text": "Do it at advantage for this visage change, please."
+				},
+				{
+					"start": 1534.06,
+					"text": "Okay, thank you."
+				},
+				{
+					"start": 1535.14,
+					"text": "Thank God."
+				},
+				{
+					"start": 1536.1,
+					"text": "I like it so much."
+				},
+				{
+					"start": 1537.26,
+					"text": "These dice are scary."
+				},
+				{
+					"start": 1538.66,
+					"text": "That was twice in a row the same number."
+				},
+				{
+					"start": 1540.48,
+					"text": "I'm going to straight chain out these dice."
+				},
+				{
+					"start": 1544.86,
+					"text": "It's happened already."
+				},
+				{
+					"start": 1545.74,
+					"text": "This is why I was like, I should have brought my own dice."
+				},
+				{
+					"start": 1548.14,
+					"text": "Why did I not bring my own dice?"
+				},
+				{
+					"start": 1549.62,
+					"text": "They're just right there in the back room."
+				},
+				{
+					"start": 1551.84,
+					"text": "I brought my DM's dice, and that was a mistake."
+				},
+				{
+					"start": 1554.24,
+					"text": "It's a ten."
+				},
+				{
+					"start": 1555.1,
+					"text": "It's a ten."
+				},
+				{
+					"start": 1556.38,
+					"text": "So, you become this child, and for a moment you see her kind of shake."
+				},
+				{
+					"start": 1561.44,
+					"text": "But again, she centers herself."
+				},
+				{
+					"start": 1563.8,
+					"text": "I am the adult in this room."
+				},
+				{
+					"start": 1565.74,
+					"text": "I am your teacher."
+				},
+				{
+					"start": 1567.36,
+					"text": "You will listen to me."
+				},
+				{
+					"start": 1568.94,
+					"text": "It is time now to practice your penmanship."
+				},
+				{
+					"start": 1573.18,
+					"text": "Sit, please."
+				},
+				{
+					"start": 1575.28,
+					"text": "Thank you."
+				},
+				{
+					"start": 1577.06,
+					"text": "Behave, children."
+				},
+				{
+					"start": 1578.6,
+					"text": "Now, Miss Vickers."
+				},
+				{
+					"start": 1581.2,
+					"text": "And I'm going to pull out my lute, and I start strumming a few chords."
+				},
+				{
+					"start": 1586.02,
+					"text": "And as I'm strumming them, I'm going to say,"
+				}
+			]
+		},
+		{
+			"start": 1589.04,
+			"title": "Доска и Charm Person",
+			"summary": "Через стук Tommy на доске выясняется связь с Reverend Dixon; Valentine пытается очаровать призрака.",
+			"theses": [
+				"Дух пишет на доске: SCARED — Tommy боится Dixon.",
+				"Ещё записка: Miss Vickers конфисковала «проклятый» фонарь ведьмы за партой.",
+				"Charm Person на Miss Vickers проваливается — портрет Dixon падает, начинается враждебность."
+			],
+			"anchor": "We're all friends here, aren't we",
+			"segments": [
+				{
+					"start": 1589.04,
+					"text": "We're all friends here, aren't we?"
+				},
+				{
+					"start": 1591.18,
+					"text": "And I start, I kind of say it in a,"
+				},
+				{
+					"start": 1593.3,
+					"text": "Oh, we're moving."
+				},
+				{
+					"start": 1594.46,
+					"text": "I was going to cast Charm Person, but things are happening."
+				},
+				{
+					"start": 1596.86,
+					"text": "O."
+				},
+				{
+					"start": 1597.3,
+					"text": "N."
+				},
+				{
+					"start": 1598.28,
+					"text": "N."
+				},
+				{
+					"start": 1598.7,
+					"text": "N."
+				},
+				{
+					"start": 1599.94,
+					"text": "O."
+				},
+				{
+					"start": 1600.52,
+					"text": "O."
+				},
+				{
+					"start": 1602.2,
+					"text": "No."
+				},
+				{
+					"start": 1603.68,
+					"text": "No."
+				},
+				{
+					"start": 1604.5,
+					"text": "No, to we're all friends here?"
+				},
+				{
+					"start": 1606.24,
+					"text": "What is she writing?"
+				},
+				{
+					"start": 1607.18,
+					"text": "This is, no."
+				},
+				{
+					"start": 1607.9,
+					"text": "O."
+				},
+				{
+					"start": 1608.32,
+					"text": "O."
+				},
+				{
+					"start": 1608.92,
+					"text": "N."
+				},
+				{
+					"start": 1611.32,
+					"text": "O."
+				},
+				{
+					"start": 1612.46,
+					"text": "No."
+				},
+				{
+					"start": 1616.73,
+					"text": "Tell me, what do you want us to find?"
+				},
+				{
+					"start": 1617.99,
+					"text": "Show us what you want us to find."
+				},
+				{
+					"start": 1620.57,
+					"text": "N."
+				},
+				{
+					"start": 1620.99,
+					"text": "I will join."
+				},
+				{
+					"start": 1621.93,
+					"text": "O."
+				},
+				{
+					"start": 1623.95,
+					"text": "No."
+				},
+				{
+					"start": 1624.43,
+					"text": "You can't show us?"
+				},
+				{
+					"start": 1625.55,
+					"text": "What a stubborn child."
+				},
+				{
+					"start": 1628.21,
+					"text": "S."
+				},
+				{
+					"start": 1628.75,
+					"text": "S."
+				},
+				{
+					"start": 1630.33,
+					"text": "C."
+				},
+				{
+					"start": 1630.99,
+					"text": "S."
+				},
+				{
+					"start": 1634.15,
+					"text": "A."
+				},
+				{
+					"start": 1634.61,
+					"text": "A."
+				},
+				{
+					"start": 1635.89,
+					"text": "R."
+				},
+				{
+					"start": 1637.05,
+					"text": "Scary."
+				},
+				{
+					"start": 1638.39,
+					"text": "Scare."
+				},
+				{
+					"start": 1639.89,
+					"text": "D."
+				},
+				{
+					"start": 1641.73,
+					"text": "D."
+				},
+				{
+					"start": 1643.05,
+					"text": "D."
+				},
+				{
+					"start": 1643.25,
+					"text": "Tommy, is it, is it, is it Reverend Dixon?"
+				},
+				{
+					"start": 1646.71,
+					"text": "Yes."
+				},
+				{
+					"start": 1647.77,
+					"text": "Is he with you?"
+				},
+				{
+					"start": 1650.19,
+					"text": "No."
+				},
+				{
+					"start": 1655.58,
+					"text": "That's really cool."
+				},
+				{
+					"start": 1657.84,
+					"text": "Strong work, you guys."
+				},
+				{
+					"start": 1659.6,
+					"text": "The letter board."
+				},
+				{
+					"start": 1661.08,
+					"text": "I loved it."
+				},
+				{
+					"start": 1662.18,
+					"text": "That, that I think made the whole game for me."
+				},
+				{
+					"start": 1664.7,
+					"text": "What shall we ask?"
+				},
+				{
+					"start": 1666.92,
+					"text": "I mean, we're, we're looking for the, the spell book."
+				},
+				{
+					"start": 1670.41,
+					"text": "He was there."
+				},
+				{
+					"start": 1672.37,
+					"text": "Tommy, is there a special book that Reverend Dixon didn't want you to see?"
+				},
+				{
+					"start": 1678.13,
+					"text": "Are you scared to tell us?"
+				},
+				{
+					"start": 1683.39,
+					"text": "Do you know where it is?"
+				},
+				{
+					"start": 1684.67,
+					"text": "From the back."
+				},
+				{
+					"start": 1692.53,
+					"text": "Is there a clue in it?"
+				},
+				{
+					"start": 1693.71,
+					"text": "That's another note."
+				},
+				{
+					"start": 1697.46,
+					"text": "I'm so excited."
+				},
+				{
+					"start": 1700.24,
+					"text": "You want to bring it here?"
+				},
+				{
+					"start": 1701.78,
+					"text": "Yes, I do."
+				},
+				{
+					"start": 1704.18,
+					"text": "Miss Vickers used to be such fun, but now she's scared and stern all hours of the day."
+				},
+				{
+					"start": 1708.98,
+					"text": "She even confiscated my special lantern, the one the witch left for me."
+				},
+				{
+					"start": 1715.72,
+					"text": "She said it was cursed and put it in her secret stash behind her desk."
+				},
+				{
+					"start": 1721.34,
+					"text": "I will probably never see it again."
+				},
+				{
+					"start": 1722.78,
+					"text": "Is this where maybe I can pass Charm Person?"
+				},
+				{
+					"start": 1724.6,
+					"text": "So she's been writing on the board."
+				},
+				{
+					"start": 1726.2,
+					"text": "She has not paid attention."
+				},
+				{
+					"start": 1728.26,
+					"text": "So I start plucking on my, on my strings and I say to Miss Vickers, we're all friends here"
+				},
+				{
+					"start": 1735.22,
+					"text": "and I, I'm going to cast Charm Person on her."
+				},
+				{
+					"start": 1738.32,
+					"text": "I make a save?"
+				},
+				{
+					"start": 1739.26,
+					"text": "Yes."
+				},
+				{
+					"start": 1740.54,
+					"text": "Wisdom?"
+				},
+				{
+					"start": 1741.56,
+					"text": "Yes, wisdom."
+				},
+				{
+					"start": 1742.48,
+					"text": "Wisdom."
+				},
+				{
+					"start": 1742.96,
+					"text": "Okay."
+				},
+				{
+					"start": 1744.44,
+					"text": "Ooh, that is low math."
+				},
+				{
+					"start": 1746.66,
+					"text": "That's a six."
+				},
+				{
+					"start": 1747.52,
+					"text": "So you are charmed."
+				},
+				{
+					"start": 1750.32,
+					"text": "And I'm, I'm, I'm still playing my lutes."
+				},
+				{
+					"start": 1753.28,
+					"text": "Miss Vickers, you wouldn't mind if we just took a look at your stash, would you?"
+				},
+				{
+					"start": 1759.4,
+					"text": "Since we're friends and all."
+				},
+				{
+					"start": 1761.66,
+					"text": "She walks over this way, eyeing you."
+				},
+				{
+					"start": 1765.38,
+					"text": "And plainly looks."
+				},
+				{
+					"start": 1768.66,
+					"text": "Trying your tricks on me will not work, young man."
+				},
+				{
+					"start": 1773.12,
+					"text": "Suddenly, a ghostly gust of wind strikes down the portrait of Reverend."
+				},
+				{
+					"start": 1777.42,
+					"text": "She shrieks and steps back."
+				},
+				{
+					"start": 1779.44,
+					"text": "She says, Tommy, and you children have been insolent long enough."
+				}
+			]
+		},
+		{
+			"start": 1786.31,
+			"title": "Бой: инициатива",
+			"summary": "Miss Vickers атакует; группа расставляется на миниатюрной карте класса и начинает первый раунд.",
+			"theses": [
+				"Initiative: Valentine 17, Vix 16, Victor 14, Una 3.",
+				"Valentine бьёт Fire Bolt; Miss Vickers целится в него за попытку обмана.",
+				"Карта: парты семей, кафедра, дверь — Miss Vickers парит над классом."
+			],
+			"anchor": "we're going to start and roll initiative",
+			"segments": [
+				{
+					"start": 1786.31,
+					"text": "And as she reaches her hands out, we're going to start and roll initiative, please."
+				},
+				{
+					"start": 1789.49,
+					"text": "All right."
+				},
+				{
+					"start": 1789.95,
+					"text": "Oh, I was looking at the painting."
+				},
+				{
+					"start": 1791.21,
+					"text": "Yeah."
+				},
+				{
+					"start": 1791.59,
+					"text": "I should have known as Kelly that charming a ghost doesn't work, but Valentine maybe"
+				},
+				{
+					"start": 1797.91,
+					"text": "hasn't ever tried to charm a ghost, so I'm going to use that as my excuse to why I tried"
+				},
+				{
+					"start": 1801.89,
+					"text": "to charm undead."
+				},
+				{
+					"start": 1803.17,
+					"text": "All right."
+				},
+				{
+					"start": 1803.87,
+					"text": "Let me know your initiatives when you are ready."
+				},
+				{
+					"start": 1805.95,
+					"text": "16."
+				},
+				{
+					"start": 1806.71,
+					"text": "16 for Vix."
+				},
+				{
+					"start": 1809.05,
+					"text": "3 for Una."
+				},
+				{
+					"start": 1811.29,
+					"text": "14."
+				},
+				{
+					"start": 1812.23,
+					"text": "3 for Una, 14 for Victor."
+				},
+				{
+					"start": 1815.05,
+					"text": "Uh, 17."
+				},
+				{
+					"start": 1815.91,
+					"text": "No, wait."
+				},
+				{
+					"start": 1816.47,
+					"text": "So whatever your..."
+				},
+				{
+					"start": 1817.75,
+					"text": "Oh, 8."
+				},
+				{
+					"start": 1818.85,
+					"text": "4."
+				},
+				{
+					"start": 1819.25,
+					"text": "8."
+				},
+				{
+					"start": 1819.65,
+					"text": "Okay, great."
+				},
+				{
+					"start": 1820.31,
+					"text": "A little better."
+				},
+				{
+					"start": 1821.67,
+					"text": "Una."
+				},
+				{
+					"start": 1822.45,
+					"text": "And a 17 for Valentine."
+				},
+				{
+					"start": 1825.13,
+					"text": "Okay, Valentine, you are up first."
+				},
+				{
+					"start": 1827.87,
+					"text": "Um, we're going to do this."
+				},
+				{
+					"start": 1830.47,
+					"text": "Whoosh."
+				},
+				{
+					"start": 1831.31,
+					"text": "Ooh."
+				},
+				{
+					"start": 1832.75,
+					"text": "Ooh."
+				},
+				{
+					"start": 1833.07,
+					"text": "Here is our fantastic little board here."
+				},
+				{
+					"start": 1835.47,
+					"text": "Love this."
+				},
+				{
+					"start": 1836.25,
+					"text": "We are going to school."
+				},
+				{
+					"start": 1837.81,
+					"text": "We're going to move some of these over to the side now."
+				},
+				{
+					"start": 1840.51,
+					"text": "So we're going to say this here is the schoolhouse."
+				},
+				{
+					"start": 1847.95,
+					"text": "Up here is this podium."
+				},
+				{
+					"start": 1851.35,
+					"text": "This is the door at the back."
+				},
+				{
+					"start": 1853.67,
+					"text": "All right."
+				},
+				{
+					"start": 1854.65,
+					"text": "You all are about here."
+				},
+				{
+					"start": 1855.57,
+					"text": "Let's see."
+				},
+				{
+					"start": 1856.03,
+					"text": "We've got a Flynn about here."
+				},
+				{
+					"start": 1858.91,
+					"text": "We've got a Dixon across the way."
+				},
+				{
+					"start": 1862.07,
+					"text": "We've got..."
+				},
+				{
+					"start": 1863.21,
+					"text": "Oh, Laskay is going to be here at the back."
+				},
+				{
+					"start": 1865.15,
+					"text": "And we've got..."
+				},
+				{
+					"start": 1866.35,
+					"text": "A stung hiding behind a Dixon."
+				},
+				{
+					"start": 1867.85,
+					"text": "Aerie and stung."
+				},
+				{
+					"start": 1869.29,
+					"text": "There we go."
+				},
+				{
+					"start": 1870.59,
+					"text": "Uh, and here she is."
+				},
+				{
+					"start": 1872.79,
+					"text": "Happy teacher."
+				},
+				{
+					"start": 1874.07,
+					"text": "What exactly does our scary teacher look like now?"
+				},
+				{
+					"start": 1876.59,
+					"text": "Uh, so yes."
+				},
+				{
+					"start": 1877.47,
+					"text": "Our scary teacher now has, um, her hair has come loose from this sort of tighter bun that"
+				},
+				{
+					"start": 1883.15,
+					"text": "she had."
+				},
+				{
+					"start": 1883.49,
+					"text": "It's wild and flying in the air."
+				},
+				{
+					"start": 1885.53,
+					"text": "She's risen up, hovering a few feet above you."
+				},
+				{
+					"start": 1888.67,
+					"text": "Um, as she sort of floats over you, clearly coming to handle you in some way."
+				},
+				{
+					"start": 1894.01,
+					"text": "She still holds her spectral yardstick here, um, but she has it."
+				},
+				{
+					"start": 1899.13,
+					"text": "And, uh, we're going to start with Valentine."
+				},
+				{
+					"start": 1900.69,
+					"text": "What would you like to do?"
+				},
+				{
+					"start": 1901.35,
+					"text": "Um, as, as I'm strumming on my lute and things go sideways, I, I strike a chord, uh, that fires"
+				},
+				{
+					"start": 1910.01,
+					"text": "a bolt of energy towards you."
+				},
+				{
+					"start": 1912.81,
+					"text": "I'm going to, I'm going to use fire bolt on you."
+				},
+				{
+					"start": 1914.65,
+					"text": "Fantastic."
+				},
+				{
+					"start": 1915.49,
+					"text": "Uh, so let's just see here."
+				},
+				{
+					"start": 1918.37,
+					"text": "That's going to be 16 to hit."
+				},
+				{
+					"start": 1921.13,
+					"text": "A 16 to hit will hit."
+				},
+				{
+					"start": 1922.61,
+					"text": "Go ahead and give me your damage and tell me what it looks like."
+				},
+				{
+					"start": 1925.31,
+					"text": "So, as I strum on my lute, the musical notes form into a fiery bolt."
+				},
+				{
+					"start": 1932.35,
+					"text": "You can actually see the, the musical notes appear in the air before me as they swirl around"
+				},
+				{
+					"start": 1937.39,
+					"text": "and strike towards you."
+				},
+				{
+					"start": 1939.09,
+					"text": "Yes."
+				},
+				{
+					"start": 1939.81,
+					"text": "Doing three damage."
+				},
+				{
+					"start": 1942.19,
+					"text": "Three damage."
+				},
+				{
+					"start": 1943.21,
+					"text": "So it's, it's a glancing hit, but it's solid right through the shoulder."
+				},
+				{
+					"start": 1946.95,
+					"text": "It throws one of her arms back, but does not deter her as she continues to move forward."
+				},
+				{
+					"start": 1951.03,
+					"text": "Anything else, Valentine?"
+				},
+				{
+					"start": 1951.75,
+					"text": "I turn to my brother and say, you know how we do this?"
+				},
+				{
+					"start": 1957.15,
+					"text": "I know I set them up."
+				},
+				{
+					"start": 1958.57,
+					"text": "You take them down and I bardic inspiration him."
+				},
+				{
+					"start": 1961.59,
+					"text": "Beautiful."
+				},
+				{
+					"start": 1962.57,
+					"text": "All right."
+				},
+				{
+					"start": 1963.03,
+					"text": "It is now Miss Vickers turn."
+				},
+				{
+					"start": 1964.41,
+					"text": "You are the one who tried to charm her to try to trick her."
+				},
+				{
+					"start": 1967.61,
+					"text": "She's coming straight towards you."
+				},
+				{
+					"start": 1969.47,
+					"text": "Yeah."
+				},
+				{
+					"start": 1969.85,
+					"text": "Makes sense."
+				},
+				{
+					"start": 1970.33,
+					"text": "As she does, she reaches out with her hands, her long fingers becoming like talons."
+				},
+				{
+					"start": 1975.27,
+					"text": "As she tries to hold your chin and breathe into your mouth."
+				},
+				{
+					"start": 1980.57,
+					"text": "Oh, gross."
+				},
+				{
+					"start": 1981.73,
+					"text": "Pretty darn good."
+				},
+				{
+					"start": 1982.31,
+					"text": "That is a natural 20."
+				},
+				{
+					"start": 1983.55,
+					"text": "Oh, no."
+				},
+				{
+					"start": 1984.99,
+					"text": "Friends and enemies, that is a natural 20."
+				},
+				{
+					"start": 1987.39,
+					"text": "Yeah."
+				},
+				{
+					"start": 1988.11,
+					"text": "Yeah."
+				},
+				{
+					"start": 1988.75,
+					"text": "Oh."
+				},
+				{
+					"start": 1988.83,
+					"text": "I'm going to cast, wait."
+				},
+				{
+					"start": 1990.03,
+					"text": "Yeah, I have a reaction."
+				},
+				{
+					"start": 1991.27,
+					"text": "I'm going to cast silvery barbs."
+				},
+				{
+					"start": 1992.63,
+					"text": "Okay."
+				},
+				{
+					"start": 1992.99,
+					"text": "Roll it again."
+				},
+				{
+					"start": 1993.47,
+					"text": "Re-roll it."
+				},
+				{
+					"start": 1995.35,
+					"text": "It's a 19."
+				},
+				{
+					"start": 1997.17,
+					"text": "It's not a crit."
+				},
+				{
+					"start": 1998.33,
+					"text": "Not a crit."
+				},
+				{
+					"start": 1999.33,
+					"text": "And I'm going to give you advantage."
+				},
+				{
+					"start": 2001.09,
+					"text": "Okay."
+				},
+				{
+					"start": 2001.79,
+					"text": "Okay."
+				},
+				{
+					"start": 2002.47,
+					"text": "I'll be good."
+				},
+				{
+					"start": 2003.33,
+					"text": "You'll be good?"
+				},
+				{
+					"start": 2004.13,
+					"text": "I'm going to give you advantage."
+				},
+				{
+					"start": 2005.91,
+					"text": "Hooray."
+				},
+				{
+					"start": 2007.49,
+					"text": "What do I do?"
+				},
+				{
+					"start": 2008.85,
+					"text": "The next time you roll a d20, you're going to roll two."
+				},
+				{
+					"start": 2012.27,
+					"text": "Okay."
+				},
+				{
+					"start": 2012.51,
+					"text": "I am very sorry to do this to you."
+				},
+				{
+					"start": 2014.31,
+					"text": "She grabs your chin, brings you close to her face and breathes your life force out for"
+				},
+				{
+					"start": 2022.81,
+					"text": "18 damage and your max hit points are reduced by the same amount."
+				},
+				{
+					"start": 2031.7,
+					"text": "She is going to stay hovering above you, holding onto your face as the rest of you watch him."
+				},
+				{
+					"start": 2039.1,
+					"text": "And you can even see mist kind of rising out of his mouth and into her as she glows a little"
+				},
+				{
+					"start": 2045.4,
+					"text": "brighter."
+				},
+				{
+					"start": 2046.04,
+					"text": "It is now Vix, your turn."
+				},
+				{
+					"start": 2047.7,
+					"text": "Excellent."
+				},
+				{
+					"start": 2048.3,
+					"text": "Eldritch Blast."
+				},
+				{
+					"start": 2049.04,
+					"text": "I am going to cross my hands and start to look like I'm weaving them in a circle."
+				},
+				{
+					"start": 2055.34,
+					"text": "And you see a little bit of crackling coming out of both of my hands."
+				},
+				{
+					"start": 2059.56,
+					"text": "Okay."
+				},
+				{
+					"start": 2059.66,
+					"text": "Don't hit me."
+				},
+				{
+					"start": 2059.92,
+					"text": "I'm going to twist them."
+				},
+				{
+					"start": 2060.76,
+					"text": "I'm going to twist them."
+				},
+				{
+					"start": 2061.6,
+					"text": "And I'm just going to try to go straight for her heart."
+				},
+				{
+					"start": 2064.16,
+					"text": "Go straight through, straight through her."
+				},
+				{
+					"start": 2065.6,
+					"text": "Straight through her."
+				},
+				{
+					"start": 2066.6,
+					"text": "Go for it."
+				},
+				{
+					"start": 2069.88,
+					"text": "Give me another die."
+				},
+				{
+					"start": 2071.04,
+					"text": "Someone give me another die."
+				},
+				{
+					"start": 2071.9,
+					"text": "I don't want to do this one."
+				},
+				{
+					"start": 2072.94,
+					"text": "This one sucks."
+				},
+				{
+					"start": 2073.82,
+					"text": "Thank you."
+				},
+				{
+					"start": 2074.42,
+					"text": "No offense."
+				},
+				{
+					"start": 2074.9,
+					"text": "You can just take some time."
+				},
+				{
+					"start": 2077.26,
+					"text": "16."
+				},
+				{
+					"start": 2077.62,
+					"text": "16 will hit."
+				},
+				{
+					"start": 2079.04,
+					"text": "All right."
+				},
+				{
+					"start": 2080.96,
+					"text": "That is a nine."
+				},
+				{
+					"start": 2082.16,
+					"text": "Nine damage."
+				},
+				{
+					"start": 2084.32,
+					"text": "That solidly hits her."
+				},
+				{
+					"start": 2085.82,
+					"text": "What does it look like when it hits?"
+				},
+				{
+					"start": 2087,
+					"text": "So the two are like intertwined."
+				},
+				{
+					"start": 2090.84,
+					"text": "The two beams are intertwined."
+				},
+				{
+					"start": 2092.08,
+					"text": "Yes."
+				},
+				{
+					"start": 2092.4,
+					"text": "And I think one of them fizzles, but the other one pierces and starts to push her back away"
+				},
+				{
+					"start": 2097.6,
+					"text": "from him."
+				},
+				{
+					"start": 2098.48,
+					"text": "Pushing her."
+				},
+				{
+					"start": 2099.26,
+					"text": "And then she will start to get pushed away in this direction as you push her through."
+				},
+				{
+					"start": 2104.74,
+					"text": "Although, yeah."
+				},
+				{
+					"start": 2105.34,
+					"text": "A drop to the floor."
+				},
+				{
+					"start": 2106.48,
+					"text": "This way, yeah."
+				},
+				{
+					"start": 2108.22,
+					"text": "Fantastic."
+				},
+				{
+					"start": 2109,
+					"text": "You drop in a clump."
+				},
+				{
+					"start": 2110.62,
+					"text": "You're still up, though, right?"
+				},
+				{
+					"start": 2111.62,
+					"text": "Yeah."
+				},
+				{
+					"start": 2111.8,
+					"text": "You're still each piece."
+				},
+				{
+					"start": 2112.64,
+					"text": "Okay, great."
+				},
+				{
+					"start": 2113.18,
+					"text": "Anything else?"
+				},
+				{
+					"start": 2114.04,
+					"text": "I'm just going to go to him, and I'm just going to stand by him."
+				},
+				{
+					"start": 2117.44,
+					"text": "Great."
+				},
+				{
+					"start": 2117.86,
+					"text": "So you run across to be near him."
+				},
+				{
+					"start": 2120.68,
+					"text": "Up next, we have Victor."
+				}
+			]
+		},
+		{
+			"start": 2123.34,
+			"title": "Divine smite Виктора",
+			"summary": "Паладин Victor врывается с великим мечом и божественным smite по нежити Miss Vickers.",
+			"theses": [
+				"Victor: «very inappropriate way to touch a student» — преимущество от Vow of Enmity.",
+				"Greatsword + Divine Smite: ~33 урона — призрак ослаблен, туман рассеивается.",
+				"Из окна входит второй призрак — candlestick maker с восковым фартуком."
+			],
+			"anchor": "Victor drawing forth his greatsword.",
+			"segments": [
+				{
+					"start": 2123.34,
+					"text": "Victor drawing forth his greatsword."
+				},
+				{
+					"start": 2126.42,
+					"text": "Yes."
+				},
+				{
+					"start": 2126.7,
+					"text": "As light shines from the enchanted blade."
+				},
+				{
+					"start": 2131.24,
+					"text": "And he says, Miss Vickers, that was a very inappropriate way to touch a student."
+				},
+				{
+					"start": 2144.79,
+					"text": "And as those words, you can hear the enmity in my voice."
+				},
+				{
+					"start": 2149.07,
+					"text": "She's the target now of my thou, so I have advantage on all attacks."
+				},
+				{
+					"start": 2153.33,
+					"text": "We love it."
+				},
+				{
+					"start": 2154.21,
+					"text": "Go for it."
+				},
+				{
+					"start": 2154.73,
+					"text": "Don't forget your inspiration."
+				},
+				{
+					"start": 2184.35,
+					"text": "I don't know if you'll need it."
+				},
+				{
+					"start": 2185.75,
+					"text": "healing step to get him 1d10 temporary."
+				},
+				{
+					"start": 2190.75,
+					"text": "Absolutely."
+				},
+				{
+					"start": 2191.99,
+					"text": "I will allow it."
+				},
+				{
+					"start": 2193.41,
+					"text": "Thank you."
+				},
+				{
+					"start": 2194.61,
+					"text": "That is a fantastic idea."
+				},
+				{
+					"start": 2194.97,
+					"text": "Yes."
+				},
+				{
+					"start": 2195.11,
+					"text": "So I'm right up to the spirit, and my greatsword crashes into the spirit, because I get a 19."
+				},
+				{
+					"start": 2204.91,
+					"text": "Oh, yes."
+				},
+				{
+					"start": 2205.57,
+					"text": "To miss."
+				},
+				{
+					"start": 2207.73,
+					"text": "She's been pushed back by Vix's attack, and she's not expecting it as it comes around."
+				},
+				{
+					"start": 2213.69,
+					"text": "And as the greatsword crashes into her body, I am going to—is she an undead?"
+				},
+				{
+					"start": 2219.55,
+					"text": "She is."
+				},
+				{
+					"start": 2220.05,
+					"text": "I'm going to unleash a divine smite."
+				},
+				{
+					"start": 2222.61,
+					"text": "Yes, you are!"
+				},
+				{
+					"start": 2224.41,
+					"text": "Paladin in the house."
+				},
+				{
+					"start": 2226.77,
+					"text": "Yeah, okay."
+				},
+				{
+					"start": 2227.73,
+					"text": "Paladin fighting a ghost."
+				},
+				{
+					"start": 2229.73,
+					"text": "The base greatsword damage is going to be 18."
+				},
+				{
+					"start": 2234.37,
+					"text": "18."
+				},
+				{
+					"start": 2235.09,
+					"text": "So, and then the smite is going to be—that's an 8."
+				},
+				{
+					"start": 2240.97,
+					"text": "Okay, the smite is going to be another 15 damage."
+				},
+				{
+					"start": 2243.83,
+					"text": "15?"
+				},
+				{
+					"start": 2244.97,
+					"text": "Dude, you are rolling."
+				},
+				{
+					"start": 2247.07,
+					"text": "All right, here we go."
+				},
+				{
+					"start": 2248.77,
+					"text": "Let me see where I end up."
+				},
+				{
+					"start": 2249.89,
+					"text": "I did 3."
+				},
+				{
+					"start": 2250.91,
+					"text": "So, she's, you know, she's flown."
+				},
+				{
+					"start": 2252.59,
+					"text": "Over here in the classroom."
+				},
+				{
+					"start": 2255.33,
+					"text": "As she's been pushed back, suddenly coming up from around the side."
+				},
+				{
+					"start": 2259.79,
+					"text": "Victor Gravesong with one slash here, and it just lights up her body."
+				},
+				{
+					"start": 2264.27,
+					"text": "You can see even bits of the mist of her starting to disappear as you see that her force is starting to get weakened."
+				},
+				{
+					"start": 2270.51,
+					"text": "I'm going to say, don't worry."
+				},
+				{
+					"start": 2272.09,
+					"text": "This is just going to bring you peace."
+				},
+				{
+					"start": 2277.28,
+					"text": "It hurts me more than—"
+				},
+				{
+					"start": 2281.54,
+					"text": "It's for your own good."
+				},
+				{
+					"start": 2282.88,
+					"text": "It's for your own good."
+				},
+				{
+					"start": 2283.58,
+					"text": "Oh my gosh."
+				},
+				{
+					"start": 2284.24,
+					"text": "It's awful."
+				},
+				{
+					"start": 2285.04,
+					"text": "It's so bad."
+				},
+				{
+					"start": 2285.32,
+					"text": "That is so fantastic."
+				},
+				{
+					"start": 2286.46,
+					"text": "It's so, so, so bad."
+				},
+				{
+					"start": 2286.98,
+					"text": "Um, at that moment, from one of the windows outside, those of you, you know, as you, you, you know, slam your greatsword, you look out that window and you see another smaller apparition standing there."
+				},
+				{
+					"start": 2299.9,
+					"text": "It's holding a candlestick as it kind of moves through the wall, joining the group here."
+				},
+				{
+					"start": 2307.38,
+					"text": "Um, here's the wall."
+				},
+				{
+					"start": 2308.98,
+					"text": "There it is."
+				},
+				{
+					"start": 2310,
+					"text": "Um, it's wearing an apron that is covered in wax."
+				},
+				{
+					"start": 2313.28,
+					"text": "This is a candlestick maker."
+				},
+				{
+					"start": 2315.2,
+					"text": "Uh, one of the old townsfolk."
+				},
+				{
+					"start": 2317.28,
+					"text": "And it's going to start moving right towards you, Victor, because you are right here."
+				},
+				{
+					"start": 2322.2,
+					"text": "It is going to raise that spectral candlestick above its head and take a little slam—oh, where you were done."
+				},
+				{
+					"start": 2328.36,
+					"text": "I can't do more than 33 now."
+				},
+				{
+					"start": 2329.88,
+					"text": "I figured at that point."
+				},
+				{
+					"start": 2331.52,
+					"text": "Fair is fair."
+				},
+				{
+					"start": 2333.56,
+					"text": "Ooh, that's a natural one."
+				},
+				{
+					"start": 2335.38,
+					"text": "It misses."
+				},
+				{
+					"start": 2336.36,
+					"text": "It just kind of swings side to side."
+				},
+				{
+					"start": 2338.5,
+					"text": "You have no power here, spirit."
+				},
+				{
+					"start": 2340.76,
+					"text": "Be gone!"
+				},
+				{
+					"start": 2341.98,
+					"text": "It does sort of feel pushed back by that divine energy, that—that power that you have."
+				},
+				{
+					"start": 2348.1,
+					"text": "If you're not going to go back to the grave yourself, I'll send you there."
+				},
+				{
+					"start": 2351.04,
+					"text": "Don't worry, guys."
+				},
+				{
+					"start": 2352.16,
+					"text": "He's got this."
+				},
+				{
+					"start": 2355.12,
+					"text": "Lascay is going to move from the back here over again towards, uh, Flynn."
+				},
+				{
+					"start": 2361.36,
+					"text": "She's just going to look at you, and she's going to say,"
+				},
+				{
+					"start": 2364.84,
+					"text": "I—I—I don't think that I can heal the damage that you've had in this moment."
+				},
+				{
+					"start": 2368.24,
+					"text": "Well, it would be better if you could."
+				},
+				{
+					"start": 2369.66,
+					"text": "That is not the kind of healer that I am."
+				},
+				{
+					"start": 2371.98,
+					"text": "Um, but I am here, and I will help you if we survive this."
+				},
+				{
+					"start": 2375.88,
+					"text": "I'm not doing too good."
+				},
+				{
+					"start": 2377.44,
+					"text": "She sits up on her knees."
+				},
+				{
+					"start": 2379.16,
+					"text": "She pulls out a slingshot and pulls it back to let a slingshot towards, um, Miss Vickers there."
+				},
+				{
+					"start": 2387.04,
+					"text": "Let's see, where is she over here?"
+				},
+				{
+					"start": 2389.94,
+					"text": "Hey, she's going to hit!"
+				},
+				{
+					"start": 2391.74,
+					"text": "Hey, way to go!"
+				},
+				{
+					"start": 2394.46,
+					"text": "Lascay!"
+				},
+				{
+					"start": 2395.64,
+					"text": "She's going to do six points of damage!"
+				},
+				{
+					"start": 2398.58,
+					"text": "What a good girl."
+				},
+				{
+					"start": 2401.28,
+					"text": "Way to go!"
+				},
+				{
+					"start": 2402.16,
+					"text": "I know, she's—even—you look at her, and even she's a little surprised when it hits, and we'll say—I mean, maybe it goes, like, right in one cheek and out the other as it sort of flies away on the other side."
+				},
+				{
+					"start": 2411.92,
+					"text": "And she's like,"
+				},
+				{
+					"start": 2412.36,
+					"text": "Oh!"
+				},
+				{
+					"start": 2413.16,
+					"text": "I—I did it!"
+				},
+				{
+					"start": 2413.78,
+					"text": "She looks down at you, Flynn."
+				},
+				{
+					"start": 2414.9,
+					"text": "She's quite,"
+				},
+				{
+					"start": 2415.54,
+					"text": "Oh!"
+				},
+				{
+					"start": 2415.78,
+					"text": "Okay!"
+				},
+				{
+					"start": 2416.88,
+					"text": "I—I give you the thumbs up."
+				},
+				{
+					"start": 2418.46,
+					"text": "Yep."
+				},
+				{
+					"start": 2419.18,
+					"text": "Great."
+				},
+				{
+					"start": 2419.86,
+					"text": "I will."
+				},
+				{
+					"start": 2420.24,
+					"text": "I will help you later."
+				},
+				{
+					"start": 2421.04,
+					"text": "I have things that can help you later, I promise."
+				},
+				{
+					"start": 2423.26,
+					"text": "Um, all right, Una, your turn."
+				},
+				{
+					"start": 2425.58,
+					"text": "What would you like to do?"
+				},
+				{
+					"start": 2426.74,
+					"text": "Well, I'd like to burn her to a crisp so she's, like, away and we can get to the desk."
+				},
+				{
+					"start": 2432.26,
+					"text": "Yes."
+				},
+				{
+					"start": 2432.88,
+					"text": "Wonderful."
+				},
+				{
+					"start": 2433.98,
+					"text": "Okay."
+				},
+				{
+					"start": 2434.62,
+					"text": "How do I get her—pfft."
+				},
+				{
+					"start": 2436.3,
+					"text": "I'm on fire."
+				},
+				{
+					"start": 2437,
+					"text": "You can just walk on over there."
+				},
+				{
+					"start": 2437.74,
+					"text": "Yeah, so if you attack her, you can—any attack that you have—"
+				},
+				{
+					"start": 2441.62,
+					"text": "The attack can become the fire?"
+				},
+				{
+					"start": 2442.64,
+					"text": "Yes."
+				},
+				{
+					"start": 2442.96,
+					"text": "It does both."
+				},
+				{
+					"start": 2443.66,
+					"text": "Yes, exactly."
+				},
+				{
+					"start": 2444.08,
+					"text": "It does actual attacks, and it adds."
+				}
+			]
+		},
+		{
+			"start": 2445.5,
+			"title": "Una и конец боя",
+			"summary": "Una прыгает через парту Flurry of Blows с огнём; Miss Vickers уничтожена, второй дух уходит.",
+			"theses": [
+				"Iman впервые критует nat 20 — двойной урон в Flurry of Blows.",
+				"Огненные удары монаха разрывают призрака; candlestick maker уходит из комнаты.",
+				"Под партой учительницы — сейф с шестью буквенными дисками."
+			],
+			"anchor": "Flurry of blood",
+			"segments": [
+				{
+					"start": 2445.5,
+					"text": "Flurry of blood!"
+				},
+				{
+					"start": 2446.42,
+					"text": "Flurry of blood!"
+				},
+				{
+					"start": 2450.45,
+					"text": "Okay."
+				},
+				{
+					"start": 2451.13,
+					"text": "We're gonna—we're gonna help flavor this a little bit, because you're in this room."
+				},
+				{
+					"start": 2453.87,
+					"text": "So, she's currently over here with a greataxe in her side and a sling that went through,"
+				},
+				{
+					"start": 2458.47,
+					"text": "you know, a little—little stone that went through her face."
+				},
+				{
+					"start": 2461.03,
+					"text": "You can hop up on the desk and leap over, and I would love if as you are flying through the air—one,"
+				},
+				{
+					"start": 2467.91,
+					"text": "two, three."
+				},
+				{
+					"start": 2469.53,
+					"text": "We like it?"
+				},
+				{
+					"start": 2470.39,
+					"text": "We love it."
+				},
+				{
+					"start": 2471.69,
+					"text": "Yes!"
+				},
+				{
+					"start": 2472.17,
+					"text": "Yes."
+				},
+				{
+					"start": 2472.45,
+					"text": "One, two, three."
+				},
+				{
+					"start": 2473.13,
+					"text": "So, you fly up this way, and jump, and just—leg, fist, three hits."
+				},
+				{
+					"start": 2479.77,
+					"text": "Please go make three attack rolls using your—"
+				},
+				{
+					"start": 2481.97,
+					"text": "You get advantage on the first one, thanks to my silvery bar."
+				},
+				{
+					"start": 2484.67,
+					"text": "You do."
+				},
+				{
+					"start": 2485.59,
+					"text": "Yeah, baby."
+				},
+				{
+					"start": 2486.95,
+					"text": "Okay, that's a 12."
+				},
+				{
+					"start": 2488.17,
+					"text": "Do I add anything?"
+				},
+				{
+					"start": 2489.09,
+					"text": "Yes."
+				},
+				{
+					"start": 2489.25,
+					"text": "Well, roll it again, too, and see if you go do better."
+				},
+				{
+					"start": 2492.45,
+					"text": "A 14."
+				},
+				{
+					"start": 2492.99,
+					"text": "A 14."
+				},
+				{
+					"start": 2493.57,
+					"text": "A 14 is better."
+				},
+				{
+					"start": 2494.39,
+					"text": "Yes, you're gonna add probably a plus six or seven for you."
+				},
+				{
+					"start": 2498.29,
+					"text": "No."
+				},
+				{
+					"start": 2498.57,
+					"text": "Plus five to you."
+				},
+				{
+					"start": 2499.11,
+					"text": "Plus five."
+				},
+				{
+					"start": 2499.87,
+					"text": "Okay, great."
+				},
+				{
+					"start": 2500.55,
+					"text": "So that was what?"
+				},
+				{
+					"start": 2501.37,
+					"text": "You said a 14, and a 19 will absolutely hit."
+				},
+				{
+					"start": 2504.03,
+					"text": "Fantastic."
+				},
+				{
+					"start": 2504.73,
+					"text": "Roll two more."
+				},
+				{
+					"start": 2505.39,
+					"text": "Let's see how many you hit and we'll roll all your damage at once."
+				},
+				{
+					"start": 2507.49,
+					"text": "Twenty."
+				},
+				{
+					"start": 2508.05,
+					"text": "Boom!"
+				},
+				{
+					"start": 2508.63,
+					"text": "Twenty on the die."
+				},
+				{
+					"start": 2510.63,
+					"text": "Yeah!"
+				},
+				{
+					"start": 2511.81,
+					"text": "That's a double damage."
+				},
+				{
+					"start": 2513.43,
+					"text": "Hell yeah!"
+				},
+				{
+					"start": 2514.21,
+					"text": "I didn't know the big deal of rolling a 20 on a 20-sided die, so I was very happy with"
+				},
+				{
+					"start": 2520.35,
+					"text": "that."
+				},
+				{
+					"start": 2521.11,
+					"text": "Double damage, roll one more d20."
+				},
+				{
+					"start": 2522.61,
+					"text": "Okay."
+				},
+				{
+					"start": 2523.95,
+					"text": "A five."
+				},
+				{
+					"start": 2524.83,
+					"text": "A five."
+				},
+				{
+					"start": 2525.17,
+					"text": "Okay, that's all right."
+				},
+				{
+					"start": 2525.71,
+					"text": "The first two are gonna hit and the second one is a critical, so you're gonna roll your"
+				},
+				{
+					"start": 2528.37,
+					"text": "damage die three times."
+				},
+				{
+					"start": 2530.31,
+					"text": "Damage dies."
+				},
+				{
+					"start": 2531.45,
+					"text": "You're gonna add your modifier twice."
+				},
+				{
+					"start": 2533.09,
+					"text": "That guy."
+				},
+				{
+					"start": 2533.63,
+					"text": "I know that one."
+				},
+				{
+					"start": 2534.41,
+					"text": "I know that one."
+				},
+				{
+					"start": 2537.27,
+					"text": "Seven."
+				},
+				{
+					"start": 2538.27,
+					"text": "Seven."
+				},
+				{
+					"start": 2538.37,
+					"text": "So that's ten."
+				},
+				{
+					"start": 2539.73,
+					"text": "Nope!"
+				},
+				{
+					"start": 2540.81,
+					"text": "Two plus what?"
+				},
+				{
+					"start": 2542.13,
+					"text": "Three."
+				},
+				{
+					"start": 2542.77,
+					"text": "Three."
+				},
+				{
+					"start": 2543.19,
+					"text": "Five."
+				},
+				{
+					"start": 2543.63,
+					"text": "I can't reach."
+				},
+				{
+					"start": 2546.07,
+					"text": "You have now been initiated into Dungeons and Dragons."
+				},
+				{
+					"start": 2548.81,
+					"text": "Once you pick a die, roll off the floor."
+				},
+				{
+					"start": 2550.41,
+					"text": "Getting forward to the defense!"
+				},
+				{
+					"start": 2552.05,
+					"text": "Although it does require special talent to still drop the dice when you have a dice tray."
+				},
+				{
+					"start": 2557.51,
+					"text": "She's advanced."
+				},
+				{
+					"start": 2558.63,
+					"text": "She's skipping all the levels."
+				},
+				{
+					"start": 2559.81,
+					"text": "Yeah, exactly."
+				},
+				{
+					"start": 2560.95,
+					"text": "Level four, guys."
+				},
+				{
+					"start": 2561.99,
+					"text": "Six."
+				},
+				{
+					"start": 2563.09,
+					"text": "Six damage on top of that."
+				},
+				{
+					"start": 2564.33,
+					"text": "Okay, so that is sixteen total."
+				},
+				{
+					"start": 2567.31,
+					"text": "You're an elemental monk, right?"
+				},
+				{
+					"start": 2568.81,
+					"text": "Yes."
+				},
+				{
+					"start": 2569.31,
+					"text": "So that means that any attack that you make with your fists, you just get to decide what"
+				},
+				{
+					"start": 2573.95,
+					"text": "element you're changing for that attack."
+				},
+				{
+					"start": 2576.15,
+					"text": "Yeah, you're using."
+				},
+				{
+					"start": 2576.19,
+					"text": "You're like full."
+				},
+				{
+					"start": 2576.83,
+					"text": "Yeah."
+				},
+				{
+					"start": 2577.27,
+					"text": "We're gonna let it, we're gonna let it, we're gonna let it ride on there because it wouldn't"
+				},
+				{
+					"start": 2580.09,
+					"text": "have mattered anyways."
+				},
+				{
+					"start": 2581.33,
+					"text": "As that second, the first one let's say is a fist, right?"
+				},
+				{
+					"start": 2585.23,
+					"text": "Like an uppercut."
+				},
+				{
+					"start": 2586.21,
+					"text": "Yeah."
+				},
+				{
+					"start": 2586.49,
+					"text": "And then you're going for the second this way around and you miss."
+				},
+				{
+					"start": 2589.19,
+					"text": "Yeah, I wanna get her away from the death."
+				},
+				{
+					"start": 2590.41,
+					"text": "Yeah."
+				},
+				{
+					"start": 2591.33,
+					"text": "But then as you twist, your leg comes up and kicks for that last third flurry of blows."
+				},
+				{
+					"start": 2596.53,
+					"text": "Oh, yeah."
+				},
+				{
+					"start": 2596.93,
+					"text": "That hits and scatters her."
+				},
+				{
+					"start": 2599.79,
+					"text": "It's almost as if the fire that is sort of within your veins enters into her being and rumbles"
+				},
+				{
+					"start": 2607.41,
+					"text": "through and just explodes in the space."
+				},
+				{
+					"start": 2611.09,
+					"text": "Nice."
+				},
+				{
+					"start": 2611.67,
+					"text": "Yeah."
+				},
+				{
+					"start": 2612.17,
+					"text": "Miss Vickers is no more."
+				},
+				{
+					"start": 2614.45,
+					"text": "The desk is ours."
+				},
+				{
+					"start": 2615.73,
+					"text": "I feel like I can do anything now and it's all because of that 20."
+				},
+				{
+					"start": 2622.07,
+					"text": "There is still another ghost in the room."
+				},
+				{
+					"start": 2623.87,
+					"text": "There is still another ghost."
+				},
+				{
+					"start": 2624.85,
+					"text": "Candlestick guy sort of stands there, looks at all of you, looks at the like ectoplasm"
+				},
+				{
+					"start": 2630.09,
+					"text": "remains of his mother race there and turns around and starts to walk out of the room."
+				},
+				{
+					"start": 2640.05,
+					"text": "Yeah, that's the right choice."
+				},
+				{
+					"start": 2640.45,
+					"text": "Like that."
+				},
+				{
+					"start": 2640.87,
+					"text": "Yeah, good, good, good."
+				},
+				{
+					"start": 2642.25,
+					"text": "Oh, I'm so mad because I had this whole thing where Miss Vickers Spectres was going to be"
+				},
+				{
+					"start": 2647.15,
+					"text": "a butcher, a baker, and a candlestick maker and I just think that's such a fun joke and"
+				},
+				{
+					"start": 2650.75,
+					"text": "I didn't get my butcher and my baker in there but probably they should have come in at the end."
+				},
+				{
+					"start": 2654.57,
+					"text": "Oh well."
+				}
+			]
+		},
+		{
+			"start": 2655.87,
+			"title": "Сейф и клиффхэнгер",
+			"summary": "Perception находит на дисках стёртые буквы; эпизод обрывается приглашением на главу 2.",
+			"theses": [
+				"Сейф с алфавитными дисками — два символа поцарапаны.",
+				"Vix и Anjali осматривают тайник после победы.",
+				"«Join us next time» — секреты Wood Creek продолжатся в следующей главе."
+			],
+			"anchor": "under her desk is a safe",
+			"segments": [
+				{
+					"start": 2655.87,
+					"text": "So yes, you come up and you see under her desk is a safe and it has sort of six dials on it"
+				},
+				{
+					"start": 2662.03,
+					"text": "all with the letters of the alphabet on it."
+				},
+				{
+					"start": 2664.71,
+					"text": "I would like, Anjali, you came up."
+				},
+				{
+					"start": 2667.19,
+					"text": "Vix, you came up."
+				},
+				{
+					"start": 2668.29,
+					"text": "I would like you to make a perception check."
+				},
+				{
+					"start": 2672.25,
+					"text": "Thirteen plus, oh god, although it would have been a four."
+				},
+				{
+					"start": 2676.73,
+					"text": "No."
+				},
+				{
+					"start": 2677.37,
+					"text": "Fourteen."
+				},
+				{
+					"start": 2678.21,
+					"text": "Fourteen."
+				},
+				{
+					"start": 2678.65,
+					"text": "So, as you look at this, you do notice that two of the letters have been scratched out."
+				},
+				{
+					"start": 2691.4,
+					"text": "Ooh."
+				},
+				{
+					"start": 2692.7,
+					"text": "Ooh."
+				},
+				{
+					"start": 2694.96,
+					"text": "Very da Vinci coding."
+				},
+				{
+					"start": 2696.62,
+					"text": "Yes."
+				},
+				{
+					"start": 2697.46,
+					"text": "To find out what secrets our heroes uncover, join us next time for another chapter of Tales"
+				},
+				{
+					"start": 2703.6,
+					"text": "from Woodcreek."
+				}
+			]
+		}
+	],
+	"transcript": "Thank you for joining us for Tales from Woodcreek, but first, a word from our sponsor. Eldritch contamination of our dark fantasy world of Drakkenheim is spreading. No, no, I thought we fixed that last time. No, not at all, because it is spreading to a brand new game system. This is Dungeons of Drakkenheim, the Daggerheart edition, and this is a way to experience Drakkenheim like never before. Yes, so this episode of Tales from Woodcreek is sponsored by Dungeons of Drakkenheim, Daggerheart, which is launching on Kickstarter on November 4th. Yes, we are bringing our dark fantasy world of Drakkenheim to a new system. And when we first built the world of Drakkenheim, we wanted to create a world that feels alive, chaotic, and dangerous, and full of heart. And Daggerheart is the perfect way for it. Now in Daggerheart, it just lives and breathes the way that we always imagine Drakkenheim doing. This is our any award-winning dark fantasy adventure rebuilt for a brand new system where players are going to really drive the narrative. Yeah, and the Dungeon Dudes and Ghostfire Gaming are even teaming up with Darrington Press to bring Drakkenheim into Daggerheart. So if you've ever walked those haunted streets, and I have, you know that every step already feels like a roll of the dice between hope and absolute fear. So to make it all work seamlessly, they've brought in Daggerheart contributing author Mike Underwood to help ensure the mechanics of Daggerheart feel right at home in this new version of Drakkenheim. Yes, the fear will reign in Daggerheart because the city of Drakkenheim itself is your enemy. Every ruin and mutation fuels your GM's power. And hope dies. Factions rise and fall as your party's choices shape the fate of Drakkenheim. Fate calls. Power always has a price. Will you embrace Eldritch Contamination or let it consume you? This is the world we dreamed of sharing, and now it's yours to explore in a completely new way. Okay. So you can follow the Kickstarter right now to help us unlock free miniatures of our original Drakkenforce characters that will be added to every pledge. You get the STLs for digital and the physical minis for a physical pledge. And if we hit our goals before we launch on November 4th, those will be added to every pledge. So click the link in the description below right now. Drakkenheim and Daggerheart is waiting for your story. Hello, friends. I invite you to join us on an adventure. It takes place in a town called Wood Creek. Perhaps you've heard of it. The tales of its fall from grace have spread far and wide. As the story goes, it all began when the good people of Wood Creek found a glowing red gem buried deep within the mines on the outskirts of town. This powerful relic offered them true riches and access to magic beyond their wildest imaginings. They called it the Heartstone, and the four founding families vowed to share it equally. The town prospered, but not for long. An evil witch heard of this discovery and demanded that the founders hand over the Heartstone to her. When they refused, she cursed their children, giving them nightmarish visions of the destruction of Wood Creek and branding their palms with her fiendish mark. In a final confrontation, she unleashed a wave of corrupt energy, transforming every living resident of Wood Creek into a monster and desecrating the land so that nothing could live there without succumbing to her corruption. Except for the children. In a strange twist of fate, the magic she inflicted upon the children rendered them immune to the corrupting forces of Wood Creek. However, the curse persisted, and even as the children of Wood Creek grew old and left town, they passed the curse down through generations, dooming each descendant to a life without love, luck, or prosperity. Soon we will meet some of these unfortunate souls. They bear the witch's mark, and nothing in life seems to go their way. But finally, they have hope. A message from Becky Laskay, a descendant of Wood Creek herself, suggests she has information that can help them break the curse, restore the town riches, and perhaps save Wood Creek once and for all. These are the tales from Wood Creek. You made it. Thank you, thank you so much for coming. Please, yes, I assure you we are safe here. The boundary of Wood Creek is a hundred yards in that direction. I cannot believe you're here. I'm so grateful that you've come. I know Vix has spoken with you and worked with you, and she's a dear friend of ours. I have not met the two of you before, but I've heard of your exports. Now, are you Victor or Valentine? Victor. Victor Gravesong. Hey, I'm Monty Martin. I'm one of the Dungeon Dudes here on YouTube. Together with my co-host, Kelly McLaughlin, we are finally getting the chance to play a duo of characters in a campaign together. And so for Tales of Wood Creek, that is one of the things that I am super excited about. So I'm going to be rocking my paladin, Victor Gravesong. My little brother, Valentine. Yes, we've been traveling around for a while trying to find the source of this curse. Hi, my name's Kelly McLaughlin, and I am so excited to be participating in the Tales from Wood Creek. We have such an amazing group of people here, and I'm really excited to play with a bunch of them, including my longtime DM, Monty, who I finally get to play alongside, so that's very exciting. I'm playing Valentine Flynn Gravesong, who is a tiefling bard. Seems our luck was running out until we stumbled upon these rumors that brought us to you. The truth is, the struggle is all we've ever known. My survival doesn't matter, only our success. That is inspiring. I won't waste your time. My name is Rebecca Laskay. My great-grandfather was Mayor Harlan Laskay. He was a leader of Wood Creek. And like you, I am a descendant of the leaders of Wood Creek. I bear the witch's sigil and her curse. Every day has been a struggle in my life, and up until recently, speaking with Una, I had languished in despair. But I am sick of it. I will not live in this life without luck, without love, without prosperity, without belonging any longer. Una has taught me that every day is precious, and we must fight for the life that we want. I'm Iman Valani, and I played Ms. Marvel in Marvel Studios' Ms. Marvel, and Marvel Comics, also writing Ms. Marvel. Una is a shy, seven-foot-tall, friendly giant. And Becky Laskay is a very important figure in Una's life. She's the reason Una is alive today. Stuff went down, and she lost her man, and now Una has vowed that if Becky ever needs anything, she will be there in a heartbeat. And here I am. I believe that I know a way to end this curse. I have found a description of the witch's spellbook. I think if we can find it, and find the curse that caused this corruption, we could perhaps save ourselves, as well as the rest of Wood Creek. This, this here, this is my grandfather's compass. It was passed down through generations to me. It must have been tainted by the corruption, because sometimes I can hear it whispering. I don't like to use it. But if I can describe an object to it, it will show me where that object is. And it has pointed me towards the old schoolhouse, within the bounds of Wood Creek. Now, the three of us are, are protected by the witch's curse. In some strange twist of fate, we will not be touched by her corruption, although we are, of course, still vulnerable to the corrupt dead. Now, Una here, not so much. However, at great expense, I have procured a potion of protection. It will protect her for eight hours, and she has generously agreed to join us. Anything for a friend? Are you ready? Danger's my middle name. It's not, but I like to say that. All right. Well, then, together, we shall go meet Vix. Our friend has agreed to scout ahead, taking on that very dangerous mission. She is currently at the schoolhouse, which is where this has pointed us to. We will see her there, and discover what we may. Onward. Onward. Onward. Onward. I'm Anjali Bhimani, and I am playing Vix. She is a shapeshifter warlock. What I imagined she was doing was, yes, saying to everybody, I'm just going to scout ahead. Let me just, let me just, you know, handle this. And then, once she saw how bad it was, knew that she couldn't do it alone. I have no idea what to expect. I have absolutely no idea what to expect. As you cross over the border into Wood Creek, you immediately sense this, this pall above. There's mist that's very hard, difficult to see through. You are welcome to take your seats if you would like. You will see your family names at these desks. Because you are a guest here, you can sit at the Roblin desk, my dear friend. I am very clueless about what my role is going to be and how I can help everyone achieve their goals. But, you know, if someone does need, they're nail clipped. Yes, so as you come through the town and you notice that everything has died, there is no wildlife. But in the distance, you can hear snarls and shadows moving. But most pressing, in the mist above you, you hear whispers as if something is trying to enter your mind. You finally come to the schoolhouse and there, outside, you meet Vix. Now, Vix has scouted the exterior. There are no other entrances into this building. But she heard noises inside. Obviously, I didn't want to come here on my own. These hands aren't built for manual labor. So naturally, you called us. Naturally, I called him and you're part of the deal. Yeah. So Valentine and Vix have a bit of a history. She ran with us previously. And she got along great with Victor. But it's almost because Valentine and Vix's personalities are similar. So they don't get along that great. We're supposed to be here to end a curse. What are we looking for? So yes, you enter and you see essentially what you see here. This is an old one-room schoolhouse where many children of many ages would have come to learn together. There are indeed names on this desk. These are the very chairs that your ancestors would have sat in so many generations ago. There is a map of Wood Creek on the chalkboard. Various things have been written as if they've stayed here over the centuries. An extremely interesting portrait of a man here, if I do say myself. As you begin to kind of take in the space, is there anything that you would like to do? So the compass is supposed to be directing us towards the witch's spell book. Yes. So that means it's here somewhere. It is here somewhere. I can take a look. I'm sorry. It's spinning wildly. It's not giving me any direction here. So that means that this is the place, but it's too close. There's something about it that it won't point us right to where it is pinpoint. Perhaps. Could be blocked. Who? Could be a magical effect. Schoolhouse is a great place to hide a book. There's going to be lots of books around. Just in case I have to ask, we need the spell out of the book? Yes. We couldn't just burn this whole place down and be done with it, right? I don't believe that that would end the curse. History here. People lived here. History be damned. People are cursed. Well, we've been cursed long enough. We can figure this out without burning the whole place down. I'll be completely honest. I cannot stand being a player. One of the biggest challenges for me as a player is not being the backseat DM. From the head of the class, you see a tall blue apparition appear before you. She has a yardstick and she wears tiny little glasses. Okay. She looks at all of you. She says, children, I'm so glad that you're on time today. Oh, it has been such a long vacation this summer. Have you been doing your practicing today? Oh, there better not be math homework. Uh, yes, of course. Oh, dear. Excuse me. Young Roblin. Did you entice Tommy to drop those books? Did I entice Tommy to drop those books? Yes. Tommy's a very bad little boy. Should I apologize? I would like you to please go pick up the books, put them back, and we're going to read the credo, please. Oh, I don't like her going alone. Oh, you may join her? Please. Young Miss Storm. If we must pick up the books, then we must pick up the books. Can we all go? If you would like. I'm so excited to be playing with Iman because when we worked on Ms. Marvel together, she just became one of my favorite people, period. And I love the idea of pulling her deeply into our nerdy world. There isn't any chance that one of these books could be the spell book itself, is there? Can we make a check? Yes, you may. Can we do an investigation check, perhaps, to see if any of these names are familiar? So either that or history. Fantastic. Roll a history check. Ah! That doesn't count. Add a D4. Add a D4. Light be with you. Oh. I didn't. I just dropped it. Yeah, roll that and then you can roll this. A 12. Okay, 12 plus. 3, 15. 3, 15 plus whatever. I think my modifier might be a 1. You absolutely do recognize some of the names here. These are names of people in this town. They might even be some of your own ancestors' names. They do not seem to have any particular meaning to you. They are not particularly your ancestors, but they do bear your family name. We've got four families. The four main families here. Roblins. I'm from the house of Flynn. I don't like this. Did anyone hear that? Yes. Tommy? Tommy? Tommy, are you distracting the children? All right. Young Miss Roblin, I need you to come here, please. Oh. I'm coming with you. That's not okay. Thank you. Please, please. Oh, no, no, no. That's supposed to go on my head. Okay. Here you are. Fantastic. Right here. Can I blame Tommy for this? Oh, of course. Tommy's a very, very poor little boy. Here we go. Ready? Maria. Yes, please. Okay. Good. Better. Better best. Never let it rest until your good is better and your better best. Oh, that was lovely. Cheese. Cheese. Cheese. That was fantastic. You were very loud spoken. I appreciate that. And a young person, you may go and take your seat. Like for Tommy to hear me this time. Deb has been really, really chill. It's a really cool thing to see other dungeon masters and how they run the game, how they design their adventures, how they do things. As you see her stand there and sort of float as she moves, I will offer that you notice that she will gesture, she will gesture, she will say hello, welcome back class. I'm Miss Vickers. Today, we are going to talk about Wood Creek, our very own town. Here's the map of Wood Creek that you see before you. Now, tell me, what do you know of your hometown, little ones? I mean, I don't know very much. I rely on you. I've never been here before. I know that there were... Is that Tommy? Tommy, I don't like this kid. Tommy, I said stop it or I will send the Reverend Dixon after you again. Our dear Reverend Dixon, as you can see. That would have been my family's ancestor. All right, I'd like you to make a quick stealth check if you are going to sneak over there for me, please. Stealth, okay, we got a plus three. That's going to be a nine. A nine, fantastic. As you start to move over there, Miss Vickers sort of says, excuse me. Excuse me, young man. We are in the middle of a lesson. Sorry, something's making noise over here. I just... I know, it's just Tommy. He likes to disrupt things. Tommy, sit down and stopped distracting the class. At this moment, she's going to say, all right, why don't you all do some of your own quiet reading? I'm going to prepare for our next lesson. And she will turn her back for the moment. Does the saying here, or the last name Vickers, do either of those ring a bell to me? Have I heard them somewhere before? History. You're going to be a 21. 21. It's your mother, right? Who is the descendant? You remember her in her sleep. It's coming back to you, because this was a long time ago, muttering over and over, good, better, best, good, better, best, good, better, best, good, better, best. And maybe once you asked her about it, and she had said it was something that her father, grandfather used to say. It's obvious that our ancestors came to school here. This is something that's ingrained in our family trees, passed down. Tommy, suck it. Shut up. Would you like to make a perception check? Yes, I would. Actually, I'd like to make an insight check. Please make an insight check. I want to see if Tommy is trying to talk to us. Fantastic. That's what I want to see. Make an insight check. Do I get it? Again, just because you're here? Okay. Guidance be yours. Okay, plus three, so that's ten plus. I should be giving out my inspiration. Eleven. A lonely eleven. Yeah. So, it's hard to tell, right? Like, these are just noises and knocks, but they feel insistent to you. Tommy, are you trying to talk to us? And they keep coming from the same places. Do we think he's trying to tell us something? Does he know something? Is Tommy related to any one of... That's a great question. Would you like to make a history check? I would love to. Yes, yes. My first rule. Do a roll. Okay. You're going to roll a d20, and you're going to add your history bonus. Ooh, I like these dice. 13 minus one, 12. Minus one, 12. So, you aren't from this town. Your family isn't from this town. However, you do pose that question to the rest of the group. And he just got excited. I don't know, it sounds like he's excited. Yeah. Are you related to one of the three of us, Tommy? I think Leskay is sort of listening. We are here looking for something. Do we feel Tommy is an ally? Do we feel he's helpful to us? I don't know. Well, it's the children who suffer. Tommy, are you here to help us? Well, I'm going to trust him. To trust Tommy? Would you like to make an insight? Or can I just decide? I'll make an insight. There's not much insight. Can I also, while that's happening, can I do a little, like, internal check-in? Yeah. And see if I'm getting any vibey vibes from my... Yeah, just roll a d20 and maybe add your, like, spellcasting bonus. I think for a long time she did not really know who her patron was. I think she suspects at this point that her patron may be the witch, which obviously adds a layer of complication to all of this, to the desire to get rid of the curse, to what it means to have these powers, to what it means to not tell people. And the only people that she really has had history with, who she may feel even remotely safe with, are our two boys. 21. 21 and a 19. Fantastic. So, you get an overwhelming feeling of almost deja vu, that you are in the right place right now. That you are doing the right thing. You are following the right path. And as you are sort of watching her and that emotion come through, you're able to sort of intuit, with your insight, that this feels trustworthy. He seems to be going in a pattern, too. Quick stealth check from whoever goes over there. I'm not going to be stealthy about it. You're not going to be stealthy about it. I was prepared to say to the school teacher, just try to stop me. I'm a Dixon. What are you going to do? No. Miss Vickers turns. She sees you stride over there. She says, oh, young Master Dixon, I suppose your father would want me to give you every opening. Please, proceed, whatever you would like to do, sir. That's right, Mrs. Vickers. Yes, of course, I understand. Please, of course. I will tell my great-grandfather on you, or however the relation is. So, we are calling these Secrets. As you explore through this adventure, this campaign, you will find secrets. You are welcome to them. It's a note. Reverend Dixon gives me the willies. And ever since Tommy disappeared, Miss Vickers has been acting so peculiar. She jumps every time she so much as looks at the portrait of Reverend Dixon. So, he is my employer and my uncle, and he is a stern fellow, and I do what I am told, much as you children should do. Of course, you do whatever you would like. I'm a lot like my uncle. There is another one. Oh, dear. Tommy, you are quite disruptive today. Tommy? Oh, dear. I'm going to read this. I'm keeping a very close eye on this woman. I miss Tommy every day. He made me laugh. He told me once that he'd nicked Reverend Dixon's lucky coin. Said he hid it somewhere in his grandparents' bedroom. The Reverend got so mad, he turned purple. This spirit could be just as cursed as any of us. I am not cursed. I do what I am told. Your father may be my employer. But you, I am still your teacher. And you will still treat me with respect, as you will see. Respect the teacher. Miss Vickers. Yes, young Miss Stahl. Are you afraid of Reverend Dixon? And I want to say that in a voice that sounds like a child. And I want my visage to kind of glamour out and look much more like a young child that she may have had in her school. And I would like to make a persuasion check. Persuasion check. You can do it there. Here. With guidance? Yeah. Oh yeah, of course. It's not a great roll, but it was... Do it at advantage for this visage change, please. Okay, thank you. Thank God. I like it so much. These dice are scary. That was twice in a row the same number. I'm going to straight chain out these dice. It's happened already. This is why I was like, I should have brought my own dice. Why did I not bring my own dice? They're just right there in the back room. I brought my DM's dice, and that was a mistake. It's a ten. It's a ten. So, you become this child, and for a moment you see her kind of shake. But again, she centers herself. I am the adult in this room. I am your teacher. You will listen to me. It is time now to practice your penmanship. Sit, please. Thank you. Behave, children. Now, Miss Vickers. And I'm going to pull out my lute, and I start strumming a few chords. And as I'm strumming them, I'm going to say, We're all friends here, aren't we? And I start, I kind of say it in a, Oh, we're moving. I was going to cast Charm Person, but things are happening. O. N. N. N. O. O. No. No. No, to we're all friends here? What is she writing? This is, no. O. O. N. O. No. Tell me, what do you want us to find? Show us what you want us to find. N. I will join. O. No. You can't show us? What a stubborn child. S. S. C. S. A. A. R. Scary. Scare. D. D. D. Tommy, is it, is it, is it Reverend Dixon? Yes. Is he with you? No. That's really cool. Strong work, you guys. The letter board. I loved it. That, that I think made the whole game for me. What shall we ask? I mean, we're, we're looking for the, the spell book. He was there. Tommy, is there a special book that Reverend Dixon didn't want you to see? Are you scared to tell us? Do you know where it is? From the back. Is there a clue in it? That's another note. I'm so excited. You want to bring it here? Yes, I do. Miss Vickers used to be such fun, but now she's scared and stern all hours of the day. She even confiscated my special lantern, the one the witch left for me. She said it was cursed and put it in her secret stash behind her desk. I will probably never see it again. Is this where maybe I can pass Charm Person? So she's been writing on the board. She has not paid attention. So I start plucking on my, on my strings and I say to Miss Vickers, we're all friends here and I, I'm going to cast Charm Person on her. I make a save? Yes. Wisdom? Yes, wisdom. Wisdom. Okay. Ooh, that is low math. That's a six. So you are charmed. And I'm, I'm, I'm still playing my lutes. Miss Vickers, you wouldn't mind if we just took a look at your stash, would you? Since we're friends and all. She walks over this way, eyeing you. And plainly looks. Trying your tricks on me will not work, young man. Suddenly, a ghostly gust of wind strikes down the portrait of Reverend. She shrieks and steps back. She says, Tommy, and you children have been insolent long enough. And as she reaches her hands out, we're going to start and roll initiative, please. All right. Oh, I was looking at the painting. Yeah. I should have known as Kelly that charming a ghost doesn't work, but Valentine maybe hasn't ever tried to charm a ghost, so I'm going to use that as my excuse to why I tried to charm undead. All right. Let me know your initiatives when you are ready. 16. 16 for Vix. 3 for Una. 14. 3 for Una, 14 for Victor. Uh, 17. No, wait. So whatever your... Oh, 8. 4. 8. Okay, great. A little better. Una. And a 17 for Valentine. Okay, Valentine, you are up first. Um, we're going to do this. Whoosh. Ooh. Ooh. Here is our fantastic little board here. Love this. We are going to school. We're going to move some of these over to the side now. So we're going to say this here is the schoolhouse. Up here is this podium. This is the door at the back. All right. You all are about here. Let's see. We've got a Flynn about here. We've got a Dixon across the way. We've got... Oh, Laskay is going to be here at the back. And we've got... A stung hiding behind a Dixon. Aerie and stung. There we go. Uh, and here she is. Happy teacher. What exactly does our scary teacher look like now? Uh, so yes. Our scary teacher now has, um, her hair has come loose from this sort of tighter bun that she had. It's wild and flying in the air. She's risen up, hovering a few feet above you. Um, as she sort of floats over you, clearly coming to handle you in some way. She still holds her spectral yardstick here, um, but she has it. And, uh, we're going to start with Valentine. What would you like to do? Um, as, as I'm strumming on my lute and things go sideways, I, I strike a chord, uh, that fires a bolt of energy towards you. I'm going to, I'm going to use fire bolt on you. Fantastic. Uh, so let's just see here. That's going to be 16 to hit. A 16 to hit will hit. Go ahead and give me your damage and tell me what it looks like. So, as I strum on my lute, the musical notes form into a fiery bolt. You can actually see the, the musical notes appear in the air before me as they swirl around and strike towards you. Yes. Doing three damage. Three damage. So it's, it's a glancing hit, but it's solid right through the shoulder. It throws one of her arms back, but does not deter her as she continues to move forward. Anything else, Valentine? I turn to my brother and say, you know how we do this? I know I set them up. You take them down and I bardic inspiration him. Beautiful. All right. It is now Miss Vickers turn. You are the one who tried to charm her to try to trick her. She's coming straight towards you. Yeah. Makes sense. As she does, she reaches out with her hands, her long fingers becoming like talons. As she tries to hold your chin and breathe into your mouth. Oh, gross. Pretty darn good. That is a natural 20. Oh, no. Friends and enemies, that is a natural 20. Yeah. Yeah. Oh. I'm going to cast, wait. Yeah, I have a reaction. I'm going to cast silvery barbs. Okay. Roll it again. Re-roll it. It's a 19. It's not a crit. Not a crit. And I'm going to give you advantage. Okay. Okay. I'll be good. You'll be good? I'm going to give you advantage. Hooray. What do I do? The next time you roll a d20, you're going to roll two. Okay. I am very sorry to do this to you. She grabs your chin, brings you close to her face and breathes your life force out for 18 damage and your max hit points are reduced by the same amount. She is going to stay hovering above you, holding onto your face as the rest of you watch him. And you can even see mist kind of rising out of his mouth and into her as she glows a little brighter. It is now Vix, your turn. Excellent. Eldritch Blast. I am going to cross my hands and start to look like I'm weaving them in a circle. And you see a little bit of crackling coming out of both of my hands. Okay. Don't hit me. I'm going to twist them. I'm going to twist them. And I'm just going to try to go straight for her heart. Go straight through, straight through her. Straight through her. Go for it. Give me another die. Someone give me another die. I don't want to do this one. This one sucks. Thank you. No offense. You can just take some time. 16. 16 will hit. All right. That is a nine. Nine damage. That solidly hits her. What does it look like when it hits? So the two are like intertwined. The two beams are intertwined. Yes. And I think one of them fizzles, but the other one pierces and starts to push her back away from him. Pushing her. And then she will start to get pushed away in this direction as you push her through. Although, yeah. A drop to the floor. This way, yeah. Fantastic. You drop in a clump. You're still up, though, right? Yeah. You're still each piece. Okay, great. Anything else? I'm just going to go to him, and I'm just going to stand by him. Great. So you run across to be near him. Up next, we have Victor. Victor drawing forth his greatsword. Yes. As light shines from the enchanted blade. And he says, Miss Vickers, that was a very inappropriate way to touch a student. And as those words, you can hear the enmity in my voice. She's the target now of my thou, so I have advantage on all attacks. We love it. Go for it. Don't forget your inspiration. I don't know if you'll need it. healing step to get him 1d10 temporary. Absolutely. I will allow it. Thank you. That is a fantastic idea. Yes. So I'm right up to the spirit, and my greatsword crashes into the spirit, because I get a 19. Oh, yes. To miss. She's been pushed back by Vix's attack, and she's not expecting it as it comes around. And as the greatsword crashes into her body, I am going to—is she an undead? She is. I'm going to unleash a divine smite. Yes, you are! Paladin in the house. Yeah, okay. Paladin fighting a ghost. The base greatsword damage is going to be 18. 18. So, and then the smite is going to be—that's an 8. Okay, the smite is going to be another 15 damage. 15? Dude, you are rolling. All right, here we go. Let me see where I end up. I did 3. So, she's, you know, she's flown. Over here in the classroom. As she's been pushed back, suddenly coming up from around the side. Victor Gravesong with one slash here, and it just lights up her body. You can see even bits of the mist of her starting to disappear as you see that her force is starting to get weakened. I'm going to say, don't worry. This is just going to bring you peace. It hurts me more than— It's for your own good. It's for your own good. Oh my gosh. It's awful. It's so bad. That is so fantastic. It's so, so, so bad. Um, at that moment, from one of the windows outside, those of you, you know, as you, you, you know, slam your greatsword, you look out that window and you see another smaller apparition standing there. It's holding a candlestick as it kind of moves through the wall, joining the group here. Um, here's the wall. There it is. Um, it's wearing an apron that is covered in wax. This is a candlestick maker. Uh, one of the old townsfolk. And it's going to start moving right towards you, Victor, because you are right here. It is going to raise that spectral candlestick above its head and take a little slam—oh, where you were done. I can't do more than 33 now. I figured at that point. Fair is fair. Ooh, that's a natural one. It misses. It just kind of swings side to side. You have no power here, spirit. Be gone! It does sort of feel pushed back by that divine energy, that—that power that you have. If you're not going to go back to the grave yourself, I'll send you there. Don't worry, guys. He's got this. Lascay is going to move from the back here over again towards, uh, Flynn. She's just going to look at you, and she's going to say, I—I—I don't think that I can heal the damage that you've had in this moment. Well, it would be better if you could. That is not the kind of healer that I am. Um, but I am here, and I will help you if we survive this. I'm not doing too good. She sits up on her knees. She pulls out a slingshot and pulls it back to let a slingshot towards, um, Miss Vickers there. Let's see, where is she over here? Hey, she's going to hit! Hey, way to go! Lascay! She's going to do six points of damage! What a good girl. Way to go! I know, she's—even—you look at her, and even she's a little surprised when it hits, and we'll say—I mean, maybe it goes, like, right in one cheek and out the other as it sort of flies away on the other side. And she's like, Oh! I—I did it! She looks down at you, Flynn. She's quite, Oh! Okay! I—I give you the thumbs up. Yep. Great. I will. I will help you later. I have things that can help you later, I promise. Um, all right, Una, your turn. What would you like to do? Well, I'd like to burn her to a crisp so she's, like, away and we can get to the desk. Yes. Wonderful. Okay. How do I get her—pfft. I'm on fire. You can just walk on over there. Yeah, so if you attack her, you can—any attack that you have— The attack can become the fire? Yes. It does both. Yes, exactly. It does actual attacks, and it adds. Flurry of blood! Flurry of blood! Okay. We're gonna—we're gonna help flavor this a little bit, because you're in this room. So, she's currently over here with a greataxe in her side and a sling that went through, you know, a little—little stone that went through her face. You can hop up on the desk and leap over, and I would love if as you are flying through the air—one, two, three. We like it? We love it. Yes! Yes. One, two, three. So, you fly up this way, and jump, and just—leg, fist, three hits. Please go make three attack rolls using your— You get advantage on the first one, thanks to my silvery bar. You do. Yeah, baby. Okay, that's a 12. Do I add anything? Yes. Well, roll it again, too, and see if you go do better. A 14. A 14. A 14 is better. Yes, you're gonna add probably a plus six or seven for you. No. Plus five to you. Plus five. Okay, great. So that was what? You said a 14, and a 19 will absolutely hit. Fantastic. Roll two more. Let's see how many you hit and we'll roll all your damage at once. Twenty. Boom! Twenty on the die. Yeah! That's a double damage. Hell yeah! I didn't know the big deal of rolling a 20 on a 20-sided die, so I was very happy with that. Double damage, roll one more d20. Okay. A five. A five. Okay, that's all right. The first two are gonna hit and the second one is a critical, so you're gonna roll your damage die three times. Damage dies. You're gonna add your modifier twice. That guy. I know that one. I know that one. Seven. Seven. So that's ten. Nope! Two plus what? Three. Three. Five. I can't reach. You have now been initiated into Dungeons and Dragons. Once you pick a die, roll off the floor. Getting forward to the defense! Although it does require special talent to still drop the dice when you have a dice tray. She's advanced. She's skipping all the levels. Yeah, exactly. Level four, guys. Six. Six damage on top of that. Okay, so that is sixteen total. You're an elemental monk, right? Yes. So that means that any attack that you make with your fists, you just get to decide what element you're changing for that attack. Yeah, you're using. You're like full. Yeah. We're gonna let it, we're gonna let it, we're gonna let it ride on there because it wouldn't have mattered anyways. As that second, the first one let's say is a fist, right? Like an uppercut. Yeah. And then you're going for the second this way around and you miss. Yeah, I wanna get her away from the death. Yeah. But then as you twist, your leg comes up and kicks for that last third flurry of blows. Oh, yeah. That hits and scatters her. It's almost as if the fire that is sort of within your veins enters into her being and rumbles through and just explodes in the space. Nice. Yeah. Miss Vickers is no more. The desk is ours. I feel like I can do anything now and it's all because of that 20. There is still another ghost in the room. There is still another ghost. Candlestick guy sort of stands there, looks at all of you, looks at the like ectoplasm remains of his mother race there and turns around and starts to walk out of the room. Yeah, that's the right choice. Like that. Yeah, good, good, good. Oh, I'm so mad because I had this whole thing where Miss Vickers Spectres was going to be a butcher, a baker, and a candlestick maker and I just think that's such a fun joke and I didn't get my butcher and my baker in there but probably they should have come in at the end. Oh well. So yes, you come up and you see under her desk is a safe and it has sort of six dials on it all with the letters of the alphabet on it. I would like, Anjali, you came up. Vix, you came up. I would like you to make a perception check. Thirteen plus, oh god, although it would have been a four. No. Fourteen. Fourteen. So, as you look at this, you do notice that two of the letters have been scratched out. Ooh. Ooh. Very da Vinci coding. Yes. To find out what secrets our heroes uncover, join us next time for another chapter of Tales from Woodcreek."
+}

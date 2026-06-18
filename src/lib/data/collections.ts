@@ -53,6 +53,12 @@ export const collections: Collection[] = [
 		title: 'Подкасты: ИИ и индустрия',
 		subtitle: 'Разговоры про искусственный интеллект, найм и будущее разработки.',
 		items: ['software-3-0', 'podlodka-vector-search', 'podlodka-slm-468', 'berezhnoy-ai']
+	},
+	{
+		slug: 'nri',
+		title: 'НРИ',
+		subtitle: 'Настольные ролевые игры: стримы, кампании и разборы сессий.',
+		items: ['woodcreek-ch1']
 	}
 ];
 

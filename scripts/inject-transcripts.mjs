@@ -130,6 +130,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Маленькие языковые модели ｜ Open source, локальный ИИ, SLM ｜ Podlodka Podcast #468 [x-zjqz1NKic]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/woodcreek-ch1.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Tales From Woodcreek： Chapter 1 (D&D w⧸ Deborah Ann Woll & Iman Vellani) [hmY-MyQhWCk]/transcript.json'
+		)
 	}
 ];
 
