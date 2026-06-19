@@ -22,9 +22,11 @@ import podlodkaVectorSearch from './reports/podlodka-vector-search.json';
 import software30 from './reports/software-3-0.json';
 import woodcreekCh1 from './reports/woodcreek-ch1.json';
 import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
+import marianna2 from './reports/marianna-2.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	marianna2 as Report,
 	sablyaVvodnaya as Report,
 	sablyaA2 as Report,
 	sablyaA3 as Report,
