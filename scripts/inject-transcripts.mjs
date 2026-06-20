@@ -172,6 +172,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/2026-06-20 18-04-39.MP4 [fpfIBi3iu89wgw]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-sparring-1.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 19-21-28.MP4 [khRdSa5D98GnbQ]/transcript.json'
+		)
 	}
 ];
 
