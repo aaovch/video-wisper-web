@@ -30,6 +30,7 @@ import kendzyuSparringAliAndrey from './reports/kendzyu-sparring-ali-andrey.json
 import almatySparringAli2026 from './reports/almaty-sparring-ali-2026.json';
 import almatySparring20262 from './reports/almaty-sparring-2026-2.json';
 import kendzyuSparringOlegGolub from './reports/kendzyu-sparring-oleg-golub.json';
+import kendzyuSparringVovaTimirbat from './reports/kendzyu-sparring-vova-timirbat.json';
 import report20260620184353 from './reports/2026-06-20-18-43-53.json';
 import report20260620183945 from './reports/2026-06-20-18-39-45.json';
 import report20260620185936 from './reports/2026-06-20-185936.json';
@@ -42,6 +43,7 @@ const all: Report[] = [
 	report20260620183945 as Report,
 	report20260620184353 as Report,
 	kendzyuSparringOlegGolub as Report,
+	kendzyuSparringVovaTimirbat as Report,
 	almatySparringAli2026 as Report,
 	almatySparring20262 as Report,
 	kendzyuSparringAliAndrey as Report,

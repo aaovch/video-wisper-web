@@ -44,19 +44,26 @@
 {#if collection.analysis}
 	<section class="container analysis reveal" {@attach reveal()}>
 		<hr class="rule" />
-		<h2>Что заявляли — и как вышло</h2>
-		<p class="lede">{collection.analysis.lede}</p>
-		<ol class="findings">
-			{#each collection.analysis.findings as finding, i (i)}
-				<li class="reveal" {@attach reveal({ delay: i * 60 })}>
-					<p class="claim"><span class="finding-tag">Заявляли</span>{finding.claim}</p>
-					<p class="reality">
-						<span class="finding-tag finding-tag--reality">В боях</span>{finding.reality}
-					</p>
-				</li>
-			{/each}
-		</ol>
-		<p class="outcome">{collection.analysis.outcome}</p>
+		<div class="analysis-inner">
+			<h2>Что заявляли — и как вышло</h2>
+			<p class="lede">{collection.analysis.lede}</p>
+			<ol class="findings">
+				{#each collection.analysis.findings as finding, i (i)}
+					<li class="finding reveal" {@attach reveal({ delay: i * 60 })}>
+						<span class="finding-num" aria-hidden="true">{i + 1}</span>
+						<div class="finding-part">
+							<span class="finding-tag">Заявляли</span>
+							<p class="claim">{finding.claim}</p>
+						</div>
+						<div class="finding-part finding-part--reality">
+							<span class="finding-tag finding-tag--reality">В боях</span>
+							<p class="reality">{finding.reality}</p>
+						</div>
+					</li>
+				{/each}
+			</ol>
+			<p class="outcome">{collection.analysis.outcome}</p>
+		</div>
 	</section>
 {/if}
 
@@ -107,11 +114,11 @@
 	}
 
 	.description {
-		font-size: clamp(16px, 1.6vw, 19px);
+		font-size: clamp(16px, 1.5vw, 18px);
 		color: var(--ink);
-		max-width: 62ch;
+		max-width: 60ch;
 		margin: 0 0 16px;
-		line-height: 1.55;
+		line-height: 1.65;
 	}
 
 	.unlocked {
@@ -126,84 +133,81 @@
 		padding-top: 4px;
 	}
 
+	.analysis-inner {
+		max-width: 1080px;
+	}
+
 	.analysis h2 {
 		font-size: clamp(22px, 2.6vw, 30px);
 		font-weight: 500;
-		margin: 22px 0 14px;
+		margin: 26px 0 14px;
 		line-height: 1.1;
 	}
 
 	.analysis .lede {
-		font-size: clamp(16px, 1.6vw, 19px);
+		font-size: clamp(16px, 1.5vw, 18px);
 		color: var(--ink);
 		max-width: 64ch;
-		margin: 0 0 26px;
-		line-height: 1.55;
+		margin: 0 0 30px;
+		line-height: 1.65;
 	}
 
 	.findings {
 		list-style: none;
-		counter-reset: finding;
 		margin: 0;
 		padding: 0;
 		display: grid;
-		gap: 16px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 22px 20px;
 	}
 
-	.findings li {
-		counter-increment: finding;
+	.finding {
 		position: relative;
-		padding: 18px 20px 18px 56px;
+		display: flex;
+		flex-direction: column;
+		padding: 24px 22px 18px;
 		border: 1px solid var(--line);
 		border-radius: var(--radius);
 		background: var(--paper-2);
 		box-shadow: var(--shadow);
 	}
 
-	.findings li::before {
-		content: counter(finding);
+	.finding-num {
 		position: absolute;
-		left: 18px;
-		top: 18px;
-		width: 26px;
-		height: 26px;
+		top: -14px;
+		left: 20px;
+		width: 30px;
+		height: 30px;
 		display: grid;
 		place-items: center;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		font-variant-numeric: tabular-nums;
-		color: var(--accent);
-		border: 1px solid var(--accent);
+		color: var(--paper);
+		background: var(--accent);
 		border-radius: 50%;
+		box-shadow: var(--shadow);
 	}
 
-	.findings .claim,
-	.findings .reality {
+	.finding-part {
 		margin: 0;
-		max-width: 70ch;
-		line-height: 1.55;
 	}
 
-	.findings .claim {
-		font-size: clamp(15px, 1.5vw, 18px);
-		color: var(--ink);
-		margin-bottom: 10px;
-	}
-
-	.findings .reality {
-		font-size: clamp(14px, 1.45vw, 16px);
-		color: var(--ink-soft);
+	.finding-part--reality {
+		margin-top: 16px;
+		padding-top: 16px;
+		border-top: 1px solid var(--line-strong);
 	}
 
 	.finding-tag {
 		display: inline-block;
-		margin-right: 9px;
+		margin: 0 0 9px;
 		padding: 2px 9px;
 		font-family: var(--font-mono);
 		font-size: 10px;
 		font-weight: 500;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		vertical-align: middle;
 		border-radius: 999px;
 		color: var(--ink-faint);
 		border: 1px solid var(--line-strong);
@@ -214,14 +218,42 @@
 		border-color: var(--accent);
 	}
 
-	.outcome {
-		font-size: clamp(15px, 1.55vw, 18px);
+	.claim,
+	.reality {
+		margin: 0;
+		line-height: 1.6;
+	}
+
+	.claim {
+		font-size: clamp(15px, 1.35vw, 17px);
+		font-weight: 500;
 		color: var(--ink);
-		max-width: 66ch;
-		margin: 26px 0 0;
-		padding-top: 18px;
+	}
+
+	.reality {
+		font-size: clamp(14px, 1.25vw, 15.5px);
+		color: var(--ink-soft);
+	}
+
+	.outcome {
+		font-size: clamp(15px, 1.5vw, 18px);
+		color: var(--ink);
+		max-width: 70ch;
+		margin: 30px 0 0;
+		padding-top: 20px;
 		border-top: 2px solid var(--accent);
-		line-height: 1.55;
+		line-height: 1.65;
+	}
+
+	@media (max-width: 760px) {
+		.findings {
+			grid-template-columns: 1fr;
+			gap: 26px 0;
+		}
+
+		.finding {
+			padding: 22px 18px 16px;
+		}
 	}
 
 	.index {
