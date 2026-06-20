@@ -67,6 +67,12 @@ export const collections: Collection[] = [
 		title: 'НРИ',
 		subtitle: 'Настольные ролевые игры: стримы, кампании и разборы сессий.',
 		items: ['woodcreek-ch1']
+	},
+	{
+		slug: 'kendzyu',
+		title: 'Кендзюцу',
+		subtitle: 'Фехтование на катанах: правила, спарринги и разборы.',
+		items: ['kendzyu-pravila-1']
 	}
 ];
 

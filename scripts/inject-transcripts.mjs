@@ -165,6 +165,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Марианна 2 [ko-F3R2HFyo]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-pravila-1.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-04-39.MP4 [fpfIBi3iu89wgw]/transcript.json'
+		)
 	}
 ];
 
