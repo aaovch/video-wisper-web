@@ -13,8 +13,9 @@
 		"19 блоков"
 	],
 	"video": {
-		"provider": "yadisk",
-		"publicKey": "https://disk.yandex.ru/i/fpfIBi3iu89wgw"
+		"provider": "file",
+		"src": "media/kendzyu-pravila-1.mp4",
+		"poster": "media/kendzyu-pravila-1.jpg"
 	},
 	"overview_theses": [
 		"Экспериментальные правила для фехтования на катанах: один балл в раунде, команда «Стоп» при ≥1 балле.",
