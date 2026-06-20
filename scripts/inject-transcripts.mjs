@@ -186,6 +186,69 @@ const SOURCES = [
 			pipelineRoot,
 			'output/2026-06-20 19-14-21.MP4 [R5lCtXold7lBuA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-sparring-ali-vov.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 19-03-27.MP4 [GjobGcxPKqpVxA]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-sparring-oleg-golub.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-29-49.MP4 [4fWW2LY7MOnLUQ]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-sparring-vova-timirbat.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 19-25-27.MP4 [E2sQUvk6d1ZpTw]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kendzyu-sparring-ali-andrey.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-54-49.MP4 [vipcX5L50Z3ZHw]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/2026-06-20-185936.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-59-36.MP4 [xVlzHYf3Jp-w6g]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/2026-06-20-18-43-53.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-43-53.MP4 [ntWicTE9syODXQ]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/almaty-sparring-2026-2.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 19-31-44.MP4 [W2gD47MYKGjJ0A]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/2026-06-20-18-39-45.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 18-39-45.MP4 [Zm-pcX14FtEwMg]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/protivnik-fehtuet-nepravilno.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Семинар ＂Почему противник фехтует неправильно＂ [ZOMWcjIBUBw]/transcript.json'
+		)
 	}
 ];
 

@@ -72,7 +72,24 @@ export const collections: Collection[] = [
 		slug: 'kendzyu',
 		title: 'Кендзюцу',
 		subtitle: 'Фехтование на катанах: правила, спарринги и разборы.',
-		items: ['kendzyu-pravila-1', 'kendzyu-sparring-1', 'almaty-sparring-ali-2026']
+		items: [
+			'kendzyu-pravila-1',
+			'2026-06-20-18-43-53',
+			'2026-06-20-18-39-45',
+			'kendzyu-sparring-ali-andrey',
+			'2026-06-20-185936',
+			'kendzyu-sparring-oleg-golub',
+			'kendzyu-sparring-ali-vov',
+			'almaty-sparring-ali-2026',
+			'almaty-sparring-2026-2',
+			'kendzyu-sparring-1'
+		]
+	},
+	{
+		slug: 'ovchinnikov-lectures',
+		title: 'Лекции и семинары Овчинникова Александра',
+		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
+		items: ['protivnik-fehtuet-nepravilno']
 	}
 ];
 

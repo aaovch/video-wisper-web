@@ -24,13 +24,29 @@ import woodcreekCh1 from './reports/woodcreek-ch1.json';
 import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
 import marianna2 from './reports/marianna-2.json';
 import kendzyuPravila1 from './reports/kendzyu-pravila-1.json';
+import kendzyuSparringAliVov from './reports/kendzyu-sparring-ali-vov.json';
 import kendzyuSparring1 from './reports/kendzyu-sparring-1.json';
+import kendzyuSparringAliAndrey from './reports/kendzyu-sparring-ali-andrey.json';
 import almatySparringAli2026 from './reports/almaty-sparring-ali-2026.json';
+import almatySparring20262 from './reports/almaty-sparring-2026-2.json';
+import kendzyuSparringOlegGolub from './reports/kendzyu-sparring-oleg-golub.json';
+import report20260620184353 from './reports/2026-06-20-18-43-53.json';
+import report20260620183945 from './reports/2026-06-20-18-39-45.json';
+import report20260620185936 from './reports/2026-06-20-185936.json';
+import protivnikFehtuetNepravilno from './reports/protivnik-fehtuet-nepravilno.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	protivnikFehtuetNepravilno as Report,
+	report20260620185936 as Report,
+	report20260620183945 as Report,
+	report20260620184353 as Report,
+	kendzyuSparringOlegGolub as Report,
 	almatySparringAli2026 as Report,
+	almatySparring20262 as Report,
+	kendzyuSparringAliAndrey as Report,
 	kendzyuSparring1 as Report,
+	kendzyuSparringAliVov as Report,
 	kendzyuPravila1 as Report,
 	marianna2 as Report,
 	sablyaVvodnaya as Report,
