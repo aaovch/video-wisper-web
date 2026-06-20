@@ -72,7 +72,7 @@ export const collections: Collection[] = [
 		slug: 'kendzyu',
 		title: 'Кендзюцу',
 		subtitle: 'Фехтование на катанах: правила, спарринги и разборы.',
-		items: ['kendzyu-pravila-1', 'kendzyu-sparring-1']
+		items: ['kendzyu-pravila-1', 'kendzyu-sparring-1', 'almaty-sparring-ali-2026']
 	}
 ];
 

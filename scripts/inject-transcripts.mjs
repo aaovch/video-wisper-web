@@ -179,6 +179,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/2026-06-20 19-21-28.MP4 [khRdSa5D98GnbQ]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/almaty-sparring-ali-2026.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026-06-20 19-14-21.MP4 [R5lCtXold7lBuA]/transcript.json'
+		)
 	}
 ];
 

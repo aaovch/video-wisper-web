@@ -25,9 +25,11 @@ import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
 import marianna2 from './reports/marianna-2.json';
 import kendzyuPravila1 from './reports/kendzyu-pravila-1.json';
 import kendzyuSparring1 from './reports/kendzyu-sparring-1.json';
+import almatySparringAli2026 from './reports/almaty-sparring-ali-2026.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	almatySparringAli2026 as Report,
 	kendzyuSparring1 as Report,
 	kendzyuPravila1 as Report,
 	marianna2 as Report,
