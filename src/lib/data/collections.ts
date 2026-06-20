@@ -82,7 +82,8 @@ export const collections: Collection[] = [
 			'kendzyu-sparring-ali-vov',
 			'almaty-sparring-ali-2026',
 			'almaty-sparring-2026-2',
-			'kendzyu-sparring-1'
+			'kendzyu-sparring-1',
+			'kendzyu-sparring-vova-timirbat'
 		]
 	},
 	{
