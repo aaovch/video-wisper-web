@@ -33,7 +33,7 @@
 	});
 
 	const scoped = $derived(Boolean(narrowScope) && !wide);
-	const placeholder = $derived(scoped ? 'Поиск в коллекции…' : 'Поиск по архиву…');
+	const placeholder = $derived(scoped ? 'Поиск в коллекции…' : 'Поиск по разборам…');
 
 	// Группы по отчётам + сквозная нумерация попаданий для клавиатуры.
 	const view = $derived.by(() => {

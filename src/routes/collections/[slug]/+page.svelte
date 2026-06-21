@@ -4,6 +4,7 @@
 	import Lock from '$lib/components/Lock.svelte';
 	import { reveal } from '$lib/attachments';
 	import { lock } from '$lib/lock.svelte';
+	import { SITE_NAME } from '$lib/site';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -17,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>{collection.title} — Video Wisper</title>
+	<title>{collection.title} — {SITE_NAME}</title>
 	<meta name="description" content={collection.description ?? collection.subtitle} />
 </svelte:head>
 

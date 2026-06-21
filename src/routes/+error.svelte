@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
+	import { SITE_NAME } from '$lib/site';
 </script>
 
 <svelte:head>
-	<title>{page.status} — Video Wisper</title>
+	<title>{page.status} — {SITE_NAME}</title>
 </svelte:head>
 
 <section class="container err">

@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { base } from '$app/paths';
 	import SearchBox from '$lib/components/SearchBox.svelte';
+	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
 
 	let { children } = $props();
 
@@ -22,8 +23,8 @@
 	<header class="masthead">
 		<div class="container masthead-inner">
 			<a class="wordmark" href="{base}/">
-				<span class="wordmark-main">Video Wisper</span>
-				<span class="wordmark-sub label">архив транскрипций</span>
+				<span class="wordmark-main">{SITE_NAME}</span>
+				<span class="wordmark-sub label">{SITE_TAGLINE}</span>
 			</a>
 
 			<SearchBox />
@@ -38,7 +39,7 @@
 	<footer class="colophon">
 		<hr class="rule" />
 		<div class="container colophon-inner">
-			<p class="label">Video Wisper · Whisper Turbo + смысловая LLM-разметка</p>
+			<p class="label">{SITE_NAME} · Whisper Turbo + смысловая LLM-разметка</p>
 			<p class="label">
 				собрано на SvelteKit ·
 				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>

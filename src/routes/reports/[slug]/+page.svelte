@@ -7,6 +7,7 @@
 	import { reveal } from '$lib/attachments';
 	import { reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
+	import { SITE_NAME } from '$lib/site';
 	import type { SearchHit } from '$lib/search';
 	import type { PageData } from './$types';
 
@@ -98,7 +99,7 @@
 </script>
 
 <svelte:head>
-	<title>{report.title} — Video Wisper</title>
+	<title>{report.title} — {SITE_NAME}</title>
 	<meta name="description" content={report.subtitle} />
 </svelte:head>
 

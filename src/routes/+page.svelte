@@ -3,10 +3,11 @@
 	import { reveal } from '$lib/attachments';
 	import { reports } from '$lib/data';
 	import { collections } from '$lib/data/collections';
+	import { SITE_HOME_TITLE } from '$lib/site';
 </script>
 
 <svelte:head>
-	<title>Video Wisper — архив транскрипций</title>
+	<title>{SITE_HOME_TITLE}</title>
 	<meta
 		name="description"
 		content="Видео, разобранные по смыслу: тематические коллекции, смысловые блоки, тезисы и расшифровки."
