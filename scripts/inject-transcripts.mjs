@@ -249,6 +249,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Семинар ＂Почему противник фехтует неправильно＂ [ZOMWcjIBUBw]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/mcwilliams-10-aspects.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№1. Десять аспектов понимания личности и их клинические следствия [MkAxZFRNC24]/transcript.json'
+		)
 	}
 ];
 
