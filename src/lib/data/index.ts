@@ -36,12 +36,14 @@ import report20260620183945 from './reports/2026-06-20-18-39-45.json';
 import report20260620185936 from './reports/2026-06-20-185936.json';
 import protivnikFehtuetNepravilno from './reports/protivnik-fehtuet-nepravilno.json';
 import mcwilliams10Aspects from './reports/mcwilliams-10-aspects.json';
+import psihologiya3Isterechnaya from './reports/psihologiya-3-isterechnaya.json';
 import retentionClub from './reports/retention-club.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
 	retentionClub as Report,
 	mcwilliams10Aspects as Report,
+	psihologiya3Isterechnaya as Report,
 	protivnikFehtuetNepravilno as Report,
 	report20260620185936 as Report,
 	report20260620183945 as Report,

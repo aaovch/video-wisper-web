@@ -258,6 +258,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/psihologiya-3-isterechnaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№3. Истерическая, гистрионная, посттравматическая и диссоциативная психология [absTrYEkOTE]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/retention-club.json'),
 		transcriptPath: join(
 			pipelineRoot,
