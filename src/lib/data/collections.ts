@@ -58,7 +58,7 @@ export const collections: Collection[] = [
 		slug: 'hema-theory',
 		title: 'HEMA: теория и тренерство',
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',
-		items: ['hema-reflections', 'metodichka', 'retention'],
+		items: ['metodichka', 'retention'],
 		// Пример закрытой коллекции. Поменяй пароль на свой (или убери строку, чтобы открыть).
 		password: 'hema',
 		passwordHint: 'Чтобы получить пароль — напиши Васильеву Петру.'
@@ -148,7 +148,7 @@ export const collections: Collection[] = [
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
 		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
-		items: ['protivnik-fehtuet-nepravilno']
+		items: ['hema-reflections', 'protivnik-fehtuet-nepravilno']
 	}
 ];
 
