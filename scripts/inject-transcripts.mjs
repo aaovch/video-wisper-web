@@ -256,6 +256,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/№1. Десять аспектов понимания личности и их клинические следствия [MkAxZFRNC24]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/retention-club.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Как мы удерживаем людей в фехтовальном клубе (retention) [eNAwTLTHcIU]/transcript.json'
+		)
 	}
 ];
 

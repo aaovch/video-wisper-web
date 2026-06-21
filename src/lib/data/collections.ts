@@ -148,7 +148,7 @@ export const collections: Collection[] = [
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
 		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
-		items: ['hema-reflections', 'protivnik-fehtuet-nepravilno']
+		items: ['retention-club', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
 	}
 ];
 
