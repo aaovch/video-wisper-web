@@ -74,6 +74,7 @@ export const collections: Collection[] = [
 			'software-3-0',
 			'podlodka-vector-search',
 			'podlodka-slm-468',
+			'podlodka-naim-ai-482',
 			'berezhnoy-ai'
 		]
 	},

@@ -284,6 +284,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Как мы удерживаем людей в фехтовальном клубе (retention) [eNAwTLTHcIU]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/podlodka-naim-ai-482.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Найм в эпоху AI ｜ собеседования, IT найм, рынок труда ｜ Podlodka Podcast #482 [E-P9yqhat3w]/transcript.json'
+		)
 	}
 ];
 

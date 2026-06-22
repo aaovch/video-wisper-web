@@ -6,6 +6,7 @@ import llmDeepDiveKarpathy from './reports/llm-deep-dive-karpathy.json';
 import longswordA from './reports/longsword-a.json';
 import metodichka from './reports/metodichka.json';
 import podlodkaSlm468 from './reports/podlodka-slm-468.json';
+import podlodkaNaimAi482 from './reports/podlodka-naim-ai-482.json';
 import retention from './reports/retention.json';
 import sablyaA2 from './reports/sablya-a-2.json';
 import sablyaA3 from './reports/sablya-a-3.json';
@@ -78,6 +79,7 @@ const all: Report[] = [
 	obsidianWikiKarpathy as Report,
 	podlodkaVectorSearch as Report,
 	podlodkaSlm468 as Report,
+	podlodkaNaimAi482 as Report,
 	hemaReflections as Report,
 	berezhnoyAi as Report,
 	retention as Report,
