@@ -272,6 +272,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/psihologiya-4-depressivnaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№4  Депрессивная и мазохистическая психология [eVUKY9Glb24]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/retention-club.json'),
 		transcriptPath: join(
 			pipelineRoot,

@@ -148,7 +148,7 @@ export const collections: Collection[] = [
 		slug: 'psihologiya',
 		title: 'Психология',
 		subtitle: 'Курс Nancy McWilliams: психоаналитическая диагностика и организация личности.',
-		items: ['mcwilliams-10-aspects', 'marianna-2', 'psihologiya-3-isterechnaya']
+		items: ['mcwilliams-10-aspects', 'marianna-2', 'psihologiya-3-isterechnaya', 'psihologiya-4-depressivnaya']
 	},
 	{
 		slug: 'ovchinnikov-lectures',
