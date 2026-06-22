@@ -21,6 +21,7 @@ import sablyaVvodnaya from './reports/sablya-vvodnaya.json';
 import podlodkaVectorSearch from './reports/podlodka-vector-search.json';
 import software30 from './reports/software-3-0.json';
 import woodcreekCh1 from './reports/woodcreek-ch1.json';
+import poiskNovogoRuchya from './reports/poisk-novogo-ruchya.json';
 import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
 import marianna2 from './reports/marianna-2.json';
 import kendzyuPravila1 from './reports/kendzyu-pravila-1.json';
@@ -79,7 +80,8 @@ const all: Report[] = [
 	berezhnoyAi as Report,
 	retention as Report,
 	metodichka as Report,
-	woodcreekCh1 as Report
+	woodcreekCh1 as Report,
+	poiskNovogoRuchya as Report
 ];
 
 export const reports: Report[] = all;

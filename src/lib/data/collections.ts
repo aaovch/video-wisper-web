@@ -81,7 +81,7 @@ export const collections: Collection[] = [
 		slug: 'nri',
 		title: 'НРИ',
 		subtitle: 'Настольные ролевые игры: стримы, кампании и разборы сессий.',
-		items: ['woodcreek-ch1']
+		items: ['woodcreek-ch1', 'poisk-novogo-ruchya']
 	},
 	{
 		slug: 'kendzyu',

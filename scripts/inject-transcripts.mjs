@@ -146,6 +146,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/poisk-novogo-ruchya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/НРИ ＂В поисках нового ручья＂ [DqtAHkJHP8A]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/context-engineering-29min.json'),
 		transcriptPath: join(
 			pipelineRoot,
