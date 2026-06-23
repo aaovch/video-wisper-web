@@ -286,6 +286,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/psihologiya-6-narcissicheskaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№6. Нарциссическая и психопатическая психология [8WnU7n65F5Y]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/retention-club.json'),
 		transcriptPath: join(
 			pipelineRoot,

@@ -41,6 +41,7 @@ import mcwilliams10Aspects from './reports/mcwilliams-10-aspects.json';
 import psihologiya3Isterechnaya from './reports/psihologiya-3-isterechnaya.json';
 import psihologiya4Depressivnaya from './reports/psihologiya-4-depressivnaya.json';
 import psihologiya5ShizoidnayaParanoidnaya from './reports/psihologiya-5-shizoidnaya-paranoidnaya.json';
+import psihologiya6Narcissicheskaya from './reports/psihologiya-6-narcissicheskaya.json';
 import retentionClub from './reports/retention-club.json';
 
 // Порядок здесь = порядок карточек на главной.
@@ -50,6 +51,7 @@ const all: Report[] = [
 	psihologiya3Isterechnaya as Report,
 	psihologiya4Depressivnaya as Report,
 	psihologiya5ShizoidnayaParanoidnaya as Report,
+	psihologiya6Narcissicheskaya as Report,
 	protivnikFehtuetNepravilno as Report,
 	report20260620185936 as Report,
 	report20260620183945 as Report,
