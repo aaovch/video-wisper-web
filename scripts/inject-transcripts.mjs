@@ -279,6 +279,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/psihologiya-5-shizoidnaya-paranoidnaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№5  Шизоидная и параноидная психология [3PaOdcNVS9k]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/retention-club.json'),
 		transcriptPath: join(
 			pipelineRoot,
