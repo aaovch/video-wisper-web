@@ -305,6 +305,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Найм в эпоху AI ｜ собеседования, IT найм, рынок труда ｜ Podlodka Podcast #482 [E-P9yqhat3w]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kontseptsiya-monitoringa.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Концепция мониторинга [cNp1Y79y_28]/transcript.json'
+		)
 	}
 ];
 

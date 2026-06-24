@@ -156,6 +156,12 @@ export const collections: Collection[] = [
 		title: 'Лекции и семинары Овчинникова Александра',
 		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
 		items: ['retention-club', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
+	},
+	{
+		slug: 'golden-falcon-astana',
+		title: 'Golden Falcon Astana',
+		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',
+		items: ['kontseptsiya-monitoringa']
 	}
 ];
 

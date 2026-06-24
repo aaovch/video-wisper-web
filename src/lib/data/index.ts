@@ -43,9 +43,11 @@ import psihologiya4Depressivnaya from './reports/psihologiya-4-depressivnaya.jso
 import psihologiya5ShizoidnayaParanoidnaya from './reports/psihologiya-5-shizoidnaya-paranoidnaya.json';
 import psihologiya6Narcissicheskaya from './reports/psihologiya-6-narcissicheskaya.json';
 import retentionClub from './reports/retention-club.json';
+import kontseptsiyaMonitoringa from './reports/kontseptsiya-monitoringa.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	kontseptsiyaMonitoringa as Report,
 	retentionClub as Report,
 	mcwilliams10Aspects as Report,
 	psihologiyaTyazhestKlinicheskaya as Report,
