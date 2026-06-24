@@ -24,7 +24,6 @@ import software30 from './reports/software-3-0.json';
 import woodcreekCh1 from './reports/woodcreek-ch1.json';
 import poiskNovogoRuchya from './reports/poisk-novogo-ruchya.json';
 import obsidianWikiKarpathy from './reports/obsidian-wiki-karpathy.json';
-import marianna2 from './reports/marianna-2.json';
 import kendzyuPravila1 from './reports/kendzyu-pravila-1.json';
 import kendzyuSparringAliVov from './reports/kendzyu-sparring-ali-vov.json';
 import kendzyuSparring1 from './reports/kendzyu-sparring-1.json';
@@ -66,7 +65,6 @@ const all: Report[] = [
 	kendzyuSparring1 as Report,
 	kendzyuSparringAliVov as Report,
 	kendzyuPravila1 as Report,
-	marianna2 as Report,
 	sablyaVvodnaya as Report,
 	sablyaA2 as Report,
 	sablyaA3 as Report,

@@ -167,13 +167,6 @@ const SOURCES = [
 		)
 	},
 	{
-		reportPath: join(root, 'src/lib/data/reports/marianna-2.json'),
-		transcriptPath: join(
-			pipelineRoot,
-			'output/Марианна 2 [ko-F3R2HFyo]/transcript.json'
-		)
-	},
-	{
 		reportPath: join(root, 'src/lib/data/reports/kendzyu-pravila-1.json'),
 		transcriptPath: join(
 			pipelineRoot,
