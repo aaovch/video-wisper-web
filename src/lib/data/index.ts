@@ -38,6 +38,7 @@ import report20260620183945 from './reports/2026-06-20-18-39-45.json';
 import report20260620185936 from './reports/2026-06-20-185936.json';
 import protivnikFehtuetNepravilno from './reports/protivnik-fehtuet-nepravilno.json';
 import mcwilliams10Aspects from './reports/mcwilliams-10-aspects.json';
+import psihologiyaTyazhestKlinicheskaya from './reports/psihologiya-tyazhest-klinicheskaya.json';
 import psihologiya3Isterechnaya from './reports/psihologiya-3-isterechnaya.json';
 import psihologiya4Depressivnaya from './reports/psihologiya-4-depressivnaya.json';
 import psihologiya5ShizoidnayaParanoidnaya from './reports/psihologiya-5-shizoidnaya-paranoidnaya.json';
@@ -48,6 +49,7 @@ import retentionClub from './reports/retention-club.json';
 const all: Report[] = [
 	retentionClub as Report,
 	mcwilliams10Aspects as Report,
+	psihologiyaTyazhestKlinicheskaya as Report,
 	psihologiya3Isterechnaya as Report,
 	psihologiya4Depressivnaya as Report,
 	psihologiya5ShizoidnayaParanoidnaya as Report,

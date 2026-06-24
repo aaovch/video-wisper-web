@@ -265,6 +265,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/psihologiya-tyazhest-klinicheskaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/№2. Уровни тяжести и клиническая значимость для психотерапии [HBqRKjGWY8c]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/psihologiya-3-isterechnaya.json'),
 		transcriptPath: join(
 			pipelineRoot,
