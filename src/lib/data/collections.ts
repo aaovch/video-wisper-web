@@ -161,7 +161,7 @@ export const collections: Collection[] = [
 		slug: 'golden-falcon-astana',
 		title: 'Golden Falcon Astana',
 		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',
-		items: ['kontseptsiya-monitoringa']
+		items: ['kontseptsiya-monitoringa', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
 	}
 ];
 
