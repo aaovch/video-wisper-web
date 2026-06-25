@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
 	import ReportSearch from '$lib/components/ReportSearch.svelte';
@@ -17,8 +18,31 @@
 	const locked = $derived(gate.length > 0 && !gate.some((c) => lock.isUnlocked(c.slug)));
 
 	let seekTo = $state(0);
+	let railEl = $state<HTMLElement | null>(null);
 	let playerEl = $state<HTMLElement | null>(null);
 	let playerComp = $state<{ seekAndPlay?: (t: number) => void } | null>(null);
+
+	// Высота sticky-плеера → отступ для «Содержания», чтобы строки не наслаивались при прокрутке.
+	$effect(() => {
+		if (!browser || !playerEl || !railEl) return;
+		const mq = window.matchMedia('(max-width: 960px)');
+		const sync = () => {
+			if (!railEl) return;
+			if (!mq.matches) {
+				railEl.style.removeProperty('--mobile-sticky-h');
+				return;
+			}
+			railEl.style.setProperty('--mobile-sticky-h', `${playerEl!.offsetHeight + 8}px`);
+		};
+		sync();
+		const ro = new ResizeObserver(sync);
+		ro.observe(playerEl);
+		mq.addEventListener('change', sync);
+		return () => {
+			ro.disconnect();
+			mq.removeEventListener('change', sync);
+		};
+	});
 
 	// --- Подсветка блока по позиции воспроизведения ---
 	let videoTime = $state(0);
@@ -113,7 +137,7 @@
 <article class="report container">
 	<div class="layout" class:no-video={!report.video}>
 		<!-- Слева: плеер + содержание (sticky с самого верха) -->
-		<aside class="rail">
+		<aside class="rail" bind:this={railEl}>
 			{#if report.video}
 				<div class="video-pin" bind:this={playerEl}>
 					<VideoPlayer
@@ -328,6 +352,13 @@
 			position: sticky;
 			top: 8px;
 			z-index: 5;
+			background: var(--paper);
+			padding-bottom: 4px;
+			box-shadow: 0 10px 0 var(--paper);
+		}
+
+		.video-hint {
+			display: none;
 		}
 
 		.report-head h1 {

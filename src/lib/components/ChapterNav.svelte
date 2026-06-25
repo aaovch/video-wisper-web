@@ -149,4 +149,15 @@
 	.active .tc {
 		color: var(--accent);
 	}
+
+	@media (max-width: 960px) {
+		.nav-title {
+			position: sticky;
+			top: var(--mobile-sticky-h, 8px);
+			z-index: 4;
+			background: var(--paper);
+			padding: 10px 0;
+			box-shadow: 0 8px 0 var(--paper);
+		}
+	}
 </style>
