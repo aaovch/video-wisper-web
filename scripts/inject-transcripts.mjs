@@ -326,6 +326,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Преднамеренные и экспромтные действия (HEMA, Longsword) [_SUyzJCdh1E]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/optimizatsiya-parad-ripost-hema.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Оптимизация паттернов движений в парад рипостной игре (HEMA, longsword) [hUaWUij5qBk]/transcript.json'
+		)
 	}
 ];
 
