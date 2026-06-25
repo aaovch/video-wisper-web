@@ -44,10 +44,14 @@ import psihologiya5ShizoidnayaParanoidnaya from './reports/psihologiya-5-shizoid
 import psihologiya6Narcissicheskaya from './reports/psihologiya-6-narcissicheskaya.json';
 import retentionClub from './reports/retention-club.json';
 import kontseptsiyaMonitoringa from './reports/kontseptsiya-monitoringa.json';
+import hemaPrednamerennyeEkspromtnye from './reports/hema-prednamerennye-ekspromtnye.json';
+import fehtovatDolgoNeTravmirovatsya from './reports/fehtovat-dolgo-ne-travmirovatsya.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
+	fehtovatDolgoNeTravmirovatsya as Report,
 	kontseptsiyaMonitoringa as Report,
+	hemaPrednamerennyeEkspromtnye as Report,
 	retentionClub as Report,
 	mcwilliams10Aspects as Report,
 	psihologiyaTyazhestKlinicheskaya as Report,

@@ -312,6 +312,20 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Концепция мониторинга [cNp1Y79y_28]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/fehtovat-dolgo-ne-travmirovatsya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Как фехтовать долго и не травмироваться [aJsq4RC2MO0]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/hema-prednamerennye-ekspromtnye.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Преднамеренные и экспромтные действия (HEMA, Longsword) [_SUyzJCdh1E]/transcript.json'
+		)
 	}
 ];
 
