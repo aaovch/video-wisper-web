@@ -47,10 +47,11 @@ import kontseptsiyaMonitoringa from './reports/kontseptsiya-monitoringa.json';
 import hemaPrednamerennyeEkspromtnye from './reports/hema-prednamerennye-ekspromtnye.json';
 import fehtovatDolgoNeTravmirovatsya from './reports/fehtovat-dolgo-ne-travmirovatsya.json';
 import optimizatsiyaParadRipostHema from './reports/optimizatsiya-parad-ripost-hema.json';
+import tokarevSilovayaOfp2 from './reports/tokarev-silovaya-ofp-2.json';
 
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
-	optimizatsiyaParadRipostHema as Report,
+	tokarevSilovayaOfp2 as Report,
 	fehtovatDolgoNeTravmirovatsya as Report,
 	kontseptsiyaMonitoringa as Report,
 	hemaPrednamerennyeEkspromtnye as Report,

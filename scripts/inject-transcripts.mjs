@@ -333,6 +333,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Оптимизация паттернов движений в парад рипостной игре (HEMA, longsword) [hUaWUij5qBk]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/tokarev-silovaya-ofp-2.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Tokarev Coach ｜ 2 серия вебинаров ｜ Силовая тренировка в рамках ОФП [-gxH3seZ2mI]/transcript.json'
+		)
 	}
 ];
 

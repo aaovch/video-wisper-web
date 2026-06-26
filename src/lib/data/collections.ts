@@ -36,6 +36,12 @@ export interface Collection {
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
+		slug: 'silovaya-konditsionnaya',
+		title: 'Силовая и кондиционная подготовка',
+		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
+		items: ['tokarev-silovaya-ofp-2']
+	},
+	{
 		slug: 'almaty-2026',
 		title: 'Фехтовальный лагерь «Алматы 2026»',
 		subtitle: 'Семинары и тренировки лагеря: сабля (общая и «А») и длинный меч.',
