@@ -52,6 +52,7 @@ import tokarevSilovayaOfp2 from './reports/tokarev-silovaya-ofp-2.json';
 // Порядок здесь = порядок карточек на главной.
 const all: Report[] = [
 	tokarevSilovayaOfp2 as Report,
+	optimizatsiyaParadRipostHema as Report,
 	fehtovatDolgoNeTravmirovatsya as Report,
 	kontseptsiyaMonitoringa as Report,
 	hemaPrednamerennyeEkspromtnye as Report,
