@@ -149,33 +149,41 @@ p {
 	margin: 0;
 }
 
-/* Появление при загрузке / скролле */
+/* Появление при загрузке / скролле — без opacity:0, чтобы не было flash при SPA-nav */
 @keyframes rise {
 	from {
-		opacity: 0;
-		transform: translateY(14px);
+		transform: translateY(12px);
 	}
 	to {
-		opacity: 1;
 		transform: none;
 	}
 }
 
-/* Без JS контент виден сразу; прячем только когда JS активен (html.js) */
 .reveal {
 	opacity: 1;
 }
 
-html.js .reveal {
-	opacity: 0;
+/* До анимации — чуть ниже, но только после привязки JS (SSR без сдвига) */
+html.js .reveal[data-reveal-bound]:not(.is-visible) {
+	transform: translateY(12px);
 }
 
-/* Финальное состояние держим классом (opacity:1), а не fill-forwards:
-   иначе остаётся transform: matrix(…) → лишний стэкинг-контекст, и абсолютные
-   оверлеи (панель поиска) застревают под соседними reveal-блоками. */
-html.js .reveal.is-visible {
-	opacity: 1;
-	animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+html.js .reveal.is-visible:not(.reveal-static) {
+	transform: none;
+	animation: rise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html.js .reveal.reveal-static.is-visible {
+	transform: none;
+	animation: none;
+}
+
+/* SPA-переход: контент сразу на месте, без анимации появления */
+html.nav-instant .reveal,
+html.nav-instant .reveal:not(.is-visible),
+html.nav-instant .reveal.is-visible {
+	transform: none;
+	animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -183,8 +191,10 @@ html.js .reveal.is-visible {
 		scroll-behavior: auto;
 	}
 	html.js .reveal,
-	html.js .reveal.is-visible {
+	html.js .reveal.is-visible,
+	html.js .reveal.reveal-static.is-visible {
 		opacity: 1;
 		animation: none;
+		transform: none;
 	}
 }

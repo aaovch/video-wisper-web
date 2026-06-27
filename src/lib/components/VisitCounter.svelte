@@ -24,6 +24,8 @@
 	const count = $derived(getVisitCount(target));
 	const label = $derived(count === undefined ? null : formatVisitCount(count));
 	const ready = $derived(label !== null && !failed);
+	// Уже в кэше — показываем сразу, без fade-in при навигации.
+	const visible = $derived(ready && (count !== undefined || failed));
 
 	onMount(() => {
 		if (!browser) return;
@@ -65,9 +67,10 @@
 <span
 	bind:this={root}
 	class="visit-counter {className}"
-	class:ready
+	class:ready={visible}
+	class:instant={count !== undefined}
 	class:failed
-	aria-label={ready ? `${suffix}: ${label}` : undefined}
+	aria-label={visible ? `${suffix}: ${label}` : undefined}
 >
 	{#if ready}
 		{label} {suffix}
@@ -85,6 +88,11 @@
 
 	.visit-counter.ready {
 		opacity: 1;
+	}
+
+	.visit-counter.instant {
+		opacity: 1;
+		transition: none;
 	}
 
 	.visit-counter.failed {

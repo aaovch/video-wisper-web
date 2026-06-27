@@ -1,11 +1,16 @@
 <script lang="ts">
 	import '../app.css';
 	import { base } from '$app/paths';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import SearchBoxLazy from '$lib/components/SearchBoxLazy.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
-	import { initPrerenderedReveals } from '$lib/attachments';
+	import {
+		beginNavInstant,
+		endNavInstant,
+		flushVisibleReveals,
+		initPrerenderedReveals
+	} from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
 	import { trackPageVisit } from '$lib/visit-tracker';
 	import { onMount, tick } from 'svelte';
@@ -34,12 +39,24 @@
 	onMount(async () => {
 		await tick();
 		initPrerenderedReveals();
+		flushVisibleReveals();
 	});
 
-	afterNavigate(async () => {
-		await tick();
+	beforeNavigate(({ type }) => {
+		if (type === 'popstate' || type === 'link' || type === 'goto') {
+			beginNavInstant();
+		}
+	});
+
+	afterNavigate(() => {
+		beginNavInstant();
+		void (async () => {
+			await tick();
+			initPrerenderedReveals();
+			flushVisibleReveals();
+			endNavInstant();
+		})();
 		resetProgress();
-		initPrerenderedReveals();
 		void trackPageVisit(page.url.pathname);
 		updateProgress();
 	});

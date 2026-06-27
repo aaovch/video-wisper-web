@@ -45,7 +45,6 @@ import type { Component } from 'svelte';
 		border: 1px solid var(--line-strong);
 		border-radius: 999px;
 		background: var(--paper);
-		opacity: 0.55;
 	}
 
 	.icon {

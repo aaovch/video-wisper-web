@@ -2,37 +2,37 @@ import type { Attachment } from 'svelte/attachments';
 
 const BOUND = 'data-reveal-bound';
 
+function inViewport(node: HTMLElement): boolean {
+	const rect = node.getBoundingClientRect();
+	if (rect.width === 0 && rect.height === 0) return false;
+	const vh = window.innerHeight || document.documentElement.clientHeight;
+	const margin = vh * 0.1;
+	return rect.top < vh - margin && rect.bottom > margin;
+}
+
 function bindReveal(node: HTMLElement, delay?: number) {
 	if (node.hasAttribute(BOUND)) return;
 	node.setAttribute(BOUND, '');
 
 	if (delay) node.style.animationDelay = `${delay}ms`;
 
-	const show = () => {
+	function show() {
 		if (!node.isConnected) return;
 		node.classList.add('is-visible');
-	};
+		if (document.documentElement.classList.contains('nav-instant')) {
+			node.classList.add('reveal-static');
+		}
+	}
 
 	if (typeof IntersectionObserver === 'undefined') {
 		show();
 		return;
 	}
 
-	const checkNow = () => {
-		if (node.classList.contains('is-visible')) return true;
-		const rect = node.getBoundingClientRect();
-		if (rect.width === 0 && rect.height === 0) return false;
-		const vh = window.innerHeight || document.documentElement.clientHeight;
-		const margin = vh * 0.1;
-		if (rect.top < vh - margin && rect.bottom > margin) {
-			show();
-			return true;
-		}
-		return false;
-	};
-
-	// Сразу показываем above-the-fold — без flash при SPA-навигации.
-	if (checkNow()) return;
+	if (inViewport(node)) {
+		show();
+		return;
+	}
 
 	const io = new IntersectionObserver(
 		(entries) => {
@@ -47,10 +47,6 @@ function bindReveal(node: HTMLElement, delay?: number) {
 	);
 
 	io.observe(node);
-
-	requestAnimationFrame(() => {
-		checkNow();
-	});
 }
 
 /** Ограничение stagger-задержки анимации (мс). */
@@ -69,9 +65,30 @@ export function reveal(options: { delay?: number } = {}): Attachment<HTMLElement
 	};
 }
 
-/** После client-nav: подхватить новые .reveal на странице. */
-export function initPrerenderedReveals() {
+/** Сразу показать reveal-блоки во viewport (без последующей анимации). */
+export function flushVisibleReveals() {
 	for (const node of document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)')) {
+		if (inViewport(node)) {
+			node.classList.add('is-visible', 'reveal-static');
+		}
+	}
+}
+
+/** Подхватить .reveal, которые ещё не связаны с {@attach reveal}. */
+export function initPrerenderedReveals() {
+	for (const node of document.querySelectorAll<HTMLElement>('.reveal:not([data-reveal-bound])')) {
 		bindReveal(node);
 	}
+}
+
+/** Включить режим мгновенного показа при client-side навигации. */
+export function beginNavInstant() {
+	document.documentElement.classList.add('nav-instant');
+	flushVisibleReveals();
+}
+
+export function endNavInstant() {
+	requestAnimationFrame(() => {
+		document.documentElement.classList.remove('nav-instant');
+	});
 }
