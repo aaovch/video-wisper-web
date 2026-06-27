@@ -18,6 +18,22 @@ function bindReveal(node: HTMLElement, delay?: number) {
 		return;
 	}
 
+	const checkNow = () => {
+		if (node.classList.contains('is-visible')) return true;
+		const rect = node.getBoundingClientRect();
+		if (rect.width === 0 && rect.height === 0) return false;
+		const vh = window.innerHeight || document.documentElement.clientHeight;
+		const margin = vh * 0.1;
+		if (rect.top < vh - margin && rect.bottom > margin) {
+			show();
+			return true;
+		}
+		return false;
+	};
+
+	// Сразу показываем above-the-fold — без flash при SPA-навигации.
+	if (checkNow()) return;
+
 	const io = new IntersectionObserver(
 		(entries) => {
 			for (const entry of entries) {
@@ -30,27 +46,16 @@ function bindReveal(node: HTMLElement, delay?: number) {
 		{ rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
 	);
 
-	const checkNow = () => {
-		if (node.classList.contains('is-visible')) return true;
-		const rect = node.getBoundingClientRect();
-		if (rect.width === 0 && rect.height === 0) return false;
-		const vh = window.innerHeight || document.documentElement.clientHeight;
-		const margin = vh * 0.1;
-		if (rect.top < vh - margin && rect.bottom > margin) {
-			show();
-			io.unobserve(node);
-			return true;
-		}
-		return false;
-	};
-
 	io.observe(node);
 
 	requestAnimationFrame(() => {
-		requestAnimationFrame(() => {
-			checkNow();
-		});
+		checkNow();
 	});
+}
+
+/** Ограничение stagger-задержки анимации (мс). */
+export function revealDelay(index: number, step = 90, max = 360): number {
+	return Math.min(index * step, max);
 }
 
 /**
@@ -64,9 +69,9 @@ export function reveal(options: { delay?: number } = {}): Attachment<HTMLElement
 	};
 }
 
-/** Для prerender-HTML: {@attach} иногда не успевает до первого paint. */
+/** После client-nav: подхватить новые .reveal на странице. */
 export function initPrerenderedReveals() {
-	for (const node of document.querySelectorAll<HTMLElement>('.reveal')) {
+	for (const node of document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)')) {
 		bindReveal(node);
 	}
 }

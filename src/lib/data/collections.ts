@@ -1,5 +1,5 @@
-import type { Report } from '$lib/types';
-import { getReport } from './index';
+import type { ReportSummary } from '$lib/types';
+import { getReportSummary } from './report-meta';
 
 /** Разбор коллекции: что заявлялось и как это сработало на практике. */
 export interface CollectionAnalysis {
@@ -196,10 +196,10 @@ export function getCollectionSlugs(): string[] {
 }
 
 /** Отчёты коллекции в заданном порядке (несуществующие slug'и отбрасываются). */
-export function collectionReports(collection: Collection): Report[] {
+export function collectionReports(collection: Collection): ReportSummary[] {
 	return collection.items
-		.map((slug) => getReport(slug))
-		.filter((r): r is Report => Boolean(r));
+		.map((slug) => getReportSummary(slug))
+		.filter((r): r is ReportSummary => Boolean(r));
 }
 
 /** Коллекции, в которые входит отчёт (для крошек на странице отчёта). */
@@ -229,6 +229,6 @@ export function collectionStats(collection: Collection): CollectionStats {
 	const rs = collectionReports(collection);
 	return {
 		videos: rs.length,
-		chapters: rs.reduce((acc, r) => acc + r.chapters.length, 0)
+		chapters: rs.reduce((acc, r) => acc + r.chapterCount, 0)
 	};
 }

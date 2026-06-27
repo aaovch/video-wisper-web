@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CollectionCard from '$lib/components/CollectionCard.svelte';
-	import { reveal } from '$lib/attachments';
-	import { reports } from '$lib/data';
+	import { reveal, revealDelay } from '$lib/attachments';
+	import { getReportCount } from '$lib/data';
 	import { collections } from '$lib/data/collections';
 	import { SITE_HOME_TITLE } from '$lib/site';
 </script>
@@ -29,7 +29,7 @@
 			</div>
 			<div>
 				<dt class="label">записей</dt>
-				<dd>{String(reports.length).padStart(2, '0')}</dd>
+				<dd>{String(getReportCount()).padStart(2, '0')}</dd>
 			</div>
 		</dl>
 	</div>
@@ -40,7 +40,7 @@
 	<hr class="rule" />
 	<ul class="grid">
 		{#each collections as collection, i (collection.slug)}
-			<li class="reveal" {@attach reveal({ delay: i * 90 })}>
+			<li class="reveal" {@attach reveal({ delay: revealDelay(i) })}>
 				<CollectionCard {collection} index={i + 1} />
 			</li>
 		{/each}

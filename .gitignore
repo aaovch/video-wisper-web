@@ -8,3 +8,6 @@ node_modules/
 vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 .DS_Store
+
+# Генерируется scripts/build-search-index.mjs (prebuild)
+src/lib/data/search-index.json

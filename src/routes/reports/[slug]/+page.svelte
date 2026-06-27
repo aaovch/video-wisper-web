@@ -46,14 +46,16 @@
 	});
 
 	// --- Подсветка блока по позиции воспроизведения ---
-	let videoTime = $state(0);
+	let activeChapterIndex = $state(-1);
 	let videoPlaying = $state(false);
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
+	let transcriptOpen = $state(false);
 
 	function onVideoTime(t: number) {
-		videoTime = t;
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
+		const idx = chapterIndexAt(t);
+		if (idx !== activeChapterIndex) activeChapterIndex = idx;
 	}
 
 	function chapterIndexAt(t: number): number {
@@ -67,7 +69,7 @@
 	}
 
 	// Блок на позиции плеера: держится и на паузе (пока воспроизведение хоть раз начиналось).
-	const playingIndex = $derived(playbackStarted ? chapterIndexAt(videoTime) : -1);
+	const playingIndex = $derived(playbackStarted ? activeChapterIndex : -1);
 	// Активный пункт в «Содержании»: воспроизведение приоритетнее скролла.
 	const navActive = $derived(playingIndex >= 0 ? playingIndex : scrollIndex);
 
@@ -80,6 +82,7 @@
 		if (!nodes.length || typeof IntersectionObserver === 'undefined') return;
 
 		const visible = new Set<number>();
+		let scrollTimer: ReturnType<typeof setTimeout> | undefined;
 		const io = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -87,7 +90,10 @@
 					if (entry.isIntersecting) visible.add(idx);
 					else visible.delete(idx);
 				}
-				if (visible.size) scrollIndex = Math.min(...visible);
+				clearTimeout(scrollTimer);
+				scrollTimer = setTimeout(() => {
+					if (visible.size) scrollIndex = Math.min(...visible);
+				}, 120);
 			},
 			{ rootMargin: '-18% 0px -72% 0px', threshold: 0 }
 		);
@@ -97,7 +103,10 @@
 			io.observe(n);
 		});
 
-		return () => io.disconnect();
+		return () => {
+			clearTimeout(scrollTimer);
+			io.disconnect();
+		};
 	});
 
 	function seekVideo(start: number) {
@@ -183,9 +192,11 @@
 
 			{#if report.transcript}
 				<section class="transcript reveal" {@attach reveal()}>
-					<details>
+					<details bind:open={transcriptOpen}>
 						<summary><span class="label">Полная расшифровка</span></summary>
-						<p>{report.transcript}</p>
+						{#if transcriptOpen}
+							<p>{report.transcript}</p>
+						{/if}
 					</details>
 				</section>
 			{/if}

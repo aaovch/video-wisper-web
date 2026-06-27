@@ -1,23 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import ReportCard from '$lib/components/ReportCard.svelte';
 	import Lock from '$lib/components/Lock.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
-	import { reveal } from '$lib/attachments';
+	import { reveal, revealDelay } from '$lib/attachments';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
-	import { prefetchReportCounts } from '$lib/visit-counter.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
-
-	onMount(() => {
-		prefetchReportCounts(collection.items);
-	});
 </script>
 
 <svelte:head>
@@ -52,7 +46,7 @@
 			<p class="lede">{collection.analysis.lede}</p>
 			<ol class="findings">
 				{#each collection.analysis.findings as finding, i (i)}
-					<li class="finding reveal" {@attach reveal({ delay: i * 60 })}>
+					<li class="finding reveal" {@attach reveal({ delay: revealDelay(i, 60) })}>
 						<span class="finding-num" aria-hidden="true">{i + 1}</span>
 						<div class="finding-part">
 							<span class="finding-tag">Заявляли</span>
@@ -74,7 +68,7 @@
 	<hr class="rule" />
 	<ul class="index-list">
 		{#each reports as report, i (report.slug)}
-			<li class="reveal" {@attach reveal({ delay: i * 80 })}>
+			<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
 				<ReportCard {report} index={i + 1} />
 			</li>
 		{/each}

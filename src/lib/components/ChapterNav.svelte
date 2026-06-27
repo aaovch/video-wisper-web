@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Chapter } from '$lib/types';
 	import { formatTime } from '$lib/utils';
 
@@ -10,26 +11,27 @@
 		$props();
 
 	let navEl = $state<HTMLElement | null>(null);
-	// Открыто по умолчанию (для SSR/десктопа); на мобильном схлопываем после монтирования.
-	let open = $state(true);
+	let open = $state(false);
 
-	$effect(() => {
-		if (window.matchMedia('(max-width: 960px)').matches) open = false;
+	onMount(() => {
+		if (!window.matchMedia('(max-width: 960px)').matches) open = true;
 	});
 
-	// Держим активный пункт в зоне видимости списка (без влияния на скролл страницы).
-	$effect(() => {
-		active; // переоценивать при смене активного блока
-		const btn = navEl?.querySelector<HTMLElement>('li.active button');
+	function scrollActiveIntoView(index: number) {
 		const container = navEl?.closest<HTMLElement>('.nav-scroll');
+		const btn = navEl?.querySelector<HTMLElement>(`ol li:nth-child(${index + 1}) button`);
 		if (!btn || !container) return;
-		if (container.scrollHeight <= container.clientHeight) return; // список не прокручивается (мобильный)
+		if (container.scrollHeight <= container.clientHeight) return;
 		const cr = container.getBoundingClientRect();
 		const br = btn.getBoundingClientRect();
-		if (br.top < cr.top) container.scrollBy({ top: br.top - cr.top - 8, behavior: 'smooth' });
-		else if (br.bottom > cr.bottom)
-			container.scrollBy({ top: br.bottom - cr.bottom + 8, behavior: 'smooth' });
-	});
+		if (br.top < cr.top) container.scrollTop += br.top - cr.top - 8;
+		else if (br.bottom > cr.bottom) container.scrollTop += br.bottom - cr.bottom + 8;
+	}
+
+	function select(index: number, start: number) {
+		onSelect(index, start);
+		scrollActiveIntoView(index);
+	}
 </script>
 
 <details class="chapter-nav" bind:open bind:this={navEl}>
@@ -41,7 +43,7 @@
 	<ol>
 		{#each chapters as chapter, i (chapter.start)}
 			<li class:active={active === i}>
-				<button type="button" onclick={() => onSelect(i, chapter.start)}>
+				<button type="button" onclick={() => select(i, chapter.start)}>
 					<span class="idx mono">{String(i + 1).padStart(2, '0')}</span>
 					<span class="ttl">{chapter.title}</span>
 					<span class="tc mono">{formatTime(chapter.start)}</span>

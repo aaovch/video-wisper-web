@@ -65,3 +65,14 @@ export interface Report {
 	/** Полная расшифровка (опционально) */
 	transcript?: string;
 }
+
+/** Лёгкая карточка отчёта — без глав и транскрипта (report-meta.json). */
+export interface ReportSummary {
+	slug: string;
+	title: string;
+	subtitle: string;
+	duration: number;
+	overview_theses: string[];
+	chapterCount: number;
+	video?: VideoSource;
+}

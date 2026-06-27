@@ -51,6 +51,12 @@ export function invalidateVisitCount(target: CounterTarget): void {
 	delete visitCache[targetCacheKey(target)];
 }
 
+export function bumpVisitCount(target: CounterTarget): void {
+	if (target.kind === 'reports-sum') return;
+	const key = targetCacheKey(target);
+	if (key in visitCache) visitCache[key] += 1;
+}
+
 export function prefetchReportCounts(slugs: string[]): void {
 	for (const slug of slugs) {
 		void ensureVisitCount({ kind: 'report', slug });

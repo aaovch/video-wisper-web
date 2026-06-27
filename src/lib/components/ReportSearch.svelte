@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Report } from '$lib/types';
-	import { searchReport, groupByChapter, type SearchHit } from '$lib/search';
+	import { groupByChapter, preloadSearchIndex, searchReport, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
+	import { onMount } from 'svelte';
 
 	let {
 		report,
@@ -12,14 +13,35 @@
 	} = $props();
 
 	let query = $state('');
+	let debouncedQuery = $state('');
+	let hits = $state<SearchHit[]>([]);
 	let open = $state(false);
 	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
+	let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 
-	// Группы по блокам + сквозная нумерация для клавиатуры.
+	onMount(() => {
+		preloadSearchIndex();
+	});
+
+	$effect(() => {
+		const q = debouncedQuery.trim();
+		if (q.length < 2) {
+			hits = [];
+			return;
+		}
+		let cancelled = false;
+		void searchReport(report.slug, q).then((results) => {
+			if (!cancelled) hits = results;
+		});
+		return () => {
+			cancelled = true;
+		};
+	});
+
 	const view = $derived.by(() => {
-		const groups = groupByChapter(searchReport(report, query));
+		const groups = groupByChapter(hits);
 		let n = 0;
 		return groups.map((g) => ({
 			...g,
@@ -28,11 +50,17 @@
 	});
 	const flat = $derived(view.flatMap((g) => g.rows.map((r) => r.hit)));
 
-	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
 		flat;
 		activeIndex = 0;
 	});
+
+	function scheduleSearch() {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			debouncedQuery = query;
+		}, 180);
+	}
 
 	function scrollActiveIntoView() {
 		rootEl?.querySelector(`#rs-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
@@ -110,13 +138,16 @@
 			aria-activedescendant={open && flat.length ? `rs-opt-${activeIndex}` : undefined}
 			bind:value={query}
 			onfocus={() => (open = true)}
-			oninput={() => (open = true)}
+			oninput={() => {
+				open = true;
+				scheduleSearch();
+			}}
 			onkeydown={onInputKey}
 		/>
 		<kbd class="hint" aria-hidden="true">f</kbd>
 	</label>
 
-	{#if open && query.trim().length >= 2}
+	{#if open && debouncedQuery.trim().length >= 2}
 		<div class="panel" id="rs-panel" role="listbox" aria-label="Результаты поиска в видео">
 			{#if flat.length === 0}
 				<p class="empty label">Ничего не найдено</p>

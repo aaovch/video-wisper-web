@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
-	import type { Report } from '$lib/types';
+	import type { ReportSummary } from '$lib/types';
 	import { formatDuration, getVideoPosterUrl } from '$lib/utils';
 
-	let { report, index }: { report: Report; index: number } = $props();
+	let { report, index }: { report: ReportSummary; index: number } = $props();
 
 	const hasVideo = $derived(Boolean(report.video));
 	const posterUrl = $derived(getVideoPosterUrl(report.video, base));

@@ -3,7 +3,7 @@
 	import { base } from '$app/paths';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import SearchBox from '$lib/components/SearchBox.svelte';
+	import SearchBoxLazy from '$lib/components/SearchBoxLazy.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { initPrerenderedReveals } from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
@@ -12,12 +12,23 @@
 
 	let { children } = $props();
 
-	let progress = $state(0);
+	let progressEl = $state<HTMLDivElement | null>(null);
+	let progressRaf = 0;
 
 	function updateProgress() {
-		const doc = document.documentElement;
-		const max = doc.scrollHeight - doc.clientHeight;
-		progress = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
+		if (!progressEl) return;
+		if (progressRaf) return;
+		progressRaf = requestAnimationFrame(() => {
+			progressRaf = 0;
+			const doc = document.documentElement;
+			const max = doc.scrollHeight - doc.clientHeight;
+			const p = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
+			progressEl!.style.transform = `scaleX(${p})`;
+		});
+	}
+
+	function resetProgress() {
+		if (progressEl) progressEl.style.transform = 'scaleX(0)';
 	}
 
 	onMount(async () => {
@@ -27,14 +38,16 @@
 
 	afterNavigate(async () => {
 		await tick();
+		resetProgress();
 		initPrerenderedReveals();
 		void trackPageVisit(page.url.pathname);
+		updateProgress();
 	});
 </script>
 
 <svelte:window onscroll={updateProgress} onresize={updateProgress} />
 
-<div class="progress" style:--p={progress} aria-hidden="true"></div>
+<div class="progress" bind:this={progressEl} aria-hidden="true"></div>
 
 <div class="sheet">
 	<header class="masthead">
@@ -44,7 +57,7 @@
 				<span class="wordmark-sub label">{SITE_TAGLINE}</span>
 			</a>
 
-			<SearchBox />
+			<SearchBoxLazy />
 		</div>
 		<hr class="rule" />
 	</header>
@@ -74,7 +87,7 @@
 		z-index: 50;
 		background: var(--accent);
 		transform-origin: left;
-		transform: scaleX(var(--p, 0));
+		transform: scaleX(0);
 		transition: transform 0.08s linear;
 	}
 

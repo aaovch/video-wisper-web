@@ -2,30 +2,31 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { searchReports, groupByReport, type SearchHit } from '$lib/search';
-	import { getCollection, collectionReports } from '$lib/data/collections';
+	import { groupByReport, preloadSearchIndex, searchReports, type SearchHit } from '$lib/search';
+	import { getCollection } from '$lib/data/collections';
 	import { formatTime } from '$lib/utils';
 
 	const hotkey = '/';
 	const uid = $props.id();
 
 	let query = $state('');
+	let debouncedQuery = $state('');
+	let hits = $state<SearchHit[]>([]);
 	let open = $state(false);
 	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let rootEl = $state<HTMLElement | null>(null);
+	let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 
-	// Узкий скоуп выводится из маршрута: на странице коллекции — её отчёты.
 	const narrowScope = $derived.by(() => {
 		const slug = page.params.slug;
 		if (page.route.id === '/collections/[slug]' && slug) {
 			const col = getCollection(slug);
-			if (col) return { label: col.title, reports: collectionReports(col) };
+			if (col) return { label: col.title, slugs: col.items };
 		}
 		return null;
 	});
 
-	// Переключатель «в коллекции / везде». Сбрасывается при смене маршрута.
 	let wide = $state(false);
 	$effect(() => {
 		page.url.pathname;
@@ -35,10 +36,24 @@
 	const scoped = $derived(Boolean(narrowScope) && !wide);
 	const placeholder = $derived(scoped ? 'Поиск в коллекции…' : 'Поиск по разборам…');
 
-	// Группы по отчётам + сквозная нумерация попаданий для клавиатуры.
+	$effect(() => {
+		const q = debouncedQuery.trim();
+		const scope = scoped && narrowScope ? narrowScope.slugs : undefined;
+		if (q.length < 2) {
+			hits = [];
+			return;
+		}
+		let cancelled = false;
+		void searchReports(q, 40, scope).then((results) => {
+			if (!cancelled) hits = results;
+		});
+		return () => {
+			cancelled = true;
+		};
+	});
+
 	const view = $derived.by(() => {
-		const scope = scoped ? narrowScope!.reports : undefined;
-		const groups = groupByReport(searchReports(query, 40, scope));
+		const groups = groupByReport(hits);
 		let n = 0;
 		return groups.map((g) => ({
 			...g,
@@ -46,13 +61,29 @@
 		}));
 	});
 	const flat = $derived(view.flatMap((g) => g.rows.map((r) => r.hit)));
-	const showPanel = $derived(open && query.trim().length >= 2);
+	const showPanel = $derived(open && debouncedQuery.trim().length >= 2);
 
-	// Сброс выделения при смене запроса/состава результатов.
 	$effect(() => {
 		flat;
 		activeIndex = 0;
 	});
+
+	function scheduleSearch() {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			debouncedQuery = query;
+		}, 180);
+	}
+
+	function onQueryInput() {
+		open = true;
+		scheduleSearch();
+	}
+
+	function onFieldFocus() {
+		open = true;
+		preloadSearchIndex();
+	}
 
 	function scrollActiveIntoView() {
 		rootEl?.querySelector(`#${uid}-opt-${activeIndex}`)?.scrollIntoView({ block: 'nearest' });
@@ -133,8 +164,8 @@
 			aria-controls="{uid}-panel"
 			aria-activedescendant={open && flat.length ? `${uid}-opt-${activeIndex}` : undefined}
 			bind:value={query}
-			onfocus={() => (open = true)}
-			oninput={() => (open = true)}
+			onfocus={onFieldFocus}
+			oninput={onQueryInput}
 			onkeydown={onInputKey}
 		/>
 		{#if hotkey}

@@ -6,8 +6,8 @@ export const entries: EntryGenerator = () => {
 	return getSlugs().map((slug) => ({ slug }));
 };
 
-export const load: PageLoad = ({ params }) => {
-	const report = getReport(params.slug);
+export const load: PageLoad = async ({ params }) => {
+	const report = await getReport(params.slug);
 	if (!report) {
 		throw error(404, 'Отчёт не найден');
 	}
