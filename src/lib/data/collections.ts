@@ -164,6 +164,18 @@ export const collections: Collection[] = [
 		items: ['mcwilliams-10-aspects', 'psihologiya-tyazhest-klinicheskaya', 'psihologiya-3-isterechnaya', 'psihologiya-4-depressivnaya', 'psihologiya-5-shizoidnaya-paranoidnaya', 'psihologiya-6-narcissicheskaya']
 	},
 	{
+		slug: 'ovchinnikov-seminars',
+		title: 'Семинары Овчинникова Александра',
+		subtitle: 'Разборы тактики, методики и тренировочных концепций HEMA.',
+		items: [
+			'protivnik-fehtuet-nepravilno',
+			'optimizatsiya-parad-ripost-hema',
+			'hema-prednamerennye-ekspromtnye',
+			'kontseptsiya-monitoringa',
+			'kompresiya-taktiki-lektsiya'
+		]
+	},
+	{
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
 		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
