@@ -161,13 +161,13 @@ export const collections: Collection[] = [
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
 		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
-		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'retention-club', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
+		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'kompresiya-taktiki-lektsiya', 'retention-club', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
 	},
 	{
 		slug: 'golden-falcon-astana',
 		title: 'Golden Falcon Astana',
 		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',
-		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'kontseptsiya-monitoringa', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
+		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'kontseptsiya-monitoringa', 'kompresiya-taktiki-lektsiya', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
 	}
 ];
 

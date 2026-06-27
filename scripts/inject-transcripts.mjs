@@ -340,6 +340,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Tokarev Coach ｜ 2 серия вебинаров ｜ Силовая тренировка в рамках ОФП [-gxH3seZ2mI]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/kompresiya-taktiki-lektsiya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Компрессия тактики, лекция [E0IuKXUCIYo]/transcript.json'
+		)
 	}
 ];
 
