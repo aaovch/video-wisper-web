@@ -6,7 +6,7 @@ const API_BASE = 'https://page-views-api.ratneshc.com/api/v1';
 export type CounterTarget =
 	| { kind: 'site' }
 	| { kind: 'report'; slug: string }
-	| { kind: 'collection'; slug: string };
+	| { kind: 'reports-sum'; slugs: string[] };
 
 function normalizePath(path: string): string {
 	let p = path.replace(/\/{2,}/g, '/');
@@ -26,9 +26,8 @@ export function counterKey(target: CounterTarget): { site: string; path: string 
 		case 'report':
 			path = `${base}/reports/${target.slug}`;
 			break;
-		case 'collection':
-			path = `${base}/collections/${target.slug}`;
-			break;
+		case 'reports-sum':
+			throw new Error('reports-sum has no single counter path');
 	}
 
 	return { site, path: normalizePath(path) };
@@ -37,6 +36,7 @@ export function counterKey(target: CounterTarget): { site: string; path: string 
 /** Текущий URL совпадает со страницей счётчика (для site — всегда). */
 export function isCounterPage(target: CounterTarget, pathname: string): boolean {
 	if (target.kind === 'site') return true;
+	if (target.kind === 'reports-sum') return false;
 	return normalizePath(pathname) === counterKey(target).path;
 }
 
@@ -47,11 +47,20 @@ function counterUrl(endpoint: 'track' | 'views', target: CounterTarget): string 
 
 /** Учесть визит (дедупликация на стороне API — раз в 30 мин на посетителя). */
 export async function trackVisit(target: CounterTarget): Promise<void> {
+	if (target.kind === 'reports-sum') return;
 	await fetch(counterUrl('track', target), { keepalive: true });
 }
 
-/** Текущее значение счётчика. */
+/** Текущее значение счётчика. Для reports-sum — сумма просмотров отчётов. */
 export async function fetchVisitCount(target: CounterTarget): Promise<number> {
+	if (target.kind === 'reports-sum') {
+		if (!target.slugs.length) return 0;
+		const counts = await Promise.all(
+			target.slugs.map((slug) => fetchVisitCount({ kind: 'report', slug }))
+		);
+		return counts.reduce((sum, n) => sum + n, 0);
+	}
+
 	const res = await fetch(counterUrl('views', target));
 	if (!res.ok) throw new Error(`visit count ${res.status}`);
 	const data = (await res.json()) as { views?: number };

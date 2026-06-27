@@ -34,7 +34,11 @@
 		<p class="description">{collection.description}</p>
 	{/if}
 	<p class="views label">
-		<VisitCounter target={{ kind: 'collection', slug: collection.slug }} />
+		<VisitCounter
+			target={{ kind: 'reports-sum', slugs: collection.items }}
+			track={false}
+			suffix="просмотров"
+		/>
 	</p>
 </section>
 

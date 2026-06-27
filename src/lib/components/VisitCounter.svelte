@@ -13,10 +13,12 @@
 	let {
 		target = { kind: 'site' },
 		track = true,
+		suffix = 'посещений',
 		class: className = ''
 	}: {
 		target?: CounterTarget;
 		track?: boolean;
+		suffix?: string;
 		class?: string;
 	} = $props();
 
@@ -44,5 +46,5 @@
 </script>
 
 {#if label && !failed}
-	<span class={className} aria-label="Посещений: {label}">{label} посещений</span>
+	<span class={className} aria-label="{suffix}: {label}">{label} {suffix}</span>
 {/if}

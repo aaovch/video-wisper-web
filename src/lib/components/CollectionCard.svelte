@@ -32,12 +32,19 @@
 {#snippet body()}
 	<div class="head">
 		<span class="numeral" aria-hidden="true">{String(index).padStart(2, '0')}</span>
-		<span class="count mono">
-			{#if collection.password && !locked}<span class="badge open">🔓 Открыто</span> ·{' '}{:else if collection.password}<span
-					class="badge">🔒</span
-				>{' '}{/if}{stats.videos} видео ·{' '}
-			<VisitCounter target={{ kind: 'collection', slug: collection.slug }} track={false} />
-		</span>
+		<div class="meta">
+			<span class="count mono">
+				{#if collection.password && !locked}<span class="badge open">🔓 Открыто</span> ·{' '}{:else if collection.password}<span
+						class="badge">🔒</span
+					>{' '}{/if}{stats.videos} видео
+			</span>
+			<VisitCounter
+				target={{ kind: 'reports-sum', slugs: collection.items }}
+				track={false}
+				suffix="просмотров"
+				class="views"
+			/>
+		</div>
 	</div>
 
 	<h3 class="title">{collection.title}</h3>
@@ -104,10 +111,19 @@
 
 	.head {
 		display: flex;
-		align-items: baseline;
+		align-items: flex-start;
 		justify-content: space-between;
 		gap: 14px;
 		margin-bottom: 8px;
+	}
+
+	.meta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 3px;
+		min-width: 0;
+		text-align: right;
 	}
 
 	.numeral {
@@ -126,6 +142,12 @@
 
 	.count {
 		font-size: 12px;
+		color: var(--ink-faint);
+	}
+
+	:global(.views) {
+		font-family: var(--font-mono);
+		font-size: 11px;
 		color: var(--ink-faint);
 		white-space: nowrap;
 	}
