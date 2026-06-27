@@ -63,7 +63,8 @@ export const collections: Collection[] = [
 			'sablya-a-9',
 			'sablya-10',
 			'sablya-12',
-			'longsword-a'
+			'longsword-a',
+			'rapira-almaty-2026'
 		]
 	},
 	{

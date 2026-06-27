@@ -4,6 +4,7 @@ import berezhnoyAi from './reports/berezhnoy-ai.json';
 import hemaReflections from './reports/hema-reflections.json';
 import llmDeepDiveKarpathy from './reports/llm-deep-dive-karpathy.json';
 import longswordA from './reports/longsword-a.json';
+import rapiraAlmaty2026 from './reports/rapira-almaty-2026.json';
 import metodichka from './reports/metodichka.json';
 import podlodkaSlm468 from './reports/podlodka-slm-468.json';
 import podlodkaNaimAi482 from './reports/podlodka-naim-ai-482.json';
@@ -91,6 +92,7 @@ const all: Report[] = [
 	sablya10 as Report,
 	sablya12 as Report,
 	longswordA as Report,
+	rapiraAlmaty2026 as Report,
 	software30 as Report,
 	llmDeepDiveKarpathy as Report,
 	contextEngineering29min as Report,
