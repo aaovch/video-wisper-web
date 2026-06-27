@@ -10,10 +10,6 @@
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
-	const totalChapters = $derived(reports.reduce((acc, r) => acc + r.chapters.length, 0));
-	const totalDurationMin = $derived(
-		Math.round(reports.reduce((acc, r) => acc + (r.duration ?? 0), 0) / 60)
-	);
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
 </script>
 
@@ -36,10 +32,6 @@
 	{#if collection.description}
 		<p class="description">{collection.description}</p>
 	{/if}
-	<p class="meta label">
-		{#if collection.password}<span class="unlocked">🔓 Открыто паролем</span> ·{' '}{/if}{reports.length} видео
-		· ~{totalDurationMin} мин · {totalChapters} блоков
-	</p>
 </section>
 
 {#if collection.analysis}
@@ -120,14 +112,6 @@
 		max-width: 60ch;
 		margin: 0 0 16px;
 		line-height: 1.65;
-	}
-
-	.unlocked {
-		color: var(--accent);
-	}
-
-	.meta {
-		margin: 0 0 22px;
 	}
 
 	.analysis {
@@ -266,7 +250,19 @@
 		margin: 18px 0 0;
 		padding: 0;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 20px;
+	}
+
+	@media (max-width: 960px) {
+		.index-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.index-list {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

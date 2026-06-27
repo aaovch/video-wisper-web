@@ -2,7 +2,9 @@
 	import '../app.css';
 	import { base } from '$app/paths';
 	import SearchBox from '$lib/components/SearchBox.svelte';
+	import { initPrerenderedReveals } from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
+	import { onMount, tick } from 'svelte';
 
 	let { children } = $props();
 
@@ -13,6 +15,11 @@
 		const max = doc.scrollHeight - doc.clientHeight;
 		progress = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
 	}
+
+	onMount(async () => {
+		await tick();
+		initPrerenderedReveals();
+	});
 </script>
 
 <svelte:window onscroll={updateProgress} onresize={updateProgress} />
