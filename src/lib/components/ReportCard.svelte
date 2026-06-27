@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import type { Report } from '$lib/types';
 	import { formatDuration, getVideoPosterUrl } from '$lib/utils';
 
@@ -20,6 +21,7 @@
 					{formatDuration(report.duration)}
 				</span>
 			{/if}
+			<VisitCounter target={{ kind: 'report', slug: report.slug }} track={false} class="views" />
 		</div>
 
 		<h3 class="title">{report.title}</h3>
@@ -169,6 +171,7 @@
 		justify-content: space-between;
 		gap: 14px;
 		margin-bottom: 8px;
+		flex-wrap: wrap;
 	}
 
 	.numeral {
@@ -190,6 +193,13 @@
 		align-items: center;
 		gap: 7px;
 		font-size: 12px;
+		color: var(--ink-faint);
+		white-space: nowrap;
+	}
+
+	:global(.views) {
+		font-family: var(--font-mono);
+		font-size: 11px;
 		color: var(--ink-faint);
 		white-space: nowrap;
 	}

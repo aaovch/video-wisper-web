@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
+	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { collectionReports, collectionStats, type Collection } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 
@@ -34,7 +35,8 @@
 		<span class="count mono">
 			{#if collection.password && !locked}<span class="badge open">🔓 Открыто</span> ·{' '}{:else if collection.password}<span
 					class="badge">🔒</span
-				>{' '}{/if}{stats.videos} видео
+				>{' '}{/if}{stats.videos} видео ·{' '}
+			<VisitCounter target={{ kind: 'collection', slug: collection.slug }} track={false} />
 		</span>
 	</div>
 

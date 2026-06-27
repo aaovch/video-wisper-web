@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { base } from '$app/paths';
 	import SearchBox from '$lib/components/SearchBox.svelte';
+	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { initPrerenderedReveals } from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
 	import { onMount, tick } from 'svelte';
@@ -50,7 +51,7 @@
 			<p class="label">
 				собрано на SvelteKit ·
 				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>
-				· {new Date().getFullYear()}
+				· {new Date().getFullYear()} · <VisitCounter target={{ kind: 'site' }} />
 			</p>
 		</div>
 	</footer>

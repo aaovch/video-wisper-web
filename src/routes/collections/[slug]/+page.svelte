@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import ReportCard from '$lib/components/ReportCard.svelte';
 	import Lock from '$lib/components/Lock.svelte';
+	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { reveal } from '$lib/attachments';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
@@ -32,6 +33,9 @@
 	{#if collection.description}
 		<p class="description">{collection.description}</p>
 	{/if}
+	<p class="views label">
+		<VisitCounter target={{ kind: 'collection', slug: collection.slug }} />
+	</p>
 </section>
 
 {#if collection.analysis}
@@ -112,6 +116,11 @@
 		max-width: 60ch;
 		margin: 0 0 16px;
 		line-height: 1.65;
+	}
+
+	.views {
+		margin: 0;
+		color: var(--ink-faint);
 	}
 
 	.analysis {

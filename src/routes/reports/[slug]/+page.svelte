@@ -5,6 +5,7 @@
 	import ReportSearch from '$lib/components/ReportSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import Lock from '$lib/components/Lock.svelte';
+	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { reveal } from '$lib/attachments';
 	import { reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
@@ -161,6 +162,9 @@
 			<header class="report-head reveal" {@attach reveal()}>
 				<h1>{report.title}</h1>
 				<p class="subtitle">{report.subtitle}</p>
+				<p class="views label">
+					<VisitCounter target={{ kind: 'report', slug: report.slug }} />
+				</p>
 			</header>
 
 			<section class="chapters">
@@ -279,6 +283,11 @@
 		max-width: 52ch;
 		margin: 0;
 		line-height: 1.45;
+	}
+
+	.views {
+		margin: 10px 0 0;
+		color: var(--ink-faint);
 	}
 
 	.chapters {
