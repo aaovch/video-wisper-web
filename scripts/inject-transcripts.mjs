@@ -347,6 +347,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Компрессия тактики, лекция [E0IuKXUCIYo]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/hema-english-snaryazhenie.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/HEMA English, снаряжение [FgtdB1HjU7I]/transcript.json'
+		)
 	}
 ];
 

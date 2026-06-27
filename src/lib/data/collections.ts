@@ -36,6 +36,12 @@ export interface Collection {
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
+		slug: 'hema-english',
+		title: 'HEMA: English',
+		subtitle: 'Английская терминология частей тела, экипировки и команд на площадке.',
+		items: ['hema-english-snaryazhenie']
+	},
+	{
 		slug: 'silovaya-konditsionnaya',
 		title: 'Силовая и кондиционная подготовка',
 		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
