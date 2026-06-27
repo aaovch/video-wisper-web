@@ -165,22 +165,19 @@ export const collections: Collection[] = [
 		items: ['mcwilliams-10-aspects', 'psihologiya-tyazhest-klinicheskaya', 'psihologiya-3-isterechnaya', 'psihologiya-4-depressivnaya', 'psihologiya-5-shizoidnaya-paranoidnaya', 'psihologiya-6-narcissicheskaya']
 	},
 	{
-		slug: 'ovchinnikov-seminars',
-		title: 'Семинары Овчинникова Александра',
-		subtitle: 'Разборы тактики, методики и тренировочных концепций HEMA.',
+		slug: 'ovchinnikov-lectures',
+		title: 'Лекции и семинары Овчинникова Александра',
+		subtitle: 'Теория HEMA, тренерство, тактика и разборы практики фехтования.',
 		items: [
 			'protivnik-fehtuet-nepravilno',
 			'optimizatsiya-parad-ripost-hema',
 			'hema-prednamerennye-ekspromtnye',
 			'kontseptsiya-monitoringa',
-			'kompresiya-taktiki-lektsiya'
+			'kompresiya-taktiki-lektsiya',
+			'fehtovat-dolgo-ne-travmirovatsya',
+			'retention-club',
+			'hema-reflections'
 		]
-	},
-	{
-		slug: 'ovchinnikov-lectures',
-		title: 'Лекции и семинары Овчинникова Александра',
-		subtitle: 'Теория HEMA, тренерство и разборы практики фехтования.',
-		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'kompresiya-taktiki-lektsiya', 'retention-club', 'hema-reflections', 'protivnik-fehtuet-nepravilno']
 	},
 	{
 		slug: 'golden-falcon-astana',

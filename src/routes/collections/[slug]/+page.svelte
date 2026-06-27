@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import ReportCard from '$lib/components/ReportCard.svelte';
 	import Lock from '$lib/components/Lock.svelte';
@@ -6,12 +7,17 @@
 	import { reveal } from '$lib/attachments';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
+	import { prefetchReportCounts } from '$lib/visit-counter.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
+
+	onMount(() => {
+		prefetchReportCounts(collection.items);
+	});
 </script>
 
 <svelte:head>
@@ -34,11 +40,7 @@
 		<p class="description">{collection.description}</p>
 	{/if}
 	<p class="views label">
-		<VisitCounter
-			target={{ kind: 'reports-sum', slugs: collection.items }}
-			track={false}
-			suffix="просмотров"
-		/>
+		<VisitCounter target={{ kind: 'reports-sum', slugs: collection.items }} suffix="просмотров" />
 	</p>
 </section>
 

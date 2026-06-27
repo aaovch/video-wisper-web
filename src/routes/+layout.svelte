@@ -1,10 +1,13 @@
 <script lang="ts">
 	import '../app.css';
 	import { base } from '$app/paths';
+	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/state';
 	import SearchBox from '$lib/components/SearchBox.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { initPrerenderedReveals } from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
+	import { trackPageVisit } from '$lib/visit-tracker';
 	import { onMount, tick } from 'svelte';
 
 	let { children } = $props();
@@ -20,6 +23,12 @@
 	onMount(async () => {
 		await tick();
 		initPrerenderedReveals();
+	});
+
+	afterNavigate(async () => {
+		await tick();
+		initPrerenderedReveals();
+		void trackPageVisit(page.url.pathname);
 	});
 </script>
 

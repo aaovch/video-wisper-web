@@ -1,50 +1,93 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/state';
-	import {
-		type CounterTarget,
-		fetchVisitCount,
-		formatVisitCount,
-		isCounterPage,
-		trackVisit
-	} from '$lib/visit-counter';
+	import { onMount } from 'svelte';
+	import { formatVisitCount, type CounterTarget } from '$lib/visit-counter';
+	import { ensureVisitCount, getVisitCount } from '$lib/visit-counter.svelte';
 
 	let {
 		target = { kind: 'site' },
-		track = true,
 		suffix = 'посещений',
+		lazy = false,
 		class: className = ''
 	}: {
 		target?: CounterTarget;
-		track?: boolean;
 		suffix?: string;
+		/** Не грузить, пока элемент не попадёт во viewport (для карточек). */
+		lazy?: boolean;
 		class?: string;
 	} = $props();
 
-	let count = $state<number | null>(null);
+	let root = $state<HTMLElement | null>(null);
+	let queued = $state(false);
 	let failed = $state(false);
 
-	async function refresh() {
+	const count = $derived(getVisitCount(target));
+	const label = $derived(count === undefined ? null : formatVisitCount(count));
+	const ready = $derived(label !== null && !failed);
+
+	onMount(() => {
 		if (!browser) return;
+		if (!lazy) {
+			queued = true;
+			return;
+		}
+		if (!root) return;
+
+		const io = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((e) => e.isIntersecting)) {
+					queued = true;
+					io.disconnect();
+				}
+			},
+			{ rootMargin: '120px 0px' }
+		);
+
+		io.observe(root);
+		return () => io.disconnect();
+	});
+
+	$effect(() => {
+		if (!browser || !queued || count !== undefined) return;
+		void load();
+	});
+
+	async function load() {
 		try {
-			if (track && isCounterPage(target, page.url.pathname)) {
-				await trackVisit(target);
-			}
-			count = await fetchVisitCount(target);
+			await ensureVisitCount(target);
 			failed = false;
 		} catch {
 			failed = true;
 		}
 	}
-
-	afterNavigate(() => {
-		void refresh();
-	});
-
-	const label = $derived(count === null ? null : formatVisitCount(count));
 </script>
 
-{#if label && !failed}
-	<span class={className} aria-label="{suffix}: {label}">{label} {suffix}</span>
-{/if}
+<span
+	bind:this={root}
+	class="visit-counter {className}"
+	class:ready
+	class:failed
+	aria-label={ready ? `${suffix}: ${label}` : undefined}
+>
+	{#if ready}
+		{label} {suffix}
+	{/if}
+</span>
+
+<style>
+	.visit-counter {
+		display: inline-block;
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+
+	.visit-counter.ready {
+		opacity: 1;
+	}
+
+	.visit-counter.failed {
+		display: none;
+	}
+</style>

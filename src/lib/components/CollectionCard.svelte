@@ -40,7 +40,7 @@
 			</span>
 			<VisitCounter
 				target={{ kind: 'reports-sum', slugs: collection.items }}
-				track={false}
+				lazy
 				suffix="просмотров"
 				class="views"
 			/>

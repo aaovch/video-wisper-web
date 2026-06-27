@@ -21,7 +21,7 @@
 					{formatDuration(report.duration)}
 				</span>
 			{/if}
-			<VisitCounter target={{ kind: 'report', slug: report.slug }} track={false} class="views" />
+			<VisitCounter target={{ kind: 'report', slug: report.slug }} lazy class="views" />
 		</div>
 
 		<h3 class="title">{report.title}</h3>
