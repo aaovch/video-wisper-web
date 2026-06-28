@@ -160,6 +160,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/nri-staraya-shahta.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/НРИ： Старая шахта [oX4WKqccJNA]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/context-engineering-29min.json'),
 		transcriptPath: join(
 			pipelineRoot,
