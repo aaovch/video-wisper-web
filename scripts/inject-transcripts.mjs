@@ -375,6 +375,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/HEMA English, снаряжение [FgtdB1HjU7I]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/silovaya-konditsiya-hema.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Силовая и кондиционная подготовка для фехтовальщика (HEMA) [oPY4ESTJqhA]/transcript.json'
+		)
 	}
 ];
 
