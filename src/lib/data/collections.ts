@@ -45,7 +45,7 @@ export const collections: Collection[] = [
 		slug: 'silovaya-konditsionnaya',
 		title: 'Силовая и кондиционная подготовка',
 		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
-		items: ['tokarev-silovaya-ofp-2', 'pliometrika-hema', 'silovaya-konditsiya-hema']
+		items: ['tokarev-silovaya-ofp-2', 'pliometrika-hema', 'silovaya-konditsiya-hema', 'silovaya-plan-hema']
 	},
 	{
 		slug: 'almaty-2026',

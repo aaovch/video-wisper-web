@@ -356,6 +356,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/silovaya-plan-hema.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Силовая и кондиционная подготовка для фехтовальщиков. Пример составления тренировочного плана (HEMA) [mcI2PmzsK04]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/pliometrika-hema.json'),
 		transcriptPath: join(
 			pipelineRoot,
