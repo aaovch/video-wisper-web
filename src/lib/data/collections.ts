@@ -173,6 +173,7 @@ export const collections: Collection[] = [
 			'optimizatsiya-parad-ripost-hema',
 			'hema-prednamerennye-ekspromtnye',
 			'kontseptsiya-monitoringa',
+			'obuchenie-situatsiya-subtaktika',
 			'kompresiya-taktiki-lektsiya',
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',

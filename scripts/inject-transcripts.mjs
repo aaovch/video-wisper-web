@@ -389,6 +389,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Силовая и кондиционная подготовка для фехтовальщика (HEMA) [oPY4ESTJqhA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/obuchenie-situatsiya-subtaktika.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Обучение распознаванию ситуации и выбору субтактик [N14XqcUPMWM]/transcript.json'
+		)
 	}
 ];
 
