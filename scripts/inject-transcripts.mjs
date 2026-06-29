@@ -356,6 +356,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/pliometrika-hema.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Плиометрика для HEMA [6yoZy_vV8Rw]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/kompresiya-taktiki-lektsiya.json'),
 		transcriptPath: join(
 			pipelineRoot,
