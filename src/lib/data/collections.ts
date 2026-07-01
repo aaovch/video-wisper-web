@@ -181,6 +181,12 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'raznoe',
+		title: 'Разное',
+		subtitle: 'Подкасты и разговоры вне основных тематических коллекций.',
+		items: ['nikitin-muzhchiny-zhenshiny']
+	},
+	{
 		slug: 'golden-falcon-astana',
 		title: 'Golden Falcon Astana',
 		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',

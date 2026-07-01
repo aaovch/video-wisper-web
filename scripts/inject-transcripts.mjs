@@ -321,6 +321,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/nikitin-muzhchiny-zhenshiny.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Вся правда о Мужчинах и Женщинах от биолога - почему об этом молчат？ Михаил Никитин [YEP-mICeCwY]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/kontseptsiya-monitoringa.json'),
 		transcriptPath: join(
 			pipelineRoot,
