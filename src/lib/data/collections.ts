@@ -174,6 +174,7 @@ export const collections: Collection[] = [
 			'hema-prednamerennye-ekspromtnye',
 			'kontseptsiya-monitoringa',
 			'obuchenie-situatsiya-subtaktika',
+			'subtaktika-teh-realizacii',
 			'kompresiya-taktiki-lektsiya',
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',

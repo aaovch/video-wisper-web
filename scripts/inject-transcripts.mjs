@@ -403,6 +403,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Обучение распознаванию ситуации и выбору субтактик [N14XqcUPMWM]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/subtaktika-teh-realizacii.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Уточнение субтактики на уровне технических реализаций [ebEi5XygfHA]/transcript.json'
+		)
 	}
 ];
 
