@@ -182,6 +182,12 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'noname-sparring',
+		title: 'NoName: спарринги',
+		subtitle: 'Учебные спарринги клуба NoName с комментарием по обменам.',
+		items: ['fedotikov-mironov']
+	},
+	{
 		slug: 'raznoe',
 		title: 'Разное',
 		subtitle: 'Подкасты и разговоры вне основных тематических коллекций.',

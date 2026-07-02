@@ -410,6 +410,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Уточнение субтактики на уровне технических реализаций [ebEi5XygfHA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/fedotikov-mironov.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Евгений Федотиков — Арсений Миронов [vetd_oItl_U]/transcript.json'
+		)
 	}
 ];
 
