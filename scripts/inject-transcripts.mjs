@@ -417,6 +417,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Евгений Федотиков — Арсений Миронов [vetd_oItl_U]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/trenerskoe-sobranie.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерское собрание [6GxIqfws7iA]/transcript.json'
+		)
 	}
 ];
 
