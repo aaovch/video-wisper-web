@@ -197,7 +197,17 @@ export const collections: Collection[] = [
 		slug: 'golden-falcon-astana',
 		title: 'Golden Falcon Astana',
 		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',
-		items: ['optimizatsiya-parad-ripost-hema', 'hema-prednamerennye-ekspromtnye', 'fehtovat-dolgo-ne-travmirovatsya', 'kontseptsiya-monitoringa', 'kompresiya-taktiki-lektsiya', 'hema-reflections', 'protivnik-fehtuet-nepravilno', 'trenerskoe-sobranie']
+		items: [
+			'optimizatsiya-parad-ripost-hema',
+			'hema-prednamerennye-ekspromtnye',
+			'fehtovat-dolgo-ne-travmirovatsya',
+			'kontseptsiya-monitoringa',
+			'kompresiya-taktiki-lektsiya',
+			'hema-reflections',
+			'protivnik-fehtuet-nepravilno',
+			'trenerskoe-sobranie',
+			'dofamin-neyronnye-svyazi-pasha'
+		]
 	}
 ];
 

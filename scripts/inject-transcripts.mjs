@@ -424,6 +424,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тренерское собрание [6GxIqfws7iA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/dofamin-neyronnye-svyazi-pasha.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Лекция про дофамин и образование нейронных связей от Паши [RJtk_VuhrzI]/transcript.json'
+		)
 	}
 ];
 
