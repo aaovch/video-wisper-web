@@ -431,6 +431,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Лекция про дофамин и образование нейронных связей от Паши [RJtk_VuhrzI]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/2026-07-06-19-26-42.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/2026 07 06 19 26 42 [niRY2OltkEU]/transcript.json'
+		)
 	}
 ];
 

@@ -175,6 +175,7 @@ export const collections: Collection[] = [
 			'kontseptsiya-monitoringa',
 			'obuchenie-situatsiya-subtaktika',
 			'subtaktika-teh-realizacii',
+			'2026-07-06-19-26-42',
 			'kompresiya-taktiki-lektsiya',
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',
@@ -206,7 +207,8 @@ export const collections: Collection[] = [
 			'hema-reflections',
 			'protivnik-fehtuet-nepravilno',
 			'trenerskoe-sobranie',
-			'dofamin-neyronnye-svyazi-pasha'
+			'dofamin-neyronnye-svyazi-pasha',
+			'2026-07-06-19-26-42'
 		]
 	}
 ];
