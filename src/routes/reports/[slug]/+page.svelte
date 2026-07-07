@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
 	import ReportSearch from '$lib/components/ReportSearch.svelte';
@@ -51,6 +52,45 @@
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
+
+	const seminarGlossary = [
+		{
+			term: 'Тэноути',
+			definition: 'работа кистей на рукояти: вкручивание и сжатие для контроля клинка.'
+		},
+		{
+			term: 'Заншин',
+			definition: 'боеготовность после первого действия, способность сразу реагировать дальше.'
+		},
+		{
+			term: 'Позиционный атакующий',
+			definition: 'боец, который давит вперед и ждет момент для сильного действия.'
+		},
+		{
+			term: 'Маневровый атакующий',
+			definition: 'боец, который готовит атаку финтами, сменами линий, гвардий и движением.'
+		},
+		{
+			term: 'Позиционный оборонительный',
+			definition: 'боец, который держит позицию, экономит движение и провоцирует раннюю атаку.'
+		},
+		{
+			term: 'Маневровый оборонительный',
+			definition: 'боец, который защищается через движение, переключение и встречные действия.'
+		},
+		{
+			term: 'Двигательный образ',
+			definition: 'внутреннее ощущение и схема правильно выполненного движения.'
+		},
+		{
+			term: 'Сигнал открытия',
+			definition: 'момент, по которому атакующий понимает, что можно входить.'
+		},
+		{
+			term: 'Ложное открытие',
+			definition: 'открытие без подходящей дистанции или времени для безопасной атаки.'
+		}
+	];
 
 	function onVideoTime(t: number) {
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
@@ -175,6 +215,34 @@
 					<VisitCounter target={{ kind: 'report', slug: report.slug }} />
 				</p>
 			</header>
+
+			{#if report.slug === 'gruppa-a-1-vvodnaya'}
+				<section class="seminar-materials reveal" aria-label="Материалы семинара" {@attach reveal()}>
+					<details class="seminar-glossary">
+						<summary>
+							<span class="label">Глоссарий семинара</span>
+							<span class="glossary-count mono">{seminarGlossary.length}</span>
+						</summary>
+						<dl>
+							{#each seminarGlossary as item (item.term)}
+								<div>
+									<dt>{item.term}</dt>
+									<dd>{item.definition}</dd>
+								</div>
+							{/each}
+						</dl>
+					</details>
+
+					<figure class="seminar-infographic">
+						<img
+							src="{base}/media/gruppa-a-1-vvodnaya-infographic.png"
+							alt="Инфографика семинара про индивидуальный стиль бойца"
+							loading="lazy"
+							decoding="async"
+						/>
+					</figure>
+				</section>
+			{/if}
 
 			<section class="chapters">
 				{#each report.chapters as chapter, i (chapter.start)}
@@ -301,6 +369,89 @@
 		color: var(--ink-faint);
 	}
 
+	.seminar-materials {
+		margin-top: 24px;
+	}
+
+	.seminar-glossary {
+		border-top: 1px solid var(--line-strong);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.seminar-glossary summary {
+		cursor: pointer;
+		padding: 16px 0;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.seminar-glossary summary::after {
+		content: '+';
+		font-family: var(--font-mono);
+		color: var(--accent);
+		margin-left: auto;
+		font-size: 18px;
+	}
+
+	.seminar-glossary[open] summary::after {
+		content: '−';
+	}
+
+	.seminar-glossary summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.glossary-count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 28px;
+		height: 24px;
+		border: 1px solid var(--line-strong);
+		border-radius: 999px;
+		color: var(--accent);
+		font-size: 12px;
+	}
+
+	.seminar-glossary dl {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px 22px;
+		margin: 0;
+		padding: 0 0 20px;
+	}
+
+	.seminar-glossary dl div {
+		min-width: 0;
+	}
+
+	.seminar-glossary dt {
+		font-weight: 600;
+		color: var(--ink);
+		margin: 0 0 4px;
+	}
+
+	.seminar-glossary dd {
+		margin: 0;
+		color: var(--ink-soft);
+		line-height: 1.55;
+	}
+
+	.seminar-infographic {
+		margin: 20px 0 0;
+	}
+
+	.seminar-infographic img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: #fff;
+	}
+
 	.chapters {
 		margin-top: 32px;
 	}
@@ -383,6 +534,15 @@
 
 		.report-head h1 {
 			max-width: none;
+		}
+
+		.seminar-materials {
+			margin-top: 20px;
+		}
+
+		.seminar-glossary dl {
+			grid-template-columns: 1fr;
+			gap: 12px;
 		}
 	}
 </style>
