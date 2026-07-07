@@ -68,6 +68,12 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'lager-vladivostok',
+		title: 'Лагерь Владивосток',
+		subtitle: 'Семинары и тренировки лагеря во Владивостоке.',
+		items: ['gruppa-a-1-vvodnaya']
+	},
+	{
 		slug: 'hema-theory',
 		title: 'HEMA: теория и тренерство',
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',

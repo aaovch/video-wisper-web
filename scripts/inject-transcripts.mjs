@@ -438,6 +438,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/2026 07 06 19 26 42 [niRY2OltkEU]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/gruppa-a-1-vvodnaya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Группа А   1 тренировка вводная [YvLeEeWsR1k]/transcript.json'
+		)
 	}
 ];
 
