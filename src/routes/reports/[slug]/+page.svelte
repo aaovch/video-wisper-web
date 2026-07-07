@@ -221,7 +221,6 @@
 					<details class="seminar-glossary">
 						<summary>
 							<span class="label">Глоссарий семинара</span>
-							<span class="glossary-count mono">{seminarGlossary.length}</span>
 						</summary>
 						<dl>
 							{#each seminarGlossary as item (item.term)}
@@ -233,14 +232,19 @@
 						</dl>
 					</details>
 
-					<figure class="seminar-infographic">
-						<img
-							src="{base}/media/gruppa-a-1-vvodnaya-infographic.png"
-							alt="Инфографика семинара про индивидуальный стиль бойца"
-							loading="lazy"
-							decoding="async"
-						/>
-					</figure>
+					<details class="seminar-infographic-panel">
+						<summary>
+							<span class="label">Инфографика семинара</span>
+						</summary>
+						<figure class="seminar-infographic">
+							<img
+								src="{base}/media/gruppa-a-1-vvodnaya-infographic.png"
+								alt="Инфографика семинара про индивидуальный стиль бойца"
+								loading="lazy"
+								decoding="async"
+							/>
+						</figure>
+					</details>
 				</section>
 			{/if}
 
@@ -373,12 +377,17 @@
 		margin-top: 24px;
 	}
 
-	.seminar-glossary {
-		border-top: 1px solid var(--line-strong);
+	.seminar-glossary,
+	.seminar-infographic-panel {
 		border-bottom: 1px solid var(--line);
 	}
 
-	.seminar-glossary summary {
+	.seminar-glossary {
+		border-top: 1px solid var(--line-strong);
+	}
+
+	.seminar-glossary summary,
+	.seminar-infographic-panel summary {
 		cursor: pointer;
 		padding: 16px 0;
 		list-style: none;
@@ -387,7 +396,8 @@
 		gap: 12px;
 	}
 
-	.seminar-glossary summary::after {
+	.seminar-glossary summary::after,
+	.seminar-infographic-panel summary::after {
 		content: '+';
 		font-family: var(--font-mono);
 		color: var(--accent);
@@ -395,24 +405,14 @@
 		font-size: 18px;
 	}
 
-	.seminar-glossary[open] summary::after {
+	.seminar-glossary[open] summary::after,
+	.seminar-infographic-panel[open] summary::after {
 		content: '−';
 	}
 
-	.seminar-glossary summary::-webkit-details-marker {
+	.seminar-glossary summary::-webkit-details-marker,
+	.seminar-infographic-panel summary::-webkit-details-marker {
 		display: none;
-	}
-
-	.glossary-count {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 28px;
-		height: 24px;
-		border: 1px solid var(--line-strong);
-		border-radius: 999px;
-		color: var(--accent);
-		font-size: 12px;
 	}
 
 	.seminar-glossary dl {
