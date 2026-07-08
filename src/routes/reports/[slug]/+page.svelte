@@ -11,6 +11,7 @@
 	import { reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
+	import { formatTime } from '$lib/utils';
 	import type { SearchHit } from '$lib/search';
 	import type { PageData } from './$types';
 
@@ -183,6 +184,66 @@
 				'После базы тренировки стоит индивидуализировать. Нельзя одинаково хорошо и одинаково быстро прокачивать все шаги, удары, защиты и гвардии, поэтому нужен приоритет.',
 				'Главный ориентир - что делает сильнее именно этого спортсмена: его антропометрия, характер и базовая реакция на стресс.',
 				'Стиль не высечен в камне, он может меняться со временем, но выбранная схема помогает понятнее тренироваться уже сейчас.'
+			]
+		}
+	];
+
+	const seminarExercises = [
+		{
+			title: 'Разминка',
+			items: [
+				{ start: 280, text: 'Вертикальные прыжки из стойки: корпус ровный, прыжок вверх без лишнего прогиба.' },
+				{ start: 313, text: 'Серия прыжков: три низких и один высокий, толчок икрами без сгибания коленей.' },
+				{ start: 344, text: 'Прыжки через меч: старт у острия, прыжок в сторону со сменой рук и мягким приседом.' }
+			]
+		},
+		{
+			title: 'Сборка удара',
+			items: [
+				{ start: 548, text: 'Формирование двигательного образа: фронтальная стойка, меч у корпуса, руки выпрямляются вперед.' },
+				{ start: 755, text: 'Изоляция плеча без меча: вытянутой рукой стиснуть руку в подмышке и опустить плечо вниз.' },
+				{ start: 814, text: 'Удар с контролем плеча: кулак выше плеча, плечо не тянется к уху, крестовина на уровне шеи.' },
+				{ start: 1010, text: 'Медленные удары по прямой линии: самостоятельно работать на форму, а не на скорость.' }
+			]
+		},
+		{
+			title: 'Дистанция и сигнал',
+			items: [
+				{ start: 1472, text: 'Упражнение на истинное и ложное открытие: атаковать только когда есть и дистанция, и открытие.' },
+				{ start: 1608, text: 'Практика после объяснения: ученик идет вперед, монитор удерживает дистанцию и дает разные сигналы.' }
+			]
+		},
+		{
+			title: 'Атакующие типы',
+			items: [
+				{ start: 2560, text: 'Позиционный атакующий: прессинг, ожидание своей дистанции и атака только на сигнал открытия.' },
+				{ start: 2740, text: 'Работа позиционного атакующего: после отскока сразу возвращаться вперед, как на растянутой резинке.' },
+				{ start: 3349, text: 'Маневровый атакующий: готовить вход сменой гвардии, финтом, захватом или работой клинком.' },
+				{ start: 3426, text: 'Усложнение: монитор иногда сам начинает атаку, ученик переключается на защиту и ответ.' }
+			]
+		},
+		{
+			title: 'Оборонительные типы',
+			items: [
+				{ start: 3875, text: 'Позиционная оборона: монитор идет вперед и дает два сигнала; ученик выбирает защиту-ответ или контратаку с защитой.' },
+				{ start: 4228, text: 'Ключевое упражнение обороны: повторить со средней скоростью и честными сигналами монитора.' },
+				{ start: 4834, text: 'Маневровая оборона: удерживать дистанцию, ловить смену направления и при необходимости забирать инициативу.' }
+			]
+		},
+		{
+			title: 'Захват и соединение',
+			items: [
+				{ start: 5039, text: 'Дополнение для сильных: на отходе работать захватом и соединением.' },
+				{ start: 5105, text: 'Практика захвата: монитор идет по центральной линии, ученик отходит, берет захват и читает реакцию.' }
+			]
+		},
+		{
+			title: 'Заминка',
+			items: [
+				{ start: 5353, text: 'Меч за спину: растяжка трицепса с ровной спиной.' },
+				{ start: 5413, text: 'Наклон к мечу на прямых ногах: задняя поверхность бедра.' },
+				{ start: 5444, text: '«Зомби / качок»: округление и раскрытие спины.' },
+				{ start: 5493, text: 'Прокат на колене вперед-назад: тазобедренный сустав и задняя поверхность бедра.' }
 			]
 		}
 	];
@@ -377,6 +438,41 @@
 						</div>
 					</details>
 				</section>
+
+				<section class="seminar-exercises-section reveal" aria-label="Упражнения семинара" {@attach reveal()}>
+					<details class="seminar-exercises">
+						<summary>
+							<span class="label">Упражнения семинара</span>
+						</summary>
+						<div class="seminar-exercises-body">
+							{#each seminarExercises as exerciseSection (exerciseSection.title)}
+								<section class="seminar-exercise-block">
+									<h2>{exerciseSection.title}</h2>
+									<ul>
+										{#each exerciseSection.items as exercise}
+											<li>
+												{#if report.video}
+													<button
+														type="button"
+														class="exercise-time"
+														onclick={() => seekVideo(exercise.start)}
+														title="Смотреть упражнение с этого момента"
+													>
+														<span aria-hidden="true">▶</span>
+														<span class="mono">{formatTime(exercise.start)}</span>
+													</button>
+												{:else}
+													<span class="exercise-time-static mono">{formatTime(exercise.start)}</span>
+												{/if}
+												<span>{exercise.text}</span>
+											</li>
+										{/each}
+									</ul>
+								</section>
+							{/each}
+						</div>
+					</details>
+				</section>
 			{/if}
 
 			{#if report.transcript}
@@ -496,7 +592,8 @@
 
 	.seminar-glossary,
 	.seminar-infographic-panel,
-	.seminar-notes {
+	.seminar-notes,
+	.seminar-exercises {
 		border-bottom: 1px solid var(--line);
 	}
 
@@ -506,7 +603,8 @@
 
 	.seminar-glossary summary,
 	.seminar-infographic-panel summary,
-	.seminar-notes summary {
+	.seminar-notes summary,
+	.seminar-exercises summary {
 		cursor: pointer;
 		padding: 16px 0;
 		list-style: none;
@@ -517,7 +615,8 @@
 
 	.seminar-glossary summary::after,
 	.seminar-infographic-panel summary::after,
-	.seminar-notes summary::after {
+	.seminar-notes summary::after,
+	.seminar-exercises summary::after {
 		content: '+';
 		font-family: var(--font-mono);
 		color: var(--accent);
@@ -527,13 +626,15 @@
 
 	.seminar-glossary[open] summary::after,
 	.seminar-infographic-panel[open] summary::after,
-	.seminar-notes[open] summary::after {
+	.seminar-notes[open] summary::after,
+	.seminar-exercises[open] summary::after {
 		content: '−';
 	}
 
 	.seminar-glossary summary::-webkit-details-marker,
 	.seminar-infographic-panel summary::-webkit-details-marker,
-	.seminar-notes summary::-webkit-details-marker {
+	.seminar-notes summary::-webkit-details-marker,
+	.seminar-exercises summary::-webkit-details-marker {
 		display: none;
 	}
 
@@ -612,6 +713,86 @@
 
 	.seminar-note-block li::marker {
 		color: var(--accent);
+	}
+
+	.seminar-exercises-section {
+		margin-top: 12px;
+	}
+
+	.seminar-exercises {
+		border-top: 1px solid var(--line-strong);
+	}
+
+	.seminar-exercises-body {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px 24px;
+		max-width: var(--measure);
+		padding: 2px 0 26px;
+	}
+
+	.seminar-exercise-block h2 {
+		margin: 0 0 8px;
+		color: var(--ink);
+		font-size: 17px;
+		line-height: 1.3;
+	}
+
+	.seminar-exercise-block ul {
+		display: grid;
+		gap: 6px;
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		color: var(--ink-soft);
+		font-size: 15px;
+		line-height: 1.55;
+	}
+
+	.seminar-exercise-block li {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: baseline;
+		gap: 9px;
+	}
+
+	.exercise-time,
+	.exercise-time-static {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		width: max-content;
+		border: 1px solid var(--line-strong);
+		border-radius: 999px;
+		padding: 2px 8px;
+		font-size: 11px;
+		line-height: 1.35;
+		color: var(--ink-soft);
+		background: transparent;
+	}
+
+	.exercise-time {
+		cursor: pointer;
+		transition:
+			color 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.exercise-time:hover {
+		color: var(--paper);
+		background: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.exercise-time span[aria-hidden='true'] {
+		font-size: 8px;
+		color: var(--accent);
+		transition: color 0.2s ease;
+	}
+
+	.exercise-time:hover span[aria-hidden='true'] {
+		color: var(--paper);
 	}
 
 	.transcript {
@@ -701,6 +882,11 @@
 		.seminar-glossary dl {
 			grid-template-columns: 1fr;
 			gap: 12px;
+		}
+
+		.seminar-exercises-body {
+			grid-template-columns: 1fr;
+			gap: 16px;
 		}
 	}
 </style>
