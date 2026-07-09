@@ -445,6 +445,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Группа А   1 тренировка вводная [YvLeEeWsR1k]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/ataka-prosche-ne-byvaet-udar.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/VID 20260707 1943311 [OBZXtQ3b5q4]/transcript.json'
+		)
 	}
 ];
 

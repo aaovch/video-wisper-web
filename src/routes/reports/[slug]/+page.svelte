@@ -248,6 +248,25 @@
 		}
 	];
 
+	const reportGlossary = $derived(
+		report.glossary ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarGlossary : [])
+	);
+	const reportNotes = $derived(
+		report.seminar_notes ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarNotes : [])
+	);
+	const reportExercises = $derived(
+		report.seminar_exercises ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarExercises : [])
+	);
+	const reportInfographic = $derived(
+		report.infographic ??
+			(report.slug === 'gruppa-a-1-vvodnaya'
+				? {
+						src: 'media/gruppa-a-1-vvodnaya-infographic.png',
+						alt: 'Инфографика семинара про индивидуальный стиль бойца'
+					}
+				: undefined)
+	);
+
 	function onVideoTime(t: number) {
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
 		const idx = chapterIndexAt(t);
@@ -372,35 +391,39 @@
 				</p>
 			</header>
 
-			{#if report.slug === 'gruppa-a-1-vvodnaya'}
+			{#if reportGlossary.length > 0 || reportInfographic}
 				<section class="seminar-materials reveal" aria-label="Материалы семинара" {@attach reveal()}>
-					<details class="seminar-glossary">
-						<summary>
-							<span class="label">Глоссарий семинара</span>
-						</summary>
-						<dl>
-							{#each seminarGlossary as item (item.term)}
-								<div>
-									<dt>{item.term}</dt>
-									<dd>{item.definition}</dd>
-								</div>
-							{/each}
-						</dl>
-					</details>
+					{#if reportGlossary.length > 0}
+						<details class="seminar-glossary">
+							<summary>
+								<span class="label">Глоссарий семинара</span>
+							</summary>
+							<dl>
+								{#each reportGlossary as item (item.term)}
+									<div>
+										<dt>{item.term}</dt>
+										<dd>{item.definition}</dd>
+									</div>
+								{/each}
+							</dl>
+						</details>
+					{/if}
 
-					<details class="seminar-infographic-panel">
-						<summary>
-							<span class="label">Инфографика семинара</span>
-						</summary>
-						<figure class="seminar-infographic">
-							<img
-								src="{base}/media/gruppa-a-1-vvodnaya-infographic.png"
-								alt="Инфографика семинара про индивидуальный стиль бойца"
-								loading="lazy"
-								decoding="async"
-							/>
-						</figure>
-					</details>
+					{#if reportInfographic}
+						<details class="seminar-infographic-panel">
+							<summary>
+								<span class="label">Инфографика семинара</span>
+							</summary>
+							<figure class="seminar-infographic">
+								<img
+									src={`${base}/${reportInfographic.src}`}
+									alt={reportInfographic.alt}
+									loading="lazy"
+									decoding="async"
+								/>
+							</figure>
+						</details>
+					{/if}
 				</section>
 			{/if}
 
@@ -418,14 +441,14 @@
 				{/each}
 			</section>
 
-			{#if report.slug === 'gruppa-a-1-vvodnaya'}
+			{#if reportNotes.length > 0}
 				<section class="seminar-notes-section reveal" aria-label="Конспект семинара" {@attach reveal()}>
 					<details class="seminar-notes">
 						<summary>
 							<span class="label">Конспект семинара</span>
 						</summary>
 						<div class="seminar-notes-body">
-							{#each seminarNotes as section (section.title)}
+							{#each reportNotes as section (section.title)}
 								<section class="seminar-note-block">
 									<h2>{section.title}</h2>
 									<ul>
@@ -438,14 +461,16 @@
 						</div>
 					</details>
 				</section>
+			{/if}
 
+			{#if reportExercises.length > 0}
 				<section class="seminar-exercises-section reveal" aria-label="Упражнения семинара" {@attach reveal()}>
 					<details class="seminar-exercises">
 						<summary>
 							<span class="label">Упражнения семинара</span>
 						</summary>
 						<div class="seminar-exercises-body">
-							{#each seminarExercises as exerciseSection (exerciseSection.title)}
+							{#each reportExercises as exerciseSection (exerciseSection.title)}
 								<section class="seminar-exercise-block">
 									<h2>{exerciseSection.title}</h2>
 									<ul>

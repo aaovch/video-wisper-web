@@ -18,6 +18,31 @@ export interface Chapter {
 
 export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo';
 
+export interface GlossaryItem {
+	term: string;
+	definition: string;
+}
+
+export interface SeminarNoteSection {
+	title: string;
+	items: string[];
+}
+
+export interface SeminarExercise {
+	start: number;
+	text: string;
+}
+
+export interface SeminarExerciseSection {
+	title: string;
+	items: SeminarExercise[];
+}
+
+export interface ReportInfographic {
+	src: string;
+	alt: string;
+}
+
 /** Видео встраивается одним из двух способов: */
 export type VideoSource =
 	| {
@@ -50,6 +75,8 @@ export interface Report {
 	subtitle: string;
 	/** Имя исходного файла из пайплайна */
 	source_name: string;
+	/** Ссылка на исходное видео, если отчёт сделан из внешнего источника */
+	source_url?: string;
 	/** Пояснение к разметке */
 	note: string;
 	/** Длительность видео в секундах */
@@ -62,6 +89,14 @@ export interface Report {
 	chapters: Chapter[];
 	/** Видео для встраивания (опционально) */
 	video?: VideoSource;
+	/** Нетривиальные термины семинара */
+	glossary?: GlossaryItem[];
+	/** Развёрнутый конспект семинара */
+	seminar_notes?: SeminarNoteSection[];
+	/** Практические упражнения семинара с таймкодами */
+	seminar_exercises?: SeminarExerciseSection[];
+	/** Дополнительная инфографика или изображение к отчёту */
+	infographic?: ReportInfographic;
 	/** Полная расшифровка (опционально) */
 	transcript?: string;
 }
