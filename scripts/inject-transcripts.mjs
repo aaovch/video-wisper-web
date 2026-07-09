@@ -459,6 +459,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/VID 20260708 181128 [XEsYGTYJY_8]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/vid-20260708-194529.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/VID 20260708 194529 [GvL3OD_SmQA]/transcript.json'
+		)
 	}
 ];
 
