@@ -75,8 +75,7 @@ export const collections: Collection[] = [
 			'gruppa-a-1-vvodnaya',
 			'ataka-prosche-ne-byvaet-udar',
 			'vid-20260708-200742',
-			'obuchenie-trenerov-poisk-znaniy',
-			'vid-20260708-194529'
+			'obuchenie-trenerov-poisk-znaniy'
 		]
 	},
 	{
