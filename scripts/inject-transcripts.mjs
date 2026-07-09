@@ -473,6 +473,10 @@ const SOURCES = [
 			pipelineRoot,
 			'output/VID 20260708 200742 [TVWvWIlKO8g]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/utrenniy-kofe-polugodie-strategiya-segmenty.json'),
+		transcriptPath: join(pipelineRoot, 'output/утренний кофе/transcript.json')
 	}
 ];
 

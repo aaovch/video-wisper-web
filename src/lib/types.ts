@@ -38,6 +38,20 @@ export interface SeminarExerciseSection {
 	items: SeminarExercise[];
 }
 
+export interface FocusTabItem {
+	start: number;
+	title: string;
+	summary: string;
+	theses: string[];
+}
+
+export interface FocusTab {
+	id: string;
+	title: string;
+	intro?: string[];
+	items: FocusTabItem[];
+}
+
 export interface ReportInfographic {
 	src: string;
 	alt: string;
@@ -95,6 +109,8 @@ export interface Report {
 	seminar_notes?: SeminarNoteSection[];
 	/** Практические упражнения семинара с таймкодами */
 	seminar_exercises?: SeminarExerciseSection[];
+	/** Дополнительные тематические срезы по отчёту */
+	focus_tabs?: FocusTab[];
 	/** Дополнительная инфографика или изображение к отчёту */
 	infographic?: ReportInfographic;
 	/** Памятка по упражнениям или дополнительный лист практики */

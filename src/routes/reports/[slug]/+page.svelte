@@ -53,6 +53,7 @@
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
+	let activeFocusTab = $state('');
 
 	const seminarGlossary = [
 		{
@@ -257,6 +258,7 @@
 	const reportExercises = $derived(
 		report.seminar_exercises ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarExercises : [])
 	);
+	const reportFocusTabs = $derived(report.focus_tabs ?? []);
 	const reportInfographic = $derived(
 		report.infographic ??
 			(report.slug === 'gruppa-a-1-vvodnaya'
@@ -267,6 +269,16 @@
 				: undefined)
 	);
 	const reportExerciseMemo = $derived(report.exercise_memo);
+
+	$effect(() => {
+		if (!reportFocusTabs.length) {
+			activeFocusTab = '';
+			return;
+		}
+		if (!reportFocusTabs.some((tab) => tab.id === activeFocusTab)) {
+			activeFocusTab = reportFocusTabs[0].id;
+		}
+	});
 
 	function onVideoTime(t: number) {
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
@@ -441,6 +453,75 @@
 							</figure>
 						</details>
 					{/if}
+				</section>
+			{/if}
+
+			{#if reportFocusTabs.length > 0}
+				<section class="focus-section reveal" aria-label="Тематические срезы" {@attach reveal()}>
+					<div class="focus-tablist" role="tablist">
+						{#each reportFocusTabs as tab (tab.id)}
+							<button
+								type="button"
+								class:active={activeFocusTab === tab.id}
+								role="tab"
+								aria-selected={activeFocusTab === tab.id}
+								aria-controls={`focus-${tab.id}`}
+								id={`focus-tab-${tab.id}`}
+								onclick={() => (activeFocusTab = tab.id)}
+							>
+								{tab.title}
+							</button>
+						{/each}
+					</div>
+
+					{#each reportFocusTabs as tab (tab.id)}
+						{#if activeFocusTab === tab.id}
+							<div
+								class="focus-panel"
+								id={`focus-${tab.id}`}
+								role="tabpanel"
+								aria-labelledby={`focus-tab-${tab.id}`}
+							>
+								{#if tab.intro?.length}
+									<div class="focus-intro">
+										{#each tab.intro as item}
+											<p>{item}</p>
+										{/each}
+									</div>
+								{/if}
+								<div class="focus-items">
+									{#each tab.items as item (item.start)}
+										<article class="focus-item">
+											<header>
+												{#if report.video}
+													<button
+														type="button"
+														class="focus-time"
+														onclick={() => seekVideo(item.start)}
+														title="Смотреть с этого момента"
+													>
+														<span aria-hidden="true">▶</span>
+														<span class="mono">{formatTime(item.start)}</span>
+													</button>
+												{:else}
+													<span class="focus-time focus-time-static mono">{formatTime(item.start)}</span>
+												{/if}
+												<h2>{item.title}</h2>
+											</header>
+											<p>{item.summary}</p>
+											{#if item.theses.length}
+												<ul>
+													{#each item.theses as thesis}
+														<li>{thesis}</li>
+													{/each}
+												</ul>
+											{/if}
+										</article>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					{/each}
 				</section>
 			{/if}
 
@@ -724,6 +805,144 @@
 
 	.chapters {
 		margin-top: 32px;
+	}
+
+	.focus-section {
+		margin-top: 32px;
+		border-top: 1px solid var(--line-strong);
+		border-bottom: 1px solid var(--line);
+		padding: 18px 0 24px;
+	}
+
+	.focus-tablist {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: 18px;
+	}
+
+	.focus-tablist button {
+		border: 1px solid var(--line-strong);
+		border-radius: 999px;
+		padding: 6px 14px;
+		background: transparent;
+		color: var(--ink-soft);
+		font: inherit;
+		font-size: 13px;
+		cursor: pointer;
+		transition:
+			color 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.focus-tablist button:hover,
+	.focus-tablist button.active {
+		color: var(--paper);
+		background: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.focus-panel {
+		max-width: var(--measure);
+	}
+
+	.focus-intro {
+		display: grid;
+		gap: 8px;
+		margin-bottom: 18px;
+		color: var(--ink-soft);
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	.focus-intro p {
+		margin: 0;
+	}
+
+	.focus-items {
+		display: grid;
+		gap: 18px;
+	}
+
+	.focus-item {
+		padding-top: 18px;
+		border-top: 1px solid var(--line);
+	}
+
+	.focus-item header {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: baseline;
+		gap: 10px;
+		margin-bottom: 8px;
+	}
+
+	.focus-item h2 {
+		margin: 0;
+		color: var(--ink);
+		font-size: 20px;
+		line-height: 1.25;
+	}
+
+	.focus-item p {
+		margin: 0 0 10px;
+		color: var(--ink-soft);
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	.focus-item ul {
+		display: grid;
+		gap: 6px;
+		margin: 0;
+		padding-left: 20px;
+		color: var(--ink-soft);
+		font-size: 15px;
+		line-height: 1.55;
+	}
+
+	.focus-item li::marker {
+		color: var(--accent);
+	}
+
+	.focus-time {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		width: max-content;
+		border: 1px solid var(--line-strong);
+		border-radius: 999px;
+		padding: 3px 9px;
+		color: var(--ink-soft);
+		background: transparent;
+		font-size: 11px;
+		line-height: 1.35;
+		cursor: pointer;
+		transition:
+			color 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.focus-time:hover {
+		color: var(--paper);
+		background: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.focus-time span[aria-hidden='true'] {
+		color: var(--accent);
+		font-size: 8px;
+		transition: color 0.2s ease;
+	}
+
+	.focus-time:hover span[aria-hidden='true'] {
+		color: var(--paper);
+	}
+
+	.focus-time-static {
+		cursor: default;
 	}
 
 	.seminar-notes-section {
