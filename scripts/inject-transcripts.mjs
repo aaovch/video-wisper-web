@@ -452,6 +452,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/VID 20260707 1943311 [OBZXtQ3b5q4]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/obuchenie-trenerov-poisk-znaniy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/VID 20260708 181128 [XEsYGTYJY_8]/transcript.json'
+		)
 	}
 ];
 
