@@ -266,6 +266,7 @@
 					}
 				: undefined)
 	);
+	const reportExerciseMemo = $derived(report.exercise_memo);
 
 	function onVideoTime(t: number) {
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
@@ -391,7 +392,7 @@
 				</p>
 			</header>
 
-			{#if reportGlossary.length > 0 || reportInfographic}
+			{#if reportGlossary.length > 0 || reportInfographic || reportExerciseMemo}
 				<section class="seminar-materials reveal" aria-label="Материалы семинара" {@attach reveal()}>
 					{#if reportGlossary.length > 0}
 						<details class="seminar-glossary">
@@ -418,6 +419,22 @@
 								<img
 									src={`${base}/${reportInfographic.src}`}
 									alt={reportInfographic.alt}
+									loading="lazy"
+									decoding="async"
+								/>
+							</figure>
+						</details>
+					{/if}
+
+					{#if reportExerciseMemo}
+						<details class="seminar-exercise-memo-panel">
+							<summary>
+								<span class="label">Памятка по упражнениям</span>
+							</summary>
+							<figure class="seminar-infographic">
+								<img
+									src={`${base}/${reportExerciseMemo.src}`}
+									alt={reportExerciseMemo.alt}
 									loading="lazy"
 									decoding="async"
 								/>
@@ -617,6 +634,7 @@
 
 	.seminar-glossary,
 	.seminar-infographic-panel,
+	.seminar-exercise-memo-panel,
 	.seminar-notes,
 	.seminar-exercises {
 		border-bottom: 1px solid var(--line);
@@ -628,6 +646,7 @@
 
 	.seminar-glossary summary,
 	.seminar-infographic-panel summary,
+	.seminar-exercise-memo-panel summary,
 	.seminar-notes summary,
 	.seminar-exercises summary {
 		cursor: pointer;
@@ -640,6 +659,7 @@
 
 	.seminar-glossary summary::after,
 	.seminar-infographic-panel summary::after,
+	.seminar-exercise-memo-panel summary::after,
 	.seminar-notes summary::after,
 	.seminar-exercises summary::after {
 		content: '+';
@@ -651,6 +671,7 @@
 
 	.seminar-glossary[open] summary::after,
 	.seminar-infographic-panel[open] summary::after,
+	.seminar-exercise-memo-panel[open] summary::after,
 	.seminar-notes[open] summary::after,
 	.seminar-exercises[open] summary::after {
 		content: '−';
@@ -658,6 +679,7 @@
 
 	.seminar-glossary summary::-webkit-details-marker,
 	.seminar-infographic-panel summary::-webkit-details-marker,
+	.seminar-exercise-memo-panel summary::-webkit-details-marker,
 	.seminar-notes summary::-webkit-details-marker,
 	.seminar-exercises summary::-webkit-details-marker {
 		display: none;

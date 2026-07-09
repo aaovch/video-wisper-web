@@ -97,6 +97,8 @@ export interface Report {
 	seminar_exercises?: SeminarExerciseSection[];
 	/** Дополнительная инфографика или изображение к отчёту */
 	infographic?: ReportInfographic;
+	/** Памятка по упражнениям или дополнительный лист практики */
+	exercise_memo?: ReportInfographic;
 	/** Полная расшифровка (опционально) */
 	transcript?: string;
 }
