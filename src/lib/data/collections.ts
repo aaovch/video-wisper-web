@@ -71,7 +71,13 @@ export const collections: Collection[] = [
 		slug: 'lager-vladivostok',
 		title: 'Лагерь Владивосток',
 		subtitle: 'Семинары и тренировки лагеря во Владивостоке.',
-		items: ['gruppa-a-1-vvodnaya', 'ataka-prosche-ne-byvaet-udar', 'obuchenie-trenerov-poisk-znaniy']
+		items: [
+			'gruppa-a-1-vvodnaya',
+			'ataka-prosche-ne-byvaet-udar',
+			'vid-20260708-200742',
+			'obuchenie-trenerov-poisk-znaniy',
+			'vid-20260708-194529'
+		]
 	},
 	{
 		slug: 'hema-theory',
