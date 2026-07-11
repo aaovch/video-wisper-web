@@ -461,6 +461,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/trenerstvo-2-zadachi-uprazhneniya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерство 2.  Как выбирать задачи упражнения [dLlSd2vCzOE]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/vid-20260708-200742.json'),
 		transcriptPath: join(
 			pipelineRoot,
