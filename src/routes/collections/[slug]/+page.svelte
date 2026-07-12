@@ -11,6 +11,8 @@
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
+	const reportIndex = $derived(new Map(reports.map((report, i) => [report.slug, i])));
+	const reportBySlug = $derived(new Map(reports.map((report) => [report.slug, report])));
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
 </script>
 
@@ -66,13 +68,38 @@
 
 <section class="container index">
 	<hr class="rule" />
-	<ul class="index-list">
-		{#each reports as report, i (report.slug)}
-			<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
-				<ReportCard {report} index={i + 1} />
-			</li>
-		{/each}
-	</ul>
+	{#if collection.sections}
+		<div class="section-list">
+			{#each collection.sections as section, sectionIndex (section.title)}
+				<section class="report-section report-section--{sectionIndex + 1}">
+					<header class="section-head">
+						<span class="section-kicker label">Раздел {String(sectionIndex + 1).padStart(2, '0')}</span>
+						<h2>{section.title}</h2>
+						{#if section.subtitle}<p>{section.subtitle}</p>{/if}
+					</header>
+					<ul class="index-list">
+						{#each section.items as slug (slug)}
+							{@const report = reportBySlug.get(slug)}
+							{@const i = reportIndex.get(slug)}
+							{#if report && i !== undefined}
+								<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
+									<ReportCard {report} index={i + 1} />
+								</li>
+							{/if}
+						{/each}
+					</ul>
+				</section>
+			{/each}
+		</div>
+	{:else}
+		<ul class="index-list">
+			{#each reports as report, i (report.slug)}
+				<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
+					<ReportCard {report} index={i + 1} />
+				</li>
+			{/each}
+		</ul>
+	{/if}
 </section>
 {/if}
 
@@ -263,6 +290,57 @@
 		gap: 20px;
 	}
 
+	.section-list {
+		display: grid;
+		gap: 28px;
+		margin-top: 24px;
+	}
+
+	.report-section {
+		padding: clamp(20px, 3vw, 32px);
+		border: 1px solid var(--line);
+		border-top: 4px solid var(--accent);
+		border-radius: var(--radius);
+		background: var(--paper-2);
+		box-shadow: var(--shadow);
+	}
+
+	.report-section--2 {
+		border-top-color: var(--ink-soft);
+	}
+
+	.report-section--3 {
+		border-top-color: var(--line-strong);
+		background: var(--paper);
+	}
+
+	.section-head {
+		margin-bottom: 20px;
+	}
+
+	.section-kicker {
+		color: var(--accent);
+	}
+
+	.section-head h2 {
+		font-size: clamp(24px, 3vw, 36px);
+		font-weight: 500;
+		line-height: 1.1;
+		margin: 6px 0 8px;
+	}
+
+	.section-head p {
+		max-width: 56ch;
+		margin: 0;
+		color: var(--ink-soft);
+		line-height: 1.5;
+	}
+
+	.report-section .index-list {
+		margin-top: 0;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	@media (max-width: 960px) {
 		.index-list {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -271,6 +349,14 @@
 
 	@media (max-width: 620px) {
 		.index-list {
+			grid-template-columns: 1fr;
+		}
+
+		.report-section {
+			padding: 18px 14px;
+		}
+
+		.report-section .index-list {
 			grid-template-columns: 1fr;
 		}
 	}

@@ -23,6 +23,8 @@ export interface Collection {
 	analysis?: CollectionAnalysis;
 	/** Slug'и отчётов в порядке показа внутри коллекции. */
 	items: string[];
+	/** Необязательные визуальные разделы для страницы коллекции. */
+	sections?: { title: string; subtitle?: string; items: string[] }[];
 	/**
 	 * Пароль-«ключ». Если задан — и коллекция, и её отчёты закрыты до ввода пароля.
 	 * Внимание: это «лёгкий замок» на клиенте, а не настоящая защита: контент всё
@@ -78,6 +80,27 @@ export const collections: Collection[] = [
 			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya'
+		],
+		sections: [
+			{
+				title: 'Группа А',
+				subtitle: 'Вводные и позиционные тренировки продвинутой группы.',
+				items: [
+					'gruppa-a-1-vvodnaya',
+					'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
+					'vid-20260708-200742'
+				]
+			},
+			{
+				title: 'Группа Б',
+				subtitle: 'Базовая техника атаки и механика удара.',
+				items: ['ataka-prosche-ne-byvaet-udar']
+			},
+			{
+				title: 'Тренерский курс',
+				subtitle: 'Развитие тренера, поиск знаний и постановка упражнений.',
+				items: ['obuchenie-trenerov-poisk-znaniy', 'trenerstvo-2-zadachi-uprazhneniya']
+			}
 		]
 	},
 	{
