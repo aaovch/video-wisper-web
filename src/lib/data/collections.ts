@@ -76,6 +76,7 @@ export const collections: Collection[] = [
 		items: [
 			'gruppa-a-1-vvodnaya',
 			'ataka-prosche-ne-byvaet-udar',
+			'gruppa-b-2-ataki-fendenti-na-vypade',
 			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
 			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
@@ -94,7 +95,7 @@ export const collections: Collection[] = [
 			{
 				title: 'Группа Б',
 				subtitle: 'Базовая техника атаки и механика удара.',
-				items: ['ataka-prosche-ne-byvaet-udar']
+				items: ['ataka-prosche-ne-byvaet-udar', 'gruppa-b-2-ataki-fendenti-na-vypade']
 			},
 			{
 				title: 'Тренерский курс',
