@@ -74,6 +74,7 @@ export const collections: Collection[] = [
 		items: [
 			'gruppa-a-1-vvodnaya',
 			'ataka-prosche-ne-byvaet-udar',
+			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
 			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya'

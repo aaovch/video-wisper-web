@@ -477,6 +477,13 @@ const SOURCES = [
 	{
 		reportPath: join(root, 'src/lib/data/reports/utrenniy-kofe-polugodie-strategiya-segmenty.json'),
 		transcriptPath: join(pipelineRoot, 'output/утренний кофе/transcript.json')
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/pozitsionno-oboronitelnyi-tip-osnovnaya-chast.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка А  3 Позиционно оборонительный тип, основная часть [hycpfRnxPdk]/transcript.json'
+		)
 	}
 ];
 
