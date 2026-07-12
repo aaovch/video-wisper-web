@@ -484,6 +484,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тренировка А  3 Позиционно оборонительный тип, основная часть [hycpfRnxPdk]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/gruppa-b-2-ataki-fendenti-na-vypade.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка Б.  2 Атаки фенденти на выпаде [glbAEboPpG0]/transcript.json'
+		)
 	}
 ];
 
