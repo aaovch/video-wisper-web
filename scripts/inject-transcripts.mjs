@@ -491,6 +491,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тренировка Б.  2 Атаки фенденти на выпаде [glbAEboPpG0]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/manevrovo-atakuyushchiy-stil.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка А  4. 1.   Маневрово атакующий стиль [8ZmsC9cbPdo]/transcript.json'
+		)
 	}
 ];
 

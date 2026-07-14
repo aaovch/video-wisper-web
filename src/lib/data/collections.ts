@@ -78,6 +78,7 @@ export const collections: Collection[] = [
 			'ataka-prosche-ne-byvaet-udar',
 			'gruppa-b-2-ataki-fendenti-na-vypade',
 			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
+			'manevrovo-atakuyushchiy-stil',
 			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya'
@@ -89,6 +90,7 @@ export const collections: Collection[] = [
 				items: [
 					'gruppa-a-1-vvodnaya',
 					'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
+					'manevrovo-atakuyushchiy-stil',
 					'vid-20260708-200742'
 				]
 			},
