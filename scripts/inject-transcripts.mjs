@@ -493,6 +493,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/gruppa-b-3-vybor-zony-i-distantsii-v-atake.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка Б-3. Выбор зоны и решения дистанции в атаке [DzFj2NnYulM]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/manevrovo-atakuyushchiy-stil.json'),
 		transcriptPath: join(
 			pipelineRoot,

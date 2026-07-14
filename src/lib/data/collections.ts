@@ -77,6 +77,7 @@ export const collections: Collection[] = [
 			'gruppa-a-1-vvodnaya',
 			'ataka-prosche-ne-byvaet-udar',
 			'gruppa-b-2-ataki-fendenti-na-vypade',
+			'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
 			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
 			'manevrovo-atakuyushchiy-stil',
 			'vid-20260708-200742',
@@ -97,7 +98,11 @@ export const collections: Collection[] = [
 			{
 				title: 'Группа Б',
 				subtitle: 'Базовая техника атаки и механика удара.',
-				items: ['ataka-prosche-ne-byvaet-udar', 'gruppa-b-2-ataki-fendenti-na-vypade']
+				items: [
+					'ataka-prosche-ne-byvaet-udar',
+					'gruppa-b-2-ataki-fendenti-na-vypade',
+					'gruppa-b-3-vybor-zony-i-distantsii-v-atake'
+				]
 			},
 			{
 				title: 'Тренерский курс',
