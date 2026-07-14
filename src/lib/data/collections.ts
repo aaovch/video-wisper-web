@@ -82,7 +82,8 @@ export const collections: Collection[] = [
 			'manevrovo-atakuyushchiy-stil',
 			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
-			'trenerstvo-2-zadachi-uprazhneniya'
+			'trenerstvo-2-zadachi-uprazhneniya',
+			'ukol-po-centralnoy-linii'
 		],
 		sections: [
 			{
@@ -108,6 +109,11 @@ export const collections: Collection[] = [
 				title: 'Тренерский курс',
 				subtitle: 'Развитие тренера, поиск знаний и постановка упражнений.',
 				items: ['obuchenie-trenerov-poisk-znaniy', 'trenerstvo-2-zadachi-uprazhneniya']
+			},
+			{
+				title: 'Семинары',
+				subtitle: 'Отдельные практические семинары лагеря.',
+				items: ['ukol-po-centralnoy-linii']
 			}
 		]
 	},

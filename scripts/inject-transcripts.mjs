@@ -512,6 +512,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тэноути и тякин-сибори [8r6AHwE0PQQ]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/ukol-po-centralnoy-linii.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Семинар ＂Укол по центральной линии  атака, контратака, защита с ответом＂ [92XPlod0yG8]/transcript.json'
+		)
 	}
 ];
 
