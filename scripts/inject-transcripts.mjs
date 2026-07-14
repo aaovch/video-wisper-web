@@ -507,6 +507,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/manevrovo-atakuyushchiy-stil-4-2.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка А., 4.2  Маневрово атакующий тип, прожолжение [NCeOwzlFkvg]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/tenouti-i-tyakin-sibori.json'),
 		transcriptPath: join(
 			pipelineRoot,
