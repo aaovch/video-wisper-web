@@ -498,6 +498,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тренировка А  4. 1.   Маневрово атакующий стиль [8ZmsC9cbPdo]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/tenouti-i-tyakin-sibori.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тэноути и тякин-сибори [8r6AHwE0PQQ]/transcript.json'
+		)
 	}
 ];
 

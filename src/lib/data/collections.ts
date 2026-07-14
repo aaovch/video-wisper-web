@@ -218,7 +218,8 @@ export const collections: Collection[] = [
 			'kompresiya-taktiki-lektsiya',
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',
-			'hema-reflections'
+			'hema-reflections',
+			'tenouti-i-tyakin-sibori'
 		]
 	},
 	{
