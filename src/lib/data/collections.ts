@@ -75,12 +75,12 @@ export const collections: Collection[] = [
 		subtitle: 'Семинары и тренировки лагеря во Владивостоке.',
 		items: [
 			'gruppa-a-1-vvodnaya',
+			'vid-20260708-200742',
+			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
+			'manevrovo-atakuyushchiy-stil',
 			'ataka-prosche-ne-byvaet-udar',
 			'gruppa-b-2-ataki-fendenti-na-vypade',
 			'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
-			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
-			'manevrovo-atakuyushchiy-stil',
-			'vid-20260708-200742',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya',
 			'ukol-po-centralnoy-linii'
@@ -91,9 +91,9 @@ export const collections: Collection[] = [
 				subtitle: 'Вводные и позиционные тренировки продвинутой группы.',
 				items: [
 					'gruppa-a-1-vvodnaya',
+					'vid-20260708-200742',
 					'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
-					'manevrovo-atakuyushchiy-stil',
-					'vid-20260708-200742'
+					'manevrovo-atakuyushchiy-stil'
 				]
 			},
 			{
