@@ -261,6 +261,7 @@ export const collections: Collection[] = [
 			'protivnik-fehtuet-nepravilno',
 			'trenerskoe-sobranie',
 			'trenerskoe-sobranie-novyi-zal',
+			'trenerskoe-sobranie-novyi-zal-chast-2',
 			'dofamin-neyronnye-svyazi-pasha',
 			'2026-07-06-19-26-42'
 		]
