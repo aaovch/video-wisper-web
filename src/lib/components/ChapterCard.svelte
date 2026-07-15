@@ -1,19 +1,23 @@
 <script lang="ts">
 	import type { Chapter } from '$lib/types';
+	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
+	import Play from 'phosphor-svelte/lib/Play';
 
 	let {
 		chapter,
 		index,
 		onSeek,
 		playing = false,
-		live = false
+		live = false,
+		highlight = ''
 	}: {
 		chapter: Chapter;
 		index: number;
 		onSeek?: (start: number) => void;
 		playing?: boolean;
 		live?: boolean;
+		highlight?: string;
 	} = $props();
 </script>
 
@@ -24,7 +28,7 @@
 		>
 		{#if onSeek}
 			<button type="button" class="tc" onclick={() => onSeek?.(chapter.start)} title="Смотреть с этого момента">
-				<span class="tc-play" aria-hidden="true">▶</span>
+				<span class="tc-play" aria-hidden="true"><Play size={10} weight="fill" /></span>
 				<span class="mono">{formatTime(chapter.start)}</span>
 			</button>
 		{:else}
@@ -36,13 +40,25 @@
 		{/if}
 	</header>
 
-	<h3 class="title">{chapter.title}</h3>
-	<p class="summary">{chapter.summary}</p>
+	<h3 class="title">
+		{#each highlightParts(chapter.title, highlight) as part}
+			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
+		{/each}
+	</h3>
+	<p class="summary">
+		{#each highlightParts(chapter.summary, highlight) as part}
+			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
+		{/each}
+	</p>
 
 	{#if chapter.theses.length}
 		<ul class="theses">
 			{#each chapter.theses as thesis (thesis)}
-				<li>{thesis}</li>
+				<li>
+					{#each highlightParts(thesis, highlight) as part}
+						{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
+					{/each}
+				</li>
 			{/each}
 		</ul>
 	{/if}
@@ -181,7 +197,8 @@
 	}
 
 	.tc-play {
-		font-size: 8px;
+		display: grid;
+		place-items: center;
 		color: var(--accent);
 		transition: color 0.2s ease;
 	}
@@ -229,5 +246,11 @@
 		width: 9px;
 		height: 1px;
 		background: var(--accent-2);
+	}
+
+	mark {
+		background: color-mix(in srgb, var(--accent) 13%, var(--paper));
+		color: var(--accent-ink);
+		font-weight: 600;
 	}
 </style>

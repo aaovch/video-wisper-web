@@ -11,10 +11,21 @@ export interface CollectionAnalysis {
 	outcome: string;
 }
 
+/** Фасеты каталога. Они задаются явно, чтобы фильтры не зависели от шумных тегов отчётов. */
+export interface CollectionFacets {
+	authors?: string[];
+	places?: string[];
+	weapons?: string[];
+}
+
 /** Тематическая подборка видео. Видео может входить в несколько коллекций. */
 export interface Collection {
 	slug: string;
 	title: string;
+	/** HEMA-коллекции образуют основной каталог; остальные остаются в архиве вторым слоем. */
+	hema?: boolean;
+	/** Автор, место и оружие для фильтров главной страницы. */
+	facets?: CollectionFacets;
 	/** Короткая строка для карточки на главной и meta description. */
 	subtitle: string;
 	/** Развёрнутое описание на странице коллекции (опционально). */
@@ -40,18 +51,23 @@ export const collections: Collection[] = [
 	{
 		slug: 'hema-english',
 		title: 'HEMA: English',
+		hema: true,
 		subtitle: 'Английская терминология частей тела, экипировки и команд на площадке.',
 		items: ['hema-english-snaryazhenie']
 	},
 	{
 		slug: 'silovaya-konditsionnaya',
 		title: 'Силовая и кондиционная подготовка',
+		hema: true,
+		facets: { authors: ['Tokarev Coach'] },
 		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
 		items: ['tokarev-silovaya-ofp-2', 'pliometrika-hema', 'silovaya-konditsiya-hema', 'silovaya-plan-hema']
 	},
 	{
 		slug: 'almaty-2026',
 		title: 'Фехтовальный лагерь «Алматы 2026»',
+		hema: true,
+		facets: { places: ['Алматы'], weapons: ['Сабля', 'Длинный меч', 'Рапира'] },
 		subtitle: 'Семинары и тренировки лагеря: сабля (общая и «А») и длинный меч.',
 		items: [
 			'sablya-vvodnaya',
@@ -72,6 +88,12 @@ export const collections: Collection[] = [
 	{
 		slug: 'lager-vladivostok',
 		title: 'Лагерь Владивосток',
+		hema: true,
+		facets: {
+			authors: ['Пётр Васильев'],
+			places: ['Владивосток'],
+			weapons: ['Длинный меч']
+		},
 		subtitle: 'Семинары и тренировки лагеря во Владивостоке.',
 		items: [
 			'gruppa-a-1-vvodnaya',
@@ -122,6 +144,7 @@ export const collections: Collection[] = [
 	{
 		slug: 'hema-theory',
 		title: 'HEMA: теория и тренерство',
+		hema: true,
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',
 		items: ['metodichka', 'retention'],
 		// Пример закрытой коллекции. Поменяй пароль на свой (или убери строку, чтобы открыть).
@@ -152,6 +175,8 @@ export const collections: Collection[] = [
 	{
 		slug: 'kendzyu',
 		title: 'Кендзюцу',
+		hema: true,
+		facets: { places: ['Алматы'], weapons: ['Катана'] },
 		subtitle: 'Эксперимент новых правил: разбор системы и пробные спарринги на катанах.',
 		description:
 			'20 июня 2026 — пробный день новой системы баллов для фехтования на катанах. Сначала разбор правил (~13 мин): один балл в раунде, «стоп» на фиксации, порез ценнее удара, кумуляция без авторблоу, формат «4 победы из 7». Затем — десять спаррингов с судейством: шесть атлетов, спорные порезы и дубли, апелляции и правки формулировок прямо по ходу боя. Цель эксперимента — не турнир, а проверить, какую картину боя дают правила: дистанция → клинч → давящий порез, без травм и без «раз-два» в руки.',
@@ -219,6 +244,8 @@ export const collections: Collection[] = [
 	{
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
+		hema: true,
+		facets: { authors: ['Александр Овчинников'], weapons: ['Длинный меч'] },
 		subtitle: 'Теория HEMA, тренерство, тактика и разборы практики фехтования.',
 		items: [
 			'protivnik-fehtuet-nepravilno',
@@ -238,6 +265,8 @@ export const collections: Collection[] = [
 	{
 		slug: 'noname-sparring',
 		title: 'NoName: спарринги',
+		hema: true,
+		facets: { places: ['Алматы'], weapons: ['Длинный меч'] },
 		subtitle: 'Учебные спарринги клуба NoName с комментарием по обменам.',
 		items: ['fedotikov-mironov']
 	},
@@ -250,6 +279,12 @@ export const collections: Collection[] = [
 	{
 		slug: 'golden-falcon-astana',
 		title: 'Golden Falcon Astana',
+		hema: true,
+		facets: {
+			authors: ['Александр Овчинников'],
+			places: ['Астана'],
+			weapons: ['Длинный меч']
+		},
 		subtitle: 'Тренировки и разборы фехтовального клуба в Астане.',
 		items: [
 			'optimizatsiya-parad-ripost-hema',
@@ -304,12 +339,14 @@ export function reportGate(slug: string): Collection[] {
 export interface CollectionStats {
 	videos: number;
 	chapters: number;
+	duration: number;
 }
 
 export function collectionStats(collection: Collection): CollectionStats {
 	const rs = collectionReports(collection);
 	return {
 		videos: rs.length,
-		chapters: rs.reduce((acc, r) => acc + r.chapterCount, 0)
+		chapters: rs.reduce((acc, r) => acc + r.chapterCount, 0),
+		duration: rs.reduce((acc, r) => acc + r.duration, 0)
 	};
 }
