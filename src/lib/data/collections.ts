@@ -260,6 +260,7 @@ export const collections: Collection[] = [
 			'hema-reflections',
 			'protivnik-fehtuet-nepravilno',
 			'trenerskoe-sobranie',
+			'trenerskoe-sobranie-novyi-zal',
 			'dofamin-neyronnye-svyazi-pasha',
 			'2026-07-06-19-26-42'
 		]

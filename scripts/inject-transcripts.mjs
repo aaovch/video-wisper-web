@@ -426,6 +426,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/trenerskoe-sobranie-novyi-zal.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерское собрание насчет нового зала [CUJasEMSrrI]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/dofamin-neyronnye-svyazi-pasha.json'),
 		transcriptPath: join(
 			pipelineRoot,
