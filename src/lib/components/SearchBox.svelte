@@ -2,8 +2,8 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { groupByReport, preloadSearchIndex, searchReports, type SearchHit } from '$lib/search';
-	import { getCollection } from '$lib/data/collections';
+	import { groupByReport, preloadSearchIndex, searchReport, searchReports, type SearchHit } from '$lib/search';
+	import { collectionsForReport, getCollection } from '$lib/data/collections';
 	import { formatTime } from '$lib/utils';
 
 	const hotkey = '/';
@@ -18,33 +18,50 @@
 	let rootEl = $state<HTMLElement | null>(null);
 	let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 
-	const narrowScope = $derived.by(() => {
+	type ScopeMode = 'report' | 'collection' | 'archive';
+
+	const routeScope = $derived.by(() => {
 		const slug = page.params.slug;
 		if (page.route.id === '/collections/[slug]' && slug) {
 			const col = getCollection(slug);
-			if (col) return { label: col.title, slugs: col.items };
+			if (col) return { reportSlug: '', collection: col };
+		}
+		if (page.route.id === '/reports/[slug]' && slug) {
+			return { reportSlug: slug, collection: collectionsForReport(slug)[0] };
 		}
 		return null;
 	});
 
-	let wide = $state(false);
+	let scopeMode = $state<ScopeMode>('archive');
 	$effect(() => {
 		page.url.pathname;
-		wide = false;
+		scopeMode = routeScope?.reportSlug ? 'report' : routeScope?.collection ? 'collection' : 'archive';
 	});
 
-	const scoped = $derived(Boolean(narrowScope) && !wide);
-	const placeholder = $derived(scoped ? 'Поиск в коллекции…' : 'Поиск по разборам…');
+	const placeholder = $derived(
+		scopeMode === 'report'
+			? 'Поиск в отчёте…'
+			: scopeMode === 'collection'
+				? 'Поиск в коллекции…'
+				: 'Поиск по разборам…'
+	);
 
 	$effect(() => {
 		const q = debouncedQuery.trim();
-		const scope = scoped && narrowScope ? narrowScope.slugs : undefined;
+		const activeScope = routeScope;
+		const activeMode = scopeMode;
 		if (q.length < 2) {
 			hits = [];
 			return;
 		}
 		let cancelled = false;
-		void searchReports(q, 40, scope).then((results) => {
+		const search =
+			activeMode === 'report' && activeScope?.reportSlug
+				? searchReport(activeScope.reportSlug, q, 40)
+				: activeMode === 'collection' && activeScope?.collection
+					? searchReports(q, 40, activeScope.collection.items)
+					: searchReports(q, 40);
+		void search.then((results) => {
 			if (!cancelled) hits = results;
 		});
 		return () => {
@@ -112,12 +129,18 @@
 
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
+		overview: 'главное',
 		chapter: 'блок',
-		transcript: 'речь'
+		thesis: 'тезис',
+		transcript: 'речь',
+		material: 'материал'
 	};
 
 	function href(hit: SearchHit) {
-		return `${base}${hit.href}`;
+		const [pathname, hash] = hit.href.split('#');
+		const params = new URLSearchParams({ q: query.trim() });
+		if (scopeMode !== 'archive' && routeScope?.collection) params.set('from', routeScope.collection.slug);
+		return `${base}${pathname}?${params.toString()}${hash ? `#${hash}` : ''}`;
 	}
 
 	function close() {
@@ -175,12 +198,19 @@
 
 	{#if showPanel}
 		<div class="panel" id="{uid}-panel" role="listbox" aria-label="Результаты поиска">
-			{#if narrowScope}
+			{#if routeScope}
 				<div class="scope" role="group" aria-label="Область поиска">
-					<button type="button" class:active={scoped} onclick={() => (wide = false)}>
-						В коллекции
-					</button>
-					<button type="button" class:active={!scoped} onclick={() => (wide = true)}>
+					{#if routeScope.reportSlug}
+						<button type="button" class:active={scopeMode === 'report'} onclick={() => (scopeMode = 'report')}>
+							В отчёте
+						</button>
+					{/if}
+					{#if routeScope.collection}
+						<button type="button" class:active={scopeMode === 'collection'} onclick={() => (scopeMode = 'collection')}>
+							В коллекции
+						</button>
+					{/if}
+					<button type="button" class:active={scopeMode === 'archive'} onclick={() => (scopeMode = 'archive')}>
 						Везде
 					</button>
 				</div>

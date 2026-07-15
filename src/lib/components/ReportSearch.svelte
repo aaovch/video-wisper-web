@@ -2,7 +2,7 @@
 	import type { Report } from '$lib/types';
 	import { groupByChapter, preloadSearchIndex, searchReport, type SearchHit } from '$lib/search';
 	import { formatTime } from '$lib/utils';
-	import { onMount } from 'svelte';
+	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 
 	let {
 		report,
@@ -21,9 +21,13 @@
 	let rootEl = $state<HTMLElement | null>(null);
 	let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 
-	onMount(() => {
+	let indexRequested = false;
+
+	function requestIndex() {
+		if (indexRequested) return;
+		indexRequested = true;
 		preloadSearchIndex();
-	});
+	}
 
 	$effect(() => {
 		const q = debouncedQuery.trim();
@@ -87,8 +91,11 @@
 
 	const kindLabel: Record<SearchHit['kind'], string> = {
 		report: 'запись',
+		overview: 'главное',
 		chapter: 'блок',
-		transcript: 'речь'
+		thesis: 'тезис',
+		transcript: 'речь',
+		material: 'материал'
 	};
 
 	function close() {
@@ -124,7 +131,7 @@
 
 <div class="search" bind:this={rootEl}>
 	<label class="field">
-		<span class="icon" aria-hidden="true">⌕</span>
+		<span class="icon" aria-hidden="true"><MagnifyingGlass size={17} /></span>
 		<input
 			bind:this={inputEl}
 			type="search"
@@ -137,7 +144,10 @@
 			aria-controls="rs-panel"
 			aria-activedescendant={open && flat.length ? `rs-opt-${activeIndex}` : undefined}
 			bind:value={query}
-			onfocus={() => (open = true)}
+			onfocus={() => {
+				open = true;
+				requestIndex();
+			}}
 			oninput={() => {
 				open = true;
 				scheduleSearch();
@@ -208,7 +218,8 @@
 	}
 
 	.icon {
-		font-size: 15px;
+		display: grid;
+		place-items: center;
 		color: var(--ink-faint);
 		line-height: 1;
 	}

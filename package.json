@@ -4,8 +4,11 @@
   "description": "Статичный Svelte-сайт с отчётами Video Wisper: смысловые блоки, тезисы и расшифровки видео.",
   "type": "module",
   "scripts": {
+	"predev": "node scripts/build-search-index.mjs",
     "dev": "vite dev",
     "build-search-index": "node scripts/build-search-index.mjs",
+	"verify-search-index": "node scripts/verify-search-index.mjs",
+	"precheck": "node scripts/build-search-index.mjs",
     "prebuild": "node scripts/build-search-index.mjs",
     "build": "vite build",
     "preview": "vite preview",
@@ -23,6 +26,7 @@
     "vite": "^6.0.11"
   },
   "dependencies": {
-    "minisearch": "^7.2.0"
+    "minisearch": "^7.2.0",
+    "phosphor-svelte": "^3.1.0"
   }
 }

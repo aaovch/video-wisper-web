@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import ReportCard from '$lib/components/ReportCard.svelte';
+	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
 	import Lock from '$lib/components/Lock.svelte';
-	import VisitCounter from '$lib/components/VisitCounter.svelte';
+	import ReportCard from '$lib/components/ReportCard.svelte';
+	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
 	import { reveal, revealDelay } from '$lib/attachments';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
@@ -11,6 +12,7 @@
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
 	const reports = $derived(data.reports);
+	const intro = $derived(collection.description ?? collection.subtitle);
 	const reportIndex = $derived(new Map(reports.map((report, i) => [report.slug, i])));
 	const reportBySlug = $derived(new Map(reports.map((report) => [report.slug, report])));
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
@@ -18,346 +20,128 @@
 
 <svelte:head>
 	<title>{collection.title} — {SITE_NAME}</title>
-	<meta name="description" content={collection.description ?? collection.subtitle} />
+	<meta name="description" content={intro} />
 </svelte:head>
 
 {#if locked}
-	<Lock
-		targets={[collection]}
-		title={collection.title}
-		subtitle="Коллекция закрыта. Введите пароль, чтобы открыть доступ."
-	/>
+	<Lock targets={[collection]} title={collection.title} subtitle="Коллекция закрыта. Введите пароль, чтобы открыть доступ." />
 {:else}
-<section class="container head-wrap reveal" {@attach reveal()}>
-	<a class="back label" href="{base}/">← Все коллекции</a>
-	<h1>{collection.title}</h1>
-	<p class="subtitle">{collection.subtitle}</p>
-	{#if collection.description}
-		<p class="description">{collection.description}</p>
-	{/if}
-	<p class="views label">
-		<VisitCounter target={{ kind: 'reports-sum', slugs: collection.items }} suffix="просмотров" />
-	</p>
-</section>
+	<header class="container hero reveal" {@attach reveal()}>
+		<nav class="breadcrumbs" aria-label="Хлебные крошки">
+			<a href="{base}/"><ArrowLeft size={16} /> Архив</a>
+			<span aria-hidden="true">/</span>
+			<span>{collection.title}</span>
+		</nav>
+		<p class="eyebrow label">Коллекция</p>
+		<h1>{collection.title}</h1>
+		<p class="intro">{intro}</p>
+	</header>
 
-{#if collection.analysis}
-	<section class="container analysis reveal" {@attach reveal()}>
-		<hr class="rule" />
-		<div class="analysis-inner">
-			<h2>Что заявляли — и как вышло</h2>
+	<div class="container collection-search reveal" {@attach reveal()}>
+		<ScopedArchiveSearch
+			kind="collection"
+			reportSlugs={collection.items}
+			collectionSlug={collection.slug}
+		/>
+	</div>
+
+	{#if collection.analysis}
+		<section class="container analysis reveal" {@attach reveal()}>
+			<div class="section-title">
+				<span class="section-num mono">00</span>
+				<div><p class="label">Сверка практикой</p><h2>Что заявляли — и как вышло</h2></div>
+			</div>
 			<p class="lede">{collection.analysis.lede}</p>
 			<ol class="findings">
 				{#each collection.analysis.findings as finding, i (i)}
-					<li class="finding reveal" {@attach reveal({ delay: revealDelay(i, 60) })}>
-						<span class="finding-num" aria-hidden="true">{i + 1}</span>
-						<div class="finding-part">
-							<span class="finding-tag">Заявляли</span>
-							<p class="claim">{finding.claim}</p>
-						</div>
-						<div class="finding-part finding-part--reality">
-							<span class="finding-tag finding-tag--reality">В боях</span>
-							<p class="reality">{finding.reality}</p>
-						</div>
+					<li class="finding reveal" {@attach reveal({ delay: revealDelay(i, 45) })}>
+						<span class="finding-num mono">{String(i + 1).padStart(2, '0')}</span>
+						<div><span class="finding-tag label">Заявляли</span><p>{finding.claim}</p></div>
+						<div><span class="finding-tag label reality-label">В боях</span><p>{finding.reality}</p></div>
 					</li>
 				{/each}
 			</ol>
 			<p class="outcome">{collection.analysis.outcome}</p>
-		</div>
-	</section>
-{/if}
+		</section>
+	{/if}
 
-<section class="container index">
-	<hr class="rule" />
-	{#if collection.sections}
-		<div class="section-list">
+	<main class="container index">
+		{#if collection.sections}
 			{#each collection.sections as section, sectionIndex (section.title)}
-				<section class="report-section report-section--{sectionIndex + 1}">
-					<header class="section-head">
-						<span class="section-kicker label">Раздел {String(sectionIndex + 1).padStart(2, '0')}</span>
-						<h2>{section.title}</h2>
-						{#if section.subtitle}<p>{section.subtitle}</p>{/if}
+				<section class="report-section">
+					<header class="section-title">
+						<span class="section-num mono">{String(sectionIndex + 1).padStart(2, '0')}</span>
+						<div><p class="label">Раздел</p><h2>{section.title}</h2>{#if section.subtitle}<p class="section-copy">{section.subtitle}</p>{/if}</div>
 					</header>
 					<ul class="index-list">
 						{#each section.items as slug (slug)}
 							{@const report = reportBySlug.get(slug)}
 							{@const i = reportIndex.get(slug)}
 							{#if report && i !== undefined}
-								<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
-									<ReportCard {report} index={i + 1} />
-								</li>
+								<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} /></li>
 							{/if}
 						{/each}
 					</ul>
 				</section>
 			{/each}
-		</div>
-	{:else}
-		<ul class="index-list">
-			{#each reports as report, i (report.slug)}
-				<li class="reveal" {@attach reveal({ delay: revealDelay(i, 80) })}>
-					<ReportCard {report} index={i + 1} />
-				</li>
-			{/each}
-		</ul>
-	{/if}
-</section>
+		{:else}
+			<section class="report-section">
+				<ul class="index-list index-list--flat">
+					{#each reports as report, i (report.slug)}
+						<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} /></li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+	</main>
 {/if}
 
 <style>
-	.head-wrap {
-		padding-top: 24px;
-	}
+	.hero { padding-top: clamp(28px, 5vw, 62px); padding-bottom: 18px; }
+	.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; color: var(--ink-faint); font-size: 14px; }
+	.breadcrumbs a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+	.eyebrow { margin: 0 0 8px; color: var(--accent); }
+	h1 { max-width: 17ch; margin: 0 0 14px; font-size: clamp(38px, 6vw, 70px); font-weight: 500; line-height: 0.98; }
+	.intro { max-width: 66ch; margin: 0; color: var(--ink-soft); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
 
-	.back {
-		display: inline-block;
-		margin-bottom: 18px;
-		color: var(--ink-soft);
-		border-bottom: 1px solid transparent;
-		padding-bottom: 2px;
-		transition: border-color 0.2s ease;
-	}
+	.collection-search { padding-top: 12px; }
 
-	.back:hover {
-		border-color: var(--accent);
-	}
+	.analysis, .index { padding-top: 42px; }
+	.analysis { padding-bottom: 24px; }
+	.section-title { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; align-items: start; padding-top: 18px; border-top: 1px solid var(--line-strong); }
+	.section-num { color: var(--accent); font-size: 12px; padding-top: 5px; }
+	.section-title .label { margin: 0 0 5px; color: var(--ink-faint); }
+	.section-title h2 { margin: 0; font-size: clamp(28px, 3.4vw, 42px); font-weight: 500; line-height: 1.08; }
+	.section-copy { max-width: 60ch; margin: 8px 0 0; color: var(--ink-soft); line-height: 1.5; }
+	.lede { max-width: 68ch; margin: 20px 0 24px 62px; color: var(--ink-soft); font-size: 17px; line-height: 1.6; }
 
-	.head-wrap h1 {
-		font-size: clamp(30px, 4.6vw, 56px);
-		font-weight: 500;
-		margin: 0 0 12px;
-		max-width: 20ch;
-		line-height: 1.05;
-	}
+	.findings { margin: 0 0 0 62px; padding: 0; list-style: none; }
+	.finding { display: grid; grid-template-columns: 34px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+	.finding-num { color: var(--accent); font-size: 11px; }
+	.finding-tag { display: block; margin-bottom: 7px; color: var(--ink-faint); }
+	.reality-label { color: var(--accent); }
+	.finding p { margin: 0; line-height: 1.55; }
+	.finding div:last-child p { color: var(--ink-soft); }
+	.outcome { max-width: 72ch; margin: 20px 0 0 62px; padding: 18px 0 0 18px; border-top: 1px solid var(--line-strong); border-left: 2px solid var(--accent); font-size: 17px; line-height: 1.6; }
 
-	.subtitle {
-		font-size: clamp(17px, 1.8vw, 21px);
-		color: var(--ink-soft);
-		max-width: 54ch;
-		margin: 0 0 12px;
-		line-height: 1.45;
-	}
-
-	.description {
-		font-size: clamp(16px, 1.5vw, 18px);
-		color: var(--ink);
-		max-width: 60ch;
-		margin: 0 0 16px;
-		line-height: 1.65;
-	}
-
-	.views {
-		margin: 0;
-		color: var(--ink-faint);
-	}
-
-	.analysis {
-		padding-top: 4px;
-	}
-
-	.analysis-inner {
-		max-width: 1080px;
-	}
-
-	.analysis h2 {
-		font-size: clamp(22px, 2.6vw, 30px);
-		font-weight: 500;
-		margin: 26px 0 14px;
-		line-height: 1.1;
-	}
-
-	.analysis .lede {
-		font-size: clamp(16px, 1.5vw, 18px);
-		color: var(--ink);
-		max-width: 64ch;
-		margin: 0 0 30px;
-		line-height: 1.65;
-	}
-
-	.findings {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 22px 20px;
-	}
-
-	.finding {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		padding: 24px 22px 18px;
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		background: var(--paper-2);
-		box-shadow: var(--shadow);
-	}
-
-	.finding-num {
-		position: absolute;
-		top: -14px;
-		left: 20px;
-		width: 30px;
-		height: 30px;
-		display: grid;
-		place-items: center;
-		font-family: var(--font-mono);
-		font-size: 13px;
-		font-variant-numeric: tabular-nums;
-		color: var(--paper);
-		background: var(--accent);
-		border-radius: 50%;
-		box-shadow: var(--shadow);
-	}
-
-	.finding-part {
-		margin: 0;
-	}
-
-	.finding-part--reality {
-		margin-top: 16px;
-		padding-top: 16px;
-		border-top: 1px solid var(--line-strong);
-	}
-
-	.finding-tag {
-		display: inline-block;
-		margin: 0 0 9px;
-		padding: 2px 9px;
-		font-family: var(--font-mono);
-		font-size: 10px;
-		font-weight: 500;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		border-radius: 999px;
-		color: var(--ink-faint);
-		border: 1px solid var(--line-strong);
-	}
-
-	.finding-tag--reality {
-		color: var(--accent);
-		border-color: var(--accent);
-	}
-
-	.claim,
-	.reality {
-		margin: 0;
-		line-height: 1.6;
-	}
-
-	.claim {
-		font-size: clamp(15px, 1.35vw, 17px);
-		font-weight: 500;
-		color: var(--ink);
-	}
-
-	.reality {
-		font-size: clamp(14px, 1.25vw, 15.5px);
-		color: var(--ink-soft);
-	}
-
-	.outcome {
-		font-size: clamp(15px, 1.5vw, 18px);
-		color: var(--ink);
-		max-width: 70ch;
-		margin: 30px 0 0;
-		padding-top: 20px;
-		border-top: 2px solid var(--accent);
-		line-height: 1.65;
-	}
+	.index { padding-bottom: 72px; }
+	.report-section + .report-section { margin-top: 52px; }
+	.index-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 34px; margin: 24px 0 0 62px; padding: 0; list-style: none; }
+	.index-list.index-list--flat { margin-top: 0; margin-left: 0; }
 
 	@media (max-width: 760px) {
-		.findings {
-			grid-template-columns: 1fr;
-			gap: 26px 0;
-		}
-
-		.finding {
-			padding: 22px 18px 16px;
-		}
+		.hero { padding-top: 22px; }
+		.breadcrumbs { margin-bottom: 24px; }
+		.section-title { grid-template-columns: 34px minmax(0, 1fr); gap: 8px; }
+		.lede, .findings, .outcome, .index-list { margin-left: 42px; }
+		.finding { grid-template-columns: 28px 1fr; gap: 14px 10px; }
+		.finding > div { grid-column: 2; }
+		.index-list { grid-template-columns: 1fr; gap: 24px; }
 	}
 
-	.index {
-		padding-top: 12px;
-	}
-
-	.index-list {
-		list-style: none;
-		margin: 18px 0 0;
-		padding: 0;
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 20px;
-	}
-
-	.section-list {
-		display: grid;
-		gap: 28px;
-		margin-top: 24px;
-	}
-
-	.report-section {
-		padding: clamp(20px, 3vw, 32px);
-		border: 1px solid var(--line);
-		border-top: 4px solid var(--accent);
-		border-radius: var(--radius);
-		background: var(--paper-2);
-		box-shadow: var(--shadow);
-	}
-
-	.report-section--2 {
-		border-top-color: var(--ink-soft);
-	}
-
-	.report-section--3 {
-		border-top-color: var(--line-strong);
-		background: var(--paper);
-	}
-
-	.section-head {
-		margin-bottom: 20px;
-	}
-
-	.section-kicker {
-		color: var(--accent);
-	}
-
-	.section-head h2 {
-		font-size: clamp(24px, 3vw, 36px);
-		font-weight: 500;
-		line-height: 1.1;
-		margin: 6px 0 8px;
-	}
-
-	.section-head p {
-		max-width: 56ch;
-		margin: 0;
-		color: var(--ink-soft);
-		line-height: 1.5;
-	}
-
-	.report-section .index-list {
-		margin-top: 0;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	@media (max-width: 960px) {
-		.index-list {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-	@media (max-width: 620px) {
-		.index-list {
-			grid-template-columns: 1fr;
-		}
-
-		.report-section {
-			padding: 18px 14px;
-		}
-
-		.report-section .index-list {
-			grid-template-columns: 1fr;
-		}
+	@media (max-width: 480px) {
+		.lede, .findings, .outcome, .index-list { margin-left: 0; }
+		.section-title { grid-template-columns: 28px minmax(0, 1fr); }
+		.finding { grid-template-columns: 24px 1fr; }
 	}
 </style>

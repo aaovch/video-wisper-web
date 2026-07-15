@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Chapter } from '$lib/types';
 	import { formatTime } from '$lib/utils';
+	import CaretRight from 'phosphor-svelte/lib/CaretRight';
 
 	let {
 		chapters,
@@ -38,7 +39,7 @@
 	<summary class="nav-title label" aria-label="Содержание">
 		Содержание
 		<span class="count mono">{chapters.length}</span>
-		<span class="chevron" aria-hidden="true">▸</span>
+		<span class="chevron" aria-hidden="true"><CaretRight size={13} weight="bold" /></span>
 	</summary>
 	<ol>
 		{#each chapters as chapter, i (chapter.start)}
@@ -55,8 +56,7 @@
 
 <style>
 	.chapter-nav {
-		border-top: 1px solid var(--line-strong);
-		padding-top: 16px;
+		padding-top: 4px;
 	}
 
 	.nav-title {
@@ -79,7 +79,8 @@
 
 	.chevron {
 		margin-left: auto;
-		font-size: 10px;
+		display: grid;
+		place-items: center;
 		color: var(--ink-faint);
 		transition: transform 0.2s ease;
 	}

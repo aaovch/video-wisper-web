@@ -124,6 +124,7 @@ export interface ReportSummary {
 	slug: string;
 	title: string;
 	subtitle: string;
+	tags?: string[];
 	duration: number;
 	overview_theses: string[];
 	chapterCount: number;

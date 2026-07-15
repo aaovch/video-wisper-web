@@ -1,57 +1,46 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import VisitCounter from '$lib/components/VisitCounter.svelte';
+	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import Clock from 'phosphor-svelte/lib/Clock';
+	import ListBullets from 'phosphor-svelte/lib/ListBullets';
+	import Play from 'phosphor-svelte/lib/Play';
 	import type { ReportSummary } from '$lib/types';
 	import { formatDuration, getVideoPosterUrl } from '$lib/utils';
 
-	let { report, index }: { report: ReportSummary; index: number } = $props();
+	let {
+		report,
+		index,
+		collectionSlug
+	}: { report: ReportSummary; index: number; collectionSlug: string } = $props();
 
-	const hasVideo = $derived(Boolean(report.video));
 	const posterUrl = $derived(getVideoPosterUrl(report.video, base));
+	const href = $derived(`${base}/reports/${report.slug}/?from=${encodeURIComponent(collectionSlug)}`);
 	let posterFailed = $state(false);
 </script>
 
-<a class="entry" href="{base}/reports/{report.slug}/">
-	<div class="body">
-		<div class="head">
-			<span class="numeral" aria-hidden="true">{String(index).padStart(2, '0')}</span>
-			{#if !posterUrl || posterFailed}
-				<span class="duration mono">
-					{#if hasVideo}<span class="rec" aria-hidden="true"></span>{/if}
-					{formatDuration(report.duration)}
-				</span>
-			{/if}
-			<VisitCounter target={{ kind: 'report', slug: report.slug }} lazy class="views" />
-		</div>
-
-		<h3 class="title">{report.title}</h3>
-
+<a class="entry" {href}>
+	<div class="thumb">
 		{#if posterUrl && !posterFailed}
-			<div class="thumb">
-				<img
-					src={posterUrl}
-					alt=""
-					loading="lazy"
-					decoding="async"
-					onerror={() => (posterFailed = true)}
-				/>
-				<span class="duration mono">
-					{#if hasVideo}<span class="rec" aria-hidden="true"></span>{/if}
-					{formatDuration(report.duration)}
-				</span>
-				<span class="play" aria-hidden="true"></span>
-			</div>
+			<img src={posterUrl} alt="" loading="lazy" decoding="async" onerror={() => (posterFailed = true)} />
+		{:else}
+			<div class="placeholder" aria-hidden="true"><span>{String(index).padStart(2, '0')}</span></div>
 		{/if}
+		<span class="play" aria-hidden="true"><Play size={24} weight="fill" /></span>
+	</div>
 
+	<div class="body">
+		<div class="meta mono">
+			<span><Clock size={14} /> {formatDuration(report.duration)}</span>
+			<span><ListBullets size={14} /> {report.chapterCount} блоков</span>
+		</div>
+		<h3>{report.title}</h3>
 		<p class="subtitle">{report.subtitle}</p>
-
 		<ul class="leads">
 			{#each report.overview_theses.slice(0, 2) as thesis (thesis)}
 				<li>{thesis}</li>
 			{/each}
 		</ul>
-
-		<span class="open">Читать запись <span class="arrow" aria-hidden="true">→</span></span>
+		<span class="open">Открыть отчёт <ArrowRight size={18} /></span>
 	</div>
 </a>
 
@@ -60,218 +49,64 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		background: var(--paper-2);
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
 		color: var(--ink);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
-		overflow: hidden;
-		transition:
-			border-color 0.25s ease,
-			transform 0.25s ease;
+		border-top: 1px solid var(--line-strong);
+		border-bottom: 1px solid var(--line);
+		padding: 16px 0 20px;
+		transition: border-color 0.2s ease;
 	}
 
-	.entry:hover {
-		border-color: var(--line-strong);
-		transform: translateY(-2px);
-	}
+	.entry:hover { border-top-color: var(--accent); }
 
 	.thumb {
 		position: relative;
 		aspect-ratio: 16 / 9;
-		margin: 0 0 14px;
-		border-radius: var(--radius-sm);
-		background: var(--line);
+		background: var(--paper-2);
 		overflow: hidden;
 	}
 
-	.thumb img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform 0.35s ease;
-	}
+	.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+	.entry:hover .thumb img { transform: scale(1.018); }
 
-	.entry:hover .thumb img {
-		transform: scale(1.03);
-	}
-
-	.thumb .duration {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		padding: 4px 8px;
-		border-radius: var(--radius-sm);
-		background: rgba(28, 24, 20, 0.72);
-		color: var(--paper);
-		backdrop-filter: blur(4px);
-	}
-
-	.thumb .rec {
-		background: var(--paper);
-		box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
-	}
+	.placeholder { width: 100%; height: 100%; display: grid; place-items: center; background: linear-gradient(135deg, var(--paper-2), var(--line)); }
+	.placeholder span { font-family: var(--font-display); font-size: clamp(50px, 8vw, 84px); color: var(--line-strong); }
 
 	.play {
 		position: absolute;
-		inset: 0;
+		left: 16px;
+		bottom: 16px;
+		width: 46px;
+		height: 46px;
 		display: grid;
 		place-items: center;
-		pointer-events: none;
-	}
-
-	.play::after {
-		content: '';
-		width: 44px;
-		height: 44px;
+		color: var(--paper);
+		background: color-mix(in srgb, var(--ink) 78%, transparent);
+		border: 1px solid color-mix(in srgb, var(--paper) 45%, transparent);
 		border-radius: 50%;
-		background: rgba(28, 24, 20, 0.55);
-		border: 1px solid rgba(255, 255, 255, 0.35);
-		box-shadow: 0 8px 24px rgba(28, 24, 20, 0.25);
-		opacity: 0;
-		transform: scale(0.92);
-		transition:
-			opacity 0.25s ease,
-			transform 0.25s ease;
+		transition: background 0.2s ease, transform 0.2s ease;
 	}
 
-	.play::before {
-		content: '';
-		position: absolute;
-		width: 0;
-		height: 0;
-		margin-left: 3px;
-		border-style: solid;
-		border-width: 8px 0 8px 13px;
-		border-color: transparent transparent transparent var(--paper);
-		opacity: 0;
-		transition: opacity 0.25s ease;
-	}
+	.entry:hover .play { background: var(--accent); transform: translateY(-2px); }
+	.body { display: flex; flex: 1; flex-direction: column; padding-top: 14px; }
 
-	.entry:hover .play::after,
-	.entry:hover .play::before {
-		opacity: 1;
-	}
+	.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--ink-faint); font-size: 11px; }
+	.meta span { display: inline-flex; align-items: center; gap: 6px; }
 
-	.entry:hover .play::after {
-		transform: scale(1);
-	}
+	h3 { margin: 11px 0 8px; font-size: clamp(23px, 2.2vw, 29px); font-weight: 500; line-height: 1.12; }
+	.entry:hover h3 { color: var(--accent-ink); }
 
-	.body {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-		padding: 22px 24px 20px;
-	}
+	.subtitle { margin: 0 0 14px; color: var(--ink-soft); font-size: 16px; line-height: 1.48; }
 
-	.head {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 14px;
-		margin-bottom: 8px;
-		flex-wrap: wrap;
-	}
+	.leads { flex: 1; display: grid; gap: 7px; margin: 0 0 18px; padding: 0; list-style: none; }
+	.leads li { position: relative; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.45; }
+	.leads li::before { content: ''; position: absolute; left: 1px; top: 0.68em; width: 8px; height: 1px; background: var(--accent); }
 
-	.numeral {
-		font-family: var(--font-display);
-		font-size: 30px;
-		font-weight: 400;
-		line-height: 1;
-		color: var(--line-strong);
-		transition: color 0.25s ease;
-		font-feature-settings: 'ss01';
-	}
+	.open { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; }
+	.open :global(svg) { transition: transform 0.2s ease; }
+	.entry:hover .open :global(svg) { transform: translateX(4px); }
 
-	.entry:hover .numeral {
-		color: var(--accent);
-	}
-
-	.duration {
-		display: inline-flex;
-		align-items: center;
-		gap: 7px;
-		font-size: 12px;
-		color: var(--ink-faint);
-		white-space: nowrap;
-	}
-
-	:global(.views) {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		color: var(--ink-faint);
-		white-space: nowrap;
-	}
-
-	.rec {
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
-		background: var(--accent);
-		box-shadow: 0 0 0 3px rgba(138, 43, 34, 0.16);
-	}
-
-	.title {
-		font-size: clamp(22px, 2.2vw, 27px);
-		font-weight: 500;
-		margin: 0 0 12px;
-		line-height: 1.12;
-	}
-
-	.entry:hover .title {
-		color: var(--accent-ink);
-	}
-
-	.subtitle {
-		font-size: 16.5px;
-		color: var(--ink-soft);
-		margin: 0 0 16px;
-		line-height: 1.45;
-	}
-
-	.leads {
-		margin: 0 0 18px;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: 7px;
-		flex: 1;
-	}
-
-	.leads li {
-		position: relative;
-		padding-left: 20px;
-		color: var(--ink-soft);
-		font-size: 15px;
-		line-height: 1.4;
-	}
-
-	.leads li::before {
-		content: '§';
-		position: absolute;
-		left: 0;
-		color: var(--accent-2);
-		font-family: var(--font-display);
-	}
-
-	.open {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--accent);
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-	}
-
-	.arrow {
-		transition: transform 0.25s ease;
-	}
-
-	.entry:hover .arrow {
-		transform: translateX(5px);
+	@media (max-width: 620px) {
+		.entry { padding-top: 14px; }
+		h3 { font-size: 25px; }
 	}
 </style>

@@ -1,41 +1,61 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { pushState } from '$app/navigation';
 	import { base } from '$app/paths';
+	import { page } from '$app/state';
+	import CaretDown from 'phosphor-svelte/lib/CaretDown';
+	import Clock from 'phosphor-svelte/lib/Clock';
+	import FilmStrip from 'phosphor-svelte/lib/FilmStrip';
+	import Play from 'phosphor-svelte/lib/Play';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
-	import ReportSearch from '$lib/components/ReportSearch.svelte';
+	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import Lock from '$lib/components/Lock.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import { reveal } from '$lib/attachments';
-	import { reportGate } from '$lib/data/collections';
+	import { collectionsForReport, reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
-	import { formatTime } from '$lib/utils';
+	import { formatDuration, formatTime } from '$lib/utils';
 	import type { SearchHit } from '$lib/search';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const report = $derived(data.report);
 	const gate = $derived(reportGate(report.slug));
+	const reportCollections = $derived(collectionsForReport(report.slug));
 	const locked = $derived(gate.length > 0 && !gate.some((c) => lock.isUnlocked(c.slug)));
+	let highlightQuery = $state('');
+	let requestedCollectionSlug = $state('');
+	const returnCollection = $derived(
+		reportCollections.find((collection) => collection.slug === requestedCollectionSlug) ?? reportCollections[0]
+	);
+	const otherCollections = $derived(reportCollections.filter((collection) => collection.slug !== returnCollection?.slug));
 
 	let seekTo = $state(0);
-	let railEl = $state<HTMLElement | null>(null);
+	let layoutEl = $state<HTMLElement | null>(null);
 	let playerEl = $state<HTMLElement | null>(null);
 	let playerComp = $state<{ seekAndPlay?: (t: number) => void } | null>(null);
+	let appliedUrlSeek = $state('');
+
+	$effect(() => {
+		if (!browser) return;
+		highlightQuery = page.url.searchParams.get('q') ?? '';
+		requestedCollectionSlug = page.url.searchParams.get('from') ?? '';
+	});
 
 	// Высота sticky-плеера → отступ для «Содержания», чтобы строки не наслаивались при прокрутке.
 	$effect(() => {
-		if (!browser || !playerEl || !railEl) return;
+		if (!browser || !playerEl || !layoutEl) return;
 		const mq = window.matchMedia('(max-width: 960px)');
 		const sync = () => {
-			if (!railEl) return;
+			if (!layoutEl) return;
 			if (!mq.matches) {
-				railEl.style.removeProperty('--mobile-sticky-h');
+				layoutEl.style.removeProperty('--mobile-sticky-h');
 				return;
 			}
-			railEl.style.setProperty('--mobile-sticky-h', `${playerEl!.offsetHeight + 8}px`);
+			layoutEl.style.setProperty('--mobile-sticky-h', `${playerEl!.offsetHeight + 8}px`);
 		};
 		sync();
 		const ro = new ResizeObserver(sync);
@@ -269,6 +289,15 @@
 				: undefined)
 	);
 	const reportExerciseMemo = $derived(report.exercise_memo);
+	const hasAdditional = $derived(
+		reportFocusTabs.length > 0 ||
+			reportExercises.length > 0 ||
+			reportNotes.length > 0 ||
+			reportGlossary.length > 0 ||
+			Boolean(reportInfographic) ||
+			Boolean(reportExerciseMemo) ||
+			Boolean(report.transcript)
+	);
 
 	$effect(() => {
 		if (!reportFocusTabs.length) {
@@ -295,6 +324,20 @@
 		}
 		return idx;
 	}
+
+	// Ссылки из глобального поиска могут сразу открыть нужный блок и таймкод.
+	$effect(() => {
+		if (!browser || !report.video || !playerComp) return;
+		const raw = page.url.searchParams.get('t') ?? '';
+		if (!raw || raw === appliedUrlSeek) return;
+		const target = Number(raw);
+		if (!Number.isFinite(target) || target < 0) return;
+		appliedUrlSeek = raw;
+		seekTo = target;
+		activeChapterIndex = chapterIndexAt(target);
+		playbackStarted = true;
+		setTimeout(() => playerComp?.seekAndPlay?.(target), 0);
+	});
 
 	// Блок на позиции плеера: держится и на паузе (пока воспроизведение хоть раз начиналось).
 	const playingIndex = $derived(playbackStarted ? activeChapterIndex : -1);
@@ -351,9 +394,22 @@
 		document.getElementById(`ch-${index + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
-	function onSearchHit(hit: SearchHit) {
+	function onSearchHit(hit: SearchHit, seek: boolean, href: string) {
+		pushState(href, {});
 		if (hit.chapterIndex != null) {
-			selectChapter(hit.chapterIndex, hit.start ?? report.chapters[hit.chapterIndex].start);
+			const target = seek
+				? Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start)
+				: hit.start ?? report.chapters[hit.chapterIndex].start;
+			if (seek) seekVideo(target);
+			document.getElementById(`ch-${hit.chapterIndex + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			return;
+		}
+		if (hit.zone === 'additional') {
+			document.getElementById('additional-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			return;
+		}
+		if (hit.zone === 'theses') {
+			document.getElementById('overview-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			return;
 		}
 		document.querySelector('.report-head')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -369,95 +425,89 @@
 	<Lock
 		targets={gate}
 		title={report.title}
-		subtitle="Это видео из закрытой коллекции. Введите пароль, чтобы открыть доступ."
+		subtitle="Этот отчёт входит в закрытую коллекцию. Введите пароль, чтобы открыть доступ."
 	/>
 {:else}
 <article class="report container">
-	<div class="layout" class:no-video={!report.video}>
-		<!-- Слева: плеер + содержание (sticky с самого верха) -->
-		<aside class="rail" bind:this={railEl}>
+	<header class="report-head reveal" {@attach reveal()}>
+		<nav class="breadcrumbs" aria-label="Хлебные крошки">
+			<a href="{base}/">Архив</a><span aria-hidden="true">/</span>
+			{#if returnCollection}
+				<a href="{base}/collections/{returnCollection.slug}/">{returnCollection.title}</a><span aria-hidden="true">/</span>
+			{/if}
+			<span>{report.title}</span>
+		</nav>
+		<p class="eyebrow label">Отчёт</p>
+		<h1>{report.title}</h1>
+		<p class="subtitle">{report.subtitle}</p>
+		<div class="report-meta">
+			<span><Clock size={18} /> {formatDuration(report.duration)}</span>
+			<span><FilmStrip size={18} /> {report.chapters.length} смысловых блоков</span>
+			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} /></span>
+		</div>
+		{#if otherCollections.length}
+			<p class="memberships label">Также в коллекциях:
+				{#each otherCollections as collection, i (collection.slug)}
+					<a href="{base}/collections/{collection.slug}/">{collection.title}</a>{i < otherCollections.length - 1 ? ', ' : ''}
+				{/each}
+			</p>
+		{/if}
+	</header>
+
+	<div class="layout" class:no-video={!report.video} bind:this={layoutEl}>
+		<aside class="rail">
 			{#if report.video}
-				<div class="video-pin" bind:this={playerEl}>
+				<div class="video-pin" class:playback-started={playbackStarted} bind:this={playerEl}>
 					<VideoPlayer
 						bind:this={playerComp}
 						video={report.video}
 						{seekTo}
 						onTime={onVideoTime}
-						onPlaying={(p) => (videoPlaying = p)}
+						onPlaying={(p) => {
+							videoPlaying = p;
+							if (p) playbackStarted = true;
+						}}
 					/>
-					<p class="video-hint label">Клик по блоку — перемотка</p>
+					<p class="video-hint label">Таймкод в блоке перематывает видео</p>
 				</div>
 			{/if}
 			<div class="nav-scroll">
-				<ReportSearch {report} onHit={onSearchHit} />
 				<ChapterNav chapters={report.chapters} onSelect={selectChapter} active={navActive} />
 			</div>
 		</aside>
 
-		<!-- Справа: заголовок и текст -->
 		<div class="content">
-			<header class="report-head reveal" {@attach reveal()}>
-				<h1>{report.title}</h1>
-				<p class="subtitle">{report.subtitle}</p>
-				<p class="views label">
-					<VisitCounter target={{ kind: 'report', slug: report.slug }} />
-				</p>
-			</header>
+			<div class="scoped-search-wrap reveal" {@attach reveal()}>
+				<ScopedArchiveSearch
+					kind="report"
+					reportSlug={report.slug}
+					reportSlugs={returnCollection?.items ?? [report.slug]}
+					collectionSlug={returnCollection?.slug ?? ''}
+					onHit={onSearchHit}
+				/>
+			</div>
 
-			{#if reportGlossary.length > 0 || reportInfographic || reportExerciseMemo}
-				<section class="seminar-materials reveal" aria-label="Материалы семинара" {@attach reveal()}>
-					{#if reportGlossary.length > 0}
-						<details class="seminar-glossary">
-							<summary>
-								<span class="label">Глоссарий семинара</span>
-							</summary>
-							<dl>
-								{#each reportGlossary as item (item.term)}
-									<div>
-										<dt>{item.term}</dt>
-										<dd>{item.definition}</dd>
-									</div>
-								{/each}
-							</dl>
-						</details>
-					{/if}
+			<div class="top-sections">
+			<section class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
+				<div class="section-heading section-heading--plain"><h2 id="overview-title">Главное</h2></div>
+				<ul>
+					{#each report.overview_theses.slice(0, 3) as thesis (thesis)}<li>{thesis}</li>{/each}
+				</ul>
+				{#if report.overview_theses.length > 3}
+					<details class="more-theses">
+						<summary>Все тезисы <CaretDown size={16} /></summary>
+						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}<li>{thesis}</li>{/each}</ul>
+					</details>
+				{/if}
+			</section>
 
-					{#if reportInfographic}
-						<details class="seminar-infographic-panel">
-							<summary>
-								<span class="label">Инфографика семинара</span>
-							</summary>
-							<figure class="seminar-infographic">
-								<img
-									src={`${base}/${reportInfographic.src}`}
-									alt={reportInfographic.alt}
-									loading="lazy"
-									decoding="async"
-								/>
-							</figure>
-						</details>
-					{/if}
-
-					{#if reportExerciseMemo}
-						<details class="seminar-exercise-memo-panel">
-							<summary>
-								<span class="label">Памятка по упражнениям</span>
-							</summary>
-							<figure class="seminar-infographic">
-								<img
-									src={`${base}/${reportExerciseMemo.src}`}
-									alt={reportExerciseMemo.alt}
-									loading="lazy"
-									decoding="async"
-								/>
-							</figure>
-						</details>
-					{/if}
-				</section>
-			{/if}
+			{#if hasAdditional}
+				<section class="additional" aria-labelledby="additional-title">
+					<div class="section-heading section-heading--plain"><h2 id="additional-title">Дополнительные материалы</h2></div>
 
 			{#if reportFocusTabs.length > 0}
-				<section class="focus-section reveal" aria-label="Тематические срезы" {@attach reveal()}>
+				<section class="focus-section reveal extra-block" aria-label="Тематические срезы" {@attach reveal()}>
+					<h3 class="extra-title">Тематические срезы</h3>
 					<div class="focus-tablist" role="tablist">
 						{#each reportFocusTabs as tab (tab.id)}
 							<button
@@ -498,9 +548,9 @@
 														type="button"
 														class="focus-time"
 														onclick={() => seekVideo(item.start)}
-														title="Смотреть с этого момента"
-													>
-														<span aria-hidden="true">▶</span>
+													title="Смотреть с этого момента"
+												>
+													<Play size={11} weight="fill" aria-hidden="true" />
 														<span class="mono">{formatTime(item.start)}</span>
 													</button>
 												{:else}
@@ -525,48 +575,10 @@
 				</section>
 			{/if}
 
-			<section class="chapters">
-				{#each report.chapters as chapter, i (chapter.start)}
-					<div class="reveal" {@attach reveal()}>
-						<ChapterCard
-							{chapter}
-							index={i}
-							onSeek={report.video ? seekVideo : undefined}
-							playing={playingIndex === i}
-							live={videoPlaying && playingIndex === i}
-						/>
-					</div>
-				{/each}
-			</section>
-
-			{#if reportNotes.length > 0}
-				<section class="seminar-notes-section reveal" aria-label="Конспект семинара" {@attach reveal()}>
-					<details class="seminar-notes">
-						<summary>
-							<span class="label">Конспект семинара</span>
-						</summary>
-						<div class="seminar-notes-body">
-							{#each reportNotes as section (section.title)}
-								<section class="seminar-note-block">
-									<h2>{section.title}</h2>
-									<ul>
-										{#each section.items as item}
-											<li>{item}</li>
-										{/each}
-									</ul>
-								</section>
-							{/each}
-						</div>
-					</details>
-				</section>
-			{/if}
-
 			{#if reportExercises.length > 0}
-				<section class="seminar-exercises-section reveal" aria-label="Упражнения семинара" {@attach reveal()}>
+				<section class="seminar-exercises-section reveal extra-block" aria-label="Упражнения семинара" {@attach reveal()}>
 					<details class="seminar-exercises">
-						<summary>
-							<span class="label">Упражнения семинара</span>
-						</summary>
+						<summary><span>Упражнения</span><CaretDown size={17} /></summary>
 						<div class="seminar-exercises-body">
 							{#each reportExercises as exerciseSection (exerciseSection.title)}
 								<section class="seminar-exercise-block">
@@ -581,7 +593,7 @@
 														onclick={() => seekVideo(exercise.start)}
 														title="Смотреть упражнение с этого момента"
 													>
-														<span aria-hidden="true">▶</span>
+												<Play size={11} weight="fill" aria-hidden="true" />
 														<span class="mono">{formatTime(exercise.start)}</span>
 													</button>
 												{:else}
@@ -598,16 +610,52 @@
 				</section>
 			{/if}
 
+			{#if reportNotes.length > 0}
+				<section class="seminar-notes-section reveal extra-block" aria-label="Конспект семинара" {@attach reveal()}>
+					<details class="seminar-notes">
+						<summary><span>Конспект</span><CaretDown size={17} /></summary>
+						<div class="seminar-notes-body">
+							{#each reportNotes as section (section.title)}<section class="seminar-note-block"><h2>{section.title}</h2><ul>{#each section.items as item}<li>{item}</li>{/each}</ul></section>{/each}
+						</div>
+					</details>
+				</section>
+			{/if}
+
+			{#if reportGlossary.length > 0}
+				<section class="seminar-materials reveal extra-block" {@attach reveal()}>
+					<details class="seminar-glossary"><summary><span>Глоссарий</span><CaretDown size={17} /></summary><dl>{#each reportGlossary as item (item.term)}<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>{/each}</dl></details>
+				</section>
+			{/if}
+
+			{#if reportInfographic || reportExerciseMemo}
+				<section class="seminar-materials reveal extra-block" {@attach reveal()}>
+					{#if reportInfographic}<details class="seminar-infographic-panel"><summary><span>Инфографика</span><CaretDown size={17} /></summary><figure class="seminar-infographic"><img src={`${base}/${reportInfographic.src}`} alt={reportInfographic.alt} loading="lazy" decoding="async" /></figure></details>{/if}
+					{#if reportExerciseMemo}<details class="seminar-exercise-memo-panel"><summary><span>Памятка по упражнениям</span><CaretDown size={17} /></summary><figure class="seminar-infographic"><img src={`${base}/${reportExerciseMemo.src}`} alt={reportExerciseMemo.alt} loading="lazy" decoding="async" /></figure></details>{/if}
+				</section>
+			{/if}
+
 			{#if report.transcript}
-				<section class="transcript reveal" {@attach reveal()}>
+				<section class="transcript reveal extra-block" {@attach reveal()}>
 					<details bind:open={transcriptOpen}>
-						<summary><span class="label">Полная расшифровка</span></summary>
+						<summary><span>Полная расшифровка</span><CaretDown size={17} /></summary>
 						{#if transcriptOpen}
 							<p>{report.transcript}</p>
 						{/if}
 					</details>
 				</section>
 			{/if}
+				</section>
+			{/if}
+			</div>
+
+			<section class="chapters" aria-labelledby="chapters-title">
+				<div class="section-heading section-heading--plain"><h2 id="chapters-title">Смысловые блоки</h2></div>
+				{#each report.chapters as chapter, i (chapter.start)}
+					<div class="reveal" {@attach reveal()}>
+						<ChapterCard {chapter} index={i} onSeek={report.video ? seekVideo : undefined} playing={playingIndex === i} live={videoPlaying && playingIndex === i} highlight={highlightQuery} />
+					</div>
+				{/each}
+			</section>
 
 			<p class="source label">{report.source_name}</p>
 		</div>
@@ -617,16 +665,22 @@
 
 <style>
 	.report {
-		padding-top: 20px;
-		padding-bottom: 48px;
+		padding-top: clamp(24px, 4vw, 52px);
+		padding-bottom: 64px;
 		max-width: 1320px;
 	}
+
+	.report-head { padding-bottom: 14px; }
+	.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; color: var(--ink-faint); font-size: 14px; }
+	.breadcrumbs a { color: var(--accent); }
+	.eyebrow { margin: 0 0 8px; color: var(--accent); }
 
 	.layout {
 		display: grid;
 		grid-template-columns: minmax(300px, 36%) minmax(0, 1fr);
 		gap: clamp(32px, 4vw, 56px);
 		align-items: start;
+		margin-top: 38px;
 	}
 
 	.layout.no-video {
@@ -689,25 +743,50 @@
 	}
 
 	.report-head h1 {
-		font-size: clamp(28px, 3.2vw, 44px);
+		font-size: clamp(38px, 5vw, 66px);
 		font-weight: 500;
-		margin: 0 0 10px;
-		max-width: 22ch;
-		line-height: 1.08;
+		margin: 0 0 14px;
+		max-width: 18ch;
+		line-height: 1;
 	}
 
 	.subtitle {
-		font-size: clamp(17px, 1.6vw, 20px);
+		font-size: clamp(18px, 1.8vw, 22px);
 		color: var(--ink-soft);
-		max-width: 52ch;
+		max-width: 64ch;
 		margin: 0;
-		line-height: 1.45;
+		line-height: 1.55;
 	}
 
-	.views {
-		margin: 10px 0 0;
-		color: var(--ink-faint);
+	.report-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; color: var(--ink-soft); font-size: 14px; }
+	.report-meta > span { display: inline-flex; align-items: center; gap: 7px; }
+	.report-meta .views { color: var(--ink-faint); }
+	.memberships { margin: 14px 0 0; color: var(--ink-faint); }
+	.memberships a { color: var(--accent); text-transform: none; letter-spacing: 0; }
+
+	.overview { max-width: 920px; padding: 0 0 4px; }
+	.top-sections {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(34px, 4vw, 48px);
+		align-items: start;
+		margin-top: 40px;
 	}
+	.top-sections > .overview,
+	.top-sections > .additional { min-width: 0; max-width: 920px; }
+	.top-sections .section-heading h2 { font-size: clamp(27px, 2.8vw, 36px); }
+	.section-heading { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+	.section-heading--plain { grid-template-columns: minmax(0, 1fr); }
+	.section-heading h2 { margin: 0; font-size: clamp(28px, 3vw, 39px); font-weight: 500; line-height: 1.1; }
+	.overview > ul, .more-theses ul { display: grid; gap: 10px; margin: 20px 0 0 54px; padding: 0; list-style: none; }
+	.overview li { position: relative; padding-left: 20px; font-size: 17px; line-height: 1.55; }
+	.overview li::before { content: ''; position: absolute; left: 1px; top: 0.72em; width: 9px; height: 1px; background: var(--accent); }
+	.more-theses { margin: 14px 0 0 54px; }
+	.more-theses summary { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; list-style: none; }
+	.more-theses summary::-webkit-details-marker { display: none; }
+	.more-theses summary :global(svg) { transition: transform 0.2s ease; }
+	.more-theses[open] summary :global(svg) { transform: rotate(180deg); }
+	.more-theses ul { margin-left: 0; }
 
 	.seminar-materials {
 		margin-top: 24px;
@@ -738,25 +817,18 @@
 		gap: 12px;
 	}
 
-	.seminar-glossary summary::after,
-	.seminar-infographic-panel summary::after,
-	.seminar-exercise-memo-panel summary::after,
-	.seminar-notes summary::after,
-	.seminar-exercises summary::after {
-		content: '+';
-		font-family: var(--font-mono);
-		color: var(--accent);
-		margin-left: auto;
-		font-size: 18px;
-	}
-
-	.seminar-glossary[open] summary::after,
-	.seminar-infographic-panel[open] summary::after,
-	.seminar-exercise-memo-panel[open] summary::after,
-	.seminar-notes[open] summary::after,
-	.seminar-exercises[open] summary::after {
-		content: '−';
-	}
+	.seminar-glossary summary > :global(svg),
+	.seminar-infographic-panel summary > :global(svg),
+	.seminar-exercise-memo-panel summary > :global(svg),
+	.seminar-notes summary > :global(svg),
+	.seminar-exercises summary > :global(svg),
+	.transcript summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
+	.seminar-glossary[open] summary > :global(svg),
+	.seminar-infographic-panel[open] summary > :global(svg),
+	.seminar-exercise-memo-panel[open] summary > :global(svg),
+	.seminar-notes[open] summary > :global(svg),
+	.seminar-exercises[open] summary > :global(svg),
+	.transcript details[open] summary > :global(svg) { transform: rotate(180deg); }
 
 	.seminar-glossary summary::-webkit-details-marker,
 	.seminar-infographic-panel summary::-webkit-details-marker,
@@ -803,12 +875,18 @@
 		background: #fff;
 	}
 
-	.chapters {
-		margin-top: 32px;
-	}
+	.chapters { margin-top: 56px; }
+
+	.chapters > .section-heading { margin-bottom: 10px; }
+	.chapters > .section-heading + .reveal :global(.chapter) { border-top: 0; }
+	.additional { margin-top: 0; }
+	.additional > .section-heading { margin-bottom: 22px; }
+	.extra-block { margin-top: 0; }
+	.extra-block + .extra-block { margin-top: 12px; }
+	.extra-title { margin: 0 0 14px; font-size: 20px; font-weight: 500; }
 
 	.focus-section {
-		margin-top: 32px;
+		margin-top: 0;
 		border-top: 1px solid var(--line-strong);
 		border-bottom: 1px solid var(--line);
 		padding: 18px 0 24px;
@@ -931,13 +1009,12 @@
 		border-color: var(--accent);
 	}
 
-	.focus-time span[aria-hidden='true'] {
+	.focus-time :global(svg) {
 		color: var(--accent);
-		font-size: 8px;
 		transition: color 0.2s ease;
 	}
 
-	.focus-time:hover span[aria-hidden='true'] {
+	.focus-time:hover :global(svg) {
 		color: var(--paper);
 	}
 
@@ -946,7 +1023,7 @@
 	}
 
 	.seminar-notes-section {
-		margin-top: 40px;
+		margin-top: 12px;
 	}
 
 	.seminar-notes {
@@ -1051,18 +1128,17 @@
 		border-color: var(--accent);
 	}
 
-	.exercise-time span[aria-hidden='true'] {
-		font-size: 8px;
+	.exercise-time :global(svg) {
 		color: var(--accent);
 		transition: color 0.2s ease;
 	}
 
-	.exercise-time:hover span[aria-hidden='true'] {
+	.exercise-time:hover :global(svg) {
 		color: var(--paper);
 	}
 
 	.transcript {
-		margin-top: 40px;
+		margin-top: 12px;
 	}
 
 	.transcript details {
@@ -1075,18 +1151,6 @@
 		list-style: none;
 		display: flex;
 		align-items: center;
-	}
-
-	.transcript summary::after {
-		content: '+';
-		font-family: var(--font-mono);
-		color: var(--accent);
-		margin-left: auto;
-		font-size: 18px;
-	}
-
-	.transcript details[open] summary::after {
-		content: '−';
 	}
 
 	.transcript summary::-webkit-details-marker {
@@ -1108,6 +1172,11 @@
 	}
 
 	@media (max-width: 960px) {
+		.top-sections { grid-template-columns: minmax(0, 1fr); }
+		.report { padding-top: 22px; }
+		.report-head { padding-bottom: 24px; }
+		.layout { margin-top: 28px; }
+		.chapters { margin-top: 32px; }
 		.layout,
 		.layout.no-video {
 			grid-template-columns: 1fr;
@@ -1115,7 +1184,7 @@
 		}
 
 		.rail {
-			position: static;
+			display: contents;
 			max-height: none;
 		}
 
@@ -1125,12 +1194,22 @@
 		}
 
 		.video-pin {
+			position: static;
+			background: var(--paper);
+			padding-bottom: 4px;
+		}
+
+		.video-pin.playback-started {
 			position: sticky;
 			top: 8px;
 			z-index: 5;
-			background: var(--paper);
-			padding-bottom: 4px;
 			box-shadow: 0 10px 0 var(--paper);
+		}
+
+		.chapters :global(.chapter),
+		#overview-title,
+		#additional-title {
+			scroll-margin-top: calc(var(--mobile-sticky-h, 0px) + 16px);
 		}
 
 		.video-hint {
@@ -1154,5 +1233,13 @@
 			grid-template-columns: 1fr;
 			gap: 16px;
 		}
+	}
+
+	@media (max-width: 560px) {
+		.report-meta { display: grid; gap: 9px; }
+		.section-heading { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; }
+		.overview > ul, .more-theses ul { margin-left: 38px; }
+		.more-theses { margin-left: 38px; }
+		.focus-item header { grid-template-columns: 1fr; }
 	}
 </style>

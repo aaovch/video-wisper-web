@@ -1,12 +1,16 @@
-export type SearchHitKind = 'report' | 'chapter' | 'transcript';
+export type SearchHitKind = 'report' | 'overview' | 'chapter' | 'thesis' | 'transcript' | 'material';
+export type SearchZone = 'reports' | 'chapters' | 'theses' | 'transcript' | 'additional';
 
 export interface SearchHit {
 	kind: SearchHitKind;
+	zone: SearchZone;
 	reportSlug: string;
 	reportTitle: string;
 	chapterIndex?: number;
 	title: string;
 	snippet: string;
+	matchReason?: string[];
+	matchReasonKind?: 'tag' | 'semantic';
 	href: string;
 	start?: number;
 	score: number;

@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
+	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import { lock } from '$lib/lock.svelte';
 	import type { Collection } from '$lib/data/collections';
 
@@ -26,9 +29,9 @@
 </script>
 
 <section class="container gate-wrap">
-	<a class="back label" href="{base}/">← Все коллекции</a>
+	<a class="back label" href="{base}/"><ArrowLeft size={16} /> Все коллекции</a>
 	<div class="gate">
-		<span class="lock-mark" aria-hidden="true">🔒</span>
+		<span class="lock-mark" aria-hidden="true"><LockKey size={34} /></span>
 		<h1>{title}</h1>
 		<p class="subtitle">{subtitle}</p>
 		<form onsubmit={submit}>
@@ -41,7 +44,7 @@
 				aria-invalid={failed}
 				oninput={() => (failed = false)}
 			/>
-			<button type="submit">Открыть</button>
+			<button type="submit">Открыть <ArrowRight size={16} /></button>
 		</form>
 		{#if failed}
 			<p class="err label" role="alert">Неверный пароль</p>
@@ -57,7 +60,9 @@
 	}
 
 	.back {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
 		margin-bottom: 18px;
 		color: var(--ink-soft);
 		border-bottom: 1px solid transparent;
@@ -70,21 +75,24 @@
 	}
 
 	.gate {
-		max-width: 420px;
+		max-width: 520px;
 		margin: 8vh auto 0;
 		text-align: center;
-		padding: 36px 28px 32px;
-		background: var(--paper-2);
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+		padding: 38px 28px 34px;
+		border-top: 1px solid var(--line-strong);
+		border-bottom: 1px solid var(--line);
 	}
 
 	.lock-mark {
-		font-size: 30px;
-		line-height: 1;
-		display: block;
+		width: 60px;
+		height: 60px;
+		display: grid;
+		place-items: center;
 		margin-bottom: 14px;
+		margin-inline: auto;
+		color: var(--accent);
+		border: 1px solid var(--line-strong);
+		border-radius: 50%;
 	}
 
 	.gate h1 {
@@ -123,6 +131,9 @@
 	}
 
 	button {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
 		font-family: var(--font-mono);
 		font-size: 12px;
 		letter-spacing: 0.06em;

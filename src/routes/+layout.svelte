@@ -3,7 +3,6 @@
 	import { base } from '$app/paths';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import SearchBoxLazy from '$lib/components/SearchBoxLazy.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import {
 		beginNavInstant,
@@ -16,6 +15,7 @@
 	import { onMount, tick } from 'svelte';
 
 	let { children } = $props();
+	const home = $derived(page.route.id === '/');
 
 	let progressEl = $state<HTMLDivElement | null>(null);
 	let progressRaf = 0;
@@ -67,17 +67,17 @@
 <div class="progress" bind:this={progressEl} aria-hidden="true"></div>
 
 <div class="sheet">
-	<header class="masthead">
-		<div class="container masthead-inner">
-			<a class="wordmark" href="{base}/">
-				<span class="wordmark-main">{SITE_NAME}</span>
-				<span class="wordmark-sub label">{SITE_TAGLINE}</span>
-			</a>
-
-			<SearchBoxLazy />
-		</div>
-		<hr class="rule" />
-	</header>
+	{#if home}
+		<header class="masthead home">
+			<div class="container masthead-inner home">
+				<a class="wordmark" href="{base}/">
+					<span class="wordmark-main">{SITE_NAME}</span>
+					<span class="wordmark-sub label">{SITE_TAGLINE}</span>
+				</a>
+			</div>
+			<hr class="rule" />
+		</header>
+	{/if}
 
 	<main>
 		{@render children()}
@@ -126,10 +126,15 @@
 		padding-bottom: 14px;
 	}
 
+	.masthead-inner.home {
+		padding-top: 22px;
+		padding-bottom: 18px;
+	}
+
 	.wordmark {
 		display: flex;
-		flex-direction: column;
-		gap: 3px;
+		align-items: baseline;
+		gap: 22px;
 		color: var(--ink);
 		flex-shrink: 0;
 	}
@@ -137,13 +142,18 @@
 	.wordmark-main {
 		font-family: var(--font-display);
 		font-weight: 600;
-		font-size: 22px;
+		font-size: 30px;
 		letter-spacing: -0.02em;
 		line-height: 1;
 	}
 
 	.wordmark-sub {
-		font-size: 10px;
+		font-family: var(--font-body);
+		font-size: 14px;
+		font-weight: 400;
+		letter-spacing: 0;
+		text-transform: none;
+		color: var(--ink-soft);
 	}
 
 	.colophon {
@@ -181,7 +191,27 @@
 		}
 
 		.wordmark-main {
-			font-size: 20px;
+			font-size: 27px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.masthead-inner,
+		.masthead-inner.home {
+			padding-top: 14px;
+			padding-bottom: 12px;
+		}
+
+		.wordmark {
+			gap: 12px;
+		}
+
+		.wordmark-main {
+			font-size: 25px;
+		}
+
+		.wordmark-sub {
+			font-size: 12px;
 		}
 	}
 </style>
