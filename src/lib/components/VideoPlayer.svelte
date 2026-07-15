@@ -6,11 +6,13 @@
 	let {
 		video,
 		seekTo = 0,
+		autoplay = false,
 		onTime,
 		onPlaying
 	}: {
 		video: VideoSource;
 		seekTo?: number;
+		autoplay?: boolean;
 		onTime?: (time: number) => void;
 		onPlaying?: (playing: boolean) => void;
 	} = $props();
@@ -45,6 +47,7 @@
 
 	let ytPlayer = $state<any>(null);
 	let pollTimer: ReturnType<typeof setInterval> | null = null;
+	let ytAutoplayTimer: ReturnType<typeof setTimeout> | null = null;
 	let ytApiPromise: Promise<void> | null = null;
 
 	function loadYouTubeApi(): Promise<void> {
@@ -85,6 +88,18 @@
 		}
 	}
 
+	function playYoutubeWithFallback() {
+		ytPlayer?.playVideo?.();
+		if (ytAutoplayTimer) clearTimeout(ytAutoplayTimer);
+		ytAutoplayTimer = setTimeout(() => {
+			const YT = (window as any).YT;
+			const state = ytPlayer?.getPlayerState?.();
+			if (state === YT?.PlayerState?.PLAYING || state === YT?.PlayerState?.BUFFERING) return;
+			ytPlayer?.mute?.();
+			ytPlayer?.playVideo?.();
+		}, 750);
+	}
+
 	$effect(() => {
 		if (video.provider !== 'youtube' || typeof window === 'undefined') return;
 		let cancelled = false;
@@ -93,6 +108,12 @@
 			const YT = (window as any).YT;
 			ytPlayer = new YT.Player(ytId, {
 				events: {
+					onReady: (e: any) => {
+						ytPlayer = e.target;
+						if (!autoplay) return;
+						ytPlayer.seekTo(start, true);
+						playYoutubeWithFallback();
+					},
 					onStateChange: (e: any) => {
 						if (e.data === YT.PlayerState.PLAYING) {
 							onPlaying?.(true);
@@ -109,6 +130,7 @@
 		return () => {
 			cancelled = true;
 			stopPoll();
+			if (ytAutoplayTimer) clearTimeout(ytAutoplayTimer);
 			try {
 				ytPlayer?.destroy?.();
 			} catch {
@@ -121,9 +143,10 @@
 	// Перемотка YouTube по клику на блок (через API, без пересоздания iframe).
 	$effect(() => {
 		const t = start;
+		const shouldPlay = autoplay;
 		if (video.provider === 'youtube' && ytPlayer?.seekTo) {
 			ytPlayer.seekTo(t, true);
-			if (t > 0) ytPlayer.playVideo?.();
+			if (shouldPlay) playYoutubeWithFallback();
 		}
 	});
 
@@ -132,6 +155,15 @@
 	let directSrc = $state<string | null>(null);
 	let poster = $state<string | null>(null);
 	let failed = $state(false);
+
+	function playNativeWithFallback(el: HTMLVideoElement) {
+		void el.play().catch((error: unknown) => {
+			const name = typeof error === 'object' && error && 'name' in error ? String(error.name) : '';
+			if (name !== 'NotAllowedError') return;
+			el.muted = true;
+			void el.play().catch(() => {});
+		});
+	}
 
 	// Локальный файл — путь известен сразу.
 	$effect(() => {
@@ -194,12 +226,13 @@
 	// Перемотка нативного видео по тайм-коду блока.
 	$effect(() => {
 		const t = start;
+		const shouldPlay = autoplay;
 		if (isNative && videoEl && directSrc && t >= 0) {
 			const el = videoEl;
 			const seek = () => {
 				try {
 					el.currentTime = t;
-					if (t > 0) void el.play();
+					if (shouldPlay) playNativeWithFallback(el);
 				} catch {
 					/* перемотаем, когда появятся метаданные */
 				}
@@ -220,7 +253,7 @@
 			const go = () => {
 				try {
 					el.currentTime = s;
-					void el.play();
+					playNativeWithFallback(el);
 				} catch {
 					/* применится по loadedmetadata */
 				}
@@ -229,7 +262,7 @@
 			else el.addEventListener('loadedmetadata', go, { once: true });
 		} else if (video.provider === 'youtube' && ytPlayer?.seekTo) {
 			ytPlayer.seekTo(s, true);
-			ytPlayer.playVideo?.();
+			playYoutubeWithFallback();
 		}
 	}
 </script>

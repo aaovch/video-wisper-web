@@ -382,6 +382,8 @@
 
 	function seekVideo(start: number) {
 		seekTo = start;
+		activeChapterIndex = chapterIndexAt(start);
+		playbackStarted = true;
 		// Синхронно, внутри жеста — иначе на мобильных play() блокируется.
 		playerComp?.seekAndPlay?.(start);
 		if (window.matchMedia('(max-width: 960px)').matches) {
@@ -462,6 +464,7 @@
 						bind:this={playerComp}
 						video={report.video}
 						{seekTo}
+						autoplay={playbackStarted}
 						onTime={onVideoTime}
 						onPlaying={(p) => {
 							videoPlaying = p;

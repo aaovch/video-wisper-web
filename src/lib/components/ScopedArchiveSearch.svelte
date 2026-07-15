@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
@@ -271,10 +272,15 @@
 		return `${base}${pathname}?${params.toString()}${hash ? `#${hash}` : ''}`;
 	}
 
-	function openCurrentReport(event: MouseEvent, hit: SearchHit, seek: boolean) {
-		if (kind !== 'report' || hit.reportSlug !== reportSlug || !onHit) return;
+	function openResult(event: MouseEvent, hit: SearchHit, seek: boolean) {
+		if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 		event.preventDefault();
-		onHit(hit, seek, resultHref(hit, seek));
+		const href = resultHref(hit, seek);
+		if (kind === 'report' && hit.reportSlug === reportSlug && onHit) {
+			onHit(hit, seek, href);
+			return;
+		}
+		void goto(href);
 	}
 </script>
 
@@ -368,11 +374,11 @@
 								</p>
 							</div>
 							<div class="actions">
-								<a href={resultHref(hit)} onclick={(event) => openCurrentReport(event, hit, false)}>
+								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}>
 									<FileText size={19} weight="thin" /> {hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'} <ArrowRight size={18} weight="thin" />
 								</a>
 								{#if hit.start != null}
-									<a href={resultHref(hit, true)} onclick={(event) => openCurrentReport(event, hit, true)}>
+									<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}>
 										<Play size={19} weight="thin" /> Смотреть с {formatTime(hit.start)} <ArrowRight size={18} weight="thin" />
 									</a>
 								{/if}

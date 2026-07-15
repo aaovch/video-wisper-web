@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
@@ -192,6 +193,12 @@
 		return `${base}${pathname}?${params.toString()}${hash ? `#${hash}` : ''}`;
 	}
 
+	function openResult(event: MouseEvent, hit: SearchHit, seek: boolean) {
+		if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+		event.preventDefault();
+		void goto(resultHref(hit, seek));
+	}
+
 	function resetFilters() {
 		selections = { authors: [], places: [], weapons: [], collections: [] };
 	}
@@ -292,9 +299,9 @@
 						</div>
 						<div class="result-actions">
 							<span class="relevance label">релевантность {String(index + 1).padStart(2, '0')}</span>
-							<a href={resultHref(hit)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
+							<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
 							{#if hit.start != null}
-								<a href={resultHref(hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
+								<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
 							{/if}
 						</div>
 					</li>
