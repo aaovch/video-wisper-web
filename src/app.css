@@ -36,7 +36,7 @@ html {
 
 body {
 	margin: 0;
-	background-color: var(--paper);
+	background-color: var(--paper-2);
 	color: var(--ink);
 	font-family: var(--font-body);
 	font-optical-sizing: auto;

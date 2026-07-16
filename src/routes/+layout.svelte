@@ -112,6 +112,12 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		width: calc(100% - clamp(24px, 4vw, 72px));
+		max-width: calc(var(--maxw) + 160px);
+		margin-inline: auto;
+		border-inline: 1px solid color-mix(in srgb, var(--line-strong) 62%, transparent);
+		background: var(--paper);
+		box-shadow: 0 0 48px color-mix(in srgb, var(--ink) 5%, transparent);
 	}
 
 	main {
@@ -182,6 +188,14 @@
 
 	.colophon-inner p {
 		margin: 0;
+	}
+
+	@media (max-width: 960px) {
+		.sheet {
+			width: 100%;
+			border-inline: 0;
+			box-shadow: none;
+		}
 	}
 
 	@media (max-width: 900px) {
