@@ -4,7 +4,9 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
+	import Check from 'phosphor-svelte/lib/Check';
 	import Clock from 'phosphor-svelte/lib/Clock';
+	import CopySimple from 'phosphor-svelte/lib/CopySimple';
 	import FilmStrip from 'phosphor-svelte/lib/FilmStrip';
 	import Play from 'phosphor-svelte/lib/Play';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
@@ -73,7 +75,47 @@
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
+	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
+	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
+
+	async function copyTranscript(event: MouseEvent) {
+		event.preventDefault();
+		event.stopPropagation();
+		if (!browser || !report.transcript) return;
+
+		try {
+			let copied = false;
+			if (navigator.clipboard?.writeText) {
+				try {
+					await navigator.clipboard.writeText(report.transcript);
+					copied = true;
+				} catch {
+					// Встроенный API может быть заблокирован настройками браузера — используем резервный способ ниже.
+				}
+			}
+
+			if (!copied) {
+				const textarea = document.createElement('textarea');
+				textarea.value = report.transcript;
+				textarea.setAttribute('readonly', '');
+				textarea.style.position = 'fixed';
+				textarea.style.opacity = '0';
+				document.body.appendChild(textarea);
+				textarea.select();
+				copied = document.execCommand('copy');
+				textarea.remove();
+			}
+
+			if (!copied) throw new Error('Unable to copy transcript');
+			transcriptCopyState = 'copied';
+		} catch {
+			transcriptCopyState = 'error';
+		}
+
+		if (transcriptCopyResetTimer) clearTimeout(transcriptCopyResetTimer);
+		transcriptCopyResetTimer = setTimeout(() => (transcriptCopyState = 'idle'), 2200);
+	}
 
 	const seminarGlossary = [
 		{
@@ -640,7 +682,25 @@
 			{#if report.transcript}
 				<section class="transcript reveal extra-block" {@attach reveal()}>
 					<details bind:open={transcriptOpen}>
-						<summary><span>Полная расшифровка</span><CaretDown size={17} /></summary>
+						<summary>
+							<span>Полная расшифровка</span>
+							<span class="transcript-actions">
+								<button
+									type="button"
+									class:copied={transcriptCopyState === 'copied'}
+									class="copy-transcript"
+									aria-label={transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку'}
+									title={transcriptCopyState === 'copied' ? 'Скопировано' : transcriptCopyState === 'error' ? 'Не удалось скопировать' : 'Скопировать расшифровку'}
+									onclick={copyTranscript}
+								>
+									{#if transcriptCopyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}
+								</button>
+								<CaretDown class="transcript-caret" size={17} />
+							</span>
+							<span class="copy-status" role="status" aria-live="polite">
+								{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
+							</span>
+						</summary>
 						{#if transcriptOpen}
 							<p>{report.transcript}</p>
 						{/if}
@@ -1184,6 +1244,68 @@
 
 	.transcript summary::-webkit-details-marker {
 		display: none;
+	}
+
+	.transcript-actions {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+	}
+
+	.copy-transcript {
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+		border-radius: 8px;
+		color: var(--accent);
+		background: color-mix(in srgb, var(--paper) 78%, transparent);
+		display: inline-grid;
+		place-items: center;
+		cursor: pointer;
+		transition:
+			color 0.18s ease,
+			background-color 0.18s ease,
+			border-color 0.18s ease,
+			transform 0.18s ease;
+	}
+
+	.copy-transcript:hover {
+		color: var(--paper);
+		background: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.copy-transcript:active {
+		transform: scale(0.94);
+	}
+
+	.copy-transcript.copied {
+		color: var(--paper);
+		background: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.transcript-actions :global(.transcript-caret) {
+		color: var(--accent);
+		transition: transform 0.2s ease;
+	}
+
+	.transcript details[open] :global(.transcript-caret) {
+		transform: rotate(180deg);
+	}
+
+	.copy-status {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 
 	.transcript p {
