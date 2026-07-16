@@ -106,6 +106,7 @@ export const collections: Collection[] = [
 			'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya',
+			'trenerskiy-kurs-3-planirovanie-zanyatiy',
 			'ukol-po-centralnoy-linii'
 		],
 		sections: [
@@ -131,8 +132,12 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Тренерский курс',
-				subtitle: 'Развитие тренера, поиск знаний и постановка упражнений.',
-				items: ['obuchenie-trenerov-poisk-znaniy', 'trenerstvo-2-zadachi-uprazhneniya']
+				subtitle: 'Развитие тренера, поиск знаний, постановка упражнений и планирование занятий.',
+				items: [
+					'obuchenie-trenerov-poisk-znaniy',
+					'trenerstvo-2-zadachi-uprazhneniya',
+					'trenerskiy-kurs-3-planirovanie-zanyatiy'
+				]
 			},
 			{
 				title: 'Семинары',

@@ -482,6 +482,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/trenerskiy-kurs-3-planirovanie-zanyatiy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерский курс — 3 [I32n1_3un_g]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/vid-20260708-200742.json'),
 		transcriptPath: join(
 			pipelineRoot,
