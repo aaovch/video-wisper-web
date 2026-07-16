@@ -11,13 +11,15 @@
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
 	import { collections, type Collection } from '$lib/data/collections';
-	import { searchReports, type SearchHit } from '$lib/search';
+	import { lock } from '$lib/lock.svelte';
+	import { searchScoped, type SearchHit, type SearchResultKind, type SearchScope } from '$lib/search';
 	import {
 		activeSearchFilters,
 		selectedFilterCount,
 		type SearchFilterGroup,
 		type SearchFilterSelections
 	} from '$lib/search-filters';
+	import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
 
@@ -27,7 +29,11 @@
 	let hits = $state<SearchHit[]>([]);
 	let showAllHits = $state(false);
 	let loading = $state(false);
+	let searchError = $state(false);
+	let resultKind = $state<SearchResultKind>('empty');
+	let correctedQuery = $state<string | undefined>();
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	let requestId = 0;
 	let filterReturnFocus: HTMLButtonElement | null = null;
 
 	const filterGroups = $derived.by<SearchFilterGroup[]>(() => [
@@ -71,7 +77,13 @@
 	);
 	const primaryCollections = $derived(filteredCollections.filter((collection) => collection.hema));
 	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
-	const scopeSlugs = $derived([...new Set(filteredCollections.flatMap((collection) => collection.items))]);
+	const filtersActive = $derived(activeFilterCount > 0);
+	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
+	const scopeSlugs = $derived(
+		filtersActive
+			? visibleSubset(filteredCollections.flatMap((collection) => collection.items), visibleArchiveSlugs)
+			: visibleArchiveSlugs
+	);
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
 		return hits
@@ -83,7 +95,21 @@
 			});
 	});
 	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 3));
-	const filtersActive = $derived(activeFilterCount > 0);
+	const resultsHeading = $derived.by(() => {
+		if (resultKind === 'prefix') return 'Совпадения по началу слова во всём архиве';
+		if (resultKind === 'correction') return 'Возможные совпадения во всём архиве';
+		if (resultKind === 'semantic') return 'Связанные по смыслу во всём архиве';
+		return 'Совпадения по запросу во всём архиве';
+	});
+	const statusText = $derived(
+		loading
+			? 'Ищем'
+			: searchError
+				? 'Поиск временно недоступен'
+				: query.trim().length >= 2
+					? `${uniqueHits.length} совпадений`
+					: ''
+	);
 
 	function uniqueFacet(key: 'authors' | 'places' | 'weapons'): string[] {
 		return [
@@ -157,22 +183,41 @@
 
 	function scheduleSearch() {
 		clearTimeout(timer);
+		const runId = ++requestId;
 		showAllHits = false;
+		searchError = false;
 		const normalized = query.trim();
 		if (normalized.length < 2) {
 			hits = [];
+			resultKind = 'empty';
+			correctedQuery = undefined;
 			loading = false;
 			return;
 		}
 		loading = true;
 		timer = setTimeout(async () => {
 			const current = query.trim();
-			const results = filtersActive && scopeSlugs.length === 0
-				? []
-				: await searchReports(current, 30, scopeSlugs);
-			if (current === query.trim()) {
-				hits = results;
-				loading = false;
+			const scope: SearchScope = {
+				kind: 'archive',
+				label: 'во всём архиве',
+				reportSlugs: scopeSlugs
+			};
+			try {
+				const response = await searchScoped(current, [scope], 30);
+				if (runId === requestId && current === query.trim()) {
+					hits = response.hits;
+					resultKind = response.matchKind;
+					correctedQuery = response.correctedQuery;
+					loading = false;
+				}
+			} catch {
+				if (runId === requestId && current === query.trim()) {
+					hits = [];
+					resultKind = 'empty';
+					correctedQuery = undefined;
+					searchError = true;
+					loading = false;
+				}
 			}
 		}, 180);
 	}
@@ -215,14 +260,16 @@
 			<span class="sr-only">Поиск по архиву</span>
 			<input
 				type="search"
+				aria-label="Поиск по архиву"
 				bind:value={query}
 				oninput={scheduleSearch}
 				placeholder="Например: как подготовить атаку против позиционной защиты?"
 				autocomplete="off"
 				spellcheck="false"
 			/>
-			{#if loading}<span class="loading label" aria-live="polite">ищем</span>{/if}
+			{#if loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
 		</label>
+		<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
 		{#if activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2)}
 		<div class="filter-controls">
@@ -258,11 +305,11 @@
 {/if}
 
 {#if query.trim().length >= 2}
-	<section class="container results" aria-live="polite">
+	<section class="container results">
 		<div class="results-layout">
 		<div class="results-main">
 		<div class="section-title">
-			<h2>Ближайшие смысловые совпадения</h2>
+			<h2>{resultsHeading}</h2>
 			<div class="results-tools">
 				<span class="label">{visibleHits.length} из {uniqueHits.length}</span>
 				{#if hasFilterGroups}
@@ -279,7 +326,15 @@
 				{/if}
 			</div>
 		</div>
-		{#if !loading && visibleHits.length === 0}
+		{#if correctedQuery && !loading && !searchError}
+			<p class="search-note">Возможно, вы имели в виду «{correctedQuery}».</p>
+		{/if}
+		{#if searchError}
+			<div class="search-error" role="alert">
+				<p>Поиск временно недоступен.</p>
+				<button type="button" onclick={scheduleSearch}>Повторить</button>
+			</div>
+		{:else if !loading && visibleHits.length === 0}
 			<p class="empty">Ничего близкого не нашлось. Попробуйте описать мысль другими словами.</p>
 		{:else}
 			<ol class="result-list">
@@ -288,8 +343,8 @@
 						<div class="result-copy">
 							<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
 							<h3>{hit.title}</h3>
-							{#if hit.matchReason?.length}
-								<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : hit.matchReasonKind === 'correction' ? 'Возможное совпадение' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
+							{#if hit.matchReason?.length && hit.matchReasonKind !== 'correction'}
+								<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
 							{/if}
 							<p class="snippet">
 								{#each highlightParts(hit.snippet, query) as part}
@@ -437,6 +492,11 @@
 
 	.results-layout { display: block; }
 	.results-main { min-width: 0; }
+	.search-note { margin: 0; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; }
+	.search-error { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; color: var(--ink-soft); }
+	.search-error p { margin: 0; }
+	.search-error button { min-height: 38px; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--accent); font: inherit; cursor: pointer; }
+	.search-error button:hover, .search-error button:focus-visible { border-color: var(--accent); }
 
 	.section-title {
 		display: flex;

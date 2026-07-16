@@ -11,13 +11,14 @@
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
 	import { collections, getCollection } from '$lib/data/collections';
 	import { getReportSummary } from '$lib/data/report-meta';
+	import { lock } from '$lib/lock.svelte';
 	import {
 		preloadSearchIndex,
-		searchReport,
-		searchReportExact,
-		searchReports,
-		searchReportsExact,
-		type SearchHit
+		searchScoped,
+		type SearchHit,
+		type SearchResultKind,
+		type SearchScope,
+		type SearchZone
 	} from '$lib/search';
 	import {
 		activeSearchFilters,
@@ -25,6 +26,7 @@
 		type SearchFilterGroup,
 		type SearchFilterSelections
 	} from '$lib/search-filters';
+	import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
 
@@ -49,15 +51,28 @@
 	let filterSheetOpen = $state(false);
 	let showAllHits = $state(false);
 	let loading = $state(false);
-	let showingArchiveFallback = $state(false);
+	let showingFallback = $state(false);
+	let searchError = $state(false);
+	let resultKind = $state<SearchResultKind>('empty');
+	let resultScopeLabel = $state('');
+	let correctedQuery = $state<string | undefined>();
+	let retryNonce = $state(0);
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let indexRequested = false;
 	let filterReturnFocus: HTMLButtonElement | null = null;
 
 	const label = $derived(kind === 'report' ? 'Поиск в отчёте' : 'Поиск в коллекции');
 	const placeholder = $derived(`${label}…`);
-	const scopedCollection = $derived(kind === 'collection' ? getCollection(collectionSlug) : undefined);
+	const activeCollection = $derived(getCollection(collectionSlug));
+	const scopedCollection = $derived(kind === 'collection' ? activeCollection : undefined);
+	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
+	const visibleCollectionSlugs = $derived(visibleSubset(reportSlugs, visibleArchiveSlugs));
 	const reportFacetMap = $derived.by(() => buildReportFacetMap(reportSlugs, collectionSlug));
+	const filteredCollectionSlugs = $derived(
+		kind === 'collection'
+			? visibleCollectionSlugs.filter((slug) => reportMatchesCollectionFilters(slug))
+			: visibleCollectionSlugs
+	);
 	const filterGroups = $derived.by<SearchFilterGroup[]>(() =>
 		kind === 'report' ? reportFilterGroups(hits, selections) : collectionFilterGroups()
 	);
@@ -70,7 +85,7 @@
 				group.options.some((option) => selections[group.id]?.includes(option.value))
 		)
 	);
-	const filteredHits = $derived(showingArchiveFallback ? hits : hits.filter(hitMatchesFilters));
+	const filteredHits = $derived(hits.filter(hitMatchesFilters));
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
 		return filteredHits
@@ -82,6 +97,22 @@
 			});
 	});
 	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
+	const resultsHeading = $derived.by(() => {
+		const suffix = resultScopeLabel || (kind === 'report' ? 'в этом отчёте' : 'в этой коллекции');
+		if (resultKind === 'prefix') return `Совпадения по началу слова ${suffix}`;
+		if (resultKind === 'correction') return `Возможные совпадения ${suffix}`;
+		if (resultKind === 'semantic') return `Связанные по смыслу ${suffix}`;
+		return `Совпадения по запросу ${suffix}`;
+	});
+	const statusText = $derived(
+		loading
+			? 'Ищем'
+			: searchError
+				? 'Поиск временно недоступен'
+				: query.trim().length >= 2
+					? `${uniqueHits.length} совпадений`
+					: ''
+	);
 
 	function normalize(value: string): string {
 		return value.toLocaleLowerCase('ru').replace(/ё/g, 'е');
@@ -195,23 +226,26 @@
 		return options.length ? [{ id: 'zones', label: 'Зона поиска', options }] : [];
 	}
 
-	function hitMatchesFilters(hit: SearchHit): boolean {
-		if (selections.zones.length > 0 && !selections.zones.includes(hit.zone)) return false;
+	function reportMatchesCollectionFilters(slug: string): boolean {
 		if (kind !== 'collection') return true;
-
 		if (selections.sections.length > 0) {
 			const matchesSection = scopedCollection?.sections?.some(
-				(section) => selections.sections.includes(section.title) && section.items.includes(hit.reportSlug)
+				(section) => selections.sections.includes(section.title) && section.items.includes(slug)
 			);
 			if (!matchesSection) return false;
 		}
 
-		const facets = reportFacetMap.get(hit.reportSlug);
+		const facets = reportFacetMap.get(slug);
 		for (const key of ['authors', 'places', 'weapons'] as const) {
 			const selected = selections[key] ?? [];
 			if (selected.length > 0 && !selected.some((value) => facets?.[key].has(value))) return false;
 		}
 		return true;
+	}
+
+	function hitMatchesFilters(hit: SearchHit): boolean {
+		if (selections.zones.length > 0 && !selections.zones.includes(hit.zone)) return false;
+		return reportMatchesCollectionFilters(hit.reportSlug);
 	}
 
 	function toggleFilter(groupId: string, value: string) {
@@ -240,11 +274,15 @@
 		requestIndex();
 		clearTimeout(timer);
 		showAllHits = false;
+		searchError = false;
 		const normalized = query.trim();
 		if (normalized.length < 2) {
 			debouncedQuery = '';
 			hits = [];
-			showingArchiveFallback = false;
+			showingFallback = false;
+			resultKind = 'empty';
+			resultScopeLabel = '';
+			correctedQuery = undefined;
 			loading = false;
 			return;
 		}
@@ -254,32 +292,78 @@
 		}, 180);
 	}
 
+	function retrySearch() {
+		searchError = false;
+		loading = true;
+		retryNonce += 1;
+	}
+
+	function buildSearchScopes(): SearchScope[] {
+		const archiveScope: SearchScope = {
+			kind: 'archive',
+			label: 'во всём архиве',
+			reportSlugs: visibleArchiveSlugs
+		};
+		if (kind === 'report') {
+			const scopes: SearchScope[] = [{
+				kind: 'report',
+				label: 'в этом отчёте',
+				reportSlug,
+				zones: selections.zones.length ? selections.zones as SearchZone[] : undefined
+			}];
+			if (activeFilterCount > 0) return scopes;
+			const siblingSlugs = visibleCollectionSlugs.filter((slug) => slug !== reportSlug);
+			if (activeCollection && siblingSlugs.length) {
+				scopes.push({
+					kind: 'collection',
+					label: `в коллекции «${activeCollection.title}»`,
+					reportSlugs: siblingSlugs
+				});
+			}
+			scopes.push(archiveScope);
+			return scopes;
+		}
+
+		const scopes: SearchScope[] = [{
+			kind: 'collection',
+			label: activeCollection ? `в коллекции «${activeCollection.title}»` : 'в этой коллекции',
+			reportSlugs: filteredCollectionSlugs
+		}];
+		if (activeFilterCount === 0) scopes.push(archiveScope);
+		return scopes;
+	}
+
 	$effect(() => {
 		const q = debouncedQuery.trim();
+		retryNonce;
+		visibleArchiveSlugs;
+		filteredCollectionSlugs;
+		activeFilterCount;
 		if (q.length < 2) return;
 		let cancelled = false;
-		const scopedSearch =
-			kind === 'report' && reportSlug
-				? searchReport(reportSlug, q, 120)
-				: searchReports(q, 120, reportSlugs);
-		const scopedExactSearch =
-			kind === 'report' && reportSlug
-				? searchReportExact(reportSlug, q, 120)
-				: searchReportsExact(q, 120, reportSlugs);
-		const archiveExactSearch = searchReportsExact(q, 120);
-		void Promise.all([scopedSearch, scopedExactSearch, archiveExactSearch]).then(
-			([scopedResults, scopedExactResults, archiveExactResults]) => {
+		loading = true;
+		void searchScoped(q, buildSearchScopes(), 120)
+			.then((response) => {
 				if (!cancelled && q === debouncedQuery.trim()) {
-					const scope = new Set(reportSlugs);
-					const outsideScope = archiveExactResults.filter((hit) =>
-						kind === 'report' ? hit.reportSlug !== reportSlug : !scope.has(hit.reportSlug)
-					);
-					showingArchiveFallback = scopedExactResults.length === 0 && outsideScope.length > 0;
-					hits = showingArchiveFallback ? outsideScope : scopedResults;
+					hits = response.hits;
+					showingFallback = response.fallback;
+					resultKind = response.matchKind;
+					resultScopeLabel = response.resultScope.label;
+					correctedQuery = response.correctedQuery;
+					searchError = false;
 					loading = false;
 				}
-			}
-		);
+			})
+			.catch(() => {
+				if (!cancelled && q === debouncedQuery.trim()) {
+					hits = [];
+					showingFallback = false;
+					resultKind = 'empty';
+					correctedQuery = undefined;
+					searchError = true;
+					loading = false;
+				}
+			});
 		return () => {
 			cancelled = true;
 		};
@@ -313,6 +397,7 @@
 		<span class="sr-only">{label}</span>
 		<input
 			type="search"
+			aria-label={label}
 			bind:value={query}
 			onfocus={requestIndex}
 			oninput={scheduleSearch}
@@ -320,10 +405,11 @@
 			autocomplete="off"
 			spellcheck="false"
 		/>
-		{#if loading}<span class="loading label" aria-live="polite">ищем</span>{/if}
+		{#if loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
 	</label>
+	<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
-	{#if !showingArchiveFallback && (activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2))}
+	{#if !showingFallback && (activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2))}
 		<div class="filter-controls">
 			{#if hasFilterGroups && query.trim().length < 2}
 				<button
@@ -355,14 +441,14 @@
 	{/if}
 
 	{#if query.trim().length >= 2}
-		<div class="results" aria-live="polite">
+		<div class="results">
 			<div class="results-layout">
 				<div class="results-main">
 					<div class="results-head">
-						<p>{showingArchiveFallback ? 'Точные совпадения во всём архиве' : kind === 'report' ? 'Совпадения в отчёте' : 'Совпадения в коллекции'}</p>
+						<p>{resultsHeading}</p>
 						<div class="results-tools">
 							<span class="label">{visibleHits.length} из {uniqueHits.length}</span>
-							{#if hasFilterGroups && !showingArchiveFallback}
+							{#if hasFilterGroups && !showingFallback}
 								<button
 									type="button"
 									class="filter-trigger filter-trigger--compact"
@@ -376,12 +462,20 @@
 							{/if}
 						</div>
 					</div>
-					{#if showingArchiveFallback}
+					{#if showingFallback}
 						<p class="scope-note">
-							{kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений нет. Показываем результаты из всего архива.
+							{kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений и совпадений по началу слова нет. Показываем результаты {resultScopeLabel}.
 						</p>
 					{/if}
-			{#if !loading && visibleHits.length === 0}
+			{#if correctedQuery && !loading && !searchError}
+				<p class="scope-note">Возможно, вы имели в виду «{correctedQuery}».</p>
+			{/if}
+			{#if searchError}
+				<div class="search-error" role="alert">
+					<p>Поиск временно недоступен.</p>
+					<button type="button" onclick={retrySearch}>Повторить</button>
+				</div>
+			{:else if !loading && visibleHits.length === 0}
 				<p class="empty">Ничего не найдено.</p>
 			{:else}
 				<ol>
@@ -390,8 +484,8 @@
 							<div class="result-copy">
 								<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
 								<h3>{hit.title}</h3>
-								{#if hit.matchReason?.length}
-									<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : hit.matchReasonKind === 'correction' ? 'Возможное совпадение' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
+								{#if hit.matchReason?.length && hit.matchReasonKind !== 'correction'}
+									<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
 								{/if}
 								<p class="snippet">
 									{#each highlightParts(hit.snippet, query) as part}
@@ -453,6 +547,10 @@
 	.results-head { display: flex; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
 	.results-head p { margin: 0; font-size: 15px; }
 	.scope-note { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; line-height: 1.45; }
+	.search-error { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; color: var(--ink-soft); }
+	.search-error p { margin: 0; }
+	.search-error button { min-height: 38px; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--accent); font: inherit; cursor: pointer; }
+	.search-error button:hover, .search-error button:focus-visible { border-color: var(--accent); }
 	.results-tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 	.results-tools > span { flex: 0 0 auto; color: var(--ink-faint); white-space: nowrap; }
 	ol { margin: 0; padding: 0; list-style: none; }

@@ -1,9 +1,25 @@
 import { base } from '$app/paths';
 import MiniSearch, { type SearchOptions, type SearchResult } from 'minisearch';
-import type { SearchHitKind, SearchZone } from '$lib/search-types';
+import type {
+	SearchHitKind,
+	SearchMatchKind,
+	SearchResponse,
+	SearchScope,
+	SearchZone
+} from '$lib/search-types';
 import { stemRu } from '$lib/stem-ru';
 
-export type { SearchHitKind, SearchZone, SearchHit, ReportGroup, ChapterGroup } from '$lib/search-types';
+export type {
+	SearchHitKind,
+	SearchMatchKind,
+	SearchResultKind,
+	SearchScope,
+	SearchResponse,
+	SearchZone,
+	SearchHit,
+	ReportGroup,
+	ChapterGroup
+} from '$lib/search-types';
 export { groupByReport, groupByChapter } from '$lib/search-group';
 
 interface IndexedDoc {
@@ -136,7 +152,7 @@ function matchReason(
 	result: SearchResult,
 	doc: IndexedDoc,
 	parsed: ParsedQuery,
-	matchMode: 'exact' | 'correction' | 'semantic'
+	matchMode: SearchMatchKind
 ): { labels: string[]; kind: 'tag' | 'semantic' | 'correction' } | undefined {
 	const visibleText = norm(`${doc.reportTitle} ${doc.title} ${doc.text}`);
 	const visibleStems = new Set(queryWords(visibleText).map(stemRu));
@@ -180,7 +196,7 @@ function matchReason(
 function toHit(
 	result: SearchResult,
 	parsed: ParsedQuery,
-	matchMode: 'exact' | 'correction' | 'semantic' = 'exact'
+	matchMode: SearchMatchKind = 'exact'
 ): import('$lib/search-types').SearchHit {
 	const doc = result as unknown as IndexedDoc;
 	const reason = matchReason(result, doc, parsed, matchMode);
@@ -192,6 +208,7 @@ function toHit(
 		chapterIndex: doc.chapterIndex,
 		title: doc.title,
 		snippet: snippet(doc.text, parsed),
+		matchKind: matchMode,
 		matchReason: reason?.labels,
 		matchReasonKind: reason?.kind,
 		href: doc.href,
@@ -313,79 +330,134 @@ function diversify(results: SearchResult[], limit: number, insideSingleReport: b
 	return selected;
 }
 
-async function executeSearch(
+interface TieredSearchResult {
+	hits: import('$lib/search-types').SearchHit[];
+	matchKind: import('$lib/search-types').SearchResultKind;
+	correctedQuery?: string;
+}
+
+function rankedHits(
+	results: SearchResult[],
+	parsed: ParsedQuery,
+	matchKind: SearchMatchKind,
+	limit: number,
+	insideSingleReport: boolean,
+	weight = 1
+): import('$lib/search-types').SearchHit[] {
+	const ranked = results
+		.map((result) => ({ ...result, score: result.score * weight * signalMultiplier(result, parsed) }))
+		.sort((a, b) => b.score - a.score);
+	return diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed, matchKind));
+}
+
+async function executeTieredSearch(
 	query: string,
 	limit: number,
 	filter: ((result: SearchResult) => boolean) | undefined,
 	insideSingleReport: boolean
-): Promise<import('$lib/search-types').SearchHit[]> {
+): Promise<TieredSearchResult> {
 	const parsed = parseQuery(query);
-	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return [];
+	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return { hits: [], matchKind: 'empty' };
 	const index = await loadIndex();
 	const directQuery = parsed.meaningfulWords.join(' ');
 	const baseOptions = { boost: { field_title: 4.2, field_tags: 1.55 }, filter };
-	const ranked = new Map<string, SearchResult>();
-	const exactIds = new Set<string>();
-	const correctionIds = new Set<string>();
-	const fuzzyIds = new Set<string>();
-	let correctedQuery: ParsedQuery | null = null;
-	const remember = (results: SearchResult[], target: Set<string>) => {
-		for (const result of results) target.add(String(result.id));
-		return results;
-	};
 
-	const strictResults = remember(index.search(directQuery, {
-		...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false
-	}), exactIds);
-	mergeResults(ranked, strictResults, 2.05);
-	if (strictResults.length === 0) {
-		const suggestion = index.autoSuggest(directQuery, {
+	const exact = index.search(directQuery, {
+		...baseOptions,
+		combineWith: 'AND',
+		fuzzy: false,
+		prefix: false
+	});
+	if (exact.length) {
+		return { hits: rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05), matchKind: 'exact' };
+	}
+
+	const prefix = index.search(directQuery, {
+		...baseOptions,
+		combineWith: 'AND',
+		fuzzy: false,
+		prefix: adaptivePrefix
+	});
+	if (prefix.length) {
+		return { hits: rankedHits(prefix, parsed, 'prefix', limit, insideSingleReport, 1.82), matchKind: 'prefix' };
+	}
+
+	const correctionRanked = new Map<string, SearchResult>();
+	const suggestion = index.autoSuggest(directQuery, {
+		...baseOptions,
+		combineWith: 'AND',
+		fuzzy: 0.34,
+		prefix: false
+	})[0]?.suggestion;
+	let correctedQuery: string | undefined;
+	if (suggestion && norm(suggestion) !== directQuery) {
+		const corrected = index.search(suggestion, {
 			...baseOptions,
 			combineWith: 'AND',
-			fuzzy: 0.34,
+			fuzzy: false,
 			prefix: false
-		})[0]?.suggestion;
-		if (suggestion && norm(suggestion) !== directQuery) {
-			correctedQuery = parseQuery(suggestion);
-			mergeResults(ranked, remember(index.search(suggestion, {
-				...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false
-			}), correctionIds), 1.72);
+		});
+		if (corrected.length) {
+			correctedQuery = suggestion;
+			mergeResults(correctionRanked, corrected, 1.72);
 		}
 	}
-	mergeResults(ranked, remember(index.search(directQuery, {
-		...baseOptions, combineWith: 'AND', fuzzy: adaptiveFuzzy, prefix: adaptivePrefix
-	}), fuzzyIds), 1.35);
-	mergeResults(ranked, remember(index.search(directQuery, {
-		...baseOptions, combineWith: 'OR', fuzzy: adaptiveFuzzy, prefix: adaptivePrefix
-	}), fuzzyIds), parsed.stems.length > 1 ? 0.62 : 1);
-
-	const expandedTerms = expandSemanticQuery(parsed);
-	if (expandedTerms.length > parsed.meaningfulWords.length) {
-		mergeResults(ranked, index.search(expandedTerms.join(' '), {
-			...baseOptions, combineWith: 'OR', fuzzy: false, prefix: false
-		}), 0.26);
+	mergeResults(
+		correctionRanked,
+		index.search(directQuery, {
+			...baseOptions,
+			combineWith: 'AND',
+			fuzzy: adaptiveFuzzy,
+			prefix: false
+		}),
+		1.35
+	);
+	if (correctionRanked.size) {
+		return {
+			hits: rankedHits([...correctionRanked.values()], parsed, 'correction', limit, insideSingleReport),
+			matchKind: 'correction',
+			correctedQuery
+		};
 	}
 
-	const sorted = [...ranked.values()]
-		.map((result) => ({ ...result, score: result.score * signalMultiplier(result, correctedQuery ?? parsed) }))
-		.sort((a, b) => b.score - a.score);
-	let semanticOnlyCount = 0;
-	const semanticOnlyCap = insideSingleReport ? 8 : 16;
-	const bounded = sorted.filter((result) => {
-		const id = String(result.id);
-		if (exactIds.has(id) || correctionIds.has(id) || fuzzyIds.has(id)) return true;
-		semanticOnlyCount += 1;
-		return semanticOnlyCount <= semanticOnlyCap;
-	});
-	return diversify(bounded, limit, insideSingleReport).map((result) => {
-		const id = String(result.id);
-		const matchMode = exactIds.has(id)
-			? 'exact'
-			: correctionIds.has(id) || fuzzyIds.has(id)
-				? 'correction'
-				: 'semantic';
-		return toHit(result, parsed, matchMode);
-	});
+	const semanticRanked = new Map<string, SearchResult>();
+	mergeResults(
+		semanticRanked,
+		index.search(directQuery, {
+			...baseOptions,
+			combineWith: 'OR',
+			fuzzy: adaptiveFuzzy,
+			prefix: false
+		}),
+		parsed.stems.length > 1 ? 0.62 : 1
+	);
+	const expandedTerms = expandSemanticQuery(parsed);
+	if (expandedTerms.length > parsed.meaningfulWords.length) {
+		mergeResults(
+			semanticRanked,
+			index.search(expandedTerms.join(' '), {
+				...baseOptions,
+				combineWith: 'OR',
+				fuzzy: false,
+				prefix: false
+			}),
+			0.26
+		);
+	}
+	if (semanticRanked.size) {
+		return {
+			hits: rankedHits(
+				[...semanticRanked.values()],
+				parsed,
+				'semantic',
+				Math.min(limit, insideSingleReport ? 8 : 16),
+				insideSingleReport
+			),
+			matchKind: 'semantic'
+		};
+	}
+
+	return { hits: [], matchKind: 'empty' };
 }
 
 async function executeExactSearch(
@@ -412,16 +484,16 @@ async function executeExactSearch(
 
 /** Search the archive. `scopeSlugs` narrows the index to a collection or active facets. */
 export async function searchReports(query: string, limit = 40, scopeSlugs?: string[]) {
-	const scoped = scopeSlugs?.length ? new Set(scopeSlugs) : null;
+	const scoped = scopeSlugs === undefined ? null : new Set(scopeSlugs);
 	const filter = scoped
 		? (result: SearchResult) => scoped.has((result as unknown as IndexedDoc).reportSlug)
 		: undefined;
-	return executeSearch(query, limit, filter, false);
+	return (await executeTieredSearch(query, limit, filter, false)).hits;
 }
 
 /** Strict lexical search without typo correction, prefix matching, or semantic expansion. */
 export async function searchReportsExact(query: string, limit = 40, scopeSlugs?: string[]) {
-	const scoped = scopeSlugs?.length ? new Set(scopeSlugs) : null;
+	const scoped = scopeSlugs === undefined ? null : new Set(scopeSlugs);
 	const filter = scoped
 		? (result: SearchResult) => scoped.has((result as unknown as IndexedDoc).reportSlug)
 		: undefined;
@@ -430,7 +502,7 @@ export async function searchReportsExact(query: string, limit = 40, scopeSlugs?:
 
 /** Search inside one report, excluding the report-level catalog document. */
 export async function searchReport(reportSlug: string, query: string, limit = 40) {
-	return executeSearch(
+	return (await executeTieredSearch(
 		query,
 		limit,
 		(result) => {
@@ -438,7 +510,7 @@ export async function searchReport(reportSlug: string, query: string, limit = 40
 			return doc.reportSlug === reportSlug && doc.zone !== 'reports';
 		},
 		true
-	);
+	)).hits;
 }
 
 /** Strict lexical search inside one report. */
@@ -454,7 +526,78 @@ export async function searchReportExact(reportSlug: string, query: string, limit
 	);
 }
 
+function scopeFilter(scope: SearchScope): {
+	filter: (result: SearchResult) => boolean;
+	insideSingleReport: boolean;
+} {
+	const zones = scope.zones?.length ? new Set(scope.zones) : null;
+	if (scope.kind === 'report') {
+		return {
+			filter: (result) => {
+				const doc = result as unknown as IndexedDoc;
+				return doc.reportSlug === scope.reportSlug && doc.zone !== 'reports' && (!zones || zones.has(doc.zone));
+			},
+			insideSingleReport: true
+		};
+	}
+	const slugs = new Set(scope.reportSlugs);
+	return {
+		filter: (result) => {
+			const doc = result as unknown as IndexedDoc;
+			return slugs.has(doc.reportSlug) && (!zones || zones.has(doc.zone));
+		},
+		insideSingleReport: false
+	};
+}
+
+/** Search ordered scopes, preferring exact or prefix matches in a broader scope over local fuzzy noise. */
+export async function searchScoped(
+	query: string,
+	scopes: readonly SearchScope[],
+	limit = 40
+): Promise<SearchResponse> {
+	if (!scopes.length) throw new Error('searchScoped requires at least one scope');
+	const normalizedQuery = query.trim();
+	const requestedScope = scopes[0];
+	let requestedResult: TieredSearchResult | undefined;
+
+	for (let index = 0; index < scopes.length; index += 1) {
+		const scope = scopes[index];
+		const { filter, insideSingleReport } = scopeFilter(scope);
+		const result = await executeTieredSearch(normalizedQuery, limit, filter, insideSingleReport);
+		if (index === 0) requestedResult = result;
+		if ((result.matchKind === 'exact' || result.matchKind === 'prefix') && result.hits.length) {
+			return {
+				query: normalizedQuery,
+				hits: result.hits,
+				matchKind: result.matchKind,
+				requestedScope,
+				resultScope: scope,
+				fallback: index > 0,
+				correctedQuery: result.correctedQuery
+			};
+		}
+	}
+
+	const result = requestedResult ?? { hits: [], matchKind: 'empty' as const };
+	return {
+		query: normalizedQuery,
+		hits: result.hits,
+		matchKind: result.matchKind,
+		requestedScope,
+		resultScope: requestedScope,
+		fallback: false,
+		correctedQuery: result.correctedQuery
+	};
+}
+
+/** Drop the cached index so a failed load can be retried and tests can provide a fresh fixture. */
+export function resetSearchIndex(): void {
+	mini = null;
+	indexPromise = null;
+}
+
 /** Warm the prebuilt index on focus without blocking first paint. */
 export function preloadSearchIndex(): void {
-	void loadIndex();
+	void loadIndex().catch(() => undefined);
 }
