@@ -248,3 +248,21 @@
 - Remaining findings: no actionable P0, P1, or P2 search-flow issues.
 
 final result: passed
+## Iteration: compact three-column collection grid
+
+- Source visual truth: `C:\Users\aaovc\.codex\generated_images\019f68b3-0b7e-78b2-b962-99ef8a15fda2\exec-3c51be49-bf69-44cc-ba28-9b14a63e3c22.png`.
+- Implementation screenshot: `C:\Users\aaovc\.codex\visualizations\2026\07\16\019f68b3-0b7e-78b2-b962-99ef8a15fda2\implemented-collection-1117x815-final.png`.
+- Combined comparison: `C:\Users\aaovc\.codex\visualizations\2026\07\16\019f68b3-0b7e-78b2-b962-99ef8a15fda2\design-qa-comparison-final.png`.
+- Viewport and state: 1117 x 815 desktop, empty collection search, real report content and posters.
+- Full-view comparison: the compact one-line hero, 50 px search field, three equal columns, 16:9 posters, restrained metadata, two-line title/summary treatment, burgundy links, and thin row rules match the selected direction.
+- Focused comparison: no extra crop was required because the combined 2274 x 871 image keeps the hero, search, card typography, imagery, links, and separators legible.
+- Content constraint: the mock shows six illustrative reports, while the real collection has four; the implementation keeps the real four and lets the second row fill naturally as content grows.
+- Fonts and typography: the existing Fraunces, Newsreader, and JetBrains Mono stack remains intact; desktop titles and summaries are clamped for consistent rhythm.
+- Spacing and layout: three columns above 1080 px, two columns at 1000 x 800, and one column at 760 x 800, with no horizontal overflow.
+- Colors and assets: existing paper, ink, line, burgundy tokens, Phosphor icons, and real poster URLs are retained; no substitute assets were introduced.
+- Copy and interactions: production Russian copy remains unchanged; scoped search returned five results for `силовая` after lazy index loading.
+- Console and validation: no browser errors; `npm run check` passed with 0 errors and 0 warnings; `npm run build` passed.
+- Comparison history: the first pass kept a desktop breadcrumb and taller hero; the final pass hides that breadcrumb on desktop, restores it on mobile, reduces hero/search spacing, and clamps long real titles.
+- Remaining findings: no actionable P0, P1, or P2 differences; real copy creates minor P3 height variation compared with illustrative titles.
+
+final result: passed

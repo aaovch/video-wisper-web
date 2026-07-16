@@ -97,16 +97,18 @@
 {/if}
 
 <style>
-	.hero { padding-top: clamp(28px, 5vw, 62px); padding-bottom: 18px; }
-	.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; color: var(--ink-faint); font-size: 14px; }
+	.hero { padding-top: clamp(22px, 2.6vw, 34px); padding-bottom: 10px; }
+	.breadcrumbs { display: none; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; color: var(--ink-faint); font-size: 14px; }
 	.breadcrumbs a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
 	.eyebrow { margin: 0 0 8px; color: var(--accent); }
-	h1 { max-width: 17ch; margin: 0 0 14px; font-size: clamp(38px, 6vw, 70px); font-weight: 500; line-height: 0.98; }
-	.intro { max-width: 66ch; margin: 0; color: var(--ink-soft); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
+	h1 { max-width: none; margin: 0 0 8px; font-size: clamp(38px, 4.2vw, 56px); font-weight: 500; line-height: 0.98; }
+	.intro { max-width: 66ch; margin: 0; color: var(--ink-soft); font-size: clamp(17px, 1.7vw, 20px); line-height: 1.45; }
 
-	.collection-search { padding-top: 12px; }
+	.collection-search { padding-top: 8px; }
+	.collection-search :global(.search-field) { min-height: 50px; }
+	.collection-search :global(input) { font-size: clamp(16px, 1.4vw, 18px); }
 
-	.analysis, .index { padding-top: 42px; }
+	.analysis, .index { padding-top: 24px; }
 	.analysis { padding-bottom: 24px; }
 	.section-title { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; align-items: start; padding-top: 18px; border-top: 1px solid var(--line-strong); }
 	.section-num { color: var(--accent); font-size: 12px; padding-top: 5px; }
@@ -124,14 +126,19 @@
 	.finding div:last-child p { color: var(--ink-soft); }
 	.outcome { max-width: 72ch; margin: 20px 0 0 62px; padding: 18px 0 0 18px; border-top: 1px solid var(--line-strong); border-left: 2px solid var(--accent); font-size: 17px; line-height: 1.6; }
 
-	.index { padding-bottom: 72px; }
+	.index { padding-bottom: 64px; }
 	.report-section + .report-section { margin-top: 52px; }
-	.index-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 34px; margin: 24px 0 0 62px; padding: 0; list-style: none; }
+	.index-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 24px; margin: 20px 0 0 62px; padding: 0; list-style: none; }
 	.index-list.index-list--flat { margin-top: 0; margin-left: 0; }
+
+	@media (max-width: 1080px) {
+		.index-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
 
 	@media (max-width: 760px) {
 		.hero { padding-top: 22px; }
-		.breadcrumbs { margin-bottom: 24px; }
+		.breadcrumbs { display: flex; margin-bottom: 24px; }
+		h1 { max-width: 17ch; }
 		.section-title { grid-template-columns: 34px minmax(0, 1fr); gap: 8px; }
 		.lede, .findings, .outcome, .index-list { margin-left: 42px; }
 		.finding { grid-template-columns: 28px 1fr; gap: 14px 10px; }
