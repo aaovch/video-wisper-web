@@ -800,11 +800,7 @@
 	.seminar-exercise-memo-panel,
 	.seminar-notes,
 	.seminar-exercises {
-		border-bottom: 1px solid var(--line);
-	}
-
-	.seminar-glossary {
-		border-top: 1px solid var(--line-strong);
+		border: 0;
 	}
 
 	.seminar-glossary summary,
@@ -813,11 +809,33 @@
 	.seminar-notes summary,
 	.seminar-exercises summary {
 		cursor: pointer;
-		padding: 16px 0;
+		min-height: 50px;
+		margin: 0 -12px;
+		padding: 13px 12px;
+		border-radius: 8px;
 		list-style: none;
 		display: flex;
 		align-items: center;
 		gap: 12px;
+		font-size: 17px;
+		transition:
+			background-color 0.18s ease,
+			color 0.18s ease;
+	}
+
+	.seminar-glossary summary:hover,
+	.seminar-infographic-panel summary:hover,
+	.seminar-exercise-memo-panel summary:hover,
+	.seminar-notes summary:hover,
+	.seminar-exercises summary:hover,
+	.transcript summary:hover,
+	.seminar-glossary[open] summary,
+	.seminar-infographic-panel[open] summary,
+	.seminar-exercise-memo-panel[open] summary,
+	.seminar-notes[open] summary,
+	.seminar-exercises[open] summary,
+	.transcript details[open] summary {
+		background: color-mix(in srgb, var(--paper-2) 58%, transparent);
 	}
 
 	.seminar-glossary summary > :global(svg),
@@ -883,9 +901,10 @@
 	.chapters > .section-heading { margin-bottom: 10px; }
 	.chapters > .section-heading + .reveal :global(.chapter) { border-top: 0; }
 	.additional { margin-top: 0; }
-	.additional > .section-heading { margin-bottom: 22px; }
+	.additional > .section-heading { margin-bottom: 12px; }
 	.extra-block { margin-top: 0; }
-	.extra-block + .extra-block { margin-top: 12px; }
+	.extra-block + .extra-block { margin-top: 2px; }
+	.seminar-materials details + details { margin-top: 2px; }
 	.extra-title { margin: 0 0 14px; font-size: 20px; font-weight: 500; }
 
 	.focus-section {
@@ -1026,11 +1045,11 @@
 	}
 
 	.seminar-notes-section {
-		margin-top: 12px;
+		margin-top: 0;
 	}
 
 	.seminar-notes {
-		border-top: 1px solid var(--line-strong);
+		border-top: 0;
 	}
 
 	.seminar-notes-body {
@@ -1062,11 +1081,11 @@
 	}
 
 	.seminar-exercises-section {
-		margin-top: 12px;
+		margin-top: 0;
 	}
 
 	.seminar-exercises {
-		border-top: 1px solid var(--line-strong);
+		border-top: 0;
 	}
 
 	.seminar-exercises-body {
@@ -1141,19 +1160,26 @@
 	}
 
 	.transcript {
-		margin-top: 12px;
+		margin-top: 0;
 	}
 
 	.transcript details {
-		border-top: 1px solid var(--line-strong);
+		border-top: 0;
 	}
 
 	.transcript summary {
 		cursor: pointer;
-		padding: 16px 0;
+		min-height: 50px;
+		margin: 0 -12px;
+		padding: 13px 12px;
+		border-radius: 8px;
 		list-style: none;
 		display: flex;
 		align-items: center;
+		font-size: 17px;
+		transition:
+			background-color 0.18s ease,
+			color 0.18s ease;
 	}
 
 	.transcript summary::-webkit-details-marker {
