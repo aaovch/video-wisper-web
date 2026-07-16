@@ -11,7 +11,14 @@
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
 	import { collections, getCollection } from '$lib/data/collections';
 	import { getReportSummary } from '$lib/data/report-meta';
-	import { preloadSearchIndex, searchReport, searchReports, type SearchHit } from '$lib/search';
+	import {
+		preloadSearchIndex,
+		searchReport,
+		searchReportExact,
+		searchReports,
+		searchReportsExact,
+		type SearchHit
+	} from '$lib/search';
 	import {
 		activeSearchFilters,
 		selectedFilterCount,
@@ -42,6 +49,7 @@
 	let filterSheetOpen = $state(false);
 	let showAllHits = $state(false);
 	let loading = $state(false);
+	let showingArchiveFallback = $state(false);
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let indexRequested = false;
 	let filterReturnFocus: HTMLButtonElement | null = null;
@@ -62,7 +70,7 @@
 				group.options.some((option) => selections[group.id]?.includes(option.value))
 		)
 	);
-	const filteredHits = $derived(hits.filter(hitMatchesFilters));
+	const filteredHits = $derived(showingArchiveFallback ? hits : hits.filter(hitMatchesFilters));
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
 		return filteredHits
@@ -236,6 +244,7 @@
 		if (normalized.length < 2) {
 			debouncedQuery = '';
 			hits = [];
+			showingArchiveFallback = false;
 			loading = false;
 			return;
 		}
@@ -249,16 +258,28 @@
 		const q = debouncedQuery.trim();
 		if (q.length < 2) return;
 		let cancelled = false;
-		const search =
+		const scopedSearch =
 			kind === 'report' && reportSlug
 				? searchReport(reportSlug, q, 120)
 				: searchReports(q, 120, reportSlugs);
-		void search.then((results) => {
-			if (!cancelled && q === debouncedQuery.trim()) {
-				hits = results;
-				loading = false;
+		const scopedExactSearch =
+			kind === 'report' && reportSlug
+				? searchReportExact(reportSlug, q, 120)
+				: searchReportsExact(q, 120, reportSlugs);
+		const archiveExactSearch = searchReportsExact(q, 120);
+		void Promise.all([scopedSearch, scopedExactSearch, archiveExactSearch]).then(
+			([scopedResults, scopedExactResults, archiveExactResults]) => {
+				if (!cancelled && q === debouncedQuery.trim()) {
+					const scope = new Set(reportSlugs);
+					const outsideScope = archiveExactResults.filter((hit) =>
+						kind === 'report' ? hit.reportSlug !== reportSlug : !scope.has(hit.reportSlug)
+					);
+					showingArchiveFallback = scopedExactResults.length === 0 && outsideScope.length > 0;
+					hits = showingArchiveFallback ? outsideScope : scopedResults;
+					loading = false;
+				}
 			}
-		});
+		);
 		return () => {
 			cancelled = true;
 		};
@@ -302,7 +323,7 @@
 		{#if loading}<span class="loading label" aria-live="polite">ищем</span>{/if}
 	</label>
 
-	{#if activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2)}
+	{#if !showingArchiveFallback && (activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2))}
 		<div class="filter-controls">
 			{#if hasFilterGroups && query.trim().length < 2}
 				<button
@@ -338,10 +359,10 @@
 			<div class="results-layout">
 				<div class="results-main">
 					<div class="results-head">
-						<p>{kind === 'report' ? 'Совпадения в отчёте' : 'Совпадения в коллекции'}</p>
+						<p>{showingArchiveFallback ? 'Точные совпадения во всём архиве' : kind === 'report' ? 'Совпадения в отчёте' : 'Совпадения в коллекции'}</p>
 						<div class="results-tools">
 							<span class="label">{visibleHits.length} из {uniqueHits.length}</span>
-							{#if hasFilterGroups}
+							{#if hasFilterGroups && !showingArchiveFallback}
 								<button
 									type="button"
 									class="filter-trigger filter-trigger--compact"
@@ -355,6 +376,11 @@
 							{/if}
 						</div>
 					</div>
+					{#if showingArchiveFallback}
+						<p class="scope-note">
+							{kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений нет. Показываем результаты из всего архива.
+						</p>
+					{/if}
 			{#if !loading && visibleHits.length === 0}
 				<p class="empty">Ничего не найдено.</p>
 			{:else}
@@ -365,7 +391,7 @@
 								<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
 								<h3>{hit.title}</h3>
 								{#if hit.matchReason?.length}
-									<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
+									<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : hit.matchReasonKind === 'correction' ? 'Возможное совпадение' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
 								{/if}
 								<p class="snippet">
 									{#each highlightParts(hit.snippet, query) as part}
@@ -426,6 +452,7 @@
 	.results-main { min-width: 0; border-top: 1px solid var(--line-strong); }
 	.results-head { display: flex; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
 	.results-head p { margin: 0; font-size: 15px; }
+	.scope-note { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; line-height: 1.45; }
 	.results-tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 	.results-tools > span { flex: 0 0 auto; color: var(--ink-faint); white-space: nowrap; }
 	ol { margin: 0; padding: 0; list-style: none; }

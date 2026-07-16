@@ -10,7 +10,7 @@ export interface SearchHit {
 	title: string;
 	snippet: string;
 	matchReason?: string[];
-	matchReasonKind?: 'tag' | 'semantic';
+	matchReasonKind?: 'tag' | 'semantic' | 'correction';
 	href: string;
 	start?: number;
 	score: number;

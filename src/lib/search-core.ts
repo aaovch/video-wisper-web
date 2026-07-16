@@ -135,14 +135,20 @@ function snippet(text: string, parsed: ParsedQuery, max = 156): string {
 function matchReason(
 	result: SearchResult,
 	doc: IndexedDoc,
-	parsed: ParsedQuery
-): { labels: string[]; kind: 'tag' | 'semantic' } | undefined {
+	parsed: ParsedQuery,
+	matchMode: 'exact' | 'correction' | 'semantic'
+): { labels: string[]; kind: 'tag' | 'semantic' | 'correction' } | undefined {
 	const visibleText = norm(`${doc.reportTitle} ${doc.title} ${doc.text}`);
 	const visibleStems = new Set(queryWords(visibleText).map(stemRu));
 	if (parsed.stems.some((stem) => visibleStems.has(stem))) return undefined;
 	const tagText = norm(doc.reasonTags ?? '');
 	const tagMatches = parsed.meaningfulWords.filter((word) => tagText.includes(word)).slice(0, 3);
 	if (tagMatches.length) return { labels: tagMatches, kind: 'tag' };
+	if (matchMode === 'correction') {
+		const labels = [...new Set(result.terms.map((term) => norm(term)).filter(Boolean))].slice(0, 3);
+		return labels.length ? { labels, kind: 'correction' } : undefined;
+	}
+	if (matchMode !== 'semantic') return undefined;
 
 	const matchedStems = new Set(result.terms.map((term) => stemRu(norm(term))));
 	const queryStems = new Set(parsed.stems);
@@ -171,9 +177,13 @@ function matchReason(
 	return labels.length ? { labels, kind: 'semantic' } : undefined;
 }
 
-function toHit(result: SearchResult, parsed: ParsedQuery): import('$lib/search-types').SearchHit {
+function toHit(
+	result: SearchResult,
+	parsed: ParsedQuery,
+	matchMode: 'exact' | 'correction' | 'semantic' = 'exact'
+): import('$lib/search-types').SearchHit {
 	const doc = result as unknown as IndexedDoc;
-	const reason = matchReason(result, doc, parsed);
+	const reason = matchReason(result, doc, parsed, matchMode);
 	return {
 		kind: doc.kind,
 		zone: doc.zone,
@@ -315,16 +325,18 @@ async function executeSearch(
 	const directQuery = parsed.meaningfulWords.join(' ');
 	const baseOptions = { boost: { field_title: 4.2, field_tags: 1.55 }, filter };
 	const ranked = new Map<string, SearchResult>();
-	const directIds = new Set<string>();
+	const exactIds = new Set<string>();
+	const correctionIds = new Set<string>();
+	const fuzzyIds = new Set<string>();
 	let correctedQuery: ParsedQuery | null = null;
-	const rememberDirect = (results: SearchResult[]) => {
-		for (const result of results) directIds.add(String(result.id));
+	const remember = (results: SearchResult[], target: Set<string>) => {
+		for (const result of results) target.add(String(result.id));
 		return results;
 	};
 
-	const strictResults = rememberDirect(index.search(directQuery, {
+	const strictResults = remember(index.search(directQuery, {
 		...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false
-	}));
+	}), exactIds);
 	mergeResults(ranked, strictResults, 2.05);
 	if (strictResults.length === 0) {
 		const suggestion = index.autoSuggest(directQuery, {
@@ -335,17 +347,17 @@ async function executeSearch(
 		})[0]?.suggestion;
 		if (suggestion && norm(suggestion) !== directQuery) {
 			correctedQuery = parseQuery(suggestion);
-			mergeResults(ranked, rememberDirect(index.search(suggestion, {
+			mergeResults(ranked, remember(index.search(suggestion, {
 				...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false
-			})), 1.72);
+			}), correctionIds), 1.72);
 		}
 	}
-	mergeResults(ranked, rememberDirect(index.search(directQuery, {
+	mergeResults(ranked, remember(index.search(directQuery, {
 		...baseOptions, combineWith: 'AND', fuzzy: adaptiveFuzzy, prefix: adaptivePrefix
-	})), 1.35);
-	mergeResults(ranked, rememberDirect(index.search(directQuery, {
+	}), fuzzyIds), 1.35);
+	mergeResults(ranked, remember(index.search(directQuery, {
 		...baseOptions, combineWith: 'OR', fuzzy: adaptiveFuzzy, prefix: adaptivePrefix
-	})), parsed.stems.length > 1 ? 0.62 : 1);
+	}), fuzzyIds), parsed.stems.length > 1 ? 0.62 : 1);
 
 	const expandedTerms = expandSemanticQuery(parsed);
 	if (expandedTerms.length > parsed.meaningfulWords.length) {
@@ -360,11 +372,42 @@ async function executeSearch(
 	let semanticOnlyCount = 0;
 	const semanticOnlyCap = insideSingleReport ? 8 : 16;
 	const bounded = sorted.filter((result) => {
-		if (directIds.has(String(result.id))) return true;
+		const id = String(result.id);
+		if (exactIds.has(id) || correctionIds.has(id) || fuzzyIds.has(id)) return true;
 		semanticOnlyCount += 1;
 		return semanticOnlyCount <= semanticOnlyCap;
 	});
-	return diversify(bounded, limit, insideSingleReport).map((result) => toHit(result, parsed));
+	return diversify(bounded, limit, insideSingleReport).map((result) => {
+		const id = String(result.id);
+		const matchMode = exactIds.has(id)
+			? 'exact'
+			: correctionIds.has(id) || fuzzyIds.has(id)
+				? 'correction'
+				: 'semantic';
+		return toHit(result, parsed, matchMode);
+	});
+}
+
+async function executeExactSearch(
+	query: string,
+	limit: number,
+	filter: ((result: SearchResult) => boolean) | undefined,
+	insideSingleReport: boolean
+): Promise<import('$lib/search-types').SearchHit[]> {
+	const parsed = parseQuery(query);
+	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return [];
+	const index = await loadIndex();
+	const results = index.search(parsed.meaningfulWords.join(' '), {
+		boost: { field_title: 4.2, field_tags: 1.55 },
+		filter,
+		combineWith: 'AND',
+		fuzzy: false,
+		prefix: false
+	});
+	const ranked = results
+		.map((result) => ({ ...result, score: result.score * 2.05 * signalMultiplier(result, parsed) }))
+		.sort((a, b) => b.score - a.score);
+	return diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed));
 }
 
 /** Search the archive. `scopeSlugs` narrows the index to a collection or active facets. */
@@ -376,9 +419,31 @@ export async function searchReports(query: string, limit = 40, scopeSlugs?: stri
 	return executeSearch(query, limit, filter, false);
 }
 
+/** Strict lexical search without typo correction, prefix matching, or semantic expansion. */
+export async function searchReportsExact(query: string, limit = 40, scopeSlugs?: string[]) {
+	const scoped = scopeSlugs?.length ? new Set(scopeSlugs) : null;
+	const filter = scoped
+		? (result: SearchResult) => scoped.has((result as unknown as IndexedDoc).reportSlug)
+		: undefined;
+	return executeExactSearch(query, limit, filter, false);
+}
+
 /** Search inside one report, excluding the report-level catalog document. */
 export async function searchReport(reportSlug: string, query: string, limit = 40) {
 	return executeSearch(
+		query,
+		limit,
+		(result) => {
+			const doc = result as unknown as IndexedDoc;
+			return doc.reportSlug === reportSlug && doc.zone !== 'reports';
+		},
+		true
+	);
+}
+
+/** Strict lexical search inside one report. */
+export async function searchReportExact(reportSlug: string, query: string, limit = 40) {
+	return executeExactSearch(
 		query,
 		limit,
 		(result) => {

@@ -289,7 +289,7 @@
 							<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
 							<h3>{hit.title}</h3>
 							{#if hit.matchReason?.length}
-								<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
+								<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : hit.matchReasonKind === 'correction' ? 'Возможное совпадение' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
 							{/if}
 							<p class="snippet">
 								{#each highlightParts(hit.snippet, query) as part}
