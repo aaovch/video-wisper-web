@@ -98,7 +98,7 @@
 
 <style>
 	.hero { padding-top: clamp(22px, 2.6vw, 34px); padding-bottom: 10px; }
-	.breadcrumbs { display: none; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; color: var(--ink-faint); font-size: 14px; }
+	.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; color: var(--ink-faint); font-size: 14px; }
 	.breadcrumbs a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
 	.eyebrow { margin: 0 0 8px; color: var(--accent); }
 	h1 { max-width: none; margin: 0 0 8px; font-size: clamp(38px, 4.2vw, 56px); font-weight: 500; line-height: 0.98; }
@@ -137,7 +137,7 @@
 
 	@media (max-width: 760px) {
 		.hero { padding-top: 22px; }
-		.breadcrumbs { display: flex; margin-bottom: 24px; }
+		.breadcrumbs { margin-bottom: 24px; }
 		h1 { max-width: 17ch; }
 		.section-title { grid-template-columns: 34px minmax(0, 1fr); gap: 8px; }
 		.lede, .findings, .outcome, .index-list { margin-left: 42px; }
