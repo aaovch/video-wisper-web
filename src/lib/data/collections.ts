@@ -105,6 +105,7 @@ export const collections: Collection[] = [
 			'gruppa-b-2-ataki-fendenti-na-vypade',
 			'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
 			'gruppa-b-4-ataki-na-fone-manevrirovaniya',
+			'gruppa-b-5-kakari-keiko',
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya',
 			'trenerskiy-kurs-3-planirovanie-zanyatiy',
@@ -129,7 +130,8 @@ export const collections: Collection[] = [
 					'ataka-prosche-ne-byvaet-udar',
 					'gruppa-b-2-ataki-fendenti-na-vypade',
 					'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
-					'gruppa-b-4-ataki-na-fone-manevrirovaniya'
+					'gruppa-b-4-ataki-na-fone-manevrirovaniya',
+					'gruppa-b-5-kakari-keiko'
 				]
 			},
 			{

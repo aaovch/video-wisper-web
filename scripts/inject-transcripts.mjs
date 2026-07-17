@@ -528,6 +528,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/gruppa-b-5-kakari-keiko.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка Б-5. Какари кейко [mZ1L1ETPLlo]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/manevrovo-atakuyushchiy-stil.json'),
 		transcriptPath: join(
 			pipelineRoot,
