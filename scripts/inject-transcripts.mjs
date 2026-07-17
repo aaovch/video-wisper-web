@@ -549,6 +549,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/manevrovo-oboronitelnyi-tip.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка А-5. Маневрово-оборонительный тип [RAQLOLc3B2Q]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/tenouti-i-tyakin-sibori.json'),
 		transcriptPath: join(
 			pipelineRoot,
