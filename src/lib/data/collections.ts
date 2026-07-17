@@ -101,6 +101,7 @@ export const collections: Collection[] = [
 			'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
 			'manevrovo-atakuyushchiy-stil',
 			'manevrovo-atakuyushchiy-stil-4-2',
+			'manevrovo-oboronitelnyi-tip',
 			'ataka-prosche-ne-byvaet-udar',
 			'gruppa-b-2-ataki-fendenti-na-vypade',
 			'gruppa-b-3-vybor-zony-i-distantsii-v-atake',
@@ -120,7 +121,8 @@ export const collections: Collection[] = [
 					'vid-20260708-200742',
 					'pozitsionno-oboronitelnyi-tip-osnovnaya-chast',
 					'manevrovo-atakuyushchiy-stil',
-					'manevrovo-atakuyushchiy-stil-4-2'
+					'manevrovo-atakuyushchiy-stil-4-2',
+					'manevrovo-oboronitelnyi-tip'
 				]
 			},
 			{
