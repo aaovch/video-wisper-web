@@ -306,6 +306,7 @@ export const collections: Collection[] = [
 			'trenerskoe-sobranie',
 			'trenerskoe-sobranie-novyi-zal',
 			'trenerskoe-sobranie-novyi-zal-chast-2',
+			'trenerskoe-sobranie-novyi-zal-chast-3',
 			'dofamin-neyronnye-svyazi-pasha',
 			'2026-07-06-19-26-42'
 		]
