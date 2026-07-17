@@ -521,6 +521,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/gruppa-b-4-ataki-na-fone-manevrirovaniya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренировка Б-4. Атаки на фоне маневрирования [jkcHppBI5R4]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/manevrovo-atakuyushchiy-stil.json'),
 		transcriptPath: join(
 			pipelineRoot,
