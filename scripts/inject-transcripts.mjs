@@ -503,6 +503,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/trenerskiy-kurs-4-tekhnika-bezopasnosti.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерский курс — 4 [gCDSLnrCOUg]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/vid-20260708-200742.json'),
 		transcriptPath: join(
 			pipelineRoot,

@@ -110,6 +110,7 @@ export const collections: Collection[] = [
 			'obuchenie-trenerov-poisk-znaniy',
 			'trenerstvo-2-zadachi-uprazhneniya',
 			'trenerskiy-kurs-3-planirovanie-zanyatiy',
+			'trenerskiy-kurs-4-tekhnika-bezopasnosti',
 			'ukol-po-centralnoy-linii'
 		],
 		sections: [
@@ -138,11 +139,13 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Тренерский курс',
-				subtitle: 'Развитие тренера, поиск знаний, постановка упражнений и планирование занятий.',
+				subtitle:
+					'Развитие тренера, поиск знаний, постановка упражнений, планирование и техника безопасности.',
 				items: [
 					'obuchenie-trenerov-poisk-znaniy',
 					'trenerstvo-2-zadachi-uprazhneniya',
-					'trenerskiy-kurs-3-planirovanie-zanyatiy'
+					'trenerskiy-kurs-3-planirovanie-zanyatiy',
+					'trenerskiy-kurs-4-tekhnika-bezopasnosti'
 				]
 			},
 			{
