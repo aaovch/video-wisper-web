@@ -606,6 +606,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Семинар Судья - Гайд для начинающих-AiLLYc0nDiU/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/struktura-i-funktsiya-myshtsy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Structure and Function of Muscle - CSCS Chapter 1 [xZ3EvSn6ARA]/transcript.json'
+		)
 	}
 ];
 

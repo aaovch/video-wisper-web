@@ -66,7 +66,8 @@ export const collections: Collection[] = [
 			'pliometrika-hema',
 			'silovaya-konditsiya-hema',
 			'silovaya-plan-hema',
-			'printsipy-silovoy-konditsionnoy-podgotovki'
+			'printsipy-silovoy-konditsionnoy-podgotovki',
+			'struktura-i-funktsiya-myshtsy'
 		]
 	},
 	{
