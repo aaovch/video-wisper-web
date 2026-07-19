@@ -75,7 +75,8 @@ export const collections: Collection[] = [
 			'tri-rezhima-myshechnogo-deystviya',
 			'faktory-myshechnoy-sily-i-moshchnosti',
 			'bioenergetika-trenirovki-tri-energosistemy',
-			'laktatnyi-porog-bioenergetika'
+			'laktatnyi-porog-bioenergetika',
+			'metabolicheskaya-spetsifichnost-trenirovki'
 		]
 	},
 	{

@@ -1,0 +1,2163 @@
+{
+	"slug": "metabolicheskaya-spetsifichnost-trenirovki",
+	"title": "Метаболическая специфичность тренировки",
+	"subtitle": "Джейкоб Гудин: энергосистемы, интервалы, HIIT и совмещение силы с выносливостью",
+	"source_name": "Metabolic Training Specificity | CSCS Chapter 3 [yDLff_Zrmoo]",
+	"source_url": "https://www.youtube.com/watch?v=yDLff_Zrmoo",
+	"note": "Русский смысловой отчёт по англоязычной лекции Dr. Jacob Goodin; исходная расшифровка сохранена на английском. Табличные проценты и соотношения работа/отдых оставлены как ориентиры, а смешение EPOC с межинтервальным VO2, термин «adrenal fatigue», автоматическое время выше 90% VO2max и категорическое описание интерференции уточнены. Программирование требует индивидуальной оценки; материал не является медицинским назначением. YouTube embed, 14:46.",
+	"duration": 886,
+	"tags": [
+		"Силовая подготовка",
+		"Кондиционная подготовка",
+		"Интервальная тренировка",
+		"HIIT",
+		"Энергетические системы",
+		"Jacob Goodin",
+		"25 блоков"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "yDLff_Zrmoo"
+	},
+	"overview_theses": [
+		"Метаболическая специфичность означает сходство тренировочной задачи с соревнованием по мощности, длительности, структуре пауз и требуемой повторяемости усилий, а не попытку изолировать одну энергосистему.",
+		"Фосфагенная, гликолитическая и окислительная системы работают одновременно; интервал и отдых лишь смещают их относительный вклад.",
+		"Проценты аэробного и анаэробного вклада зависят от вида упражнения, протокола расчёта, пола, уровня и темпа спортсмена, поэтому таблица для велоэргометра не является универсальной картой спорта.",
+		"Короткие паузы повышают метаболическую плотность, а длинные помогают сохранять пиковую мощность и качество; выбор определяется целью следующего повторения.",
+		"Предписанная скорость или мощность интервала не равна фактическому времени выше 90% VO2max: кислородное потребление имеет кинетику и запаздывает.",
+		"HIIT — семейство протоколов, а не одно соотношение работа/отдых; формат 20/10 из исследования Tabata нельзя автоматически переносить на любую задачу и упражнение.",
+		"Термин «adrenal fatigue» некорректен; при чрезмерной нагрузке оценивают острое утомление, функциональное или нефункциональное перенапряжение, симптомы перетренированности и восстановление.",
+		"Совмещение аэробной и силовой работы не является автоматически контрпродуктивным: возможная интерференция зависит от объёма, режима, последовательности, близости сессий, подготовленности и приоритета мощности."
+	],
+	"chapters": [
+		{
+			"start": 1.52,
+			"title": "От энергосистем к программированию",
+			"summary": "Лекция переводит обзор трёх путей ресинтеза АТФ в вопрос выбора интервалов под метаболические требования соревнования.",
+			"theses": [
+				"Специфичность начинается с описания реальной соревновательной задачи, а не с названия энергосистемы.",
+				"Важны мощность, длительность, паузы, число повторений и допустимое падение результата."
+			],
+			"anchor": "hey guys dr goodin here and in this",
+			"segments": [
+				{
+					"start": 1.52,
+					"text": "hey guys dr goodin here and in this"
+				},
+				{
+					"start": 3.68,
+					"text": "video we will be talking about metabolic"
+				},
+				{
+					"start": 5.92,
+					"text": "training specificity"
+				},
+				{
+					"start": 20.48,
+					"text": "in the last few videos we've been"
+				},
+				{
+					"start": 22.16,
+					"text": "talking all about the three"
+				},
+				{
+					"start": 24,
+					"text": "energy systems of the body the"
+				},
+				{
+					"start": 25.52,
+					"text": "phosphagen system the glycolytic system"
+				},
+				{
+					"start": 28.08,
+					"text": "and the oxidative systems in this video"
+				},
+				{
+					"start": 30.48,
+					"text": "we are going to dive into how to program"
+				},
+				{
+					"start": 32.88,
+					"text": "training so that you are specifically"
+				},
+				{
+					"start": 35.68,
+					"text": "adapting to each of those"
+				},
+				{
+					"start": 37.28,
+					"text": "training systems depending on which one"
+				},
+				{
+					"start": 39.04,
+					"text": "is the most specific to your event"
+				},
+				{
+					"start": 41.2,
+					"text": "okay let's dive right in"
+				}
+			]
+		},
+		{
+			"start": 45.04,
+			"title": "Источник модели и аэробно-анаэробный континуум",
+			"summary": "Автор опирается на третью главу NSCA и предлагает оценивать доли аэробного и анаэробного энергообеспечения в непрерывной работе.",
+			"theses": [
+				"Разделение на две доли удобно для планирования, но внутри анаэробной части фосфагенный и гликолитический вклады также меняются.",
+				"Все пути активны одновременно, поэтому корректнее говорить о доминировании, а не о включении одной системы."
+			],
+			"anchor": "this info comes from chapter three of",
+			"segments": [
+				{
+					"start": 45.04,
+					"text": "this info comes from chapter three of"
+				},
+				{
+					"start": 47.68,
+					"text": "the"
+				},
+				{
+					"start": 48.32,
+					"text": "textbook essentials of strength training"
+				},
+				{
+					"start": 50.24,
+					"text": "and conditioning"
+				},
+				{
+					"start": 51.52,
+					"text": "put out by the nsca the chapter is was"
+				},
+				{
+					"start": 54.24,
+					"text": "written by doctors"
+				},
+				{
+					"start": 55.44,
+					"text": "hera and kramer okay so the first thing"
+				},
+				{
+					"start": 59.52,
+					"text": "to consider"
+				},
+				{
+					"start": 60.64,
+					"text": "is the percent contribution from the"
+				},
+				{
+					"start": 63.2,
+					"text": "anaerobic and"
+				},
+				{
+					"start": 64.32,
+					"text": "aerobic systems during sustained efforts"
+				},
+				{
+					"start": 67.6,
+					"text": "now this will help to inform the way"
+				},
+				{
+					"start": 69.44,
+					"text": "that we program intervals and durations"
+				},
+				{
+					"start": 72,
+					"text": "of efforts for our athletes"
+				}
+			]
+		},
+		{
+			"start": 75.44,
+			"title": "Таблица велоэргометрии: контекст прежде цифр",
+			"summary": "Приведённая таблица связывает длительность максимального устойчивого усилия с падением мощности и ростом аэробного вклада.",
+			"theses": [
+				"Цифры получены для конкретного режима велоэргометрии и не переносятся на бег, плавание, борьбу или силовые упражнения один к одному.",
+				"Сравнение полезно как направление тенденции: с длительностью относительный аэробный вклад обычно растёт."
+			],
+			"anchor": "so this is during sustained efforts in",
+			"segments": [
+				{
+					"start": 75.44,
+					"text": "so this is during sustained efforts in"
+				},
+				{
+					"start": 79.28,
+					"text": "bicycle ergometry so know that when you"
+				},
+				{
+					"start": 81.76,
+					"text": "apply these numbers to"
+				},
+				{
+					"start": 83.36,
+					"text": "other modes of exercise it might not be"
+				},
+				{
+					"start": 85.68,
+					"text": "a one-to-one correlation"
+				},
+				{
+					"start": 87.2,
+					"text": "however it'll be pretty close so when we"
+				},
+				{
+					"start": 90.56,
+					"text": "look"
+				},
+				{
+					"start": 90.96,
+					"text": "at the exercise intensity so"
+				},
+				{
+					"start": 94.08,
+					"text": "zero to five seconds you can go at 100"
+				},
+				{
+					"start": 97.04,
+					"text": "intensity"
+				},
+				{
+					"start": 97.84,
+					"text": "and the contribution of the anaerobic"
+				},
+				{
+					"start": 99.6,
+					"text": "system will be very high"
+				},
+				{
+					"start": 101.04,
+					"text": "96 the aerobic system will only"
+				},
+				{
+					"start": 103.76,
+					"text": "contribute"
+				},
+				{
+					"start": 104.56,
+					"text": "about 4 to that as we extend"
+				}
+			]
+		},
+		{
+			"start": 108,
+			"title": "От 30 секунд к минуте",
+			"summary": "При удлинении непрерывного максимального усилия доступная средняя мощность снижается, а окислительный путь быстрее входит в общий баланс.",
+			"theses": [
+				"Даже 30–60 секунд нельзя считать чисто гликолитической зоной.",
+				"Точный вклад зависит от темпа, тренированности, способа оценки кислородного дефицита и массы работающих мышц."
+			],
+			"anchor": "that sustained effort out to 30 seconds",
+			"segments": [
+				{
+					"start": 108,
+					"text": "that sustained effort out to 30 seconds"
+				},
+				{
+					"start": 111.44,
+					"text": "you can really only sustain 55 percent"
+				},
+				{
+					"start": 114.08,
+					"text": "of your max"
+				},
+				{
+					"start": 115.04,
+					"text": "power output for that whole 30 seconds"
+				},
+				{
+					"start": 117.84,
+					"text": "and now we're shifting"
+				},
+				{
+					"start": 119.76,
+					"text": "to 75 percent anaerobic and 25"
+				},
+				{
+					"start": 122.8,
+					"text": "aerobic out to one minute"
+				},
+				{
+					"start": 126.88,
+					"text": "the power output drops even further and"
+				},
+				{
+					"start": 129.6,
+					"text": "we see it's about 50"
+				}
+			]
+		},
+		{
+			"start": 131.04,
+			"title": "400 метров: спринт с крупным аэробным вкладом",
+			"summary": "Лектор использует бег на 400 метров, чтобы показать: технически спринтерская дисциплина получает значительную часть энергии окислительным путём.",
+			"theses": [
+				"В исследованиях соревновательного бега оценки аэробного вклада обычно близки к 40–45%, но варьируют по методу и спортсменам.",
+				"Аэробная подготовка нужна спринтеру не вместо скоростной и гликолитической работы, а для поддержки всей структуры результата и восстановления."
+			],
+			"anchor": "50. so if we're thinking about running",
+			"segments": [
+				{
+					"start": 131.04,
+					"text": "50. so if we're thinking about running"
+				},
+				{
+					"start": 133.76,
+					"text": "an event like the 400 meters which"
+				},
+				{
+					"start": 135.76,
+					"text": "takes about 60 seconds you know"
+				},
+				{
+					"start": 138.32,
+					"text": "depending on if you're male or female or"
+				},
+				{
+					"start": 139.92,
+					"text": "if you're"
+				},
+				{
+					"start": 140.48,
+					"text": "elite or high school levels this event"
+				},
+				{
+					"start": 143.04,
+					"text": "is going to be slightly more anaerobic"
+				},
+				{
+					"start": 145.28,
+					"text": "than aerobic but really they're pretty"
+				},
+				{
+					"start": 147.2,
+					"text": "close right so if you're running"
+				},
+				{
+					"start": 148.72,
+					"text": "50 seconds for the 400 which is you know"
+				},
+				{
+					"start": 151.04,
+					"text": "pretty darn fast"
+				},
+				{
+					"start": 152.48,
+					"text": "you might be using quite a bit of"
+				},
+				{
+					"start": 155.44,
+					"text": "aerobic"
+				},
+				{
+					"start": 156.08,
+					"text": "contribution for your energy production"
+				},
+				{
+					"start": 158.24,
+					"text": "so although you're a sprinter"
+				},
+				{
+					"start": 159.92,
+					"text": "technically you still have a sufficient"
+				},
+				{
+					"start": 162.64,
+					"text": "contribution"
+				},
+				{
+					"start": 163.52,
+					"text": "from aerobic mechanisms going out to 90"
+				},
+				{
+					"start": 166.56,
+					"text": "seconds"
+				},
+				{
+					"start": 167.36,
+					"text": "and that power output drops even further"
+				},
+				{
+					"start": 170.32,
+					"text": "and it's going to be"
+				}
+			]
+		},
+		{
+			"start": 171.36,
+			"title": "Более длинные усилия становятся преимущественно аэробными",
+			"summary": "К 90–200 секундам относительный окислительный вклад становится основным, хотя высокая скорость сохраняет существенную анаэробную часть.",
+			"theses": [
+				"Рост длительности не создаёт резкого переключателя между системами.",
+				"Профиль определяется не только временем, но и распределением темпа, финишным ускорением и предшествующей нагрузкой."
+			],
+			"anchor": "primarily aerobic and beyond that",
+			"segments": [
+				{
+					"start": 171.36,
+					"text": "primarily aerobic and beyond that"
+				},
+				{
+					"start": 174.56,
+					"text": "the percent contribution from the"
+				},
+				{
+					"start": 177.12,
+					"text": "aerobic system just"
+				},
+				{
+					"start": 178.24,
+					"text": "increases and increases out to 200"
+				},
+				{
+					"start": 180.16,
+					"text": "seconds you see it"
+				},
+				{
+					"start": 181.36,
+					"text": "up at 78 percent and farther than that"
+				},
+				{
+					"start": 184.16,
+					"text": "the trend would continue"
+				}
+			]
+		},
+		{
+			"start": 191.44,
+			"title": "Нельзя выбрать одну систему — можно сместить нагрузку",
+			"summary": "Главный вывод таблицы сформулирован как выбор системы через интенсивность и отдых; практичнее понимать это как управление относительным вкладом и ограничителем.",
+			"theses": [
+				"Пауза влияет на восстановление фосфокреатина, кислородную кинетику, удаление метаболитов и способность повторить мощность.",
+				"Критерий хорошей сессии — нужный профиль мощности и адаптационный стимул, а не ощущение максимального утомления."
+			],
+			"anchor": "now the key point from this table is",
+			"segments": [
+				{
+					"start": 191.44,
+					"text": "now the key point from this table is"
+				},
+				{
+					"start": 193.6,
+					"text": "that the use of appropriate exercise"
+				},
+				{
+					"start": 195.6,
+					"text": "intensities and rest intervals"
+				},
+				{
+					"start": 197.52,
+					"text": "allows us to more or less select a"
+				},
+				{
+					"start": 199.92,
+					"text": "specific energy system"
+				},
+				{
+					"start": 201.44,
+					"text": "to focus on during training and this"
+				},
+				{
+					"start": 203.52,
+					"text": "results in a more efficient and"
+				},
+				{
+					"start": 204.96,
+					"text": "productive"
+				},
+				{
+					"start": 206.16,
+					"text": "training regimen especially for athletes"
+				},
+				{
+					"start": 208.64,
+					"text": "whose events have very specific"
+				},
+				{
+					"start": 210,
+					"text": "metabolic demands"
+				}
+			]
+		},
+		{
+			"start": 211.44,
+			"title": "Толкание ядра: качество коротких повторений",
+			"summary": "Для взрывного события автор предлагает короткие одиночные или двойные повторения, старты и прыжки с достаточным отдыхом.",
+			"theses": [
+				"Короткое время работы соответствует высокой потребности в фосфагенной мощности и нервно-мышечном качестве.",
+				"Выбор 80–85% или другого веса определяется скоростью снаряда, техникой и целью; энергетическая длительность сама по себе не задаёт оптимальную нагрузку."
+			],
+			"anchor": "okay so based on this table let me go",
+			"segments": [
+				{
+					"start": 211.44,
+					"text": "okay so based on this table let me go"
+				},
+				{
+					"start": 213.36,
+					"text": "back to the table"
+				},
+				{
+					"start": 215.04,
+					"text": "if you have a shopper that you're"
+				},
+				{
+					"start": 216.48,
+					"text": "training based on this"
+				},
+				{
+					"start": 218.48,
+					"text": "the shotput lasts somewhere between zero"
+				},
+				{
+					"start": 221.28,
+					"text": "to five seconds"
+				},
+				{
+					"start": 222.48,
+					"text": "and so it's going to be performed at a"
+				},
+				{
+					"start": 224.64,
+					"text": "hundred percent"
+				},
+				{
+					"start": 225.52,
+					"text": "power output and it's a very highly"
+				},
+				{
+					"start": 228.32,
+					"text": "anaerobic event"
+				},
+				{
+					"start": 229.36,
+					"text": "so if you're going to do some sort of"
+				},
+				{
+					"start": 230.8,
+					"text": "interval training with a shot putter"
+				},
+				{
+					"start": 232.88,
+					"text": "well maybe we should be specific to the"
+				},
+				{
+					"start": 234.64,
+					"text": "shotput event and to the energy system"
+				},
+				{
+					"start": 236.56,
+					"text": "that"
+				},
+				{
+					"start": 236.96,
+					"text": "this shot putter relies upon which is on"
+				},
+				{
+					"start": 239.36,
+					"text": "the atp"
+				},
+				{
+					"start": 240.24,
+					"text": "stores and on the creatine phosphate"
+				},
+				{
+					"start": 242.08,
+					"text": "system perhaps"
+				},
+				{
+					"start": 244.16,
+					"text": "singles in the back squat repeat singles"
+				},
+				{
+					"start": 246.64,
+					"text": "at"
+				},
+				{
+					"start": 247.2,
+					"text": "just under 80 85 percent so you can move"
+				},
+				{
+					"start": 250.32,
+					"text": "the bar"
+				},
+				{
+					"start": 250.72,
+					"text": "explosively and fast with decent rest in"
+				},
+				{
+					"start": 253.6,
+					"text": "between"
+				},
+				{
+					"start": 254,
+					"text": "is going to be a great training stimulus"
+				},
+				{
+					"start": 256.16,
+					"text": "because we're training in that zero to"
+				},
+				{
+					"start": 257.6,
+					"text": "five second range"
+				},
+				{
+					"start": 258.56,
+					"text": "maybe we do singles maybe we do doubles"
+				},
+				{
+					"start": 260.96,
+					"text": "and we just repeat that or maybe maybe"
+				},
+				{
+					"start": 262.8,
+					"text": "the power snatch or something like that"
+				},
+				{
+					"start": 264.64,
+					"text": "or maybe 10 meter sprint starts maybe"
+				},
+				{
+					"start": 266.8,
+					"text": "even five meter starts or maybe even"
+				},
+				{
+					"start": 269.2,
+					"text": "an explosive broad jump where you then"
+				},
+				{
+					"start": 271.28,
+					"text": "rest in between it"
+				}
+			]
+		},
+		{
+			"start": 273.28,
+			"title": "800 метров: сочетание аэробной базы и высокой скорости",
+			"summary": "Пример 800 метров подчёркивает преимущественно аэробное обеспечение при значительной гликолитической и фосфагенной роли.",
+			"theses": [
+				"Повторные 200–400 метров с неполным отдыхом могут развивать специфическую способность сохранять темп.",
+				"Длинный лёгкий бег не следует объявлять бесполезным целиком: его объём зависит от профиля атлета, этапа сезона и цены восстановления."
+			],
+			"anchor": "if we think about something different",
+			"segments": [
+				{
+					"start": 273.28,
+					"text": "if we think about something different"
+				},
+				{
+					"start": 274.88,
+					"text": "maybe a an 800 meter runner"
+				},
+				{
+					"start": 277.44,
+					"text": "who's going to be out here somewhere"
+				},
+				{
+					"start": 279.04,
+					"text": "between 90 and 200 seconds"
+				},
+				{
+					"start": 282,
+					"text": "this athlete will be mostly aerobic"
+				},
+				{
+					"start": 285.12,
+					"text": "okay and so we need some aerobic"
+				},
+				{
+					"start": 286.72,
+					"text": "development we also though need some"
+				},
+				{
+					"start": 288.32,
+					"text": "anaerobic development and so if we were"
+				},
+				{
+					"start": 290.24,
+					"text": "thinking of"
+				},
+				{
+					"start": 291.04,
+					"text": "conditioning their energy system for"
+				},
+				{
+					"start": 294,
+					"text": "their event"
+				},
+				{
+					"start": 294.64,
+					"text": "well we're going to want to focus on"
+				},
+				{
+					"start": 296.4,
+					"text": "things that are primarily aerobic"
+				},
+				{
+					"start": 298.56,
+					"text": "but that have an anaerobic component so"
+				},
+				{
+					"start": 300.16,
+					"text": "maybe we're doing repeat 200s"
+				},
+				{
+					"start": 302.08,
+					"text": "or repeat 400s where the rest is"
+				},
+				{
+					"start": 304,
+					"text": "shortened to allow them to accumulate"
+				},
+				{
+					"start": 306.16,
+					"text": "fatigue"
+				},
+				{
+					"start": 306.96,
+					"text": "and to enter the next repetition with an"
+				},
+				{
+					"start": 310.4,
+					"text": "oxygen deficit"
+				},
+				{
+					"start": 311.68,
+					"text": "to really tax those systems but the"
+				},
+				{
+					"start": 314,
+					"text": "speed has to be high enough right the"
+				},
+				{
+					"start": 315.6,
+					"text": "intensity has to be high enough"
+				},
+				{
+					"start": 317.28,
+					"text": "they shouldn't probably go on super long"
+				},
+				{
+					"start": 320.32,
+					"text": "runs"
+				},
+				{
+					"start": 320.96,
+					"text": "15 mile runs are not going to"
+				},
+				{
+					"start": 322.64,
+					"text": "necessarily benefit an 800 meter"
+				},
+				{
+					"start": 324.96,
+					"text": "runner now you could argue that some of"
+				},
+				{
+					"start": 327.36,
+					"text": "the greatest 800 meter runners have also"
+				},
+				{
+					"start": 329.12,
+					"text": "been amazing"
+				},
+				{
+					"start": 330,
+					"text": "longer distance runners that's for"
+				},
+				{
+					"start": 331.84,
+					"text": "another time the key point though is"
+				},
+				{
+					"start": 334,
+					"text": "we can use tables like this to inform"
+				},
+				{
+					"start": 336.32,
+					"text": "the design"
+				},
+				{
+					"start": 337.2,
+					"text": "of our training plans so that we can"
+				},
+				{
+					"start": 338.88,
+					"text": "ensure we're selecting the right energy"
+				},
+				{
+					"start": 341.04,
+					"text": "system"
+				},
+				{
+					"start": 341.6,
+					"text": "to train for our athletes"
+				}
+			]
+		},
+		{
+			"start": 345.76,
+			"title": "Что такое интервальная тренировка",
+			"summary": "Интервал — заранее заданный рабочий отрезок, после которого следует контролируемое восстановление и новое повторение.",
+			"theses": [
+				"Заранее задают дистанцию или время, целевую скорость или мощность, характер и длительность паузы, а также число повторений.",
+				"Пример 8×200 метров показывает, что восстановление является частью дозы, а не пустым временем между работой."
+			],
+			"anchor": "so i've mentioned interval training a",
+			"segments": [
+				{
+					"start": 345.76,
+					"text": "so i've mentioned interval training a"
+				},
+				{
+					"start": 347.6,
+					"text": "few times interval training is important"
+				},
+				{
+					"start": 349.52,
+					"text": "because it emphasizes"
+				},
+				{
+					"start": 351.28,
+					"text": "certain bioenergetic adaptations for a"
+				},
+				{
+					"start": 353.84,
+					"text": "more efficient energy transfer within"
+				},
+				{
+					"start": 355.84,
+					"text": "metabolic pathways"
+				},
+				{
+					"start": 357.12,
+					"text": "by using predetermined intervals of"
+				},
+				{
+					"start": 359.28,
+					"text": "exercise and rest"
+				},
+				{
+					"start": 360.72,
+					"text": "periods so an interval"
+				},
+				{
+					"start": 364.24,
+					"text": "is a single effort of some sort of"
+				},
+				{
+					"start": 367.6,
+					"text": "exercise whether it's running or"
+				},
+				{
+					"start": 369.04,
+					"text": "swimming or biking"
+				},
+				{
+					"start": 370.16,
+					"text": "or lifting an interval is a single"
+				},
+				{
+					"start": 372.08,
+					"text": "effort and then you have a rest period"
+				},
+				{
+					"start": 374.48,
+					"text": "and then you perform another interval"
+				},
+				{
+					"start": 376.16,
+					"text": "and these intervals are"
+				},
+				{
+					"start": 377.68,
+					"text": "usually predetermined right so you might"
+				},
+				{
+					"start": 379.52,
+					"text": "say to"
+				},
+				{
+					"start": 380.72,
+					"text": "an athlete go out and run eight by 200"
+				},
+				{
+					"start": 383.44,
+					"text": "meters on the track in 30 seconds per"
+				},
+				{
+					"start": 385.6,
+					"text": "200"
+				},
+				{
+					"start": 386.48,
+					"text": "with a 200 meter walking recovery"
+				},
+				{
+					"start": 390.16,
+					"text": "so that athlete would go to the track"
+				},
+				{
+					"start": 391.92,
+					"text": "they would get on the line they would"
+				},
+				{
+					"start": 393.04,
+					"text": "run 200 meters in 30 seconds"
+				},
+				{
+					"start": 394.8,
+					"text": "and then they would walk the next 200"
+				},
+				{
+					"start": 396.48,
+					"text": "meters back to the start"
+				},
+				{
+					"start": 397.92,
+					"text": "and do it all again that would be an"
+				},
+				{
+					"start": 400.08,
+					"text": "example of interval training"
+				}
+			]
+		},
+		{
+			"start": 401.76,
+			"title": "Зачем интервалы увеличивают качественный объём",
+			"summary": "Паузы позволяют накопить больше работы на высокой мощности, чем одно непрерывное усилие до отказа.",
+			"theses": [
+				"Полное восстановление поддерживает качество, неполное — повышает метаболическую плотность и кислородную нагрузку.",
+				"EPOC корректно относится к повышенному потреблению кислорода после упражнения; между повторениями точнее говорить о повышенном VO2 восстановления и неполном возврате к исходному состоянию."
+			],
+			"anchor": "now with interval training much more",
+			"segments": [
+				{
+					"start": 401.76,
+					"text": "now with interval training much more"
+				},
+				{
+					"start": 404.32,
+					"text": "training"
+				},
+				{
+					"start": 405.2,
+					"text": "can be accomplished and at higher"
+				},
+				{
+					"start": 406.96,
+					"text": "intensities because we're providing the"
+				},
+				{
+					"start": 408.64,
+					"text": "athlete with"
+				},
+				{
+					"start": 409.28,
+					"text": "rest now they can hit that same interval"
+				},
+				{
+					"start": 412.48,
+					"text": "again and again and again at the desired"
+				},
+				{
+					"start": 414.88,
+					"text": "intensity"
+				},
+				{
+					"start": 415.76,
+					"text": "they'll get fatigued each time but we're"
+				},
+				{
+					"start": 417.84,
+					"text": "allowing their body"
+				},
+				{
+					"start": 418.96,
+					"text": "to recover and replete some of these"
+				},
+				{
+					"start": 421.2,
+					"text": "substrates"
+				},
+				{
+					"start": 422.08,
+					"text": "we're allowing epoc to come down at"
+				},
+				{
+					"start": 424.64,
+					"text": "least a little bit before they start the"
+				},
+				{
+					"start": 426.16,
+					"text": "next interval"
+				},
+				{
+					"start": 427.04,
+					"text": "and therefore we can get a much higher"
+				},
+				{
+					"start": 428.64,
+					"text": "volume of training at a higher intensity"
+				}
+			]
+		},
+		{
+			"start": 434.56,
+			"title": "Соотношения работа/отдых — ориентиры, не законы",
+			"summary": "Учебник предлагает диапазоны пауз по желаемому метаболическому акценту, а лектор справедливо называет их приблизительными.",
+			"theses": [
+				"Одинаковое отношение 1:3 означает разную физиологию для 5 секунд и 3 минут работы.",
+				"Решение лучше принимать по восстановлению мощности, технике, ЧСС или VO2, субъективной готовности и цели следующего повторения."
+			],
+			"anchor": "now the textbook gives some loose",
+			"segments": [
+				{
+					"start": 434.56,
+					"text": "now the textbook gives some loose"
+				},
+				{
+					"start": 437.2,
+					"text": "guidelines"
+				},
+				{
+					"start": 438.08,
+					"text": "for work to rest ratios for intervals"
+				},
+				{
+					"start": 440.96,
+					"text": "depending on the energy system"
+				},
+				{
+					"start": 442.96,
+					"text": "that you want to stress now i say loose"
+				},
+				{
+					"start": 445.2,
+					"text": "guidelines"
+				},
+				{
+					"start": 446,
+					"text": "because if you've been a coach for any"
+				},
+				{
+					"start": 447.92,
+					"text": "number of years you know that"
+				},
+				{
+					"start": 449.6,
+					"text": "there are a variety of ways of very"
+				},
+				{
+					"start": 452,
+					"text": "creative ways"
+				},
+				{
+					"start": 453.04,
+					"text": "to stress each of these energy systems"
+				},
+				{
+					"start": 456.08,
+					"text": "and it may fall outside of these"
+				},
+				{
+					"start": 457.52,
+					"text": "guidelines here but let's look at what"
+				},
+				{
+					"start": 458.8,
+					"text": "the textbook says"
+				},
+				{
+					"start": 461.36,
+					"text": "so if you are wanting to train the"
+				},
+				{
+					"start": 462.88,
+					"text": "phosphagen system you better be training"
+				},
+				{
+					"start": 465.36,
+					"text": "at 90 to 100 of your max power output"
+				},
+				{
+					"start": 468.72,
+					"text": "typical exercise time is under 10"
+				},
+				{
+					"start": 471.12,
+					"text": "seconds"
+				},
+				{
+					"start": 472,
+					"text": "and you should have a lot of rest 12 to"
+				},
+				{
+					"start": 475.2,
+					"text": "20 times as much rest as"
+				},
+				{
+					"start": 477.84,
+					"text": "working during that interval training"
+				},
+				{
+					"start": 480.8,
+					"text": "right so let's say you do"
+				},
+				{
+					"start": 482,
+					"text": "a power snatch it takes you one one and"
+				},
+				{
+					"start": 484.72,
+					"text": "a half seconds"
+				},
+				{
+					"start": 485.76,
+					"text": "well you should rest well not really 12"
+				},
+				{
+					"start": 487.68,
+					"text": "seconds you should rest a minute or so"
+				},
+				{
+					"start": 489.28,
+					"text": "before you go do"
+				},
+				{
+					"start": 490.32,
+					"text": "another one right a lot more rest than"
+				},
+				{
+					"start": 492.72,
+					"text": "work"
+				}
+			]
+		},
+		{
+			"start": 494.48,
+			"title": "Гликолитические интервалы",
+			"summary": "Для 15–60 секунд высокой мощности предлагается отдых, превышающий работу примерно в 3–5 раз, если требуется хорошее восстановление.",
+			"theses": [
+				"Длинная пауза сохраняет скорость следующих повторений, короткая быстрее снижает мощность и меняет стимул.",
+				"Нельзя оценивать гликолитическую направленность только по жжению или концентрации лактата."
+			],
+			"anchor": "if you're training the fast glycolysis",
+			"segments": [
+				{
+					"start": 494.48,
+					"text": "if you're training the fast glycolysis"
+				},
+				{
+					"start": 496.24,
+					"text": "system"
+				},
+				{
+					"start": 497.6,
+					"text": "typical exercise time 15 to 30 seconds i"
+				},
+				{
+					"start": 500.32,
+					"text": "might say"
+				},
+				{
+					"start": 500.88,
+					"text": "even pushing 30 seconds out to a minute"
+				},
+				{
+					"start": 503.68,
+					"text": "and you want again"
+				},
+				{
+					"start": 505.12,
+					"text": "more rest than work but not quite as"
+				},
+				{
+					"start": 506.72,
+					"text": "much maybe three to one or five to one"
+				},
+				{
+					"start": 509.44,
+					"text": "as far as resting compared to working so"
+				},
+				{
+					"start": 512.24,
+					"text": "if you run a 30 second interval"
+				},
+				{
+					"start": 513.92,
+					"text": "and you want to be fully recovered for"
+				},
+				{
+					"start": 515.44,
+					"text": "the next one maybe give the athlete"
+				},
+				{
+					"start": 517.52,
+					"text": "90 seconds of rest getting into the fast"
+				}
+			]
+		},
+		{
+			"start": 521.36,
+			"title": "Интервалы на VO2max: длительность и кинетика",
+			"summary": "Отрезки около 1–3 минут используются для совместной нагрузки на быстрый гликолиз и окислительный путь.",
+			"theses": [
+				"Скорость, соответствующая VO2max, и фактический VO2 спортсмена — разные величины: потребление кислорода поднимается с задержкой.",
+				"Для накопления времени около VO2max обычно важны длительность повторения, активность паузы и предшествующее повышение VO2."
+			],
+			"anchor": "glycolysis and oxidative system",
+			"segments": [
+				{
+					"start": 521.36,
+					"text": "glycolysis and oxidative system"
+				},
+				{
+					"start": 524.4,
+					"text": "these efforts will last around one to"
+				},
+				{
+					"start": 526.4,
+					"text": "three minutes and this is typically"
+				},
+				{
+					"start": 528.24,
+					"text": "the amount of time you spend on an"
+				},
+				{
+					"start": 529.76,
+					"text": "interval if you are trying to improve"
+				},
+				{
+					"start": 531.2,
+					"text": "your vo2 max"
+				},
+				{
+					"start": 532.32,
+					"text": "or to run at around that velocity that"
+				},
+				{
+					"start": 534.24,
+					"text": "you're capable of for your vo2 max"
+				},
+				{
+					"start": 536.32,
+					"text": "and we typically want a one to three or"
+				},
+				{
+					"start": 538.16,
+					"text": "one to four"
+				},
+				{
+					"start": 539.36,
+					"text": "work to rest ratio and then finally for"
+				}
+			]
+		},
+		{
+			"start": 542.08,
+			"title": "Длинные окислительные интервалы",
+			"summary": "Отрезки дольше трёх минут выполняются на меньшей мощности и могут использовать паузы от примерно равных работе до более коротких.",
+			"theses": [
+				"Темповая и пороговая работа не обязана быть непрерывной: короткие паузы помогают сохранить качественный объём.",
+				"Интенсивность должна соответствовать цели — от устойчивого темпа до верхней аэробной мощности, а не просто длительности больше трёх минут."
+			],
+			"anchor": "the oxidative system",
+			"segments": [
+				{
+					"start": 542.08,
+					"text": "the oxidative system"
+				},
+				{
+					"start": 543.76,
+					"text": "these efforts will last longer than"
+				},
+				{
+					"start": 545.2,
+					"text": "three minutes notice that the power"
+				},
+				{
+					"start": 546.64,
+					"text": "output"
+				},
+				{
+					"start": 547.36,
+					"text": "is going down with is stepping down with"
+				},
+				{
+					"start": 549.6,
+					"text": "each of these"
+				},
+				{
+					"start": 550.72,
+					"text": "and we can have as little as one to one"
+				},
+				{
+					"start": 553.52,
+					"text": "work to rest"
+				},
+				{
+					"start": 554.72,
+					"text": "ratio now again"
+				}
+			]
+		},
+		{
+			"start": 557.76,
+			"title": "Неполный отдых как инструмент",
+			"summary": "Мили или другие длинные отрезки с короткой паузой позволяют дробить большой объём около темпа 10 км или полумарафона.",
+			"theses": [
+				"Неполный отдых удерживает VO2 повышенным и сокращает время повторного выхода на рабочий уровень.",
+				"Если пауза слишком коротка и темп распадается, сессия перестаёт соответствовать исходной задаче."
+			],
+			"anchor": "these are just guidelines because in",
+			"segments": [
+				{
+					"start": 557.76,
+					"text": "these are just guidelines because in"
+				},
+				{
+					"start": 560.16,
+					"text": "programming for distance runners i've"
+				},
+				{
+					"start": 561.76,
+					"text": "coached a lot of distance runners"
+				},
+				{
+					"start": 563.28,
+					"text": "in my career we often use incomplete"
+				},
+				{
+					"start": 566.72,
+					"text": "rest"
+				},
+				{
+					"start": 567.12,
+					"text": "during intervals where we kind of flip"
+				},
+				{
+					"start": 568.88,
+					"text": "the paradigm on its head"
+				},
+				{
+					"start": 570.24,
+					"text": "maybe you're running a mile and then you"
+				},
+				{
+					"start": 571.84,
+					"text": "get 30 seconds rest or"
+				},
+				{
+					"start": 573.44,
+					"text": "90 seconds rest and then you go run"
+				},
+				{
+					"start": 575.04,
+					"text": "another mile at the same pace"
+				},
+				{
+					"start": 576.64,
+					"text": "but the pace of those miles are more"
+				},
+				{
+					"start": 580,
+					"text": "in line with the oxidative system so"
+				},
+				{
+					"start": 582.08,
+					"text": "they're not all out"
+				},
+				{
+					"start": 583.44,
+					"text": "but they're maybe at 10k pace or half"
+				},
+				{
+					"start": 585.36,
+					"text": "marathon pace and we just get"
+				},
+				{
+					"start": 586.88,
+					"text": "a short rest to break up the effort and"
+				},
+				{
+					"start": 589.12,
+					"text": "extend the amount of"
+				},
+				{
+					"start": 590.96,
+					"text": "good quality volume that that athlete"
+				},
+				{
+					"start": 593.2,
+					"text": "can do so again"
+				}
+			]
+		},
+		{
+			"start": 594.56,
+			"title": "Синтез: длительность растёт, мощность снижается",
+			"summary": "Лектор суммирует прогрессию от коротких мощных повторений с большим отдыхом к длинным менее интенсивным отрезкам с плотным восстановлением.",
+			"theses": [
+				"Это полезная отправная карта, если сохранять непрерывность вклада энергосистем.",
+				"Финальная настройка делается по спортивному движению, целевой мощности, устойчивости техники и реакции конкретного атлета."
+			],
+			"anchor": "these are just guidelines but the key",
+			"segments": [
+				{
+					"start": 594.56,
+					"text": "these are just guidelines but the key"
+				},
+				{
+					"start": 596.72,
+					"text": "point here"
+				},
+				{
+					"start": 597.6,
+					"text": "is that as you want to train each of"
+				},
+				{
+					"start": 600.24,
+					"text": "these energy systems"
+				},
+				{
+					"start": 601.6,
+					"text": "and you're getting progressively less"
+				},
+				{
+					"start": 603.52,
+					"text": "intense from the phosphagen system down"
+				},
+				{
+					"start": 605.2,
+					"text": "to the oxidative system"
+				},
+				{
+					"start": 606.64,
+					"text": "you can extend the interval time or the"
+				},
+				{
+					"start": 609.04,
+					"text": "interval duration"
+				},
+				{
+					"start": 610.32,
+					"text": "as you go from phosphagen down to"
+				},
+				{
+					"start": 611.92,
+					"text": "oxidative and the amount of rest and the"
+				},
+				{
+					"start": 614.4,
+					"text": "work to rest ratio"
+				},
+				{
+					"start": 615.92,
+					"text": "changes as well so a couple more"
+				},
+				{
+					"start": 619.76,
+					"text": "types of training to talk about the"
+				}
+			]
+		},
+		{
+			"start": 621.28,
+			"title": "HIIT — семейство высокоинтенсивных протоколов",
+			"summary": "HIIT описан как повторные высокоинтенсивные отрезки с промежуточным восстановлением и широким набором кардиореспираторных, метаболических и нервно-мышечных адаптаций.",
+			"theses": [
+				"Пауза в HIIT не обязана быть короче работы: существуют эффективные схемы 1:1, 1:2 и с переменной длительностью.",
+				"Адаптация зависит от режима упражнения, общей продолжительности, мощности и того, сколько качества удаётся повторить."
+			],
+			"anchor": "first is hiit",
+			"segments": [
+				{
+					"start": 621.28,
+					"text": "first is hiit"
+				},
+				{
+					"start": 623.2,
+					"text": "training or hit training or high"
+				},
+				{
+					"start": 625.04,
+					"text": "intensity interval"
+				},
+				{
+					"start": 626.88,
+					"text": "training this is where you have brief"
+				},
+				{
+					"start": 628.96,
+					"text": "repeated bouts"
+				},
+				{
+					"start": 630.32,
+					"text": "of very high intensity exercise with"
+				},
+				{
+					"start": 633.04,
+					"text": "intermittent recovery periods"
+				},
+				{
+					"start": 635.76,
+					"text": "and these recovery periods are short"
+				},
+				{
+					"start": 638.08,
+					"text": "shorter than the actual work periods"
+				},
+				{
+					"start": 640.24,
+					"text": "and this will elicit and we've seen this"
+				},
+				{
+					"start": 642.4,
+					"text": "in the in the research"
+				},
+				{
+					"start": 644.08,
+					"text": "illicit cardiopulmonary metabolic and"
+				},
+				{
+					"start": 646.56,
+					"text": "neuromuscular"
+				},
+				{
+					"start": 647.68,
+					"text": "adaptations now during hit"
+				},
+				{
+					"start": 651.12,
+					"text": "training you need to be sure that you"
+				},
+				{
+					"start": 653.04,
+					"text": "accumulate enough duration"
+				},
+				{
+					"start": 655.28,
+					"text": "and intensity during the active portions"
+				}
+			]
+		},
+		{
+			"start": 658.08,
+			"title": "Время выше 90% VO2max нельзя посчитать по заданию",
+			"summary": "Лекция рекомендует накопить несколько минут выше 90% VO2max, но пример приравнивает минуту заданной интенсивности к минуте фактического кислородного ответа.",
+			"theses": [
+				"Из-за кинетики VO2 короткий отрезок может завершиться до достижения 90%, даже если скорость высока.",
+				"Измеренное время выше порога зависит от протокола; длинные и переменные интервалы нередко дают больше такого времени, чем очень короткие."
+			],
+			"anchor": "during the high intensity intervals such",
+			"segments": [
+				{
+					"start": 658.08,
+					"text": "during the high intensity intervals such"
+				},
+				{
+					"start": 660.24,
+					"text": "that you have at least"
+				},
+				{
+					"start": 661.44,
+					"text": "several minutes above ninety percent of"
+				},
+				{
+					"start": 663.44,
+					"text": "vo2 max"
+				},
+				{
+					"start": 664.48,
+					"text": "so what does this look like this looks"
+				},
+				{
+					"start": 666.08,
+					"text": "like this looks like training for one"
+				},
+				{
+					"start": 668.56,
+					"text": "minute let's say"
+				},
+				{
+					"start": 669.84,
+					"text": "at an intensity of ninety percent if"
+				},
+				{
+					"start": 671.84,
+					"text": "your two max are over"
+				},
+				{
+					"start": 673.12,
+					"text": "then you rest for maybe 30 seconds and"
+				},
+				{
+					"start": 675.2,
+					"text": "then you repeat it"
+				},
+				{
+					"start": 676.48,
+					"text": "four times that gives you four minutes"
+				},
+				{
+					"start": 678.8,
+					"text": "of training above 90"
+				},
+				{
+					"start": 680.08,
+					"text": "vo2 max you have an incomplete rest so"
+				},
+				{
+					"start": 683.2,
+					"text": "epoch is going to be greater and greater"
+				},
+				{
+					"start": 685.68,
+					"text": "at the end of each interval and you'll"
+				},
+				{
+					"start": 687.44,
+					"text": "and you'll"
+				},
+				{
+					"start": 688,
+					"text": "start each interval already pre-fatigued"
+				},
+				{
+					"start": 690.88,
+					"text": "very hard style of training"
+				},
+				{
+					"start": 692.32,
+					"text": "but it can be very very efficient at"
+				},
+				{
+					"start": 695.04,
+					"text": "training"
+				},
+				{
+					"start": 695.68,
+					"text": "the fast glycolytic and oxidative"
+				},
+				{
+					"start": 697.92,
+					"text": "systems"
+				},
+				{
+					"start": 698.96,
+					"text": "also because intensity is high you also"
+				},
+				{
+					"start": 701.68,
+					"text": "will get some neuromuscular"
+				},
+				{
+					"start": 703.28,
+					"text": "adaptations it's better at preserving"
+				},
+				{
+					"start": 706.32,
+					"text": "strength"
+				},
+				{
+					"start": 707.04,
+					"text": "it's better at even increasing strength"
+				},
+				{
+					"start": 709.2,
+					"text": "perhaps in untrained individuals"
+				},
+				{
+					"start": 711.52,
+					"text": "and so it's just a very efficient style"
+				},
+				{
+					"start": 713.52,
+					"text": "of training"
+				},
+				{
+					"start": 714.72,
+					"text": "suggested work to rest ratios are one to"
+				},
+				{
+					"start": 717.04,
+					"text": "one maybe even"
+				},
+				{
+					"start": 718.48,
+					"text": "two to one so in the original tabata"
+				}
+			]
+		},
+		{
+			"start": 721.04,
+			"title": "Tabata 20/10 — конкретный протокол",
+			"summary": "Схема 20 секунд работы и 10 секунд отдыха приведена как пример отношения 2:1.",
+			"theses": [
+				"Оригинальная структура была экстремально интенсивной и ограниченной несколькими повторениями, поэтому бытовые круговые 20/10 не равны ей автоматически.",
+				"Выбирать формат следует по возможности удержать требуемую мощность и технику, а не по известному названию."
+			],
+			"anchor": "paper where",
+			"segments": [
+				{
+					"start": 721.04,
+					"text": "paper where"
+				},
+				{
+					"start": 722,
+					"text": "they looked at 20 seconds on and 10"
+				},
+				{
+					"start": 724.72,
+					"text": "seconds off it was a two to one work to"
+				},
+				{
+					"start": 726.64,
+					"text": "rest ratio"
+				}
+			]
+		},
+		{
+			"start": 729.36,
+			"title": "Риски HIIT: утомление вместо «adrenal fatigue»",
+			"summary": "Автор предупреждает о высокой цене восстановления и риске травмы, но использует некорректный термин «adrenal fatigue».",
+			"theses": [
+				"В спортивной практике оценивают накопленное утомление, перенапряжение, симптомы перетренированности, сон, настроение и динамику результата.",
+				"HIIT дозируют экономно, особенно при высокой ударной нагрузке, дефиците восстановления и одновременной тяжёлой силовой работе."
+			],
+			"anchor": "now some drawbacks of hit training",
+			"segments": [
+				{
+					"start": 729.36,
+					"text": "now some drawbacks of hit training"
+				},
+				{
+					"start": 732.72,
+					"text": "one is that you can get adrenal fatigue"
+				},
+				{
+					"start": 734.64,
+					"text": "if you're always doing this type of"
+				},
+				{
+					"start": 735.92,
+					"text": "training it's just very intense and hard"
+				},
+				{
+					"start": 737.6,
+					"text": "to recover from"
+				},
+				{
+					"start": 738.56,
+					"text": "and it can also result in greater stress"
+				},
+				{
+					"start": 740.56,
+					"text": "and risk of injury because the power"
+				},
+				{
+					"start": 742.16,
+					"text": "output is just so"
+				},
+				{
+					"start": 743.52,
+					"text": "so high and you're getting so fatigued"
+				},
+				{
+					"start": 746.16,
+					"text": "so"
+				},
+				{
+					"start": 746.64,
+					"text": "we should use it sparingly but it is a"
+				},
+				{
+					"start": 748.72,
+					"text": "great tool in the toolbox"
+				}
+			]
+		},
+		{
+			"start": 752.24,
+			"title": "Совмещённая силовая и аэробная подготовка",
+			"summary": "Лекция обсуждает добавление выносливости силовым и скоростным атлетам и опасается снижения анаэробных адаптаций.",
+			"theses": [
+				"Интерференция возможна при высоком объёме и конфликтующих стимулах, но не является неизбежным результатом любой аэробной работы.",
+				"Аэробная подготовка поддерживает здоровье, рабочую ёмкость и восстановление между повторными высокоинтенсивными эпизодами."
+			],
+			"anchor": "now we also have to talk about",
+			"segments": [
+				{
+					"start": 752.24,
+					"text": "now we also have to talk about"
+				},
+				{
+					"start": 753.52,
+					"text": "combination training combination"
+				},
+				{
+					"start": 755.68,
+					"text": "training is when you add in"
+				},
+				{
+					"start": 757.52,
+					"text": "aerobic endurance to the training of"
+				},
+				{
+					"start": 760.56,
+					"text": "anaerobic athletes in order to enhance"
+				},
+				{
+					"start": 762.64,
+					"text": "recovery"
+				},
+				{
+					"start": 764.08,
+					"text": "we should be careful with this okay so"
+				},
+				{
+					"start": 765.92,
+					"text": "we should be careful sending our"
+				},
+				{
+					"start": 767.28,
+					"text": "baseball players"
+				},
+				{
+					"start": 768.32,
+					"text": "out on long runs especially"
+				},
+				{
+					"start": 771.44,
+					"text": "when you're doing it in order to flush"
+				},
+				{
+					"start": 773.68,
+					"text": "lactate or some"
+				},
+				{
+					"start": 774.88,
+					"text": "something like that that's not exactly"
+				},
+				{
+					"start": 777.04,
+					"text": "founded on physiological evidence we"
+				},
+				{
+					"start": 778.64,
+					"text": "should be careful if we're sending our"
+				},
+				{
+					"start": 780.08,
+					"text": "strength athletes"
+				},
+				{
+					"start": 781.2,
+					"text": "out to do endurance type work because"
+				},
+				{
+					"start": 784.48,
+					"text": "these could decrease their anaerobic"
+				},
+				{
+					"start": 786.8,
+					"text": "performance capabilities"
+				},
+				{
+					"start": 788.88,
+					"text": "they could result in conversion of type"
+				},
+				{
+					"start": 791.44,
+					"text": "2 muscle fibers"
+				},
+				{
+					"start": 792.48,
+					"text": "down to more type 1 fibers or"
+				},
+				{
+					"start": 796,
+					"text": "they could at least reduce the size of"
+				},
+				{
+					"start": 798.64,
+					"text": "and the"
+				},
+				{
+					"start": 799.76,
+					"text": "in the anaerobic enzyme capacity of type"
+				},
+				{
+					"start": 802.16,
+					"text": "2 or fast twitch muscle fibers"
+				},
+				{
+					"start": 804.48,
+					"text": "it can be a lot of impact on these"
+				},
+				{
+					"start": 806,
+					"text": "larger athletes joints"
+				},
+				{
+					"start": 807.68,
+					"text": "and in general it's very unspecific to"
+				}
+			]
+		},
+		{
+			"start": 810.08,
+			"title": "Как дать аэробный стимул силовому атлету",
+			"summary": "Автор предлагает выбирать менее ударные и более специфичные форматы с повторной высокой мощностью и частичным восстановлением.",
+			"theses": [
+				"Велосипед, гребля, санки и низкоударные интервалы могут снизить ортопедическую цену по сравнению с большим беговым объёмом.",
+				"HIIT не всегда лучший ответ: лёгкая низкоинтенсивная работа часто проще восстанавливается и меньше конкурирует с качеством силовой сессии."
+			],
+			"anchor": "their training so we want to look at",
+			"segments": [
+				{
+					"start": 810.08,
+					"text": "their training so we want to look at"
+				},
+				{
+					"start": 811.6,
+					"text": "some other ways to stimulate aerobic"
+				},
+				{
+					"start": 813.92,
+					"text": "endurance in our strength and power"
+				},
+				{
+					"start": 815.84,
+					"text": "athletes"
+				},
+				{
+					"start": 816.48,
+					"text": "we do know that they need some of it at"
+				},
+				{
+					"start": 818,
+					"text": "least to recover from their high"
+				},
+				{
+					"start": 819.44,
+					"text": "intensity bouts"
+				},
+				{
+					"start": 820.56,
+					"text": "so perhaps something like hit training"
+				},
+				{
+					"start": 822.8,
+					"text": "would be better for them"
+				},
+				{
+					"start": 823.84,
+					"text": "or training that is more specific to"
+				},
+				{
+					"start": 826.48,
+					"text": "their sport that involves some sort of"
+				},
+				{
+					"start": 828,
+					"text": "high power output"
+				},
+				{
+					"start": 829.12,
+					"text": "and then a partial recovery before"
+				},
+				{
+					"start": 831.04,
+					"text": "another high power output"
+				}
+			]
+		},
+		{
+			"start": 834.48,
+			"title": "Когда возникает интерференция",
+			"summary": "Финальный список утверждает, что аэробная работа снижает гипертрофию, максимальную силу, скорость и мощность; такая формулировка чрезмерно общая.",
+			"theses": [
+				"Риск выше при большом дополнительном объёме, высокой усталости, беге с ударной нагрузкой и размещении конфликтующих сессий вплотную.",
+				"Разнесение сессий, контроль объёма и приоритет главного качества позволяют сочетать развитие выносливости с силой; наиболее чувствительной может быть взрывная мощность."
+			],
+			"anchor": "so some other problems with combination",
+			"segments": [
+				{
+					"start": 834.48,
+					"text": "so some other problems with combination"
+				},
+				{
+					"start": 836.24,
+					"text": "training it can reduce"
+				},
+				{
+					"start": 838.56,
+					"text": "muscle gain it can reduce maximum"
+				},
+				{
+					"start": 841.84,
+					"text": "strength and it can reduce"
+				},
+				{
+					"start": 843.04,
+					"text": "speed and power related performance so"
+				},
+				{
+					"start": 845.12,
+					"text": "it's really just counterproductive"
+				},
+				{
+					"start": 846.56,
+					"text": "for strength and power athletes to be"
+				},
+				{
+					"start": 848.4,
+					"text": "doing aerobic endurance training"
+				}
+			]
+		},
+		{
+			"start": 851.52,
+			"title": "Практический вывод: специфично, но не одномерно",
+			"summary": "Лекция завершается принципом соответствия тренировки требованиям дисциплины; современная трактовка добавляет управление общей нагрузкой и взаимодействием адаптаций.",
+			"theses": [
+				"Сначала опишите соревновательную мощность, длительность, паузы и повторяемость, затем выберите упражнение и структуру интервалов.",
+				"Проверяйте результат по качеству повторений и динамике спортсмена, а не по соблюдению фиксированной таблицы работа/отдых."
+			],
+			"anchor": "all right guys thanks for checking out",
+			"segments": [
+				{
+					"start": 851.52,
+					"text": "all right guys thanks for checking out"
+				},
+				{
+					"start": 852.72,
+					"text": "metabolic training specificity with me"
+				},
+				{
+					"start": 854.88,
+					"text": "if you have any questions or comments"
+				},
+				{
+					"start": 856.24,
+					"text": "let me know down in the comm down in the"
+				},
+				{
+					"start": 857.84,
+					"text": "comments section"
+				},
+				{
+					"start": 858.88,
+					"text": "in the next video we're gonna start to"
+				},
+				{
+					"start": 860.24,
+					"text": "look at the endocrine response"
+				},
+				{
+					"start": 862.48,
+					"text": "to training so until then remember to"
+				},
+				{
+					"start": 865.28,
+					"text": "move well"
+				},
+				{
+					"start": 865.92,
+					"text": "live well and teach other people to do"
+				},
+				{
+					"start": 868,
+					"text": "the same"
+				},
+				{
+					"start": 871.68,
+					"text": "hey guys dr gooden here and in this"
+				},
+				{
+					"start": 873.44,
+					"text": "video we are going to talk about"
+				},
+				{
+					"start": 875.04,
+					"text": "metabolic"
+				},
+				{
+					"start": 877.67,
+					"text": "[Music]"
+				},
+				{
+					"start": 879.68,
+					"text": "can't talk"
+				},
+				{
+					"start": 886.08,
+					"text": "you"
+				}
+			]
+		}
+	],
+	"glossary": [
+		{
+			"term": "Метаболическая специфичность",
+			"definition": "соответствие тренировки энергетической мощности, длительности, паузам и повторяемости целевой спортивной задачи."
+		},
+		{
+			"term": "Интервал",
+			"definition": "заранее заданный рабочий отрезок с определённой мощностью или скоростью, после которого следует контролируемое восстановление."
+		},
+		{
+			"term": "Соотношение работа/отдых",
+			"definition": "отношение длительности рабочего отрезка к паузе; не описывает интенсивность и полноту восстановления само по себе."
+		},
+		{
+			"term": "HIIT",
+			"definition": "семейство протоколов с повторной высокой интенсивностью и промежуточным активным или пассивным восстановлением."
+		},
+		{
+			"term": "vVO2max",
+			"definition": "скорость или мощность, при которой в тесте достигается VO2max; не равна мгновенному фактическому VO2 во время короткого интервала."
+		},
+		{
+			"term": "EPOC",
+			"definition": "повышенное потребление кислорода после завершения упражнения, а не название кислородного ответа внутри пауз одной сессии."
+		},
+		{
+			"term": "Неполное восстановление",
+			"definition": "пауза, после которой физиологические показатели и энергетические субстраты не вернулись к исходному уровню."
+		},
+		{
+			"term": "Интерференция",
+			"definition": "возможное ослабление части адаптаций при совмещении конкурирующих силовых и выносливых стимулов; зависит от дозы и организации программы."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Опишите целевую работу",
+			"items": [
+				"Зафиксируйте мощность или скорость, длительность, число повторений и допустимое падение результата.",
+				"Определите, нужна ли полная повторяемость мощности или накопление работы при неполном восстановлении.",
+				"Выберите упражнение, которое не создаёт лишней технической или ударной цены."
+			]
+		},
+		{
+			"title": "Управляйте паузой по цели",
+			"items": [
+				"Удлиняйте отдых, если падают скорость, мощность или техника, которые должны оставаться максимальными.",
+				"Сокращайте паузу осознанно, когда нужен плотный аэробный или гликолитический стимул.",
+				"Не называйте сессию по одной энергосистеме: фиксируйте фактический профиль работы."
+			]
+		},
+		{
+			"title": "Сочетайте качества без лишнего конфликта",
+			"items": [
+				"Ставьте приоритетное качество первым и не добавляйте выносливость, которая ухудшает ключевую силовую или скоростную работу.",
+				"Разносите тяжёлые конфликтующие сессии и подбирайте низкоударный режим для крупных силовых атлетов.",
+				"Отслеживайте сон, готовность, боль, мощность и недельный объём вместо ярлыка «adrenal fatigue»."
+			]
+		}
+	],
+	"transcript": "hey guys dr goodin here and in this video we will be talking about metabolic training specificity in the last few videos we've been talking all about the three energy systems of the body the phosphagen system the glycolytic system and the oxidative systems in this video we are going to dive into how to program training so that you are specifically adapting to each of those training systems depending on which one is the most specific to your event okay let's dive right in this info comes from chapter three of the textbook essentials of strength training and conditioning put out by the nsca the chapter is was written by doctors hera and kramer okay so the first thing to consider is the percent contribution from the anaerobic and aerobic systems during sustained efforts now this will help to inform the way that we program intervals and durations of efforts for our athletes so this is during sustained efforts in bicycle ergometry so know that when you apply these numbers to other modes of exercise it might not be a one-to-one correlation however it'll be pretty close so when we look at the exercise intensity so zero to five seconds you can go at 100 intensity and the contribution of the anaerobic system will be very high 96 the aerobic system will only contribute about 4 to that as we extend that sustained effort out to 30 seconds you can really only sustain 55 percent of your max power output for that whole 30 seconds and now we're shifting to 75 percent anaerobic and 25 aerobic out to one minute the power output drops even further and we see it's about 50 50. so if we're thinking about running an event like the 400 meters which takes about 60 seconds you know depending on if you're male or female or if you're elite or high school levels this event is going to be slightly more anaerobic than aerobic but really they're pretty close right so if you're running 50 seconds for the 400 which is you know pretty darn fast you might be using quite a bit of aerobic contribution for your energy production so although you're a sprinter technically you still have a sufficient contribution from aerobic mechanisms going out to 90 seconds and that power output drops even further and it's going to be primarily aerobic and beyond that the percent contribution from the aerobic system just increases and increases out to 200 seconds you see it up at 78 percent and farther than that the trend would continue now the key point from this table is that the use of appropriate exercise intensities and rest intervals allows us to more or less select a specific energy system to focus on during training and this results in a more efficient and productive training regimen especially for athletes whose events have very specific metabolic demands okay so based on this table let me go back to the table if you have a shopper that you're training based on this the shotput lasts somewhere between zero to five seconds and so it's going to be performed at a hundred percent power output and it's a very highly anaerobic event so if you're going to do some sort of interval training with a shot putter well maybe we should be specific to the shotput event and to the energy system that this shot putter relies upon which is on the atp stores and on the creatine phosphate system perhaps singles in the back squat repeat singles at just under 80 85 percent so you can move the bar explosively and fast with decent rest in between is going to be a great training stimulus because we're training in that zero to five second range maybe we do singles maybe we do doubles and we just repeat that or maybe maybe the power snatch or something like that or maybe 10 meter sprint starts maybe even five meter starts or maybe even an explosive broad jump where you then rest in between it if we think about something different maybe a an 800 meter runner who's going to be out here somewhere between 90 and 200 seconds this athlete will be mostly aerobic okay and so we need some aerobic development we also though need some anaerobic development and so if we were thinking of conditioning their energy system for their event well we're going to want to focus on things that are primarily aerobic but that have an anaerobic component so maybe we're doing repeat 200s or repeat 400s where the rest is shortened to allow them to accumulate fatigue and to enter the next repetition with an oxygen deficit to really tax those systems but the speed has to be high enough right the intensity has to be high enough they shouldn't probably go on super long runs 15 mile runs are not going to necessarily benefit an 800 meter runner now you could argue that some of the greatest 800 meter runners have also been amazing longer distance runners that's for another time the key point though is we can use tables like this to inform the design of our training plans so that we can ensure we're selecting the right energy system to train for our athletes so i've mentioned interval training a few times interval training is important because it emphasizes certain bioenergetic adaptations for a more efficient energy transfer within metabolic pathways by using predetermined intervals of exercise and rest periods so an interval is a single effort of some sort of exercise whether it's running or swimming or biking or lifting an interval is a single effort and then you have a rest period and then you perform another interval and these intervals are usually predetermined right so you might say to an athlete go out and run eight by 200 meters on the track in 30 seconds per 200 with a 200 meter walking recovery so that athlete would go to the track they would get on the line they would run 200 meters in 30 seconds and then they would walk the next 200 meters back to the start and do it all again that would be an example of interval training now with interval training much more training can be accomplished and at higher intensities because we're providing the athlete with rest now they can hit that same interval again and again and again at the desired intensity they'll get fatigued each time but we're allowing their body to recover and replete some of these substrates we're allowing epoc to come down at least a little bit before they start the next interval and therefore we can get a much higher volume of training at a higher intensity now the textbook gives some loose guidelines for work to rest ratios for intervals depending on the energy system that you want to stress now i say loose guidelines because if you've been a coach for any number of years you know that there are a variety of ways of very creative ways to stress each of these energy systems and it may fall outside of these guidelines here but let's look at what the textbook says so if you are wanting to train the phosphagen system you better be training at 90 to 100 of your max power output typical exercise time is under 10 seconds and you should have a lot of rest 12 to 20 times as much rest as working during that interval training right so let's say you do a power snatch it takes you one one and a half seconds well you should rest well not really 12 seconds you should rest a minute or so before you go do another one right a lot more rest than work if you're training the fast glycolysis system typical exercise time 15 to 30 seconds i might say even pushing 30 seconds out to a minute and you want again more rest than work but not quite as much maybe three to one or five to one as far as resting compared to working so if you run a 30 second interval and you want to be fully recovered for the next one maybe give the athlete 90 seconds of rest getting into the fast glycolysis and oxidative system these efforts will last around one to three minutes and this is typically the amount of time you spend on an interval if you are trying to improve your vo2 max or to run at around that velocity that you're capable of for your vo2 max and we typically want a one to three or one to four work to rest ratio and then finally for the oxidative system these efforts will last longer than three minutes notice that the power output is going down with is stepping down with each of these and we can have as little as one to one work to rest ratio now again these are just guidelines because in programming for distance runners i've coached a lot of distance runners in my career we often use incomplete rest during intervals where we kind of flip the paradigm on its head maybe you're running a mile and then you get 30 seconds rest or 90 seconds rest and then you go run another mile at the same pace but the pace of those miles are more in line with the oxidative system so they're not all out but they're maybe at 10k pace or half marathon pace and we just get a short rest to break up the effort and extend the amount of good quality volume that that athlete can do so again these are just guidelines but the key point here is that as you want to train each of these energy systems and you're getting progressively less intense from the phosphagen system down to the oxidative system you can extend the interval time or the interval duration as you go from phosphagen down to oxidative and the amount of rest and the work to rest ratio changes as well so a couple more types of training to talk about the first is hiit training or hit training or high intensity interval training this is where you have brief repeated bouts of very high intensity exercise with intermittent recovery periods and these recovery periods are short shorter than the actual work periods and this will elicit and we've seen this in the in the research illicit cardiopulmonary metabolic and neuromuscular adaptations now during hit training you need to be sure that you accumulate enough duration and intensity during the active portions during the high intensity intervals such that you have at least several minutes above ninety percent of vo2 max so what does this look like this looks like this looks like training for one minute let's say at an intensity of ninety percent if your two max are over then you rest for maybe 30 seconds and then you repeat it four times that gives you four minutes of training above 90 vo2 max you have an incomplete rest so epoch is going to be greater and greater at the end of each interval and you'll and you'll start each interval already pre-fatigued very hard style of training but it can be very very efficient at training the fast glycolytic and oxidative systems also because intensity is high you also will get some neuromuscular adaptations it's better at preserving strength it's better at even increasing strength perhaps in untrained individuals and so it's just a very efficient style of training suggested work to rest ratios are one to one maybe even two to one so in the original tabata paper where they looked at 20 seconds on and 10 seconds off it was a two to one work to rest ratio now some drawbacks of hit training one is that you can get adrenal fatigue if you're always doing this type of training it's just very intense and hard to recover from and it can also result in greater stress and risk of injury because the power output is just so so high and you're getting so fatigued so we should use it sparingly but it is a great tool in the toolbox now we also have to talk about combination training combination training is when you add in aerobic endurance to the training of anaerobic athletes in order to enhance recovery we should be careful with this okay so we should be careful sending our baseball players out on long runs especially when you're doing it in order to flush lactate or some something like that that's not exactly founded on physiological evidence we should be careful if we're sending our strength athletes out to do endurance type work because these could decrease their anaerobic performance capabilities they could result in conversion of type 2 muscle fibers down to more type 1 fibers or they could at least reduce the size of and the in the anaerobic enzyme capacity of type 2 or fast twitch muscle fibers it can be a lot of impact on these larger athletes joints and in general it's very unspecific to their training so we want to look at some other ways to stimulate aerobic endurance in our strength and power athletes we do know that they need some of it at least to recover from their high intensity bouts so perhaps something like hit training would be better for them or training that is more specific to their sport that involves some sort of high power output and then a partial recovery before another high power output so some other problems with combination training it can reduce muscle gain it can reduce maximum strength and it can reduce speed and power related performance so it's really just counterproductive for strength and power athletes to be doing aerobic endurance training all right guys thanks for checking out metabolic training specificity with me if you have any questions or comments let me know down in the comm down in the comments section in the next video we're gonna start to look at the endocrine response to training so until then remember to move well live well and teach other people to do the same hey guys dr gooden here and in this video we are going to talk about metabolic [Music] can't talk you"
+}

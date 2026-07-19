@@ -669,6 +669,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Bioenergetics of the Lactate Threshold - CSCS Chapter 3 [lyJxyUaqRUU]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/metabolicheskaya-spetsifichnost-trenirovki.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Metabolic Training Specificity - CSCS Chapter 3 [yDLff_Zrmoo]/transcript.json'
+		)
 	}
 ];
 
