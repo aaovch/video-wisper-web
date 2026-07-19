@@ -78,7 +78,8 @@ export const collections: Collection[] = [
 			'laktatnyi-porog-bioenergetika',
 			'metabolicheskaya-spetsifichnost-trenirovki',
 			'istoschenie-i-vosstanovlenie-substratov',
-			'gormon-myshechnye-vzaimodeystviya'
+			'gormon-myshechnye-vzaimodeystviya',
+			'osnovnye-anabolicheskie-gormony'
 		]
 	},
 	{

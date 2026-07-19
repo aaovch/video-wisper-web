@@ -690,6 +690,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Hormone-Muscle Interactions - CSCS Chapter 4 [lDUfvVZgdJc]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/osnovnye-anabolicheskie-gormony.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Primary Anabolic Hormones - CSCS Chapter 4 [W9Fsf0R3vuU]/transcript.json'
+		)
 	}
 ];
 
