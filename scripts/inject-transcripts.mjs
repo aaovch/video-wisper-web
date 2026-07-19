@@ -648,6 +648,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Muscle Contraction Explained - Concentric Isometric and Eccentric [MFf9dSf7T_Q]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/faktory-myshechnoy-sily-i-moshchnosti.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Factors Affecting Muscle Strength and Power - CSCS Chapter 2 [v2UP700CqA0]/transcript.json'
+		)
 	}
 ];
 

@@ -72,7 +72,8 @@ export const collections: Collection[] = [
 			'sem-dvigatelnyh-patternov',
 			'biomehanika-i-myshechnye-rychagi',
 			'sila-moshchnost-i-rabota-v-biomehanike',
-			'tri-rezhima-myshechnogo-deystviya'
+			'tri-rezhima-myshechnogo-deystviya',
+			'faktory-myshechnoy-sily-i-moshchnosti'
 		]
 	},
 	{
