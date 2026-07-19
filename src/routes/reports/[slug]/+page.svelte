@@ -78,6 +78,7 @@
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
+	let additionalOpen = $state(false);
 	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
 	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
@@ -429,6 +430,11 @@
 		setTimeout(() => playerComp?.seekAndPlay?.(target), 0);
 	});
 
+	// Прямая ссылка на дополнительные материалы должна раскрывать свернутый блок.
+	$effect(() => {
+		if (browser && page.url.hash === '#additional-title') additionalOpen = true;
+	});
+
 	// Блок на позиции плеера: держится и на паузе (пока воспроизведение хоть раз начиналось).
 	const playingIndex = $derived(playbackStarted ? activeChapterIndex : -1);
 	// Активный пункт в «Содержании»: воспроизведение приоритетнее скролла.
@@ -497,7 +503,10 @@
 			return;
 		}
 		if (hit.zone === 'additional') {
-			document.getElementById('additional-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			additionalOpen = true;
+			requestAnimationFrame(() => {
+				document.getElementById('additional-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
 			return;
 		}
 		if (hit.zone === 'theses') {
@@ -596,7 +605,15 @@
 
 			{#if hasAdditional}
 				<section class="additional" aria-labelledby="additional-title">
-					<div class="section-heading section-heading--plain"><h2 id="additional-title">Материалы лекции</h2></div>
+					<details class="additional-disclosure" bind:open={additionalOpen}>
+						<summary id="additional-title" class="additional-summary">
+							<span class="additional-title" role="heading" aria-level="2">Материалы лекции</span>
+							<span class="additional-summary-action">
+								<span>{additionalOpen ? 'Свернуть' : 'Раскрыть'}</span>
+								<CaretDown size={18} aria-hidden="true" />
+							</span>
+						</summary>
+						<div class="additional-content">
 
 			{#if reportFocusTabs.length > 0}
 				<section class="focus-section reveal extra-block" aria-label="Тематические срезы" {@attach reveal()}>
@@ -844,6 +861,8 @@
 					</details>
 				</section>
 			{/if}
+						</div>
+					</details>
 				</section>
 			{/if}
 			</div>
@@ -1271,7 +1290,42 @@
 	.chapters > .section-heading { margin-bottom: 10px; }
 	.chapters > .section-heading + .reveal :global(.chapter) { border-top: 0; }
 	.additional { margin-top: 0; }
-	.additional > .section-heading { margin-bottom: 12px; }
+	.additional-disclosure { border: 0; }
+	.additional-summary {
+		min-height: 58px;
+		padding: 8px 0 12px;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		cursor: pointer;
+	}
+	.additional-summary::-webkit-details-marker { display: none; }
+	.additional-summary:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 5px;
+		border-radius: 4px;
+	}
+	.additional-title {
+		font-size: clamp(27px, 2.8vw, 36px);
+		font-weight: 500;
+		line-height: 1.1;
+	}
+	.additional-summary-action {
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--accent);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	.additional-summary-action :global(svg) { transition: transform 0.2s ease; }
+	.additional-disclosure[open] .additional-summary-action :global(svg) { transform: rotate(180deg); }
+	.additional-content { padding-top: 2px; }
 	.extra-block { margin-top: 0; }
 	.extra-block + .extra-block { margin-top: 2px; }
 	.seminar-materials details + details { margin-top: 2px; }
@@ -1657,6 +1711,8 @@
 
 	@media (max-width: 560px) {
 		.report-meta { display: grid; gap: 9px; }
+		.additional-summary { gap: 12px; }
+		.additional-summary-action > span { display: none; }
 		.section-heading { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; }
 		.overview > ul, .more-theses ul { margin-left: 38px; }
 		.more-theses { margin-left: 38px; }
