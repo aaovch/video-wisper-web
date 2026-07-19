@@ -1,0 +1,2460 @@
+{
+	"slug": "neyronnye-adaptatsii-k-anaerobnoy-trenirovke",
+	"title": "Нейронные адаптации к анаэробной тренировке",
+	"subtitle": "Джейкоб Гудин: принцип размера, моторные единицы, ЭМГ, ранний прирост силы и межконечностный перенос",
+	"source_name": "Neural Adaptations to Anaerobic Training - CSCS Chapter 5 [RhhCKpum8yM]",
+	"source_url": "https://www.youtube.com/watch?v=RhhCKpum8yM",
+	"note": "Русский смысловой отчёт по англоязычной лекции Dr. Jacob Goodin; исходная расшифровка сохранена на английском. Уточнены определение анаэробной работы, принцип размера Хеннемана, отсутствие общего обратного рекрутирования у тренированных, различие рекрутирования и синхронизации, ограничения поверхностной ЭМГ, сроки нервных и мышечных адаптаций, механизмы кросс-образования, двусторонний дефицит и роль коактивации антагонистов. Материал предназначен для обучения тренеров и не заменяет неврологическую или реабилитационную диагностику. YouTube embed, 16:34.",
+	"duration": 994,
+	"tags": [
+		"Силовая подготовка",
+		"Кондиционная подготовка",
+		"Нейрофизиология",
+		"Моторные единицы",
+		"Принцип размера",
+		"ЭМГ",
+		"Кросс-образование",
+		"Jacob Goodin",
+		"28 блоков"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "RhhCKpum8yM"
+	},
+	"overview_theses": [
+		"Силовая, спринтерская и плиометрическая подготовка меняют управление движением на уровне коры, нисходящих путей, спинальных цепей, моторных единиц и межмышечной координации.",
+		"Принцип размера Хеннемана описывает преимущественно упорядоченное рекрутирование от низкопороговых моторных единиц к высокопороговым по мере роста общего синаптического входа; он не утверждает, что все волокна обязательно одинаково гипертрофируются.",
+		"Высокопороговые единицы рекрутируются при большой потребности в силе, высокой скорости нарастания усилия или при утомлении во время более лёгкой работы; убедительных оснований считать обратный порядок общей адаптацией продвинутых атлетов нет.",
+		"Сила регулируется сочетанием рекрутирования моторных единиц, частоты их импульсации, координации мышц, техники и морфологии; синхронизация — не универсальный главный механизм прироста силы.",
+		"Поверхностная ЭМГ отражает электрическую активность, но её амплитуда зависит также от геометрии, положения электродов, потенциалов моторных единиц и сокращения сигналов, поэтому не является прямым счётчиком нервного драйва.",
+		"Ранние улучшения силы часто имеют большую нервную и навыковую составляющую, однако сократительные и мышечные изменения начинаются параллельно; формула «первые четыре недели почти на 100% нервные» слишком категорична.",
+		"Кросс-образование позволяет односторонней тренировке немного повысить силу противоположной конечности преимущественно через центральные механизмы, но не означает сопоставимой гипертрофии нетренированной стороны.",
+		"Двусторонний дефицит и коактивация антагонистов зависят от упражнения, скорости, опыта, устойчивости и метода тестирования; их нельзя трактовать только как защитный «ограничитель» организма."
+	],
+	"chapters": [
+		{
+			"start": 1.04,
+			"title": "Тема лекции",
+			"summary": "Автор вводит нервные адаптации к силовой, спринтерской, плиометрической и другой высокоинтенсивной подготовке.",
+			"theses": [
+				"Нервная система меняет способность выражать уже имеющийся мышечный потенциал.",
+				"Адаптация специфична движению, скорости, усилию и тренировочному опыту."
+			],
+			"anchor": "what's up guys dr gooden here to talk",
+			"segments": [
+				{
+					"start": 1.04,
+					"text": "what's up guys dr gooden here to talk"
+				},
+				{
+					"start": 2.88,
+					"text": "about"
+				},
+				{
+					"start": 3.28,
+					"text": "neural adaptations to anaerobic training"
+				},
+				{
+					"start": 6.16,
+					"text": "programs"
+				},
+				{
+					"start": 6.72,
+					"text": "coming up"
+				},
+				{
+					"start": 18.38,
+					"text": "[Music]"
+				}
+			]
+		},
+		{
+			"start": 21.52,
+			"title": "Что объединяет анаэробные методы",
+			"summary": "Лекция объединяет силовую работу, спринты, плиометрику и интервалы по высокой мощности и прерывистой структуре.",
+			"theses": [
+				"Все энергосистемы работают одновременно; термин «анаэробная тренировка» описывает доминирующий запрос, а не отсутствие кислорода.",
+				"Работать можно на мощности выше мощности при VO2max, но фактическое потребление кислорода не бывает «выше собственного VO2max»."
+			],
+			"anchor": "when we're talking about anaerobic",
+			"segments": [
+				{
+					"start": 21.52,
+					"text": "when we're talking about anaerobic"
+				},
+				{
+					"start": 23.2,
+					"text": "training programs we are referring to"
+				},
+				{
+					"start": 25.28,
+					"text": "plyometric training"
+				},
+				{
+					"start": 26.64,
+					"text": "resistance training sprint training"
+				},
+				{
+					"start": 29.04,
+					"text": "anything that's high"
+				},
+				{
+					"start": 30,
+					"text": "enough intensity to be well over the vo2"
+				},
+				{
+					"start": 33.12,
+					"text": "max"
+				},
+				{
+					"start": 33.6,
+					"text": "of an athlete and there's a variety of"
+				},
+				{
+					"start": 35.68,
+					"text": "adaptations that are similar"
+				},
+				{
+					"start": 37.44,
+					"text": "across all these different styles of"
+				},
+				{
+					"start": 39.12,
+					"text": "training as long as they're"
+				},
+				{
+					"start": 40.8,
+					"text": "anaerobic in nature so let's take a look"
+				}
+			]
+		},
+		{
+			"start": 45.2,
+			"title": "Контекст главы NSCA",
+			"summary": "Материал относится к пятой главе Essentials of Strength Training and Conditioning и задаёт учебную карту адаптаций.",
+			"theses": [
+				"Учебные категории помогают организовать тему, но границы между нервными, мышечными и метаболическими изменениями условны.",
+				"В отчёте общая схема сохранена, а спорные причинные утверждения уточнены."
+			],
+			"anchor": "okay this comes from the essentials of",
+			"segments": [
+				{
+					"start": 45.2,
+					"text": "okay this comes from the essentials of"
+				},
+				{
+					"start": 46.72,
+					"text": "strength training and conditioning"
+				},
+				{
+					"start": 48.8,
+					"text": "by hoff and triplett this chapter was"
+				},
+				{
+					"start": 51.92,
+					"text": "written by dr"
+				},
+				{
+					"start": 52.88,
+					"text": "duncan french now the first"
+				}
+			]
+		},
+		{
+			"start": 56.8,
+			"title": "Определение интенсивной интервальной работы",
+			"summary": "Автор называет анаэробными короткие интервалы выше лактатного порога или мощности при VO2max.",
+			"theses": [
+				"Лактатный порог не является границей, после которой работа внезапно становится анаэробной.",
+				"Интервал дольше минуты также может иметь крупный неокислительный вклад; длительность сама по себе не определяет систему.",
+				"Силовой подход похож на интервал по структуре работа–отдых, но это не делает все интервальные методы физиологически одинаковыми."
+			],
+			"anchor": "key term to define is anaerobic training",
+			"segments": [
+				{
+					"start": 56.8,
+					"text": "key term to define is anaerobic training"
+				},
+				{
+					"start": 59.36,
+					"text": "now in the intro"
+				},
+				{
+					"start": 61.04,
+					"text": "i describe some different types of of"
+				},
+				{
+					"start": 63.44,
+					"text": "anaerobic training"
+				},
+				{
+					"start": 64.48,
+					"text": "and really any type of anaerobic"
+				},
+				{
+					"start": 66.16,
+					"text": "training has to be of sufficiently high"
+				},
+				{
+					"start": 68.4,
+					"text": "intensity"
+				},
+				{
+					"start": 70.16,
+					"text": "and it's typically involving"
+				},
+				{
+					"start": 71.92,
+					"text": "intermittent bounce bouts so some sort"
+				},
+				{
+					"start": 74.08,
+					"text": "of interval training"
+				},
+				{
+					"start": 75.28,
+					"text": "such as weight training which is"
+				},
+				{
+					"start": 77.28,
+					"text": "technically interval training if you"
+				},
+				{
+					"start": 78.96,
+					"text": "think about it"
+				},
+				{
+					"start": 79.76,
+					"text": "when you do a set let's say you do a set"
+				},
+				{
+					"start": 81.68,
+					"text": "of 10 and then you rest and then you do"
+				},
+				{
+					"start": 83.76,
+					"text": "another set of 10 those are really"
+				},
+				{
+					"start": 85.76,
+					"text": "two intervals that you are completing so"
+				},
+				{
+					"start": 87.76,
+					"text": "weight training is interval training"
+				},
+				{
+					"start": 90,
+					"text": "plyometric drills speed"
+				},
+				{
+					"start": 93.28,
+					"text": "training agility training"
+				},
+				{
+					"start": 96.48,
+					"text": "and some forms of interval training now"
+				},
+				{
+					"start": 98.96,
+					"text": "not all forms of interval draining"
+				},
+				{
+					"start": 101.04,
+					"text": "are anaerobic of course you have to be"
+				},
+				{
+					"start": 103.52,
+					"text": "above"
+				},
+				{
+					"start": 104.32,
+					"text": "the lactate threshold above your vo2 max"
+				},
+				{
+					"start": 107.2,
+					"text": "for them to really be considered"
+				},
+				{
+					"start": 109.2,
+					"text": "anaerobic style training so the duration"
+				},
+				{
+					"start": 111.52,
+					"text": "of these intervals needs to be"
+				},
+				{
+					"start": 113.04,
+					"text": "quite a bit shorter than a minute for it"
+				},
+				{
+					"start": 114.48,
+					"text": "to be truly considered anaerobic"
+				},
+				{
+					"start": 116.64,
+					"text": "training"
+				}
+			]
+		},
+		{
+			"start": 119.84,
+			"title": "Нервно-мышечная цепь",
+			"summary": "Адаптации рассматриваются от высших центров и спинного мозга до периферических нервов и нервно-мышечного соединения.",
+			"theses": [
+				"Движение возникает из взаимодействия центральных команд, сенсорной обратной связи, мотонейронов и мышечных свойств.",
+				"Изменения мышечного волокна сами по себе относятся к мышечной, а не нервной части цепи."
+			],
+			"anchor": "now in this video we're going to cover",
+			"segments": [
+				{
+					"start": 119.84,
+					"text": "now in this video we're going to cover"
+				},
+				{
+					"start": 121.6,
+					"text": "the neural adaptations and there are"
+				},
+				{
+					"start": 123.28,
+					"text": "many"
+				},
+				{
+					"start": 123.84,
+					"text": "neural adaptations that come along with"
+				},
+				{
+					"start": 125.92,
+					"text": "anaerobic style"
+				},
+				{
+					"start": 127.36,
+					"text": "training now these adaptations occur"
+				},
+				{
+					"start": 130.48,
+					"text": "all along the neuromuscular chain the"
+				},
+				{
+					"start": 132.8,
+					"text": "neuromuscular chain refers to"
+				},
+				{
+					"start": 134.88,
+					"text": "your central nervous system starting at"
+				},
+				{
+					"start": 136.96,
+					"text": "the brain and then going down the spinal"
+				},
+				{
+					"start": 138.88,
+					"text": "cord"
+				},
+				{
+					"start": 139.44,
+					"text": "all the way out to the peripheral"
+				},
+				{
+					"start": 140.56,
+					"text": "nervous system into the neuromuscular"
+				},
+				{
+					"start": 142.72,
+					"text": "junction so we see adaptations at"
+				},
+				{
+					"start": 144.64,
+					"text": "all of these levels from the higher"
+				},
+				{
+					"start": 146.64,
+					"text": "brain centers"
+				},
+				{
+					"start": 148.32,
+					"text": "down even to the individual muscle"
+				},
+				{
+					"start": 150.24,
+					"text": "fibers themselves"
+				}
+			]
+		},
+		{
+			"start": 152.72,
+			"title": "Потенциальные уровни адаптации",
+			"summary": "Перечисляются мозг, кортикоспинальные пути, сухожильные и миотатические рефлексы, нервно-мышечное соединение и мышца.",
+			"theses": [
+				"Один тест редко локализует адаптацию на одном уровне.",
+				"Изменение результата может сочетать обучение технике, мотивацию, спинальную возбудимость, моторный выход и морфологию мышцы."
+			],
+			"anchor": "now here are some potential sites of",
+			"segments": [
+				{
+					"start": 152.72,
+					"text": "now here are some potential sites of"
+				},
+				{
+					"start": 154.64,
+					"text": "adaptation within the neuromuscular"
+				},
+				{
+					"start": 156.72,
+					"text": "system"
+				},
+				{
+					"start": 157.6,
+					"text": "so we have the brain"
+				},
+				{
+					"start": 161.04,
+					"text": "the descending corticospinal tracts"
+				},
+				{
+					"start": 164.64,
+					"text": "down your spinal cord we have"
+				},
+				{
+					"start": 168.08,
+					"text": "adaptations to reflexes so the gto"
+				},
+				{
+					"start": 171.2,
+					"text": "reflex"
+				},
+				{
+					"start": 172.64,
+					"text": "also the myotatic reflex"
+				},
+				{
+					"start": 175.92,
+					"text": "the myotatic reflex is also called the"
+				},
+				{
+					"start": 178.08,
+					"text": "stretch reflex"
+				},
+				{
+					"start": 179.52,
+					"text": "we also even have changes in the"
+				},
+				{
+					"start": 181.52,
+					"text": "individual"
+				},
+				{
+					"start": 182.72,
+					"text": "muscle fibers themselves"
+				},
+				{
+					"start": 185.84,
+					"text": "these changes that we're going to be"
+				},
+				{
+					"start": 187.12,
+					"text": "muscular and we'll talk about those in"
+				},
+				{
+					"start": 188.96,
+					"text": "another video"
+				},
+				{
+					"start": 190.08,
+					"text": "but here we have changes at the"
+				},
+				{
+					"start": 191.44,
+					"text": "neuromuscular junction"
+				},
+				{
+					"start": 193.76,
+					"text": "so we see multiple sites of neural"
+				},
+				{
+					"start": 196.84,
+					"text": "adaptation"
+				},
+				{
+					"start": 198.64,
+					"text": "now let's go through these one at a time"
+				}
+			]
+		},
+		{
+			"start": 200.88,
+			"title": "Центральные изменения",
+			"summary": "Обучение новому движению и создание высокого усилия меняют активность моторной коры и нисходящих путей.",
+			"theses": [
+				"Большая корковая активность не всегда означает лучшую производительность: по мере освоения навык может выполняться экономичнее.",
+				"Транскраниальная стимуляция и другие методы разделяют возбудимость, торможение и произвольную активацию лишь частично."
+			],
+			"anchor": "central adaptation so",
+			"segments": [
+				{
+					"start": 200.88,
+					"text": "central adaptation so"
+				},
+				{
+					"start": 202.64,
+					"text": "adaptations to the central nervous"
+				},
+				{
+					"start": 204.48,
+					"text": "system include"
+				},
+				{
+					"start": 206.4,
+					"text": "motor cortex activity increases"
+				}
+			]
+		},
+		{
+			"start": 211.68,
+			"title": "Сила и обучение упражнению",
+			"summary": "Переход от кубкового к штанговому приседанию используется как пример нового координационного требования.",
+			"theses": [
+				"Новый снаряд меняет баланс, сенсорную информацию и распределение усилия, даже если общий рисунок движения похож.",
+				"Повышение активности в период обучения не следует путать с постоянным увеличением нервного драйва после освоения."
+			],
+			"anchor": "the motor cortex activity increases when",
+			"segments": [
+				{
+					"start": 211.68,
+					"text": "the motor cortex activity increases when"
+				},
+				{
+					"start": 214.24,
+					"text": "the level of force developed"
+				},
+				{
+					"start": 216.08,
+					"text": "increases and when new exercises are or"
+				},
+				{
+					"start": 218.4,
+					"text": "movements are being"
+				},
+				{
+					"start": 219.6,
+					"text": "learned so really what this is saying is"
+				},
+				{
+					"start": 221.76,
+					"text": "that the greater the force output"
+				},
+				{
+					"start": 223.76,
+					"text": "of the of the exercise so if you go from"
+				},
+				{
+					"start": 226.88,
+					"text": "a goblet squat to a barbell back squat"
+				},
+				{
+					"start": 229.84,
+					"text": "now there's a force"
+				},
+				{
+					"start": 231.2,
+					"text": "output increase because of that exercise"
+				},
+				{
+					"start": 233.68,
+					"text": "you now get greater activation of the"
+				},
+				{
+					"start": 235.84,
+					"text": "motor cortex"
+				},
+				{
+					"start": 237.12,
+					"text": "likewise if you're learning the back"
+				},
+				{
+					"start": 238.56,
+					"text": "squat for the first time let's say"
+				},
+				{
+					"start": 240,
+					"text": "you're"
+				},
+				{
+					"start": 240.32,
+					"text": "graduating from a goblet squat you've"
+				},
+				{
+					"start": 242.48,
+					"text": "mastered that"
+				},
+				{
+					"start": 243.36,
+					"text": "and the strength coach has determined"
+				},
+				{
+					"start": 244.72,
+					"text": "that you can safely back squat while you"
+				},
+				{
+					"start": 246.4,
+					"text": "are still learning a new movement even"
+				},
+				{
+					"start": 247.84,
+					"text": "though it's the same"
+				},
+				{
+					"start": 248.88,
+					"text": "movement pattern it's a new exercise and"
+				},
+				{
+					"start": 251.28,
+					"text": "so your motor cortex activity will"
+				},
+				{
+					"start": 253.52,
+					"text": "actually increase as you learn that new"
+				},
+				{
+					"start": 255.28,
+					"text": "skill"
+				}
+			]
+		},
+		{
+			"start": 257.84,
+			"title": "Синапсы и миелин",
+			"summary": "Лекция предполагает усиление синапсов и миелинизацию нисходящих путей как часть долговременной нейропластичности.",
+			"theses": [
+				"Структурная пластичность возможна, но конкретный вклад миелина после обычной силовой программы у человека измерить трудно.",
+				"Практически важнее наблюдаемая специфичность навыка и воспроизводимость силы, чем недоступный тренеру структурный маркер."
+			],
+			"anchor": "there are also changes the strengthening",
+			"segments": [
+				{
+					"start": 257.84,
+					"text": "there are also changes the strengthening"
+				},
+				{
+					"start": 260.64,
+					"text": "of synapses"
+				},
+				{
+					"start": 261.76,
+					"text": "the myelination of axons that takes"
+				},
+				{
+					"start": 265.12,
+					"text": "place"
+				},
+				{
+					"start": 265.6,
+					"text": "in those descending corticospinal tracts"
+				}
+			]
+		},
+		{
+			"start": 269.44,
+			"title": "Моторные единицы и максимальное усилие",
+			"summary": "Рост силы и мощности связывается с рекрутированием, частотой импульсации и координацией моторных единиц.",
+			"theses": [
+				"Рекрутирование добавляет активные единицы, а rate coding меняет частоту разрядов уже активных мотонейронов.",
+				"Относительный вклад механизмов зависит от мышцы, уровня силы, скорости и длительности сокращения."
+			],
+			"anchor": "now moving out from the central nervous",
+			"segments": [
+				{
+					"start": 269.44,
+					"text": "now moving out from the central nervous"
+				},
+				{
+					"start": 272.16,
+					"text": "system we also have adaptations"
+				},
+				{
+					"start": 274.24,
+					"text": "of the individual motor units so maximal"
+				},
+				{
+					"start": 277.28,
+					"text": "strength and power increases of agonist"
+				},
+				{
+					"start": 279.28,
+					"text": "muscles result from"
+				},
+				{
+					"start": 280.8,
+					"text": "a combination of increase in recruitment"
+				},
+				{
+					"start": 283.92,
+					"text": "rate of firing remember that's called"
+				},
+				{
+					"start": 286.48,
+					"text": "rate coding"
+				},
+				{
+					"start": 288,
+					"text": "synchronization of firing or a"
+				},
+				{
+					"start": 290.56,
+					"text": "combination of all of these factors"
+				}
+			]
+		},
+		{
+			"start": 293.84,
+			"title": "Рекрутирование, rate coding и синхронизация",
+			"summary": "Автор выделяет одновременное включение единиц, скорость разрядов и доступ к высокопороговым единицам.",
+			"theses": [
+				"Синхронизация означает совпадение разрядов во времени, а не просто большое число одновременно активных единиц.",
+				"Её увеличение может влиять на пиковую силу и колебания, но не является необходимым универсальным объяснением тренировочного прогресса."
+			],
+			"anchor": "so we've talked in previous videos about",
+			"segments": [
+				{
+					"start": 293.84,
+					"text": "so we've talked in previous videos about"
+				},
+				{
+					"start": 296.4,
+					"text": "the neural versus the muscular"
+				},
+				{
+					"start": 298.16,
+					"text": "adaptations to training and specifically"
+				},
+				{
+					"start": 300,
+					"text": "here we're talking about the recruitment"
+				},
+				{
+					"start": 302.08,
+					"text": "the synchronous recruitment"
+				},
+				{
+					"start": 303.76,
+					"text": "of motor units so how many of those"
+				},
+				{
+					"start": 305.68,
+					"text": "motor units can we recruit at one time"
+				},
+				{
+					"start": 307.52,
+					"text": "to generate force"
+				},
+				{
+					"start": 308.48,
+					"text": "synchronously also how fast are those"
+				},
+				{
+					"start": 310.88,
+					"text": "alpha motor neurons"
+				},
+				{
+					"start": 312.16,
+					"text": "sending off action potentials and that's"
+				},
+				{
+					"start": 314,
+					"text": "referred to as rate coding"
+				},
+				{
+					"start": 315.76,
+					"text": "and then finally are we able to recruit"
+				},
+				{
+					"start": 318.24,
+					"text": "those higher"
+				},
+				{
+					"start": 319.04,
+					"text": "threshold motor units"
+				}
+			]
+		},
+		{
+			"start": 322.72,
+			"title": "Принцип размера Хеннемана",
+			"summary": "Моторные единицы обычно включаются в порядке от меньших и низкопороговых к большим и высокопороговым по мере роста синаптического входа.",
+			"theses": [
+				"Принцип описывает порядок рекрутирования мотонейронов, а не гарантированную гипертрофию всех типов волокон.",
+				"Размер моторной единицы, порог и тип волокон связаны, но не образуют две идеально разделённые категории."
+			],
+			"anchor": "now there's a principle we have to talk",
+			"segments": [
+				{
+					"start": 322.72,
+					"text": "now there's a principle we have to talk"
+				},
+				{
+					"start": 324.16,
+					"text": "about called the size principle or"
+				},
+				{
+					"start": 326.48,
+					"text": "henneman's size principle"
+				},
+				{
+					"start": 328.24,
+					"text": "and it states that with heavy resistance"
+				},
+				{
+					"start": 330.88,
+					"text": "training"
+				},
+				{
+					"start": 331.44,
+					"text": "all muscle fibers get larger and that is"
+				},
+				{
+					"start": 333.92,
+					"text": "because motor units are recruited in a"
+				},
+				{
+					"start": 335.76,
+					"text": "sequential order"
+				},
+				{
+					"start": 337.28,
+					"text": "by their size to produce high levels of"
+				}
+			]
+		},
+		{
+			"start": 340.4,
+			"title": "От низкого порога к высокому",
+			"summary": "При росте требуемой силы к уже активным низкопороговым единицам добавляются более высокопороговые.",
+			"theses": [
+				"Медленные единицы не выключаются при тяжёлом подъёме; они продолжают участвовать вместе с вновь рекрутированными.",
+				"Высокопороговые единицы можно привлечь тяжёлой нагрузкой, взрывным намерением или утомлением в достаточно трудном лёгком подходе."
+			],
+			"anchor": "force so we see that with weight",
+			"segments": [
+				{
+					"start": 340.4,
+					"text": "force so we see that with weight"
+				},
+				{
+					"start": 342.64,
+					"text": "training it's not just those type 2 fast"
+				},
+				{
+					"start": 344.64,
+					"text": "twitch high force production"
+				},
+				{
+					"start": 346.32,
+					"text": "muscle fibers that get bigger it's not"
+				},
+				{
+					"start": 348.08,
+					"text": "like we shut off our"
+				},
+				{
+					"start": 349.84,
+					"text": "type 1 slow twitch fibers when we go to"
+				},
+				{
+					"start": 351.92,
+					"text": "lift a heavy weight"
+				},
+				{
+					"start": 353.04,
+					"text": "in fact we begin recruiting those slow"
+				},
+				{
+					"start": 355.2,
+					"text": "twitch muscle fibers first they engage"
+				},
+				{
+					"start": 357.52,
+					"text": "first because they have the lower"
+				},
+				{
+					"start": 359.68,
+					"text": "activation threshold"
+				},
+				{
+					"start": 361.68,
+					"text": "as that activation threshold is crossed"
+				},
+				{
+					"start": 364,
+					"text": "and we require more and more"
+				},
+				{
+					"start": 365.68,
+					"text": "force to move the weight or to move the"
+				},
+				{
+					"start": 367.76,
+					"text": "load"
+				},
+				{
+					"start": 368.8,
+					"text": "then those higher threshold motor units"
+				},
+				{
+					"start": 371.2,
+					"text": "the type 2a and type 2x"
+				},
+				{
+					"start": 373.28,
+					"text": "fibers become activated and this is"
+				},
+				{
+					"start": 375.68,
+					"text": "what's referred to as the size principle"
+				},
+				{
+					"start": 377.44,
+					"text": "we'll see a graph on that in a second"
+				}
+			]
+		},
+		{
+			"start": 379.6,
+			"title": "Может ли тренированный атлет нарушить порядок",
+			"summary": "Лекция предполагает, что продвинутые спортсмены способны начинать с крупных моторных единиц ради мощности.",
+			"theses": [
+				"Исследования одиночных моторных единиц обычно находят устойчивый порядок и при медленных, и при баллистических сокращениях.",
+				"Небольшие перестановки возможны из-за разных входов, скорости нарастания силы и близких порогов, но общая инверсия не считается стандартной тренировочной адаптацией."
+			],
+			"anchor": "but in advanced lifters the central",
+			"segments": [
+				{
+					"start": 379.6,
+					"text": "but in advanced lifters the central"
+				},
+				{
+					"start": 382.08,
+					"text": "nervous system may adapt"
+				},
+				{
+					"start": 383.76,
+					"text": "to allow recruitment in a"
+				},
+				{
+					"start": 385.56,
+					"text": "non-consecutive order"
+				},
+				{
+					"start": 387.36,
+					"text": "by recruiting larger motor units first"
+				},
+				{
+					"start": 389.44,
+					"text": "to promote greater power or"
+				},
+				{
+					"start": 391.36,
+					"text": "speed in a movement so here's a graph of"
+				}
+			]
+		},
+		{
+			"start": 394.96,
+			"title": "Схема порогов и типы волокон",
+			"summary": "Диаграмма связывает низкие пороги преимущественно с типом I, а высокие — с быстрыми волокнами.",
+			"theses": [
+				"Все волокна одной моторной единицы обычно имеют сходный фенотип, но существуют гибридные волокна и континуум свойств.",
+				"Кросс-иннервация в животных моделях показывает влияние мотонейрона на фенотип, но не означает свободное переключение типа моторной единицы у тренирующегося человека."
+			],
+			"anchor": "the size",
+			"segments": [
+				{
+					"start": 394.96,
+					"text": "the size"
+				},
+				{
+					"start": 395.68,
+					"text": "principle and each of these circles"
+				},
+				{
+					"start": 397.52,
+					"text": "represents a motor unit you can assume"
+				},
+				{
+					"start": 399.68,
+					"text": "that a larger circle"
+				},
+				{
+					"start": 400.88,
+					"text": "like this one represents a larger motor"
+				},
+				{
+					"start": 404.08,
+					"text": "unit or a motor unit with a greater"
+				},
+				{
+					"start": 405.92,
+					"text": "activation"
+				},
+				{
+					"start": 406.88,
+					"text": "threshold and then down here these motor"
+				},
+				{
+					"start": 410.08,
+					"text": "units"
+				},
+				{
+					"start": 410.56,
+					"text": "have a lower activation or recruitment"
+				},
+				{
+					"start": 412.88,
+					"text": "threshold so"
+				},
+				{
+					"start": 413.76,
+					"text": "the green would be type 1 muscle fibers"
+				},
+				{
+					"start": 416.56,
+					"text": "and the yellow would be type 2 muscle"
+				},
+				{
+					"start": 418.56,
+					"text": "fibers"
+				},
+				{
+					"start": 419.12,
+					"text": "and remember that all of the muscle"
+				},
+				{
+					"start": 420.72,
+					"text": "fibers activated by an individual motor"
+				},
+				{
+					"start": 422.96,
+					"text": "unit"
+				},
+				{
+					"start": 423.84,
+					"text": "are of the same type so we've seen that"
+				},
+				{
+					"start": 426.32,
+					"text": "in animal studies actually if you"
+				},
+				{
+					"start": 428.24,
+					"text": "change the alpha motor neuron let's say"
+				},
+				{
+					"start": 430.32,
+					"text": "you move a"
+				},
+				{
+					"start": 431.52,
+					"text": "faster twitch alpha motor neuron to a"
+				},
+				{
+					"start": 433.68,
+					"text": "slower twitch"
+				},
+				{
+					"start": 434.8,
+					"text": "set of muscle fibers we actually get"
+				},
+				{
+					"start": 437.28,
+					"text": "some conversion of those fiber types"
+				},
+				{
+					"start": 439.44,
+					"text": "okay so the alpha motor neuron really"
+				},
+				{
+					"start": 441.6,
+					"text": "helps to determine the fiber type"
+				},
+				{
+					"start": 444.96,
+					"text": "of the muscle fibers so anyways these"
+				},
+				{
+					"start": 447.92,
+					"text": "circles represent the size and the"
+				},
+				{
+					"start": 450.24,
+					"text": "threshold of the motor unit in question"
+				}
+			]
+		},
+		{
+			"start": 452.88,
+			"title": "Рекрутирование происходит за миллисекунды",
+			"summary": "При быстром росте силы набор единиц разворачивается очень быстро, а не поочерёдно в масштабе повторения.",
+			"theses": [
+				"Скорость общего синаптического входа влияет на быстроту рекрутирования и начальную частоту разрядов.",
+				"Взрывное намерение может тренировать скорость нарастания силы даже при субмаксимальной внешней нагрузке."
+			],
+			"anchor": "and we see that as",
+			"segments": [
+				{
+					"start": 452.88,
+					"text": "and we see that as"
+				},
+				{
+					"start": 454.24,
+					"text": "force production increases now this way"
+				},
+				{
+					"start": 457.84,
+					"text": "the recruitment threshold of these motor"
+				},
+				{
+					"start": 460.88,
+					"text": "units"
+				},
+				{
+					"start": 461.36,
+					"text": "also increases up here so as the force"
+				},
+				{
+					"start": 464.72,
+					"text": "production is low you can really"
+				},
+				{
+					"start": 466.96,
+					"text": "be using these primarily type 1 fibers"
+				},
+				{
+					"start": 470.4,
+					"text": "but as you require more and more force"
+				},
+				{
+					"start": 473.44,
+					"text": "then we really have to call upon these"
+				},
+				{
+					"start": 475.2,
+					"text": "bigger and higher threshold"
+				},
+				{
+					"start": 477.52,
+					"text": "motor units now this happens very"
+				},
+				{
+					"start": 479.92,
+					"text": "quickly it's not like"
+				},
+				{
+					"start": 481.36,
+					"text": "it this is over the course of minutes or"
+				},
+				{
+					"start": 483.36,
+					"text": "even seconds it's over the course of"
+				}
+			]
+		},
+		{
+			"start": 484.88,
+			"title": "Контрастные комплексы и PAPE",
+			"summary": "Автор связывает тяжёлое предварительное упражнение и последующее баллистическое движение с potentiation и предполагаемым изменением рекрутирования.",
+			"theses": [
+				"Современный прикладной термин PAPE описывает временное улучшение результата после кондиционирующей активности; это шире классической посттетанической потенциации.",
+				"Эффект зависит от баланса потенциации и утомления, паузы, силы спортсмена и сходства движений.",
+				"PAPE не доказывает обязательного обратного рекрутирования моторных единиц."
+			],
+			"anchor": "milliseconds now with anaerobic training",
+			"segments": [
+				{
+					"start": 484.88,
+					"text": "milliseconds now with anaerobic training"
+				},
+				{
+					"start": 486.64,
+					"text": "especially things like plyometric"
+				},
+				{
+					"start": 488.08,
+					"text": "training or with"
+				},
+				{
+					"start": 489.28,
+					"text": "contrast sets where we might do a heavy"
+				},
+				{
+					"start": 491.44,
+					"text": "strength movement followed by"
+				},
+				{
+					"start": 493.2,
+					"text": "a ballistic or plyometric movement all"
+				},
+				{
+					"start": 495.68,
+					"text": "this is also called"
+				},
+				{
+					"start": 496.64,
+					"text": "post activation potentiation we might"
+				},
+				{
+					"start": 499.04,
+					"text": "see a non-consecutive"
+				},
+				{
+					"start": 501.44,
+					"text": "recruitment of motor units so in"
+				},
+				{
+					"start": 504.08,
+					"text": "strength trained individuals there's"
+				},
+				{
+					"start": 506,
+					"text": "evidence to show that they can actually"
+				},
+				{
+					"start": 508.16,
+					"text": "recruit those higher threshold motor"
+				},
+				{
+					"start": 509.68,
+					"text": "units first"
+				},
+				{
+					"start": 510.72,
+					"text": "without having to first activate the"
+				},
+				{
+					"start": 513.28,
+					"text": "lower threshold motor units and what"
+				},
+				{
+					"start": 514.72,
+					"text": "that does is that just increases the"
+				},
+				{
+					"start": 516.64,
+					"text": "rate of"
+				},
+				{
+					"start": 517.2,
+					"text": "force development that they can generate"
+				},
+				{
+					"start": 519.12,
+					"text": "during a movement"
+				}
+			]
+		},
+		{
+			"start": 521.92,
+			"title": "Нервно-мышечное соединение",
+			"summary": "Обсуждаются площадь концевой пластинки, ветвление терминалей и распределение ацетилхолиновых рецепторов.",
+			"theses": [
+				"Большая часть структурных данных о тренировочных изменениях НМС получена в животных моделях и зависит от возраста и типа нагрузки.",
+				"Передача в здоровом НМС обычно имеет высокий запас надёжности; формула «больше площади — больше ацетилхолина проходит» слишком механистична."
+			],
+			"anchor": "now at the neuromuscular junction there",
+			"segments": [
+				{
+					"start": 521.92,
+					"text": "now at the neuromuscular junction there"
+				},
+				{
+					"start": 524,
+					"text": "are many possible changes"
+				},
+				{
+					"start": 526.32,
+					"text": "the first could be an increase in the"
+				},
+				{
+					"start": 528.4,
+					"text": "total area of the neuromuscular junction"
+				},
+				{
+					"start": 530.72,
+					"text": "so now more acetylcholine can pass"
+				},
+				{
+					"start": 532.88,
+					"text": "between the alpha"
+				},
+				{
+					"start": 534,
+					"text": "motor neuron and the muscle cell"
+				},
+				{
+					"start": 537.92,
+					"text": "we have more dispersed and irregularly"
+				},
+				{
+					"start": 539.92,
+					"text": "shaped synapses"
+				},
+				{
+					"start": 541.12,
+					"text": "and a greater total length of nerve"
+				},
+				{
+					"start": 542.96,
+					"text": "terminal branching so again just more"
+				},
+				{
+					"start": 544.8,
+					"text": "area for acetylcholine"
+				},
+				{
+					"start": 546.24,
+					"text": "to pass into the cell to generate an"
+				},
+				{
+					"start": 548.32,
+					"text": "action potential"
+				},
+				{
+					"start": 550.8,
+					"text": "and increased end plate perimeter length"
+				},
+				{
+					"start": 553.04,
+					"text": "and area as well as greater dispersion"
+				},
+				{
+					"start": 554.8,
+					"text": "of acetylcholine receptors"
+				},
+				{
+					"start": 556.56,
+					"text": "within the end plate region so these"
+				},
+				{
+					"start": 559.36,
+					"text": "neuromuscular junction adaptations"
+				},
+				{
+					"start": 561.36,
+					"text": "really they just serve to enhance the"
+				},
+				{
+					"start": 563.36,
+					"text": "connection or the coupling"
+				},
+				{
+					"start": 564.8,
+					"text": "between the nerve and the muscle cell so"
+				},
+				{
+					"start": 567.52,
+					"text": "that"
+				},
+				{
+					"start": 568,
+					"text": "more acetylcholine can pass and diffuse"
+				},
+				{
+					"start": 570.72,
+					"text": "more quickly"
+				},
+				{
+					"start": 571.52,
+					"text": "and be received more readily by the"
+				},
+				{
+					"start": 573.52,
+					"text": "muscle cell"
+				}
+			]
+		},
+		{
+			"start": 576.24,
+			"title": "Рефлекс растяжения",
+			"summary": "Мышечное веретено через афферентный путь и спинальные цепи быстро усиливает ответ растягиваемой мышцы.",
+			"theses": [
+				"Рефлекторный ответ быстрее произвольной реакции, но регулируется пресинаптическим торможением и нисходящими командами.",
+				"В прыжке важен весь цикл растяжение–сокращение: предварительная активация, жёсткость, сухожильная упругость, техника и рефлекторный вклад."
+			],
+			"anchor": "we also have improvement in the",
+			"segments": [
+				{
+					"start": 576.24,
+					"text": "we also have improvement in the"
+				},
+				{
+					"start": 577.76,
+					"text": "neuromuscular reflexes"
+				},
+				{
+					"start": 579.76,
+					"text": "for instance we know that the myotatic"
+				},
+				{
+					"start": 581.28,
+					"text": "or stretch reflex"
+				},
+				{
+					"start": 583.04,
+					"text": "enhances the activation of the agonist"
+				},
+				{
+					"start": 585.76,
+					"text": "muscle so here in this picture we have"
+				},
+				{
+					"start": 587.2,
+					"text": "the quadriceps muscle"
+				},
+				{
+					"start": 588.48,
+					"text": "as the agonist we see that if we give a"
+				},
+				{
+					"start": 591.76,
+					"text": "little tendon tap"
+				},
+				{
+					"start": 593.36,
+					"text": "to the patellar tendon that rapid"
+				},
+				{
+					"start": 596.96,
+					"text": "stretch"
+				},
+				{
+					"start": 597.6,
+					"text": "of the muscle spindles sends a signal"
+				},
+				{
+					"start": 600.64,
+					"text": "up the afferent nerve coming off of the"
+				},
+				{
+					"start": 602.72,
+					"text": "muscle spindle which synapses with the"
+				},
+				{
+					"start": 604.64,
+					"text": "alpha motor neuron"
+				},
+				{
+					"start": 605.68,
+					"text": "to send a signal back to the quads to"
+				},
+				{
+					"start": 608.56,
+					"text": "contract"
+				},
+				{
+					"start": 609.76,
+					"text": "now the reason why this myotatic or"
+				},
+				{
+					"start": 611.68,
+					"text": "stretch reflex"
+				},
+				{
+					"start": 612.88,
+					"text": "is so beneficial in improving athletic"
+				},
+				{
+					"start": 616,
+					"text": "movements is because it doesn't have to"
+				},
+				{
+					"start": 617.28,
+					"text": "move from conscious thought to your"
+				},
+				{
+					"start": 618.88,
+					"text": "motor cortex and then go all the way"
+				},
+				{
+					"start": 620.32,
+					"text": "down your spinal cord"
+				},
+				{
+					"start": 621.36,
+					"text": "it just synapses with the spinal cord"
+				},
+				{
+					"start": 623.04,
+					"text": "and then right back to the muscle"
+				},
+				{
+					"start": 624.48,
+					"text": "and it's automatic so we can actually"
+				},
+				{
+					"start": 626.88,
+					"text": "increase the magnitude and rate of force"
+				},
+				{
+					"start": 629.28,
+					"text": "development"
+				},
+				{
+					"start": 630,
+					"text": "by enhancing the myotatic reflex"
+				},
+				{
+					"start": 632.56,
+					"text": "response"
+				}
+			]
+		},
+		{
+			"start": 634.96,
+			"title": "Что действительно измеряет ЭМГ",
+			"summary": "Поверхностная ЭМГ регистрирует суммарную электрическую активность рядом с электродом.",
+			"theses": [
+				"Рост амплитуды внутри стандартизированного теста может сопровождать изменение возбуждения мышцы.",
+				"Между мышцами, упражнениями или сессиями амплитуда зависит от потенциалов моторных единиц, подкожной ткани, геометрии, положения электродов и амплитудного сокращения.",
+				"Поэтому «больше ЭМГ = больше нервной активации» допустимо лишь с серьёзными оговорками."
+			],
+			"anchor": "we've also examined the impact of",
+			"segments": [
+				{
+					"start": 634.96,
+					"text": "we've also examined the impact of"
+				},
+				{
+					"start": 637.76,
+					"text": "anaerobic training"
+				},
+				{
+					"start": 639.2,
+					"text": "on emg or electromyography"
+				},
+				{
+					"start": 642.64,
+					"text": "emg is just a way of measuring the"
+				},
+				{
+					"start": 645.52,
+					"text": "electrical signal"
+				},
+				{
+					"start": 646.64,
+					"text": "to the muscles so an increase in emg"
+				},
+				{
+					"start": 649.92,
+					"text": "means an increase usually in neural"
+				},
+				{
+					"start": 652.24,
+					"text": "activation"
+				}
+			]
+		},
+		{
+			"start": 653.36,
+			"title": "Ранний прирост силы",
+			"summary": "Новички часто быстро становятся сильнее до появления легко измеримой гипертрофии.",
+			"theses": [
+				"В первые недели особенно важны обучение движению, уверенность, координация и способность создавать произвольное усилие.",
+				"Проценты прироста зависят от теста, исходного уровня и длительности; число до 73% нельзя переносить как общий прогноз."
+			],
+			"anchor": "so studies have shown strength and power",
+			"segments": [
+				{
+					"start": 653.36,
+					"text": "so studies have shown strength and power"
+				},
+				{
+					"start": 655.76,
+					"text": "increases of"
+				},
+				{
+					"start": 656.56,
+					"text": "up to 70 percent or 73"
+				},
+				{
+					"start": 660.16,
+					"text": "and we know that advancement in training"
+				},
+				{
+					"start": 661.92,
+					"text": "contributes to even further gains in"
+				},
+				{
+					"start": 663.84,
+					"text": "strength and power"
+				},
+				{
+					"start": 665.12,
+					"text": "and furthermore this is really"
+				},
+				{
+					"start": 666.4,
+					"text": "interesting dramatic increases in neural"
+				},
+				{
+					"start": 668.96,
+					"text": "adaptations"
+				},
+				{
+					"start": 669.84,
+					"text": "usually take place very early in the"
+				},
+				{
+					"start": 672.48,
+					"text": "program so if"
+				},
+				{
+					"start": 673.6,
+					"text": "you start an athlete strength training"
+				},
+				{
+					"start": 675.28,
+					"text": "and they've never strength trained"
+				},
+				{
+					"start": 676.56,
+					"text": "before"
+				},
+				{
+					"start": 677.2,
+					"text": "those in those first weeks he or she"
+				},
+				{
+					"start": 679.6,
+					"text": "will make dramatic"
+				}
+			]
+		},
+		{
+			"start": 680.72,
+			"title": "Нервные и мышечные факторы развиваются вместе",
+			"summary": "Лекция объясняет ранний прогресс rate coding, рекрутированием и центральными изменениями и откладывает мышечную роль на последующие недели.",
+			"theses": [
+				"Измеримая толщина и архитектура мышцы могут изменяться уже в течение нескольких недель, а сократительные свойства — ещё раньше.",
+				"Отсутствие заметной гипертрофии на конкретном приборе не означает отсутствия всех периферических изменений.",
+				"Сила всегда является результатом техники, нервного управления и свойств мышечно-сухожильного комплекса."
+			],
+			"anchor": "gains in strength and power but without",
+			"segments": [
+				{
+					"start": 680.72,
+					"text": "gains in strength and power but without"
+				},
+				{
+					"start": 683.6,
+					"text": "concurrent gains in muscle size"
+				},
+				{
+					"start": 685.52,
+					"text": "and so we have to ask ourselves why is"
+				},
+				{
+					"start": 687.76,
+					"text": "this or how is this athlete stronger but"
+				},
+				{
+					"start": 690.4,
+					"text": "there is not any more muscle tissue not"
+				},
+				{
+					"start": 692.24,
+					"text": "more muscle mass at least that we can"
+				},
+				{
+					"start": 693.76,
+					"text": "discern reliably"
+				},
+				{
+					"start": 695.2,
+					"text": "and it's because of this increase in the"
+				},
+				{
+					"start": 697.44,
+					"text": "neural factors of strength so"
+				},
+				{
+					"start": 699.28,
+					"text": "increases in rate coding and synchronous"
+				},
+				{
+					"start": 701.44,
+					"text": "activation of motor units"
+				},
+				{
+					"start": 703.12,
+					"text": "in the ability to recruit high threshold"
+				},
+				{
+					"start": 705.52,
+					"text": "motor units and even in central factors"
+				},
+				{
+					"start": 707.76,
+					"text": "right coming from"
+				},
+				{
+					"start": 708.88,
+					"text": "the higher orders of the brain and in"
+				},
+				{
+					"start": 710.64,
+					"text": "the descending corticospinal tracts"
+				},
+				{
+					"start": 712.8,
+					"text": "all of these together will lead to much"
+				},
+				{
+					"start": 715.2,
+					"text": "greater"
+				},
+				{
+					"start": 716.08,
+					"text": "force improvements in those first weeks"
+				},
+				{
+					"start": 718.08,
+					"text": "than improvements in muscle size ever"
+				},
+				{
+					"start": 719.84,
+					"text": "will"
+				}
+			]
+		},
+		{
+			"start": 720.4,
+			"title": "Сроки нейропластичности",
+			"summary": "Нервная система начинает адаптироваться быстро, а более устойчивые изменения формируются при повторении специфической задачи.",
+			"theses": [
+				"Часть улучшения за дни — знакомство с тестом и снижение неопределённости, а не обязательно структурная перестройка путей.",
+				"Нервный вклад не заканчивается после первых недель: он продолжает развиваться вместе с гипертрофией и специализацией навыка."
+			],
+			"anchor": "it actually takes the muscular system",
+			"segments": [
+				{
+					"start": 720.4,
+					"text": "it actually takes the muscular system"
+				},
+				{
+					"start": 722.24,
+					"text": "several weeks to catch"
+				},
+				{
+					"start": 723.6,
+					"text": "up so to speak to the neural system as"
+				},
+				{
+					"start": 726.08,
+					"text": "far as"
+				},
+				{
+					"start": 726.8,
+					"text": "adaptations to anaerobic training so"
+				},
+				{
+					"start": 729.36,
+					"text": "changes in muscle"
+				},
+				{
+					"start": 730.48,
+					"text": "takes a while but changes to the neural"
+				},
+				{
+					"start": 732.32,
+					"text": "system or the nervous system"
+				},
+				{
+					"start": 733.92,
+					"text": "that happens fairly quickly on a scale"
+				},
+				{
+					"start": 736.8,
+					"text": "of"
+				},
+				{
+					"start": 737.12,
+					"text": "just one to several days and your"
+				},
+				{
+					"start": 739.6,
+					"text": "nervous system is adapting it's that"
+				},
+				{
+					"start": 741.52,
+					"text": "plastic"
+				}
+			]
+		},
+		{
+			"start": 742.16,
+			"title": "Кросс-образование силы",
+			"summary": "Односторонняя тренировка способна немного повысить силу гомологичной мышцы противоположной стороны.",
+			"theses": [
+				"Эффект объясняют изменениями центральной моторной команды и межполушарного взаимодействия, а не стремлением организма «оставаться симметричным».",
+				"Перенос обычно меньше прироста тренированной стороны и сильнее проявляется в похожем тесте.",
+				"Нетренированная конечность не получает сопоставимого локального механического стимула и обычно не показывает такую же гипертрофию."
+			],
+			"anchor": "in nature now some other interesting",
+			"segments": [
+				{
+					"start": 742.16,
+					"text": "in nature now some other interesting"
+				},
+				{
+					"start": 745.52,
+					"text": "things that have come out of emg"
+				},
+				{
+					"start": 747.2,
+					"text": "studies there is a concept of"
+				},
+				{
+					"start": 749.88,
+					"text": "cross-education"
+				},
+				{
+					"start": 751.28,
+					"text": "so cross-education is where if you train"
+				},
+				{
+					"start": 753.68,
+					"text": "one side of your body"
+				},
+				{
+					"start": 755.2,
+					"text": "the other side also reaps some of the"
+				},
+				{
+					"start": 758,
+					"text": "benefit"
+				},
+				{
+					"start": 758.56,
+					"text": "at least some of the neural benefits not"
+				},
+				{
+					"start": 760.32,
+					"text": "the muscular benefits because the muscle"
+				},
+				{
+					"start": 761.92,
+					"text": "fibers on that untrained side are not"
+				},
+				{
+					"start": 763.6,
+					"text": "experiencing"
+				},
+				{
+					"start": 764.32,
+					"text": "increased mechanical tension or the"
+				},
+				{
+					"start": 766,
+					"text": "metabolic byproducts"
+				},
+				{
+					"start": 767.36,
+					"text": "of the work that's being done on the"
+				},
+				{
+					"start": 768.96,
+					"text": "train side but"
+				},
+				{
+					"start": 770.8,
+					"text": "in your body's effort to stay"
+				},
+				{
+					"start": 772.48,
+					"text": "symmetrical and because some of those"
+				},
+				{
+					"start": 774.4,
+					"text": "neural factors are central factors not"
+				},
+				{
+					"start": 776.08,
+					"text": "peripheral factors"
+				},
+				{
+					"start": 777.28,
+					"text": "there is some cross-education happening"
+				},
+				{
+					"start": 779.28,
+					"text": "so we can see that if you train"
+				},
+				{
+					"start": 781.04,
+					"text": "just the right side and say bicep curls"
+				},
+				{
+					"start": 783.36,
+					"text": "and you don't train the left side"
+				},
+				{
+					"start": 784.8,
+					"text": "so maybe we measure the peak voluntary"
+				},
+				{
+					"start": 786.56,
+					"text": "contraction on the left side pre and"
+				},
+				{
+					"start": 787.92,
+					"text": "post we actually see an"
+				},
+				{
+					"start": 789.04,
+					"text": "increase on the untrained side and so"
+				},
+				{
+					"start": 791.76,
+					"text": "that's called cross education"
+				}
+			]
+		},
+		{
+			"start": 793.52,
+			"title": "Двусторонний дефицит",
+			"summary": "Суммарная сила двух конечностей при одновременном действии иногда меньше суммы отдельных односторонних результатов.",
+			"theses": [
+				"Величина дефицита зависит от упражнения, углов, стабилизации, скорости, знакомства и способа нормирования.",
+				"Складывать результаты одноногого приседа и сравнивать их со штанговым приседанием некорректно: механика, амплитуда и ограничители различаются.",
+				"У тренированных возможна двусторонняя фасилитация, но правило «двумя ногами намного больше удвоенного одностороннего результата» не универсально."
+			],
+			"anchor": "we also have what's called the bilateral",
+			"segments": [
+				{
+					"start": 793.52,
+					"text": "we also have what's called the bilateral"
+				},
+				{
+					"start": 795.2,
+					"text": "deficit in untrained individuals"
+				},
+				{
+					"start": 797.52,
+					"text": "and the bilateral deficit is this"
+				},
+				{
+					"start": 799.92,
+					"text": "phenomena where an individual is"
+				},
+				{
+					"start": 801.76,
+					"text": "stronger"
+				},
+				{
+					"start": 802.56,
+					"text": "unilaterally than they are bilaterally"
+				},
+				{
+					"start": 805.6,
+					"text": "in the sense that"
+				},
+				{
+					"start": 806.56,
+					"text": "let's say that you do a single leg lunge"
+				},
+				{
+					"start": 809.44,
+					"text": "on the right side"
+				},
+				{
+					"start": 810.64,
+					"text": "and then on the left side and then you"
+				},
+				{
+					"start": 812.64,
+					"text": "add the load together"
+				},
+				{
+					"start": 814.72,
+					"text": "right the the sum of what you could lift"
+				},
+				{
+					"start": 816.96,
+					"text": "on the right side and the sum of what"
+				},
+				{
+					"start": 818.32,
+					"text": "you could lift on the left side"
+				},
+				{
+					"start": 819.52,
+					"text": "and then you try to back squat that much"
+				},
+				{
+					"start": 821.04,
+					"text": "and theoretically if you could"
+				},
+				{
+					"start": 822.56,
+					"text": "single leg squat a certain load you"
+				},
+				{
+					"start": 824.32,
+					"text": "should be able to double leg squat that"
+				},
+				{
+					"start": 826.88,
+					"text": "load"
+				},
+				{
+					"start": 827.76,
+					"text": "times two right because you have two"
+				},
+				{
+					"start": 829.36,
+					"text": "legs okay so we actually find that in"
+				},
+				{
+					"start": 831.44,
+					"text": "untrained individuals if we single leg"
+				},
+				{
+					"start": 833.44,
+					"text": "squat them"
+				},
+				{
+					"start": 834.32,
+					"text": "and then we double leg squat them they"
+				},
+				{
+					"start": 836.08,
+					"text": "cannot match their single leg squat"
+				},
+				{
+					"start": 838.16,
+					"text": "times two"
+				},
+				{
+					"start": 839.12,
+					"text": "on the back squat but theoretically"
+				},
+				{
+					"start": 840.56,
+					"text": "because you have two legs you should be"
+				},
+				{
+					"start": 842,
+					"text": "able to do that"
+				}
+			]
+		},
+		{
+			"start": 842.88,
+			"title": "Не защитный губернатор, а специфическая координация",
+			"summary": "Автор объясняет двусторонний дефицит защитным торможением от непривычной осевой нагрузки.",
+			"theses": [
+				"Защитное торможение может участвовать, но дефицит нельзя свести к одному центральному ограничителю.",
+				"Опыт двустороннего движения улучшает специфическую координацию, дыхание, жёсткость корпуса и распределение усилия."
+			],
+			"anchor": "the reason is is because neural factors",
+			"segments": [
+				{
+					"start": 842.88,
+					"text": "the reason is is because neural factors"
+				},
+				{
+					"start": 845.68,
+					"text": "are actually"
+				},
+				{
+					"start": 846.48,
+					"text": "inhibiting it they're diminishing the"
+				},
+				{
+					"start": 848.4,
+					"text": "output of their muscles in order to"
+				},
+				{
+					"start": 850.48,
+					"text": "guard or protect the body because"
+				},
+				{
+					"start": 852.16,
+					"text": "the body's not used to what it's"
+				},
+				{
+					"start": 853.68,
+					"text": "experiencing it's not used to that"
+				},
+				{
+					"start": 855.68,
+					"text": "extra load especially in an axial load"
+				},
+				{
+					"start": 858.16,
+					"text": "like in a back squat"
+				},
+				{
+					"start": 859.28,
+					"text": "and so the body will actually govern or"
+				},
+				{
+					"start": 861.2,
+					"text": "limit the strength"
+				},
+				{
+					"start": 862.32,
+					"text": "output but with training we can actually"
+				},
+				{
+					"start": 864.32,
+					"text": "start to take that governor"
+				},
+				{
+					"start": 865.76,
+					"text": "off and so in trained individuals they"
+				},
+				{
+					"start": 868.24,
+					"text": "can often squat"
+				},
+				{
+					"start": 869.36,
+					"text": "with two legs much more than twice what"
+				},
+				{
+					"start": 871.68,
+					"text": "they can squat"
+				},
+				{
+					"start": 872.56,
+					"text": "with just one leg"
+				}
+			]
+		},
+		{
+			"start": 876.64,
+			"title": "Антагонисты и устойчивость сустава",
+			"summary": "Тренировка может снизить избыточную коактивацию антагонистов и тем самым повысить чистый момент агониста.",
+			"theses": [
+				"Коактивация не всегда помеха: она стабилизирует сустав, помогает торможению и повышает точность.",
+				"Оптимум зависит от скорости, внешней неопределённости, травматического риска и навыка; цель — не минимальная, а подходящая коактивация."
+			],
+			"anchor": "and we also see changes in the",
+			"segments": [
+				{
+					"start": 876.64,
+					"text": "and we also see changes in the"
+				},
+				{
+					"start": 879.68,
+					"text": "antagonist activity during agonist"
+				},
+				{
+					"start": 882.32,
+					"text": "movements"
+				},
+				{
+					"start": 883.12,
+					"text": "so this would be a decrease in the"
+				},
+				{
+					"start": 885.52,
+					"text": "co-contraction"
+				},
+				{
+					"start": 886.72,
+					"text": "of muscles around the joint so let's say"
+				},
+				{
+					"start": 888.8,
+					"text": "in a jumping movement"
+				},
+				{
+					"start": 890,
+					"text": "where you want to rapidly extend at the"
+				},
+				{
+					"start": 892.56,
+					"text": "hip"
+				},
+				{
+					"start": 893.04,
+					"text": "and at the knee your hamstrings are"
+				},
+				{
+					"start": 895.6,
+					"text": "which are the antagonists because they"
+				},
+				{
+					"start": 897.04,
+					"text": "would flex the knee"
+				},
+				{
+					"start": 899.36,
+					"text": "they might be overly active and so"
+				},
+				{
+					"start": 901.2,
+					"text": "you're trying to you know go through"
+				},
+				{
+					"start": 902.64,
+					"text": "this rapid knee extension but"
+				},
+				{
+					"start": 904.16,
+					"text": "the antagonist is co-contracting and"
+				},
+				{
+					"start": 906.08,
+					"text": "there's some activation there"
+				},
+				{
+					"start": 907.68,
+					"text": "well through resistance training through"
+				},
+				{
+					"start": 909.76,
+					"text": "anaerobic training like plyometrics"
+				},
+				{
+					"start": 911.44,
+					"text": "etc we can actually decrease the"
+				},
+				{
+					"start": 913.68,
+					"text": "activation"
+				},
+				{
+					"start": 914.72,
+					"text": "of the antagonist muscle so that it's no"
+				},
+				{
+					"start": 916.72,
+					"text": "longer slowing down or impeding"
+				}
+			]
+		},
+		{
+			"start": 918.64,
+			"title": "Итог и границы раннего прогресса",
+			"summary": "Лекция суммирует многоуровневую пластичность и приписывает почти весь прирост первых четырёх недель нервной системе.",
+			"theses": [
+				"Ранний прогресс действительно часто преимущественно нервный и навыковый, но не «почти на 100%» у каждого человека и упражнения.",
+				"Практически отслеживайте технику, скорость, стабильность, усилие и морфологию, а не пытайтесь назначить весь прирост одному механизму.",
+				"Последние музыкальные и обрывочные субтитры сохранены как часть исходной автоматической расшифровки, но не используются для смысловых выводов."
+			],
+			"anchor": "the agonist muscle so that wraps up",
+			"segments": [
+				{
+					"start": 918.64,
+					"text": "the agonist muscle so that wraps up"
+				},
+				{
+					"start": 921.76,
+					"text": "the neural adaptations to anaerobic"
+				},
+				{
+					"start": 924.72,
+					"text": "training programs"
+				},
+				{
+					"start": 925.76,
+					"text": "the key takeaway here is that there are"
+				},
+				{
+					"start": 928.08,
+					"text": "a number of sites of adaptation"
+				},
+				{
+					"start": 930.4,
+					"text": "all along the neural chain from the"
+				},
+				{
+					"start": 932.72,
+					"text": "higher orders of the brain all the way"
+				},
+				{
+					"start": 934.24,
+					"text": "down"
+				},
+				{
+					"start": 934.8,
+					"text": "to the neuromuscular junction and"
+				},
+				{
+					"start": 936.8,
+					"text": "because of the plasticity of the nervous"
+				},
+				{
+					"start": 938.8,
+					"text": "system"
+				},
+				{
+					"start": 939.44,
+					"text": "these changes can begin to take place in"
+				},
+				{
+					"start": 941.36,
+					"text": "as little as a week so really those"
+				},
+				{
+					"start": 943.12,
+					"text": "first four weeks or so of strength"
+				},
+				{
+					"start": 945.76,
+					"text": "increases when you start a new program"
+				},
+				{
+					"start": 947.44,
+					"text": "or you start training anaerobically"
+				},
+				{
+					"start": 949.44,
+					"text": "and you haven't been previously those"
+				},
+				{
+					"start": 951.28,
+					"text": "first four weeks of strength gains and"
+				},
+				{
+					"start": 952.8,
+					"text": "power gains"
+				},
+				{
+					"start": 953.52,
+					"text": "those are going to be almost 100 due to"
+				},
+				{
+					"start": 957.12,
+					"text": "changes in the neural system so if you"
+				},
+				{
+					"start": 959.36,
+					"text": "guys have any questions let me know down"
+				},
+				{
+					"start": 960.88,
+					"text": "in the comments"
+				},
+				{
+					"start": 961.76,
+					"text": "and i'd love to engage with you down"
+				},
+				{
+					"start": 963.52,
+					"text": "there otherwise stick around for the"
+				},
+				{
+					"start": 965.12,
+					"text": "next video which will cover the muscular"
+				},
+				{
+					"start": 967.28,
+					"text": "adaptations to anaerobic training"
+				},
+				{
+					"start": 969.76,
+					"text": "programs"
+				},
+				{
+					"start": 970.56,
+					"text": "alright guys it was great talking to you"
+				},
+				{
+					"start": 972.64,
+					"text": "and i'll see you all"
+				},
+				{
+					"start": 973.6,
+					"text": "on the next video"
+				},
+				{
+					"start": 976.29,
+					"text": "[Music]"
+				},
+				{
+					"start": 978.88,
+					"text": "hey kiddos if you can just try a whisper"
+				},
+				{
+					"start": 988.25,
+					"text": "[Music]"
+				},
+				{
+					"start": 989.92,
+					"text": "so here's a graph of the size principle"
+				}
+			]
+		}
+	],
+	"glossary": [
+		{
+			"term": "Моторная единица",
+			"definition": "альфа-мотонейрон и все мышечные волокна, которые он иннервирует."
+		},
+		{
+			"term": "Рекрутирование",
+			"definition": "подключение дополнительных моторных единиц при росте требуемого усилия или утомлении."
+		},
+		{
+			"term": "Rate coding",
+			"definition": "регуляция силы через изменение частоты разрядов активных моторных единиц."
+		},
+		{
+			"term": "Принцип размера",
+			"definition": "тенденция рекрутировать мотонейроны от низкопороговых к высокопороговым по мере роста общего синаптического входа."
+		},
+		{
+			"term": "Синхронизация",
+			"definition": "временное совпадение разрядов разных моторных единиц; не тождественно одновременному рекрутированию."
+		},
+		{
+			"term": "Нервно-мышечное соединение",
+			"definition": "синапс между терминалью мотонейрона и мышечным волокном, передающий сигнал через ацетилхолин."
+		},
+		{
+			"term": "PAPE",
+			"definition": "post-activation performance enhancement — временное улучшение последующего действия после подходящей кондиционирующей нагрузки."
+		},
+		{
+			"term": "Поверхностная ЭМГ",
+			"definition": "регистрация суммарного электрического сигнала мышечных волокон электродами на коже."
+		},
+		{
+			"term": "Кросс-образование",
+			"definition": "прирост силы или навыка в нетренированной противоположной конечности после односторонней тренировки."
+		},
+		{
+			"term": "Двусторонний дефицит",
+			"definition": "ситуация, когда одновременный результат двух конечностей меньше суммы их отдельных односторонних результатов в сопоставимом тесте."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Как тренировать нервную составляющую силы",
+			"items": [
+				"Повторяйте конкретное соревновательное или тестовое движение с высокой технической точностью.",
+				"Для максимальной силы давайте достаточно длинные паузы и сохраняйте качество тяжёлых попыток.",
+				"Для мощности используйте взрывное намерение, умеренное утомление и остановку серии при заметном падении скорости."
+			]
+		},
+		{
+			"title": "Как не переинтерпретировать ЭМГ",
+			"items": [
+				"Сравнивайте измерения при одинаковой позе, нагрузке, электродах и нормировании.",
+				"Не называйте разницу амплитуды между упражнениями прямой разницей рекрутирования или эффективности.",
+				"Для выводов о нервном драйве сочетайте ЭМГ с силой, кинематикой, стимуляционными или моторно-единичными методами."
+			]
+		},
+		{
+			"title": "Практика односторонней и двусторонней работы",
+			"items": [
+				"Односторонняя тренировка полезна при иммобилизации и асимметриях, но не заменяет локальную нагрузку второй стороны после допуска.",
+				"Сравнивайте unilateral и bilateral варианты с учётом амплитуды, опоры и механики, а не только суммы килограммов.",
+				"Сохраняйте необходимую коактивацию для устойчивости сустава и уменьшайте лишь избыточное торможение движения."
+			]
+		}
+	],
+	"transcript": "what's up guys dr gooden here to talk about neural adaptations to anaerobic training programs coming up [Music] when we're talking about anaerobic training programs we are referring to plyometric training resistance training sprint training anything that's high enough intensity to be well over the vo2 max of an athlete and there's a variety of adaptations that are similar across all these different styles of training as long as they're anaerobic in nature so let's take a look okay this comes from the essentials of strength training and conditioning by hoff and triplett this chapter was written by dr duncan french now the first key term to define is anaerobic training now in the intro i describe some different types of of anaerobic training and really any type of anaerobic training has to be of sufficiently high intensity and it's typically involving intermittent bounce bouts so some sort of interval training such as weight training which is technically interval training if you think about it when you do a set let's say you do a set of 10 and then you rest and then you do another set of 10 those are really two intervals that you are completing so weight training is interval training plyometric drills speed training agility training and some forms of interval training now not all forms of interval draining are anaerobic of course you have to be above the lactate threshold above your vo2 max for them to really be considered anaerobic style training so the duration of these intervals needs to be quite a bit shorter than a minute for it to be truly considered anaerobic training now in this video we're going to cover the neural adaptations and there are many neural adaptations that come along with anaerobic style training now these adaptations occur all along the neuromuscular chain the neuromuscular chain refers to your central nervous system starting at the brain and then going down the spinal cord all the way out to the peripheral nervous system into the neuromuscular junction so we see adaptations at all of these levels from the higher brain centers down even to the individual muscle fibers themselves now here are some potential sites of adaptation within the neuromuscular system so we have the brain the descending corticospinal tracts down your spinal cord we have adaptations to reflexes so the gto reflex also the myotatic reflex the myotatic reflex is also called the stretch reflex we also even have changes in the individual muscle fibers themselves these changes that we're going to be muscular and we'll talk about those in another video but here we have changes at the neuromuscular junction so we see multiple sites of neural adaptation now let's go through these one at a time central adaptation so adaptations to the central nervous system include motor cortex activity increases the motor cortex activity increases when the level of force developed increases and when new exercises are or movements are being learned so really what this is saying is that the greater the force output of the of the exercise so if you go from a goblet squat to a barbell back squat now there's a force output increase because of that exercise you now get greater activation of the motor cortex likewise if you're learning the back squat for the first time let's say you're graduating from a goblet squat you've mastered that and the strength coach has determined that you can safely back squat while you are still learning a new movement even though it's the same movement pattern it's a new exercise and so your motor cortex activity will actually increase as you learn that new skill there are also changes the strengthening of synapses the myelination of axons that takes place in those descending corticospinal tracts now moving out from the central nervous system we also have adaptations of the individual motor units so maximal strength and power increases of agonist muscles result from a combination of increase in recruitment rate of firing remember that's called rate coding synchronization of firing or a combination of all of these factors so we've talked in previous videos about the neural versus the muscular adaptations to training and specifically here we're talking about the recruitment the synchronous recruitment of motor units so how many of those motor units can we recruit at one time to generate force synchronously also how fast are those alpha motor neurons sending off action potentials and that's referred to as rate coding and then finally are we able to recruit those higher threshold motor units now there's a principle we have to talk about called the size principle or henneman's size principle and it states that with heavy resistance training all muscle fibers get larger and that is because motor units are recruited in a sequential order by their size to produce high levels of force so we see that with weight training it's not just those type 2 fast twitch high force production muscle fibers that get bigger it's not like we shut off our type 1 slow twitch fibers when we go to lift a heavy weight in fact we begin recruiting those slow twitch muscle fibers first they engage first because they have the lower activation threshold as that activation threshold is crossed and we require more and more force to move the weight or to move the load then those higher threshold motor units the type 2a and type 2x fibers become activated and this is what's referred to as the size principle we'll see a graph on that in a second but in advanced lifters the central nervous system may adapt to allow recruitment in a non-consecutive order by recruiting larger motor units first to promote greater power or speed in a movement so here's a graph of the size principle and each of these circles represents a motor unit you can assume that a larger circle like this one represents a larger motor unit or a motor unit with a greater activation threshold and then down here these motor units have a lower activation or recruitment threshold so the green would be type 1 muscle fibers and the yellow would be type 2 muscle fibers and remember that all of the muscle fibers activated by an individual motor unit are of the same type so we've seen that in animal studies actually if you change the alpha motor neuron let's say you move a faster twitch alpha motor neuron to a slower twitch set of muscle fibers we actually get some conversion of those fiber types okay so the alpha motor neuron really helps to determine the fiber type of the muscle fibers so anyways these circles represent the size and the threshold of the motor unit in question and we see that as force production increases now this way the recruitment threshold of these motor units also increases up here so as the force production is low you can really be using these primarily type 1 fibers but as you require more and more force then we really have to call upon these bigger and higher threshold motor units now this happens very quickly it's not like it this is over the course of minutes or even seconds it's over the course of milliseconds now with anaerobic training especially things like plyometric training or with contrast sets where we might do a heavy strength movement followed by a ballistic or plyometric movement all this is also called post activation potentiation we might see a non-consecutive recruitment of motor units so in strength trained individuals there's evidence to show that they can actually recruit those higher threshold motor units first without having to first activate the lower threshold motor units and what that does is that just increases the rate of force development that they can generate during a movement now at the neuromuscular junction there are many possible changes the first could be an increase in the total area of the neuromuscular junction so now more acetylcholine can pass between the alpha motor neuron and the muscle cell we have more dispersed and irregularly shaped synapses and a greater total length of nerve terminal branching so again just more area for acetylcholine to pass into the cell to generate an action potential and increased end plate perimeter length and area as well as greater dispersion of acetylcholine receptors within the end plate region so these neuromuscular junction adaptations really they just serve to enhance the connection or the coupling between the nerve and the muscle cell so that more acetylcholine can pass and diffuse more quickly and be received more readily by the muscle cell we also have improvement in the neuromuscular reflexes for instance we know that the myotatic or stretch reflex enhances the activation of the agonist muscle so here in this picture we have the quadriceps muscle as the agonist we see that if we give a little tendon tap to the patellar tendon that rapid stretch of the muscle spindles sends a signal up the afferent nerve coming off of the muscle spindle which synapses with the alpha motor neuron to send a signal back to the quads to contract now the reason why this myotatic or stretch reflex is so beneficial in improving athletic movements is because it doesn't have to move from conscious thought to your motor cortex and then go all the way down your spinal cord it just synapses with the spinal cord and then right back to the muscle and it's automatic so we can actually increase the magnitude and rate of force development by enhancing the myotatic reflex response we've also examined the impact of anaerobic training on emg or electromyography emg is just a way of measuring the electrical signal to the muscles so an increase in emg means an increase usually in neural activation so studies have shown strength and power increases of up to 70 percent or 73 and we know that advancement in training contributes to even further gains in strength and power and furthermore this is really interesting dramatic increases in neural adaptations usually take place very early in the program so if you start an athlete strength training and they've never strength trained before those in those first weeks he or she will make dramatic gains in strength and power but without concurrent gains in muscle size and so we have to ask ourselves why is this or how is this athlete stronger but there is not any more muscle tissue not more muscle mass at least that we can discern reliably and it's because of this increase in the neural factors of strength so increases in rate coding and synchronous activation of motor units in the ability to recruit high threshold motor units and even in central factors right coming from the higher orders of the brain and in the descending corticospinal tracts all of these together will lead to much greater force improvements in those first weeks than improvements in muscle size ever will it actually takes the muscular system several weeks to catch up so to speak to the neural system as far as adaptations to anaerobic training so changes in muscle takes a while but changes to the neural system or the nervous system that happens fairly quickly on a scale of just one to several days and your nervous system is adapting it's that plastic in nature now some other interesting things that have come out of emg studies there is a concept of cross-education so cross-education is where if you train one side of your body the other side also reaps some of the benefit at least some of the neural benefits not the muscular benefits because the muscle fibers on that untrained side are not experiencing increased mechanical tension or the metabolic byproducts of the work that's being done on the train side but in your body's effort to stay symmetrical and because some of those neural factors are central factors not peripheral factors there is some cross-education happening so we can see that if you train just the right side and say bicep curls and you don't train the left side so maybe we measure the peak voluntary contraction on the left side pre and post we actually see an increase on the untrained side and so that's called cross education we also have what's called the bilateral deficit in untrained individuals and the bilateral deficit is this phenomena where an individual is stronger unilaterally than they are bilaterally in the sense that let's say that you do a single leg lunge on the right side and then on the left side and then you add the load together right the the sum of what you could lift on the right side and the sum of what you could lift on the left side and then you try to back squat that much and theoretically if you could single leg squat a certain load you should be able to double leg squat that load times two right because you have two legs okay so we actually find that in untrained individuals if we single leg squat them and then we double leg squat them they cannot match their single leg squat times two on the back squat but theoretically because you have two legs you should be able to do that the reason is is because neural factors are actually inhibiting it they're diminishing the output of their muscles in order to guard or protect the body because the body's not used to what it's experiencing it's not used to that extra load especially in an axial load like in a back squat and so the body will actually govern or limit the strength output but with training we can actually start to take that governor off and so in trained individuals they can often squat with two legs much more than twice what they can squat with just one leg and we also see changes in the antagonist activity during agonist movements so this would be a decrease in the co-contraction of muscles around the joint so let's say in a jumping movement where you want to rapidly extend at the hip and at the knee your hamstrings are which are the antagonists because they would flex the knee they might be overly active and so you're trying to you know go through this rapid knee extension but the antagonist is co-contracting and there's some activation there well through resistance training through anaerobic training like plyometrics etc we can actually decrease the activation of the antagonist muscle so that it's no longer slowing down or impeding the agonist muscle so that wraps up the neural adaptations to anaerobic training programs the key takeaway here is that there are a number of sites of adaptation all along the neural chain from the higher orders of the brain all the way down to the neuromuscular junction and because of the plasticity of the nervous system these changes can begin to take place in as little as a week so really those first four weeks or so of strength increases when you start a new program or you start training anaerobically and you haven't been previously those first four weeks of strength gains and power gains those are going to be almost 100 due to changes in the neural system so if you guys have any questions let me know down in the comments and i'd love to engage with you down there otherwise stick around for the next video which will cover the muscular adaptations to anaerobic training programs alright guys it was great talking to you and i'll see you all on the next video [Music] hey kiddos if you can just try a whisper [Music] so here's a graph of the size principle"
+}

@@ -79,7 +79,8 @@ export const collections: Collection[] = [
 			'metabolicheskaya-spetsifichnost-trenirovki',
 			'istoschenie-i-vosstanovlenie-substratov',
 			'gormon-myshechnye-vzaimodeystviya',
-			'osnovnye-anabolicheskie-gormony'
+			'osnovnye-anabolicheskie-gormony',
+			'neyronnye-adaptatsii-k-anaerobnoy-trenirovke'
 		]
 	},
 	{

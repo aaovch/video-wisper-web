@@ -697,6 +697,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Primary Anabolic Hormones - CSCS Chapter 4 [W9Fsf0R3vuU]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/neyronnye-adaptatsii-k-anaerobnoy-trenirovke.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Neural Adaptations to Anaerobic Training - CSCS Chapter 5 [RhhCKpum8yM]/transcript.json'
+		)
 	}
 ];
 
