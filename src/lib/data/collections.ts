@@ -71,7 +71,8 @@ export const collections: Collection[] = [
 			'neyromyshechnaya-sistema-motornye-edinitsy',
 			'sem-dvigatelnyh-patternov',
 			'biomehanika-i-myshechnye-rychagi',
-			'sila-moshchnost-i-rabota-v-biomehanike'
+			'sila-moshchnost-i-rabota-v-biomehanike',
+			'tri-rezhima-myshechnogo-deystviya'
 		]
 	},
 	{

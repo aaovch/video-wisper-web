@@ -641,6 +641,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Biomechanical Definitions of Strength Power and Work - CSCS Chapter 2 [UBOjpYy8je4]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/tri-rezhima-myshechnogo-deystviya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Muscle Contraction Explained - Concentric Isometric and Eccentric [MFf9dSf7T_Q]/transcript.json'
+		)
 	}
 ];
 
