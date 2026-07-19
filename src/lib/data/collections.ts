@@ -111,7 +111,8 @@ export const collections: Collection[] = [
 			'trenerstvo-2-zadachi-uprazhneniya',
 			'trenerskiy-kurs-3-planirovanie-zanyatiy',
 			'trenerskiy-kurs-4-tekhnika-bezopasnosti',
-			'ukol-po-centralnoy-linii'
+			'ukol-po-centralnoy-linii',
+			'sudya-gayd-dlya-nachinayushchikh'
 		],
 		sections: [
 			{
@@ -151,7 +152,7 @@ export const collections: Collection[] = [
 			{
 				title: 'Семинары',
 				subtitle: 'Отдельные практические семинары лагеря.',
-				items: ['ukol-po-centralnoy-linii']
+				items: ['ukol-po-centralnoy-linii', 'sudya-gayd-dlya-nachinayushchikh']
 			}
 		]
 	},

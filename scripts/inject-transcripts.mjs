@@ -589,6 +589,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Семинар ＂Укол по центральной линии  атака, контратака, защита с ответом＂ [92XPlod0yG8]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/sudya-gayd-dlya-nachinayushchikh.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Семинар Судья - Гайд для начинающих-AiLLYc0nDiU/transcript.json'
+		)
 	}
 ];
 
