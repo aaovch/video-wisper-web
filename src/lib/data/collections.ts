@@ -77,7 +77,8 @@ export const collections: Collection[] = [
 			'bioenergetika-trenirovki-tri-energosistemy',
 			'laktatnyi-porog-bioenergetika',
 			'metabolicheskaya-spetsifichnost-trenirovki',
-			'istoschenie-i-vosstanovlenie-substratov'
+			'istoschenie-i-vosstanovlenie-substratov',
+			'gormon-myshechnye-vzaimodeystviya'
 		]
 	},
 	{

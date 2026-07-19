@@ -683,6 +683,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Substrate Depletion and Repletion - CSCS Chapter 3 [hH62gJVqs6k]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/gormon-myshechnye-vzaimodeystviya.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Hormone-Muscle Interactions - CSCS Chapter 4 [lDUfvVZgdJc]/transcript.json'
+		)
 	}
 ];
 
