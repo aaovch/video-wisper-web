@@ -70,7 +70,8 @@ export const collections: Collection[] = [
 			'struktura-i-funktsiya-myshtsy',
 			'neyromyshechnaya-sistema-motornye-edinitsy',
 			'sem-dvigatelnyh-patternov',
-			'biomehanika-i-myshechnye-rychagi'
+			'biomehanika-i-myshechnye-rychagi',
+			'sila-moshchnost-i-rabota-v-biomehanike'
 		]
 	},
 	{

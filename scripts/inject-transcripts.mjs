@@ -634,6 +634,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Biomechanics and Muscle Leverage - CSCS Chapter 2 [j2uYPNjmsHo]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/sila-moshchnost-i-rabota-v-biomehanike.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Biomechanical Definitions of Strength Power and Work - CSCS Chapter 2 [UBOjpYy8je4]/transcript.json'
+		)
 	}
 ];
 
