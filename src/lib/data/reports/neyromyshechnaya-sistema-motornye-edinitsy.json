@@ -1,0 +1,2392 @@
+{
+	"slug": "neyromyshechnaya-sistema-motornye-edinitsy",
+	"title": "Нервно-мышечная система: двигательные единицы и типы волокон",
+	"subtitle": "Джейкоб Гудин: рекрутирование, rate coding, RFD, типы волокон и проприоцептивные рефлексы",
+	"source_name": "Neuromuscular System - Rate Coding, Motor Units, & Fiber Types | CSCS Chapter 1 [KNoc23sgWFA]",
+	"source_url": "https://www.youtube.com/watch?v=KNoc23sgWFA",
+	"note": "Русский смысловой отчёт по англоязычной лекции Dr. Jacob Goodin, глава 1 курса CSCS. Исходная расшифровка оставлена на английском; физиологические модели переданы в объёме и упрощении исходной лекции. Материал не заменяет медицинскую или индивидуальную тренерскую консультацию. YouTube embed, 18:16.",
+	"duration": 1096,
+	"tags": [
+		"Силовая подготовка",
+		"Нервно-мышечная система",
+		"Двигательные единицы",
+		"Типы мышечных волокон",
+		"Jacob Goodin",
+		"12 блоков"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "KNoc23sgWFA"
+	},
+	"overview_theses": [
+		"Нервно-мышечная система связывает электрический сигнал мотонейрона с высвобождением кальция и сокращением мышечных волокон.",
+		"Двигательная единица — альфа-мотонейрон и все иннервируемые им волокна; малые единицы обеспечивают точность, крупные позволяют подключать больше волокон одним сигналом.",
+		"Принцип «всё или ничего» действует на двигательную единицу: один потенциал действия не делает её отдельное сокращение сильнее и не включает только часть её волокон.",
+		"Сила регулируется двумя основными способами: частотой импульсов внутри активных двигательных единиц и количеством рекрутированных единиц.",
+		"Одиночный импульс создаёт twitch; более частые импульсы суммируются, переходят в неполный, а затем в полный тетанус с большей силой.",
+		"Волокна типа I меньше, легче рекрутируются и устойчивее к утомлению; тип IIx крупнее, мощнее и быстрее, но утомляются раньше; тип IIa занимает промежуточное положение.",
+		"Скорость нарастания силы связана с частотой разрядов двигательных единиц и важна для оценки взрывной способности, когда времени на развитие максимальной силы мало.",
+		"Мышечные веретёна реагируют на растяжение и запускают быстрый рефлекс сокращения через спинной мозг; сухожильные органы Гольджи при большой нагрузке усиливают тормозной ответ.",
+		"Тренировка силы использует тяжёлые нагрузки для высокопороговых единиц, гипертрофию для увеличения сократительного ресурса и взрывные многосуставные действия для быстрого рекрутирования."
+	],
+	"chapters": [
+		{
+			"start": 0.88,
+			"title": "От мышечной ткани к нервно-мышечной системе",
+			"summary": "Вторая лекция главы связывает строение мышцы из предыдущего видео с нервным управлением, рекрутированием и двигательными единицами.",
+			"theses": [
+				"Мышечная и нервная системы рассматриваются как единая цепочка управления движением.",
+				"Главный вопрос — как нервная система включает волокна и меняет итоговую силу.",
+				"Материал следует первой главе Essentials of Strength Training and Conditioning NSCA."
+			],
+			"anchor": "dr gooden here again with lecture number",
+			"segments": [
+				{
+					"start": 0.88,
+					"text": "dr gooden here again with lecture number"
+				},
+				{
+					"start": 2.88,
+					"text": "two"
+				},
+				{
+					"start": 3.52,
+					"text": "from chapter one of the essentials for"
+				},
+				{
+					"start": 5.6,
+					"text": "strength training and conditioning"
+				},
+				{
+					"start": 7.28,
+					"text": "textbook okay in this lecture we're"
+				},
+				{
+					"start": 8.96,
+					"text": "going to talk about the neuromuscular"
+				},
+				{
+					"start": 10.88,
+					"text": "system"
+				},
+				{
+					"start": 11.6,
+					"text": "regarding recruitment and specifically"
+				},
+				{
+					"start": 13.92,
+					"text": "motor units"
+				},
+				{
+					"start": 15.2,
+					"text": "okay let's get into it"
+				},
+				{
+					"start": 32.8,
+					"text": "in the last lecture we talked about the"
+				},
+				{
+					"start": 34.24,
+					"text": "basic structure and function"
+				},
+				{
+					"start": 36.08,
+					"text": "of muscle tissue in this lecture we want"
+				},
+				{
+					"start": 38.8,
+					"text": "to tie in"
+				},
+				{
+					"start": 39.52,
+					"text": "the nervous system okay so the nervous"
+				},
+				{
+					"start": 41.52,
+					"text": "system the muscular system"
+				},
+				{
+					"start": 42.88,
+					"text": "together they make the neuromuscular"
+				},
+				{
+					"start": 44.56,
+					"text": "system let's see how it works"
+				},
+				{
+					"start": 48.64,
+					"text": "okay so these slides are adapted from"
+				},
+				{
+					"start": 50.88,
+					"text": "the nsca"
+				},
+				{
+					"start": 52.56,
+					"text": "and they go along with the essentials of"
+				},
+				{
+					"start": 54.4,
+					"text": "strength training and conditioning"
+				},
+				{
+					"start": 55.76,
+					"text": "textbook"
+				},
+				{
+					"start": 56.48,
+					"text": "by doctors hof and triplet"
+				}
+			]
+		},
+		{
+			"start": 61.12,
+			"title": "Нервно-мышечное соединение: путь сигнала к сокращению",
+			"summary": "Потенциал действия проходит по аксону, вызывает выброс ацетилхолина и через концевую пластинку, Т-трубочки и кальций запускает сокращение волокна.",
+			"theses": [
+				"Альфа-мотонейрон проводит потенциал действия к нервно-мышечному соединению.",
+				"Ацетилхолин пересекает синаптическую щель и создаёт новый потенциал действия на моторной концевой пластинке.",
+				"Т-трубочки быстро разносят сигнал по клетке, а саркоплазматический ретикулум высвобождает кальций.",
+				"Кальций воздействует на тропонин-тропомиозиновый комплекс и открывает возможность сокращения."
+			],
+			"anchor": "okay so here we have a diagram of the",
+			"segments": [
+				{
+					"start": 61.12,
+					"text": "okay so here we have a diagram of the"
+				},
+				{
+					"start": 62.88,
+					"text": "neuromuscular junction as well as on the"
+				},
+				{
+					"start": 64.96,
+					"text": "left side"
+				},
+				{
+					"start": 65.76,
+					"text": "of the screen the steps of activation"
+				},
+				{
+					"start": 68.64,
+					"text": "for muscles"
+				},
+				{
+					"start": 70.24,
+					"text": "so first we see that an action potential"
+				},
+				{
+					"start": 72.4,
+					"text": "travels down"
+				},
+				{
+					"start": 73.68,
+					"text": "the axon of the alpha motor neuron it"
+				},
+				{
+					"start": 76.24,
+					"text": "then triggers the release of"
+				},
+				{
+					"start": 77.68,
+					"text": "acetylcholine"
+				},
+				{
+					"start": 79.6,
+					"text": "which then travels across the synaptic"
+				},
+				{
+					"start": 82.32,
+					"text": "cleft"
+				},
+				{
+					"start": 83.68,
+					"text": "to the motor end plate and this causes"
+				},
+				{
+					"start": 87.04,
+					"text": "an action potential"
+				},
+				{
+					"start": 88.56,
+					"text": "and this action potential travels"
+				},
+				{
+					"start": 90.32,
+					"text": "through the whole cell at the same time"
+				},
+				{
+					"start": 92.16,
+					"text": "because of these"
+				},
+				{
+					"start": 93.36,
+					"text": "t tubules these transverse tubules that"
+				},
+				{
+					"start": 95.52,
+					"text": "run transversely"
+				},
+				{
+					"start": 97.12,
+					"text": "through the muscle cell and then we can"
+				},
+				{
+					"start": 100,
+					"text": "see"
+				},
+				{
+					"start": 101.04,
+					"text": "the sarcoplasmic reticulum"
+				},
+				{
+					"start": 105.36,
+					"text": "that will release calcium so that it can"
+				},
+				{
+					"start": 109.04,
+					"text": "bind to the troponin tropomyosin complex"
+				},
+				{
+					"start": 111.6,
+					"text": "and cause muscle fiber contraction"
+				}
+			]
+		},
+		{
+			"start": 116.96,
+			"title": "Двигательная единица и точность контроля",
+			"summary": "Функциональный нервно-мышечный блок включает один мотонейрон и все связанные с ним волокна; число волокон определяет грубость или точность управления.",
+			"theses": [
+				"Саркомер остаётся сократительной единицей клетки, а двигательная единица — единицей нервно-мышечного управления.",
+				"Мышцы глаз и пальцев используют малые двигательные единицы для тонкой градации усилия.",
+				"Крупные мышцы ног могут иметь сотни волокон на один мотонейрон и одним сигналом создавать большее суммарное напряжение."
+			],
+			"anchor": "now this process doesn't happen in",
+			"segments": [
+				{
+					"start": 116.96,
+					"text": "now this process doesn't happen in"
+				},
+				{
+					"start": 118.72,
+					"text": "individual muscle fiber recall that the"
+				},
+				{
+					"start": 120.56,
+					"text": "contractile unit of the cell"
+				},
+				{
+					"start": 122.4,
+					"text": "is a sarcomere but the neuromuscular"
+				},
+				{
+					"start": 126.16,
+					"text": "unit"
+				},
+				{
+					"start": 126.64,
+					"text": "is a motor unit a motor unit consists of"
+				},
+				{
+					"start": 129.36,
+					"text": "an alpha motor neuron"
+				},
+				{
+					"start": 130.56,
+					"text": "and all of the muscle fibers that it"
+				},
+				{
+					"start": 132.16,
+					"text": "innervates"
+				},
+				{
+					"start": 133.76,
+					"text": "and the size of a motor unit will"
+				},
+				{
+					"start": 136.24,
+					"text": "dictate"
+				},
+				{
+					"start": 136.88,
+					"text": "the amount of control or force"
+				},
+				{
+					"start": 138.8,
+					"text": "production that a muscle"
+				},
+				{
+					"start": 140.72,
+					"text": "can generate muscles that function with"
+				},
+				{
+					"start": 143.28,
+					"text": "great precision"
+				},
+				{
+					"start": 144.64,
+					"text": "have very few muscle fibers per alpha"
+				},
+				{
+					"start": 148.08,
+					"text": "motor neuron"
+				},
+				{
+					"start": 149.44,
+					"text": "but muscles that require less precision"
+				},
+				{
+					"start": 152.16,
+					"text": "may have"
+				},
+				{
+					"start": 153.04,
+					"text": "several hundred all right so"
+				},
+				{
+					"start": 156.16,
+					"text": "your muscles in your eyes or in your"
+				},
+				{
+					"start": 158.4,
+					"text": "fingers for instance have"
+				},
+				{
+					"start": 160,
+					"text": "very fine movement control and have very"
+				},
+				{
+					"start": 161.84,
+					"text": "small motor units whereas your"
+				},
+				{
+					"start": 163.36,
+					"text": "quadriceps or your glutes or hamstrings"
+				},
+				{
+					"start": 165.36,
+					"text": "they have large motor units and those"
+				},
+				{
+					"start": 167.84,
+					"text": "larger muscles that require less"
+				},
+				{
+					"start": 169.36,
+					"text": "precision well they tend to be stronger"
+				},
+				{
+					"start": 171.2,
+					"text": "and they can develop more force because"
+				},
+				{
+					"start": 172.56,
+					"text": "as one alpha motor neuron"
+				},
+				{
+					"start": 174.24,
+					"text": "fires it can create tension and force in"
+				},
+				{
+					"start": 177.2,
+					"text": "a whole bunch of different hundreds of"
+				},
+				{
+					"start": 178.96,
+					"text": "muscle fibers"
+				},
+				{
+					"start": 180.88,
+					"text": "and here in this diagram we can see the"
+				},
+				{
+					"start": 183.6,
+					"text": "motor"
+				},
+				{
+					"start": 184,
+					"text": "neuron it's myelinated with schwann"
+				},
+				{
+					"start": 186.8,
+					"text": "cells"
+				},
+				{
+					"start": 188.56,
+					"text": "and we see all of these neuromuscular"
+				},
+				{
+					"start": 190.72,
+					"text": "junctions"
+				},
+				{
+					"start": 191.68,
+					"text": "where it is innervating individual"
+				},
+				{
+					"start": 194.56,
+					"text": "muscle fibers"
+				}
+			]
+		},
+		{
+			"start": 198.8,
+			"title": "Принцип «всё или ничего»",
+			"summary": "При разряде мотонейрона сокращаются все волокна его двигательной единицы; сила отдельного ответа не дозируется амплитудой потенциала действия.",
+			"theses": [
+				"Двигательная единица либо отвечает целиком, либо не отвечает.",
+				"Более сильный потенциал действия не создаёт более сильное одиночное сокращение той же единицы.",
+				"Для градации общей силы нервной системе нужны другие механизмы — частота разрядов и рекрутирование дополнительных единиц."
+			],
+			"anchor": "now there's an important principle we",
+			"segments": [
+				{
+					"start": 198.8,
+					"text": "now there's an important principle we"
+				},
+				{
+					"start": 200.16,
+					"text": "have to talk about and it's the all or"
+				},
+				{
+					"start": 201.84,
+					"text": "none principle"
+				},
+				{
+					"start": 203.2,
+					"text": "the all or none principle states that"
+				},
+				{
+					"start": 205.68,
+					"text": "either all muscle fibers"
+				},
+				{
+					"start": 207.36,
+					"text": "of a motor unit contract or none of them"
+				},
+				{
+					"start": 209.6,
+					"text": "contract so if that alpha motor neuron"
+				},
+				{
+					"start": 211.76,
+					"text": "sends a"
+				},
+				{
+					"start": 212.56,
+					"text": "contractile signal to the muscle fibers"
+				},
+				{
+					"start": 215.36,
+					"text": "they will"
+				},
+				{
+					"start": 215.84,
+					"text": "all contract together or none of them"
+				},
+				{
+					"start": 218.32,
+					"text": "will contract at all"
+				},
+				{
+					"start": 222.16,
+					"text": "so currently there's no evidence that a"
+				},
+				{
+					"start": 224,
+					"text": "motor neuron stimulus causes only some"
+				},
+				{
+					"start": 226.08,
+					"text": "of the fibers"
+				},
+				{
+					"start": 226.8,
+					"text": "to contract"
+				},
+				{
+					"start": 230.32,
+					"text": "and likewise a stronger action potential"
+				},
+				{
+					"start": 233.92,
+					"text": "cannot produce a stronger contraction"
+				},
+				{
+					"start": 237.84,
+					"text": "so because of the all or none principle"
+				},
+				{
+					"start": 239.28,
+					"text": "we know that either all fibers contract"
+				},
+				{
+					"start": 241.36,
+					"text": "or"
+				},
+				{
+					"start": 241.68,
+					"text": "none contract and we know that when they"
+				},
+				{
+					"start": 243.12,
+					"text": "do contract you can't actually"
+				},
+				{
+					"start": 244.88,
+					"text": "regulate the force of that contraction"
+				},
+				{
+					"start": 247.2,
+					"text": "through the action potential of the"
+				},
+				{
+					"start": 248.72,
+					"text": "alpha motor neuron it's the same"
+				}
+			]
+		},
+		{
+			"start": 250.56,
+			"title": "От одиночного twitch к полному тетанусу",
+			"summary": "Частота стимуляции меняет суммарное напряжение: новый импульс до полного расслабления накладывается на предыдущий и повышает силу.",
+			"theses": [
+				"Один потенциал действия создаёт короткий одиночный ответ — twitch.",
+				"Второй импульс до исчезновения первого ответа даёт суммацию.",
+				"При неполном тетанусе отдельные колебания силы ещё различимы.",
+				"Достаточно высокая частота создаёт полный тетанус и позволяет двигательной единице приблизиться к максимальной силе."
+			],
+			"anchor": "force every time so how do we exhibit",
+			"segments": [
+				{
+					"start": 250.56,
+					"text": "force every time so how do we exhibit"
+				},
+				{
+					"start": 252.64,
+					"text": "different amounts of force with our"
+				},
+				{
+					"start": 254.4,
+					"text": "muscles how do we grade the force output"
+				},
+				{
+					"start": 256.96,
+					"text": "well to understand that first we have to"
+				},
+				{
+					"start": 258.48,
+					"text": "understand what happens when a motor"
+				},
+				{
+					"start": 260.88,
+					"text": "unit is stimulated"
+				},
+				{
+					"start": 262.96,
+					"text": "so if a motor unit is stimulated a"
+				},
+				{
+					"start": 265.04,
+					"text": "single time with a single action"
+				},
+				{
+					"start": 266.4,
+					"text": "potential that is called a"
+				},
+				{
+					"start": 267.76,
+					"text": "twitch a single twitch and it generates"
+				},
+				{
+					"start": 270.8,
+					"text": "a little bit of force"
+				},
+				{
+					"start": 272.32,
+					"text": "but then that force dissipates if you"
+				},
+				{
+					"start": 274.96,
+					"text": "have a second twitch occurring"
+				},
+				{
+					"start": 276.56,
+					"text": "before the first twitch is fully"
+				},
+				{
+					"start": 278.56,
+					"text": "dissipated"
+				},
+				{
+					"start": 280.24,
+					"text": "then you call that the summation of two"
+				},
+				{
+					"start": 283.04,
+					"text": "twitches"
+				},
+				{
+					"start": 285.12,
+					"text": "now if you have a continuous twitch"
+				},
+				{
+					"start": 288.72,
+					"text": "that's fast enough so that it so that"
+				},
+				{
+					"start": 291.92,
+					"text": "one twitch occurs"
+				},
+				{
+					"start": 293.2,
+					"text": "before the first one is fully dissipated"
+				},
+				{
+					"start": 295.52,
+					"text": "before that force is dissipated"
+				},
+				{
+					"start": 297.04,
+					"text": "but not quite fast enough to continue"
+				},
+				{
+					"start": 298.96,
+					"text": "rising in force you call that"
+				},
+				{
+					"start": 300.72,
+					"text": "unfused tetanus and that's because"
+				},
+				{
+					"start": 305.44,
+					"text": "you get this wave-like pattern in force"
+				},
+				{
+					"start": 307.84,
+					"text": "production so we call that"
+				},
+				{
+					"start": 308.96,
+					"text": "unfused because you can still sort of"
+				},
+				{
+					"start": 310.88,
+					"text": "see the individual"
+				},
+				{
+					"start": 312,
+					"text": "individual twitches and you don't"
+				},
+				{
+					"start": 313.6,
+					"text": "develop very much force"
+				},
+				{
+					"start": 316.4,
+					"text": "now if you have a rapid enough signal"
+				},
+				{
+					"start": 318.08,
+					"text": "down that alpha motor neuron then you"
+				},
+				{
+					"start": 319.52,
+					"text": "get what's called fused tetanus and you"
+				},
+				{
+					"start": 321.2,
+					"text": "can develop"
+				},
+				{
+					"start": 322,
+					"text": "the full force capacity of that motor"
+				},
+				{
+					"start": 324.8,
+					"text": "unit"
+				},
+				{
+					"start": 325.52,
+					"text": "so while each individual action"
+				},
+				{
+					"start": 327.04,
+					"text": "potential cannot stimulate"
+				},
+				{
+					"start": 329.6,
+					"text": "small subsets of the muscle fibers that"
+				},
+				{
+					"start": 331.28,
+					"text": "it innervates and it cannot produce a"
+				},
+				{
+					"start": 332.88,
+					"text": "stronger or a weaker"
+				},
+				{
+					"start": 335.2,
+					"text": "twitch force if we have a higher"
+				},
+				{
+					"start": 337.92,
+					"text": "frequency of twitches"
+				},
+				{
+					"start": 339.36,
+					"text": "then we can actually produce more force"
+				},
+				{
+					"start": 342.24,
+					"text": "in that muscle"
+				}
+			]
+		},
+		{
+			"start": 347.04,
+			"title": "Типы волокон I, IIa и IIx",
+			"summary": "Мышечные волокна образуют спектр от медленных выносливых до быстрых мощных, различаясь размером, порогом рекрутирования, скоростью, энергетикой и утомляемостью.",
+			"theses": [
+				"Тип I имеет меньший размер и порог рекрутирования, медленнее сокращается и проводит сигнал, но лучше сопротивляется утомлению.",
+				"Медленные волокна богаты капиллярами, миоглобином, митохондриями и аэробными ферментами, но дают меньше силы и мощности.",
+				"Тип IIx крупнее, быстрее и мощнее, имеет больше анаэробных возможностей, но хуже переносит длительную работу.",
+				"Тип IIa сочетает промежуточные характеристики, а реальные волокна располагаются на непрерывном спектре."
+			],
+			"anchor": "now not every motor unit or muscle fiber",
+			"segments": [
+				{
+					"start": 347.04,
+					"text": "now not every motor unit or muscle fiber"
+				},
+				{
+					"start": 349.36,
+					"text": "are created the same"
+				},
+				{
+					"start": 351.36,
+					"text": "each muscle fiber has falls somewhere"
+				},
+				{
+					"start": 354.72,
+					"text": "along the spectrum"
+				},
+				{
+					"start": 355.76,
+					"text": "of slow to fast twitch and we have three"
+				},
+				{
+					"start": 358.72,
+					"text": "basic kinds"
+				},
+				{
+					"start": 359.84,
+					"text": "so type 1 fibers are a slow twitch"
+				},
+				{
+					"start": 363.6,
+					"text": "and we can see their properties here in"
+				},
+				{
+					"start": 366.24,
+					"text": "this column"
+				},
+				{
+					"start": 367.6,
+					"text": "as we look at them notice that they are"
+				},
+				{
+					"start": 369.52,
+					"text": "smaller"
+				},
+				{
+					"start": 371.12,
+					"text": "they have lower recruitment thresholds"
+				},
+				{
+					"start": 373.44,
+					"text": "meaning that they're"
+				},
+				{
+					"start": 374.4,
+					"text": "easier to recruit it's it takes less"
+				},
+				{
+					"start": 378.32,
+					"text": "intensity or velocity or force"
+				},
+				{
+					"start": 381.68,
+					"text": "of action to recruit these smaller motor"
+				},
+				{
+					"start": 383.92,
+					"text": "units"
+				},
+				{
+					"start": 385.76,
+					"text": "they have slower nerve conduction"
+				},
+				{
+					"start": 387.12,
+					"text": "velocity slower contraction speed"
+				},
+				{
+					"start": 389.2,
+					"text": "etc etc they have high endurance and"
+				},
+				{
+					"start": 391.84,
+					"text": "fatigue resistance"
+				},
+				{
+					"start": 393.12,
+					"text": "okay so these are your slow twitch"
+				},
+				{
+					"start": 394.88,
+					"text": "fibers your endurance fibers"
+				},
+				{
+					"start": 397.28,
+					"text": "but they have low force production low"
+				},
+				{
+					"start": 399.28,
+					"text": "power output"
+				},
+				{
+					"start": 401.44,
+					"text": "lots of aerobic enzymes but very few"
+				},
+				{
+					"start": 404.08,
+					"text": "anaerobic enzymes"
+				},
+				{
+					"start": 406.88,
+					"text": "more capillary density more myoglobin"
+				},
+				{
+					"start": 409.28,
+					"text": "content right so they"
+				},
+				{
+					"start": 410.48,
+					"text": "require oxygen in order to function they"
+				},
+				{
+					"start": 413.28,
+					"text": "can also"
+				},
+				{
+					"start": 414.08,
+					"text": "run off of fat they have high"
+				},
+				{
+					"start": 415.6,
+					"text": "mitochondrial density"
+				},
+				{
+					"start": 417.6,
+					"text": "so you kind of get the picture right"
+				},
+				{
+					"start": 419.44,
+					"text": "these slow twitch muscle fibers"
+				},
+				{
+					"start": 421.04,
+					"text": "are great for endurance not great for"
+				},
+				{
+					"start": 423.52,
+					"text": "power not great for"
+				},
+				{
+					"start": 424.96,
+					"text": "force production and then on the other"
+				},
+				{
+					"start": 427.52,
+					"text": "end of the spectrum we have"
+				},
+				{
+					"start": 428.8,
+					"text": "type 2x or fast twitch muscle fibers and"
+				},
+				{
+					"start": 431.92,
+					"text": "these are the opposite of the slow"
+				},
+				{
+					"start": 433.44,
+					"text": "twitch"
+				},
+				{
+					"start": 433.92,
+					"text": "these are larger they are"
+				},
+				{
+					"start": 437.44,
+					"text": "they have a high recruitment threshold"
+				},
+				{
+					"start": 439.52,
+					"text": "they're very fast"
+				},
+				{
+					"start": 441.84,
+					"text": "as far as nerve conduction velocity"
+				},
+				{
+					"start": 443.36,
+					"text": "contraction speed relax relaxation speed"
+				},
+				{
+					"start": 445.84,
+					"text": "etc"
+				},
+				{
+					"start": 446.72,
+					"text": "but they don't really resist fatigue"
+				},
+				{
+					"start": 448.88,
+					"text": "very well and"
+				},
+				{
+					"start": 450,
+					"text": "they don't have great endurance they do"
+				},
+				{
+					"start": 451.92,
+					"text": "though have high force"
+				},
+				{
+					"start": 453.44,
+					"text": "production power output and anaerobic"
+				},
+				{
+					"start": 455.6,
+					"text": "enzyme output"
+				},
+				{
+					"start": 457.04,
+					"text": "and then the type ii a fibers these are"
+				},
+				{
+					"start": 459.6,
+					"text": "the intermediate fiber types and they're"
+				},
+				{
+					"start": 460.88,
+					"text": "kind of right smack"
+				},
+				{
+					"start": 462,
+					"text": "dab in the middle okay so what does this"
+				}
+			]
+		},
+		{
+			"start": 463.92,
+			"title": "Тип волокон и требования спортивной задачи",
+			"summary": "На примерах дистанционных атлетов, спринтеров, метателей и многоборцев показано, как сочетание выносливости, силы и мощности связано с профилем волокон.",
+			"theses": [
+				"Длительные циклические дисциплины опираются на устойчивость волокон типа I.",
+				"Короткие взрывные дисциплины требуют высокой средней мощности быстрых волокон.",
+				"Дистанции средней продолжительности и многоборье требуют смешанного профиля.",
+				"Функциональную способность двигательной единицы задают и морфология волокон, и их физиологические свойства."
+			],
+			"anchor": "mean in the real world well if we put",
+			"segments": [
+				{
+					"start": 463.92,
+					"text": "mean in the real world well if we put"
+				},
+				{
+					"start": 465.68,
+					"text": "this in terms of"
+				},
+				{
+					"start": 466.96,
+					"text": "athletics we can think of your typical"
+				},
+				{
+					"start": 469.36,
+					"text": "endurance distance athlete as having"
+				},
+				{
+					"start": 471.6,
+					"text": "predominantly type 1 or slow twitch"
+				},
+				{
+					"start": 474.4,
+					"text": "muscle"
+				},
+				{
+					"start": 474.96,
+					"text": "fibers okay so these are smaller motor"
+				},
+				{
+					"start": 477.2,
+					"text": "units easier to recruit"
+				},
+				{
+					"start": 479.04,
+					"text": "but they last for days and they keep"
+				},
+				{
+					"start": 480.96,
+					"text": "going well not literally for days but"
+				},
+				{
+					"start": 482.32,
+					"text": "they last for a long time"
+				},
+				{
+					"start": 483.76,
+					"text": "and they allow these distance athletes"
+				},
+				{
+					"start": 485.84,
+					"text": "to put out"
+				},
+				{
+					"start": 486.96,
+					"text": "relatively high power outputs for the"
+				},
+				{
+					"start": 489.04,
+					"text": "duration of their event"
+				},
+				{
+					"start": 491.44,
+					"text": "on the other end we have the fast twitch"
+				},
+				{
+					"start": 493.2,
+					"text": "the purely fast switch and this would be"
+				},
+				{
+					"start": 495.28,
+					"text": "athletes like sprinters or throwers who"
+				},
+				{
+					"start": 497.68,
+					"text": "are very fast and powerful but only for"
+				},
+				{
+					"start": 499.92,
+					"text": "a short period of time with massively"
+				},
+				{
+					"start": 502.16,
+					"text": "high average power outputs"
+				},
+				{
+					"start": 503.84,
+					"text": "over their very short event that lasts"
+				},
+				{
+					"start": 506.16,
+					"text": "maybe anywhere from one to ten seconds"
+				},
+				{
+					"start": 508.64,
+					"text": "and then in between you have the mix"
+				},
+				{
+					"start": 510.64,
+					"text": "okay so these"
+				},
+				{
+					"start": 511.76,
+					"text": "fiber types are a mix of qualities and"
+				},
+				{
+					"start": 514.16,
+					"text": "these would be prevalent in say your 400"
+				},
+				{
+					"start": 516.24,
+					"text": "meter athletes or maybe"
+				},
+				{
+					"start": 517.6,
+					"text": "in your decathletes or your and some of"
+				},
+				{
+					"start": 520.24,
+					"text": "your middle distance athletes and these"
+				},
+				{
+					"start": 521.92,
+					"text": "athletes have to have a blend of"
+				},
+				{
+					"start": 523.36,
+					"text": "endurance because maybe their"
+				},
+				{
+					"start": 525.12,
+					"text": "event lasts for more than 10 seconds and"
+				},
+				{
+					"start": 527.44,
+					"text": "also a blend of"
+				},
+				{
+					"start": 528.72,
+					"text": "strength and power and force production"
+				},
+				{
+					"start": 530.56,
+					"text": "capacity because they do have to have"
+				},
+				{
+					"start": 532.4,
+					"text": "a high power output"
+				},
+				{
+					"start": 537.12,
+					"text": "so a key point here motor units are"
+				},
+				{
+					"start": 539.36,
+					"text": "composed of muscle fibers that have"
+				},
+				{
+					"start": 541.76,
+					"text": "specific morphological and physiological"
+				},
+				{
+					"start": 544.56,
+					"text": "characteristics"
+				},
+				{
+					"start": 545.6,
+					"text": "morphological means like the shape and"
+				},
+				{
+					"start": 547.44,
+					"text": "structure of physiological means"
+				},
+				{
+					"start": 549.04,
+					"text": "the enzymes and physiological components"
+				},
+				{
+					"start": 552.96,
+					"text": "of the cell"
+				},
+				{
+					"start": 553.92,
+					"text": "and these determine their functional"
+				},
+				{
+					"start": 556.32,
+					"text": "capacity"
+				},
+				{
+					"start": 557.36,
+					"text": "okay so not all motor units are the same"
+				},
+				{
+					"start": 559.68,
+					"text": "there are small ones"
+				},
+				{
+					"start": 560.96,
+					"text": "big ones there are fast switch slow"
+				},
+				{
+					"start": 563.12,
+					"text": "twitch and in between"
+				},
+				{
+					"start": 564.16,
+					"text": "and muscle fibers are the same fast"
+				},
+				{
+					"start": 565.68,
+					"text": "twitch slow twitching in between"
+				},
+				{
+					"start": 567.12,
+					"text": "somewhere on that spectrum"
+				},
+				{
+					"start": 568.48,
+					"text": "is where they all fall"
+				}
+			]
+		},
+		{
+			"start": 572.08,
+			"title": "Рекрутирование, rate coding и скорость нарастания силы",
+			"summary": "Мышца повышает усилие, подключая больше двигательных единиц и увеличивая частоту их разрядов; высокая частота ускоряет развитие силы.",
+			"theses": [
+				"Двигательные единицы не включаются все сразу и не обязаны быть активны всё время упражнения.",
+				"По мере роста требуемой силы рекрутируются дополнительные, в том числе более высокопороговые единицы.",
+				"Rate coding — изменение частоты потенциалов действия внутри активной двигательной единицы.",
+				"RFD показывает, насколько быстро нарастает сила, и характеризует взрывную способность лучше, чем одно лишь пиковое значение.",
+				"В реальном движении рекрутирование и повышение частоты обычно работают вместе."
+			],
+			"anchor": "now let's talk a little bit about",
+			"segments": [
+				{
+					"start": 572.08,
+					"text": "now let's talk a little bit about"
+				},
+				{
+					"start": 575.68,
+					"text": "rate coding and recruitment so during"
+				},
+				{
+					"start": 578.72,
+					"text": "exercise"
+				},
+				{
+					"start": 579.52,
+					"text": "you recruit motor units and you don't"
+				},
+				{
+					"start": 581.84,
+					"text": "recruit them all at once"
+				},
+				{
+					"start": 583.12,
+					"text": "neither do you recruit them all for the"
+				},
+				{
+					"start": 585.28,
+					"text": "entire time that you're exercising"
+				},
+				{
+					"start": 587.68,
+					"text": "in fact the output of a muscle the force"
+				},
+				{
+					"start": 590.64,
+					"text": "output of a muscle can be varied through"
+				},
+				{
+					"start": 592.32,
+					"text": "the change in frequency of activation"
+				},
+				{
+					"start": 594.32,
+					"text": "of individual motor units or change in"
+				},
+				{
+					"start": 597.28,
+					"text": "the number of activated motor units okay"
+				},
+				{
+					"start": 599.36,
+					"text": "so"
+				},
+				{
+					"start": 600,
+					"text": "the two key words here are frequency of"
+				},
+				{
+					"start": 602.4,
+					"text": "activation"
+				},
+				{
+					"start": 603.28,
+					"text": "or number of activated motor units"
+				},
+				{
+					"start": 606.88,
+					"text": "okay so this picture here on the left"
+				},
+				{
+					"start": 609.52,
+					"text": "looking at recruitment"
+				},
+				{
+					"start": 610.64,
+					"text": "and rate coding this i like this diagram"
+				},
+				{
+					"start": 612.56,
+					"text": "because it shows"
+				},
+				{
+					"start": 614.08,
+					"text": "five hypothetical motor units and each"
+				},
+				{
+					"start": 616.88,
+					"text": "of these lines"
+				},
+				{
+					"start": 619.04,
+					"text": "these vertical lines think of these as"
+				},
+				{
+					"start": 621.36,
+					"text": "action potentials"
+				},
+				{
+					"start": 623.04,
+					"text": "and think of this line as time"
+				},
+				{
+					"start": 627.84,
+					"text": "okay so over time we're recruiting more"
+				},
+				{
+					"start": 631.04,
+					"text": "and more motor units"
+				},
+				{
+					"start": 633.68,
+					"text": "as time goes we're recruiting more and"
+				},
+				{
+					"start": 635.28,
+					"text": "maybe as time goes"
+				},
+				{
+					"start": 636.88,
+					"text": "the force required by the muscle is"
+				},
+				{
+					"start": 639.04,
+					"text": "getting higher and higher maybe you're"
+				},
+				{
+					"start": 640.24,
+					"text": "trying to lift something and it's"
+				},
+				{
+					"start": 641.6,
+					"text": "first developing tension and so"
+				},
+				{
+					"start": 644.64,
+					"text": "motor unit one is triggered maybe it has"
+				},
+				{
+					"start": 646.4,
+					"text": "a lower threshold okay"
+				},
+				{
+					"start": 647.84,
+					"text": "and then the rate coding starts to get"
+				},
+				{
+					"start": 650.24,
+					"text": "faster and faster as"
+				},
+				{
+					"start": 652.08,
+					"text": "time goes on okay but"
+				},
+				{
+					"start": 655.84,
+					"text": "pretty soon you have to activate motor"
+				},
+				{
+					"start": 657.44,
+					"text": "unit two to contribute"
+				},
+				{
+					"start": 659.28,
+					"text": "and then three and then four and then"
+				},
+				{
+					"start": 661.12,
+					"text": "five and so on up the chain and maybe"
+				},
+				{
+					"start": 663.2,
+					"text": "five has the highest recruitment"
+				},
+				{
+					"start": 664.96,
+					"text": "threshold and it's a larger motor unit"
+				},
+				{
+					"start": 667.28,
+					"text": "and as you go you can see the rate"
+				},
+				{
+					"start": 668.88,
+					"text": "coding"
+				},
+				{
+					"start": 669.52,
+					"text": "is increasing right it's getting sorry"
+				},
+				{
+					"start": 672.4,
+					"text": "my lines are kind of thick it's getting"
+				},
+				{
+					"start": 674.88,
+					"text": "faster and faster okay so it's"
+				},
+				{
+					"start": 677.68,
+					"text": "modulating force"
+				},
+				{
+					"start": 678.88,
+					"text": "increasing force output by two methods"
+				},
+				{
+					"start": 681.44,
+					"text": "the first method"
+				},
+				{
+					"start": 682.32,
+					"text": "is by recruiting more motor units and"
+				},
+				{
+					"start": 683.92,
+					"text": "the second method is by having"
+				},
+				{
+					"start": 685.52,
+					"text": "faster action potentials"
+				},
+				{
+					"start": 689.04,
+					"text": "and so we can see in research conducted"
+				},
+				{
+					"start": 691.04,
+					"text": "by inoca"
+				},
+				{
+					"start": 692.48,
+					"text": "at all that looking at three different"
+				},
+				{
+					"start": 695.28,
+					"text": "motor units so the circle"
+				},
+				{
+					"start": 697.2,
+					"text": "triangle and the dark circle represented"
+				},
+				{
+					"start": 699.76,
+					"text": "on this graph"
+				},
+				{
+					"start": 700.96,
+					"text": "these motor units have different"
+				},
+				{
+					"start": 702.72,
+					"text": "discharge rates and the faster the"
+				},
+				{
+					"start": 705.04,
+					"text": "discharge rate"
+				},
+				{
+					"start": 706.32,
+					"text": "the faster the rate of force development"
+				},
+				{
+					"start": 708.56,
+					"text": "this is also"
+				},
+				{
+					"start": 709.92,
+					"text": "abbreviated as rfd rate of force"
+				},
+				{
+					"start": 713.04,
+					"text": "development"
+				},
+				{
+					"start": 713.68,
+					"text": "is a more direct measure of"
+				},
+				{
+					"start": 716.72,
+					"text": "explosive ability of a muscle the faster"
+				},
+				{
+					"start": 719.44,
+					"text": "you develop force the more explosive you"
+				},
+				{
+					"start": 721.44,
+					"text": "can be and so"
+				},
+				{
+					"start": 722.4,
+					"text": "these uh motor unit and so motor unit"
+				},
+				{
+					"start": 726.16,
+					"text": "one we can see"
+				},
+				{
+					"start": 727.2,
+					"text": "has a faster discharge rate okay"
+				},
+				{
+					"start": 730.64,
+					"text": "so the discharge rate would be faster if"
+				},
+				{
+					"start": 733.44,
+					"text": "it is"
+				},
+				{
+					"start": 734.32,
+					"text": "smaller right so that's faster"
+				},
+				{
+					"start": 738.88,
+					"text": "and it has a greater force production or"
+				},
+				{
+					"start": 741.28,
+					"text": "greater rate of force production"
+				},
+				{
+					"start": 743.44,
+					"text": "than the other two motor units"
+				},
+				{
+					"start": 746.96,
+					"text": "okay key point here is that the force"
+				},
+				{
+					"start": 749.04,
+					"text": "output of a muscle can be varied through"
+				},
+				{
+					"start": 750.56,
+					"text": "the change in frequency of activation"
+				},
+				{
+					"start": 753.76,
+					"text": "of the individual motor units or a"
+				},
+				{
+					"start": 755.76,
+					"text": "change in the number of activated motor"
+				},
+				{
+					"start": 758.16,
+					"text": "units"
+				},
+				{
+					"start": 758.72,
+					"text": "and usually it's a combination of both"
+				}
+			]
+		},
+		{
+			"start": 765.2,
+			"title": "Проприоцепторы и мышечный тонус",
+			"summary": "Специализированные сенсорные рецепторы сообщают центральной нервной системе о состоянии мышечно-сухожильной системы и помогают поддерживать тонус и координацию.",
+			"theses": [
+				"Мышечный тонус здесь означает фоновое напряжение мышцы, а не бытовое выражение о внешнем виде тела.",
+				"Проприоцептивные сигналы участвуют в быстрых автоматических корректировках движения.",
+				"Дальше лектор разделяет возбуждающий ответ мышечных веретён и тормозной ответ сухожильных органов Гольджи."
+			],
+			"anchor": "now another key point that we are about",
+			"segments": [
+				{
+					"start": 765.2,
+					"text": "now another key point that we are about"
+				},
+				{
+					"start": 766.88,
+					"text": "to get into we're going to talk about"
+				},
+				{
+					"start": 768.84,
+					"text": "proprioceptors"
+				},
+				{
+					"start": 770,
+					"text": "and these are specialized sensory"
+				},
+				{
+					"start": 771.92,
+					"text": "receptors that provide"
+				},
+				{
+					"start": 773.28,
+					"text": "the central nervous system with"
+				},
+				{
+					"start": 774.48,
+					"text": "information needed to maintain muscle"
+				},
+				{
+					"start": 776.32,
+					"text": "tone"
+				},
+				{
+					"start": 777.04,
+					"text": "and perform complex coordinated"
+				},
+				{
+					"start": 779.12,
+					"text": "movements when i say muscle tone i don't"
+				},
+				{
+					"start": 780.72,
+					"text": "mean"
+				},
+				{
+					"start": 781.36,
+					"text": "the sort of traditional lay term muscle"
+				},
+				{
+					"start": 784,
+					"text": "tone like you"
+				},
+				{
+					"start": 784.8,
+					"text": "you're getting toned which actually"
+				},
+				{
+					"start": 786.16,
+					"text": "means losing fat and gaining"
+				},
+				{
+					"start": 788.08,
+					"text": "muscle size at the same time what i say"
+				},
+				{
+					"start": 790.32,
+					"text": "what i mean when i say muscle tone is"
+				},
+				{
+					"start": 792.24,
+					"text": "the actual resting tension in the muscle"
+				},
+				{
+					"start": 795.12,
+					"text": "that is in modulated"
+				},
+				{
+					"start": 796.56,
+					"text": "throughout your body's movement"
+				}
+			]
+		},
+		{
+			"start": 801.2,
+			"title": "Мышечные веретёна и рефлекс растяжения",
+			"summary": "Интрафузальные волокна внутри мышцы чувствуют деформацию и через спинной мозг быстро усиливают сигнал альфа-мотонейрону на сокращение.",
+			"theses": [
+				"Растяжение мышечного веретена активирует сенсорный нейрон.",
+				"Сигнал замыкается через спинной мозг и усиливает возбуждение мышцы без ожидания команды высших центров мозга.",
+				"Этот миотатический рефлекс обеспечивает быстрый подсознательный ответ на внешнее растяжение.",
+				"Механизм затем используется в реактивных действиях и цикле растяжение–сокращение."
+			],
+			"anchor": "so the first proprioceptor to talk about",
+			"segments": [
+				{
+					"start": 801.2,
+					"text": "so the first proprioceptor to talk about"
+				},
+				{
+					"start": 803.2,
+					"text": "are muscle spindles"
+				},
+				{
+					"start": 805.6,
+					"text": "here we have a diagram of the muscle"
+				},
+				{
+					"start": 806.96,
+					"text": "spindles and you can see that it"
+				},
+				{
+					"start": 808.64,
+					"text": "interfaces with sensory neurons"
+				},
+				{
+					"start": 810.4,
+					"text": "that connect with the spinal cord this"
+				},
+				{
+					"start": 813.36,
+					"text": "is a cross section of the spinal cord"
+				},
+				{
+					"start": 818.48,
+					"text": "so when a muscle is stretched the"
+				},
+				{
+					"start": 820.88,
+					"text": "deformation of the muscle spindle"
+				},
+				{
+					"start": 823.2,
+					"text": "which is an intrafusel intrafusal fiber"
+				},
+				{
+					"start": 825.92,
+					"text": "it's in the muscle belly"
+				},
+				{
+					"start": 828.16,
+					"text": "the deformation of that muscle spindle"
+				},
+				{
+					"start": 830.64,
+					"text": "activates a sensory neuron"
+				},
+				{
+					"start": 832.56,
+					"text": "okay so here's the sensory neuron"
+				},
+				{
+					"start": 834.24,
+					"text": "sending signals back"
+				},
+				{
+					"start": 835.92,
+					"text": "up to the spinal cord which then"
+				},
+				{
+					"start": 838.8,
+					"text": "synapses with"
+				},
+				{
+					"start": 840.16,
+					"text": "the alpha motor neuron sending a"
+				},
+				{
+					"start": 843.04,
+					"text": "strengthened"
+				},
+				{
+					"start": 843.76,
+					"text": "signal back down to the muscle to tell"
+				},
+				{
+					"start": 846,
+					"text": "it to contract"
+				},
+				{
+					"start": 847.6,
+					"text": "so these muscle spindles are what"
+				},
+				{
+					"start": 849.92,
+					"text": "activate your myotatic or stretch"
+				},
+				{
+					"start": 852.56,
+					"text": "reflex when activated they tell your"
+				},
+				{
+					"start": 854.8,
+					"text": "spinal cord to tell the muscle to"
+				},
+				{
+					"start": 856.48,
+					"text": "contract"
+				},
+				{
+					"start": 857.36,
+					"text": "the reason why this feedback loop is"
+				},
+				{
+					"start": 859.12,
+					"text": "important is because that signal doesn't"
+				},
+				{
+					"start": 860.88,
+					"text": "have to come all the way from your brain"
+				},
+				{
+					"start": 862.88,
+					"text": "from the higher order centers of your"
+				},
+				{
+					"start": 864.64,
+					"text": "central nervous system it's a much"
+				},
+				{
+					"start": 866.72,
+					"text": "faster signal it's much more reactive"
+				},
+				{
+					"start": 869.2,
+					"text": "it's"
+				},
+				{
+					"start": 870.08,
+					"text": "reflexive it's a reflex right and so"
+				},
+				{
+					"start": 872.56,
+					"text": "this stretch reflex"
+				},
+				{
+					"start": 873.84,
+					"text": "allows a body to react subconsciously"
+				},
+				{
+					"start": 876.56,
+					"text": "and very quickly to external stimuli"
+				},
+				{
+					"start": 879.04,
+					"text": "placed upon the muscles and we'll see"
+				},
+				{
+					"start": 881.52,
+					"text": "later how we can utilize"
+				},
+				{
+					"start": 882.88,
+					"text": "the stretch reflex to our exam to our"
+				},
+				{
+					"start": 885.04,
+					"text": "advantage"
+				}
+			]
+		},
+		{
+			"start": 887.36,
+			"title": "Сухожильный орган Гольджи и тормозной ответ",
+			"summary": "Рецептор возле мышечно-сухожильного перехода реагирует на большое напряжение и через спинной мозг снижает возбуждение альфа-мотонейрона.",
+			"theses": [
+				"Сухожильные органы Гольджи расположены последовательно с экстрафузальными волокнами.",
+				"Сильное, особенно продолжительное напряжение повышает их активность.",
+				"Тормозной сигнал уменьшает команду на сокращение; в лекции это объясняется как защитный механизм против катастрофического повреждения."
+			],
+			"anchor": "the next proprioceptive organ to talk",
+			"segments": [
+				{
+					"start": 887.36,
+					"text": "the next proprioceptive organ to talk"
+				},
+				{
+					"start": 889.6,
+					"text": "about is the golgi tendon organ or gto"
+				},
+				{
+					"start": 892.88,
+					"text": "and these are located near the"
+				},
+				{
+					"start": 894.4,
+					"text": "myotendinous junction in"
+				},
+				{
+					"start": 896.16,
+					"text": "the muscle tendon they occur in series"
+				},
+				{
+					"start": 899.6,
+					"text": "meaning they're attached"
+				},
+				{
+					"start": 900.72,
+					"text": "end to end with the extrafusal fibers"
+				},
+				{
+					"start": 903.68,
+					"text": "and when they are activated"
+				},
+				{
+					"start": 905.36,
+					"text": "when extremely heavy loads are placed on"
+				},
+				{
+					"start": 907.92,
+					"text": "the muscle"
+				},
+				{
+					"start": 908.56,
+					"text": "these gtos are activated and they send a"
+				},
+				{
+					"start": 911.68,
+					"text": "signal back to the spinal cord that"
+				},
+				{
+					"start": 913.76,
+					"text": "actually"
+				},
+				{
+					"start": 914.24,
+					"text": "inhibits right it blocks you can see up"
+				},
+				{
+					"start": 917.52,
+					"text": "here"
+				},
+				{
+					"start": 918.24,
+					"text": "it sort of blocks the alpha motor neuron"
+				},
+				{
+					"start": 920.8,
+					"text": "and tells it to stop"
+				},
+				{
+					"start": 921.76,
+					"text": "sending a signal to the muscle okay so"
+				},
+				{
+					"start": 923.6,
+					"text": "if your muscle encounters"
+				},
+				{
+					"start": 925.52,
+					"text": "a brief sharp stretch or load that it"
+				},
+				{
+					"start": 929.52,
+					"text": "can handle"
+				},
+				{
+					"start": 930.32,
+					"text": "it will activate the muscle spindles and"
+				},
+				{
+					"start": 932.16,
+					"text": "cause a stretch reflex"
+				},
+				{
+					"start": 933.6,
+					"text": "but if the gto is activated by a very"
+				},
+				{
+					"start": 936.24,
+					"text": "very strong muscle force"
+				},
+				{
+					"start": 937.68,
+					"text": "especially if it's sustained it causes"
+				},
+				{
+					"start": 939.92,
+					"text": "the muscle to actually relax"
+				},
+				{
+					"start": 941.84,
+					"text": "and it does so to prevent catastrophic"
+				},
+				{
+					"start": 944.64,
+					"text": "damage to the muscle"
+				},
+				{
+					"start": 945.92,
+					"text": "right your body thinks better to just"
+				},
+				{
+					"start": 947.68,
+					"text": "drop this weight than to try to hang on"
+				},
+				{
+					"start": 949.68,
+					"text": "to it for dear life"
+				},
+				{
+					"start": 950.72,
+					"text": "and risk you know tearing the tendon at"
+				},
+				{
+					"start": 952.96,
+					"text": "the insertion point or something like"
+				},
+				{
+					"start": 954.24,
+					"text": "that"
+				}
+			]
+		},
+		{
+			"start": 958.32,
+			"title": "Как тренировка повышает силовой потенциал",
+			"summary": "Практический вывод связывает тяжёлую, гипертрофическую и взрывную работу с разными звеньями нервно-мышечной системы.",
+			"theses": [
+				"Тяжёлые нагрузки помогают рекрутировать высокопороговые единицы и тренировать более частые нервные разряды.",
+				"Повторная практика может улучшать синхронность включения двигательных единиц.",
+				"Гипертрофия увеличивает поперечное сечение мышцы и число доступных сократительных элементов.",
+				"Взрывные многосуставные упражнения повышают требования к быстрым волокнам и быстрому рекрутированию.",
+				"Реактивный компонент позволяет использовать рефлекс растяжения и в дальнейшем — цикл растяжение–сокращение."
+			],
+			"anchor": "okay so with all of that together then",
+			"segments": [
+				{
+					"start": 958.32,
+					"text": "okay so with all of that together then"
+				},
+				{
+					"start": 961.04,
+					"text": "yes"
+				},
+				{
+					"start": 961.52,
+					"text": "that's really cool that we have motor"
+				},
+				{
+					"start": 963.2,
+					"text": "units and that you can regulate force"
+				},
+				{
+					"start": 965.12,
+					"text": "with action potentials or"
+				},
+				{
+					"start": 966.64,
+					"text": "greater activation of more motor units"
+				},
+				{
+					"start": 969.76,
+					"text": "and the proprioception of those muscle"
+				},
+				{
+					"start": 972.4,
+					"text": "spindles and gtos is neat but"
+				},
+				{
+					"start": 974.32,
+					"text": "how does that translate into training"
+				},
+				{
+					"start": 975.84,
+					"text": "athletes"
+				},
+				{
+					"start": 977.76,
+					"text": "well athletes can improve force"
+				},
+				{
+					"start": 979.68,
+					"text": "production through a number of ways"
+				},
+				{
+					"start": 982.08,
+					"text": "first you can incorporate phases of"
+				},
+				{
+					"start": 984,
+					"text": "training that use"
+				},
+				{
+					"start": 985.12,
+					"text": "heavier loads in order to optimize"
+				},
+				{
+					"start": 987.92,
+					"text": "neural recruitment"
+				},
+				{
+					"start": 989.28,
+					"text": "so heavier loads will activate those"
+				},
+				{
+					"start": 991.36,
+					"text": "higher threshold motor units"
+				},
+				{
+					"start": 992.96,
+					"text": "it will cause the body to produce faster"
+				},
+				{
+					"start": 995.6,
+					"text": "rate coding right and if you do that"
+				},
+				{
+					"start": 997.12,
+					"text": "over and over again then it will adapt"
+				},
+				{
+					"start": 998.8,
+					"text": "to allow for greater rate coding"
+				},
+				{
+					"start": 1000.48,
+					"text": "you'll be activating more more motor"
+				},
+				{
+					"start": 1003.04,
+					"text": "units"
+				},
+				{
+					"start": 1003.6,
+					"text": "synchronously so all together at the"
+				},
+				{
+					"start": 1005.36,
+					"text": "same time"
+				},
+				{
+					"start": 1007.12,
+					"text": "we can increase the cross-sectional area"
+				},
+				{
+					"start": 1009.92,
+					"text": "or csa"
+				},
+				{
+					"start": 1011.04,
+					"text": "of muscles involved in the desired"
+				},
+				{
+					"start": 1012.72,
+					"text": "activity so if we make those muscles"
+				},
+				{
+					"start": 1014.32,
+					"text": "bigger"
+				},
+				{
+					"start": 1015.12,
+					"text": "now there are more contractile elements"
+				},
+				{
+					"start": 1016.88,
+					"text": "within the muscle to produce"
+				},
+				{
+					"start": 1018.88,
+					"text": "force and then lastly we can perform"
+				},
+				{
+					"start": 1021.84,
+					"text": "multi-muscle"
+				},
+				{
+					"start": 1023.04,
+					"text": "multi-joint exercises"
+				},
+				{
+					"start": 1026.64,
+					"text": "and these can be done explosively and"
+				},
+				{
+					"start": 1028.8,
+					"text": "this will optimize fast twitch muscle"
+				},
+				{
+					"start": 1030.64,
+					"text": "recruitment"
+				},
+				{
+					"start": 1031.44,
+					"text": "as well as the activation of the stretch"
+				},
+				{
+					"start": 1034.64,
+					"text": "shortening cycle which we'll talk about"
+				},
+				{
+					"start": 1035.92,
+					"text": "in a future chapter"
+				},
+				{
+					"start": 1037.12,
+					"text": "and it will rely on that stretch reflex"
+				},
+				{
+					"start": 1039.28,
+					"text": "if we have a reactive component"
+				},
+				{
+					"start": 1040.8,
+					"text": "so that we can further activate that"
+				},
+				{
+					"start": 1043.36,
+					"text": "muscle"
+				},
+				{
+					"start": 1043.84,
+					"text": "through the reflexive properties of the"
+				},
+				{
+					"start": 1045.76,
+					"text": "muscle spindles"
+				},
+				{
+					"start": 1046.96,
+					"text": "and their activation of the alpha motor"
+				},
+				{
+					"start": 1048.8,
+					"text": "neuron"
+				},
+				{
+					"start": 1051.2,
+					"text": "okay guys thanks for sticking with me"
+				},
+				{
+					"start": 1052.96,
+					"text": "through the overview of the"
+				},
+				{
+					"start": 1054,
+					"text": "neuromuscular system"
+				},
+				{
+					"start": 1055.2,
+					"text": "the last couple videos we've been zoomed"
+				},
+				{
+					"start": 1057.04,
+					"text": "way into the physiology of the"
+				},
+				{
+					"start": 1059.84,
+					"text": "muscular and the neuromuscular systems"
+				},
+				{
+					"start": 1061.52,
+					"text": "but the next lecture we'll zoom out"
+				},
+				{
+					"start": 1062.96,
+					"text": "again"
+				},
+				{
+					"start": 1063.44,
+					"text": "and we'll look at the training"
+				},
+				{
+					"start": 1064.72,
+					"text": "principles the guiding principles"
+				},
+				{
+					"start": 1066.56,
+					"text": "that we should always keep in mind when"
+				},
+				{
+					"start": 1068.16,
+					"text": "we're programming for athletes or"
+				},
+				{
+					"start": 1069.52,
+					"text": "training or setting up periodization"
+				},
+				{
+					"start": 1071.04,
+					"text": "schemes"
+				},
+				{
+					"start": 1071.68,
+					"text": "and that video will appear somewhere on"
+				},
+				{
+					"start": 1073.6,
+					"text": "the screen but if you had questions for"
+				},
+				{
+					"start": 1074.88,
+					"text": "this video"
+				},
+				{
+					"start": 1075.6,
+					"text": "let me know down in the comments below"
+				},
+				{
+					"start": 1077.12,
+					"text": "and until next time move well"
+				},
+				{
+					"start": 1079.04,
+					"text": "live well and keep teaching other people"
+				},
+				{
+					"start": 1080.96,
+					"text": "to do the same"
+				},
+				{
+					"start": 1094.74,
+					"text": "[Music]"
+				}
+			]
+		}
+	],
+	"glossary": [
+		{
+			"term": "Нервно-мышечное соединение",
+			"definition": "контакт мотонейрона с мышечным волокном, через который нервный сигнал переводится в электрический ответ клетки."
+		},
+		{
+			"term": "Ацетилхолин",
+			"definition": "нейромедиатор, высвобождаемый окончанием мотонейрона в синаптическую щель."
+		},
+		{
+			"term": "Двигательная единица",
+			"definition": "один альфа-мотонейрон и все мышечные волокна, которые он иннервирует."
+		},
+		{
+			"term": "Принцип «всё или ничего»",
+			"definition": "в ответ на достаточный сигнал все волокна одной двигательной единицы сокращаются вместе; частичного ответа единицы нет."
+		},
+		{
+			"term": "Twitch",
+			"definition": "короткий механический ответ двигательной единицы на одиночный потенциал действия."
+		},
+		{
+			"term": "Тетанус",
+			"definition": "суммарное устойчивое напряжение при частой стимуляции; бывает неполным с колебаниями и полным без заметного расслабления."
+		},
+		{
+			"term": "Rate coding",
+			"definition": "регулирование силы изменением частоты разрядов активной двигательной единицы."
+		},
+		{
+			"term": "RFD",
+			"definition": "Rate of Force Development — скорость нарастания силы, важная для быстрых и взрывных действий."
+		},
+		{
+			"term": "Мышечное веретено",
+			"definition": "проприорецептор внутри мышцы, чувствительный к изменению её длины и скорости растяжения."
+		},
+		{
+			"term": "Сухожильный орган Гольджи",
+			"definition": "проприорецептор возле мышечно-сухожильного перехода, чувствительный к напряжению."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Как нервная система дозирует силу",
+			"items": [
+				"Не объясняйте разную силу «более сильным импульсом» одной двигательной единицы: меняются частота разрядов и число активных единиц.",
+				"Разделяйте максимальную силу и скорость её развития — в коротком спортивном действии времени на выход к максимуму может не быть.",
+				"Связывайте тяжесть нагрузки с порогом рекрутирования, а скорость намерения — с требованиями к быстрому развитию силы."
+			]
+		},
+		{
+			"title": "Как читать типы волокон",
+			"items": [
+				"Рассматривайте I, IIa и IIx как спектр свойств, а не как три полностью изолированные категории.",
+				"Не превращайте профиль волокон в приговор: результат зависит также от навыка, программы, архитектуры мышцы и нервной адаптации.",
+				"Сопоставляйте длительность и мощность соревновательного действия с нужным сочетанием устойчивости и быстроты."
+			]
+		},
+		{
+			"title": "Перенос в тренировку",
+			"items": [
+				"Используйте тяжёлую силовую работу для практики высокого нервного усилия, не забывая о технике и восстановлении.",
+				"Добавляйте взрывные многосуставные действия там, где нужна высокая RFD, а не только большая медленная сила.",
+				"Реактивные упражнения требуют освоенной механики и дозировки: наличие рефлекса растяжения само по себе не делает нагрузку безопасной."
+			]
+		}
+	],
+	"transcript": "dr gooden here again with lecture number two from chapter one of the essentials for strength training and conditioning textbook okay in this lecture we're going to talk about the neuromuscular system regarding recruitment and specifically motor units okay let's get into it in the last lecture we talked about the basic structure and function of muscle tissue in this lecture we want to tie in the nervous system okay so the nervous system the muscular system together they make the neuromuscular system let's see how it works okay so these slides are adapted from the nsca and they go along with the essentials of strength training and conditioning textbook by doctors hof and triplet okay so here we have a diagram of the neuromuscular junction as well as on the left side of the screen the steps of activation for muscles so first we see that an action potential travels down the axon of the alpha motor neuron it then triggers the release of acetylcholine which then travels across the synaptic cleft to the motor end plate and this causes an action potential and this action potential travels through the whole cell at the same time because of these t tubules these transverse tubules that run transversely through the muscle cell and then we can see the sarcoplasmic reticulum that will release calcium so that it can bind to the troponin tropomyosin complex and cause muscle fiber contraction now this process doesn't happen in individual muscle fiber recall that the contractile unit of the cell is a sarcomere but the neuromuscular unit is a motor unit a motor unit consists of an alpha motor neuron and all of the muscle fibers that it innervates and the size of a motor unit will dictate the amount of control or force production that a muscle can generate muscles that function with great precision have very few muscle fibers per alpha motor neuron but muscles that require less precision may have several hundred all right so your muscles in your eyes or in your fingers for instance have very fine movement control and have very small motor units whereas your quadriceps or your glutes or hamstrings they have large motor units and those larger muscles that require less precision well they tend to be stronger and they can develop more force because as one alpha motor neuron fires it can create tension and force in a whole bunch of different hundreds of muscle fibers and here in this diagram we can see the motor neuron it's myelinated with schwann cells and we see all of these neuromuscular junctions where it is innervating individual muscle fibers now there's an important principle we have to talk about and it's the all or none principle the all or none principle states that either all muscle fibers of a motor unit contract or none of them contract so if that alpha motor neuron sends a contractile signal to the muscle fibers they will all contract together or none of them will contract at all so currently there's no evidence that a motor neuron stimulus causes only some of the fibers to contract and likewise a stronger action potential cannot produce a stronger contraction so because of the all or none principle we know that either all fibers contract or none contract and we know that when they do contract you can't actually regulate the force of that contraction through the action potential of the alpha motor neuron it's the same force every time so how do we exhibit different amounts of force with our muscles how do we grade the force output well to understand that first we have to understand what happens when a motor unit is stimulated so if a motor unit is stimulated a single time with a single action potential that is called a twitch a single twitch and it generates a little bit of force but then that force dissipates if you have a second twitch occurring before the first twitch is fully dissipated then you call that the summation of two twitches now if you have a continuous twitch that's fast enough so that it so that one twitch occurs before the first one is fully dissipated before that force is dissipated but not quite fast enough to continue rising in force you call that unfused tetanus and that's because you get this wave-like pattern in force production so we call that unfused because you can still sort of see the individual individual twitches and you don't develop very much force now if you have a rapid enough signal down that alpha motor neuron then you get what's called fused tetanus and you can develop the full force capacity of that motor unit so while each individual action potential cannot stimulate small subsets of the muscle fibers that it innervates and it cannot produce a stronger or a weaker twitch force if we have a higher frequency of twitches then we can actually produce more force in that muscle now not every motor unit or muscle fiber are created the same each muscle fiber has falls somewhere along the spectrum of slow to fast twitch and we have three basic kinds so type 1 fibers are a slow twitch and we can see their properties here in this column as we look at them notice that they are smaller they have lower recruitment thresholds meaning that they're easier to recruit it's it takes less intensity or velocity or force of action to recruit these smaller motor units they have slower nerve conduction velocity slower contraction speed etc etc they have high endurance and fatigue resistance okay so these are your slow twitch fibers your endurance fibers but they have low force production low power output lots of aerobic enzymes but very few anaerobic enzymes more capillary density more myoglobin content right so they require oxygen in order to function they can also run off of fat they have high mitochondrial density so you kind of get the picture right these slow twitch muscle fibers are great for endurance not great for power not great for force production and then on the other end of the spectrum we have type 2x or fast twitch muscle fibers and these are the opposite of the slow twitch these are larger they are they have a high recruitment threshold they're very fast as far as nerve conduction velocity contraction speed relax relaxation speed etc but they don't really resist fatigue very well and they don't have great endurance they do though have high force production power output and anaerobic enzyme output and then the type ii a fibers these are the intermediate fiber types and they're kind of right smack dab in the middle okay so what does this mean in the real world well if we put this in terms of athletics we can think of your typical endurance distance athlete as having predominantly type 1 or slow twitch muscle fibers okay so these are smaller motor units easier to recruit but they last for days and they keep going well not literally for days but they last for a long time and they allow these distance athletes to put out relatively high power outputs for the duration of their event on the other end we have the fast twitch the purely fast switch and this would be athletes like sprinters or throwers who are very fast and powerful but only for a short period of time with massively high average power outputs over their very short event that lasts maybe anywhere from one to ten seconds and then in between you have the mix okay so these fiber types are a mix of qualities and these would be prevalent in say your 400 meter athletes or maybe in your decathletes or your and some of your middle distance athletes and these athletes have to have a blend of endurance because maybe their event lasts for more than 10 seconds and also a blend of strength and power and force production capacity because they do have to have a high power output so a key point here motor units are composed of muscle fibers that have specific morphological and physiological characteristics morphological means like the shape and structure of physiological means the enzymes and physiological components of the cell and these determine their functional capacity okay so not all motor units are the same there are small ones big ones there are fast switch slow twitch and in between and muscle fibers are the same fast twitch slow twitching in between somewhere on that spectrum is where they all fall now let's talk a little bit about rate coding and recruitment so during exercise you recruit motor units and you don't recruit them all at once neither do you recruit them all for the entire time that you're exercising in fact the output of a muscle the force output of a muscle can be varied through the change in frequency of activation of individual motor units or change in the number of activated motor units okay so the two key words here are frequency of activation or number of activated motor units okay so this picture here on the left looking at recruitment and rate coding this i like this diagram because it shows five hypothetical motor units and each of these lines these vertical lines think of these as action potentials and think of this line as time okay so over time we're recruiting more and more motor units as time goes we're recruiting more and maybe as time goes the force required by the muscle is getting higher and higher maybe you're trying to lift something and it's first developing tension and so motor unit one is triggered maybe it has a lower threshold okay and then the rate coding starts to get faster and faster as time goes on okay but pretty soon you have to activate motor unit two to contribute and then three and then four and then five and so on up the chain and maybe five has the highest recruitment threshold and it's a larger motor unit and as you go you can see the rate coding is increasing right it's getting sorry my lines are kind of thick it's getting faster and faster okay so it's modulating force increasing force output by two methods the first method is by recruiting more motor units and the second method is by having faster action potentials and so we can see in research conducted by inoca at all that looking at three different motor units so the circle triangle and the dark circle represented on this graph these motor units have different discharge rates and the faster the discharge rate the faster the rate of force development this is also abbreviated as rfd rate of force development is a more direct measure of explosive ability of a muscle the faster you develop force the more explosive you can be and so these uh motor unit and so motor unit one we can see has a faster discharge rate okay so the discharge rate would be faster if it is smaller right so that's faster and it has a greater force production or greater rate of force production than the other two motor units okay key point here is that the force output of a muscle can be varied through the change in frequency of activation of the individual motor units or a change in the number of activated motor units and usually it's a combination of both now another key point that we are about to get into we're going to talk about proprioceptors and these are specialized sensory receptors that provide the central nervous system with information needed to maintain muscle tone and perform complex coordinated movements when i say muscle tone i don't mean the sort of traditional lay term muscle tone like you you're getting toned which actually means losing fat and gaining muscle size at the same time what i say what i mean when i say muscle tone is the actual resting tension in the muscle that is in modulated throughout your body's movement so the first proprioceptor to talk about are muscle spindles here we have a diagram of the muscle spindles and you can see that it interfaces with sensory neurons that connect with the spinal cord this is a cross section of the spinal cord so when a muscle is stretched the deformation of the muscle spindle which is an intrafusel intrafusal fiber it's in the muscle belly the deformation of that muscle spindle activates a sensory neuron okay so here's the sensory neuron sending signals back up to the spinal cord which then synapses with the alpha motor neuron sending a strengthened signal back down to the muscle to tell it to contract so these muscle spindles are what activate your myotatic or stretch reflex when activated they tell your spinal cord to tell the muscle to contract the reason why this feedback loop is important is because that signal doesn't have to come all the way from your brain from the higher order centers of your central nervous system it's a much faster signal it's much more reactive it's reflexive it's a reflex right and so this stretch reflex allows a body to react subconsciously and very quickly to external stimuli placed upon the muscles and we'll see later how we can utilize the stretch reflex to our exam to our advantage the next proprioceptive organ to talk about is the golgi tendon organ or gto and these are located near the myotendinous junction in the muscle tendon they occur in series meaning they're attached end to end with the extrafusal fibers and when they are activated when extremely heavy loads are placed on the muscle these gtos are activated and they send a signal back to the spinal cord that actually inhibits right it blocks you can see up here it sort of blocks the alpha motor neuron and tells it to stop sending a signal to the muscle okay so if your muscle encounters a brief sharp stretch or load that it can handle it will activate the muscle spindles and cause a stretch reflex but if the gto is activated by a very very strong muscle force especially if it's sustained it causes the muscle to actually relax and it does so to prevent catastrophic damage to the muscle right your body thinks better to just drop this weight than to try to hang on to it for dear life and risk you know tearing the tendon at the insertion point or something like that okay so with all of that together then yes that's really cool that we have motor units and that you can regulate force with action potentials or greater activation of more motor units and the proprioception of those muscle spindles and gtos is neat but how does that translate into training athletes well athletes can improve force production through a number of ways first you can incorporate phases of training that use heavier loads in order to optimize neural recruitment so heavier loads will activate those higher threshold motor units it will cause the body to produce faster rate coding right and if you do that over and over again then it will adapt to allow for greater rate coding you'll be activating more more motor units synchronously so all together at the same time we can increase the cross-sectional area or csa of muscles involved in the desired activity so if we make those muscles bigger now there are more contractile elements within the muscle to produce force and then lastly we can perform multi-muscle multi-joint exercises and these can be done explosively and this will optimize fast twitch muscle recruitment as well as the activation of the stretch shortening cycle which we'll talk about in a future chapter and it will rely on that stretch reflex if we have a reactive component so that we can further activate that muscle through the reflexive properties of the muscle spindles and their activation of the alpha motor neuron okay guys thanks for sticking with me through the overview of the neuromuscular system the last couple videos we've been zoomed way into the physiology of the muscular and the neuromuscular systems but the next lecture we'll zoom out again and we'll look at the training principles the guiding principles that we should always keep in mind when we're programming for athletes or training or setting up periodization schemes and that video will appear somewhere on the screen but if you had questions for this video let me know down in the comments below and until next time move well live well and keep teaching other people to do the same [Music]"
+}

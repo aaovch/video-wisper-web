@@ -613,6 +613,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Structure and Function of Muscle - CSCS Chapter 1 [xZ3EvSn6ARA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/neyromyshechnaya-sistema-motornye-edinitsy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Neuromuscular System - Rate Coding Motor Units and Fiber Types - CSCS Chapter 1 [KNoc23sgWFA]/transcript.json'
+		)
 	}
 ];
 
