@@ -3,12 +3,15 @@
 	import { pushState } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
+	import BookOpenText from 'phosphor-svelte/lib/BookOpenText';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
+	import Cards from 'phosphor-svelte/lib/Cards';
 	import Check from 'phosphor-svelte/lib/Check';
 	import Clock from 'phosphor-svelte/lib/Clock';
 	import CopySimple from 'phosphor-svelte/lib/CopySimple';
 	import FilmStrip from 'phosphor-svelte/lib/FilmStrip';
 	import Play from 'phosphor-svelte/lib/Play';
+	import TextAlignLeft from 'phosphor-svelte/lib/TextAlignLeft';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
 	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
@@ -78,6 +81,8 @@
 	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
 	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
+	type MaterialsTab = 'notes' | 'glossary' | 'transcript';
+	let materialsTab = $state<MaterialsTab>('notes');
 
 	async function copyTranscript(event: MouseEvent) {
 		event.preventDefault();
@@ -317,6 +322,20 @@
 	const reportNotes = $derived(
 		report.seminar_notes ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarNotes : [])
 	);
+	const hasStudyMaterials = $derived(reportNotes.length > 0 || reportGlossary.length > 0);
+	const activeMaterialsTab = $derived(
+		materialsTab === 'notes' && reportNotes.length > 0
+			? 'notes'
+			: materialsTab === 'glossary' && reportGlossary.length > 0
+				? 'glossary'
+				: materialsTab === 'transcript' && report.transcript
+					? 'transcript'
+					: reportNotes.length > 0
+						? 'notes'
+						: reportGlossary.length > 0
+							? 'glossary'
+							: 'transcript'
+	);
 	const reportExercises = $derived(
 		report.seminar_exercises ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarExercises : [])
 	);
@@ -340,6 +359,35 @@
 			Boolean(reportExerciseMemo) ||
 			Boolean(report.transcript)
 	);
+
+	function availableMaterialsTabs(): MaterialsTab[] {
+		const tabs: MaterialsTab[] = [];
+		if (reportNotes.length > 0) tabs.push('notes');
+		if (reportGlossary.length > 0) tabs.push('glossary');
+		if (report.transcript) tabs.push('transcript');
+		return tabs;
+	}
+
+	function selectMaterialsTab(tab: MaterialsTab) {
+		materialsTab = tab;
+	}
+
+	function handleMaterialsTabKeydown(event: KeyboardEvent) {
+		if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+		const tabs = availableMaterialsTabs();
+		if (tabs.length < 2) return;
+		event.preventDefault();
+		const currentIndex = Math.max(0, tabs.indexOf(activeMaterialsTab));
+		const nextIndex =
+			event.key === 'Home'
+				? 0
+				: event.key === 'End'
+					? tabs.length - 1
+					: (currentIndex + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+		const nextTab = tabs[nextIndex];
+		materialsTab = nextTab;
+		queueMicrotask(() => document.getElementById(`materials-tab-${nextTab}`)?.focus());
+	}
 
 	$effect(() => {
 		if (!reportFocusTabs.length) {
@@ -548,7 +596,7 @@
 
 			{#if hasAdditional}
 				<section class="additional" aria-labelledby="additional-title">
-					<div class="section-heading section-heading--plain"><h2 id="additional-title">Дополнительные материалы</h2></div>
+					<div class="section-heading section-heading--plain"><h2 id="additional-title">Материалы лекции</h2></div>
 
 			{#if reportFocusTabs.length > 0}
 				<section class="focus-section reveal extra-block" aria-label="Тематические срезы" {@attach reveal()}>
@@ -655,20 +703,109 @@
 				</section>
 			{/if}
 
-			{#if reportNotes.length > 0}
-				<section class="seminar-notes-section reveal extra-block" aria-label="Конспект семинара" {@attach reveal()}>
-					<details class="seminar-notes">
-						<summary><span>Конспект</span><CaretDown size={17} /></summary>
-						<div class="seminar-notes-body">
-							{#each reportNotes as section (section.title)}<section class="seminar-note-block"><h2>{section.title}</h2><ul>{#each section.items as item}<li>{item}</li>{/each}</ul></section>{/each}
-						</div>
-					</details>
-				</section>
-			{/if}
+			{#if hasStudyMaterials}
+				<section class="study-materials reveal extra-block" aria-label="Материалы лекции" {@attach reveal()}>
+					<div class="materials-tablist" role="tablist" aria-label="Разделы материалов">
+						{#if reportNotes.length > 0}
+							<button
+								id="materials-tab-notes"
+								type="button"
+								role="tab"
+								class:active={activeMaterialsTab === 'notes'}
+								aria-selected={activeMaterialsTab === 'notes'}
+								aria-controls="materials-panel-notes"
+								tabindex={activeMaterialsTab === 'notes' ? 0 : -1}
+								onclick={() => selectMaterialsTab('notes')}
+								onkeydown={handleMaterialsTabKeydown}
+							>
+								<BookOpenText size={17} aria-hidden="true" />
+								<span>Конспект</span>
+								<span class="materials-tab-count">{reportNotes.length}</span>
+							</button>
+						{/if}
+						{#if reportGlossary.length > 0}
+							<button
+								id="materials-tab-glossary"
+								type="button"
+								role="tab"
+								class:active={activeMaterialsTab === 'glossary'}
+								aria-selected={activeMaterialsTab === 'glossary'}
+								aria-controls="materials-panel-glossary"
+								tabindex={activeMaterialsTab === 'glossary' ? 0 : -1}
+								onclick={() => selectMaterialsTab('glossary')}
+								onkeydown={handleMaterialsTabKeydown}
+							>
+								<Cards size={17} aria-hidden="true" />
+								<span>Глоссарий</span>
+								<span class="materials-tab-count">{reportGlossary.length}</span>
+							</button>
+						{/if}
+						{#if report.transcript}
+							<button
+								id="materials-tab-transcript"
+								type="button"
+								role="tab"
+								class:active={activeMaterialsTab === 'transcript'}
+								aria-selected={activeMaterialsTab === 'transcript'}
+								aria-controls="materials-panel-transcript"
+								tabindex={activeMaterialsTab === 'transcript' ? 0 : -1}
+								onclick={() => selectMaterialsTab('transcript')}
+								onkeydown={handleMaterialsTabKeydown}
+							>
+								<TextAlignLeft size={17} aria-hidden="true" />
+								<span>Расшифровка</span>
+							</button>
+						{/if}
+					</div>
 
-			{#if reportGlossary.length > 0}
-				<section class="seminar-materials reveal extra-block" {@attach reveal()}>
-					<details class="seminar-glossary"><summary><span>Глоссарий</span><CaretDown size={17} /></summary><dl>{#each reportGlossary as item (item.term)}<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>{/each}</dl></details>
+					{#if activeMaterialsTab === 'notes'}
+						<div id="materials-panel-notes" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-notes">
+							<header class="materials-panel-head">
+								<span class="materials-panel-kicker"><BookOpenText size={16} aria-hidden="true" /> Короткий конспект</span>
+								<span>{reportNotes.length} {reportNotes.length === 1 ? 'раздел' : reportNotes.length < 5 ? 'раздела' : 'разделов'}</span>
+							</header>
+							<div class="materials-notes-grid">
+								{#each reportNotes as section, i (section.title)}
+									<article class="materials-note-card">
+										<header><span>{String(i + 1).padStart(2, '0')}</span><h3>{section.title}</h3></header>
+										<ul>{#each section.items as item}<li>{item}</li>{/each}</ul>
+									</article>
+								{/each}
+							</div>
+						</div>
+					{:else if activeMaterialsTab === 'glossary'}
+						<div id="materials-panel-glossary" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-glossary">
+							<header class="materials-panel-head">
+								<span class="materials-panel-kicker"><Cards size={16} aria-hidden="true" /> Термины и определения</span>
+								<span>{reportGlossary.length} терминов</span>
+							</header>
+							<dl class="materials-glossary-grid">
+								{#each reportGlossary as item (item.term)}
+									<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>
+								{/each}
+							</dl>
+						</div>
+					{:else if report.transcript}
+						<div id="materials-panel-transcript" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
+							<header class="materials-panel-head">
+								<span class="materials-panel-kicker"><TextAlignLeft size={16} aria-hidden="true" /> Полный текст лекции</span>
+								<button
+									type="button"
+									class:copied={transcriptCopyState === 'copied'}
+									class="copy-transcript"
+									aria-label={transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку'}
+									title={transcriptCopyState === 'copied' ? 'Скопировано' : transcriptCopyState === 'error' ? 'Не удалось скопировать' : 'Скопировать расшифровку'}
+									onclick={copyTranscript}
+								>
+									{#if transcriptCopyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}
+								</button>
+								<span class="copy-status" role="status" aria-live="polite">
+									{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
+								</span>
+							</header>
+							<div class="materials-transcript"><p>{report.transcript}</p></div>
+						</div>
+					{/if}
 				</section>
 			{/if}
 
@@ -679,7 +816,7 @@
 				</section>
 			{/if}
 
-			{#if report.transcript}
+			{#if report.transcript && !hasStudyMaterials}
 				<section class="transcript reveal extra-block" {@attach reveal()}>
 					<details bind:open={transcriptOpen}>
 						<summary>
@@ -855,18 +992,225 @@
 		margin-top: 24px;
 	}
 
-	.seminar-glossary,
+	.study-materials {
+		margin-top: 14px;
+		border: 1px solid var(--line-strong);
+		border-radius: 12px;
+		overflow: hidden;
+		background: color-mix(in srgb, var(--paper-2) 48%, var(--paper));
+		box-shadow: 0 16px 36px color-mix(in srgb, var(--ink) 5%, transparent);
+	}
+
+	.materials-tablist {
+		display: flex;
+		gap: 4px;
+		padding: 6px;
+		border-bottom: 1px solid var(--line);
+		background: color-mix(in srgb, var(--paper-2) 74%, transparent);
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.materials-tablist::-webkit-scrollbar { display: none; }
+
+	.materials-tablist button {
+		flex: 0 0 auto;
+		min-height: 38px;
+		padding: 8px 12px;
+		border: 1px solid transparent;
+		border-radius: 7px;
+		background: transparent;
+		color: var(--ink-faint);
+		font: inherit;
+		font-size: 13px;
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		cursor: pointer;
+		transition:
+			background-color 0.18s ease,
+			border-color 0.18s ease,
+			color 0.18s ease;
+	}
+
+	.materials-tablist button:hover {
+		color: var(--ink);
+		background: color-mix(in srgb, var(--paper) 72%, transparent);
+	}
+
+	.materials-tablist button:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 1px;
+	}
+
+	.materials-tablist button.active {
+		border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+		background: var(--paper);
+		color: var(--accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+	}
+
+	.materials-tablist button :global(svg) { flex: 0 0 auto; }
+
+	.materials-tab-count {
+		min-width: 20px;
+		padding: 1px 6px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--ink-faint) 10%, transparent);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	.materials-tablist button.active .materials-tab-count {
+		background: color-mix(in srgb, var(--accent) 12%, transparent);
+	}
+
+	.materials-panel {
+		min-width: 0;
+	}
+
+	.materials-panel-head {
+		min-height: 56px;
+		padding: 16px 18px;
+		border-bottom: 1px solid var(--line);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		color: var(--ink-faint);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.materials-panel-kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--ink);
+		font-weight: 600;
+	}
+
+	.materials-panel-kicker :global(svg) { color: var(--accent); }
+
+	.materials-notes-grid,
+	.materials-glossary-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1px;
+		margin: 0;
+		padding: 0;
+		background: var(--line);
+	}
+
+	.materials-note-card,
+	.materials-glossary-grid > div {
+		min-width: 0;
+		padding: 20px;
+		background: var(--paper);
+	}
+
+	.materials-note-card header {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: start;
+		gap: 10px;
+		margin-bottom: 12px;
+	}
+
+	.materials-note-card header > span {
+		padding-top: 3px;
+		color: var(--accent);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.08em;
+	}
+
+	.materials-note-card h3 {
+		margin: 0;
+		color: var(--ink);
+		font-size: 17px;
+		font-weight: 600;
+		line-height: 1.25;
+	}
+
+	.materials-note-card ul {
+		display: grid;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		color: var(--ink-soft);
+		font-size: 14px;
+		line-height: 1.58;
+	}
+
+	.materials-note-card li {
+		position: relative;
+		padding-left: 13px;
+		overflow-wrap: anywhere;
+	}
+
+	.materials-note-card li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.72em;
+		width: 5px;
+		height: 1px;
+		background: var(--accent);
+	}
+
+	.materials-glossary-grid dt {
+		margin: 0 0 7px;
+		color: var(--ink);
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	.materials-glossary-grid dd {
+		margin: 0;
+		color: var(--ink-soft);
+		font-size: 14px;
+		line-height: 1.58;
+		overflow-wrap: anywhere;
+	}
+
+	.materials-panel-head .copy-transcript {
+		margin-left: auto;
+		flex: 0 0 auto;
+	}
+
+	.materials-transcript {
+		max-height: min(62vh, 560px);
+		overflow: auto;
+		overscroll-behavior: contain;
+		scrollbar-width: thin;
+		scrollbar-color: var(--line-strong) transparent;
+	}
+
+	.materials-transcript p {
+		margin: 0;
+		padding: 22px;
+		color: var(--ink-soft);
+		font-size: 15px;
+		line-height: 1.75;
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+
 	.seminar-infographic-panel,
 	.seminar-exercise-memo-panel,
-	.seminar-notes,
 	.seminar-exercises {
 		border: 0;
 	}
 
-	.seminar-glossary summary,
 	.seminar-infographic-panel summary,
 	.seminar-exercise-memo-panel summary,
-	.seminar-notes summary,
 	.seminar-exercises summary {
 		cursor: pointer;
 		min-height: 50px;
@@ -883,64 +1227,30 @@
 			color 0.18s ease;
 	}
 
-	.seminar-glossary summary:hover,
 	.seminar-infographic-panel summary:hover,
 	.seminar-exercise-memo-panel summary:hover,
-	.seminar-notes summary:hover,
 	.seminar-exercises summary:hover,
 	.transcript summary:hover,
-	.seminar-glossary[open] summary,
 	.seminar-infographic-panel[open] summary,
 	.seminar-exercise-memo-panel[open] summary,
-	.seminar-notes[open] summary,
 	.seminar-exercises[open] summary,
 	.transcript details[open] summary {
 		background: color-mix(in srgb, var(--paper-2) 58%, transparent);
 	}
 
-	.seminar-glossary summary > :global(svg),
 	.seminar-infographic-panel summary > :global(svg),
 	.seminar-exercise-memo-panel summary > :global(svg),
-	.seminar-notes summary > :global(svg),
 	.seminar-exercises summary > :global(svg),
 	.transcript summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
-	.seminar-glossary[open] summary > :global(svg),
 	.seminar-infographic-panel[open] summary > :global(svg),
 	.seminar-exercise-memo-panel[open] summary > :global(svg),
-	.seminar-notes[open] summary > :global(svg),
 	.seminar-exercises[open] summary > :global(svg),
 	.transcript details[open] summary > :global(svg) { transform: rotate(180deg); }
 
-	.seminar-glossary summary::-webkit-details-marker,
 	.seminar-infographic-panel summary::-webkit-details-marker,
 	.seminar-exercise-memo-panel summary::-webkit-details-marker,
-	.seminar-notes summary::-webkit-details-marker,
 	.seminar-exercises summary::-webkit-details-marker {
 		display: none;
-	}
-
-	.seminar-glossary dl {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 14px 22px;
-		margin: 0;
-		padding: 0 0 20px;
-	}
-
-	.seminar-glossary dl div {
-		min-width: 0;
-	}
-
-	.seminar-glossary dt {
-		font-weight: 600;
-		color: var(--ink);
-		margin: 0 0 4px;
-	}
-
-	.seminar-glossary dd {
-		margin: 0;
-		color: var(--ink-soft);
-		line-height: 1.55;
 	}
 
 	.seminar-infographic {
@@ -1102,42 +1412,6 @@
 
 	.focus-time-static {
 		cursor: default;
-	}
-
-	.seminar-notes-section {
-		margin-top: 0;
-	}
-
-	.seminar-notes {
-		border-top: 0;
-	}
-
-	.seminar-notes-body {
-		display: grid;
-		gap: 22px;
-		max-width: var(--measure);
-		padding: 2px 0 26px;
-	}
-
-	.seminar-note-block h2 {
-		margin: 0 0 8px;
-		color: var(--ink);
-		font-size: 18px;
-		line-height: 1.3;
-	}
-
-	.seminar-note-block ul {
-		display: grid;
-		gap: 7px;
-		margin: 0;
-		padding-left: 20px;
-		color: var(--ink-soft);
-		font-size: 16px;
-		line-height: 1.65;
-	}
-
-	.seminar-note-block li::marker {
-		color: var(--accent);
 	}
 
 	.seminar-exercises-section {
@@ -1375,11 +1649,6 @@
 			margin-top: 20px;
 		}
 
-		.seminar-glossary dl {
-			grid-template-columns: 1fr;
-			gap: 12px;
-		}
-
 		.seminar-exercises-body {
 			grid-template-columns: 1fr;
 			gap: 16px;
@@ -1392,5 +1661,14 @@
 		.overview > ul, .more-theses ul { margin-left: 38px; }
 		.more-theses { margin-left: 38px; }
 		.focus-item header { grid-template-columns: 1fr; }
+		.materials-tablist { gap: 2px; padding: 4px; }
+		.materials-tablist button { padding: 7px 8px; gap: 5px; font-size: 12px; }
+		.materials-tablist button :global(svg) { display: none; }
+		.materials-panel-head { align-items: flex-start; padding: 14px; }
+		.materials-notes-grid,
+		.materials-glossary-grid { grid-template-columns: 1fr; }
+		.materials-note-card,
+		.materials-glossary-grid > div { padding: 17px 15px; }
+		.materials-transcript p { padding: 18px 15px; }
 	}
 </style>
