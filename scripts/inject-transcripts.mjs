@@ -627,6 +627,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/The 7 Fundamental Movement Patterns - Deep Dive [J8YaoUpH-qg]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/biomehanika-i-myshechnye-rychagi.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Biomechanics and Muscle Leverage - CSCS Chapter 2 [j2uYPNjmsHo]/transcript.json'
+		)
 	}
 ];
 

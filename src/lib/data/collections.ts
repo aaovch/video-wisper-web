@@ -69,7 +69,8 @@ export const collections: Collection[] = [
 			'printsipy-silovoy-konditsionnoy-podgotovki',
 			'struktura-i-funktsiya-myshtsy',
 			'neyromyshechnaya-sistema-motornye-edinitsy',
-			'sem-dvigatelnyh-patternov'
+			'sem-dvigatelnyh-patternov',
+			'biomehanika-i-myshechnye-rychagi'
 		]
 	},
 	{
