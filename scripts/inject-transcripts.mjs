@@ -655,6 +655,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Factors Affecting Muscle Strength and Power - CSCS Chapter 2 [v2UP700CqA0]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/bioenergetika-trenirovki-tri-energosistemy.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Bioenergetics of Training - 3 Energy Systems - CSCS Chapter 3 [W7xg-U1yLWE]/transcript.json'
+		)
 	}
 ];
 

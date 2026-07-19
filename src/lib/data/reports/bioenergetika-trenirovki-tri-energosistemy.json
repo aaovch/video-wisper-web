@@ -1,0 +1,3711 @@
+{
+	"slug": "bioenergetika-trenirovki-tri-energosistemy",
+	"title": "Биоэнергетика тренировки: три энергетические системы",
+	"subtitle": "Джейкоб Гудин: АТФ, фосфокреатин, гликолиз, лактат и окислительный метаболизм",
+	"source_name": "Bioenergetics of Training: 3 Energy Systems | CSCS Chapter 3 [W7xg-U1yLWE]",
+	"source_url": "https://www.youtube.com/watch?v=W7xg-U1yLWE",
+	"note": "Русский смысловой отчёт по англоязычной лекции Dr. Jacob Goodin; исходная расшифровка сохранена на английском. Временные зоны показаны как приблизительные ориентиры, а учебные упрощения о лактате, ацидозе и фиксированном выходе 36 АТФ уточнены по современному физиологическому смыслу. Материал не является медицинским или диетологическим назначением. YouTube embed, 30:38.",
+	"duration": 1838,
+	"tags": [
+		"Силовая подготовка",
+		"Кондиционная подготовка",
+		"Биоэнергетика",
+		"Энергетические системы",
+		"АТФ",
+		"Jacob Goodin",
+		"24 блока"
+	],
+	"video": {
+		"provider": "youtube",
+		"id": "W7xg-U1yLWE"
+	},
+	"overview_theses": [
+		"АТФ — непосредственная энергетическая валюта клетки; энергосистемы различаются скоростью и ёмкостью её ресинтеза, а не включаются по очереди как жёсткие переключатели.",
+		"Фосфагенная система быстрее всего восстанавливает АТФ из фосфокреатина и особенно важна в очень короткой максимальной работе и между повторными ускорениями.",
+		"Гликолиз даёт АТФ без прямого участия кислорода: чистый выход составляет 2 АТФ из глюкозы крови и 3 АТФ из мышечного гликогена.",
+		"Образование лактата регенерирует NAD+ и поддерживает гликолиз; лактат не является причиной жжения, закисления или усталости и может использоваться как топливо.",
+		"Окислительная система в митохондриях использует углеводы и жиры, а при длительной работе или дефиците энергии — также аминокислоты; она медленнее, но обладает большой ёмкостью.",
+		"Современная оценка выхода из одной молекулы глюкозы обычно ближе к 30–32 АТФ, поэтому учебную цифру 36 АТФ следует понимать как иллюстративную и зависящую от модели расчёта.",
+		"Относительный вклад систем прежде всего задаёт интенсивность, а длительность, тренированность, доступность кислорода и питание изменяют эту картину.",
+		"Диапазоны 0–6 секунд, 6–30 секунд, 30 секунд–2 минуты и более 3 минут — ориентиры для задач, а не универсальные физиологические границы конкретного спортсмена."
+	],
+	"chapters": [
+		{
+			"start": 1.2,
+			"title": "Зачем тренеру понимать биоэнергетику",
+			"summary": "Введение связывает ресинтез АТФ с выбором нагрузки, отдыха и оценкой требований спортивной задачи.",
+			"theses": [
+				"Энергетика тренировки объясняет, откуда берётся энергия для мышечной работы.",
+				"Практический смысл — сопоставлять интенсивность и длительность усилия с восстановлением между повторениями."
+			],
+			"anchor": "hey guys dr gooden here to talk about",
+			"segments": [
+				{
+					"start": 1.2,
+					"text": "hey guys dr gooden here to talk about"
+				},
+				{
+					"start": 3.36,
+					"text": "energy systems we'll introduce each of"
+				},
+				{
+					"start": 5.76,
+					"text": "the three major energy systems"
+				},
+				{
+					"start": 7.6,
+					"text": "and then talk about how this pertains to"
+				},
+				{
+					"start": 11.41,
+					"text": "[Music]"
+				},
+				{
+					"start": 14.92,
+					"text": "training"
+				},
+				{
+					"start": 16.9,
+					"text": "[Music]"
+				},
+				{
+					"start": 24.96,
+					"text": "all right guys dr jacob goodin here"
+				},
+				{
+					"start": 26.56,
+					"text": "professor of kinesiology at point loma"
+				},
+				{
+					"start": 29.04,
+					"text": "nazarene university in today's video we"
+				},
+				{
+					"start": 31.52,
+					"text": "are going to be talking about energy"
+				},
+				{
+					"start": 33.2,
+					"text": "systems"
+				},
+				{
+					"start": 33.76,
+					"text": "and what we'll do is lay a groundwork"
+				},
+				{
+					"start": 35.44,
+					"text": "for your understanding of the energy"
+				},
+				{
+					"start": 37.36,
+					"text": "systems"
+				},
+				{
+					"start": 37.92,
+					"text": "so that as a coach trainer sport coach"
+				},
+				{
+					"start": 40.32,
+					"text": "sports scientist"
+				},
+				{
+					"start": 41.2,
+					"text": "you have a good handle on how to"
+				},
+				{
+					"start": 43.36,
+					"text": "implement certain methods and modes of"
+				},
+				{
+					"start": 45.04,
+					"text": "training"
+				},
+				{
+					"start": 45.52,
+					"text": "in order to elicit responses from each"
+				},
+				{
+					"start": 47.92,
+					"text": "of these specific"
+				},
+				{
+					"start": 49.04,
+					"text": "energy systems all right let's dive"
+				},
+				{
+					"start": 50.56,
+					"text": "right in so this comes from chapter"
+				},
+				{
+					"start": 53.2,
+					"text": "three"
+				},
+				{
+					"start": 54,
+					"text": "of the essentials of strength training"
+				},
+				{
+					"start": 55.52,
+					"text": "and conditioning put out by the nsca"
+				},
+				{
+					"start": 58,
+					"text": "this chapter by doctors hera and kramer"
+				}
+			]
+		},
+		{
+			"start": 62.24,
+			"title": "Биоэнергетика и ключевые термины",
+			"summary": "Биоэнергетика описывает превращение энергии в живой системе и связывает химические реакции с механической работой.",
+			"theses": [
+				"Пища и запасы субстратов не используются мышцей напрямую: энергия переводится в форму АТФ.",
+				"Часть энергии неизбежно рассеивается в виде тепла."
+			],
+			"anchor": "now first some key terms before we get",
+			"segments": [
+				{
+					"start": 62.24,
+					"text": "now first some key terms before we get"
+				},
+				{
+					"start": 64.4,
+					"text": "going"
+				},
+				{
+					"start": 66.04,
+					"text": "bioenergetics this refers to the flow of"
+				},
+				{
+					"start": 68.88,
+					"text": "energy in a biological system"
+				},
+				{
+					"start": 71.04,
+					"text": "this is the conversion of macronutrients"
+				},
+				{
+					"start": 73.44,
+					"text": "aka"
+				},
+				{
+					"start": 74.16,
+					"text": "food into biologically usable forms of"
+				},
+				{
+					"start": 77.44,
+					"text": "energy"
+				},
+				{
+					"start": 78.48,
+					"text": "aka atp"
+				}
+			]
+		},
+		{
+			"start": 81.84,
+			"title": "Катаболизм и анаболизм",
+			"summary": "Катаболические реакции расщепляют молекулы и высвобождают свободную энергию, а анаболические используют её для синтеза.",
+			"theses": [
+				"Распад питательных веществ сопрягается с ресинтезом АТФ.",
+				"Синтез тканей и запасов требует энергии и строительного материала."
+			],
+			"anchor": "now catabolism and anabolism catabolism",
+			"segments": [
+				{
+					"start": 81.84,
+					"text": "now catabolism and anabolism catabolism"
+				},
+				{
+					"start": 85.44,
+					"text": "is the breakdown of large molecules into"
+				},
+				{
+					"start": 87.76,
+					"text": "smaller molecules"
+				},
+				{
+					"start": 89.2,
+					"text": "and this is associated with the release"
+				},
+				{
+					"start": 91.04,
+					"text": "of energy so we break atp"
+				},
+				{
+					"start": 93.68,
+					"text": "or adenosine triphosphate down into adp"
+				},
+				{
+					"start": 97.12,
+					"text": "and an inorganic phosphate and thus"
+				},
+				{
+					"start": 99.52,
+					"text": "energy is released"
+				},
+				{
+					"start": 100.8,
+					"text": "on the other hand we break complex"
+				},
+				{
+					"start": 103.2,
+					"text": "carbohydrates"
+				},
+				{
+					"start": 104.48,
+					"text": "down into glucose and then we use that"
+				},
+				{
+					"start": 106.96,
+					"text": "glucose to fuel the resynthesis"
+				},
+				{
+					"start": 109.36,
+					"text": "of adp and inorganic phosphate into atp"
+				},
+				{
+					"start": 113.36,
+					"text": "so on both sides of this equation we're"
+				},
+				{
+					"start": 115.44,
+					"text": "breaking down"
+				},
+				{
+					"start": 116.4,
+					"text": "things to release energy whether that's"
+				},
+				{
+					"start": 118.72,
+					"text": "to"
+				},
+				{
+					"start": 119.56,
+					"text": "re-combine atp or whether it's to use"
+				},
+				{
+					"start": 123.52,
+					"text": "that"
+				},
+				{
+					"start": 124.08,
+					"text": "energy stored in atp to fuel muscle"
+				},
+				{
+					"start": 127.28,
+					"text": "action"
+				},
+				{
+					"start": 129.04,
+					"text": "anabolism is the synthesis of larger"
+				},
+				{
+					"start": 131.36,
+					"text": "molecules"
+				},
+				{
+					"start": 132.08,
+					"text": "from smaller molecules and this uses"
+				},
+				{
+					"start": 134.88,
+					"text": "energy"
+				},
+				{
+					"start": 135.36,
+					"text": "from those catabolic reactions so"
+				},
+				{
+					"start": 138.08,
+					"text": "anytime"
+				},
+				{
+					"start": 138.96,
+					"text": "we have catabolism the energy stored"
+				},
+				{
+					"start": 141.84,
+					"text": "within that large molecule that's now"
+				},
+				{
+					"start": 143.6,
+					"text": "broken into smaller parts"
+				},
+				{
+					"start": 145.2,
+					"text": "will be used in some way shape or form"
+				},
+				{
+					"start": 147.76,
+					"text": "by the body"
+				},
+				{
+					"start": 148.64,
+					"text": "to drive anabolism or that energy will"
+				},
+				{
+					"start": 151.76,
+					"text": "be lost"
+				}
+			]
+		},
+		{
+			"start": 152.4,
+			"title": "Экзергонические и эндергонические реакции",
+			"summary": "Метаболизм объединяет реакции, которые высвобождают энергию, и процессы, которым необходим её приток.",
+			"theses": [
+				"Экзергонические реакции имеют отрицательное изменение свободной энергии.",
+				"Эндергонические реакции возможны благодаря сопряжению с энергетически выгодными процессами."
+			],
+			"anchor": "as heat now building upon this we have",
+			"segments": [
+				{
+					"start": 152.4,
+					"text": "as heat now building upon this we have"
+				},
+				{
+					"start": 156.64,
+					"text": "what are called exergonic and endergonic"
+				},
+				{
+					"start": 159.28,
+					"text": "reactions an"
+				},
+				{
+					"start": 160.32,
+					"text": "exergonic reaction is any energy"
+				},
+				{
+					"start": 162.88,
+					"text": "releasing reaction"
+				},
+				{
+					"start": 164.64,
+					"text": "so atp being broken down into adp"
+				},
+				{
+					"start": 168.24,
+					"text": "and inorganic phosphate that is an"
+				},
+				{
+					"start": 170.24,
+					"text": "exergonic reaction because it releases"
+				},
+				{
+					"start": 172.64,
+					"text": "energy on the other hand endergonic"
+				},
+				{
+					"start": 175.92,
+					"text": "reactions require energy"
+				},
+				{
+					"start": 177.84,
+					"text": "so when we go through the process of"
+				},
+				{
+					"start": 179.76,
+					"text": "recombining inorganic phosphate and adp"
+				},
+				{
+					"start": 182.8,
+					"text": "into atp we are driving an endergonic"
+				},
+				{
+					"start": 185.92,
+					"text": "process"
+				},
+				{
+					"start": 186.48,
+					"text": "it's a process that involves the usage"
+				},
+				{
+					"start": 189.04,
+					"text": "of energy"
+				},
+				{
+					"start": 191.28,
+					"text": "metabolism is the total of all catabolic"
+				},
+				{
+					"start": 194.56,
+					"text": "and anabolic reactions in a biological"
+				},
+				{
+					"start": 198,
+					"text": "system adenosine triphosphate which i've"
+				},
+				{
+					"start": 201.6,
+					"text": "already mentioned before"
+				},
+				{
+					"start": 203.04,
+					"text": "or atp this is essentially the energy"
+				},
+				{
+					"start": 206.08,
+					"text": "currency"
+				},
+				{
+					"start": 206.8,
+					"text": "of the body it allows the transfer of"
+				},
+				{
+					"start": 209.04,
+					"text": "energy from exergonic"
+				},
+				{
+					"start": 210.4,
+					"text": "to endergonic reactions it's"
+				},
+				{
+					"start": 213.44,
+					"text": "an energy"
+				}
+			]
+		},
+		{
+			"start": 216.96,
+			"title": "АТФ как энергетическая валюта",
+			"summary": "Гидролиз АТФ до ADP и неорганического фосфата сопрягается с клеточной работой, а энергосистемы возвращают ADP в АТФ.",
+			"theses": [
+				"Корректнее говорить о свободной энергии реакции гидролиза, а не об энергии, буквально хранящейся в одной связи.",
+				"Запас готового АТФ в мышце мал, поэтому его необходимо постоянно ресинтезировать."
+			],
+			"anchor": "currency now here is the chemical",
+			"segments": [
+				{
+					"start": 216.96,
+					"text": "currency now here is the chemical"
+				},
+				{
+					"start": 221.04,
+					"text": "structure of an atp"
+				},
+				{
+					"start": 222.88,
+					"text": "molecule so first in"
+				},
+				{
+					"start": 226.24,
+					"text": "a we have the entire atp"
+				},
+				{
+					"start": 231.2,
+					"text": "molecule which is composed of an adenine"
+				},
+				{
+					"start": 234.16,
+					"text": "and a ribose"
+				},
+				{
+					"start": 235.36,
+					"text": "compound adenine and ribose"
+				},
+				{
+					"start": 239.36,
+					"text": "a triphosphate group which is"
+				},
+				{
+					"start": 242.88,
+					"text": "here and we have the locations of high"
+				},
+				{
+					"start": 246.24,
+					"text": "energy chemical bonds"
+				},
+				{
+					"start": 249.76,
+					"text": "which are located here and"
+				},
+				{
+					"start": 253.2,
+					"text": "here okay so those two high energy bonds"
+				},
+				{
+					"start": 257.2,
+					"text": "can be broken down to release energy as"
+				},
+				{
+					"start": 259.28,
+					"text": "we see in"
+				},
+				{
+					"start": 260.4,
+					"text": "b and this is called hydrolysis the"
+				},
+				{
+					"start": 263.92,
+					"text": "hydrolysis"
+				},
+				{
+					"start": 264.8,
+					"text": "of an atp breaks the terminal phosphate"
+				},
+				{
+					"start": 268.48,
+					"text": "bond and releases"
+				},
+				{
+					"start": 270.08,
+					"text": "energy in doing so this energy right"
+				},
+				{
+					"start": 273.12,
+					"text": "this is an exergonic reaction this"
+				},
+				{
+					"start": 274.88,
+					"text": "energy can then be used"
+				},
+				{
+					"start": 276.8,
+					"text": "for an endergonic reaction or a reaction"
+				},
+				{
+					"start": 280.24,
+					"text": "requiring energy"
+				},
+				{
+					"start": 283.12,
+					"text": "and we're left with an inorganic"
+				},
+				{
+					"start": 284.96,
+					"text": "phosphate"
+				},
+				{
+					"start": 286.16,
+					"text": "and an adp adenosine"
+				},
+				{
+					"start": 289.2,
+					"text": "adenosine diphosphate"
+				},
+				{
+					"start": 292.64,
+					"text": "and finally we can even break adp down"
+				},
+				{
+					"start": 295.6,
+					"text": "further"
+				},
+				{
+					"start": 296.16,
+					"text": "and release more energy so that we get"
+				},
+				{
+					"start": 298.56,
+					"text": "amp"
+				},
+				{
+					"start": 299.52,
+					"text": "or adenosine monophosphate plus another"
+				},
+				{
+					"start": 302.64,
+					"text": "inorganic phosphate and this is"
+				},
+				{
+					"start": 305.04,
+					"text": "important to know the constituents of"
+				},
+				{
+					"start": 306.88,
+					"text": "atp as it's broken down because we'll"
+				},
+				{
+					"start": 308.72,
+					"text": "see that"
+				},
+				{
+					"start": 309.36,
+					"text": "some of these byproducts adp atp"
+				},
+				{
+					"start": 312.32,
+					"text": "inorganic phosphate"
+				},
+				{
+					"start": 313.68,
+					"text": "these are all drivers of certain"
+				},
+				{
+					"start": 316.64,
+					"text": "metabolic pathways which we'll see here"
+				},
+				{
+					"start": 318.56,
+					"text": "in a minute"
+				}
+			]
+		},
+		{
+			"start": 320.96,
+			"title": "Три системы работают одновременно",
+			"summary": "Фосфагенная, гликолитическая и окислительная системы всегда перекрываются, меняется лишь их относительный вклад.",
+			"theses": [
+				"Нет момента полного выключения одной системы и включения другой.",
+				"Интенсивность — главный регулятор вклада, а длительность и условия работы его модифицируют."
+			],
+			"anchor": "now i mentioned we have three energy",
+			"segments": [
+				{
+					"start": 320.96,
+					"text": "now i mentioned we have three energy"
+				},
+				{
+					"start": 323.28,
+					"text": "systems"
+				},
+				{
+					"start": 324,
+					"text": "and it's not like we are using one"
+				},
+				{
+					"start": 326.4,
+					"text": "energy system then we shut it off and we"
+				},
+				{
+					"start": 328,
+					"text": "start using another one and then we shut"
+				},
+				{
+					"start": 329.36,
+					"text": "it off"
+				},
+				{
+					"start": 329.84,
+					"text": "they're actually always ebbing and"
+				},
+				{
+					"start": 331.52,
+					"text": "flowing depending"
+				},
+				{
+					"start": 332.88,
+					"text": "upon the intensity of movement and the"
+				},
+				{
+					"start": 334.72,
+					"text": "duration of movement"
+				},
+				{
+					"start": 336,
+					"text": "okay or the intensity of exercise and"
+				},
+				{
+					"start": 337.76,
+					"text": "the duration of exercise"
+				},
+				{
+					"start": 339.84,
+					"text": "so the three energy systems are the"
+				},
+				{
+					"start": 341.92,
+					"text": "phosphagen system"
+				},
+				{
+					"start": 343.28,
+					"text": "which is here in the blue we can see"
+				},
+				{
+					"start": 347.6,
+					"text": "is the fastest of the energy systems"
+				},
+				{
+					"start": 350,
+					"text": "here's the time in seconds going this"
+				},
+				{
+					"start": 351.76,
+					"text": "way"
+				},
+				{
+					"start": 353.12,
+					"text": "so really from 0 to about"
+				},
+				{
+					"start": 356.56,
+					"text": "15 seconds is this phosphagen system"
+				},
+				{
+					"start": 360.4,
+					"text": "where it really peaks right around maybe"
+				},
+				{
+					"start": 362.08,
+					"text": "9 or 10 seconds"
+				},
+				{
+					"start": 363.52,
+					"text": "and so for very very high intensity"
+				},
+				{
+					"start": 365.92,
+					"text": "exercise the phosphagen system"
+				},
+				{
+					"start": 368,
+					"text": "will be the supplier of atp"
+				},
+				{
+					"start": 371.92,
+					"text": "for glycolysis this is the intermediate"
+				},
+				{
+					"start": 375.2,
+					"text": "system so we see here in the red"
+				},
+				{
+					"start": 377.52,
+					"text": "glycolysis is peaking"
+				},
+				{
+					"start": 380.08,
+					"text": "right around maybe 45 seconds but it"
+				},
+				{
+					"start": 382.64,
+					"text": "holds on there for a while"
+				},
+				{
+					"start": 384.96,
+					"text": "other literature shows glycolysis to"
+				},
+				{
+					"start": 387.52,
+					"text": "last even longer maybe up to two minutes"
+				},
+				{
+					"start": 390.48,
+					"text": "and then finally we have the oxidative"
+				},
+				{
+					"start": 392.08,
+					"text": "system which really starts to kick in"
+				},
+				{
+					"start": 394.8,
+					"text": "after the two-minute mark here in the"
+				},
+				{
+					"start": 397.04,
+					"text": "green"
+				},
+				{
+					"start": 398.56,
+					"text": "and then as the event or the exercise"
+				},
+				{
+					"start": 400.88,
+					"text": "extends"
+				},
+				{
+					"start": 401.6,
+					"text": "longer and longer then that oxidative"
+				},
+				{
+					"start": 403.6,
+					"text": "system just continues chugging along and"
+				},
+				{
+					"start": 405.36,
+					"text": "being the primary source"
+				},
+				{
+					"start": 407.12,
+					"text": "of energy so you can see that each of"
+				},
+				{
+					"start": 409.92,
+					"text": "these"
+				},
+				{
+					"start": 410.32,
+					"text": "energy systems overlaps none is"
+				},
+				{
+					"start": 413.04,
+					"text": "completely active while the others are"
+				},
+				{
+					"start": 414.64,
+					"text": "completely dormant"
+				},
+				{
+					"start": 415.76,
+					"text": "and they're always ebbing and flowing if"
+				},
+				{
+					"start": 417.92,
+					"text": "you were to stand up right now out of"
+				},
+				{
+					"start": 419.28,
+					"text": "your chair"
+				},
+				{
+					"start": 419.84,
+					"text": "your creatine phosphate system or your"
+				},
+				{
+					"start": 421.52,
+					"text": "phosphagen system would kick in"
+				},
+				{
+					"start": 423.2,
+					"text": "to high gear even though you're just"
+				},
+				{
+					"start": 424.4,
+					"text": "standing up and maybe starting to walk"
+				},
+				{
+					"start": 426.88,
+					"text": "somewhere"
+				},
+				{
+					"start": 427.76,
+					"text": "the body is always regulating the amount"
+				},
+				{
+					"start": 430.32,
+					"text": "of atp"
+				},
+				{
+					"start": 431.52,
+					"text": "available to the muscle and it does its"
+				},
+				{
+					"start": 433.52,
+					"text": "best to make it available as fast as"
+				},
+				{
+					"start": 435.36,
+					"text": "possible"
+				},
+				{
+					"start": 436.08,
+					"text": "with as little by-product or metabolic"
+				},
+				{
+					"start": 439.04,
+					"text": "waste"
+				}
+			]
+		},
+		{
+			"start": 439.52,
+			"title": "Фосфагенная система",
+			"summary": "Самый быстрый путь ресинтеза АТФ переносит фосфат с фосфокреатина на ADP и поддерживает краткие взрывные усилия.",
+			"theses": [
+				"Реакция: PCr + ADP + H+ ↔ ATP + креатин; её катализирует креатинкиназа.",
+				"Высокая скорость сочетается с небольшой ёмкостью внутримышечных запасов."
+			],
+			"anchor": "as possible now we're going to go",
+			"segments": [
+				{
+					"start": 439.52,
+					"text": "as possible now we're going to go"
+				},
+				{
+					"start": 441.12,
+					"text": "through each of these energy systems"
+				},
+				{
+					"start": 443.12,
+					"text": "one at a time starting with the fastest"
+				},
+				{
+					"start": 445.44,
+					"text": "the phosphagen system"
+				},
+				{
+					"start": 447.52,
+					"text": "so the phosphagen system provides atp"
+				},
+				{
+					"start": 449.76,
+					"text": "primarily for"
+				},
+				{
+					"start": 450.8,
+					"text": "short term high intensity exercise"
+				},
+				{
+					"start": 453.84,
+					"text": "like resistance training or sprinting"
+				},
+				{
+					"start": 455.92,
+					"text": "and it is active at the start of all"
+				},
+				{
+					"start": 458.08,
+					"text": "exercise regardless of intensity"
+				},
+				{
+					"start": 460.48,
+					"text": "so if you toe the line in a marathon"
+				},
+				{
+					"start": 463.2,
+					"text": "when the gun goes off"
+				},
+				{
+					"start": 464.32,
+					"text": "creatine phosphate is going to shoot up"
+				},
+				{
+					"start": 466.4,
+					"text": "and become very active"
+				},
+				{
+					"start": 468,
+					"text": "supplying you with atp for that first 10"
+				},
+				{
+					"start": 470.16,
+					"text": "or 15 seconds before"
+				},
+				{
+					"start": 472,
+					"text": "other slower but greater yielding energy"
+				},
+				{
+					"start": 475.28,
+					"text": "pathways kick in like glycolysis"
+				},
+				{
+					"start": 477.36,
+					"text": "and the krebs cycle and"
+				}
+			]
+		},
+		{
+			"start": 480.56,
+			"title": "Креатинкиназа и добавки креатина",
+			"summary": "Креатин помогает поддерживать пул общего креатина и фосфокреатина, что может улучшать повторную высокоинтенсивную работу.",
+			"theses": [
+				"Эффект добавки обычно умеренный и реализуется вместе с тренировкой, а не заменяет её.",
+				"Утверждение о прямом гипертрофическом сигнале без тренировочного стимула не следует считать установленным выводом лекции."
+			],
+			"anchor": "the electron transport chain now we use",
+			"segments": [
+				{
+					"start": 480.56,
+					"text": "the electron transport chain now we use"
+				},
+				{
+					"start": 484,
+					"text": "creatine kinase within the cell to"
+				},
+				{
+					"start": 487.12,
+					"text": "catalyze"
+				},
+				{
+					"start": 488,
+					"text": "the synthesis of atp from"
+				},
+				{
+					"start": 490.96,
+					"text": "phosphate and adenosine"
+				},
+				{
+					"start": 493.24,
+					"text": "diphosphate so you might recognize"
+				},
+				{
+					"start": 496.4,
+					"text": "in that catalyst the word creatine right"
+				},
+				{
+					"start": 499.12,
+					"text": "and a lot of people are familiar with"
+				},
+				{
+					"start": 501.12,
+					"text": "creatine as a supplement creatine kinase"
+				},
+				{
+					"start": 504,
+					"text": "is what the"
+				},
+				{
+					"start": 504.72,
+					"text": "muscle cell actually uses to reform atp"
+				},
+				{
+					"start": 507.52,
+					"text": "so if you can pack more creatine"
+				},
+				{
+					"start": 509.2,
+					"text": "into the muscle cell well then you have"
+				},
+				{
+					"start": 512,
+					"text": "a"
+				},
+				{
+					"start": 512.56,
+					"text": "more robust phosphagen system at your"
+				},
+				{
+					"start": 514.64,
+					"text": "disposal this is one of the reasons for"
+				},
+				{
+					"start": 516.4,
+					"text": "the effectiveness"
+				},
+				{
+					"start": 517.52,
+					"text": "of creatine supplementation on strength"
+				},
+				{
+					"start": 520.56,
+					"text": "and power performance"
+				},
+				{
+					"start": 521.52,
+					"text": "if you are supplementing with creatine"
+				},
+				{
+					"start": 523.28,
+					"text": "not only does it provide"
+				},
+				{
+					"start": 524.96,
+					"text": "a small boost for hypertrophy signaling"
+				},
+				{
+					"start": 527.76,
+					"text": "regardless of whether you're weight"
+				},
+				{
+					"start": 528.96,
+					"text": "training or not"
+				},
+				{
+					"start": 529.84,
+					"text": "but it also allows the cell to have a"
+				},
+				{
+					"start": 532.56,
+					"text": "more robust phosphate in"
+				},
+				{
+					"start": 534,
+					"text": "system replenishing atp so for those"
+				},
+				{
+					"start": 536.96,
+					"text": "events lasting 10 to 15 seconds you can"
+				},
+				{
+					"start": 539.2,
+					"text": "be more explosive more powerful"
+				},
+				{
+					"start": 541.2,
+					"text": "because you are jam packing the cell"
+				},
+				{
+					"start": 543.6,
+					"text": "full of exactly what it needs"
+				},
+				{
+					"start": 545.2,
+					"text": "to replenish atp quickly"
+				},
+				{
+					"start": 548.72,
+					"text": "now the atp stores of the body are not"
+				},
+				{
+					"start": 551.68,
+					"text": "enough"
+				},
+				{
+					"start": 552.24,
+					"text": "for exercise because we need to reserve"
+				},
+				{
+					"start": 555.04,
+					"text": "some"
+				},
+				{
+					"start": 556.24,
+					"text": "for basic cellular function we have to"
+				},
+				{
+					"start": 558.64,
+					"text": "remember that atp is not just"
+				},
+				{
+					"start": 560.48,
+					"text": "for running a race or for exercising"
+				},
+				{
+					"start": 563.36,
+					"text": "going on a run lifting weights we do"
+				},
+				{
+					"start": 565.28,
+					"text": "other more important things with atp"
+				},
+				{
+					"start": 567.04,
+					"text": "like brain function nervous system"
+				},
+				{
+					"start": 569.12,
+					"text": "function"
+				},
+				{
+					"start": 569.92,
+					"text": "all of the basic functions of our body"
+				},
+				{
+					"start": 571.92,
+					"text": "to keep it alive atp"
+				},
+				{
+					"start": 573.52,
+					"text": "is used for those things and if we were"
+				},
+				{
+					"start": 575.84,
+					"text": "to use up all of it"
+				},
+				{
+					"start": 577.04,
+					"text": "in exercise well it would die right so"
+				},
+				{
+					"start": 579.36,
+					"text": "the body has to reserve"
+				},
+				{
+					"start": 580.88,
+					"text": "some of it now the phosphagen system as"
+				},
+				{
+					"start": 584,
+					"text": "i said it uses creatine kinase to"
+				},
+				{
+					"start": 585.84,
+					"text": "replenish atp"
+				},
+				{
+					"start": 587.2,
+					"text": "and rem and maintain the concentration"
+				},
+				{
+					"start": 589.28,
+					"text": "of it so that we don't die"
+				},
+				{
+					"start": 591.44,
+					"text": "it does this very very rapidly"
+				}
+			]
+		},
+		{
+			"start": 596.48,
+			"title": "Массовое действие и восстановление PCr",
+			"summary": "Направление реакции креатинкиназы зависит от концентраций реагентов; во время отдыха окислительный метаболизм восстанавливает фосфокреатин.",
+			"theses": [
+				"Чем полнее пауза, тем больше PCr успевает восстановиться перед следующим спринтом.",
+				"Индивидуальная скорость восстановления зависит от аэробной подготовленности и условий нагрузки."
+			],
+			"anchor": "now the main control of the phosphate",
+			"segments": [
+				{
+					"start": 596.48,
+					"text": "now the main control of the phosphate"
+				},
+				{
+					"start": 599.12,
+					"text": "system is due to what we call"
+				},
+				{
+					"start": 600.64,
+					"text": "the law of mass action this is this law"
+				},
+				{
+					"start": 603.44,
+					"text": "if you're familiar with chemistry"
+				},
+				{
+					"start": 604.96,
+					"text": "this law states that the concentrations"
+				},
+				{
+					"start": 607.28,
+					"text": "of the reactants or products in solution"
+				},
+				{
+					"start": 609.84,
+					"text": "will drive the direction of the"
+				},
+				{
+					"start": 611.44,
+					"text": "reactions so if there's more products"
+				},
+				{
+					"start": 614.16,
+					"text": "then the reaction is going to drive"
+				},
+				{
+					"start": 615.6,
+					"text": "towards the reactants"
+				},
+				{
+					"start": 617.6,
+					"text": "if there are more reactants in the cell"
+				},
+				{
+					"start": 620.24,
+					"text": "then that reaction will drive more"
+				},
+				{
+					"start": 621.68,
+					"text": "towards"
+				},
+				{
+					"start": 622.16,
+					"text": "the products right and so there's always"
+				},
+				{
+					"start": 624.16,
+					"text": "this sort of balance"
+				},
+				{
+					"start": 626.48,
+					"text": "so here in this picture we see that in a"
+				},
+				{
+					"start": 628,
+					"text": "relaxed muscle"
+				},
+				{
+					"start": 630.16,
+					"text": "atp will be used to turn"
+				},
+				{
+					"start": 633.52,
+					"text": "creatine into creatine phosphate"
+				},
+				{
+					"start": 637.04,
+					"text": "to sort of store it for when you need to"
+				},
+				{
+					"start": 639.44,
+					"text": "contract and then the contracting muscle"
+				},
+				{
+					"start": 641.28,
+					"text": "creatine phosphate will be used"
+				},
+				{
+					"start": 643.28,
+					"text": "to recombine with adp and form another"
+				},
+				{
+					"start": 646.96,
+					"text": "atp"
+				},
+				{
+					"start": 648.16,
+					"text": "and that atp can then be used for muscle"
+				},
+				{
+					"start": 650.8,
+					"text": "contraction"
+				},
+				{
+					"start": 651.68,
+					"text": "so if you're resting then your"
+				},
+				{
+					"start": 653.76,
+					"text": "phosphagen system is allowed to"
+				},
+				{
+					"start": 655.84,
+					"text": "then replenish you create more creatine"
+				},
+				{
+					"start": 658.56,
+					"text": "phosphate"
+				},
+				{
+					"start": 659.28,
+					"text": "and you store it up for when you need to"
+				},
+				{
+					"start": 662,
+					"text": "call upon it when you stand up out of"
+				},
+				{
+					"start": 663.36,
+					"text": "your chair or you suddenly have to"
+				},
+				{
+					"start": 664.56,
+					"text": "sprint away from a lion"
+				},
+				{
+					"start": 666.48,
+					"text": "now you can use those stores to quickly"
+				},
+				{
+					"start": 668.72,
+					"text": "replenish atp"
+				},
+				{
+					"start": 670.64,
+					"text": "and until you rest those stores of crete"
+				},
+				{
+					"start": 674,
+					"text": "and phosphate and of atp will not be"
+				},
+				{
+					"start": 676.64,
+					"text": "fully"
+				}
+			]
+		},
+		{
+			"start": 677.12,
+			"title": "Гликолиз: быстрый путь из глюкозы",
+			"summary": "Гликолиз расщепляет глюкозу или мышечный гликоген до пирувата и быстро даёт небольшой объём АТФ.",
+			"theses": [
+				"Сам гликолиз не требует кислорода.",
+				"Слова «быстрый» и «медленный» гликолиз — учебная модель разных судеб пирувата, а не два отдельных пути."
+			],
+			"anchor": "replenished okay so that was the",
+			"segments": [
+				{
+					"start": 677.12,
+					"text": "replenished okay so that was the"
+				},
+				{
+					"start": 678.88,
+					"text": "phosphagen system it's the fastest"
+				},
+				{
+					"start": 680.56,
+					"text": "system we use it for"
+				},
+				{
+					"start": 681.76,
+					"text": "from about 0 to 15 seconds maybe about"
+				},
+				{
+					"start": 684,
+					"text": "10 seconds"
+				},
+				{
+					"start": 685.12,
+					"text": "and the next fastest energy system is"
+				},
+				{
+					"start": 687.92,
+					"text": "fast"
+				},
+				{
+					"start": 688.48,
+					"text": "glycolysis followed by slow glycolysis"
+				},
+				{
+					"start": 691.6,
+					"text": "oftentimes people refer to both of them"
+				},
+				{
+					"start": 694.08,
+					"text": "just as glycolysis"
+				},
+				{
+					"start": 695.44,
+					"text": "we'll kind of see the differentiating"
+				},
+				{
+					"start": 697.28,
+					"text": "pathways for when it's considered fast"
+				},
+				{
+					"start": 699.68,
+					"text": "or anaerobic and when it's considered"
+				},
+				{
+					"start": 701.36,
+					"text": "slow"
+				},
+				{
+					"start": 702,
+					"text": "or aerobic glycolysis okay so glycolysis"
+				},
+				{
+					"start": 706,
+					"text": "is the energy system that uses glucose"
+				},
+				{
+					"start": 708.72,
+					"text": "as the primary substrate"
+				},
+				{
+					"start": 710.48,
+					"text": "it's the breakdown of carbohydrates"
+				},
+				{
+					"start": 712.88,
+					"text": "either glycogen"
+				},
+				{
+					"start": 714.4,
+					"text": "which is glucose stored in the muscle"
+				},
+				{
+					"start": 716.64,
+					"text": "cell or"
+				},
+				{
+					"start": 717.84,
+					"text": "glucose in the blood and we use this"
+				},
+				{
+					"start": 721.36,
+					"text": "as the main energy driver to"
+				},
+				{
+					"start": 723.12,
+					"text": "resynthesize atp"
+				}
+			]
+		},
+		{
+			"start": 727.28,
+			"title": "Инвестиционная фаза и чистый выход АТФ",
+			"summary": "Сначала путь расходует АТФ, затем образует большее количество: чистый итог зависит от исходного субстрата.",
+			"theses": [
+				"Из глюкозы крови чистый выход — 2 АТФ.",
+				"Из мышечного гликогена чистый выход — 3 АТФ, поскольку обходится один затратный шаг."
+			],
+			"anchor": "okay so here is the pathway for",
+			"segments": [
+				{
+					"start": 727.28,
+					"text": "okay so here is the pathway for"
+				},
+				{
+					"start": 730.16,
+					"text": "glycolysis"
+				},
+				{
+					"start": 731.44,
+					"text": "and as future coaches trainers"
+				},
+				{
+					"start": 734.56,
+					"text": "strength coaches we don't necessarily"
+				},
+				{
+					"start": 737.52,
+					"text": "need to memorize all of these pathways"
+				},
+				{
+					"start": 739.04,
+					"text": "although"
+				},
+				{
+					"start": 739.44,
+					"text": "for exercise physiology a class that you"
+				},
+				{
+					"start": 741.84,
+					"text": "might be taking right now"
+				},
+				{
+					"start": 743.04,
+					"text": "or taking the future you might need to"
+				},
+				{
+					"start": 745.04,
+					"text": "memorize this"
+				},
+				{
+					"start": 746.08,
+					"text": "but it's not every day that you're out"
+				},
+				{
+					"start": 748.4,
+					"text": "on the soccer pitch and you have to"
+				},
+				{
+					"start": 749.76,
+					"text": "suddenly recall"
+				},
+				{
+					"start": 750.96,
+					"text": "what was the fourth step of glycolysis"
+				},
+				{
+					"start": 753.12,
+					"text": "but it is important"
+				},
+				{
+					"start": 754.72,
+					"text": "to understand how all of these things"
+				},
+				{
+					"start": 757.84,
+					"text": "work"
+				},
+				{
+					"start": 758.24,
+					"text": "as a backdrop to the training that"
+				},
+				{
+					"start": 760,
+					"text": "you're prescribing to athletes all right"
+				},
+				{
+					"start": 762.88,
+					"text": "so in this picture we start with either"
+				},
+				{
+					"start": 766.08,
+					"text": "blood glucose or muscle glycogen"
+				},
+				{
+					"start": 769.76,
+					"text": "and this is important because if you"
+				},
+				{
+					"start": 772.08,
+					"text": "start with blood glucose"
+				},
+				{
+					"start": 773.44,
+					"text": "it actually requires an atp"
+				},
+				{
+					"start": 776.48,
+					"text": "to get the reaction going to get to"
+				},
+				{
+					"start": 778.32,
+					"text": "glucose 6-phosphate if you start from"
+				},
+				{
+					"start": 780.08,
+					"text": "muscle glycogen"
+				},
+				{
+					"start": 781.12,
+					"text": "you don't need that initial atp"
+				},
+				{
+					"start": 784.56,
+					"text": "now to go from fructose 6-phosphate you"
+				},
+				{
+					"start": 787.84,
+					"text": "also need a second atp"
+				},
+				{
+					"start": 791.6,
+					"text": "and then now you've if you've started"
+				},
+				{
+					"start": 793.44,
+					"text": "with blood glucose you've contributed to"
+				},
+				{
+					"start": 795.52,
+					"text": "atp"
+				},
+				{
+					"start": 796.24,
+					"text": "from if you've started from muscle"
+				},
+				{
+					"start": 798,
+					"text": "glycogen you've contributed just one"
+				},
+				{
+					"start": 800.32,
+					"text": "and then you can start generating new"
+				},
+				{
+					"start": 802.24,
+					"text": "atp from this glucose molecule"
+				},
+				{
+					"start": 805.84,
+					"text": "now you see that this reaction is"
+				},
+				{
+					"start": 807.04,
+					"text": "double-sided that's because one"
+				},
+				{
+					"start": 808.88,
+					"text": "molecule of blood glucose or muscle"
+				},
+				{
+					"start": 810.72,
+					"text": "glycogen will then result in the"
+				},
+				{
+					"start": 812.88,
+					"text": "production"
+				},
+				{
+					"start": 814,
+					"text": "simultaneously of two pairs of atp"
+				},
+				{
+					"start": 817.2,
+					"text": "okay here's the first pair and here's"
+				},
+				{
+					"start": 819.44,
+					"text": "the second pair"
+				},
+				{
+					"start": 821.28,
+					"text": "and then you will get either two"
+				},
+				{
+					"start": 823.52,
+					"text": "pyruvate molecules"
+				},
+				{
+					"start": 825.04,
+					"text": "or two lactate molecules at the end and"
+				},
+				{
+					"start": 827.76,
+					"text": "that"
+				},
+				{
+					"start": 828.32,
+					"text": "depends the fate of pyruvate which we'll"
+				},
+				{
+					"start": 830.32,
+					"text": "see in future slides"
+				},
+				{
+					"start": 831.68,
+					"text": "depends on the intensity of exercise or"
+				},
+				{
+					"start": 834.08,
+					"text": "on how quickly"
+				},
+				{
+					"start": 835.36,
+					"text": "you are needing to generate these atp"
+				},
+				{
+					"start": 837.92,
+					"text": "molecules"
+				},
+				{
+					"start": 840.64,
+					"text": "so as i mentioned the end result of"
+				}
+			]
+		},
+		{
+			"start": 842.8,
+			"title": "Пируват: лактат или митохондрии",
+			"summary": "Пируват может восстанавливаться до лактата с регенерацией NAD+ либо поступать в митохондриальное окисление.",
+			"theses": [
+				"Выбор судьбы пирувата зависит от скорости гликолиза, окислительной способности ткани и условий работы.",
+				"Наличие лактата не означает отсутствия кислорода."
+			],
+			"anchor": "glycolysis is pyruvate",
+			"segments": [
+				{
+					"start": 842.8,
+					"text": "glycolysis is pyruvate"
+				},
+				{
+					"start": 844.88,
+					"text": "and pyruvate can go one of two"
+				},
+				{
+					"start": 846.32,
+					"text": "directions first"
+				},
+				{
+					"start": 848.24,
+					"text": "if the exercise intensity is high enough"
+				},
+				{
+					"start": 852.16,
+					"text": "pyruvate can be converted to lactate"
+				},
+				{
+					"start": 855.2,
+					"text": "this allows atp resynthesis to occur at"
+				},
+				{
+					"start": 857.68,
+					"text": "a faster rate"
+				},
+				{
+					"start": 858.88,
+					"text": "but with limited duration now your"
+				},
+				{
+					"start": 861.44,
+					"text": "muscles cannot keep generating lactate"
+				},
+				{
+					"start": 863.52,
+					"text": "forever there's a cost"
+				},
+				{
+					"start": 865.12,
+					"text": "to doing so to replenishing your atp at"
+				},
+				{
+					"start": 868.24,
+					"text": "such a high rate and we'll see what that"
+				},
+				{
+					"start": 869.52,
+					"text": "is here in a second"
+				},
+				{
+					"start": 870.72,
+					"text": "this process is called anaerobic or"
+				},
+				{
+					"start": 873.92,
+					"text": "fast glycolysis so remember i mentioned"
+				},
+				{
+					"start": 876.88,
+					"text": "there's two types of glycolysis and this"
+				},
+				{
+					"start": 878.64,
+					"text": "is the first type"
+				},
+				{
+					"start": 879.68,
+					"text": "anaerobic or fast glycolysis"
+				},
+				{
+					"start": 882.72,
+					"text": "now if pyruvate is not turned into"
+				},
+				{
+					"start": 885.6,
+					"text": "lactate but it's instead shuttled into"
+				},
+				{
+					"start": 887.28,
+					"text": "the mitochondria"
+				},
+				{
+					"start": 888.64,
+					"text": "for further oxidation then we call it"
+				},
+				{
+					"start": 892,
+					"text": "aerobic or slow glycolysis"
+				},
+				{
+					"start": 895.84,
+					"text": "okay so in this case pyruvate is"
+				},
+				{
+					"start": 898,
+					"text": "shuttled into the mitochondria"
+				},
+				{
+					"start": 899.52,
+					"text": "to undergo the krebs cycle or the citric"
+				},
+				{
+					"start": 902.64,
+					"text": "acid cycle"
+				},
+				{
+					"start": 904.4,
+					"text": "this rate of atp resynthesis"
+				},
+				{
+					"start": 907.44,
+					"text": "is slower but it can occur for a longer"
+				},
+				{
+					"start": 910.8,
+					"text": "duration if the exercise intensity is"
+				},
+				{
+					"start": 913.2,
+					"text": "low enough"
+				},
+				{
+					"start": 913.92,
+					"text": "so as long as your atp demand is not"
+				},
+				{
+					"start": 916.56,
+					"text": "through the roof"
+				},
+				{
+					"start": 917.52,
+					"text": "and it's nice and steady at a pace that"
+				},
+				{
+					"start": 919.76,
+					"text": "you can hold for a while"
+				},
+				{
+					"start": 921.52,
+					"text": "then pyruvate will be shuttled more"
+				},
+				{
+					"start": 923.44,
+					"text": "likely to the krebs cycle in the"
+				},
+				{
+					"start": 925.04,
+					"text": "mitochondria"
+				},
+				{
+					"start": 926.08,
+					"text": "where you can generate many many more"
+				},
+				{
+					"start": 928,
+					"text": "atp than"
+				},
+				{
+					"start": 929.52,
+					"text": "during fast or anaerobic glycolysis"
+				}
+			]
+		},
+		{
+			"start": 933.84,
+			"title": "Лактат: не причина жжения и усталости",
+			"summary": "Лактатдегидрогеназа поддерживает оборот NAD+, а сам лактат служит переносчиком углерода и потенциальным топливом.",
+			"theses": [
+				"Лактат не является источником ацидоза: его образование скорее потребляет протоны.",
+				"Снижение pH при тяжёлой работе многофакторно и связано в том числе с быстрым оборотом АТФ, поэтому старую схему «лактат вызывает жжение» следует отбросить."
+			],
+			"anchor": "now going back to lactate what do we",
+			"segments": [
+				{
+					"start": 933.84,
+					"text": "now going back to lactate what do we"
+				},
+				{
+					"start": 935.68,
+					"text": "actually get out of"
+				},
+				{
+					"start": 936.96,
+					"text": "the formation of lactate well"
+				},
+				{
+					"start": 940.08,
+					"text": "if exercise is intense enough then we"
+				},
+				{
+					"start": 942.24,
+					"text": "have the enzyme lactate dehydrogenase"
+				},
+				{
+					"start": 945.12,
+					"text": "catalyzing the reaction of pyruvate into"
+				},
+				{
+					"start": 947.04,
+					"text": "lactate and it's important to know the"
+				},
+				{
+					"start": 949.04,
+					"text": "end result is not actually lactic acid"
+				},
+				{
+					"start": 951.2,
+					"text": "that's actually a misconception that's a"
+				},
+				{
+					"start": 952.88,
+					"text": "myth"
+				},
+				{
+					"start": 953.6,
+					"text": "lactate is not the cause of fatigue it"
+				},
+				{
+					"start": 955.68,
+					"text": "is not the cause of that burning"
+				},
+				{
+					"start": 957.12,
+					"text": "sensation at the end of a 400 meter"
+				},
+				{
+					"start": 959.04,
+					"text": "or 800 meter run we start with a glucose"
+				},
+				{
+					"start": 964.08,
+					"text": "two or inorganic phosphates and two adps"
+				},
+				{
+					"start": 966.88,
+					"text": "and we end with two lactate molecules"
+				},
+				{
+					"start": 969.04,
+					"text": "two atps and some water"
+				}
+			]
+		},
+		{
+			"start": 973.76,
+			"title": "Цикл Кори и лактатные шаттлы",
+			"summary": "Часть лактата поступает в печень и превращается в глюкозу, но значительная доля окисляется мышцами, сердцем или соседними клетками.",
+			"theses": [
+				"Цикл Кори — один из путей утилизации, а не единственный механизм очистки крови от лактата.",
+				"Лактат может перемещаться между тканями и повторно использоваться как энергетический субстрат."
+			],
+			"anchor": "now i mentioned the cory cycle and this",
+			"segments": [
+				{
+					"start": 973.76,
+					"text": "now i mentioned the cory cycle and this"
+				},
+				{
+					"start": 975.84,
+					"text": "is what happens to lactate"
+				},
+				{
+					"start": 977.44,
+					"text": "as your body starts clearing it and then"
+				},
+				{
+					"start": 979.68,
+					"text": "using it"
+				},
+				{
+					"start": 980.56,
+					"text": "for fuel it's actually transported in"
+				},
+				{
+					"start": 983.44,
+					"text": "the blood"
+				},
+				{
+					"start": 984.72,
+					"text": "to the liver where the liver converts it"
+				},
+				{
+					"start": 987.84,
+					"text": "into glucose"
+				},
+				{
+					"start": 990.32,
+					"text": "and then sends it back out into the"
+				},
+				{
+					"start": 992.16,
+					"text": "bloodstream"
+				},
+				{
+					"start": 993.36,
+					"text": "back to the working muscle so this"
+				},
+				{
+					"start": 995.2,
+					"text": "process is called"
+				},
+				{
+					"start": 996.4,
+					"text": "the cory cycle and this is how our body"
+				},
+				{
+					"start": 998.88,
+					"text": "clears lactate"
+				},
+				{
+					"start": 1000.24,
+					"text": "when we talk about the lactate threshold"
+				},
+				{
+					"start": 1003.28,
+					"text": "in the next video"
+				},
+				{
+					"start": 1004.48,
+					"text": "we will actually dive deep into the"
+				},
+				{
+					"start": 1007.2,
+					"text": "body's response"
+				},
+				{
+					"start": 1008.32,
+					"text": "to increasing levels of lactate and how"
+				},
+				{
+					"start": 1010.88,
+					"text": "we can"
+				},
+				{
+					"start": 1011.36,
+					"text": "train specifically to push that curve"
+				},
+				{
+					"start": 1015.04,
+					"text": "out to be able to handle higher levels"
+				},
+				{
+					"start": 1016.72,
+					"text": "of lactate but also to be able to clear"
+				},
+				{
+					"start": 1019.2,
+					"text": "lactate faster with the quarry cycle"
+				}
+			]
+		},
+		{
+			"start": 1023.6,
+			"title": "Ацетил-КоА, цикл Кребса и переносчики электронов",
+			"summary": "При окислительной судьбе пируват превращается в ацетил-КоА, а цикл Кребса формирует NADH и FADH2 для дыхательной цепи.",
+			"theses": [
+				"Основная часть АТФ появляется не непосредственно в цикле Кребса, а при окислительном фосфорилировании.",
+				"Доступность кислорода необходима для устойчивой работы дыхательной цепи."
+			],
+			"anchor": "now if glycolysis proceeds into the",
+			"segments": [
+				{
+					"start": 1023.6,
+					"text": "now if glycolysis proceeds into the"
+				},
+				{
+					"start": 1025.84,
+					"text": "krebs cycle so if you are"
+				},
+				{
+					"start": 1027.6,
+					"text": "running at a low enough intensity or"
+				},
+				{
+					"start": 1029.36,
+					"text": "exercising at a low enough intensity"
+				},
+				{
+					"start": 1031.36,
+					"text": "where pyruvate is allowed to enter the"
+				},
+				{
+					"start": 1033.52,
+					"text": "mitochondria"
+				},
+				{
+					"start": 1035.12,
+					"text": "then we see that it is converted into"
+				},
+				{
+					"start": 1037.6,
+					"text": "acetyl co a"
+				},
+				{
+					"start": 1040.56,
+					"text": "now once acetyl coa enters the krebs"
+				},
+				{
+					"start": 1042.56,
+					"text": "cycle"
+				},
+				{
+					"start": 1043.68,
+					"text": "now we see the formation of these nadh"
+				},
+				{
+					"start": 1046.4,
+					"text": "molecules"
+				},
+				{
+					"start": 1047.12,
+					"text": "now the krebs cycle produces"
+				},
+				{
+					"start": 1050.24,
+					"text": "nadh molecules as well as a couple more"
+				},
+				{
+					"start": 1053.44,
+					"text": "atp so we see here that"
+				},
+				{
+					"start": 1056.64,
+					"text": "when the conditions are right the"
+				},
+				{
+					"start": 1057.92,
+					"text": "exercise intensity is not too high we"
+				},
+				{
+					"start": 1059.76,
+					"text": "start with glucose"
+				},
+				{
+					"start": 1061.28,
+					"text": "a couple adp and inorganic phosphate"
+				},
+				{
+					"start": 1064.8,
+					"text": "two nad molecules and we end up with two"
+				},
+				{
+					"start": 1067.44,
+					"text": "pyruvates"
+				},
+				{
+					"start": 1068.56,
+					"text": "two atps plus two nadh molecules"
+				},
+				{
+					"start": 1072.64,
+					"text": "now the total yield of fast or anaerobic"
+				},
+				{
+					"start": 1075.76,
+					"text": "glycolysis"
+				},
+				{
+					"start": 1076.64,
+					"text": "is either two or three atp"
+				},
+				{
+					"start": 1079.68,
+					"text": "molecules it's two if it comes from"
+				},
+				{
+					"start": 1082.4,
+					"text": "blood glucose"
+				},
+				{
+					"start": 1084.8,
+					"text": "it's three if it comes from muscle"
+				},
+				{
+					"start": 1087.2,
+					"text": "glycogen"
+				},
+				{
+					"start": 1088.56,
+					"text": "and that's all the more reason to make"
+				},
+				{
+					"start": 1090.24,
+					"text": "sure that you or your athletes or"
+				},
+				{
+					"start": 1092.16,
+					"text": "whoever you're training"
+				},
+				{
+					"start": 1094,
+					"text": "has topped off their muscle glycogen"
+				},
+				{
+					"start": 1096,
+					"text": "stores prior to"
+				}
+			]
+		},
+		{
+			"start": 1097.44,
+			"title": "Регуляция скорости гликолиза",
+			"summary": "Скорость пути меняется через доступность субстрата, энергетическое состояние клетки и ключевые ферменты.",
+			"theses": [
+				"Фосфофруктокиназа — один из главных регулирующих ферментов гликолиза.",
+				"Высокие ADP и AMP сигнализируют о потребности в ресинтезе АТФ, тогда как избыток ATP тормозит путь."
+			],
+			"anchor": "training now what drives glycolysis",
+			"segments": [
+				{
+					"start": 1097.44,
+					"text": "training now what drives glycolysis"
+				},
+				{
+					"start": 1100.72,
+					"text": "how does it actually activate well it's"
+				},
+				{
+					"start": 1102.96,
+					"text": "stimulated by high concentrations of adp"
+				},
+				{
+					"start": 1105.92,
+					"text": "and inorganic phosphate as well as by"
+				},
+				{
+					"start": 1108.16,
+					"text": "ammonia"
+				},
+				{
+					"start": 1109.6,
+					"text": "or maybe a decrease in the ph or amp"
+				},
+				{
+					"start": 1112.8,
+					"text": "so the byproducts of using the alactic"
+				},
+				{
+					"start": 1114.96,
+					"text": "anaerobic system or the anaerobic system"
+				},
+				{
+					"start": 1117.36,
+					"text": "that is reliant on just atp and"
+				},
+				{
+					"start": 1119.68,
+					"text": "phosphagen"
+				},
+				{
+					"start": 1120.4,
+					"text": "those byproducts actually drive the"
+				},
+				{
+					"start": 1123.76,
+					"text": "fast glycolytic system so as you start"
+				},
+				{
+					"start": 1126.32,
+					"text": "to fatigue that creatine phosphagen"
+				},
+				{
+					"start": 1128.08,
+					"text": "system and use it all up and use up the"
+				},
+				{
+					"start": 1129.92,
+					"text": "atp"
+				},
+				{
+					"start": 1130.8,
+					"text": "then those byproducts tell your body to"
+				},
+				{
+					"start": 1134,
+					"text": "then turn on the fast"
+				},
+				{
+					"start": 1135.28,
+					"text": "glycolysis system however it can"
+				},
+				{
+					"start": 1139.04,
+					"text": "be inhibited by markedly lower ph"
+				},
+				{
+					"start": 1142.24,
+					"text": "so if you drive your ph way down because"
+				},
+				{
+					"start": 1144.72,
+					"text": "you're generating lactate which"
+				},
+				{
+					"start": 1146,
+					"text": "contributes hydrogen ions"
+				},
+				{
+					"start": 1147.76,
+					"text": "into the blood or into the muscle cell"
+				},
+				{
+					"start": 1150,
+					"text": "and you're driving the blood ph way down"
+				},
+				{
+					"start": 1153.92,
+					"text": "or you have way lower atp or creatine"
+				},
+				{
+					"start": 1156.56,
+					"text": "phosphate"
+				},
+				{
+					"start": 1157.28,
+					"text": "or citrate or etc the body is not going"
+				},
+				{
+					"start": 1160.48,
+					"text": "to be able to continue"
+				},
+				{
+					"start": 1162.08,
+					"text": "exercising at that high of a rate that"
+				},
+				{
+					"start": 1163.76,
+					"text": "you can sustain with"
+				},
+				{
+					"start": 1165.28,
+					"text": "fast glycolysis so it will shut down"
+				},
+				{
+					"start": 1168.08,
+					"text": "your ability to keep running that system"
+				},
+				{
+					"start": 1170.4,
+					"text": "right if you're getting into a state of"
+				},
+				{
+					"start": 1172.32,
+					"text": "muscular acidosis"
+				},
+				{
+					"start": 1173.6,
+					"text": "the body will not allow you to continue"
+				},
+				{
+					"start": 1176.84,
+					"text": "exercising"
+				},
+				{
+					"start": 1179.36,
+					"text": "and it's also affected by these rate"
+				},
+				{
+					"start": 1181.36,
+					"text": "limiting enzymes"
+				},
+				{
+					"start": 1182.48,
+					"text": "hexokinase phosphofructokinase and"
+				},
+				{
+					"start": 1185.84,
+					"text": "pyruvate kinase so these are enzymes"
+				},
+				{
+					"start": 1188.64,
+					"text": "that"
+				},
+				{
+					"start": 1189.2,
+					"text": "limit the rate at which these reactions"
+				},
+				{
+					"start": 1191.28,
+					"text": "can occur"
+				}
+			]
+		},
+		{
+			"start": 1193.44,
+			"title": "Окислительная система",
+			"summary": "Митохондриальный путь медленнее разворачивает поток, но способен долго снабжать работу АТФ и поддерживать восстановление между интенсивными эпизодами.",
+			"theses": [
+				"Окислительная система важна не только в длительном беге, но и в паузах между спринтами.",
+				"Её мощность зависит от доставки кислорода, митохондрий, ферментов и тренированности."
+			],
+			"anchor": "okay so now let's say that you are",
+			"segments": [
+				{
+					"start": 1193.44,
+					"text": "okay so now let's say that you are"
+				},
+				{
+					"start": 1194.96,
+					"text": "exercising at an intensity"
+				},
+				{
+					"start": 1196.88,
+					"text": "where pyruvate is shuttled into the"
+				},
+				{
+					"start": 1198.88,
+					"text": "mitochondria so what happens then"
+				},
+				{
+					"start": 1201.2,
+					"text": "well this is when the oxidative or"
+				},
+				{
+					"start": 1203.2,
+					"text": "aerobic system"
+				},
+				{
+					"start": 1204.64,
+					"text": "really comes into play this is the"
+				},
+				{
+					"start": 1206.8,
+					"text": "primary source of atp"
+				},
+				{
+					"start": 1208.24,
+					"text": "at rest and during low intensity"
+				},
+				{
+					"start": 1210.8,
+					"text": "activities so maybe going for"
+				},
+				{
+					"start": 1212.64,
+					"text": "a light easy jog or in a marathon or"
+				},
+				{
+					"start": 1216.8,
+					"text": "especially an ultra marathon or perhaps"
+				},
+				{
+					"start": 1219.12,
+					"text": "a long walk"
+				},
+				{
+					"start": 1220.4,
+					"text": "exercises like that also during recovery"
+				},
+				{
+					"start": 1223.44,
+					"text": "from higher intensity exercise so let's"
+				},
+				{
+					"start": 1225.2,
+					"text": "say you're doing"
+				},
+				{
+					"start": 1226.72,
+					"text": "repeated sprints or you're in a soccer"
+				},
+				{
+					"start": 1228.56,
+					"text": "match well in between sprints"
+				},
+				{
+					"start": 1230.48,
+					"text": "your oxidative system will be used to"
+				},
+				{
+					"start": 1232.8,
+					"text": "help you recover"
+				},
+				{
+					"start": 1234.32,
+					"text": "those other faster energy systems"
+				},
+				{
+					"start": 1237.44,
+					"text": "and it uses primarily carbohydrates and"
+				},
+				{
+					"start": 1239.76,
+					"text": "fats as substrates"
+				},
+				{
+					"start": 1241.2,
+					"text": "and your dietary choices can predispose"
+				},
+				{
+					"start": 1244.16,
+					"text": "you to either rely more on carbs"
+				},
+				{
+					"start": 1246.24,
+					"text": "or more on fats and the jury is kind of"
+				},
+				{
+					"start": 1248.16,
+					"text": "still out as to which one is better but"
+				},
+				{
+					"start": 1250.24,
+					"text": "right now it's looking"
+				},
+				{
+					"start": 1251.28,
+					"text": "looking like carbohydrates are still the"
+				},
+				{
+					"start": 1253.6,
+					"text": "winner as far as"
+				},
+				{
+					"start": 1255.12,
+					"text": "elite performance goes"
+				},
+				{
+					"start": 1258.72,
+					"text": "now the metabolism of blood glucose as"
+				},
+				{
+					"start": 1261.04,
+					"text": "we've mentioned"
+				},
+				{
+					"start": 1262.08,
+					"text": "begins with glycolysis and it eventually"
+				},
+				{
+					"start": 1265.52,
+					"text": "leads to the krebs cycle"
+				},
+				{
+					"start": 1267.52,
+					"text": "and this is where we have the production"
+				},
+				{
+					"start": 1269.04,
+					"text": "of those nadh and fadh"
+				},
+				{
+					"start": 1271.44,
+					"text": "molecules these are again hydrogen"
+				},
+				{
+					"start": 1274.24,
+					"text": "transport molecules they take"
+				},
+				{
+					"start": 1276.4,
+					"text": "hydrogen atoms or electrons and they"
+				},
+				{
+					"start": 1279.44,
+					"text": "bring them to the electron transport"
+				},
+				{
+					"start": 1281.52,
+					"text": "chain where oxidative phosphorylation"
+				},
+				{
+					"start": 1283.84,
+					"text": "can occur and we get a ton"
+				},
+				{
+					"start": 1285.68,
+					"text": "of atp molecules from this"
+				}
+			]
+		},
+		{
+			"start": 1290.16,
+			"title": "Цикл Кребса и электрон-транспортная цепь",
+			"summary": "Ацетил-КоА окисляется, а электроны через NADH и FADH2 поступают в цепь, создающую протонный градиент для ATP-синтазы.",
+			"theses": [
+				"Кислород принимает электроны в конце дыхательной цепи.",
+				"Углекислый газ образуется преимущественно при превращении пирувата и в цикле Кребса."
+			],
+			"anchor": "okay so here's the krebs cycle we see",
+			"segments": [
+				{
+					"start": 1290.16,
+					"text": "okay so here's the krebs cycle we see"
+				},
+				{
+					"start": 1292.56,
+					"text": "pyruvate which is the end result of"
+				},
+				{
+					"start": 1294.4,
+					"text": "glycolysis"
+				},
+				{
+					"start": 1295.68,
+					"text": "and if exercise intensity is low enough"
+				},
+				{
+					"start": 1297.76,
+					"text": "it's converted to"
+				},
+				{
+					"start": 1299.04,
+					"text": "acetyl coa you also see that amino acid"
+				},
+				{
+					"start": 1302.16,
+					"text": "acids or fatty acids can enter"
+				},
+				{
+					"start": 1305.84,
+					"text": "this krebs cycle as well so we don't"
+				},
+				{
+					"start": 1307.76,
+					"text": "have to only use glucose we could also"
+				},
+				{
+					"start": 1309.76,
+					"text": "use protein"
+				},
+				{
+					"start": 1310.72,
+					"text": "or fats for energy in our oxidative"
+				},
+				{
+					"start": 1313.36,
+					"text": "system"
+				},
+				{
+					"start": 1316.72,
+					"text": "and as acetyl coa enters this krebs"
+				},
+				{
+					"start": 1318.72,
+					"text": "cycle we see"
+				},
+				{
+					"start": 1320.8,
+					"text": "these hydrogen carrying molecules being"
+				},
+				{
+					"start": 1323.84,
+					"text": "loaded up with hydrogens"
+				},
+				{
+					"start": 1325.76,
+					"text": "to then be transported off to the"
+				},
+				{
+					"start": 1328.48,
+					"text": "electron transport chain"
+				},
+				{
+					"start": 1332.8,
+					"text": "and here at the electron transport chain"
+				},
+				{
+					"start": 1335.76,
+					"text": "we have a series of step-down reactions"
+				},
+				{
+					"start": 1338.24,
+					"text": "that generates a bunch of atp"
+				}
+			]
+		},
+		{
+			"start": 1342.4,
+			"title": "Жиры и аминокислоты как топливо",
+			"summary": "Жирные кислоты через бета-окисление дают ацетил-КоА, а аминокислоты могут входить в метаболизм на разных уровнях.",
+			"theses": [
+				"Жиры дают много АТФ, но требуют более медленного окислительного потока.",
+				"Вклад аминокислот возрастает при длительной работе и дефиците энергии, а не только при голодании."
+			],
+			"anchor": "now as i mentioned it's not just",
+			"segments": [
+				{
+					"start": 1342.4,
+					"text": "now as i mentioned it's not just"
+				},
+				{
+					"start": 1344.08,
+					"text": "carbohydrate we can also oxidize"
+				},
+				{
+					"start": 1346.08,
+					"text": "fat these triglycerides can be stored in"
+				},
+				{
+					"start": 1348.8,
+					"text": "fat cells and then broken down"
+				},
+				{
+					"start": 1350.64,
+					"text": "by hormone-sensitive lipase released as"
+				},
+				{
+					"start": 1353.36,
+					"text": "free fatty acids"
+				},
+				{
+					"start": 1354.96,
+					"text": "and then they can enter the blood and"
+				},
+				{
+					"start": 1357.04,
+					"text": "then be circulated"
+				},
+				{
+					"start": 1358.32,
+					"text": "into the muscle fibers"
+				},
+				{
+					"start": 1362,
+					"text": "they can also come from intramuscular"
+				},
+				{
+					"start": 1364.24,
+					"text": "stores"
+				},
+				{
+					"start": 1365.36,
+					"text": "especially in your type 1 muscles in"
+				},
+				{
+					"start": 1367.36,
+					"text": "your slower twitch muscles that rely"
+				},
+				{
+					"start": 1369.2,
+					"text": "more on oxidative metabolism for their"
+				},
+				{
+					"start": 1370.96,
+					"text": "energy"
+				},
+				{
+					"start": 1371.52,
+					"text": "there will be greater intramuscular"
+				},
+				{
+					"start": 1373.12,
+					"text": "stores of fat"
+				},
+				{
+					"start": 1377.68,
+					"text": "now protein is usually not a significant"
+				},
+				{
+					"start": 1379.92,
+					"text": "source of energy for most activities"
+				},
+				{
+					"start": 1382.4,
+					"text": "and this is because we use protein for a"
+				},
+				{
+					"start": 1385.12,
+					"text": "host of other things"
+				},
+				{
+					"start": 1386.48,
+					"text": "namely cell structure and function and"
+				},
+				{
+					"start": 1389.52,
+					"text": "cell cellular machinery and the actin"
+				},
+				{
+					"start": 1392.08,
+					"text": "and myosin"
+				},
+				{
+					"start": 1393.04,
+					"text": "in our muscles but in periods of"
+				},
+				{
+					"start": 1395.76,
+					"text": "starvation or"
+				},
+				{
+					"start": 1396.72,
+					"text": "extreme duration activity it can be"
+				},
+				{
+					"start": 1399.44,
+					"text": "broken down into amino acids and then"
+				},
+				{
+					"start": 1401.28,
+					"text": "converted"
+				},
+				{
+					"start": 1402.24,
+					"text": "to glucose pyruvate or various krebs"
+				},
+				{
+					"start": 1405.2,
+					"text": "cycle intermediates"
+				},
+				{
+					"start": 1406.48,
+					"text": "to produce atp but this is usually not a"
+				},
+				{
+					"start": 1408.88,
+					"text": "great thing"
+				},
+				{
+					"start": 1409.6,
+					"text": "we typically don't want to be breaking"
+				},
+				{
+					"start": 1411.12,
+					"text": "down protein"
+				}
+			]
+		},
+		{
+			"start": 1414.16,
+			"title": "Контроль окислительного метаболизма",
+			"summary": "Окислительная скорость регулируется потребностью в АТФ, доступностью субстратов и кислорода, а также ферментативной активностью.",
+			"theses": [
+				"Рост ADP стимулирует окислительное фосфорилирование.",
+				"Тренировка повышает способность доставлять и использовать кислород, но не отменяет ограничения конкретной задачи."
+			],
+			"anchor": "now as far as the control of the",
+			"segments": [
+				{
+					"start": 1414.16,
+					"text": "now as far as the control of the"
+				},
+				{
+					"start": 1415.76,
+					"text": "oxidative system we have isocitrate"
+				},
+				{
+					"start": 1418.04,
+					"text": "dehydrogenase"
+				},
+				{
+					"start": 1419.68,
+					"text": "which can be stimulated by adp"
+				},
+				{
+					"start": 1422.72,
+					"text": "and inhibited by atp so again when"
+				},
+				{
+					"start": 1425.2,
+					"text": "there's"
+				},
+				{
+					"start": 1426,
+					"text": "when atp is being broken down into adp"
+				},
+				{
+					"start": 1428.56,
+					"text": "and the cell senses that"
+				},
+				{
+					"start": 1430,
+					"text": "then we get a stimulation of isocitrate"
+				},
+				{
+					"start": 1433.52,
+					"text": "dehydrogenase which kicks into cycle the"
+				},
+				{
+					"start": 1435.84,
+					"text": "krebs cycle"
+				},
+				{
+					"start": 1438,
+					"text": "and the rate of the krebs cycle is"
+				},
+				{
+					"start": 1439.92,
+					"text": "reduced if these oxygen carrying"
+				},
+				{
+					"start": 1442.08,
+					"text": "compounds are not available in"
+				},
+				{
+					"start": 1443.6,
+					"text": "sufficient"
+				},
+				{
+					"start": 1444.16,
+					"text": "quantities and again the electron"
+				},
+				{
+					"start": 1448.32,
+					"text": "transport chain"
+				},
+				{
+					"start": 1449.36,
+					"text": "is inhibited by atp but stimulated by a"
+				},
+				{
+					"start": 1453.28,
+					"text": "dp so we see that when atp has been"
+				},
+				{
+					"start": 1455.68,
+					"text": "converted"
+				},
+				{
+					"start": 1456.8,
+					"text": "or broken down into adp it stimulates"
+				},
+				{
+					"start": 1459.52,
+					"text": "some of these energy systems"
+				},
+				{
+					"start": 1461.2,
+					"text": "and causes them to kick into gear to to"
+				},
+				{
+					"start": 1464.36,
+					"text": "re-combine"
+				},
+				{
+					"start": 1465.52,
+					"text": "adp within organic phosphate"
+				}
+			]
+		},
+		{
+			"start": 1468.8,
+			"title": "Общая карта путей и выход АТФ",
+			"summary": "Углеводы, жиры и часть аминокислот сходятся в общих митохондриальных узлах, а итоговый выход зависит от субстрата и способа расчёта.",
+			"theses": [
+				"Учебные 36 АТФ из глюкозы — иллюстрация; современные оценки обычно составляют около 30–32.",
+				"Большой выход АТФ из жиров не означает автоматически больший темп мощности или лучшую тренировочную задачу."
+			],
+			"anchor": "okay so here's a big picture view of",
+			"segments": [
+				{
+					"start": 1468.8,
+					"text": "okay so here's a big picture view of"
+				},
+				{
+					"start": 1472.32,
+					"text": "the metabolism of glycogen protein"
+				},
+				{
+					"start": 1475.76,
+					"text": "and triglycerides and it shows you where"
+				},
+				{
+					"start": 1478.32,
+					"text": "in this whole process they they enter"
+				},
+				{
+					"start": 1480.24,
+					"text": "the metabolism of the muscle cell"
+				},
+				{
+					"start": 1482.8,
+					"text": "so we typically start with glycogen we"
+				},
+				{
+					"start": 1485.68,
+					"text": "also"
+				},
+				{
+					"start": 1486.72,
+					"text": "can rely on fatty acids and sometimes"
+				},
+				{
+					"start": 1489.52,
+					"text": "under periods of starvation or extreme"
+				},
+				{
+					"start": 1491.28,
+					"text": "duration"
+				},
+				{
+					"start": 1492.24,
+					"text": "we can use proteins and break those down"
+				},
+				{
+					"start": 1499.2,
+					"text": "now how many atp are actually generated"
+				},
+				{
+					"start": 1502.08,
+					"text": "at each of these levels"
+				},
+				{
+					"start": 1503.84,
+					"text": "well in glycolysis we generate a net of"
+				},
+				{
+					"start": 1507.2,
+					"text": "two"
+				},
+				{
+					"start": 1507.52,
+					"text": "or maybe three atp three if we start"
+				},
+				{
+					"start": 1510.48,
+					"text": "from muscle glycogen"
+				},
+				{
+					"start": 1511.52,
+					"text": "instead of glucose then pyruvate is"
+				},
+				{
+					"start": 1514.88,
+					"text": "formed"
+				},
+				{
+					"start": 1516.4,
+					"text": "and we get this reaction where it is"
+				},
+				{
+					"start": 1518.88,
+					"text": "turned into acetyl coa"
+				},
+				{
+					"start": 1522.32,
+					"text": "and then during the krebs cycle we have"
+				},
+				{
+					"start": 1524.4,
+					"text": "two more atp"
+				},
+				{
+					"start": 1525.84,
+					"text": "produced so in all of that we just have"
+				},
+				{
+					"start": 1527.92,
+					"text": "two atp"
+				},
+				{
+					"start": 1529.2,
+					"text": "but when we get all of these hydrogen"
+				},
+				{
+					"start": 1531.84,
+					"text": "carrying compounds"
+				},
+				{
+					"start": 1532.96,
+					"text": "and we shuttle them down to the electron"
+				},
+				{
+					"start": 1536.16,
+					"text": "transport chain"
+				},
+				{
+					"start": 1537.12,
+					"text": "then we get another 32 atp"
+				},
+				{
+					"start": 1540.16,
+					"text": "okay so we get a total of 36 atp"
+				},
+				{
+					"start": 1543.52,
+					"text": "in oxidative phosphorylation when we"
+				},
+				{
+					"start": 1546.16,
+					"text": "start with a glucose"
+				},
+				{
+					"start": 1547.76,
+					"text": "molecule that's a lot of atp for a"
+				},
+				{
+					"start": 1550.4,
+					"text": "single glucose molecule"
+				},
+				{
+					"start": 1551.84,
+					"text": "so you can see why this lower intensity"
+				},
+				{
+					"start": 1554,
+					"text": "exercise is much more efficient as far"
+				},
+				{
+					"start": 1556.24,
+					"text": "as"
+				},
+				{
+					"start": 1556.64,
+					"text": "utilization of substrates than higher"
+				},
+				{
+					"start": 1558.96,
+					"text": "intensity exercise"
+				},
+				{
+					"start": 1560.24,
+					"text": "this is also another reason why higher"
+				},
+				{
+					"start": 1562.48,
+					"text": "intensity exercise"
+				},
+				{
+					"start": 1563.6,
+					"text": "is much more economical if your goal"
+				},
+				{
+					"start": 1566.72,
+					"text": "is to burn off calories or to burn off"
+				},
+				{
+					"start": 1569.04,
+					"text": "fat or extra glucose because you use"
+				},
+				{
+					"start": 1571.2,
+					"text": "energy at such a fast rate for a"
+				},
+				{
+					"start": 1573.28,
+					"text": "relatively"
+				},
+				{
+					"start": 1574.24,
+					"text": "small return because you need it so fast"
+				}
+			]
+		},
+		{
+			"start": 1579.76,
+			"title": "Компромисс скорости и ёмкости",
+			"summary": "Чем быстрее система способна выдавать АТФ, тем меньше обычно её запас; высокая ёмкость окисления оплачивается более медленным потоком.",
+			"theses": [
+				"Фосфагенная система лидирует по скорости, окислительная — по ёмкости.",
+				"Гликолиз занимает промежуточное положение и тесно связан с обоими путями."
+			],
+			"anchor": "now the key point here is that in",
+			"segments": [
+				{
+					"start": 1579.76,
+					"text": "now the key point here is that in"
+				},
+				{
+					"start": 1581.6,
+					"text": "general there is an inverse relationship"
+				},
+				{
+					"start": 1584.64,
+					"text": "between a given energy system's maximum"
+				},
+				{
+					"start": 1586.88,
+					"text": "rate of atp production"
+				},
+				{
+					"start": 1588.88,
+					"text": "so the atp produced per unit of time"
+				},
+				{
+					"start": 1591.92,
+					"text": "and the total amount of atp that is it"
+				},
+				{
+					"start": 1594.56,
+					"text": "is capable of producing over time"
+				},
+				{
+					"start": 1598.16,
+					"text": "okay so if we were to draw a graph"
+				},
+				{
+					"start": 1601.68,
+					"text": "and"
+				},
+				{
+					"start": 1606,
+					"text": "this is the rate of atp production"
+				},
+				{
+					"start": 1610.4,
+					"text": "and this is the duration"
+				},
+				{
+					"start": 1614.8,
+					"text": "the faster the rate the lower the"
+				},
+				{
+					"start": 1618.32,
+					"text": "duration"
+				},
+				{
+					"start": 1620.48,
+					"text": "it might look something like this where"
+				},
+				{
+					"start": 1623.44,
+					"text": "this"
+				},
+				{
+					"start": 1624.48,
+					"text": "left most point is the phosphagen system"
+				},
+				{
+					"start": 1629.12,
+					"text": "this middle point is"
+				},
+				{
+					"start": 1632.56,
+					"text": "fast glycolysis"
+				},
+				{
+					"start": 1638.56,
+					"text": "and this is oxidative"
+				},
+				{
+					"start": 1643.92,
+					"text": "phosphorylation"
+				}
+			]
+		},
+		{
+			"start": 1651.68,
+			"title": "Ориентиры по длительности и интенсивности",
+			"summary": "Примеры временных зон помогают классифицировать работу, но не являются физиологическими выключателями.",
+			"theses": [
+				"Короткие максимальные усилия сильнее опираются на PCr, а длительные субмаксимальные — на окисление.",
+				"Границы смещаются из-за тренированности, типа мышц, питания, температуры, пауз и структуры упражнения."
+			],
+			"anchor": "now what does that look like in units of",
+			"segments": [
+				{
+					"start": 1651.68,
+					"text": "now what does that look like in units of"
+				},
+				{
+					"start": 1653.6,
+					"text": "time well"
+				},
+				{
+					"start": 1654.8,
+					"text": "here we have this table from the"
+				},
+				{
+					"start": 1656.4,
+					"text": "textbook and we can see that"
+				},
+				{
+					"start": 1659.2,
+					"text": "zero to six seconds so this is like a"
+				},
+				{
+					"start": 1661.12,
+					"text": "shot put or a cleaning jerk or a snatch"
+				},
+				{
+					"start": 1664.32,
+					"text": "the intensity is extremely high and we"
+				},
+				{
+					"start": 1666.56,
+					"text": "are reliant"
+				},
+				{
+					"start": 1667.52,
+					"text": "completely on the phosphagen system now"
+				},
+				{
+					"start": 1670.32,
+					"text": "recovery from that event"
+				},
+				{
+					"start": 1671.68,
+					"text": "will be reliant on the oxidative system"
+				},
+				{
+					"start": 1673.6,
+					"text": "but during the actual performance"
+				},
+				{
+					"start": 1675.52,
+					"text": "it's the phosphagen system between 6 and"
+				},
+				{
+					"start": 1678.16,
+					"text": "30 seconds"
+				},
+				{
+					"start": 1679.36,
+					"text": "we would call this very high and this is"
+				},
+				{
+					"start": 1681.52,
+					"text": "a mixture"
+				},
+				{
+					"start": 1682.64,
+					"text": "of the phosphagen and fast glycolysis"
+				},
+				{
+					"start": 1685.76,
+					"text": "systems between 30 seconds to 2 minutes"
+				},
+				{
+					"start": 1689.6,
+					"text": "so like your typical 800 meter race this"
+				},
+				{
+					"start": 1692.24,
+					"text": "is going to be"
+				},
+				{
+					"start": 1693.28,
+					"text": "a high level of intensity and we used"
+				},
+				{
+					"start": 1696.4,
+					"text": "we'll use faster glycolysis because we"
+				},
+				{
+					"start": 1698.4,
+					"text": "can produce a little bit more atp"
+				},
+				{
+					"start": 1700.72,
+					"text": "than the phosphagen system and at a"
+				},
+				{
+					"start": 1703.04,
+					"text": "relatively faster rate than the"
+				},
+				{
+					"start": 1704.72,
+					"text": "oxidative system"
+				},
+				{
+					"start": 1706.56,
+					"text": "as you stretch out longer than that this"
+				},
+				{
+					"start": 1708.96,
+					"text": "is maybe for"
+				},
+				{
+					"start": 1710.24,
+					"text": "your middle distance athletes or perhaps"
+				},
+				{
+					"start": 1712.56,
+					"text": "some of your"
+				},
+				{
+					"start": 1713.28,
+					"text": "crossfit events that are around two to"
+				},
+				{
+					"start": 1715.36,
+					"text": "three minutes this will be a combination"
+				},
+				{
+					"start": 1717.44,
+					"text": "of fast glycolysis and oxidative systems"
+				},
+				{
+					"start": 1720.24,
+					"text": "and then finally everything over three"
+				},
+				{
+					"start": 1722.4,
+					"text": "minutes of continuous"
+				},
+				{
+					"start": 1724.48,
+					"text": "output as far as exercise goes this"
+				},
+				{
+					"start": 1726.64,
+					"text": "would be"
+				},
+				{
+					"start": 1728.64,
+					"text": "described as a low absolute intensity"
+				},
+				{
+					"start": 1731.92,
+					"text": "you might be pushing as hard as you can"
+				},
+				{
+					"start": 1733.52,
+					"text": "but if you can sustain it for three"
+				},
+				{
+					"start": 1734.8,
+					"text": "minutes then"
+				},
+				{
+					"start": 1735.6,
+					"text": "the absolute intensity is relatively low"
+				},
+				{
+					"start": 1738.96,
+					"text": "i just said absolute relative i don't"
+				},
+				{
+					"start": 1741.2,
+					"text": "know if that made"
+				},
+				{
+					"start": 1742.16,
+					"text": "sense and this would be reliant upon the"
+				},
+				{
+					"start": 1744.64,
+					"text": "oxidative"
+				},
+				{
+					"start": 1745.52,
+					"text": "system"
+				}
+			]
+		},
+		{
+			"start": 1748.56,
+			"title": "Главный вывод: вклад систем определяется задачей",
+			"summary": "Все три пути образуют единую сеть; интенсивность задаёт основной запрос, а длительность и восстановление меняют относительный вклад.",
+			"theses": [
+				"Программу строят не по названию одной энергосистемы, а по мощности, объёму, паузам и требуемой повторяемости усилий.",
+				"Расход калорий и жира нельзя выводить только из малого выхода АТФ гликолиза: важны общий объём работы, длительность, EPOC, питание и соблюдение программы."
+			],
+			"anchor": "so the key point here the extent to",
+			"segments": [
+				{
+					"start": 1748.56,
+					"text": "so the key point here the extent to"
+				},
+				{
+					"start": 1750.64,
+					"text": "which each of the three systems"
+				},
+				{
+					"start": 1752.16,
+					"text": "contributes to atp"
+				},
+				{
+					"start": 1753.6,
+					"text": "production depends primarily on the"
+				},
+				{
+					"start": 1756.16,
+					"text": "intensity of muscular activity"
+				},
+				{
+					"start": 1758.64,
+					"text": "and secondarily on duration so how"
+				},
+				{
+					"start": 1761.6,
+					"text": "intense is the activity"
+				},
+				{
+					"start": 1762.8,
+					"text": "and then how long are you trying to"
+				},
+				{
+					"start": 1764.4,
+					"text": "perform that activity for"
+				},
+				{
+					"start": 1766.56,
+					"text": "at no time does any single energy system"
+				},
+				{
+					"start": 1769.28,
+					"text": "provide the complete supply of energy so"
+				},
+				{
+					"start": 1771.28,
+					"text": "they're"
+				},
+				{
+					"start": 1771.68,
+					"text": "all in some sort of ebb and flow"
+				},
+				{
+					"start": 1774,
+					"text": "dependent upon your"
+				},
+				{
+					"start": 1775.12,
+					"text": "intensity and how long you're exercising"
+				},
+				{
+					"start": 1779.36,
+					"text": "all right guys thanks for sticking with"
+				},
+				{
+					"start": 1781.2,
+					"text": "me that i know that was a long video"
+				},
+				{
+					"start": 1783.12,
+					"text": "hitting all three of the major energy"
+				},
+				{
+					"start": 1785.2,
+					"text": "systems at least an overview of them"
+				},
+				{
+					"start": 1787.44,
+					"text": "what you need to know as a coach or a"
+				},
+				{
+					"start": 1789.28,
+					"text": "trainer sports scientist who's working"
+				},
+				{
+					"start": 1791.28,
+					"text": "with athletes and prescribing"
+				},
+				{
+					"start": 1792.88,
+					"text": "training programs to them later in this"
+				},
+				{
+					"start": 1795.84,
+					"text": "series we'll build off of how to"
+				},
+				{
+					"start": 1797.76,
+					"text": "construct"
+				},
+				{
+					"start": 1798.56,
+					"text": "specific conditioning programs how to"
+				},
+				{
+					"start": 1800.48,
+					"text": "construct training programs"
+				},
+				{
+					"start": 1802,
+					"text": "that are metabolically specific to the"
+				},
+				{
+					"start": 1804.24,
+					"text": "athletes but in the next video we're"
+				},
+				{
+					"start": 1806,
+					"text": "actually going to talk about"
+				},
+				{
+					"start": 1807.36,
+					"text": "some components of the glycolytic system"
+				},
+				{
+					"start": 1809.92,
+					"text": "and specifically"
+				},
+				{
+					"start": 1810.96,
+					"text": "the lactate threshold alright guys if"
+				},
+				{
+					"start": 1813.68,
+					"text": "you have any questions"
+				},
+				{
+					"start": 1814.72,
+					"text": "let me know down in the comments it was"
+				},
+				{
+					"start": 1816.72,
+					"text": "great hanging out with you i'll see you"
+				},
+				{
+					"start": 1818.4,
+					"text": "in the next video so if we think of the"
+				},
+				{
+					"start": 1823.52,
+					"text": "net if your metabolism"
+				},
+				{
+					"start": 1829.84,
+					"text": "if an organism has a high metabolism"
+				},
+				{
+					"start": 1836.89,
+					"text": "[Music]"
+				},
+				{
+					"start": 1837.92,
+					"text": "you"
+				}
+			]
+		}
+	],
+	"glossary": [
+		{
+			"term": "АТФ",
+			"definition": "аденозинтрифосфат, непосредственный переносчик свободной энергии для клеточной работы."
+		},
+		{
+			"term": "Фосфокреатин (PCr)",
+			"definition": "внутримышечный донор фосфатной группы для быстрого ресинтеза АТФ."
+		},
+		{
+			"term": "Гликолиз",
+			"definition": "цитозольный путь превращения глюкозы или гликогена в пируват с образованием АТФ и NADH."
+		},
+		{
+			"term": "Лактат",
+			"definition": "продукт восстановления пирувата, помогающий регенерировать NAD+ и способный служить топливом."
+		},
+		{
+			"term": "NADH и FADH2",
+			"definition": "восстановленные переносчики электронов, питающие дыхательную цепь."
+		},
+		{
+			"term": "Ацетил-КоА",
+			"definition": "центральный метаболический узел, через который углеводы, жиры и часть аминокислот входят в цикл Кребса."
+		},
+		{
+			"term": "Окислительное фосфорилирование",
+			"definition": "митохондриальный синтез АТФ за счёт протонного градиента, созданного электрон-транспортной цепью."
+		},
+		{
+			"term": "Цикл Кори",
+			"definition": "перенос углерода лактата в печень с последующим синтезом глюкозы; один из нескольких путей оборота лактата."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Планирование интервалов",
+			"items": [
+				"Опишите требуемую мощность, длительность повторения и допустимое падение результата.",
+				"Подберите паузу по требуемой степени восстановления PCr, а не по жёсткому ярлыку энергосистемы.",
+				"Оценивайте повторяемость и суммарную работу, а не только лучший одиночный результат."
+			]
+		},
+		{
+			"title": "Как читать временные зоны",
+			"items": [
+				"Используйте зоны как ориентиры для относительного вклада систем.",
+				"Не превращайте 6, 30 или 120 секунд в универсальные пороги.",
+				"Учитывайте подготовленность, питание, кислородную доставку и характер упражнения."
+			]
+		},
+		{
+			"title": "Что не переносить из старых схем",
+			"items": [
+				"Не объясняйте усталость накоплением молочной кислоты.",
+				"Не считайте 36 АТФ из глюкозы неизменной константой.",
+				"Не делайте вывод о жиросжигании только по выходу АТФ одного пути — нужен общий энергетический контекст."
+			]
+		}
+	],
+	"transcript": "hey guys dr gooden here to talk about energy systems we'll introduce each of the three major energy systems and then talk about how this pertains to [Music] training [Music] all right guys dr jacob goodin here professor of kinesiology at point loma nazarene university in today's video we are going to be talking about energy systems and what we'll do is lay a groundwork for your understanding of the energy systems so that as a coach trainer sport coach sports scientist you have a good handle on how to implement certain methods and modes of training in order to elicit responses from each of these specific energy systems all right let's dive right in so this comes from chapter three of the essentials of strength training and conditioning put out by the nsca this chapter by doctors hera and kramer now first some key terms before we get going bioenergetics this refers to the flow of energy in a biological system this is the conversion of macronutrients aka food into biologically usable forms of energy aka atp now catabolism and anabolism catabolism is the breakdown of large molecules into smaller molecules and this is associated with the release of energy so we break atp or adenosine triphosphate down into adp and an inorganic phosphate and thus energy is released on the other hand we break complex carbohydrates down into glucose and then we use that glucose to fuel the resynthesis of adp and inorganic phosphate into atp so on both sides of this equation we're breaking down things to release energy whether that's to re-combine atp or whether it's to use that energy stored in atp to fuel muscle action anabolism is the synthesis of larger molecules from smaller molecules and this uses energy from those catabolic reactions so anytime we have catabolism the energy stored within that large molecule that's now broken into smaller parts will be used in some way shape or form by the body to drive anabolism or that energy will be lost as heat now building upon this we have what are called exergonic and endergonic reactions an exergonic reaction is any energy releasing reaction so atp being broken down into adp and inorganic phosphate that is an exergonic reaction because it releases energy on the other hand endergonic reactions require energy so when we go through the process of recombining inorganic phosphate and adp into atp we are driving an endergonic process it's a process that involves the usage of energy metabolism is the total of all catabolic and anabolic reactions in a biological system adenosine triphosphate which i've already mentioned before or atp this is essentially the energy currency of the body it allows the transfer of energy from exergonic to endergonic reactions it's an energy currency now here is the chemical structure of an atp molecule so first in a we have the entire atp molecule which is composed of an adenine and a ribose compound adenine and ribose a triphosphate group which is here and we have the locations of high energy chemical bonds which are located here and here okay so those two high energy bonds can be broken down to release energy as we see in b and this is called hydrolysis the hydrolysis of an atp breaks the terminal phosphate bond and releases energy in doing so this energy right this is an exergonic reaction this energy can then be used for an endergonic reaction or a reaction requiring energy and we're left with an inorganic phosphate and an adp adenosine adenosine diphosphate and finally we can even break adp down further and release more energy so that we get amp or adenosine monophosphate plus another inorganic phosphate and this is important to know the constituents of atp as it's broken down because we'll see that some of these byproducts adp atp inorganic phosphate these are all drivers of certain metabolic pathways which we'll see here in a minute now i mentioned we have three energy systems and it's not like we are using one energy system then we shut it off and we start using another one and then we shut it off they're actually always ebbing and flowing depending upon the intensity of movement and the duration of movement okay or the intensity of exercise and the duration of exercise so the three energy systems are the phosphagen system which is here in the blue we can see is the fastest of the energy systems here's the time in seconds going this way so really from 0 to about 15 seconds is this phosphagen system where it really peaks right around maybe 9 or 10 seconds and so for very very high intensity exercise the phosphagen system will be the supplier of atp for glycolysis this is the intermediate system so we see here in the red glycolysis is peaking right around maybe 45 seconds but it holds on there for a while other literature shows glycolysis to last even longer maybe up to two minutes and then finally we have the oxidative system which really starts to kick in after the two-minute mark here in the green and then as the event or the exercise extends longer and longer then that oxidative system just continues chugging along and being the primary source of energy so you can see that each of these energy systems overlaps none is completely active while the others are completely dormant and they're always ebbing and flowing if you were to stand up right now out of your chair your creatine phosphate system or your phosphagen system would kick in to high gear even though you're just standing up and maybe starting to walk somewhere the body is always regulating the amount of atp available to the muscle and it does its best to make it available as fast as possible with as little by-product or metabolic waste as possible now we're going to go through each of these energy systems one at a time starting with the fastest the phosphagen system so the phosphagen system provides atp primarily for short term high intensity exercise like resistance training or sprinting and it is active at the start of all exercise regardless of intensity so if you toe the line in a marathon when the gun goes off creatine phosphate is going to shoot up and become very active supplying you with atp for that first 10 or 15 seconds before other slower but greater yielding energy pathways kick in like glycolysis and the krebs cycle and the electron transport chain now we use creatine kinase within the cell to catalyze the synthesis of atp from phosphate and adenosine diphosphate so you might recognize in that catalyst the word creatine right and a lot of people are familiar with creatine as a supplement creatine kinase is what the muscle cell actually uses to reform atp so if you can pack more creatine into the muscle cell well then you have a more robust phosphagen system at your disposal this is one of the reasons for the effectiveness of creatine supplementation on strength and power performance if you are supplementing with creatine not only does it provide a small boost for hypertrophy signaling regardless of whether you're weight training or not but it also allows the cell to have a more robust phosphate in system replenishing atp so for those events lasting 10 to 15 seconds you can be more explosive more powerful because you are jam packing the cell full of exactly what it needs to replenish atp quickly now the atp stores of the body are not enough for exercise because we need to reserve some for basic cellular function we have to remember that atp is not just for running a race or for exercising going on a run lifting weights we do other more important things with atp like brain function nervous system function all of the basic functions of our body to keep it alive atp is used for those things and if we were to use up all of it in exercise well it would die right so the body has to reserve some of it now the phosphagen system as i said it uses creatine kinase to replenish atp and rem and maintain the concentration of it so that we don't die it does this very very rapidly now the main control of the phosphate system is due to what we call the law of mass action this is this law if you're familiar with chemistry this law states that the concentrations of the reactants or products in solution will drive the direction of the reactions so if there's more products then the reaction is going to drive towards the reactants if there are more reactants in the cell then that reaction will drive more towards the products right and so there's always this sort of balance so here in this picture we see that in a relaxed muscle atp will be used to turn creatine into creatine phosphate to sort of store it for when you need to contract and then the contracting muscle creatine phosphate will be used to recombine with adp and form another atp and that atp can then be used for muscle contraction so if you're resting then your phosphagen system is allowed to then replenish you create more creatine phosphate and you store it up for when you need to call upon it when you stand up out of your chair or you suddenly have to sprint away from a lion now you can use those stores to quickly replenish atp and until you rest those stores of crete and phosphate and of atp will not be fully replenished okay so that was the phosphagen system it's the fastest system we use it for from about 0 to 15 seconds maybe about 10 seconds and the next fastest energy system is fast glycolysis followed by slow glycolysis oftentimes people refer to both of them just as glycolysis we'll kind of see the differentiating pathways for when it's considered fast or anaerobic and when it's considered slow or aerobic glycolysis okay so glycolysis is the energy system that uses glucose as the primary substrate it's the breakdown of carbohydrates either glycogen which is glucose stored in the muscle cell or glucose in the blood and we use this as the main energy driver to resynthesize atp okay so here is the pathway for glycolysis and as future coaches trainers strength coaches we don't necessarily need to memorize all of these pathways although for exercise physiology a class that you might be taking right now or taking the future you might need to memorize this but it's not every day that you're out on the soccer pitch and you have to suddenly recall what was the fourth step of glycolysis but it is important to understand how all of these things work as a backdrop to the training that you're prescribing to athletes all right so in this picture we start with either blood glucose or muscle glycogen and this is important because if you start with blood glucose it actually requires an atp to get the reaction going to get to glucose 6-phosphate if you start from muscle glycogen you don't need that initial atp now to go from fructose 6-phosphate you also need a second atp and then now you've if you've started with blood glucose you've contributed to atp from if you've started from muscle glycogen you've contributed just one and then you can start generating new atp from this glucose molecule now you see that this reaction is double-sided that's because one molecule of blood glucose or muscle glycogen will then result in the production simultaneously of two pairs of atp okay here's the first pair and here's the second pair and then you will get either two pyruvate molecules or two lactate molecules at the end and that depends the fate of pyruvate which we'll see in future slides depends on the intensity of exercise or on how quickly you are needing to generate these atp molecules so as i mentioned the end result of glycolysis is pyruvate and pyruvate can go one of two directions first if the exercise intensity is high enough pyruvate can be converted to lactate this allows atp resynthesis to occur at a faster rate but with limited duration now your muscles cannot keep generating lactate forever there's a cost to doing so to replenishing your atp at such a high rate and we'll see what that is here in a second this process is called anaerobic or fast glycolysis so remember i mentioned there's two types of glycolysis and this is the first type anaerobic or fast glycolysis now if pyruvate is not turned into lactate but it's instead shuttled into the mitochondria for further oxidation then we call it aerobic or slow glycolysis okay so in this case pyruvate is shuttled into the mitochondria to undergo the krebs cycle or the citric acid cycle this rate of atp resynthesis is slower but it can occur for a longer duration if the exercise intensity is low enough so as long as your atp demand is not through the roof and it's nice and steady at a pace that you can hold for a while then pyruvate will be shuttled more likely to the krebs cycle in the mitochondria where you can generate many many more atp than during fast or anaerobic glycolysis now going back to lactate what do we actually get out of the formation of lactate well if exercise is intense enough then we have the enzyme lactate dehydrogenase catalyzing the reaction of pyruvate into lactate and it's important to know the end result is not actually lactic acid that's actually a misconception that's a myth lactate is not the cause of fatigue it is not the cause of that burning sensation at the end of a 400 meter or 800 meter run we start with a glucose two or inorganic phosphates and two adps and we end with two lactate molecules two atps and some water now i mentioned the cory cycle and this is what happens to lactate as your body starts clearing it and then using it for fuel it's actually transported in the blood to the liver where the liver converts it into glucose and then sends it back out into the bloodstream back to the working muscle so this process is called the cory cycle and this is how our body clears lactate when we talk about the lactate threshold in the next video we will actually dive deep into the body's response to increasing levels of lactate and how we can train specifically to push that curve out to be able to handle higher levels of lactate but also to be able to clear lactate faster with the quarry cycle now if glycolysis proceeds into the krebs cycle so if you are running at a low enough intensity or exercising at a low enough intensity where pyruvate is allowed to enter the mitochondria then we see that it is converted into acetyl co a now once acetyl coa enters the krebs cycle now we see the formation of these nadh molecules now the krebs cycle produces nadh molecules as well as a couple more atp so we see here that when the conditions are right the exercise intensity is not too high we start with glucose a couple adp and inorganic phosphate two nad molecules and we end up with two pyruvates two atps plus two nadh molecules now the total yield of fast or anaerobic glycolysis is either two or three atp molecules it's two if it comes from blood glucose it's three if it comes from muscle glycogen and that's all the more reason to make sure that you or your athletes or whoever you're training has topped off their muscle glycogen stores prior to training now what drives glycolysis how does it actually activate well it's stimulated by high concentrations of adp and inorganic phosphate as well as by ammonia or maybe a decrease in the ph or amp so the byproducts of using the alactic anaerobic system or the anaerobic system that is reliant on just atp and phosphagen those byproducts actually drive the fast glycolytic system so as you start to fatigue that creatine phosphagen system and use it all up and use up the atp then those byproducts tell your body to then turn on the fast glycolysis system however it can be inhibited by markedly lower ph so if you drive your ph way down because you're generating lactate which contributes hydrogen ions into the blood or into the muscle cell and you're driving the blood ph way down or you have way lower atp or creatine phosphate or citrate or etc the body is not going to be able to continue exercising at that high of a rate that you can sustain with fast glycolysis so it will shut down your ability to keep running that system right if you're getting into a state of muscular acidosis the body will not allow you to continue exercising and it's also affected by these rate limiting enzymes hexokinase phosphofructokinase and pyruvate kinase so these are enzymes that limit the rate at which these reactions can occur okay so now let's say that you are exercising at an intensity where pyruvate is shuttled into the mitochondria so what happens then well this is when the oxidative or aerobic system really comes into play this is the primary source of atp at rest and during low intensity activities so maybe going for a light easy jog or in a marathon or especially an ultra marathon or perhaps a long walk exercises like that also during recovery from higher intensity exercise so let's say you're doing repeated sprints or you're in a soccer match well in between sprints your oxidative system will be used to help you recover those other faster energy systems and it uses primarily carbohydrates and fats as substrates and your dietary choices can predispose you to either rely more on carbs or more on fats and the jury is kind of still out as to which one is better but right now it's looking looking like carbohydrates are still the winner as far as elite performance goes now the metabolism of blood glucose as we've mentioned begins with glycolysis and it eventually leads to the krebs cycle and this is where we have the production of those nadh and fadh molecules these are again hydrogen transport molecules they take hydrogen atoms or electrons and they bring them to the electron transport chain where oxidative phosphorylation can occur and we get a ton of atp molecules from this okay so here's the krebs cycle we see pyruvate which is the end result of glycolysis and if exercise intensity is low enough it's converted to acetyl coa you also see that amino acid acids or fatty acids can enter this krebs cycle as well so we don't have to only use glucose we could also use protein or fats for energy in our oxidative system and as acetyl coa enters this krebs cycle we see these hydrogen carrying molecules being loaded up with hydrogens to then be transported off to the electron transport chain and here at the electron transport chain we have a series of step-down reactions that generates a bunch of atp now as i mentioned it's not just carbohydrate we can also oxidize fat these triglycerides can be stored in fat cells and then broken down by hormone-sensitive lipase released as free fatty acids and then they can enter the blood and then be circulated into the muscle fibers they can also come from intramuscular stores especially in your type 1 muscles in your slower twitch muscles that rely more on oxidative metabolism for their energy there will be greater intramuscular stores of fat now protein is usually not a significant source of energy for most activities and this is because we use protein for a host of other things namely cell structure and function and cell cellular machinery and the actin and myosin in our muscles but in periods of starvation or extreme duration activity it can be broken down into amino acids and then converted to glucose pyruvate or various krebs cycle intermediates to produce atp but this is usually not a great thing we typically don't want to be breaking down protein now as far as the control of the oxidative system we have isocitrate dehydrogenase which can be stimulated by adp and inhibited by atp so again when there's when atp is being broken down into adp and the cell senses that then we get a stimulation of isocitrate dehydrogenase which kicks into cycle the krebs cycle and the rate of the krebs cycle is reduced if these oxygen carrying compounds are not available in sufficient quantities and again the electron transport chain is inhibited by atp but stimulated by a dp so we see that when atp has been converted or broken down into adp it stimulates some of these energy systems and causes them to kick into gear to to re-combine adp within organic phosphate okay so here's a big picture view of the metabolism of glycogen protein and triglycerides and it shows you where in this whole process they they enter the metabolism of the muscle cell so we typically start with glycogen we also can rely on fatty acids and sometimes under periods of starvation or extreme duration we can use proteins and break those down now how many atp are actually generated at each of these levels well in glycolysis we generate a net of two or maybe three atp three if we start from muscle glycogen instead of glucose then pyruvate is formed and we get this reaction where it is turned into acetyl coa and then during the krebs cycle we have two more atp produced so in all of that we just have two atp but when we get all of these hydrogen carrying compounds and we shuttle them down to the electron transport chain then we get another 32 atp okay so we get a total of 36 atp in oxidative phosphorylation when we start with a glucose molecule that's a lot of atp for a single glucose molecule so you can see why this lower intensity exercise is much more efficient as far as utilization of substrates than higher intensity exercise this is also another reason why higher intensity exercise is much more economical if your goal is to burn off calories or to burn off fat or extra glucose because you use energy at such a fast rate for a relatively small return because you need it so fast now the key point here is that in general there is an inverse relationship between a given energy system's maximum rate of atp production so the atp produced per unit of time and the total amount of atp that is it is capable of producing over time okay so if we were to draw a graph and this is the rate of atp production and this is the duration the faster the rate the lower the duration it might look something like this where this left most point is the phosphagen system this middle point is fast glycolysis and this is oxidative phosphorylation now what does that look like in units of time well here we have this table from the textbook and we can see that zero to six seconds so this is like a shot put or a cleaning jerk or a snatch the intensity is extremely high and we are reliant completely on the phosphagen system now recovery from that event will be reliant on the oxidative system but during the actual performance it's the phosphagen system between 6 and 30 seconds we would call this very high and this is a mixture of the phosphagen and fast glycolysis systems between 30 seconds to 2 minutes so like your typical 800 meter race this is going to be a high level of intensity and we used we'll use faster glycolysis because we can produce a little bit more atp than the phosphagen system and at a relatively faster rate than the oxidative system as you stretch out longer than that this is maybe for your middle distance athletes or perhaps some of your crossfit events that are around two to three minutes this will be a combination of fast glycolysis and oxidative systems and then finally everything over three minutes of continuous output as far as exercise goes this would be described as a low absolute intensity you might be pushing as hard as you can but if you can sustain it for three minutes then the absolute intensity is relatively low i just said absolute relative i don't know if that made sense and this would be reliant upon the oxidative system so the key point here the extent to which each of the three systems contributes to atp production depends primarily on the intensity of muscular activity and secondarily on duration so how intense is the activity and then how long are you trying to perform that activity for at no time does any single energy system provide the complete supply of energy so they're all in some sort of ebb and flow dependent upon your intensity and how long you're exercising all right guys thanks for sticking with me that i know that was a long video hitting all three of the major energy systems at least an overview of them what you need to know as a coach or a trainer sports scientist who's working with athletes and prescribing training programs to them later in this series we'll build off of how to construct specific conditioning programs how to construct training programs that are metabolically specific to the athletes but in the next video we're actually going to talk about some components of the glycolytic system and specifically the lactate threshold alright guys if you have any questions let me know down in the comments it was great hanging out with you i'll see you in the next video so if we think of the net if your metabolism if an organism has a high metabolism [Music] you"
+}

@@ -73,7 +73,8 @@ export const collections: Collection[] = [
 			'biomehanika-i-myshechnye-rychagi',
 			'sila-moshchnost-i-rabota-v-biomehanike',
 			'tri-rezhima-myshechnogo-deystviya',
-			'faktory-myshechnoy-sily-i-moshchnosti'
+			'faktory-myshechnoy-sily-i-moshchnosti',
+			'bioenergetika-trenirovki-tri-energosistemy'
 		]
 	},
 	{
