@@ -61,7 +61,13 @@ export const collections: Collection[] = [
 		hema: true,
 		facets: { authors: ['Tokarev Coach'] },
 		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
-		items: ['tokarev-silovaya-ofp-2', 'pliometrika-hema', 'silovaya-konditsiya-hema', 'silovaya-plan-hema']
+		items: [
+			'tokarev-silovaya-ofp-2',
+			'pliometrika-hema',
+			'silovaya-konditsiya-hema',
+			'silovaya-plan-hema',
+			'printsipy-silovoy-konditsionnoy-podgotovki'
+		]
 	},
 	{
 		slug: 'almaty-2026',

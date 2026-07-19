@@ -398,6 +398,16 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/printsipy-silovoy-konditsionnoy-podgotovki.json'
+		),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Scientific Training Principles for Strength & Conditioning [X-zQ5hKB_G8]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/obuchenie-situatsiya-subtaktika.json'),
 		transcriptPath: join(
 			pipelineRoot,
