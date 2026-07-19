@@ -76,7 +76,8 @@ export const collections: Collection[] = [
 			'faktory-myshechnoy-sily-i-moshchnosti',
 			'bioenergetika-trenirovki-tri-energosistemy',
 			'laktatnyi-porog-bioenergetika',
-			'metabolicheskaya-spetsifichnost-trenirovki'
+			'metabolicheskaya-spetsifichnost-trenirovki',
+			'istoschenie-i-vosstanovlenie-substratov'
 		]
 	},
 	{

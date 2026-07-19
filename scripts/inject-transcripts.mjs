@@ -676,6 +676,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Metabolic Training Specificity - CSCS Chapter 3 [yDLff_Zrmoo]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/istoschenie-i-vosstanovlenie-substratov.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Substrate Depletion and Repletion - CSCS Chapter 3 [hH62gJVqs6k]/transcript.json'
+		)
 	}
 ];
 
