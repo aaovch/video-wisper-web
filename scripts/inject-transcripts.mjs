@@ -620,6 +620,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Neuromuscular System - Rate Coding Motor Units and Fiber Types - CSCS Chapter 1 [KNoc23sgWFA]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/sem-dvigatelnyh-patternov.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/The 7 Fundamental Movement Patterns - Deep Dive [J8YaoUpH-qg]/transcript.json'
+		)
 	}
 ];
 

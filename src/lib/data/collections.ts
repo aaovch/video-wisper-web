@@ -68,7 +68,8 @@ export const collections: Collection[] = [
 			'silovaya-plan-hema',
 			'printsipy-silovoy-konditsionnoy-podgotovki',
 			'struktura-i-funktsiya-myshtsy',
-			'neyromyshechnaya-sistema-motornye-edinitsy'
+			'neyromyshechnaya-sistema-motornye-edinitsy',
+			'sem-dvigatelnyh-patternov'
 		]
 	},
 	{
