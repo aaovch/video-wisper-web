@@ -298,6 +298,14 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'noname',
+		title: 'NoName',
+		hema: true,
+		facets: { authors: ['Вячеслав Коротовских'], weapons: ['Сабля'] },
+		subtitle: 'Семинары и тренировочные материалы фехтовального клуба NoName.',
+		items: ['podgotovka-ataki-na-sable-korotovskih']
+	},
+	{
 		slug: 'noname-sparring',
 		title: 'NoName: спарринги',
 		hema: true,

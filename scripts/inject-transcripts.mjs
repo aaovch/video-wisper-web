@@ -704,6 +704,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Neural Adaptations to Anaerobic Training - CSCS Chapter 5 [RhhCKpum8yM]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/podgotovka-ataki-na-sable-korotovskih.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Семинар Подготовка атаки на сабле от Вячеслава Коротовских [d3uyWTI-dPU]/transcript.json'
+		)
 	}
 ];
 
