@@ -711,6 +711,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Семинар Подготовка атаки на сабле от Вячеслава Коротовских [d3uyWTI-dPU]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(root, 'src/lib/data/reports/trenerskoe-sobranie-dva-zala.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Тренерское собрание про орг моменты на 2 зала [-Lot8d9wpV0]/transcript.json'
+		)
 	}
 ];
 
