@@ -80,7 +80,8 @@ export const collections: Collection[] = [
 			'istoschenie-i-vosstanovlenie-substratov',
 			'gormon-myshechnye-vzaimodeystviya',
 			'osnovnye-anabolicheskie-gormony',
-			'neyronnye-adaptatsii-k-anaerobnoy-trenirovke'
+			'neyronnye-adaptatsii-k-anaerobnoy-trenirovke',
+			'ukreplenie-stopy-i-golenostopa'
 		]
 	},
 	{

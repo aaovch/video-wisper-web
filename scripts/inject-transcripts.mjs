@@ -408,6 +408,13 @@ const SOURCES = [
 		)
 	},
 	{
+		reportPath: join(root, 'src/lib/data/reports/ukreplenie-stopy-i-golenostopa.json'),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Build Strong Feet Exercises To Strengthen Your Foot and Ankle [S5xKokqeOb4]/transcript.json'
+		)
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/obuchenie-situatsiya-subtaktika.json'),
 		transcriptPath: join(
 			pipelineRoot,
