@@ -301,9 +301,12 @@ export const collections: Collection[] = [
 		slug: 'noname',
 		title: 'NoName',
 		hema: true,
-		facets: { authors: ['Вячеслав Коротовских'], weapons: ['Сабля'] },
+		facets: { authors: ['Вячеслав Коротовских'], weapons: ['Сабля', 'Рапира'] },
 		subtitle: 'Семинары и тренировочные материалы фехтовального клуба NoName.',
-		items: ['podgotovka-ataki-na-sable-korotovskih']
+		items: [
+			'podgotovka-ataki-na-sable-korotovskih',
+			'rapira-protiv-vstrechnogo-ukola-korotovskih'
+		]
 	},
 	{
 		slug: 'noname-sparring',

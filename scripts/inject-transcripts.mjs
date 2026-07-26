@@ -718,6 +718,16 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Тренерское собрание про орг моменты на 2 зала [-Lot8d9wpV0]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/rapira-protiv-vstrechnogo-ukola-korotovskih.json'
+		),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Семинар Коротовского, рапира [4eQO8l1rTZw]/transcript.json'
+		)
 	}
 ];
 
