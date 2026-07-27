@@ -10,6 +10,7 @@
 	import Clock from 'phosphor-svelte/lib/Clock';
 	import CopySimple from 'phosphor-svelte/lib/CopySimple';
 	import FilmStrip from 'phosphor-svelte/lib/FilmStrip';
+	import ImageSquare from 'phosphor-svelte/lib/ImageSquare';
 	import Play from 'phosphor-svelte/lib/Play';
 	import TextAlignLeft from 'phosphor-svelte/lib/TextAlignLeft';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
@@ -82,7 +83,7 @@
 	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
 	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
-	type MaterialsTab = 'notes' | 'glossary' | 'transcript';
+	type MaterialsTab = 'notes' | 'visuals' | 'glossary' | 'transcript';
 	let materialsTab = $state<MaterialsTab>('notes');
 
 	async function copyTranscript(event: MouseEvent) {
@@ -323,20 +324,6 @@
 	const reportNotes = $derived(
 		report.seminar_notes ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarNotes : [])
 	);
-	const hasStudyMaterials = $derived(reportNotes.length > 0 || reportGlossary.length > 0);
-	const activeMaterialsTab = $derived(
-		materialsTab === 'notes' && reportNotes.length > 0
-			? 'notes'
-			: materialsTab === 'glossary' && reportGlossary.length > 0
-				? 'glossary'
-				: materialsTab === 'transcript' && report.transcript
-					? 'transcript'
-					: reportNotes.length > 0
-						? 'notes'
-						: reportGlossary.length > 0
-							? 'glossary'
-							: 'transcript'
-	);
 	const reportExercises = $derived(
 		report.seminar_exercises ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarExercises : [])
 	);
@@ -351,6 +338,31 @@
 				: undefined)
 	);
 	const reportExerciseMemo = $derived(report.exercise_memo);
+	const reportVisualCount = $derived(
+		Number(Boolean(reportInfographic)) + Number(Boolean(reportExerciseMemo))
+	);
+	const hasStudyMaterials = $derived(
+		reportNotes.length > 0 ||
+			reportVisualCount > 0 ||
+			reportGlossary.length > 0
+	);
+	const activeMaterialsTab = $derived(
+		materialsTab === 'notes' && reportNotes.length > 0
+			? 'notes'
+			: materialsTab === 'visuals' && reportVisualCount > 0
+				? 'visuals'
+				: materialsTab === 'glossary' && reportGlossary.length > 0
+					? 'glossary'
+					: materialsTab === 'transcript' && report.transcript
+						? 'transcript'
+						: reportNotes.length > 0
+							? 'notes'
+							: reportVisualCount > 0
+								? 'visuals'
+								: reportGlossary.length > 0
+									? 'glossary'
+									: 'transcript'
+	);
 	const hasAdditional = $derived(
 		reportFocusTabs.length > 0 ||
 			reportExercises.length > 0 ||
@@ -364,6 +376,7 @@
 	function availableMaterialsTabs(): MaterialsTab[] {
 		const tabs: MaterialsTab[] = [];
 		if (reportNotes.length > 0) tabs.push('notes');
+		if (reportVisualCount > 0) tabs.push('visuals');
 		if (reportGlossary.length > 0) tabs.push('glossary');
 		if (report.transcript) tabs.push('transcript');
 		return tabs;
@@ -740,6 +753,23 @@
 								<span class="materials-tab-count">{reportNotes.length}</span>
 							</button>
 						{/if}
+						{#if reportVisualCount > 0}
+							<button
+								id="materials-tab-visuals"
+								type="button"
+								role="tab"
+								class:active={activeMaterialsTab === 'visuals'}
+								aria-selected={activeMaterialsTab === 'visuals'}
+								aria-controls="materials-panel-visuals"
+								tabindex={activeMaterialsTab === 'visuals' ? 0 : -1}
+								onclick={() => selectMaterialsTab('visuals')}
+								onkeydown={handleMaterialsTabKeydown}
+							>
+								<ImageSquare size={17} aria-hidden="true" />
+								<span>{reportVisualCount === 1 ? 'Памятка' : 'Памятки'}</span>
+								{#if reportVisualCount > 1}<span class="materials-tab-count">{reportVisualCount}</span>{/if}
+							</button>
+						{/if}
 						{#if reportGlossary.length > 0}
 							<button
 								id="materials-tab-glossary"
@@ -790,6 +820,31 @@
 								{/each}
 							</div>
 						</div>
+					{:else if activeMaterialsTab === 'visuals'}
+						<div id="materials-panel-visuals" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-visuals">
+							<header class="materials-panel-head">
+								<span class="materials-panel-kicker"><ImageSquare size={16} aria-hidden="true" /> Визуальные памятки</span>
+								<span>{reportVisualCount} {reportVisualCount === 1 ? 'материал' : 'материала'}</span>
+							</header>
+							<div class="materials-visuals">
+								{#if reportInfographic}
+									<figure class="materials-visual">
+										{#if reportVisualCount > 1}<figcaption>Инфографика</figcaption>{/if}
+										<a href={`${base}/${reportInfographic.src}`} target="_blank" rel="noreferrer" aria-label="Открыть инфографику в полном размере">
+											<img src={`${base}/${reportInfographic.src}`} alt={reportInfographic.alt} loading="lazy" decoding="async" />
+										</a>
+									</figure>
+								{/if}
+								{#if reportExerciseMemo}
+									<figure class="materials-visual">
+										{#if reportVisualCount > 1}<figcaption>Памятка по упражнениям</figcaption>{/if}
+										<a href={`${base}/${reportExerciseMemo.src}`} target="_blank" rel="noreferrer" aria-label="Открыть памятку по упражнениям в полном размере">
+											<img src={`${base}/${reportExerciseMemo.src}`} alt={reportExerciseMemo.alt} loading="lazy" decoding="async" />
+										</a>
+									</figure>
+								{/if}
+							</div>
+						</div>
 					{:else if activeMaterialsTab === 'glossary'}
 						<div id="materials-panel-glossary" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-glossary">
 							<header class="materials-panel-head">
@@ -823,13 +878,6 @@
 							<div class="materials-transcript"><p>{report.transcript}</p></div>
 						</div>
 					{/if}
-				</section>
-			{/if}
-
-			{#if reportInfographic || reportExerciseMemo}
-				<section class="seminar-materials reveal extra-block" {@attach reveal()}>
-					{#if reportInfographic}<details class="seminar-infographic-panel"><summary><span>Инфографика</span><CaretDown size={17} /></summary><figure class="seminar-infographic"><img src={`${base}/${reportInfographic.src}`} alt={reportInfographic.alt} loading="lazy" decoding="async" /></figure></details>{/if}
-					{#if reportExerciseMemo}<details class="seminar-exercise-memo-panel"><summary><span>Памятка по упражнениям</span><CaretDown size={17} /></summary><figure class="seminar-infographic"><img src={`${base}/${reportExerciseMemo.src}`} alt={reportExerciseMemo.alt} loading="lazy" decoding="async" /></figure></details>{/if}
 				</section>
 			{/if}
 
@@ -1007,10 +1055,6 @@
 	.more-theses[open] summary :global(svg) { transform: rotate(180deg); }
 	.more-theses ul { margin-left: 0; }
 
-	.seminar-materials {
-		margin-top: 24px;
-	}
-
 	.study-materials {
 		margin-top: 14px;
 		border: 1px solid var(--line-strong);
@@ -1114,6 +1158,45 @@
 	}
 
 	.materials-panel-kicker :global(svg) { color: var(--accent); }
+
+	.materials-visuals {
+		display: grid;
+		gap: 1px;
+		background: var(--line);
+	}
+
+	.materials-visual {
+		min-width: 0;
+		margin: 0;
+		padding: 18px;
+		background: var(--paper);
+	}
+
+	.materials-visual figcaption {
+		margin-bottom: 12px;
+		color: var(--ink);
+		font-size: 15px;
+		font-weight: 600;
+	}
+
+	.materials-visual a {
+		display: block;
+		border-radius: 8px;
+	}
+
+	.materials-visual a:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+
+	.materials-visual img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: #fff;
+	}
 
 	.materials-notes-grid,
 	.materials-glossary-grid {
@@ -1222,14 +1305,10 @@
 		overflow-wrap: anywhere;
 	}
 
-	.seminar-infographic-panel,
-	.seminar-exercise-memo-panel,
 	.seminar-exercises {
 		border: 0;
 	}
 
-	.seminar-infographic-panel summary,
-	.seminar-exercise-memo-panel summary,
 	.seminar-exercises summary {
 		cursor: pointer;
 		min-height: 50px;
@@ -1246,43 +1325,20 @@
 			color 0.18s ease;
 	}
 
-	.seminar-infographic-panel summary:hover,
-	.seminar-exercise-memo-panel summary:hover,
 	.seminar-exercises summary:hover,
 	.transcript summary:hover,
-	.seminar-infographic-panel[open] summary,
-	.seminar-exercise-memo-panel[open] summary,
 	.seminar-exercises[open] summary,
 	.transcript details[open] summary {
 		background: color-mix(in srgb, var(--paper-2) 58%, transparent);
 	}
 
-	.seminar-infographic-panel summary > :global(svg),
-	.seminar-exercise-memo-panel summary > :global(svg),
 	.seminar-exercises summary > :global(svg),
 	.transcript summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
-	.seminar-infographic-panel[open] summary > :global(svg),
-	.seminar-exercise-memo-panel[open] summary > :global(svg),
 	.seminar-exercises[open] summary > :global(svg),
 	.transcript details[open] summary > :global(svg) { transform: rotate(180deg); }
 
-	.seminar-infographic-panel summary::-webkit-details-marker,
-	.seminar-exercise-memo-panel summary::-webkit-details-marker,
 	.seminar-exercises summary::-webkit-details-marker {
 		display: none;
-	}
-
-	.seminar-infographic {
-		margin: 20px 0 0;
-	}
-
-	.seminar-infographic img {
-		display: block;
-		width: 100%;
-		height: auto;
-		border: 1px solid var(--line);
-		border-radius: 8px;
-		background: #fff;
 	}
 
 	.chapters { margin-top: 56px; }
@@ -1328,7 +1384,6 @@
 	.additional-content { padding-top: 2px; }
 	.extra-block { margin-top: 0; }
 	.extra-block + .extra-block { margin-top: 2px; }
-	.seminar-materials details + details { margin-top: 2px; }
 	.extra-title { margin: 0 0 14px; font-size: 20px; font-weight: 500; }
 
 	.focus-section {
@@ -1699,10 +1754,6 @@
 			max-width: none;
 		}
 
-		.seminar-materials {
-			margin-top: 20px;
-		}
-
 		.seminar-exercises-body {
 			grid-template-columns: 1fr;
 			gap: 16px;
@@ -1725,6 +1776,7 @@
 		.materials-glossary-grid { grid-template-columns: 1fr; }
 		.materials-note-card,
 		.materials-glossary-grid > div { padding: 17px 15px; }
+		.materials-visual { padding: 14px; }
 		.materials-transcript p { padding: 18px 15px; }
 	}
 </style>
