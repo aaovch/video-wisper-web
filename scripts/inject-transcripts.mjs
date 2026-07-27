@@ -735,6 +735,16 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Семинар Коротовского, рапира [4eQO8l1rTZw]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/soedinenie-dlinnyi-mech-lager-noname-1.json'
+		),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Лонг тренировка 1  Обзорная тренировка лагеря NoName [fTY_lFdTVqc]/transcript.json'
+		)
 	}
 ];
 
