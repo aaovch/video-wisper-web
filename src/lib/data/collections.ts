@@ -306,7 +306,8 @@ export const collections: Collection[] = [
 		subtitle: 'Семинары и тренировочные материалы фехтовального клуба NoName.',
 		items: [
 			'podgotovka-ataki-na-sable-korotovskih',
-			'rapira-protiv-vstrechnogo-ukola-korotovskih'
+			'rapira-protiv-vstrechnogo-ukola-korotovskih',
+			'soedinenie-dlinnyi-mech-lager-noname-1'
 		]
 	},
 	{
