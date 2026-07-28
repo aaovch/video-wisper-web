@@ -302,12 +302,16 @@ export const collections: Collection[] = [
 		slug: 'noname',
 		title: 'NoName',
 		hema: true,
-		facets: { authors: ['Вячеслав Коротовских'], weapons: ['Сабля', 'Рапира'] },
+		facets: {
+			authors: ['Вячеслав Коротовских', 'Турин'],
+			weapons: ['Сабля', 'Рапира', 'Длинный меч']
+		},
 		subtitle: 'Семинары и тренировочные материалы фехтовального клуба NoName.',
 		items: [
 			'podgotovka-ataki-na-sable-korotovskih',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
-			'soedinenie-dlinnyi-mech-lager-noname-1'
+			'soedinenie-dlinnyi-mech-lager-noname-1',
+			'fizpodgotovka-dlya-fekhtovalshchika-turin'
 		]
 	},
 	{

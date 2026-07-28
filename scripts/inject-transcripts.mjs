@@ -745,6 +745,13 @@ const SOURCES = [
 			pipelineRoot,
 			'output/Лонг тренировка 1  Обзорная тренировка лагеря NoName [fTY_lFdTVqc]/transcript.json'
 		)
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/fizpodgotovka-dlya-fekhtovalshchika-turin.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/DzfbNdRsw_0/transcript.json')
 	}
 ];
 
