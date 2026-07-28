@@ -311,6 +311,7 @@ export const collections: Collection[] = [
 			'podgotovka-ataki-na-sable-korotovskih',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'soedinenie-dlinnyi-mech-lager-noname-1',
+			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
 			'soedinenie-dlinnyi-mech-lager-noname-2',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin'
 		]

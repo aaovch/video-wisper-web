@@ -759,6 +759,16 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/soedinenie-dlinnyi-mech-lager-noname-2-utro.json'
+		),
+		transcriptPath: join(
+			pipelineRoot,
+			'output/Лонг тренировка 2  Техника входа в соединение 4, чувство меча NoName [ReooieWADNM]/transcript.json'
+		)
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/fizpodgotovka-dlya-fekhtovalshchika-turin.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/DzfbNdRsw_0/transcript.json')
