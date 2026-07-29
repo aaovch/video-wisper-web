@@ -314,6 +314,7 @@ export const collections: Collection[] = [
 			'soedinenie-dlinnyi-mech-lager-noname-1',
 			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
 			'soedinenie-dlinnyi-mech-lager-noname-2',
+			'soedinenie-dlinnyi-mech-lager-noname-3',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin'
 		]
 	},
