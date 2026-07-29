@@ -306,16 +306,47 @@ export const collections: Collection[] = [
 			authors: ['Вячеслав Коротовских', 'Турин'],
 			weapons: ['Сабля', 'Рапира', 'Длинный меч']
 		},
-		subtitle: 'Семинары и тренировочные материалы фехтовального клуба NoName.',
+		subtitle: 'Тренировки и семинары NoName по оружию и направлению подготовки.',
 		items: [
-			'podgotovka-ataki-na-sable-korotovskih',
-			'avstriyskaya-sablya-2-chast-1',
-			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'soedinenie-dlinnyi-mech-lager-noname-1',
 			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
 			'soedinenie-dlinnyi-mech-lager-noname-2',
 			'soedinenie-dlinnyi-mech-lager-noname-3',
+			'podgotovka-ataki-na-sable-korotovskih',
+			'avstriyskaya-sablya-2-chast-1',
+			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin'
+		],
+		sections: [
+			{
+				title: 'Длинный меч · цикл по соединению',
+				subtitle:
+					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, затем тренировка 3.',
+				items: [
+					'soedinenie-dlinnyi-mech-lager-noname-1',
+					'soedinenie-dlinnyi-mech-lager-noname-2-utro',
+					'soedinenie-dlinnyi-mech-lager-noname-2',
+					'soedinenie-dlinnyi-mech-lager-noname-3'
+				]
+			},
+			{
+				title: 'Сабля',
+				subtitle: 'Подготовка атаки и отдельная тренировка по австрийской сабле.',
+				items: [
+					'podgotovka-ataki-na-sable-korotovskih',
+					'avstriyskaya-sablya-2-chast-1'
+				]
+			},
+			{
+				title: 'Рапира',
+				subtitle: 'Практический семинар по работе против встречного укола.',
+				items: ['rapira-protiv-vstrechnogo-ukola-korotovskih']
+			},
+			{
+				title: 'Физическая подготовка',
+				subtitle: 'Лекция о силе, мощности, восстановлении и разумной прогрессии.',
+				items: ['fizpodgotovka-dlya-fekhtovalshchika-turin']
+			}
 		]
 	},
 	{
