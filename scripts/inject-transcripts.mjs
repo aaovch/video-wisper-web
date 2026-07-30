@@ -783,6 +783,27 @@ const SOURCES = [
 			'src/lib/data/reports/fizpodgotovka-dlya-fekhtovalshchika-turin.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/DzfbNdRsw_0/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/kinezio-trenirovka-4-kisti-paltsy-lokti.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/WFIIYSAOCnQ/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/kinezio-trenirovka-3-tazobedrennyy-sustav.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/_9NioV5M9wI/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/kinezio-trenirovka-2-stopa-golenostop.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/vHXmzjq1huM/transcript.json')
 	}
 ];
 

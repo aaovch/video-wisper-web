@@ -315,7 +315,10 @@ export const collections: Collection[] = [
 			'podgotovka-ataki-na-sable-korotovskih',
 			'avstriyskaya-sablya-2',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
-			'fizpodgotovka-dlya-fekhtovalshchika-turin'
+			'fizpodgotovka-dlya-fekhtovalshchika-turin',
+			'kinezio-trenirovka-2-stopa-golenostop',
+			'kinezio-trenirovka-3-tazobedrennyy-sustav',
+			'kinezio-trenirovka-4-kisti-paltsy-lokti'
 		],
 		sections: [
 			{
@@ -344,8 +347,14 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Физическая подготовка',
-				subtitle: 'Лекция о силе, мощности, восстановлении и разумной прогрессии.',
-				items: ['fizpodgotovka-dlya-fekhtovalshchika-turin']
+				subtitle:
+					'Лекция о силовой подготовке и практические кинезиотренировки для ног, кистей и локтей.',
+				items: [
+					'fizpodgotovka-dlya-fekhtovalshchika-turin',
+					'kinezio-trenirovka-2-stopa-golenostop',
+					'kinezio-trenirovka-3-tazobedrennyy-sustav',
+					'kinezio-trenirovka-4-kisti-paltsy-lokti'
+				]
 			}
 		]
 	},
