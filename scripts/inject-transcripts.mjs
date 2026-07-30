@@ -720,11 +720,8 @@ const SOURCES = [
 		)
 	},
 	{
-		reportPath: join(root, 'src/lib/data/reports/avstriyskaya-sablya-2-chast-1.json'),
-		transcriptPath: join(
-			pipelineRoot,
-			'output/тренировка сабля 2  первая часть [bYLq2asHFf0]/transcript.json'
-		)
+		reportPath: join(root, 'src/lib/data/reports/avstriyskaya-sablya-2.json'),
+		transcriptPath: join(pipelineRoot, 'output/yaVhjHm4-FM/transcript.json')
 	},
 	{
 		reportPath: join(root, 'src/lib/data/reports/trenerskoe-sobranie-dva-zala.json'),
