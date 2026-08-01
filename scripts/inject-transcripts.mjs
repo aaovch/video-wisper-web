@@ -801,6 +801,13 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/avstriyskaya-sablya-trenirovka-3.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/GI0S4dCWVAc/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/kinezio-trenirovka-4-kisti-paltsy-lokti.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/WFIIYSAOCnQ/transcript.json')

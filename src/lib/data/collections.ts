@@ -315,6 +315,7 @@ export const collections: Collection[] = [
 			'soedinenie-dlinnyi-mech-lager-noname-4',
 			'podgotovka-ataki-na-sable-korotovskih',
 			'avstriyskaya-sablya-2',
+			'avstriyskaya-sablya-trenirovka-3',
 			'avstriyskaya-sablya-obratnoe-lezvie',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
@@ -342,6 +343,7 @@ export const collections: Collection[] = [
 				items: [
 					'podgotovka-ataki-na-sable-korotovskih',
 					'avstriyskaya-sablya-2',
+					'avstriyskaya-sablya-trenirovka-3',
 					'avstriyskaya-sablya-obratnoe-lezvie'
 				]
 			},
