@@ -801,6 +801,13 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/kinezio-trenirovka-5-plechevoy-poyas.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/GH9cPdq62L4/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/kinezio-trenirovka-3-tazobedrennyy-sustav.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/_9NioV5M9wI/transcript.json')

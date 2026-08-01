@@ -319,7 +319,8 @@ export const collections: Collection[] = [
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
 			'kinezio-trenirovka-2-stopa-golenostop',
 			'kinezio-trenirovka-3-tazobedrennyy-sustav',
-			'kinezio-trenirovka-4-kisti-paltsy-lokti'
+			'kinezio-trenirovka-4-kisti-paltsy-lokti',
+			'kinezio-trenirovka-5-plechevoy-poyas'
 		],
 		sections: [
 			{
@@ -350,12 +351,13 @@ export const collections: Collection[] = [
 			{
 				title: 'Физическая подготовка',
 				subtitle:
-					'Лекция о силовой подготовке и практические кинезиотренировки для ног, кистей и локтей.',
+					'Лекция о силовой подготовке и практические кинезиотренировки для ног, рук и плечевого пояса.',
 				items: [
 					'fizpodgotovka-dlya-fekhtovalshchika-turin',
 					'kinezio-trenirovka-2-stopa-golenostop',
 					'kinezio-trenirovka-3-tazobedrennyy-sustav',
-					'kinezio-trenirovka-4-kisti-paltsy-lokti'
+					'kinezio-trenirovka-4-kisti-paltsy-lokti',
+					'kinezio-trenirovka-5-plechevoy-poyas'
 				]
 			}
 		]
