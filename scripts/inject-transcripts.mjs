@@ -808,6 +808,13 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/avstriyskaya-sablya-trenirovka-6-batmany-vybor.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/MCZqAw2-VrI/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/kinezio-trenirovka-4-kisti-paltsy-lokti.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/WFIIYSAOCnQ/transcript.json')

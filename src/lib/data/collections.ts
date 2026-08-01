@@ -317,6 +317,7 @@ export const collections: Collection[] = [
 			'avstriyskaya-sablya-2',
 			'avstriyskaya-sablya-trenirovka-3',
 			'avstriyskaya-sablya-obratnoe-lezvie',
+			'avstriyskaya-sablya-trenirovka-6-batmany-vybor',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
 			'kinezio-trenirovka-2-stopa-golenostop',
@@ -339,12 +340,14 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Сабля',
-				subtitle: 'Подготовка атаки и практический цикл по австрийской сабле.',
+				subtitle:
+					'Подготовка атаки и практический цикл по австрийской сабле: тренировки 2, 3, 4 и 6.',
 				items: [
 					'podgotovka-ataki-na-sable-korotovskih',
 					'avstriyskaya-sablya-2',
 					'avstriyskaya-sablya-trenirovka-3',
-					'avstriyskaya-sablya-obratnoe-lezvie'
+					'avstriyskaya-sablya-obratnoe-lezvie',
+					'avstriyskaya-sablya-trenirovka-6-batmany-vybor'
 				]
 			},
 			{
