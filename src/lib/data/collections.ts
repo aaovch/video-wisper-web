@@ -315,6 +315,7 @@ export const collections: Collection[] = [
 			'soedinenie-dlinnyi-mech-lager-noname-4',
 			'podgotovka-ataki-na-sable-korotovskih',
 			'avstriyskaya-sablya-2',
+			'avstriyskaya-sablya-obratnoe-lezvie',
 			'rapira-protiv-vstrechnogo-ukola-korotovskih',
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
 			'kinezio-trenirovka-2-stopa-golenostop',
@@ -337,10 +338,11 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Сабля',
-				subtitle: 'Подготовка атаки и цикл второй тренировки по австрийской сабле.',
+				subtitle: 'Подготовка атаки и практический цикл по австрийской сабле.',
 				items: [
 					'podgotovka-ataki-na-sable-korotovskih',
-					'avstriyskaya-sablya-2'
+					'avstriyskaya-sablya-2',
+					'avstriyskaya-sablya-obratnoe-lezvie'
 				]
 			},
 			{

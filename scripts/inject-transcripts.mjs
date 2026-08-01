@@ -724,6 +724,13 @@ const SOURCES = [
 		transcriptPath: join(pipelineRoot, 'output/yaVhjHm4-FM/transcript.json')
 	},
 	{
+		reportPath: join(
+			root,
+			'src/lib/data/reports/avstriyskaya-sablya-obratnoe-lezvie.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/dLx3db92p0w/transcript.json')
+	},
+	{
 		reportPath: join(root, 'src/lib/data/reports/trenerskoe-sobranie-dva-zala.json'),
 		transcriptPath: join(
 			pipelineRoot,
