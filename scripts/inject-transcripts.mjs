@@ -784,6 +784,13 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/soedinenie-dlinnyi-mech-lager-noname-7.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/h8jKGTPkdLk/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/soedinenie-dlinnyi-mech-lager-noname-2-utro.json'
 		),
 		transcriptPath: join(
