@@ -313,6 +313,7 @@ export const collections: Collection[] = [
 			'soedinenie-dlinnyi-mech-lager-noname-2',
 			'soedinenie-dlinnyi-mech-lager-noname-3',
 			'soedinenie-dlinnyi-mech-lager-noname-4',
+			'soedinenie-dlinnyi-mech-lager-noname-poteryannaya',
 			'soedinenie-dlinnyi-mech-lager-noname-7',
 			'podgotovka-ataki-na-sable-korotovskih',
 			'avstriyskaya-sablya-2',
@@ -330,13 +331,14 @@ export const collections: Collection[] = [
 			{
 				title: 'Длинный меч · цикл по соединению',
 				subtitle:
-					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, тренировки 3 и 4, затем заключительная тренировка 7.',
+					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, тренировки 3 и 4, потерянная тренировка (предположительно 5), затем заключительная тренировка 7.',
 				items: [
 					'soedinenie-dlinnyi-mech-lager-noname-1',
 					'soedinenie-dlinnyi-mech-lager-noname-2-utro',
 					'soedinenie-dlinnyi-mech-lager-noname-2',
 					'soedinenie-dlinnyi-mech-lager-noname-3',
 					'soedinenie-dlinnyi-mech-lager-noname-4',
+					'soedinenie-dlinnyi-mech-lager-noname-poteryannaya',
 					'soedinenie-dlinnyi-mech-lager-noname-7'
 				]
 			},
