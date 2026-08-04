@@ -300,7 +300,7 @@ export const collections: Collection[] = [
 	},
 	{
 		slug: 'noname',
-		title: 'NoName',
+		title: 'NoName, фехтовальный лагерь 2026',
 		hema: true,
 		facets: {
 			authors: ['Вячеслав Коротовских', 'Турин'],
