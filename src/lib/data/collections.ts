@@ -306,7 +306,8 @@ export const collections: Collection[] = [
 			authors: ['Вячеслав Коротовских', 'Турин'],
 			weapons: ['Сабля', 'Рапира', 'Длинный меч']
 		},
-		subtitle: 'Тренировки и семинары NoName по оружию и направлению подготовки.',
+		subtitle:
+			'Тренировки и семинары фехтовального лагеря NoName 2026: длинный меч, сабля, рапира и физическая подготовка.',
 		items: [
 			'soedinenie-dlinnyi-mech-lager-noname-1',
 			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
@@ -331,7 +332,7 @@ export const collections: Collection[] = [
 			{
 				title: 'Длинный меч · цикл по соединению',
 				subtitle:
-					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, тренировки 3 и 4, потерянная тренировка (предположительно 5), затем заключительная тренировка 7.',
+					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, тренировки 3, 4 и 6, затем заключительная тренировка 7.',
 				items: [
 					'soedinenie-dlinnyi-mech-lager-noname-1',
 					'soedinenie-dlinnyi-mech-lager-noname-2-utro',
@@ -362,7 +363,7 @@ export const collections: Collection[] = [
 			{
 				title: 'Физическая подготовка',
 				subtitle:
-					'Лекция о силовой подготовке и практические кинезиотренировки для ног, рук и плечевого пояса.',
+					'Лекция о силовой подготовке и кинезиотренировки 2–5 для ног, рук и плечевого пояса.',
 				items: [
 					'fizpodgotovka-dlya-fekhtovalshchika-turin',
 					'kinezio-trenirovka-2-stopa-golenostop',
