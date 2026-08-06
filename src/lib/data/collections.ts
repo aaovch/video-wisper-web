@@ -319,7 +319,6 @@ export const collections: Collection[] = [
 			'kinezio-trenirovka-5-plechevoy-poyas',
 			'soedinenie-dlinnyi-mech-lager-noname-1',
 			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
-			'soedinenie-dlinnyi-mech-lager-noname-2',
 			'soedinenie-dlinnyi-mech-lager-noname-3',
 			'soedinenie-dlinnyi-mech-lager-noname-4',
 			'soedinenie-dlinnyi-mech-lager-noname-poteryannaya',
@@ -349,11 +348,10 @@ export const collections: Collection[] = [
 			{
 				title: 'Меч Пети',
 				subtitle:
-					'Последовательный цикл по соединению: тренировка 1, тренировка 2 утром и вечером, тренировки 3, 4 и предположительно 5, затем заключительная тренировка 7.',
+					'Шесть последовательных тренировок по соединению: от входа и чувства клинка до сборки всего цикла.',
 				items: [
 					'soedinenie-dlinnyi-mech-lager-noname-1',
 					'soedinenie-dlinnyi-mech-lager-noname-2-utro',
-					'soedinenie-dlinnyi-mech-lager-noname-2',
 					'soedinenie-dlinnyi-mech-lager-noname-3',
 					'soedinenie-dlinnyi-mech-lager-noname-4',
 					'soedinenie-dlinnyi-mech-lager-noname-poteryannaya',
