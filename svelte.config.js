@@ -14,6 +14,9 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			fallback: undefined,
+			// GitHub Pages гзипует ответы на лету и игнорирует заранее сжатые
+			// .gz/.br-соседи, поэтому precompress только раздул бы артефакт.
+			// Крупный static/search/index.json (~16 МБ) отдаётся уже сжатым хостом.
 			precompress: false,
 			strict: true
 		}),

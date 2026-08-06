@@ -12,8 +12,23 @@ export interface Chapter {
 	title: string;
 	summary: string;
 	theses: string[];
-	/** Фрагменты распознанной речи внутри блока (для поиска и перемотки) */
-	segments?: TranscriptSegment[];
+}
+
+/** Глава sidecar-файла транскрипта (src/lib/data/transcripts/<slug>.json). */
+export interface TranscriptChapter {
+	start: number;
+	/** Фрагменты распознанной речи внутри блока (для поискового индекса) */
+	segments: TranscriptSegment[];
+}
+
+/**
+ * Sidecar с полной расшифровкой. Хранится отдельно от отчёта, чтобы страница
+ * не тянула сегменты; клиент лениво грузит только строку transcript
+ * из static/transcripts/<slug>.json (генерируется на prebuild).
+ */
+export interface ReportTranscript {
+	transcript: string;
+	chapters: TranscriptChapter[];
 }
 
 export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo';
@@ -115,8 +130,8 @@ export interface Report {
 	infographic?: ReportInfographic;
 	/** Памятка по упражнениям или дополнительный лист практики */
 	exercise_memo?: ReportInfographic;
-	/** Полная расшифровка (опционально) */
-	transcript?: string;
+	/** Есть ли полная расшифровка (сам текст лежит в static/transcripts/<slug>.json) */
+	has_transcript?: boolean;
 }
 
 /** Лёгкая карточка отчёта — без глав и транскрипта (report-meta.json). */
@@ -126,6 +141,7 @@ export interface ReportSummary {
 	subtitle: string;
 	tags?: string[];
 	duration: number;
+	/** Обрезаны до 2 при генерации — карточки больше не показывают */
 	overview_theses: string[];
 	chapterCount: number;
 	video?: VideoSource;

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const slug = process.argv[2];
@@ -27,9 +27,17 @@ if (indexedTheses !== expectedTheses) {
 	throw new Error(`Thesis index mismatch for ${slug}: expected ${expectedTheses}, got ${indexedTheses}`);
 }
 
-const sourceSegments = (report.chapters ?? []).reduce((total, chapter) => total + (chapter.segments?.length ?? 0), 0);
+const transcriptPath = join(root, 'src/lib/data/transcripts', `${slug}.json`);
+const sidecar = existsSync(transcriptPath) ? JSON.parse(readFileSync(transcriptPath, 'utf8')) : null;
+const sourceSegments = (sidecar?.chapters ?? []).reduce(
+	(total, chapter) => total + (chapter.segments?.length ?? 0),
+	0
+);
 if (sourceSegments > 0 && !(indexed.transcript > 0)) {
 	throw new Error(`Transcript windows are absent for ${slug}`);
+}
+if (report.has_transcript && !existsSync(transcriptPath)) {
+	throw new Error(`Report ${slug} declares has_transcript, but src/lib/data/transcripts/${slug}.json is missing`);
 }
 
 console.log(`search-index OK: ${slug}; ${indexed.chapter ?? 0} chapters, ${indexedTheses} theses, ${indexed.transcript ?? 0} transcript windows, ${indexed.material ?? 0} materials`);

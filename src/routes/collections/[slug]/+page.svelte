@@ -21,6 +21,11 @@
 <svelte:head>
 	<title>{collection.title} — {SITE_NAME}</title>
 	<meta name="description" content={intro} />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={SITE_NAME} />
+	<meta property="og:title" content={collection.title} />
+	<meta property="og:description" content={intro} />
+	<meta name="twitter:card" content="summary" />
 </svelte:head>
 
 {#if locked}
@@ -67,7 +72,7 @@
 		</section>
 	{/if}
 
-	<main class="container index">
+	<section class="container index">
 		{#if collection.sections}
 			{#each collection.sections as section, sectionIndex (section.title)}
 				<section class="report-section">
@@ -95,7 +100,7 @@
 				</ul>
 			</section>
 		{/if}
-	</main>
+	</section>
 {/if}
 
 <style>

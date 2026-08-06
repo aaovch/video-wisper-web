@@ -86,16 +86,46 @@
 	type MaterialsTab = 'notes' | 'visuals' | 'glossary' | 'transcript';
 	let materialsTab = $state<MaterialsTab>('notes');
 
+	// Расшифровка не входит в payload страницы — лениво грузим её из static/.
+	const hasTranscript = $derived(Boolean(report.has_transcript));
+	let transcriptText = $state('');
+	let transcriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
+	let transcriptPromise: Promise<string> | null = null;
+
+	function ensureTranscript(): Promise<string> {
+		if (!browser || !hasTranscript) return Promise.resolve('');
+		if (transcriptPromise) return transcriptPromise;
+		transcriptLoadState = 'loading';
+		transcriptPromise = fetch(`${base}/transcripts/${report.slug}.json`)
+			.then((response) => {
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				return response.json();
+			})
+			.then((data: { transcript?: string }) => {
+				transcriptText = data.transcript ?? '';
+				transcriptLoadState = 'ready';
+				return transcriptText;
+			})
+			.catch((error) => {
+				transcriptPromise = null;
+				transcriptLoadState = 'error';
+				throw error;
+			});
+		return transcriptPromise;
+	}
+
 	async function copyTranscript(event: MouseEvent) {
 		event.preventDefault();
 		event.stopPropagation();
-		if (!browser || !report.transcript) return;
+		if (!browser || !hasTranscript) return;
 
 		try {
+			const text = await ensureTranscript();
+			if (!text) throw new Error('Empty transcript');
 			let copied = false;
 			if (navigator.clipboard?.writeText) {
 				try {
-					await navigator.clipboard.writeText(report.transcript);
+					await navigator.clipboard.writeText(text);
 					copied = true;
 				} catch {
 					// Встроенный API может быть заблокирован настройками браузера — используем резервный способ ниже.
@@ -104,7 +134,7 @@
 
 			if (!copied) {
 				const textarea = document.createElement('textarea');
-				textarea.value = report.transcript;
+				textarea.value = text;
 				textarea.setAttribute('readonly', '');
 				textarea.style.position = 'fixed';
 				textarea.style.opacity = '0';
@@ -353,7 +383,7 @@
 				? 'visuals'
 				: materialsTab === 'glossary' && reportGlossary.length > 0
 					? 'glossary'
-					: materialsTab === 'transcript' && report.transcript
+					: materialsTab === 'transcript' && hasTranscript
 						? 'transcript'
 						: reportNotes.length > 0
 							? 'notes'
@@ -370,15 +400,23 @@
 			reportGlossary.length > 0 ||
 			Boolean(reportInfographic) ||
 			Boolean(reportExerciseMemo) ||
-			Boolean(report.transcript)
+			hasTranscript
 	);
+
+	// Пользователь открыл вкладку/спойлер расшифровки — подтягиваем текст.
+	$effect(() => {
+		if (!browser || !hasTranscript) return;
+		if (activeMaterialsTab === 'transcript' || transcriptOpen) {
+			void ensureTranscript().catch(() => {});
+		}
+	});
 
 	function availableMaterialsTabs(): MaterialsTab[] {
 		const tabs: MaterialsTab[] = [];
 		if (reportNotes.length > 0) tabs.push('notes');
 		if (reportVisualCount > 0) tabs.push('visuals');
 		if (reportGlossary.length > 0) tabs.push('glossary');
-		if (report.transcript) tabs.push('transcript');
+		if (hasTranscript) tabs.push('transcript');
 		return tabs;
 	}
 
@@ -533,6 +571,11 @@
 <svelte:head>
 	<title>{report.title} — {SITE_NAME}</title>
 	<meta name="description" content={report.subtitle} />
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content={SITE_NAME} />
+	<meta property="og:title" content={report.title} />
+	<meta property="og:description" content={report.subtitle} />
+	<meta name="twitter:card" content="summary" />
 </svelte:head>
 
 {#if locked}
@@ -789,7 +832,7 @@
 								<span class="materials-tab-count">{reportGlossary.length}</span>
 							</button>
 						{/if}
-						{#if report.transcript}
+						{#if hasTranscript}
 							<button
 								id="materials-tab-transcript"
 								type="button"
@@ -859,7 +902,7 @@
 								{/each}
 							</dl>
 						</div>
-					{:else if report.transcript}
+					{:else if hasTranscript}
 						<div id="materials-panel-transcript" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
 							<header class="materials-panel-head">
 								<span class="materials-panel-kicker"><TextAlignLeft size={16} aria-hidden="true" /> Полный текст лекции</span>
@@ -877,13 +920,21 @@
 									{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
 								</span>
 							</header>
-							<div class="materials-transcript"><p>{report.transcript}</p></div>
+							<div class="materials-transcript">
+								{#if transcriptLoadState === 'ready'}
+									<p>{transcriptText}</p>
+								{:else if transcriptLoadState === 'error'}
+									<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
+								{:else}
+									<p class="transcript-status">Загрузка расшифровки…</p>
+								{/if}
+							</div>
 						</div>
 					{/if}
 				</section>
 			{/if}
 
-			{#if report.transcript && !hasStudyMaterials}
+			{#if hasTranscript && !hasStudyMaterials}
 				<section class="transcript reveal extra-block" {@attach reveal()}>
 					<details bind:open={transcriptOpen}>
 						<summary>
@@ -906,7 +957,13 @@
 							</span>
 						</summary>
 						{#if transcriptOpen}
-							<p>{report.transcript}</p>
+							{#if transcriptLoadState === 'ready'}
+								<p>{transcriptText}</p>
+							{:else if transcriptLoadState === 'error'}
+								<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
+							{:else}
+								<p class="transcript-status">Загрузка расшифровки…</p>
+							{/if}
 						{/if}
 					</details>
 				</section>
@@ -1305,6 +1362,11 @@
 		line-height: 1.75;
 		white-space: pre-wrap;
 		overflow-wrap: anywhere;
+	}
+
+	.transcript-status {
+		color: var(--ink-muted, var(--ink-soft));
+		font-style: italic;
 	}
 
 	.seminar-exercises {

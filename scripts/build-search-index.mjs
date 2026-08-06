@@ -4,70 +4,60 @@
  * ASR segment boundaries and the browser does not have to index 100k+ tiny docs.
  */
 import MiniSearch from 'minisearch';
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const reportsDir = join(root, 'src/lib/data/reports');
+const transcriptsDir = join(root, 'src/lib/data/transcripts');
 const searchDir = join(root, 'static/search');
+const staticTranscriptsDir = join(root, 'static/transcripts');
 const outIndex = join(searchDir, 'index.json');
 const outManifest = join(searchDir, 'manifest.json');
+const outChapterTitles = join(searchDir, 'chapter-titles.json');
 const outMeta = join(root, 'src/lib/data/report-meta.json');
 
-const INDEX_VERSION = 2;
+import { stemRu } from '../src/lib/stem-ru.js';
+
+const INDEX_VERSION = 3;
 const TRANSCRIPT_TARGET_CHARS = 620;
 const TRANSCRIPT_MAX_CHARS = 920;
 const TRANSCRIPT_MAX_SECONDS = 45;
+// Сниппет в выдаче ~156 симв.; храним с запасом для центрирования по совпадению.
+const STORED_TEXT_MAX_CHARS = 400;
 
-/** @typedef {{ id: string; kind: string; zone: string; reportSlug: string; reportTitle: string; chapterIndex?: number; start?: number; title: string; text: string; href: string; field_title: string; field_body: string; field_tags: string; reasonTags?: string }} IndexedDoc */
+/**
+ * В индексе хранится только невычислимое: zone/href/reportTitle и заголовки
+ * глав восстанавливаются на клиенте из kind + report-meta (см. search-core.ts).
+ * @typedef {{ id: number; kind: string; zone: string; reportSlug: string; reportTitle: string; chapterIndex?: number; start?: number; title?: string; text: string; href: string; field_title: string; field_body: string; field_tags: string; reasonTags?: string }} IndexedDoc
+ */
 
 /** @type {IndexedDoc[]} */
 const docs = [];
 /** @type {Array<{ slug: string; title: string; subtitle: string; tags?: string[]; duration: number; overview_theses: string[]; chapterCount: number; video?: unknown }>} */
 const meta = [];
+/**
+ * Заголовки глав нужны только выдаче поиска — уезжают в ленивый
+ * static/search/chapter-titles.json, а не в eager-бандл report-meta.
+ * @type {Record<string, string[]>}
+ */
+const chapterTitlesBySlug = {};
+// Карточки показывают максимум 2 тезиса (ReportCard.slice(0, 2)) — остальное не грузим.
+const META_THESES_LIMIT = 2;
 
 function norm(value) {
 	return String(value ?? '').toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
 }
 
-// Same compact Russian stemmer used by the browser query path.
-const RV = /^(.*?[аеиоуыэюя])(.*)$/;
-const PERFECTIVE_GERUND = /(ив|ивши|ившись|ыв|ывши|ывшись|(?<=[ая])(?:в|вши|вшись))$/;
-const REFLEXIVE = /с[яь]$/;
-const ADJECTIVE = /(ее|ие|ые|ое|ими|ыми|ей|ий|ый|ой|ем|им|ым|ом|его|ого|ему|ому|их|ых|ую|юю|ая|яя|ою|ею)$/;
-const PARTICIPLE = /(ивш|ывш|ующ|(?<=[ая])(?:ем|нн|вш|ющ|щ))$/;
-const VERB = /(ила|ыла|ена|ейте|уйте|ите|или|ыли|ей|уй|ил|ыл|им|ым|ен|ило|ыло|ено|ят|ует|уют|ит|ыт|ены|ить|ыть|ишь|ую|ю|(?<=[ая])(?:ла|на|ете|йте|ли|й|л|ем|н|ло|но|ет|ют|ны|ть|ешь|нно))$/;
-const NOUN = /(а|ев|ов|ие|ье|е|иями|ями|ами|еи|ии|и|ией|ей|ой|ий|й|иям|ям|ием|ем|ам|ом|о|у|ах|иях|ях|ы|ь|ию|ью|ю|ия|ья|я)$/;
-const SUPERLATIVE = /(ейше|ейш)$/;
-const DERIVATIONAL = /(ость|ост)$/;
+let nextDocId = 0;
 
-function stemRu(token) {
-	const word = norm(token);
-	if (!/[а-яё]/.test(word) || word.length < 3) return word;
-	const match = RV.exec(word);
-	if (!match) return word;
-	const head = match[1];
-	let rv = match[2];
-	const afterGerund = rv.replace(PERFECTIVE_GERUND, '');
-	if (afterGerund !== rv) {
-		rv = afterGerund;
-	} else {
-		rv = rv.replace(REFLEXIVE, '');
-		const afterAdj = rv.replace(ADJECTIVE, '');
-		if (afterAdj !== rv) rv = afterAdj.replace(PARTICIPLE, '');
-		else {
-			const afterVerb = rv.replace(VERB, '');
-			rv = afterVerb !== rv ? afterVerb : rv.replace(NOUN, '');
-		}
-	}
-	rv = rv.replace(/и$/, '').replace(DERIVATIONAL, '');
-	if (/нн$/.test(rv)) rv = rv.slice(0, -1);
-	else if (SUPERLATIVE.test(rv)) {
-		rv = rv.replace(SUPERLATIVE, '');
-		if (/нн$/.test(rv)) rv = rv.slice(0, -1);
-	} else rv = rv.replace(/ь$/, '');
-	return head + rv;
+/** Обрезает сохранённый текст transcript-окна: индексируется всегда полный. */
+function storedText(text) {
+	if (text.length <= STORED_TEXT_MAX_CHARS) return text;
+	const cut = text.slice(0, STORED_TEXT_MAX_CHARS);
+	const lastSpace = cut.lastIndexOf(' ');
+	return (lastSpace > STORED_TEXT_MAX_CHARS * 0.6 ? cut.slice(0, lastSpace) : cut) + '…';
 }
 
 function processTerm(term) {
@@ -76,7 +66,8 @@ function processTerm(term) {
 }
 
 function addDoc(doc) {
-	docs.push(doc);
+	// Числовой id: строковые id вида "s:slug:12:3" раздували documentIds (~0.8 MiB).
+	docs.push({ ...doc, id: nextDocId++ });
 }
 
 function joined(values) {
@@ -118,11 +109,28 @@ function transcriptWindows(segments) {
 	return windows;
 }
 
+// Публикуемые ассеты расшифровок пересобираются с нуля при каждом прогоне.
+rmSync(staticTranscriptsDir, { recursive: true, force: true });
+mkdirSync(staticTranscriptsDir, { recursive: true });
+
+/** Возвращает sidecar с сегментами/расшифровкой или null, если его нет. */
+function readTranscriptSidecar(slug) {
+	const path = join(transcriptsDir, `${slug}.json`);
+	if (!existsSync(path)) return null;
+	return JSON.parse(readFileSync(path, 'utf8'));
+}
+
 for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json')).sort()) {
 	const report = JSON.parse(readFileSync(join(reportsDir, file), 'utf8'));
 	const slug = report.slug;
-	const baseHref = `/reports/${slug}/`;
-	const common = { reportSlug: slug, reportTitle: report.title };
+	const common = { reportSlug: slug };
+	const sidecar = readTranscriptSidecar(slug);
+	if (sidecar?.transcript) {
+		writeFileSync(
+			join(staticTranscriptsDir, `${slug}.json`),
+			JSON.stringify({ transcript: sidecar.transcript })
+		);
+	}
 
 	meta.push({
 		slug,
@@ -130,34 +138,29 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		subtitle: report.subtitle,
 		tags: report.tags ?? [],
 		duration: report.duration ?? 0,
-		overview_theses: report.overview_theses ?? [],
+		overview_theses: (report.overview_theses ?? []).slice(0, META_THESES_LIMIT),
 		chapterCount: report.chapters?.length ?? 0,
 		...(report.video ? { video: report.video } : {})
 	});
+	chapterTitlesBySlug[slug] = (report.chapters ?? []).map((chapter) => chapter.title);
 
+	// title не задаём у report/overview/chapter/thesis/transcript-документов:
+	// он вычислим на клиенте (report-meta + kind), а undefined-поля MiniSearch не хранит.
 	addDoc({
-		id: `r:${slug}`,
 		kind: 'report',
-		zone: 'reports',
 		...common,
-		title: report.title,
 		text: report.subtitle ?? '',
-		href: baseHref,
 		field_title: report.title,
 		field_body: joined([report.subtitle, report.source_name, ...(report.overview_theses ?? [])]),
 		field_tags: (report.tags ?? []).join(' '),
 		reasonTags: (report.tags ?? []).join(' ')
 	});
 
-	for (const [index, thesis] of (report.overview_theses ?? []).entries()) {
+	for (const thesis of report.overview_theses ?? []) {
 		addDoc({
-			id: `o:${slug}:${index}`,
 			kind: 'overview',
-			zone: 'theses',
 			...common,
-			title: 'Главное',
 			text: thesis,
-			href: `${baseHref}#overview-title`,
 			field_title: `Главное ${report.title}`,
 			field_body: thesis,
 			field_tags: ''
@@ -165,50 +168,38 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 	}
 
 	for (const [chapterIndex, chapter] of (report.chapters ?? []).entries()) {
-		const chapterHref = `${baseHref}#ch-${chapterIndex + 1}`;
 		addDoc({
-			id: `c:${slug}:${chapterIndex}`,
 			kind: 'chapter',
-			zone: 'chapters',
 			...common,
 			chapterIndex,
 			start: chapter.start,
-			title: chapter.title,
 			text: chapter.summary || chapter.title,
-			href: chapterHref,
 			field_title: chapter.title,
 			field_body: joined([chapter.title, chapter.summary]),
 			field_tags: ''
 		});
 
-		for (const [index, thesis] of (chapter.theses ?? []).entries()) {
+		for (const thesis of chapter.theses ?? []) {
 			addDoc({
-				id: `t:${slug}:${chapterIndex}:${index}`,
 				kind: 'thesis',
-				zone: 'theses',
 				...common,
 				chapterIndex,
 				start: chapter.start,
-				title: chapter.title,
 				text: thesis,
-				href: chapterHref,
 				field_title: chapter.title,
 				field_body: thesis,
 				field_tags: ''
 			});
 		}
 
-		for (const [index, window] of transcriptWindows(chapter.segments ?? []).entries()) {
+		const chapterSegments = sidecar?.chapters?.[chapterIndex]?.segments ?? chapter.segments ?? [];
+		for (const window of transcriptWindows(chapterSegments)) {
 			addDoc({
-				id: `s:${slug}:${chapterIndex}:${index}`,
 				kind: 'transcript',
-				zone: 'transcript',
 				...common,
 				chapterIndex,
 				start: window.start,
-				title: chapter.title,
-				text: window.text,
-				href: chapterHref,
+				text: storedText(window.text),
 				field_title: chapter.title,
 				field_body: window.text,
 				field_tags: ''
@@ -216,14 +207,12 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		}
 	}
 
-	const additionalHref = `${baseHref}#additional-title`;
 	for (const tab of report.focus_tabs ?? []) {
-		for (const [index, item] of (tab.items ?? []).entries()) {
+		for (const item of tab.items ?? []) {
 			addDoc({
-				id: `m:${slug}:focus:${tab.id}:${index}`,
-				kind: 'material', zone: 'additional', ...common, start: item.start,
+				kind: 'material', ...common, start: item.start,
 				title: `${tab.title}: ${item.title}`,
-				text: joined([item.summary, ...(item.theses ?? [])]), href: additionalHref,
+				text: joined([item.summary, ...(item.theses ?? [])]),
 				field_title: `${tab.title} ${item.title}`,
 				field_body: joined([item.summary, ...(item.theses ?? [])]),
 				field_tags: 'дополнительные материалы тематический срез'
@@ -231,46 +220,45 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		}
 	}
 
-	for (const [sectionIndex, section] of (report.seminar_exercises ?? []).entries()) {
-		for (const [index, item] of (section.items ?? []).entries()) {
+	for (const section of report.seminar_exercises ?? []) {
+		for (const item of section.items ?? []) {
 			addDoc({
-				id: `m:${slug}:exercise:${sectionIndex}:${index}`,
-				kind: 'material', zone: 'additional', ...common, start: item.start,
-				title: `Упражнения: ${section.title}`, text: item.text, href: additionalHref,
+				kind: 'material', ...common, start: item.start,
+				title: `Упражнения: ${section.title}`, text: item.text,
 				field_title: `Упражнения ${section.title}`, field_body: item.text,
 				field_tags: 'дополнительные материалы упражнение практика'
 			});
 		}
 	}
 
-	for (const [index, section] of (report.seminar_notes ?? []).entries()) {
+	for (const section of report.seminar_notes ?? []) {
 		addDoc({
-			id: `m:${slug}:notes:${index}`, kind: 'material', zone: 'additional', ...common,
-			title: `Конспект: ${section.title}`, text: (section.items ?? []).join(' '), href: additionalHref,
+			kind: 'material', ...common,
+			title: `Конспект: ${section.title}`, text: (section.items ?? []).join(' '),
 			field_title: `Конспект ${section.title}`, field_body: (section.items ?? []).join(' '),
 			field_tags: 'дополнительные материалы конспект'
 		});
 	}
 
-	for (const [index, item] of (report.glossary ?? []).entries()) {
+	for (const item of report.glossary ?? []) {
 		addDoc({
-			id: `m:${slug}:glossary:${index}`, kind: 'material', zone: 'additional', ...common,
-			title: `Глоссарий: ${item.term}`, text: item.definition, href: additionalHref,
+			kind: 'material', ...common,
+			title: `Глоссарий: ${item.term}`, text: item.definition,
 			field_title: `Глоссарий ${item.term}`, field_body: item.definition,
 			field_tags: 'дополнительные материалы глоссарий термин'
 		});
 	}
 
-	for (const [id, title, asset] of [
-		['infographic', 'Инфографика', report.infographic],
-		['exercise-memo', 'Памятка по упражнениям', report.exercise_memo]
+	for (const [title, asset] of [
+		['Инфографика', report.infographic],
+		['Памятка по упражнениям', report.exercise_memo]
 	]) {
 		if (!asset) continue;
 		addDoc({
-			id: `m:${slug}:${id}`, kind: 'material', zone: 'additional', ...common,
-			title, text: asset.alt ?? title, href: additionalHref,
+			kind: 'material', ...common,
+			title, text: asset.alt ?? title,
 			field_title: title, field_body: asset.alt ?? '',
-				field_tags: 'дополнительные материалы инфографика памятка'
+			field_tags: 'дополнительные материалы инфографика памятка'
 		});
 	}
 }
@@ -278,7 +266,8 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 const miniSearchOptions = {
 	idField: 'id',
 	fields: ['field_title', 'field_body', 'field_tags'],
-	storeFields: ['kind', 'zone', 'reportSlug', 'reportTitle', 'chapterIndex', 'start', 'title', 'text', 'href', 'reasonTags'],
+	// zone/href/reportTitle и заголовки глав вычисляются на клиенте — не храним.
+	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags'],
 	processTerm
 };
 const search = new MiniSearch(miniSearchOptions);
@@ -292,6 +281,7 @@ const reportDocuments = Object.fromEntries(meta.map(({ slug }) => {
 
 mkdirSync(searchDir, { recursive: true });
 writeFileSync(outIndex, serializedIndex);
+writeFileSync(outChapterTitles, JSON.stringify(chapterTitlesBySlug));
 writeFileSync(outManifest, JSON.stringify({
 	version: INDEX_VERSION,
 	documents: docs.length,

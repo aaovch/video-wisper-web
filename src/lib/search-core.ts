@@ -8,6 +8,7 @@ import type {
 	SearchZone
 } from '$lib/search-types';
 import { stemRu } from '$lib/stem-ru';
+import { getReportSummary } from '$lib/data/report-meta';
 
 export type {
 	SearchHitKind,
@@ -23,20 +24,69 @@ export type {
 export { groupByReport, groupByChapter } from '$lib/search-group';
 
 interface IndexedDoc {
-	id: string;
+	id: string | number;
 	kind: SearchHitKind;
-	zone: SearchZone;
+	/** Не хранится в индексе v3 — вычисляется из kind (фолбэк для старых фикстур). */
+	zone?: SearchZone;
 	reportSlug: string;
-	reportTitle: string;
+	/** Не хранится в индексе v3 — берётся из report-meta. */
+	reportTitle?: string;
 	chapterIndex?: number;
 	start?: number;
-	title: string;
+	/** Хранится только у material-документов; остальным вычисляется. */
+	title?: string;
 	text: string;
-	href: string;
+	/** Не хранится в индексе v3 — вычисляется из kind + slug + chapterIndex. */
+	href?: string;
 	field_title: string;
 	field_body: string;
 	field_tags: string;
 	reasonTags?: string;
+}
+
+const ZONE_BY_KIND: Record<SearchHitKind, SearchZone> = {
+	report: 'reports',
+	overview: 'theses',
+	chapter: 'chapters',
+	thesis: 'theses',
+	transcript: 'transcript',
+	material: 'additional'
+};
+
+function docZone(doc: IndexedDoc): SearchZone {
+	return doc.zone ?? ZONE_BY_KIND[doc.kind] ?? 'reports';
+}
+
+function docReportTitle(doc: IndexedDoc): string {
+	return doc.reportTitle ?? getReportSummary(doc.reportSlug)?.title ?? doc.reportSlug;
+}
+
+function docTitle(doc: IndexedDoc): string {
+	if (doc.title !== undefined) return doc.title;
+	if (doc.kind === 'overview') return 'Главное';
+	if (doc.kind === 'chapter' || doc.kind === 'thesis' || doc.kind === 'transcript') {
+		const chapterTitle =
+			doc.chapterIndex !== undefined
+				? chapterTitles?.[doc.reportSlug]?.[doc.chapterIndex]
+				: undefined;
+		return chapterTitle ?? docReportTitle(doc);
+	}
+	return docReportTitle(doc);
+}
+
+function docHref(doc: IndexedDoc): string {
+	if (doc.href !== undefined) return doc.href;
+	const baseHref = `/reports/${doc.reportSlug}/`;
+	switch (doc.kind) {
+		case 'report':
+			return baseHref;
+		case 'overview':
+			return `${baseHref}#overview-title`;
+		case 'material':
+			return `${baseHref}#additional-title`;
+		default:
+			return `${baseHref}#ch-${(doc.chapterIndex ?? 0) + 1}`;
+	}
 }
 
 interface ParsedQuery {
@@ -88,25 +138,43 @@ function processTerm(term: string): string | null {
 const miniSearchOptions = {
 	idField: 'id',
 	fields: ['field_title', 'field_body', 'field_tags'],
-	storeFields: [
-		'kind', 'zone', 'reportSlug', 'reportTitle', 'chapterIndex', 'start', 'title', 'text', 'href', 'reasonTags'
-	],
+	// Должно совпадать со scripts/build-search-index.mjs (индекс v3).
+	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags'],
 	processTerm
 };
 
 let mini: MiniSearch<IndexedDoc> | null = null;
 let indexPromise: Promise<MiniSearch<IndexedDoc>> | null = null;
+/** slug → заголовки глав; лежит рядом с индексом, не в eager-бандле. */
+let chapterTitles: Record<string, string[]> | null = null;
+
+/** Необязательная карта заголовков: при сбое выдача откатится к названию отчёта. */
+async function loadChapterTitles(): Promise<void> {
+	if (chapterTitles) return;
+	try {
+		const response = await fetch(`${base}/search/chapter-titles.json`);
+		if (!response.ok) return;
+		const parsed: unknown = await response.json();
+		if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+			chapterTitles = parsed as Record<string, string[]>;
+		}
+	} catch {
+		/* карта опциональна */
+	}
+}
 
 async function loadIndex(): Promise<MiniSearch<IndexedDoc>> {
 	if (mini) return mini;
 	if (!indexPromise) {
+		const titlesReady = loadChapterTitles();
 		indexPromise = fetch(`${base}/search/index.json`)
 			.then((response) => {
 				if (!response.ok) throw new Error(`Search index HTTP ${response.status}`);
 				return response.text();
 			})
 			.then((serialized) => MiniSearch.loadJSONAsync<IndexedDoc>(serialized, miniSearchOptions))
-			.then((loaded) => {
+			.then(async (loaded) => {
+				await titlesReady;
 				mini = loaded;
 				return loaded;
 			})
@@ -154,7 +222,7 @@ function matchReason(
 	parsed: ParsedQuery,
 	matchMode: SearchMatchKind
 ): { labels: string[]; kind: 'tag' | 'semantic' | 'correction' } | undefined {
-	const visibleText = norm(`${doc.reportTitle} ${doc.title} ${doc.text}`);
+	const visibleText = norm(`${docReportTitle(doc)} ${docTitle(doc)} ${doc.text}`);
 	const visibleStems = new Set(queryWords(visibleText).map(stemRu));
 	if (parsed.stems.some((stem) => visibleStems.has(stem))) return undefined;
 	const tagText = norm(doc.reasonTags ?? '');
@@ -182,7 +250,7 @@ function matchReason(
 
 	const labels: string[] = [];
 	const usedStems = new Set<string>();
-	for (const word of queryWords(`${doc.title} ${doc.text}`)) {
+	for (const word of queryWords(`${docTitle(doc)} ${doc.text}`)) {
 		if (STOP_WORDS.has(word)) continue;
 		const stem = stemRu(word);
 		if (!matchedStems.has(stem) || usedStems.has(stem)) continue;
@@ -202,16 +270,16 @@ function toHit(
 	const reason = matchReason(result, doc, parsed, matchMode);
 	return {
 		kind: doc.kind,
-		zone: doc.zone,
+		zone: docZone(doc),
 		reportSlug: doc.reportSlug,
-		reportTitle: doc.reportTitle,
+		reportTitle: docReportTitle(doc),
 		chapterIndex: doc.chapterIndex,
-		title: doc.title,
+		title: docTitle(doc),
 		snippet: snippet(doc.text, parsed),
 		matchKind: matchMode,
 		matchReason: reason?.labels,
 		matchReasonKind: reason?.kind,
-		href: doc.href,
+		href: docHref(doc),
 		start: doc.start,
 		score: result.score
 	};
@@ -263,7 +331,7 @@ function rankKind(result: SearchResult): number {
 
 function signalMultiplier(result: SearchResult, parsed: ParsedQuery): number {
 	const doc = result as unknown as IndexedDoc;
-	const title = norm(doc.title ?? '');
+	const title = norm(docTitle(doc));
 	const body = norm(doc.text ?? '');
 	const combined = `${title} ${body}`;
 	const combinedStems = new Set(queryWords(combined).map(stemRu));
@@ -507,7 +575,7 @@ export async function searchReport(reportSlug: string, query: string, limit = 40
 		limit,
 		(result) => {
 			const doc = result as unknown as IndexedDoc;
-			return doc.reportSlug === reportSlug && doc.zone !== 'reports';
+			return doc.reportSlug === reportSlug && docZone(doc) !== 'reports';
 		},
 		true
 	)).hits;
@@ -520,7 +588,7 @@ export async function searchReportExact(reportSlug: string, query: string, limit
 		limit,
 		(result) => {
 			const doc = result as unknown as IndexedDoc;
-			return doc.reportSlug === reportSlug && doc.zone !== 'reports';
+			return doc.reportSlug === reportSlug && docZone(doc) !== 'reports';
 		},
 		true
 	);
@@ -535,7 +603,8 @@ function scopeFilter(scope: SearchScope): {
 		return {
 			filter: (result) => {
 				const doc = result as unknown as IndexedDoc;
-				return doc.reportSlug === scope.reportSlug && doc.zone !== 'reports' && (!zones || zones.has(doc.zone));
+				const zone = docZone(doc);
+				return doc.reportSlug === scope.reportSlug && zone !== 'reports' && (!zones || zones.has(zone));
 			},
 			insideSingleReport: true
 		};
@@ -544,7 +613,7 @@ function scopeFilter(scope: SearchScope): {
 	return {
 		filter: (result) => {
 			const doc = result as unknown as IndexedDoc;
-			return slugs.has(doc.reportSlug) && (!zones || zones.has(doc.zone));
+			return slugs.has(doc.reportSlug) && (!zones || zones.has(docZone(doc)));
 		},
 		insideSingleReport: false
 	};
@@ -595,6 +664,7 @@ export async function searchScoped(
 export function resetSearchIndex(): void {
 	mini = null;
 	indexPromise = null;
+	chapterTitles = null;
 }
 
 /** Warm the prebuilt index on focus without blocking first paint. */

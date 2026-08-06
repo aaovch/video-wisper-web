@@ -64,6 +64,8 @@
 
 <svelte:window onscroll={updateProgress} onresize={updateProgress} />
 
+<a class="skip-link" href="#main-content">К содержимому</a>
+
 <div class="progress" bind:this={progressEl} aria-hidden="true"></div>
 
 <div class="sheet">
@@ -79,7 +81,7 @@
 		</header>
 	{/if}
 
-	<main>
+	<main id="main-content" tabindex="-1">
 		{@render children()}
 	</main>
 

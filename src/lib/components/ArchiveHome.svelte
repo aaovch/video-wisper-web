@@ -12,7 +12,13 @@
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
 	import { collections, type Collection } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
-	import { searchScoped, type SearchHit, type SearchResultKind, type SearchScope } from '$lib/search';
+	import {
+		preloadSearchIndex,
+		searchScoped,
+		type SearchHit,
+		type SearchResultKind,
+		type SearchScope
+	} from '$lib/search';
 	import {
 		activeSearchFilters,
 		selectedFilterCount,
@@ -255,13 +261,14 @@
 	<section class="search-stage" aria-labelledby="archive-search-title">
 	<div class="container search-stage-inner">
 		<h1 id="archive-search-title">Найдите мысль в архиве</h1>
-		<label class="search-field">
+		<label class="search-field" onpointerenter={preloadSearchIndex}>
 			<MagnifyingGlass size={30} weight="thin" aria-hidden="true" />
 			<span class="sr-only">Поиск по архиву</span>
 			<input
 				type="search"
 				aria-label="Поиск по архиву"
 				bind:value={query}
+				onfocus={preloadSearchIndex}
 				oninput={scheduleSearch}
 				placeholder="Например: как подготовить атаку против позиционной защиты?"
 				autocomplete="off"

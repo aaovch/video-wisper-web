@@ -1,13 +1,22 @@
 /**
- * Вкладывает сегменты транскрипта Whisper в chapters[].segments по тайм-кодам блоков.
+ * Пересобирает sidecar-транскрипты (src/lib/data/transcripts/<slug>.json) из
+ * output/<stem>/transcript.json: сегменты по границам глав + полный текст.
+ * В отчёт сегменты/расшифровка НЕ кладутся — только флаг has_transcript.
+ *
+ * Источник для отчёта определяется по конвенции: если в reports/<slug>.json есть
+ * поле source_stem, берётся output/<source_stem>/transcript.json — правка скрипта
+ * не нужна. Массив SOURCES ниже — legacy-фолбэк для старых отчётов без source_stem.
+ *
  * Запуск из корня video-wisper-web: node scripts/inject-transcripts.mjs
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pipelineRoot = join(root, '..');
+const reportsDir = join(root, 'src/lib/data/reports');
+const transcriptsDir = join(root, 'src/lib/data/transcripts');
 
 const SOURCES = [
 	{
@@ -876,23 +885,54 @@ function assignSegments(segments, chapters) {
 	});
 }
 
-for (const { reportPath, transcriptPath, excludeRanges = [] } of SOURCES) {
+mkdirSync(transcriptsDir, { recursive: true });
+
+/** Собирает финальный список источников: конвенция source_stem + legacy SOURCES. */
+function resolveSources() {
+	const byReportPath = new Map(SOURCES.map((source) => [source.reportPath, source]));
+	for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json'))) {
+		const reportPath = join(reportsDir, file);
+		const report = JSON.parse(readFileSync(reportPath, 'utf8'));
+		if (!report.source_stem) continue;
+		const transcriptPath = join(pipelineRoot, 'output', report.source_stem, 'transcript.json');
+		// Конвенция имеет приоритет над legacy-записью для того же отчёта.
+		byReportPath.set(reportPath, { reportPath, transcriptPath, excludeRanges: report.exclude_ranges ?? [] });
+	}
+	return [...byReportPath.values()];
+}
+
+for (const { reportPath, transcriptPath, excludeRanges = [] } of resolveSources()) {
+	if (!existsSync(transcriptPath)) {
+		console.warn(`SKIP ${reportPath}: нет транскрипта ${transcriptPath}`);
+		continue;
+	}
 	const report = JSON.parse(readFileSync(reportPath, 'utf8'));
 	const transcript = JSON.parse(readFileSync(transcriptPath, 'utf8'));
 	const segments = (transcript.segments ?? []).filter(
 		(segment) => !isExcludedSegment(segment, excludeRanges)
 	);
 
-	report.chapters = assignSegments(segments, report.chapters);
-	if (segments.length > 0) {
-		report.transcript = segments
-		.map((segment) => segment.text.trim())
-		.filter(Boolean)
-		.join(' ');
-	}
+	// Сегменты и полный текст не кладём в отчёт (иначе страница тяжелеет) —
+	// пишем sidecar, который читают только билд-скрипты.
+	const chaptersWithSegments = assignSegments(segments, report.chapters);
+	const sidecar = {
+		transcript: segments
+			.map((segment) => segment.text.trim())
+			.filter(Boolean)
+			.join(' '),
+		chapters: chaptersWithSegments.map((ch) => ({ start: ch.start, segments: ch.segments }))
+	};
+	writeFileSync(
+		join(transcriptsDir, `${report.slug}.json`),
+		JSON.stringify(sidecar, null, '\t') + '\n',
+		'utf8'
+	);
 
+	for (const ch of report.chapters) delete ch.segments;
+	delete report.transcript;
+	report.has_transcript = sidecar.transcript.length > 0;
 	writeFileSync(reportPath, JSON.stringify(report, null, '\t') + '\n', 'utf8');
 
-	const total = report.chapters.reduce((n, ch) => n + (ch.segments?.length ?? 0), 0);
+	const total = chaptersWithSegments.reduce((n, ch) => n + (ch.segments?.length ?? 0), 0);
 	console.log(`${report.slug}: ${total} сегментов в ${report.chapters.length} блоках`);
 }

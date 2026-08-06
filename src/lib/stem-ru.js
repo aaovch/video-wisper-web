@@ -4,6 +4,9 @@
  * при индексировании и в запросе — симметрично, поэтому абсолютная
  * лингвистическая точность не требуется, важна одинаковая обрезка окончаний.
  *
+ * Единственный источник: этот модуль импортируют и клиент ($lib/stem-ru),
+ * и scripts/build-search-index.mjs — расхождение build/браузер исключено.
+ *
  * Латиница/цифры и прочее не трогаются — стеммим только кириллические слова.
  */
 
@@ -27,7 +30,11 @@ const DOUBLE_N = /нн$/;
 
 const CYRILLIC = /[а-яё]/;
 
-export function stemRu(token: string): string {
+/**
+ * @param {string} token
+ * @returns {string}
+ */
+export function stemRu(token) {
 	const word = token.toLowerCase().replace(/ё/g, 'е');
 	if (!CYRILLIC.test(word) || word.length < 3) return word;
 
