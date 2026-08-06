@@ -27,11 +27,13 @@
 	<Lock targets={[collection]} title={collection.title} subtitle="Коллекция закрыта. Введите пароль, чтобы открыть доступ." />
 {:else}
 	<header class="container hero reveal" {@attach reveal()}>
-		<nav class="breadcrumbs" aria-label="Хлебные крошки">
-			<a href="{base}/"><ArrowLeft size={16} /> Архив</a>
-			<span aria-hidden="true">/</span>
-			<span>{collection.title}</span>
-		</nav>
+		{#if !collection.isolated}
+			<nav class="breadcrumbs" aria-label="Хлебные крошки">
+				<a href="{base}/"><ArrowLeft size={16} /> Архив</a>
+				<span aria-hidden="true">/</span>
+				<span>{collection.title}</span>
+			</nav>
+		{/if}
 		<p class="eyebrow label">Коллекция</p>
 		<h1>{collection.title}</h1>
 		<p class="intro">{intro}</p>

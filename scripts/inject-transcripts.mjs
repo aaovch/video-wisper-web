@@ -721,7 +721,8 @@ const SOURCES = [
 	},
 	{
 		reportPath: join(root, 'src/lib/data/reports/avstriyskaya-sablya-2.json'),
-		transcriptPath: join(pipelineRoot, 'output/yaVhjHm4-FM/transcript.json')
+		transcriptPath: join(pipelineRoot, 'output/yaVhjHm4-FM/transcript.json'),
+		excludeRanges: [{ start: 175.4, end: 602.94 }]
 	},
 	{
 		reportPath: join(
@@ -822,6 +823,13 @@ const SOURCES = [
 	{
 		reportPath: join(
 			root,
+			'src/lib/data/reports/avstriyskaya-sablya-trenirovka-5-povtorenie.json'
+		),
+		transcriptPath: join(pipelineRoot, 'output/NlldEizKCIQ/transcript.json')
+	},
+	{
+		reportPath: join(
+			root,
 			'src/lib/data/reports/avstriyskaya-sablya-trenirovka-6-batmany-vybor.json'
 		),
 		transcriptPath: join(pipelineRoot, 'output/MCZqAw2-VrI/transcript.json')
@@ -863,6 +871,10 @@ function chapterBounds(chapters) {
 	}));
 }
 
+function isExcludedSegment(segment, excludeRanges) {
+	return excludeRanges.some((range) => segment.start >= range.start && segment.start < range.end);
+}
+
 function assignSegments(segments, chapters) {
 	const bounds = chapterBounds(chapters);
 	return chapters.map((ch, i) => {
@@ -874,14 +886,19 @@ function assignSegments(segments, chapters) {
 	});
 }
 
-for (const { reportPath, transcriptPath } of SOURCES) {
+for (const { reportPath, transcriptPath, excludeRanges = [] } of SOURCES) {
 	const report = JSON.parse(readFileSync(reportPath, 'utf8'));
 	const transcript = JSON.parse(readFileSync(transcriptPath, 'utf8'));
-	const segments = transcript.segments ?? [];
+	const segments = (transcript.segments ?? []).filter(
+		(segment) => !isExcludedSegment(segment, excludeRanges)
+	);
 
 	report.chapters = assignSegments(segments, report.chapters);
-	if (transcript.full_text) {
-		report.transcript = transcript.full_text.trim();
+	if (segments.length > 0) {
+		report.transcript = segments
+		.map((segment) => segment.text.trim())
+		.filter(Boolean)
+		.join(' ');
 	}
 
 	writeFileSync(reportPath, JSON.stringify(report, null, '\t') + '\n', 'utf8');

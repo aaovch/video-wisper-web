@@ -320,7 +320,7 @@
 					reportSlugs: siblingSlugs
 				});
 			}
-			scopes.push(archiveScope);
+			if (!activeCollection?.isolated) scopes.push(archiveScope);
 			return scopes;
 		}
 
@@ -329,7 +329,7 @@
 			label: activeCollection ? `в коллекции «${activeCollection.title}»` : 'в этой коллекции',
 			reportSlugs: filteredCollectionSlugs
 		}];
-		if (activeFilterCount === 0) scopes.push(archiveScope);
+		if (activeFilterCount === 0 && !activeCollection?.isolated) scopes.push(archiveScope);
 		return scopes;
 	}
 

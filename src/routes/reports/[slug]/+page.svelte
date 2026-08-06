@@ -545,7 +545,9 @@
 <article class="report container">
 	<header class="report-head reveal" {@attach reveal()}>
 		<nav class="breadcrumbs" aria-label="Хлебные крошки">
-			<a href="{base}/">Архив</a><span aria-hidden="true">/</span>
+			{#if !returnCollection?.isolated}
+				<a href="{base}/">Архив</a><span aria-hidden="true">/</span>
+			{/if}
 			{#if returnCollection}
 				<a href="{base}/collections/{returnCollection.slug}/">{returnCollection.title}</a><span aria-hidden="true">/</span>
 			{/if}
@@ -559,7 +561,7 @@
 			<span><FilmStrip size={18} /> {report.chapters.length} смысловых блоков</span>
 			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} /></span>
 		</div>
-		{#if otherCollections.length}
+		{#if otherCollections.length && !returnCollection?.isolated}
 			<p class="memberships label">Также в коллекциях:
 				{#each otherCollections as collection, i (collection.slug)}
 					<a href="{base}/collections/{collection.slug}/">{collection.title}</a>{i < otherCollections.length - 1 ? ', ' : ''}

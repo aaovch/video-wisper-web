@@ -36,6 +36,8 @@ export interface Collection {
 	items: string[];
 	/** Необязательные визуальные разделы для страницы коллекции. */
 	sections?: { title: string; subtitle?: string; items: string[] }[];
+	/** Не выводить из коллекции и её отчётов навигацию или поиск по общему архиву. */
+	isolated?: boolean;
 	/**
 	 * Пароль-«ключ». Если задан — и коллекция, и её отчёты закрыты до ввода пароля.
 	 * Внимание: это «лёгкий замок» на клиенте, а не настоящая защита: контент всё
@@ -302,13 +304,19 @@ export const collections: Collection[] = [
 		slug: 'noname',
 		title: 'NoName, фехтовальный лагерь 2026',
 		hema: true,
+		isolated: true,
 		facets: {
-			authors: ['Вячеслав Коротовских', 'Турин'],
-			weapons: ['Сабля', 'Рапира', 'Длинный меч']
+			authors: ['Турин', 'Евген', 'Пётр Васильев', 'Александр Овчинников'],
+			weapons: ['Сабля', 'Длинный меч']
 		},
 		subtitle:
-			'Тренировки и семинары фехтовального лагеря NoName 2026: длинный меч, сабля, рапира и физическая подготовка.',
+			'Материалы фехтовального лагеря NoName 2026: лекции Турина, кинезио Евгена, меч Пети и сабля Саши.',
 		items: [
+			'fizpodgotovka-dlya-fekhtovalshchika-turin',
+			'kinezio-trenirovka-2-stopa-golenostop',
+			'kinezio-trenirovka-3-tazobedrennyy-sustav',
+			'kinezio-trenirovka-4-kisti-paltsy-lokti',
+			'kinezio-trenirovka-5-plechevoy-poyas',
 			'soedinenie-dlinnyi-mech-lager-noname-1',
 			'soedinenie-dlinnyi-mech-lager-noname-2-utro',
 			'soedinenie-dlinnyi-mech-lager-noname-2',
@@ -316,23 +324,32 @@ export const collections: Collection[] = [
 			'soedinenie-dlinnyi-mech-lager-noname-4',
 			'soedinenie-dlinnyi-mech-lager-noname-poteryannaya',
 			'soedinenie-dlinnyi-mech-lager-noname-7',
-			'podgotovka-ataki-na-sable-korotovskih',
 			'avstriyskaya-sablya-2',
 			'avstriyskaya-sablya-trenirovka-3',
 			'avstriyskaya-sablya-obratnoe-lezvie',
-			'avstriyskaya-sablya-trenirovka-6-batmany-vybor',
-			'rapira-protiv-vstrechnogo-ukola-korotovskih',
-			'fizpodgotovka-dlya-fekhtovalshchika-turin',
-			'kinezio-trenirovka-2-stopa-golenostop',
-			'kinezio-trenirovka-3-tazobedrennyy-sustav',
-			'kinezio-trenirovka-4-kisti-paltsy-lokti',
-			'kinezio-trenirovka-5-plechevoy-poyas'
+			'avstriyskaya-sablya-trenirovka-5-povtorenie',
+			'avstriyskaya-sablya-trenirovka-6-batmany-vybor'
 		],
 		sections: [
 			{
-				title: 'Длинный меч · цикл по соединению',
+				title: 'Лекции Турина',
+				subtitle: 'Принципы физической подготовки фехтовальщика.',
+				items: ['fizpodgotovka-dlya-fekhtovalshchika-turin']
+			},
+			{
+				title: 'Кинезио Евгена',
+				subtitle: 'Тренировки 2–5 для стоп, ног, рук и плечевого пояса.',
+				items: [
+					'kinezio-trenirovka-2-stopa-golenostop',
+					'kinezio-trenirovka-3-tazobedrennyy-sustav',
+					'kinezio-trenirovka-4-kisti-paltsy-lokti',
+					'kinezio-trenirovka-5-plechevoy-poyas'
+				]
+			},
+			{
+				title: 'Меч Пети',
 				subtitle:
-					'Последовательный лагерный цикл: тренировка 1, тренировка 2 утром и вечером, тренировки 3, 4 и 6, затем заключительная тренировка 7.',
+					'Последовательный цикл по соединению: тренировка 1, тренировка 2 утром и вечером, тренировки 3, 4 и предположительно 5, затем заключительная тренировка 7.',
 				items: [
 					'soedinenie-dlinnyi-mech-lager-noname-1',
 					'soedinenie-dlinnyi-mech-lager-noname-2-utro',
@@ -344,34 +361,31 @@ export const collections: Collection[] = [
 				]
 			},
 			{
-				title: 'Сабля',
+				title: 'Сабля Саши',
 				subtitle:
-					'Подготовка атаки и практический цикл по австрийской сабле: тренировки 2, 3, 4 и 6.',
+					'Практический цикл по австрийской сабле: тренировки 2, 3, 4, 5 и 6.',
 				items: [
-					'podgotovka-ataki-na-sable-korotovskih',
 					'avstriyskaya-sablya-2',
 					'avstriyskaya-sablya-trenirovka-3',
 					'avstriyskaya-sablya-obratnoe-lezvie',
+					'avstriyskaya-sablya-trenirovka-5-povtorenie',
 					'avstriyskaya-sablya-trenirovka-6-batmany-vybor'
 				]
-			},
-			{
-				title: 'Рапира',
-				subtitle: 'Практический семинар по работе против встречного укола.',
-				items: ['rapira-protiv-vstrechnogo-ukola-korotovskih']
-			},
-			{
-				title: 'Физическая подготовка',
-				subtitle:
-					'Лекция о силовой подготовке и кинезиотренировки 2–5 для ног, рук и плечевого пояса.',
-				items: [
-					'fizpodgotovka-dlya-fekhtovalshchika-turin',
-					'kinezio-trenirovka-2-stopa-golenostop',
-					'kinezio-trenirovka-3-tazobedrennyy-sustav',
-					'kinezio-trenirovka-4-kisti-paltsy-lokti',
-					'kinezio-trenirovka-5-plechevoy-poyas'
-				]
 			}
+		]
+	},
+	{
+		slug: 'seminary-korotovskih',
+		title: 'Семинары Вячеслава Коротовских',
+		hema: true,
+		facets: {
+			authors: ['Вячеслав Коротовских'],
+			weapons: ['Сабля', 'Рапира']
+		},
+		subtitle: 'Практические семинары по тактике сабли и рапиры.',
+		items: [
+			'podgotovka-ataki-na-sable-korotovskih',
+			'rapira-protiv-vstrechnogo-ukola-korotovskih'
 		]
 	},
 	{
