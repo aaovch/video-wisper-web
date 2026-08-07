@@ -314,6 +314,7 @@ export const collections: Collection[] = [
 		items: [
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
 			'pitanie-i-ves-fekhtovalshchika-turin',
+			'kinezio-trenirovka-1-razminka-koordinatsiya',
 			'kinezio-trenirovka-2-stopa-golenostop',
 			'kinezio-trenirovka-3-tazobedrennyy-sustav',
 			'kinezio-trenirovka-4-kisti-paltsy-lokti',
@@ -341,8 +342,9 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Кинезио Евгена',
-				subtitle: 'Тренировки 2–5 для стоп, ног, рук и плечевого пояса.',
+				subtitle: 'Тренировки 1–5: общая разминка, стопы, ноги, руки и плечевой пояс.',
 				items: [
+					'kinezio-trenirovka-1-razminka-koordinatsiya',
 					'kinezio-trenirovka-2-stopa-golenostop',
 					'kinezio-trenirovka-3-tazobedrennyy-sustav',
 					'kinezio-trenirovka-4-kisti-paltsy-lokti',
