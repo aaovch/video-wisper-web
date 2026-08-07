@@ -313,6 +313,7 @@ export const collections: Collection[] = [
 			'Материалы фехтовального лагеря NoName 2026: лекции Турина, кинезио Евгена, меч Пети и сабля Саши.',
 		items: [
 			'fizpodgotovka-dlya-fekhtovalshchika-turin',
+			'pitanie-i-ves-fekhtovalshchika-turin',
 			'kinezio-trenirovka-2-stopa-golenostop',
 			'kinezio-trenirovka-3-tazobedrennyy-sustav',
 			'kinezio-trenirovka-4-kisti-paltsy-lokti',
@@ -332,8 +333,11 @@ export const collections: Collection[] = [
 		sections: [
 			{
 				title: 'Лекции Турина',
-				subtitle: 'Принципы физической подготовки фехтовальщика.',
-				items: ['fizpodgotovka-dlya-fekhtovalshchika-turin']
+				subtitle: 'Физическая подготовка, питание и управление весом фехтовальщика.',
+				items: [
+					'fizpodgotovka-dlya-fekhtovalshchika-turin',
+					'pitanie-i-ves-fekhtovalshchika-turin'
+				]
 			},
 			{
 				title: 'Кинезио Евгена',
