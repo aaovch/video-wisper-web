@@ -154,6 +154,60 @@
 		transcriptCopyResetTimer = setTimeout(() => (transcriptCopyState = 'idle'), 2200);
 	}
 
+	// --- Масштаб шрифта расшифровки: длинные тексты читают по-разному ---
+	const TRANSCRIPT_SCALE_KEY = 'transcript-scale';
+	function readTranscriptScale(): number {
+		try {
+			const saved = Number(localStorage.getItem(TRANSCRIPT_SCALE_KEY));
+			if (saved >= 0.8 && saved <= 1.3) return saved;
+		} catch {
+			// нет доступа к localStorage — используем базовый размер
+		}
+		return 1;
+	}
+	let transcriptScale = $state(browser ? readTranscriptScale() : 1);
+
+	function adjustTranscriptScale(delta: number) {
+		transcriptScale = Math.round(Math.min(1.3, Math.max(0.8, transcriptScale + delta)) * 10) / 10;
+		try {
+			localStorage.setItem(TRANSCRIPT_SCALE_KEY, String(transcriptScale));
+		} catch {
+			// не критично
+		}
+	}
+
+	// --- Копирование тезиса цитатой ---
+	let copiedQuote = $state('');
+	let quoteResetTimer: ReturnType<typeof setTimeout> | undefined;
+
+	async function copyQuote(text: string) {
+		const quote = `«${text}» — ${report.title}`;
+		let copied = false;
+		if (navigator.clipboard?.writeText) {
+			try {
+				await navigator.clipboard.writeText(quote);
+				copied = true;
+			} catch {
+				// clipboard может быть запрещён — фолбэк ниже
+			}
+		}
+		if (!copied) {
+			const textarea = document.createElement('textarea');
+			textarea.value = quote;
+			textarea.setAttribute('readonly', '');
+			textarea.style.position = 'fixed';
+			textarea.style.opacity = '0';
+			document.body.appendChild(textarea);
+			textarea.select();
+			copied = document.execCommand('copy');
+			textarea.remove();
+		}
+		if (!copied) return;
+		copiedQuote = text;
+		clearTimeout(quoteResetTimer);
+		quoteResetTimer = setTimeout(() => (copiedQuote = ''), 1800);
+	}
+
 	const seminarGlossary = [
 		{
 			term: 'Тэноути',
@@ -648,17 +702,51 @@
 			</div>
 
 			<div class="top-sections">
+			{#snippet fontControls()}
+				<span class="font-controls" role="group" aria-label="Размер шрифта расшифровки">
+					<button
+						type="button"
+						onclick={() => adjustTranscriptScale(-0.1)}
+						disabled={transcriptScale <= 0.8}
+						aria-label="Уменьшить шрифт"
+					>A−</button>
+					<button
+						type="button"
+						onclick={() => adjustTranscriptScale(0.1)}
+						disabled={transcriptScale >= 1.3}
+						aria-label="Увеличить шрифт"
+					>A+</button>
+				</span>
+			{/snippet}
+
+			{#snippet thesisItem(thesis: string)}
+				<li>
+					<span class="thesis-text">{thesis}</span>
+					<button
+						type="button"
+						class="copy-quote"
+						class:copied={copiedQuote === thesis}
+						onclick={() => copyQuote(thesis)}
+						aria-label={copiedQuote === thesis ? 'Тезис скопирован' : 'Скопировать тезис цитатой'}
+						title={copiedQuote === thesis ? 'Скопировано' : 'Скопировать цитатой'}
+					>
+						{#if copiedQuote === thesis}<Check size={14} weight="bold" />{:else}<CopySimple size={14} />{/if}
+					</button>
+				</li>
+			{/snippet}
+
 			<section class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
 				<div class="section-heading section-heading--plain"><h2 id="overview-title">Главное</h2></div>
 				<ul>
-					{#each report.overview_theses.slice(0, 3) as thesis (thesis)}<li>{thesis}</li>{/each}
+					{#each report.overview_theses.slice(0, 3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}
 				</ul>
 				{#if report.overview_theses.length > 3}
 					<details class="more-theses">
 						<summary>Все тезисы <CaretDown size={16} /></summary>
-						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}<li>{thesis}</li>{/each}</ul>
+						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}</ul>
 					</details>
 				{/if}
+				<span class="sr-only" role="status" aria-live="polite">{copiedQuote ? 'Тезис скопирован' : ''}</span>
 			</section>
 
 			{#if hasAdditional}
@@ -906,6 +994,7 @@
 						<div id="materials-panel-transcript" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
 							<header class="materials-panel-head">
 								<span class="materials-panel-kicker"><TextAlignLeft size={16} aria-hidden="true" /> Полный текст лекции</span>
+								{@render fontControls()}
 								<button
 									type="button"
 									class:copied={transcriptCopyState === 'copied'}
@@ -920,7 +1009,7 @@
 									{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
 								</span>
 							</header>
-							<div class="materials-transcript">
+							<div class="materials-transcript" style="--transcript-scale: {transcriptScale}">
 								{#if transcriptLoadState === 'ready'}
 									<p>{transcriptText}</p>
 								{:else if transcriptLoadState === 'error'}
@@ -957,13 +1046,16 @@
 							</span>
 						</summary>
 						{#if transcriptOpen}
-							{#if transcriptLoadState === 'ready'}
-								<p>{transcriptText}</p>
-							{:else if transcriptLoadState === 'error'}
-								<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
-							{:else}
-								<p class="transcript-status">Загрузка расшифровки…</p>
-							{/if}
+							<div class="transcript-toolbar">{@render fontControls()}</div>
+							<div class="transcript-body" style="--transcript-scale: {transcriptScale}">
+								{#if transcriptLoadState === 'ready'}
+									<p>{transcriptText}</p>
+								{:else if transcriptLoadState === 'error'}
+									<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
+								{:else}
+									<p class="transcript-status">Загрузка расшифровки…</p>
+								{/if}
+							</div>
 						{/if}
 					</details>
 				</section>
@@ -1107,6 +1199,36 @@
 	.overview > ul, .more-theses ul { display: grid; gap: 10px; margin: 20px 0 0 54px; padding: 0; list-style: none; }
 	.overview li { position: relative; padding-left: 20px; font-size: 17px; line-height: 1.55; }
 	.overview li::before { content: ''; position: absolute; left: 1px; top: 0.72em; width: 9px; height: 1px; background: var(--accent); }
+
+	/* Копирование тезиса: кнопка проявляется на hover/фокусе, на тач-экранах видна всегда */
+	.copy-quote {
+		display: inline-grid;
+		place-items: center;
+		width: 26px;
+		height: 26px;
+		margin-left: 8px;
+		border: 0;
+		border-radius: 6px;
+		background: transparent;
+		color: var(--ink-faint);
+		vertical-align: middle;
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+	}
+
+	.overview li:hover .copy-quote,
+	.copy-quote:focus-visible,
+	.copy-quote.copied {
+		opacity: 1;
+	}
+
+	.copy-quote:hover { color: var(--accent); background: var(--paper-2); }
+	.copy-quote.copied { color: var(--accent); }
+
+	@media (hover: none) {
+		.copy-quote { opacity: 0.55; }
+	}
 	.more-theses { margin: 14px 0 0 54px; }
 	.more-theses summary { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; list-style: none; }
 	.more-theses summary::-webkit-details-marker { display: none; }
@@ -1199,7 +1321,6 @@
 		border-bottom: 1px solid var(--line);
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
 		gap: 16px;
 		color: var(--ink-faint);
 		font-family: var(--font-mono);
@@ -1212,6 +1333,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
+		margin-right: auto;
 		color: var(--ink);
 		font-weight: 600;
 	}
@@ -1358,7 +1480,7 @@
 		margin: 0;
 		padding: 22px;
 		color: var(--ink-soft);
-		font-size: 15px;
+		font-size: calc(15px * var(--transcript-scale, 1));
 		line-height: 1.75;
 		white-space: pre-wrap;
 		overflow-wrap: anywhere;
@@ -1758,9 +1880,46 @@
 	.transcript p {
 		margin: 0 0 24px;
 		color: var(--ink-soft);
-		font-size: 17px;
+		font-size: calc(17px * var(--transcript-scale, 1));
 		line-height: 1.85;
 		max-width: var(--measure);
+	}
+
+	.transcript-toolbar {
+		display: flex;
+		justify-content: flex-end;
+		margin: 14px 0 6px;
+	}
+
+	.font-controls {
+		display: inline-flex;
+		gap: 4px;
+	}
+
+	.font-controls button {
+		display: inline-grid;
+		place-items: center;
+		min-width: 34px;
+		height: 28px;
+		padding: 0 7px;
+		border: 1px solid var(--line-strong);
+		border-radius: 6px;
+		background: transparent;
+		color: var(--ink-soft);
+		font-family: var(--font-mono);
+		font-size: 12px;
+		cursor: pointer;
+		transition: color 0.2s ease, border-color 0.2s ease;
+	}
+
+	.font-controls button:hover:not(:disabled) {
+		color: var(--accent);
+		border-color: var(--accent);
+	}
+
+	.font-controls button:disabled {
+		opacity: 0.4;
+		cursor: default;
 	}
 
 	.source {

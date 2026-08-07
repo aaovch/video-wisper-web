@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
@@ -25,6 +26,8 @@
 		type SearchFilterGroup,
 		type SearchFilterSelections
 	} from '$lib/search-filters';
+	import { readRecentReports } from '$lib/recent-reports';
+	import { getReportSummary } from '$lib/data/report-meta';
 	import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
@@ -41,6 +44,14 @@
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let requestId = 0;
 	let filterReturnFocus: HTMLButtonElement | null = null;
+	let inputEl = $state<HTMLInputElement | null>(null);
+	let activeHit = $state(-1);
+
+	// «Недавно открывали» живёт только в localStorage — читаем после маунта, чтобы не ломать гидрацию.
+	let recentSlugs = $state<string[]>([]);
+	onMount(() => {
+		recentSlugs = readRecentReports();
+	});
 
 	const filterGroups = $derived.by<SearchFilterGroup[]>(() => [
 		{
@@ -85,6 +96,13 @@
 	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
 	const filtersActive = $derived(activeFilterCount > 0);
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
+	const recentReports = $derived(
+		recentSlugs
+			.filter((slug) => visibleArchiveSlugs.includes(slug))
+			.map((slug) => getReportSummary(slug))
+			.filter((summary): summary is NonNullable<typeof summary> => Boolean(summary))
+			.slice(0, 5)
+	);
 	const scopeSlugs = $derived(
 		filtersActive
 			? visibleSubset(filteredCollections.flatMap((collection) => collection.items), visibleArchiveSlugs)
@@ -146,7 +164,51 @@
 		if (filterSheetOpen && event.key === 'Escape') {
 			event.preventDefault();
 			closeFilters();
+			return;
 		}
+		// Быстрый фокус в поиск: «/» или Cmd/Ctrl-K, если фокус не в поле ввода.
+		const target = event.target as HTMLElement | null;
+		const typing = target?.closest('input, textarea, [contenteditable="true"]');
+		const shortcut =
+			(event.key === '/' && !typing) ||
+			((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k');
+		if (shortcut) {
+			event.preventDefault();
+			inputEl?.focus();
+			inputEl?.select();
+		}
+	}
+
+	function onSearchKeydown(event: KeyboardEvent) {
+		if (!visibleHits.length) return;
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			if (activeHit >= visibleHits.length - 1 && !showAllHits && uniqueHits.length > visibleHits.length) {
+				showAllHits = true;
+			}
+			activeHit = Math.min(activeHit + 1, uniqueHits.length - 1);
+			focusActiveHit();
+		} else if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			activeHit = Math.max(activeHit - 1, 0);
+			focusActiveHit();
+		} else if (event.key === 'Enter' && activeHit >= 0) {
+			const hit = visibleHits[activeHit];
+			if (hit) {
+				event.preventDefault();
+				void goto(resultHref(hit, false));
+			}
+		} else if (event.key === 'Escape' && activeHit >= 0) {
+			activeHit = -1;
+		}
+	}
+
+	function focusActiveHit() {
+		queueMicrotask(() =>
+			document
+				.getElementById(`hit-${activeHit}`)
+				?.scrollIntoView({ block: 'nearest' })
+		);
 	}
 
 	function facetOptions(key: 'authors' | 'places' | 'weapons') {
@@ -192,6 +254,7 @@
 		const runId = ++requestId;
 		showAllHits = false;
 		searchError = false;
+		activeHit = -1;
 		const normalized = query.trim();
 		if (normalized.length < 2) {
 			hits = [];
@@ -267,14 +330,17 @@
 			<input
 				type="search"
 				aria-label="Поиск по архиву"
+				bind:this={inputEl}
 				bind:value={query}
 				onfocus={preloadSearchIndex}
 				oninput={scheduleSearch}
+				onkeydown={onSearchKeydown}
 				placeholder="Например: как подготовить атаку против позиционной защиты?"
 				autocomplete="off"
 				spellcheck="false"
 			/>
 			{#if loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
+			<kbd class="search-kbd mono" aria-hidden="true">/</kbd>
 		</label>
 		<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
@@ -309,6 +375,17 @@
 			onClose={closeFilters}
 		/>
 	</div>
+{/if}
+
+{#if recentReports.length > 0 && query.trim().length < 2}
+	<section class="container recent" aria-label="Недавно открывали">
+		<span class="label">Недавно открывали</span>
+		<ul>
+			{#each recentReports as recent (recent.slug)}
+				<li><a href="{base}/reports/{recent.slug}/">{recent.title}</a></li>
+			{/each}
+		</ul>
+	</section>
 {/if}
 
 {#if query.trim().length >= 2}
@@ -346,7 +423,7 @@
 		{:else}
 			<ol class="result-list">
 				{#each visibleHits as hit, index (uniqueHitKey(hit))}
-					<li>
+					<li id={`hit-${index}`} class:kbd-active={activeHit === index}>
 						<div class="result-copy">
 							<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
 							<h3>{hit.title}</h3>
@@ -447,7 +524,7 @@
 
 	.search-field {
 		display: grid;
-		grid-template-columns: auto minmax(0, 1fr) auto;
+		grid-template-columns: auto minmax(0, 1fr) auto auto;
 		align-items: center;
 		gap: 16px;
 		min-height: 66px;
@@ -483,6 +560,28 @@
 		color: var(--accent);
 	}
 
+	.search-kbd {
+		display: inline-grid;
+		place-items: center;
+		min-width: 24px;
+		height: 24px;
+		padding: 0 6px;
+		border: 1px solid var(--line-strong);
+		border-radius: 6px;
+		color: var(--ink-faint);
+		font-size: 12px;
+	}
+
+	.search-field:focus-within .search-kbd {
+		display: none;
+	}
+
+	@media (hover: none), (max-width: 720px) {
+		.search-kbd {
+			display: none;
+		}
+	}
+
 	.filter-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 	.filter-trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--ink-soft); font: inherit; font-size: 14px; cursor: pointer; }
 	.filter-trigger--compact { min-height: 34px; padding: 5px 10px; font-size: 12px; }
@@ -491,6 +590,39 @@
 	.filter-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--paper); font-size: 10px; }
 	.filter-backdrop { position: fixed; inset: 0; z-index: 80; width: 100%; height: 100%; border: 0; background: color-mix(in srgb, var(--ink) 28%, transparent); cursor: default; }
 	.filter-sheet { position: fixed; z-index: 81; top: 0; right: 0; width: min(390px, calc(100vw - 28px)); height: 100dvh; overflow-y: auto; padding: 28px; border-left: 1px solid var(--line-strong); background: var(--paper); box-shadow: -18px 0 40px color-mix(in srgb, var(--ink) 12%, transparent); }
+
+	.recent {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 8px 18px;
+		margin-top: 26px;
+	}
+
+	.recent .label {
+		color: var(--ink-faint);
+	}
+
+	.recent ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px 18px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.recent a {
+		color: var(--ink-soft);
+		font-size: 15px;
+		border-bottom: 1px solid var(--line-strong);
+		transition: color 0.2s ease, border-color 0.2s ease;
+	}
+
+	.recent a:hover {
+		color: var(--accent-ink);
+		border-color: var(--accent);
+	}
 
 	.results,
 	.catalog {
@@ -535,6 +667,14 @@
 		gap: clamp(24px, 4vw, 56px);
 		padding: 24px 0;
 		border-bottom: 1px solid var(--line-strong);
+	}
+
+	/* Активный результат при навигации стрелками */
+	.result-list li.kbd-active {
+		background: color-mix(in srgb, var(--paper-2) 75%, transparent);
+		box-shadow: inset 3px 0 0 var(--accent);
+		padding-left: 14px;
+		padding-right: 8px;
 	}
 
 	.breadcrumb {

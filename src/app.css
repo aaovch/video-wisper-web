@@ -24,6 +24,29 @@
 	--font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
 
 	--shadow: 0 1px 0 var(--line), 0 18px 40px -28px rgba(31, 28, 23, 0.5);
+
+	color-scheme: light;
+}
+
+/* Ночной «пергамент»: тёплые тёмные тона, тот же характер, что и днём */
+html[data-theme='dark'] {
+	--paper: #17140f;
+	--paper-2: #1e1a14;
+	--paper-3: #26211a;
+	--ink: #ece3d3;
+	--ink-soft: #c0b6a3;
+	--ink-faint: #978c78; /* ~4.6:1 на --paper */
+	--line: #322b21;
+	--line-strong: #473d2e;
+	--accent: #d7795c; /* терракота — светлее дневной охры-крови */
+	--accent-ink: #e79475;
+	--accent-2: #cba85f; /* тёплое золото */
+	--screen: #0c0a07;
+	--screen-edge: #2a241b;
+
+	--shadow: 0 1px 0 var(--line), 0 24px 48px -30px rgba(0, 0, 0, 0.75);
+
+	color-scheme: dark;
 }
 
 * {
@@ -44,6 +67,9 @@ body {
 	line-height: 1.7;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
 
 /* Зернистость бумаги поверх фона */
@@ -58,9 +84,21 @@ body::before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
+/* В тёмной теме multiply почти гасит зерно — переводим в мягкий свет и приглушаем */
+html[data-theme='dark'] body::before {
+	mix-blend-mode: soft-light;
+	opacity: 0.35;
+}
+
 @media (max-width: 720px) {
 	body::before {
 		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body {
+		transition: none;
 	}
 }
 

@@ -3,7 +3,20 @@
 	<head>
 		<meta charset="utf-8" />
 		<script>
-			document.documentElement.classList.add('js');
+			// Тему ставим до первой отрисовки — иначе мигание светлым при dark-режиме.
+			(function () {
+				var t;
+				try {
+					t = localStorage.getItem('theme');
+					if (t !== 'light' && t !== 'dark') {
+						t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+					}
+				} catch (e) {
+					t = 'light';
+				}
+				document.documentElement.dataset.theme = t;
+				document.documentElement.classList.add('js');
+			})();
 		</script>
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
