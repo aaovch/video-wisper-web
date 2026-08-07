@@ -13,14 +13,18 @@ const reportsDir = join(root, 'src/lib/data/reports');
 const transcriptsDir = join(root, 'src/lib/data/transcripts');
 const searchDir = join(root, 'static/search');
 const staticTranscriptsDir = join(root, 'static/transcripts');
-const outIndex = join(searchDir, 'index.json');
+// v4: индекс порезан на два шарда — лёгкое ядро ищется сразу,
+// тяжёлые transcript-окна догружаются фоном (см. search-core.ts).
+const outCoreIndex = join(searchDir, 'index-core.json');
+const outTranscriptIndex = join(searchDir, 'index-transcripts.json');
+const legacyIndex = join(searchDir, 'index.json');
 const outManifest = join(searchDir, 'manifest.json');
 const outChapterTitles = join(searchDir, 'chapter-titles.json');
 const outMeta = join(root, 'src/lib/data/report-meta.json');
 
 import { stemRu } from '../src/lib/stem-ru.js';
 
-const INDEX_VERSION = 3;
+const INDEX_VERSION = 4;
 const TRANSCRIPT_TARGET_CHARS = 620;
 const TRANSCRIPT_MAX_CHARS = 920;
 const TRANSCRIPT_MAX_SECONDS = 45;
@@ -270,9 +274,21 @@ const miniSearchOptions = {
 	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags'],
 	processTerm
 };
-const search = new MiniSearch(miniSearchOptions);
-search.addAll(docs);
-const serializedIndex = JSON.stringify(search);
+
+// Ядро (отчёты/главы/тезисы/материалы) мало и парсится мгновенно;
+// transcript-окна — ~90% объёма, уезжают в отдельный фоновый шард.
+// id глобально уникальны между шардами (общий nextDocId).
+const coreDocs = docs.filter((doc) => doc.kind !== 'transcript');
+const transcriptDocs = docs.filter((doc) => doc.kind === 'transcript');
+
+function serializeIndex(shardDocs) {
+	const search = new MiniSearch(miniSearchOptions);
+	search.addAll(shardDocs);
+	return JSON.stringify(search);
+}
+
+const serializedCore = serializeIndex(coreDocs);
+const serializedTranscripts = serializeIndex(transcriptDocs);
 const kinds = Object.fromEntries([...new Set(docs.map((doc) => doc.kind))].map((kind) => [kind, docs.filter((doc) => doc.kind === kind).length]));
 const reportDocuments = Object.fromEntries(meta.map(({ slug }) => {
 	const reportDocs = docs.filter((doc) => doc.reportSlug === slug);
@@ -280,7 +296,9 @@ const reportDocuments = Object.fromEntries(meta.map(({ slug }) => {
 }));
 
 mkdirSync(searchDir, { recursive: true });
-writeFileSync(outIndex, serializedIndex);
+rmSync(legacyIndex, { force: true });
+writeFileSync(outCoreIndex, serializedCore);
+writeFileSync(outTranscriptIndex, serializedTranscripts);
 writeFileSync(outChapterTitles, JSON.stringify(chapterTitlesBySlug));
 writeFileSync(outManifest, JSON.stringify({
 	version: INDEX_VERSION,
@@ -288,8 +306,15 @@ writeFileSync(outManifest, JSON.stringify({
 	reports: meta.length,
 	kinds,
 	reportDocuments,
-	bytes: Buffer.byteLength(serializedIndex)
+	bytes: {
+		core: Buffer.byteLength(serializedCore),
+		transcripts: Buffer.byteLength(serializedTranscripts)
+	}
 }, null, '\t') + '\n');
 writeFileSync(outMeta, JSON.stringify(meta, null, '\t') + '\n');
 
-console.log(`search-index v${INDEX_VERSION}: ${docs.length} docs, ${(Buffer.byteLength(serializedIndex) / 1048576).toFixed(2)} MiB, ${meta.length} reports`);
+const mib = (value) => (value / 1048576).toFixed(2);
+console.log(
+	`search-index v${INDEX_VERSION}: ${docs.length} docs (core ${coreDocs.length} / transcripts ${transcriptDocs.length}), ` +
+	`core ${mib(Buffer.byteLength(serializedCore))} MiB + transcripts ${mib(Buffer.byteLength(serializedTranscripts))} MiB, ${meta.length} reports`
+);

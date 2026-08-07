@@ -15,6 +15,8 @@ export interface SearchResponse {
 	resultScope: SearchScope;
 	fallback: boolean;
 	correctedQuery?: string;
+	/** Transcript-шард ещё грузится — по whenSearchComplete() стоит повторить запрос. */
+	pending?: boolean;
 }
 
 export interface SearchHit {

@@ -143,8 +143,18 @@ const miniSearchOptions = {
 	processTerm
 };
 
-let mini: MiniSearch<IndexedDoc> | null = null;
-let indexPromise: Promise<MiniSearch<IndexedDoc>> | null = null;
+/**
+ * Индекс порезан на два шарда (см. scripts/build-search-index.mjs):
+ * лёгкое ядро (отчёты/главы/тезисы/материалы) грузится и парсится мгновенно,
+ * тяжёлые transcript-окна догружаются фоном. Поиск работает сразу по ядру,
+ * а по готовности транскриптов компоненты дозапускают запрос (`pending`).
+ */
+let coreMini: MiniSearch<IndexedDoc> | null = null;
+let corePromise: Promise<MiniSearch<IndexedDoc>> | null = null;
+let transcriptMini: MiniSearch<IndexedDoc> | null = null;
+let transcriptPromise: Promise<void> | null = null;
+/** Не ретраим упавший transcript-шард в рамках сессии — ядро продолжает работать. */
+let transcriptFailed = false;
 /** slug → заголовки глав; лежит рядом с индексом, не в eager-бандле. */
 let chapterTitles: Record<string, string[]> | null = null;
 
@@ -163,27 +173,77 @@ async function loadChapterTitles(): Promise<void> {
 	}
 }
 
-async function loadIndex(): Promise<MiniSearch<IndexedDoc>> {
-	if (mini) return mini;
-	if (!indexPromise) {
+function fetchShard(file: string): Promise<MiniSearch<IndexedDoc>> {
+	return fetch(`${base}/search/${file}`)
+		.then((response) => {
+			if (!response.ok) throw new Error(`Search index HTTP ${response.status}`);
+			return response.text();
+		})
+		.then((serialized) => MiniSearch.loadJSONAsync<IndexedDoc>(serialized, miniSearchOptions));
+}
+
+function loadCore(): Promise<MiniSearch<IndexedDoc>> {
+	if (coreMini) return Promise.resolve(coreMini);
+	if (!corePromise) {
 		const titlesReady = loadChapterTitles();
-		indexPromise = fetch(`${base}/search/index.json`)
-			.then((response) => {
-				if (!response.ok) throw new Error(`Search index HTTP ${response.status}`);
-				return response.text();
-			})
-			.then((serialized) => MiniSearch.loadJSONAsync<IndexedDoc>(serialized, miniSearchOptions))
+		corePromise = fetchShard('index-core.json')
 			.then(async (loaded) => {
 				await titlesReady;
-				mini = loaded;
+				coreMini = loaded;
 				return loaded;
 			})
 			.catch((error) => {
-				indexPromise = null;
+				corePromise = null;
 				throw error;
 			});
 	}
-	return indexPromise;
+	return corePromise;
+}
+
+/** Фоновая догрузка transcript-шарда; ошибок наружу не отдаёт. */
+function loadTranscripts(): Promise<void> {
+	if (transcriptMini || transcriptFailed) return Promise.resolve();
+	if (!transcriptPromise) {
+		transcriptPromise = fetchShard('index-transcripts.json')
+			.then((loaded) => {
+				transcriptMini = loaded;
+			})
+			.catch(() => {
+				transcriptFailed = true;
+			});
+	}
+	return transcriptPromise;
+}
+
+/** Транскрипты ещё в пути — выдача может пополниться, стоит повторить запрос. */
+function transcriptsPending(): boolean {
+	return !transcriptMini && !transcriptFailed;
+}
+
+/** Резолвится, когда transcript-шард догрузился (или окончательно упал). */
+export function whenSearchComplete(): Promise<void> {
+	return loadTranscripts();
+}
+
+/** Ищет по всем готовым шардам; id глобально уникальны, дедуп — на случай тестовых фикстур. */
+function searchShards(query: string, options: SearchOptions): SearchResult[] {
+	if (!coreMini) return [];
+	const results = coreMini.search(query, options);
+	if (!transcriptMini) return results;
+	const seen = new Set(results.map((result) => String(result.id)));
+	for (const result of transcriptMini.search(query, options)) {
+		if (!seen.has(String(result.id))) results.push(result);
+	}
+	return results;
+}
+
+function suggestShards(query: string, options: SearchOptions): string | undefined {
+	if (!coreMini) return undefined;
+	const suggestions = [
+		...coreMini.autoSuggest(query, options),
+		...(transcriptMini?.autoSuggest(query, options) ?? [])
+	].sort((a, b) => b.score - a.score);
+	return suggestions[0]?.suggestion;
 }
 
 function snippet(text: string, parsed: ParsedQuery, max = 156): string {
@@ -426,11 +486,12 @@ async function executeTieredSearch(
 ): Promise<TieredSearchResult> {
 	const parsed = parseQuery(query);
 	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return { hits: [], matchKind: 'empty' };
-	const index = await loadIndex();
+	await loadCore();
+	void loadTranscripts();
 	const directQuery = parsed.meaningfulWords.join(' ');
 	const baseOptions = { boost: { field_title: 4.2, field_tags: 1.55 }, filter };
 
-	const exact = index.search(directQuery, {
+	const exact = searchShards(directQuery, {
 		...baseOptions,
 		combineWith: 'AND',
 		fuzzy: false,
@@ -440,7 +501,7 @@ async function executeTieredSearch(
 		return { hits: rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05), matchKind: 'exact' };
 	}
 
-	const prefix = index.search(directQuery, {
+	const prefix = searchShards(directQuery, {
 		...baseOptions,
 		combineWith: 'AND',
 		fuzzy: false,
@@ -451,15 +512,15 @@ async function executeTieredSearch(
 	}
 
 	const correctionRanked = new Map<string, SearchResult>();
-	const suggestion = index.autoSuggest(directQuery, {
+	const suggestion = suggestShards(directQuery, {
 		...baseOptions,
 		combineWith: 'AND',
 		fuzzy: 0.34,
 		prefix: false
-	})[0]?.suggestion;
+	});
 	let correctedQuery: string | undefined;
 	if (suggestion && norm(suggestion) !== directQuery) {
-		const corrected = index.search(suggestion, {
+		const corrected = searchShards(suggestion, {
 			...baseOptions,
 			combineWith: 'AND',
 			fuzzy: false,
@@ -472,7 +533,7 @@ async function executeTieredSearch(
 	}
 	mergeResults(
 		correctionRanked,
-		index.search(directQuery, {
+		searchShards(directQuery, {
 			...baseOptions,
 			combineWith: 'AND',
 			fuzzy: adaptiveFuzzy,
@@ -491,7 +552,7 @@ async function executeTieredSearch(
 	const semanticRanked = new Map<string, SearchResult>();
 	mergeResults(
 		semanticRanked,
-		index.search(directQuery, {
+		searchShards(directQuery, {
 			...baseOptions,
 			combineWith: 'OR',
 			fuzzy: adaptiveFuzzy,
@@ -503,7 +564,7 @@ async function executeTieredSearch(
 	if (expandedTerms.length > parsed.meaningfulWords.length) {
 		mergeResults(
 			semanticRanked,
-			index.search(expandedTerms.join(' '), {
+			searchShards(expandedTerms.join(' '), {
 				...baseOptions,
 				combineWith: 'OR',
 				fuzzy: false,
@@ -536,8 +597,9 @@ async function executeExactSearch(
 ): Promise<import('$lib/search-types').SearchHit[]> {
 	const parsed = parseQuery(query);
 	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return [];
-	const index = await loadIndex();
-	const results = index.search(parsed.meaningfulWords.join(' '), {
+	await loadCore();
+	void loadTranscripts();
+	const results = searchShards(parsed.meaningfulWords.join(' '), {
 		boost: { field_title: 4.2, field_tags: 1.55 },
 		filter,
 		combineWith: 'AND',
@@ -628,6 +690,9 @@ export async function searchScoped(
 	if (!scopes.length) throw new Error('searchScoped requires at least one scope');
 	const normalizedQuery = query.trim();
 	const requestedScope = scopes[0];
+	// Фиксируем до поиска: если транскрипты догрузятся во время запроса,
+	// лишний повтор вернёт тот же результат — это безопасно.
+	const pending = transcriptsPending();
 	let requestedResult: TieredSearchResult | undefined;
 
 	for (let index = 0; index < scopes.length; index += 1) {
@@ -643,7 +708,8 @@ export async function searchScoped(
 				requestedScope,
 				resultScope: scope,
 				fallback: index > 0,
-				correctedQuery: result.correctedQuery
+				correctedQuery: result.correctedQuery,
+				pending
 			};
 		}
 	}
@@ -656,18 +722,24 @@ export async function searchScoped(
 		requestedScope,
 		resultScope: requestedScope,
 		fallback: false,
-		correctedQuery: result.correctedQuery
+		correctedQuery: result.correctedQuery,
+		pending
 	};
 }
 
 /** Drop the cached index so a failed load can be retried and tests can provide a fresh fixture. */
 export function resetSearchIndex(): void {
-	mini = null;
-	indexPromise = null;
+	coreMini = null;
+	corePromise = null;
+	transcriptMini = null;
+	transcriptPromise = null;
+	transcriptFailed = false;
 	chapterTitles = null;
 }
 
 /** Warm the prebuilt index on focus without blocking first paint. */
 export function preloadSearchIndex(): void {
-	void loadIndex().catch(() => undefined);
+	void loadCore()
+		.then(() => loadTranscripts())
+		.catch(() => undefined);
 }

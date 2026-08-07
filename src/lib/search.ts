@@ -16,6 +16,7 @@ export {
 	searchReportExact,
 	searchScoped,
 	resetSearchIndex,
-	preloadSearchIndex
+	preloadSearchIndex,
+	whenSearchComplete
 } from '$lib/search-core';
 export { groupByReport, groupByChapter } from '$lib/search-group';

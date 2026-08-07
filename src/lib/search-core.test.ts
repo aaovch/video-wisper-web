@@ -32,8 +32,9 @@ const documents = [
 ];
 
 let serializedIndex = '';
+let serializedEmptyIndex = '';
 
-beforeAll(() => {
+function buildIndex(docs: typeof documents | []): string {
 	const index = new MiniSearch({
 		idField: 'id',
 		fields: ['field_title', 'field_body', 'field_tags'],
@@ -43,13 +44,27 @@ beforeAll(() => {
 			return token.length >= 2 ? stemRu(token) : null;
 		}
 	});
-	index.addAll(documents);
-	serializedIndex = JSON.stringify(index);
+	index.addAll(docs);
+	return JSON.stringify(index);
+}
+
+beforeAll(() => {
+	serializedIndex = buildIndex(documents);
+	serializedEmptyIndex = buildIndex([]);
 });
 
 beforeEach(() => {
 	resetSearchIndex();
-	vi.stubGlobal('fetch', vi.fn(async () => new Response(serializedIndex, { status: 200 })));
+	// Ядро содержит фикстуры, transcript-шард пуст, chapter-titles — пустая карта.
+	vi.stubGlobal(
+		'fetch',
+		vi.fn(async (input: RequestInfo | URL) => {
+			const url = String(input);
+			if (url.includes('index-core.json')) return new Response(serializedIndex, { status: 200 });
+			if (url.includes('index-transcripts.json')) return new Response(serializedEmptyIndex, { status: 200 });
+			return new Response('{}', { status: 200 });
+		})
+	);
 });
 
 const reportScope: SearchScope = { kind: 'report', label: 'в отчёте', reportSlug: 'report-a' };
@@ -135,5 +150,20 @@ describe('scope fallback', () => {
 		const response = await searchScoped('предел', [transcriptOnly]);
 		expect(response.matchKind).toBe('empty');
 		expect(response.hits).toHaveLength(0);
+	});
+});
+
+describe('sharded index', () => {
+	it('reports pending until the transcript shard settles, then stops', async () => {
+		const first = await searchScoped('предукол', [archiveScope]);
+		expect(first.pending).toBe(true);
+		expect(first.hits[0]?.reportSlug).toBe('report-c');
+
+		const { whenSearchComplete } = await import('$lib/search-core');
+		await whenSearchComplete();
+
+		const second = await searchScoped('предукол', [archiveScope]);
+		expect(second.pending).toBe(false);
+		expect(second.hits[0]?.reportSlug).toBe('report-c');
 	});
 });

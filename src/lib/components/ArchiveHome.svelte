@@ -16,6 +16,7 @@
 	import {
 		preloadSearchIndex,
 		searchScoped,
+		whenSearchComplete,
 		type SearchHit,
 		type SearchResultKind,
 		type SearchScope
@@ -278,6 +279,12 @@
 					resultKind = response.matchKind;
 					correctedQuery = response.correctedQuery;
 					loading = false;
+					// Transcript-шард ещё грузился — дозапустим запрос, когда доедет.
+					if (response.pending) {
+						void whenSearchComplete().then(() => {
+							if (runId === requestId && current === query.trim()) scheduleSearch();
+						});
+					}
 				}
 			} catch {
 				if (runId === requestId && current === query.trim()) {

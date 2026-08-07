@@ -15,6 +15,7 @@
 	import {
 		preloadSearchIndex,
 		searchScoped,
+		whenSearchComplete,
 		type SearchHit,
 		type SearchResultKind,
 		type SearchScope,
@@ -352,6 +353,12 @@
 					correctedQuery = response.correctedQuery;
 					searchError = false;
 					loading = false;
+					// Transcript-шард ещё грузился — повторим запрос по готовности.
+					if (response.pending) {
+						void whenSearchComplete().then(() => {
+							if (!cancelled && q === debouncedQuery.trim()) retryNonce += 1;
+						});
+					}
 				}
 			})
 			.catch(() => {
