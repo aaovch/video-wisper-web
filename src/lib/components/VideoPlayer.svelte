@@ -25,7 +25,10 @@
 	const iframeSrc = $derived.by(() => {
 		const s = start;
 		if (video.provider === 'rutube') {
-			return `https://rutube.ru/play/embed/${video.id}/?t=${s}`;
+			const privateToken = video.privateToken
+				? `&p=${encodeURIComponent(video.privateToken)}`
+				: '';
+			return `https://rutube.ru/play/embed/${video.id}/?t=${s}${privateToken}`;
 		}
 		if (video.provider === 'vimeo') {
 			return `https://player.vimeo.com/video/${video.id}#t=${s}s`;

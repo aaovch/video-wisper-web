@@ -389,7 +389,8 @@ export const collections: Collection[] = [
 		subtitle: 'Практические семинары по тактике сабли и рапиры.',
 		items: [
 			'podgotovka-ataki-na-sable-korotovskih',
-			'rapira-protiv-vstrechnogo-ukola-korotovskih'
+			'rapira-protiv-vstrechnogo-ukola-korotovskih',
+			'fehtovanie-s-prioritetom-v-atake-korotovskih'
 		]
 	},
 	{

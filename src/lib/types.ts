@@ -79,6 +79,8 @@ export type VideoSource =
 			provider: EmbedProvider;
 			/** ID видео у провайдера (YouTube — 11-символьный id, Rutube/Vimeo — id ролика) */
 			id: string;
+			/** Токен `p` для приватной Rutube-ссылки. */
+			privateToken?: string;
 	  }
 	| {
 			/** Публичный файл на Яндекс.Диске: прямая ссылка резолвится в браузере. */
