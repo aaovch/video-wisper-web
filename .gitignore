@@ -9,6 +9,10 @@ vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 .DS_Store
 
+# Рабочие артефакты агентов (скриншоты design-qa, локальные настройки)
+.codex/
+.claude/
+
 # Генерируется scripts/build-search-index.mjs (predev/precheck/prebuild)
 static/search/
 static/transcripts/
