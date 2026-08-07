@@ -367,7 +367,7 @@ export const collections: Collection[] = [
 			{
 				title: 'Сабля Саши',
 				subtitle:
-					'Практический цикл по австрийской сабле: тренировки 2, 3, 4, 5 и 6.',
+					'Практический цикл по австрийской сабле: пять записанных тренировок, с 1 по 5.',
 				items: [
 					'avstriyskaya-sablya-2',
 					'avstriyskaya-sablya-trenirovka-3',
