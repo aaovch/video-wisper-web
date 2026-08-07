@@ -36,12 +36,14 @@
 		reportSlug = '',
 		reportSlugs = [],
 		collectionSlug = '',
+		onCollectionFilterChange,
 		onHit
 	}: {
 		kind: 'collection' | 'report';
 		reportSlug?: string;
 		reportSlugs?: string[];
 		collectionSlug?: string;
+		onCollectionFilterChange?: (reportSlugs: string[]) => void;
 		onHit?: (hit: SearchHit, seek: boolean, href: string) => void;
 	} = $props();
 
@@ -333,6 +335,10 @@
 		if (activeFilterCount === 0 && !activeCollection?.isolated) scopes.push(archiveScope);
 		return scopes;
 	}
+
+	$effect(() => {
+		if (kind === 'collection') onCollectionFilterChange?.(filteredCollectionSlugs);
+	});
 
 	$effect(() => {
 		const q = debouncedQuery.trim();

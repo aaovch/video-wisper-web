@@ -16,6 +16,25 @@
 	const reportIndex = $derived(new Map(reports.map((report, i) => [report.slug, i])));
 	const reportBySlug = $derived(new Map(reports.map((report) => [report.slug, report])));
 	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
+	let collectionFilterState = $state<{ collectionSlug: string; reportSlugs: string[] } | null>(null);
+	const visibleReportSlugs = $derived(
+		collectionFilterState?.collectionSlug === collection.slug
+			? collectionFilterState.reportSlugs
+			: collection.items
+	);
+	const visibleReportSlugSet = $derived(new Set(visibleReportSlugs));
+	const visibleSections = $derived(
+		collection.sections
+			?.map((section) => ({
+				...section,
+				items: section.items.filter((slug) => visibleReportSlugSet.has(slug))
+			}))
+			.filter((section) => section.items.length > 0)
+	);
+
+	function updateCollectionFilter(reportSlugs: string[]) {
+		collectionFilterState = { collectionSlug: collection.slug, reportSlugs };
+	}
 </script>
 
 <svelte:head>
@@ -49,6 +68,7 @@
 			kind="collection"
 			reportSlugs={collection.items}
 			collectionSlug={collection.slug}
+			onCollectionFilterChange={updateCollectionFilter}
 		/>
 	</div>
 
@@ -73,8 +93,9 @@
 	{/if}
 
 	<section class="container index">
-		{#if collection.sections}
-			{#each collection.sections as section, sectionIndex (section.title)}
+		{#if visibleSections?.length}
+			{#each visibleSections as section (section.title)}
+				{@const sectionIndex = collection.sections?.findIndex((item) => item.title === section.title) ?? 0}
 				<section class="report-section">
 					<header class="section-title">
 						<span class="section-num mono">{String(sectionIndex + 1).padStart(2, '0')}</span>
@@ -91,14 +112,17 @@
 					</ul>
 				</section>
 			{/each}
-		{:else}
+		{:else if visibleReportSlugs.length > 0}
 			<section class="report-section">
 				<ul class="index-list index-list--flat">
-					{#each reports as report, i (report.slug)}
+					{#each reports.filter((report) => visibleReportSlugSet.has(report.slug)) as report (report.slug)}
+						{@const i = reportIndex.get(report.slug) ?? 0}
 						<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} /></li>
 					{/each}
 				</ul>
 			</section>
+		{:else}
+			<p class="filter-empty" role="status">По выбранным фильтрам материалов нет.</p>
 		{/if}
 	</section>
 {/if}
@@ -137,6 +161,7 @@
 	.report-section + .report-section { margin-top: 52px; }
 	.index-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 24px; margin: 20px 0 0 62px; padding: 0; list-style: none; }
 	.index-list.index-list--flat { margin-top: 0; margin-left: 0; }
+	.filter-empty { margin: 0; padding: 24px 0; border-top: 1px solid var(--line-strong); color: var(--ink-soft); }
 
 	@media (max-width: 1080px) {
 		.index-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
