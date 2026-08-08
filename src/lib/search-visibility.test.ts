@@ -13,7 +13,7 @@ describe('search visibility', () => {
 	it('keeps public and unassigned reports searchable', () => {
 		const visible = searchableReportSlugs([]);
 		expect(visible).toContain('longsword-a');
-		expect(visible).toContain('utrenniy-kofe-polugodie-strategiya-segmenty');
+		expect(visible).toContain('nikitin-muzhchiny-zhenshiny');
 	});
 
 	it('keeps an explicitly empty filtered scope empty', () => {
