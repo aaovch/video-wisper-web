@@ -61,8 +61,9 @@ export const collections: Collection[] = [
 		slug: 'silovaya-konditsionnaya',
 		title: 'Силовая и кондиционная подготовка',
 		hema: true,
-		facets: { authors: ['Tokarev Coach'] },
-		subtitle: 'Силовой тренинг, ОФП и методы подготовки для несиловых видов спорта.',
+		facets: { authors: ['Tokarev Coach', 'Jacob Goodin'] },
+		subtitle:
+			'Научные основы, силовой и аэробный тренинг, адаптации, специальные популяции и спортивная психология.',
 		items: [
 			'tokarev-silovaya-ofp-2',
 			'pliometrika-hema',
@@ -83,6 +84,17 @@ export const collections: Collection[] = [
 			'gormon-myshechnye-vzaimodeystviya',
 			'osnovnye-anabolicheskie-gormony',
 			'neyronnye-adaptatsii-k-anaerobnoy-trenirovke',
+			'myshechnye-adaptatsii-anaerobnaya-trenirovka',
+			'kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka',
+			'ostrye-reaktsii-aerobnaya-nagruzka',
+			'dolgovremennye-adaptatsii-aerobnaya-trenirovka',
+			'vysota-krovyanoi-doping-peretrenirovannost',
+			'deti-ne-malenkie-vzroslye',
+			'trenirovka-muzhchin-i-zhenshchin',
+			'silovaya-trenirovka-pozhilyh',
+			'silovaya-trenirovka-detey',
+			'vozbuzhdenie-trevoga-stress-v-sporte',
+			'motivatsiya-vnimanie-fokus-v-sporte',
 			'ukreplenie-stopy-i-golenostopa'
 		]
 	},
