@@ -206,6 +206,7 @@ export const collections: Collection[] = [
 		title: 'Подкасты: ИИ и индустрия',
 		subtitle: 'Разговоры про искусственный интеллект, найм и будущее разработки.',
 		items: [
+			'agents-week-2026-1-1-intro-ai-agents-llm',
 			'context-engineering-29min',
 			'obsidian-wiki-karpathy',
 			'llm-deep-dive-karpathy',

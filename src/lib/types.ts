@@ -31,7 +31,7 @@ export interface ReportTranscript {
 	chapters: TranscriptChapter[];
 }
 
-export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo';
+export type EmbedProvider = 'youtube' | 'rutube' | 'vimeo' | 'vk';
 
 export interface GlossaryItem {
 	term: string;
@@ -77,7 +77,7 @@ export type VideoSource =
 	| {
 			/** Встраиваемый плеер (iframe). */
 			provider: EmbedProvider;
-			/** ID видео у провайдера (YouTube — 11-символьный id, Rutube/Vimeo — id ролика) */
+			/** ID видео у провайдера (YouTube — 11-символьный id, VK — owner_id, Rutube/Vimeo — id ролика) */
 			id: string;
 			/** Токен `p` для приватной Rutube-ссылки. */
 			privateToken?: string;

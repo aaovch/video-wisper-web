@@ -21,7 +21,9 @@
 
 	const isNative = $derived(video.provider === 'file' || video.provider === 'yadisk');
 
-	// --- Встраиваемые провайдеры iframe (rutube/vimeo: пересоздаём по тайм-коду) ---
+	const vkOrigin = 'https://vkvideo.ru';
+
+	// --- Встраиваемые провайдеры iframe (rutube/vimeo пересоздаём, VK управляем через JS API) ---
 	const iframeSrc = $derived.by(() => {
 		const s = start;
 		if (video.provider === 'rutube') {
@@ -33,7 +35,57 @@
 		if (video.provider === 'vimeo') {
 			return `https://player.vimeo.com/video/${video.id}#t=${s}s`;
 		}
+		if (video.provider === 'vk') {
+			const separator = video.id.indexOf('_');
+			if (separator <= 0) return '';
+			const ownerId = video.id.slice(0, separator);
+			const videoId = video.id.slice(separator + 1);
+			return `${vkOrigin}/video_ext.php?oid=${encodeURIComponent(ownerId)}` +
+				`&id=${encodeURIComponent(videoId)}&hd=2&js_api=1`;
+		}
 		return '';
+	});
+
+	let vkFrame = $state<HTMLIFrameElement | null>(null);
+	let vkReady = $state(false);
+
+	function postVk(method: 'play' | 'pause' | 'seek', params: Record<string, unknown> = {}) {
+		if (video.provider !== 'vk' || !vkReady) return;
+		vkFrame?.contentWindow?.postMessage({ method, ...params }, vkOrigin);
+	}
+
+	function seekVk(t: number, shouldPlay: boolean) {
+		postVk('seek', { time: Math.max(0, Math.floor(t)) });
+		if (shouldPlay) postVk('play');
+	}
+
+	$effect(() => {
+		if (video.provider !== 'vk' || typeof window === 'undefined') return;
+		const handleMessage = (event: MessageEvent) => {
+			if (event.origin !== vkOrigin || event.source !== vkFrame?.contentWindow) return;
+			const data = event.data;
+			if (!data || typeof data !== 'object') return;
+			if (data.event === 'inited') {
+				vkReady = true;
+				seekVk(start, autoplay);
+			} else if (data.event === 'started' || data.event === 'resumed' || data.state === 'playing') {
+				onPlaying?.(true);
+			} else if (data.event === 'paused' || data.event === 'ended' || data.state === 'paused') {
+				onPlaying?.(false);
+			}
+			if (typeof data.time === 'number') onTime?.(data.time);
+		};
+		window.addEventListener('message', handleMessage);
+		return () => {
+			window.removeEventListener('message', handleMessage);
+			vkReady = false;
+		};
+	});
+
+	$effect(() => {
+		const t = start;
+		const shouldPlay = autoplay;
+		if (video.provider === 'vk' && vkReady) seekVk(t, shouldPlay);
 	});
 
 	// --- YouTube: стабильный iframe + IFrame API (читаем время, перематываем через API) ---
@@ -266,6 +318,8 @@
 		} else if (video.provider === 'youtube' && ytPlayer?.seekTo) {
 			ytPlayer.seekTo(s, true);
 			playYoutubeWithFallback();
+		} else if (video.provider === 'vk') {
+			seekVk(s, true);
 		}
 	}
 </script>
@@ -308,9 +362,13 @@
 	{:else}
 		{#key iframeSrc}
 			<iframe
+				bind:this={vkFrame}
 				src={iframeSrc}
 				title="Видео"
 				loading="lazy"
+				onload={() => {
+					if (video.provider === 'vk') vkReady = true;
+				}}
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				allowfullscreen
 			></iframe>
