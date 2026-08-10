@@ -1,0 +1,412 @@
+{
+	"slug": "agents-week-2026-4-agent-evaluation-lecture",
+	"title": "Agents Week 2026 — лекция 4: Agent Evaluation — From Metrics to Managed Quality",
+	"subtitle": "Task suite, Eval Harness, критерии, graders и калибровка LLM-as-a-judge для управляемого качества агентов",
+	"source_name": "Agents Week 2026 ｜ Лекция 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240038].mp4",
+	"note": "Развёрнутый конспект лекции Сергея Купцова о системной оценке агентских систем. Расшифровка выполнена локально Whisper Turbo на CUDA; названия метрик, компонентов eval-инфраструктуры и benchmarks выверены без изменения таймкодов.",
+	"duration": 4030.06,
+	"tags": [
+		"AI-агенты",
+		"Agents Week 2026",
+		"evaluation",
+		"Eval Harness",
+		"LLM-as-a-judge",
+		"task suite",
+		"grading",
+		"tau2-bench",
+		"Cohen’s kappa",
+		"production quality"
+	],
+	"overview_theses": [
+		"Eval — это повторяемая автоматизированная проверка, которая превращает качество агента из субъективного впечатления в измеримый процесс с регрессиями.",
+		"Агент нельзя оценивать только по финальному тексту: нужны trajectory, tool calls, параметры, outcome и побочные эффекты в среде.",
+		"Полный eval-пайплайн состоит из task suite, изолированного harness, формальных критериев и graders; слабость любого звена обесценивает итоговую метрику.",
+		"Task suite должен отражать production-распределение, содержать положительные и отрицательные сценарии, начальное и ожидаемое состояния и постоянно пополняться реальными ошибками.",
+		"Eval Harness запускает тот же production-agent в реалистичной изолированной среде, сохраняет полную trajectory и поддерживает parallelism, retry, timeout и сравнение версий.",
+		"Output-based критерии хорошо проверяются кодом, а trajectory-based требуют смысловой оценки; критические safety и state checks должны быть обязательными gates.",
+		"LLM-as-a-judge сам является измеряемой системой: его калибруют на human gold labels и проверяют agreement, например через Cohen’s kappa.",
+		"Качество judge повышают отдельный запрос на критерий, ясная rubric, reasoning, escape hatch и few-shot golden samples.",
+		"Production-решение балансирует качество с latency, cost и error rate как самого агента, так и eval-системы."
+	],
+	"chapters": [
+		{
+			"start": 238.8,
+			"title": "Качество как отдельная дисциплина",
+			"summary": "Сергей вводит eval как обязательную систему для уже работающего агента, а не разовую ручную проверку.",
+			"anchor": "Добро пожаловать в четвертый день нашего интенсива.",
+			"theses": [
+				"Eval нужен после появления работающего agent flow.",
+				"Цель — систематическая оценка, которой можно доверять."
+			]
+		},
+		{
+			"start": 294.74,
+			"title": "Определение и свойства eval",
+			"summary": "Eval подаёт задачу, получает результат и применяет повторяемую логику оценки в автоматизированном процессе.",
+			"anchor": "Перед этим давайте сначала введем понятие EVAL, Evaluation и расскажем, что это такое.",
+			"theses": [
+				"Процесс должен быть systematic, repeatable и automated.",
+				"Численные результаты позволяют замечать progress и regressions.",
+				"Eval должен запускаться в CI, а не только на ноутбуке разработчика."
+			]
+		},
+		{
+			"start": 361.12,
+			"title": "От single-turn к агентской trajectory",
+			"summary": "С усложнением системы объект оценки растёт от одного ответа до диалога и полной последовательности reasoning и actions.",
+			"anchor": "Берем простой запрос LLM.",
+			"theses": [
+				"Multi-turn добавляет state и следование контексту.",
+				"Агентская система создаёт trajectory из reasoning, tools и изменений среды.",
+				"Верхний уровень сочетает code checks, LLM judges и human evaluation."
+			]
+		},
+		{
+			"start": 481.0,
+			"title": "Оценивать всю цепочку",
+			"summary": "Для агента важен не только ответ, но и выбор инструмента, параметры, обработка результата и фактический effect.",
+			"anchor": "которые автономно планируют и выполняют задачи с помощью внешних инструментов.",
+			"theses": [
+				"Ошибочный tool parameter может быть скрыт правдоподобным ответом.",
+				"Eval должен разбирать process of decision making и outcome."
+			]
+		},
+		{
+			"start": 638.28,
+			"title": "Почему агентский eval сложен",
+			"summary": "Каскад ошибок, разные корректные пути, стохастичность, скрытые tool failures и side effects мешают простой проверке ответа.",
+			"anchor": "Давайте расскажем,",
+			"theses": [
+				"Ранняя ошибка влияет на все последующие steps.",
+				"Корректное альтернативное решение способно провалить невалидный grader.",
+				"Нужно проверять trajectory и реальное состояние среды."
+			]
+		},
+		{
+			"start": 794.1,
+			"title": "Словарь eval-системы",
+			"summary": "Фиксируются понятия suite, task, trial, trajectory, outcome, grader и Eval Harness.",
+			"anchor": "И прежде чем идти дальше,",
+			"theses": [
+				"Task — один пример с inputs и success criteria.",
+				"Trial — одна полная попытка решения.",
+				"Outcome — реальный effect в среде, а не только текст.",
+				"Harness — инженерная инфраструктура запуска и оценки."
+			]
+		},
+		{
+			"start": 901.62,
+			"title": "Четыре компонента eval-пайплайна",
+			"summary": "Task suite, harness, criteria и grading образуют цикл, где ошибки возвращаются в задачи, а нестабильность — в переработку критериев.",
+			"anchor": "Давайте посмотрим теперь,",
+			"theses": [
+				"Слабое звено обесценивает весь показатель.",
+				"Новые failure cases пополняют suite.",
+				"Infrastructure artifacts также способны исказить оценку."
+			]
+		},
+		{
+			"start": 1002.66,
+			"title": "Task suite как главный артефакт",
+			"summary": "Репрезентативная корзина определяет, что именно команда считает качеством и какие regressions умеет замечать.",
+			"anchor": "Дальше мы",
+			"theses": [
+				"Начать можно с 5–10 вручную составленных задач.",
+				"Observed failures и corner cases добавляются сразу.",
+				"Suite версионируется и растёт вместе с возможностями агента."
+			]
+		},
+		{
+			"start": 1225.86,
+			"title": "Матрица LLM-генерации",
+			"summary": "Функции, edge cases и personas комбинируются для расширения покрытия airline-agent.",
+			"anchor": "Вот давайте",
+			"theses": [
+				"Оси включают feature, scenario и persona.",
+				"Каждая синтетическая задача проверяется на однозначность, решаемость и соответствие домену.",
+				"Tags помогают балансировать regression suite и hard set."
+			]
+		},
+		{
+			"start": 1392.64,
+			"title": "Полная структура задачи",
+			"summary": "Test case содержит пользовательскую цель, начальное состояние, policies и ожидаемое конечное состояние.",
+			"anchor": "Но стоит отметить,",
+			"theses": [
+				"State даёт объективный outcome check.",
+				"Expected state проектируется ещё при составлении suite.",
+				"Пример tau2-bench проверяет корректное перебронирование, а не формулировку ответа."
+			]
+		},
+		{
+			"start": 1496.62,
+			"title": "Чек-лист хорошей корзины",
+			"summary": "Качественный suite однозначен, репрезентативен, воспроизводим и содержит доказуемо решаемые задачи обоих направлений.",
+			"anchor": "Давайте,",
+			"theses": [
+				"Два эксперта должны одинаково определить pass/fail.",
+				"Нужны кейсы, где агент действует, и где обязан отказаться.",
+				"Reset в CI должен восстанавливать одинаковое начальное состояние.",
+				"Tags поддерживают анализ по skill и difficulty."
+			]
+		},
+		{
+			"start": 1629.48,
+			"title": "Eval Infrastructure и production parity",
+			"summary": "Harness запускает тот же код, prompt и tools, что production, меняя только окружение и данные.",
+			"anchor": "Переходим",
+			"theses": [
+				"Упрощённая eval-версия тестирует другую систему.",
+				"Side effects требуют test environment и test database.",
+				"Parity агента сочетается с изоляцией среды."
+			]
+		},
+		{
+			"start": 1708.72,
+			"title": "Runner, environment, tracing и storage",
+			"summary": "Инфраструктура параллельно запускает сотни tasks, сбрасывает state и сохраняет полную trajectory для анализа и сравнения.",
+			"anchor": "Давайте",
+			"theses": [
+				"Runner поддерживает parallelism, timeout и retry.",
+				"Environment чист для каждого trial.",
+				"Logger фиксирует reasoning, tool request, tool result и final answer.",
+				"Storage и comparator показывают diff между версиями."
+			]
+		},
+		{
+			"start": 1847.46,
+			"title": "Реалистичная изолированная среда",
+			"summary": "Полный mock быстр и детерминирован, production реалистичен, но дорог и опасен; практический выбор обычно гибридный.",
+			"anchor": "И давайте",
+			"theses": [
+				"Mock drift расходится с реальным API и временем.",
+				"Production calls могут создавать недопустимые side effects.",
+				"Snapshot базы и отдельные реальные сервисы дают компромисс.",
+				"Policies также являются частью environment."
+			]
+		},
+		{
+			"start": 2027.78,
+			"title": "Iron User для multi-turn задач",
+			"summary": "LLM-симулятор продолжает диалог по фиксированной цели, оставаясь естественным и не раскрывая скрытые данные сценария.",
+			"anchor": "Дальше",
+			"theses": [
+				"Без второй стороны нельзя проверить диалог с подтверждением.",
+				"Simulator сам стохастичен, может галлюцинировать и чрезмерно помогать.",
+				"Step limit защищает от бесконечного цикла.",
+				"tau2-bench перепроверяет ответы симулятора отдельной LLM и делает retry."
+			]
+		},
+		{
+			"start": 2249.64,
+			"title": "Минимальные требования к Harness",
+			"summary": "Надёжный harness работает вне ноутбука, переживает ошибки, сохраняет каждый run и позволяет сравнивать версии.",
+			"anchor": "В основном",
+			"theses": [
+				"Нужны retry, graceful shutdown и error handling.",
+				"Результаты не должны перетираться.",
+				"Parallel execution сокращает время suite.",
+				"Каждый trial стартует в чистой изолированной среде."
+			]
+		},
+		{
+			"start": 2397.06,
+			"title": "Что делает критерий хорошим",
+			"summary": "Критерий должен быть aligned с целью, автоматизируем, понятен человеку, диагностичен и стабилен.",
+			"anchor": "Мы переходим",
+			"theses": [
+				"Proxy metric не должна подменять пользовательскую цель.",
+				"Оценка «классный агент: 3/10» не указывает, что исправлять.",
+				"Если эксперты не сходятся, rubric требует переработки."
+			]
+		},
+		{
+			"start": 2529.14,
+			"title": "Output-based и trajectory-based criteria",
+			"summary": "Финальный result и state проверяются кодом, а логика пути, grounded parameters, лишние steps и потеря контекста — смысловыми judges.",
+			"anchor": "Output-based,",
+			"theses": [
+				"Strict checks покрывают format, tool choice и state changes.",
+				"Trajectory checks оценивают reasoning, goal retention и efficiency.",
+				"Полноценный eval сочетает обе группы и отдельно учитывает errors и policy violations."
+			]
+		},
+		{
+			"start": 2750.24,
+			"title": "Стабильность: pass@k и pass^k",
+			"summary": "Повторные прогоны показывают два разных свойства: шанс хотя бы одного успеха и вероятность устойчивого успеха во всех попытках.",
+			"anchor": "И как я",
+			"theses": [
+				"pass@k растёт с числом попыток и полезен там, где retry допустим.",
+				"pass^k быстро падает и важен для assistant-agents, которые должны надёжно работать каждый раз."
+			]
+		},
+		{
+			"start": 2831.38,
+			"title": "Три типа graders",
+			"summary": "Code-based, human и LLM graders дополняют друг друга по объективности, масштабу, цене и способности понимать смысл.",
+			"anchor": "И мы",
+			"theses": [
+				"Code checks быстры и воспроизводимы, но хрупки к вариациям.",
+				"Human experts создают gold labels, но не масштабируются.",
+				"LLM-as-a-judge гибок и масштабируем, но дорог, стохастичен и требует калибровки."
+			]
+		},
+		{
+			"start": 2967.4,
+			"title": "Agreement и Cohen’s kappa",
+			"summary": "Качество judge измеряют совпадением с людьми с поправкой на случайное agreement.",
+			"anchor": "Вводится",
+			"theses": [
+				"Сравнивать можно expert-to-expert и human-to-LLM.",
+				"Простой процент совпадений завышается случайным agreement.",
+				"Cohen’s kappa выше 0,6 используется как практический ориентир доверия."
+			]
+		},
+		{
+			"start": 3113.26,
+			"title": "Калибровка LLM-as-a-judge",
+			"summary": "Judge строится итеративно от 30–100 экспертных labels к проверке agreement на новых примерах.",
+			"anchor": "На этом мы",
+			"theses": [
+				"Сначала проверяется agreement между экспертами.",
+				"Judge тестируется на unseen examples.",
+				"Расхождения анализируются по отдельным критериям до достижения целевого kappa."
+			]
+		},
+		{
+			"start": 3344.28,
+			"title": "Пять способов улучшить judge",
+			"summary": "Критерии изолируют, снабжают rubric и examples и разрешают модели честно отказаться от оценки.",
+			"anchor": "Первое",
+			"theses": [
+				"Один criterion — один LLM call.",
+				"Reasoning помогает разложить решение.",
+				"Ясные границы описывают Good и Bad.",
+				"Escape hatch предотвращает выдуманную оценку.",
+				"Few-shot golden samples фиксируют экспертный стандарт."
+			]
+		},
+		{
+			"start": 3412.52,
+			"title": "Benchmarks для разных типов агентов",
+			"summary": "Conversational, coding, research и computer-use agents требуют разных outcomes, graders и тестовых сред.",
+			"anchor": "Хочу еще",
+			"theses": [
+				"tau2-bench измеряет multi-turn, state и стабильность conversational agents.",
+				"SWE-bench Verified использует executable tests для coding agents.",
+				"Research eval проверяет citations, facts и source quality с большим участием experts.",
+				"WebArena и OSWorld требуют воспроизводимого browser/OS sandbox."
+			]
+		},
+		{
+			"start": 3901.68,
+			"title": "Quality, latency, cost и error rate",
+			"summary": "Production-оценка завершается балансом качества с временем ответа, стоимостью и ошибками инфраструктуры или tools.",
+			"anchor": "Давайте",
+			"theses": [
+				"Быстрый агент предпочтительнее при сопоставимом качестве.",
+				"Eval на старте может быть дороже production traffic.",
+				"Стоимость и достоверность нужно балансировать и для agent, и для eval system."
+			]
+		}
+	],
+	"has_transcript": true,
+	"glossary": [
+		{
+			"term": "Evaluation Suite",
+			"definition": "Версионируемый репрезентативный набор задач для системной оценки агента."
+		},
+		{
+			"term": "Trial",
+			"definition": "Одна полная попытка выполнить конкретную задачу."
+		},
+		{
+			"term": "Trajectory",
+			"definition": "Полная запись входов, reasoning, tool calls, observations и ответов одного trial."
+		},
+		{
+			"term": "Outcome",
+			"definition": "Фактическое конечное состояние среды после работы агента."
+		},
+		{
+			"term": "Eval Harness",
+			"definition": "Инфраструктура запуска, изоляции, логирования, хранения и оценки прогонов."
+		},
+		{
+			"term": "Iron User",
+			"definition": "LLM-симулятор пользователя, продолжающий multi-turn диалог по фиксированному сценарию."
+		},
+		{
+			"term": "Output-based criterion",
+			"definition": "Критерий, проверяющий результат, формат, tool call или конечное состояние."
+		},
+		{
+			"term": "Trajectory-based criterion",
+			"definition": "Критерий, оценивающий путь решения, обоснованность, goal retention и efficiency."
+		},
+		{
+			"term": "LLM-as-a-judge",
+			"definition": "LLM-grader для автоматизированной смысловой оценки результата или trajectory."
+		},
+		{
+			"term": "Cohen’s kappa",
+			"definition": "Метрика agreement двух graders с поправкой на случайные совпадения."
+		},
+		{
+			"term": "pass@k",
+			"definition": "Вероятность хотя бы одного успешного результата среди k попыток."
+		},
+		{
+			"term": "pass^k",
+			"definition": "Вероятность, что все k повторных прогонов завершатся успешно."
+		},
+		{
+			"term": "Escape hatch",
+			"definition": "Разрешение judge вернуть «недостаточно данных», не выдумывая оценку."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Соберите task suite",
+			"items": [
+				"Начните с 5–10 ручных production-like задач.",
+				"Добавьте initial state, policy и expected outcome.",
+				"Включите act/no-act cases и tags по skill и difficulty.",
+				"После каждого production failure добавляйте regression case."
+			]
+		},
+		{
+			"title": "Спроектируйте harness",
+			"items": [
+				"Запускайте production-identical agent в изолированной среде.",
+				"Сохраняйте trajectory после каждого trial.",
+				"Добавьте parallelism, timeout, retry и immutable run history.",
+				"Сравнивайте версии на одинаковом snapshot и task suite."
+			]
+		},
+		{
+			"title": "Формализуйте criteria и graders",
+			"items": [
+				"Отделите output-based checks от trajectory-based rubrics.",
+				"Сделайте safety и state constraints обязательными gates.",
+				"Для каждого критерия укажите диагностическое назначение.",
+				"Измеряйте стабильность несколькими trials."
+			]
+		},
+		{
+			"title": "Калибруйте LLM judge",
+			"items": [
+				"Получите 30–100 экспертных gold labels.",
+				"Проверьте agreement экспертов и human-to-LLM через Cohen’s kappa.",
+				"Разнесите критерии по отдельным calls и добавьте rubric, escape hatch и few-shot.",
+				"Повторяйте цикл после изменения suite или домена."
+			]
+		}
+	],
+	"video": {
+		"provider": "vk",
+		"id": "-84793390_456240038",
+		"poster": "media/agents-week-2026-4-agent-evaluation-lecture.jpg"
+	}
+}

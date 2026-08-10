@@ -142,7 +142,261 @@
 		"chapterCount": 19,
 		"video": {
 			"provider": "vk",
-			"id": "-84793390_456240032"
+			"id": "-84793390_456240032",
+			"poster": "media/agents-week-2026-1-1-intro-ai-agents-llm.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-1-2-tools-mcp",
+		"title": "Agents Week 2026 — лекция 1.2: Tools и MCP",
+		"subtitle": "От tool calling и надёжных контрактов до архитектуры MCP и агента с инструментами на LangGraph",
+		"tags": [
+			"AI-агенты",
+			"LLM",
+			"Agents Week 2026",
+			"инструменты",
+			"tool calling",
+			"MCP",
+			"LangChain",
+			"LangGraph",
+			"JSON-RPC",
+			"Алёна Зайцева"
+		],
+		"duration": 1922.56,
+		"overview_theses": [
+			"Инструмент превращает текстовое решение LLM в исполнимое действие: модель формирует структурированный вызов, runtime выполняет функцию и возвращает результат в следующий шаг диалога.",
+			"Надёжный инструмент — это контракт с идемпотентностью, компенсацией частичных транзакций, структурированными ошибками и выходом, пригодным для дальнейшей обработки моделью."
+		],
+		"chapterCount": 13,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240033",
+			"poster": "media/agents-week-2026-1-2-tools-mcp.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-2-memory-guardrails-lecture",
+		"title": "Agents Week 2026 — лекция 2: Memory и Guardrails",
+		"subtitle": "Типы памяти, RAG и управление контекстом; prompt injection, jailbreaks, галлюцинации и многоуровневая защита агента",
+		"tags": [
+			"AI-агенты",
+			"LLM",
+			"Agents Week 2026",
+			"память",
+			"RAG",
+			"guardrails",
+			"prompt injection",
+			"jailbreaking",
+			"галлюцинации",
+			"безопасность"
+		],
+		"duration": 3916.7,
+		"overview_theses": [
+			"Память агента делится на краткосрочную, долгосрочную и контекстную: первые две определяют, что сохраняется во времени, а третья — что именно получает LLM в текущем вызове.",
+			"RAG связывает внешнее долговременное хранилище с контекстом модели и даёт актуальные, доменные или слишком объёмные знания в момент выполнения задачи."
+		],
+		"chapterCount": 24,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240034",
+			"poster": "media/agents-week-2026-2-memory-guardrails-lecture.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-2-memory-guardrails-seminar",
+		"title": "Agents Week 2026 — семинар 2: Memory и Guardrails",
+		"subtitle": "Пошаговая сборка LangGraph-агента: session memory, профиль, RAG с HyDE, input/tool guards и human approval",
+		"tags": [
+			"AI-агенты",
+			"LLM",
+			"Agents Week 2026",
+			"LangGraph",
+			"память",
+			"RAG",
+			"HyDE",
+			"guardrails",
+			"PII",
+			"human-in-the-loop"
+		],
+		"duration": 3704.28,
+		"overview_theses": [
+			"Семинар последовательно расширяет одного агента: поиск рейсов превращается в stateful-граф с памятью, policy retrieval, защитными nodes и подтверждаемым бронированием.",
+			"MemorySaver и thread_id сохраняют сообщения внутри сессии, а внешний профиль переносит структурированные пользовательские факты между разными диалогами."
+		],
+		"chapterCount": 22,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240035",
+			"poster": "media/agents-week-2026-2-memory-guardrails-seminar.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-3-workflow-multi-agent-multimodality-lecture",
+		"title": "Agents Week 2026 — лекция 3: Workflow, Multi-Agent Systems и Multimodality",
+		"subtitle": "Thought–action–observation, ReAct и reasoning; взаимодействия, архитектуры и протоколы мультиагентных систем",
+		"tags": [
+			"AI-агенты",
+			"LLM",
+			"Agents Week 2026",
+			"ReAct",
+			"reasoning",
+			"multi-agent",
+			"A2A",
+			"MCP",
+			"multimodality",
+			"observability"
+		],
+		"duration": 3172.32,
+		"overview_theses": [
+			"Рабочий цикл агента замыкает thought, action и observation: модель планирует, runtime исполняет выбранное действие, а результат среды корректирует следующий шаг.",
+			"Chain of thought подходит для дешёвого одношагового рассуждения, ReAct — для агентов с tools, а reasoning-модель — для глубокого планирования, когда допустима большая стоимость."
+		],
+		"chapterCount": 18,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240036",
+			"poster": "media/agents-week-2026-3-workflow-multi-agent-multimodality-lecture.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-3-workflow-multi-agent-multimodality-seminar",
+		"title": "Agents Week 2026 — семинар 3: ReAct, Multi-Agent Systems и критик",
+		"subtitle": "Практическая реализация TAO-цикла, иерархической системы, critic loop и сравнительного benchmark",
+		"tags": [
+			"AI-агенты",
+			"LLM",
+			"Agents Week 2026",
+			"ReAct",
+			"TAO",
+			"multi-agent",
+			"critic",
+			"benchmark",
+			"LangGraph",
+			"structured output"
+		],
+		"duration": 2534.2,
+		"overview_theses": [
+			"Одиночный ReAct-агент дешевле и быстрее, поэтому остаётся лучшим базовым решением для простых задач с небольшим числом tools.",
+			"Иерархическая multi-agent система разделяет запрос на типизированные подзадачи и отдаёт их узким specialists, после чего coordinator синтезирует ответ."
+		],
+		"chapterCount": 19,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240037",
+			"poster": "media/agents-week-2026-3-workflow-multi-agent-multimodality-seminar.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-4-agent-evaluation-lecture",
+		"title": "Agents Week 2026 — лекция 4: Agent Evaluation — From Metrics to Managed Quality",
+		"subtitle": "Task suite, Eval Harness, критерии, graders и калибровка LLM-as-a-judge для управляемого качества агентов",
+		"tags": [
+			"AI-агенты",
+			"Agents Week 2026",
+			"evaluation",
+			"Eval Harness",
+			"LLM-as-a-judge",
+			"task suite",
+			"grading",
+			"tau2-bench",
+			"Cohen’s kappa",
+			"production quality"
+		],
+		"duration": 4030.06,
+		"overview_theses": [
+			"Eval — это повторяемая автоматизированная проверка, которая превращает качество агента из субъективного впечатления в измеримый процесс с регрессиями.",
+			"Агент нельзя оценивать только по финальному тексту: нужны trajectory, tool calls, параметры, outcome и побочные эффекты в среде."
+		],
+		"chapterCount": 25,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240038",
+			"poster": "media/agents-week-2026-4-agent-evaluation-lecture.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-4-agent-evaluation-seminar",
+		"title": "Agents Week 2026 — семинар 4: Agent Evaluation — From Metrics to Managed Quality",
+		"subtitle": "Airline-agent, task suite, strict graders, Iron User и пять итераций LLM judge с измерением kappa и стоимости",
+		"tags": [
+			"AI-агенты",
+			"Agents Week 2026",
+			"evaluation",
+			"LangGraph",
+			"ReAct",
+			"Eval Harness",
+			"Iron User",
+			"LLM judge",
+			"Cohen’s kappa",
+			"few-shot"
+		],
+		"duration": 2406.95,
+		"overview_theses": [
+			"Практика собирает eval без готовой библиотеки, чтобы показать связи между agent, suite, criteria, graders и multi-turn harness.",
+			"Task suite объединяет ручные и проверенные LLM-generated cases, tags, difficulty, ожидаемое состояние и сценарий Iron User."
+		],
+		"chapterCount": 22,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240039",
+			"poster": "media/agents-week-2026-4-agent-evaluation-seminar.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-5-1-production-engineering",
+		"title": "Agents Week 2026 — лекция 5.1: Production Engineering for LLM Agents",
+		"subtitle": "Observability, автоматизация качества, cost/latency engineering, reliability, security и переход от агента к платформе",
+		"tags": [
+			"AI-агенты",
+			"Agents Week 2026",
+			"production engineering",
+			"observability",
+			"DSPy",
+			"model router",
+			"reliability",
+			"security",
+			"OAuth",
+			"platform engineering"
+		],
+		"duration": 4511.34,
+		"overview_theses": [
+			"Прототип агента при масштабировании сталкивается с latency, непредсказуемой стоимостью, hallucinations, stochasticity, отсутствием observability, security risks и повторением инфраструктурной работы.",
+			"Production observability связывает logs в spans, traces и sessions и измеряет latency, steps, tokens, tool/model success, request success и error rate."
+		],
+		"chapterCount": 24,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240040",
+			"poster": "media/agents-week-2026-5-1-production-engineering.jpg"
+		}
+	},
+	{
+		"slug": "agents-week-2026-5-2-production-engineering",
+		"title": "Agents Week 2026 — лекция 5.2: Production Engineering — Decision Trees, Architecture and Frameworks",
+		"subtitle": "Нужен ли агент, unit economics, continuous validation, control plane, multi-agent patterns и выбор framework",
+		"tags": [
+			"AI-агенты",
+			"Agents Week 2026",
+			"production engineering",
+			"decision tree",
+			"unit economics",
+			"validation",
+			"control plane",
+			"Google ADK",
+			"LangGraph",
+			"MCP",
+			"A2A"
+		],
+		"duration": 2242.94,
+		"overview_theses": [
+			"Agent — крайний и самый дорогой вариант в спектре rules → FastText/classifier → single LLM call → agent; начинать нужно с проверки, нужен ли он вообще.",
+			"Агентская система сочетает ML и backend: она статистична, может не падать, а правдоподобно врать, и требует непрерывного validation-monitoring loop."
+		],
+		"chapterCount": 20,
+		"video": {
+			"provider": "vk",
+			"id": "-84793390_456240041",
+			"poster": "media/agents-week-2026-5-2-production-engineering.jpg"
 		}
 	},
 	{

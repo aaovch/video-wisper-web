@@ -1,0 +1,399 @@
+{
+	"slug": "agents-week-2026-5-1-production-engineering",
+	"title": "Agents Week 2026 — лекция 5.1: Production Engineering for LLM Agents",
+	"subtitle": "Observability, автоматизация качества, cost/latency engineering, reliability, security и переход от агента к платформе",
+	"source_name": "Agents Week 2026 ｜ Лекция 5.1 Production Engineering for LLM Agents [-84793390_456240040].mp4",
+	"note": "Развёрнутый конспект лекции Дани Артамонова о превращении прототипа AI-агента в production-систему для десятков тысяч пользователей. Расшифровка выполнена локально Whisper Turbo на CUDA; инженерные термины и названия инструментов исправлены без изменения таймкодов.",
+	"duration": 4511.34,
+	"tags": [
+		"AI-агенты",
+		"Agents Week 2026",
+		"production engineering",
+		"observability",
+		"DSPy",
+		"model router",
+		"reliability",
+		"security",
+		"OAuth",
+		"platform engineering"
+	],
+	"overview_theses": [
+		"Прототип агента при масштабировании сталкивается с latency, непредсказуемой стоимостью, hallucinations, stochasticity, отсутствием observability, security risks и повторением инфраструктурной работы.",
+		"Production observability связывает logs в spans, traces и sessions и измеряет latency, steps, tokens, tool/model success, request success и error rate.",
+		"Работа с качеством начинается с категоризации failures и простых patterns, а DSPy может автоматизировать оптимизацию prompt на task dataset и metric.",
+		"LLM применяется только там, где code, rules или классический ML перестают покрывать требуемую гибкость; тяжёлая reasoning-model оправдана лишь сложными задачами.",
+		"Cost engineering включает unit economics, контроль context growth, model routing, parallel tools, streaming, limits, timeouts, queues, workers и caching.",
+		"Reliability требует честного failure response, structured output и guardrails, но prompt никогда не обеспечивает 100% гарантии.",
+		"Security строится вне модели: минимальные tool contracts, отсутствие secrets/PII в context и авторизация каждого action от имени пользователя через OAuth.",
+		"Платформа оправдана после повторения инфраструктурной задачи как минимум в трёх агентах; prompts и orchestration остаются гибкой domain logic."
+	],
+	"chapters": [
+		{
+			"start": 145.2,
+			"title": "От прототипа к десяткам тысяч пользователей",
+			"summary": "Даня задаёт путь лекции и семь production-проблем, которые проявляются при росте пользователей, команды или числа агентов.",
+			"anchor": "Всем привет!",
+			"theses": [
+				"Prototype в Jupyter не доказывает готовность к production.",
+				"Основные риски — latency, cost, hallucinations, stochasticity, observability, security и повторное строительство инфраструктуры.",
+				"Лекция завершится вопросом о моменте выделения platform team."
+			]
+		},
+		{
+			"start": 452.44,
+			"title": "Observability как первый production-слой",
+			"summary": "Без телеметрии команда не знает ни реальную нагрузку, ни качество, ни стоимость обработки пользовательских запросов.",
+			"anchor": "Начнем, пожалуй, с самого важного – это наблюдаемость.",
+			"theses": [
+				"Жалобы пользователей не могут быть единственным сигналом.",
+				"LLM-agent требует наблюдения за cost каждого model call.",
+				"Telemetry должна появиться до масштабирования и оптимизации."
+			]
+		},
+		{
+			"start": 550.92,
+			"title": "Структурированные logs вместо prints",
+			"summary": "Каждый log связывается с user, agent и request, чтобы восстановить работу конкретного запроса среди больших объёмов.",
+			"anchor": "Давайте начнем с первого.",
+			"theses": [
+				"Логируются все LLM и tool calls с результатом.",
+				"Сохраняются inputs, final response и неожиданные exceptions.",
+				"Надёжность агента ограничена надёжностью его зависимостей."
+			]
+		},
+		{
+			"start": 704.92,
+			"title": "Spans, traces и sessions",
+			"summary": "Атомарные операции становятся spans, полный пользовательский запрос — trace, а связанный диалог — session.",
+			"anchor": "Например, пользователь спросил у агента,",
+			"theses": [
+				"Span имеет ID и относится к trace.",
+				"Trace объединяет model calls, tools, observations и final answer.",
+				"Session связывает несколько traces одного диалога.",
+				"Latency и cost агрегируются на каждом уровне."
+			]
+		},
+		{
+			"start": 907.57,
+			"title": "Семь обязательных метрик и alerting",
+			"summary": "Dashboard показывает user latency, agent duration/steps, tokens, tool/model success, request success и error rate.",
+			"anchor": "Это какая-то базовая необходимая инфраструктурная настройка,",
+			"theses": [
+				"Технический success можно начать считать по отсутствию exceptions и успешным dependencies.",
+				"Error rate помогает локализовать anomalies по agent и user.",
+				"Baseline превращается в первые alert thresholds.",
+				"Пороги постепенно ужесточаются вместе с системой."
+			]
+		},
+		{
+			"start": 1129.76,
+			"title": "Langfuse, Grafana и Prometheus",
+			"summary": "Готовые open-source системы ускоряют запуск traces, dashboards и alerting, но главный принцип остаётся тем же: production нельзя менять вслепую.",
+			"anchor": "Итак, давай двигаться дальше.",
+			"theses": [
+				"Langfuse показывает agent traces и logs.",
+				"Grafana визуализирует metrics, Prometheus поддерживает monitoring и alerts.",
+				"Цена instrumenting ниже цены ошибки на большой аудитории."
+			]
+		},
+		{
+			"start": 1244.84,
+			"title": "Категоризация проблем качества",
+			"summary": "После observability failures разделяются на prompt, tool и architecture проблемы, чтобы выбирать соответствующий способ исправления.",
+			"anchor": "Итак, после того, как мы поговорили про Observability, нужно двигаться к улучшению качества.",
+			"theses": [
+				"Tool bug чинится как обычный backend defect.",
+				"Architecture проверяется сравнительными experiments.",
+				"Prompt optimization можно частично автоматизировать.",
+				"Слишком сложная architecture сама увеличивает context и hallucinations."
+			]
+		},
+		{
+			"start": 1451.34,
+			"title": "От patterns к DSPy",
+			"summary": "Сначала применяются ясные tool descriptions, structured output, examples и reasoning; после исчерпания простых улучшений подключается automated prompt optimization.",
+			"anchor": "Но в какой-то момент вы управляетесь в барьер, что все популярные паттерны в вашем случае могут развалиться из-за того, что индустрия молодая, и часто эти паттерны появились только вчера.",
+			"theses": [
+				"Fine-tuning слишком дорог и рискован для раннего этапа.",
+				"DSPy рассматривает LLM как black box и оптимизирует prompt под ожидаемые outputs.",
+				"Веса модели при этом не меняются."
+			]
+		},
+		{
+			"start": 1602.32,
+			"title": "Компоненты DSPy optimization",
+			"summary": "Framework получает task signature, model/inference pattern, metric и dataset и ищет prompt, который максимизирует качество.",
+			"anchor": "Если мы говорим про DSPy, у него есть N важных компонент.",
+			"theses": [
+				"Input и output фиксируют целевую задачу.",
+				"Model и chain of thought задают способ inference.",
+				"Evaluation dataset и metric переиспользуются из eval-системы.",
+				"Оптимизация особенно полезна для few-shot examples и может поддерживать другие patterns."
+			]
+		},
+		{
+			"start": 1800.86,
+			"title": "Quality datasets и CI pipeline",
+			"summary": "Global и subagent suites, code checks и автоматический pipeline превращают prompt в версионируемый артефакт, пересобираемый после изменений.",
+			"anchor": "Вам точно стоит собирать отдельные корзинки для subagents,",
+			"theses": [
+				"Каждый subagent может быть отдельной точкой failure.",
+				"Детерминированные правила дешевле проверять кодом.",
+				"CI запускает evaluation, optimization и сохраняет новую prompt-version.",
+				"Инженер работает преимущественно с training/eval data."
+			]
+		},
+		{
+			"start": 1914.5,
+			"title": "Когда агенту действительно нужна LLM",
+			"summary": "Выбор начинается с кода и правил, затем классического ML, и лишь после их пределов переходит к LLM и тяжёлому reasoning.",
+			"anchor": "Собственно, давайте говорить о том, куда уходят деньги компании, когда мы запускаем агента",
+			"theses": [
+				"Простая deterministic задача решается кодом.",
+				"Classification лучше начинать с обычной модели.",
+				"LLM оправдана flexible language understanding.",
+				"Тяжёлая model нужна для глубокого исследования и сложного planning."
+			]
+		},
+		{
+			"start": 2044.62,
+			"title": "Unit economics и ресурсы",
+			"summary": "Стоимость разделяется на обычную infrastructure и дорогой inference; до запуска оцениваются users, request frequency, steps, model calls и tokens.",
+			"anchor": "Давайте теперь посмотрим вообще, как можно думать про то, за что мы платим деньги.",
+			"theses": [
+				"Средний revenue должен превышать cost обслуживания agent.",
+				"Model routing снижает долю дорогих calls.",
+				"Limits защищают от resource exhaustion и downtime.",
+				"Autoscaling опирается на users, request rate и complexity."
+			]
+		},
+		{
+			"start": 2248.16,
+			"title": "Context как главный потребитель tokens",
+			"summary": "История диалога растёт вместе с каждым turn, ухудшая стоимость, latency и иногда качество ответа.",
+			"anchor": "Итак, давайте поговорим про рост контекста.",
+			"theses": [
+				"Полный history нельзя бесконечно отправлять в каждый model call.",
+				"Sliding window, summarization и очистка state ограничивают рост.",
+				"Context policy должна сохранять references, но удалять ненужные данные."
+			]
+		},
+		{
+			"start": 2340.94,
+			"title": "Четыре уровня cost optimization",
+			"summary": "Верхнеуровневая стратегия соединяет model router, speed, limits и scalability.",
+			"anchor": "Тут хочется поговорить про следующие четыре уровня оптимизации.",
+			"theses": [
+				"Лёгкие requests не идут в дорогую модель.",
+				"Быстрая обработка лучше утилизирует CPU и service capacity.",
+				"Budget и concurrency limits ограничивают worst case.",
+				"Система заранее проверяется на двукратный рост traffic."
+			]
+		},
+		{
+			"start": 2488.94,
+			"title": "Model router и fallback",
+			"summary": "FAQ, средние tool flows и сложные research requests маршрутизируются в модели разной мощности.",
+			"anchor": "Хочется посмотреть сначала на model router.",
+			"theses": [
+				"Первый router может использовать keywords и semantic similarity.",
+				"Следующий уровень — classifier или LLM router.",
+				"Классический classifier сложнее расширять, но легче стабилизировать.",
+				"Failure слабой модели передаётся более сильной через fallback."
+			]
+		},
+		{
+			"start": 2716.56,
+			"title": "Parallel tools, prompt efficiency и streaming",
+			"summary": "Latency уменьшается параллельным исполнением независимых calls, сокращением reasoning steps и ранней отдачей результата.",
+			"anchor": "Сейчас хочется поговорить немножко про то, как давать более быструю скорость ответов на запросы пользователей и при этом не падать.",
+			"theses": [
+				"Streaming улучшает perceived latency.",
+				"Очереди, caches и приоритеты оптимизируют внутреннюю загрузку.",
+				"Целевой SLO проверяется по high percentile, например p95."
+			]
+		},
+		{
+			"start": 2882.02,
+			"title": "Hard limits, timeouts и cycle detection",
+			"summary": "Без ограничений reasoning-loop расходует tokens, блокирует workers и каскадно ухудшает latency системы.",
+			"anchor": "Давайте дальше как раз-таки посмотрим, а что будет, если мы не поставим лимиты.",
+			"theses": [
+				"Ограничивается число reasoning steps.",
+				"Timeout завершает task, нарушившую SLA.",
+				"Повторные tool calls отслеживаются как cycles.",
+				"Flow можно остановить с текущим context или перезапустить с corrective instruction."
+			]
+		},
+		{
+			"start": 3107.22,
+			"title": "Queue, workers и три уровня caching",
+			"summary": "Очередь сглаживает load, worker pool ограничивает concurrency, а cache исключает повторную работу.",
+			"anchor": "Это какая-то очередь и pool workers.",
+			"theses": [
+				"SLA определяет допустимое ожидание в queue.",
+				"Число workers является явным capacity limit.",
+				"Кэшируются semantic user answers, tool results и LLM responses.",
+				"Caching эффективнее на больших объёмах production traffic."
+			]
+		},
+		{
+			"start": 3306.08,
+			"title": "Reliability и честный failure",
+			"summary": "Модель склонна выдумать успех после сбоя, поэтому ответ ограничивают guardrails и schema, а критичный tool failure сообщают пользователю честно.",
+			"anchor": "Последнее, о чем хочется поговорить,",
+			"theses": [
+				"Prompt запрета hallucinations не даёт гарантии.",
+				"Structured output повышает соблюдение контракта.",
+				"Не все model providers одинаково строго поддерживают schema.",
+				"Лучше вернуть failure, чем выдумать booking."
+			]
+		},
+		{
+			"start": 3484.24,
+			"title": "Модель как недоверенный proxy",
+			"summary": "Агент открывает путь ко всем доступным services, поэтому любой разрешённый tool и parameter рассматривается как потенциальная attack surface.",
+			"anchor": "Теперь самое интересное — это безопасность",
+			"theses": [
+				"Если action технически доступен модели, prompt injection однажды его вызовет.",
+				"Secrets, PII, user IDs и API keys не помещаются в model context.",
+				"Авторизация выполняется в code, а не через system prompt."
+			]
+		},
+		{
+			"start": 3780.64,
+			"title": "Tool contracts, OAuth и canary release",
+			"summary": "Безопасность строится ограниченным списком tools, строгими arguments, output filtering и проверкой user identity на каждом action.",
+			"anchor": "как с этим бороться.",
+			"theses": [
+				"Model не выбирает произвольный user_id.",
+				"Sensitive identity извлекается из trusted storage.",
+				"OAuth token переносит scopes пользователя во внешние services.",
+				"Canary rollout ограничивает blast radius и отслеживает metrics до расширения аудитории."
+			]
+		},
+		{
+			"start": 4050.54,
+			"title": "Когда нужна platform team",
+			"summary": "После первого production-agent новые домены повторяют logging, auth, eval, databases и deployment, создавая экономику общей платформы.",
+			"anchor": "Мы придвинулись к третьему акту.",
+			"theses": [
+				"Platform не строят до доказанного продукта.",
+				"Правило трёх: повторяющаяся задача в трёх местах оправдывает выделенного infrastructure developer.",
+				"Второй агент ещё часто быстрее сделать на накопленном опыте без полноценной platform."
+			]
+		},
+		{
+			"start": 4278.08,
+			"title": "Infrastructure против business logic",
+			"summary": "Общими становятся logging, auth, tool wrappers, MCP, databases, CI/CD и eval, а domain prompts и graph остаются независимыми.",
+			"anchor": "бизнесовая",
+			"theses": [
+				"Infrastructure решается один раз и переиспользуется.",
+				"Prompt, chain of thought, nodes и model choice принадлежат конкретному agent.",
+				"Чрезмерное обобщение создаёт hidden coupling и общий blast radius."
+			]
+		},
+		{
+			"start": 4404.84,
+			"title": "Три стадии зрелости",
+			"summary": "Система проходит prototype, production hardening и platform extraction; смешивание стадий либо задерживает запуск, либо разрушает стабильность.",
+			"anchor": "три стадии.",
+			"theses": [
+				"Prototype доказывает ценность и feasibility.",
+				"Hardening добавляет reliability, observability, security и team scalability.",
+				"Platform появляется после накопления типовых решений.",
+				"Оптимальное развитие сохраняет скорость без отказа от инженерной зрелости."
+			]
+		}
+	],
+	"has_transcript": true,
+	"glossary": [
+		{
+			"term": "Span",
+			"definition": "Атомарная операция trace: model call, tool call, request или response."
+		},
+		{
+			"term": "Trace",
+			"definition": "Полная цепочка spans, относящихся к одному пользовательскому запросу."
+		},
+		{
+			"term": "Session",
+			"definition": "Набор traces одного связанного пользовательского диалога."
+		},
+		{
+			"term": "DSPy",
+			"definition": "Framework для оптимизации prompts по task signature, inference pattern, dataset и metric."
+		},
+		{
+			"term": "Model router",
+			"definition": "Компонент выбора модели по сложности и типу входящего запроса."
+		},
+		{
+			"term": "SLA/SLO",
+			"definition": "Целевое ограничение времени и надёжности обработки пользовательского запроса."
+		},
+		{
+			"term": "Semantic cache",
+			"definition": "Повторное использование ответа на семантически похожий запрос без полного agent cycle."
+		},
+		{
+			"term": "Guardrail",
+			"definition": "Ограничение допустимого input, output или action, уменьшающее риск нежелательного поведения."
+		},
+		{
+			"term": "OAuth",
+			"definition": "Протокол делегированной авторизации с scopes, позволяющий выполнять action от имени пользователя."
+		},
+		{
+			"term": "Canary release",
+			"definition": "Постепенная выкатка на малую долю аудитории с контролем metrics и blast radius."
+		},
+		{
+			"term": "Правило трёх",
+			"definition": "Infrastructure имеет смысл обобщать после повторения одной задачи как минимум в трёх местах."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Production observability",
+			"items": [
+				"Добавьте user_id, agent_id, trace_id и session_id во все logs.",
+				"Измеряйте p95 latency, steps, tokens, dependency success и error rate.",
+				"Создайте dashboards и alerts от текущего baseline."
+			]
+		},
+		{
+			"title": "Quality automation",
+			"items": [
+				"Категоризируйте failures на prompt, tool и architecture.",
+				"Сначала примените simple patterns и code checks.",
+				"Для DSPy переиспользуйте eval dataset и metric.",
+				"Версионируйте optimized prompts через CI."
+			]
+		},
+		{
+			"title": "Cost и reliability",
+			"items": [
+				"Посчитайте unit economics до роста traffic.",
+				"Ограничьте context, steps, time и daily budget.",
+				"Добавьте model router, fallback, parallel calls и caching.",
+				"Возвращайте честный failure при недоступном critical tool."
+			]
+		},
+		{
+			"title": "Security и platform",
+			"items": [
+				"Не передавайте secrets и PII в model context.",
+				"Уберите user identity из tool arguments и проверяйте OAuth scopes в code.",
+				"Выкатывайте рискованные изменения через canary.",
+				"Выносите общую infrastructure только после доказанного повторения."
+			]
+		}
+	],
+	"video": {
+		"provider": "vk",
+		"id": "-84793390_456240040",
+		"poster": "media/agents-week-2026-5-1-production-engineering.jpg"
+	}
+}

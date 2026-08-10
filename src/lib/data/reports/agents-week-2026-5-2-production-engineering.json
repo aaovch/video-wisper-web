@@ -1,0 +1,362 @@
+{
+	"slug": "agents-week-2026-5-2-production-engineering",
+	"title": "Agents Week 2026 — лекция 5.2: Production Engineering — Decision Trees, Architecture and Frameworks",
+	"subtitle": "Нужен ли агент, unit economics, continuous validation, control plane, multi-agent patterns и выбор framework",
+	"source_name": "Agents Week 2026 ｜ Лекция 5.2 Production Engineering for LLM Agents [-84793390_456240041].mp4",
+	"note": "Заключительная лекция Кирилла Власова формализует production-решения и архитектурные decision trees для AI-агентов. Расшифровка выполнена локально Whisper Turbo на CUDA; термины, frameworks и protocols выверены без изменения таймкодов.",
+	"duration": 2242.94,
+	"tags": [
+		"AI-агенты",
+		"Agents Week 2026",
+		"production engineering",
+		"decision tree",
+		"unit economics",
+		"validation",
+		"control plane",
+		"Google ADK",
+		"LangGraph",
+		"MCP",
+		"A2A"
+	],
+	"overview_theses": [
+		"Agent — крайний и самый дорогой вариант в спектре rules → FastText/classifier → single LLM call → agent; начинать нужно с проверки, нужен ли он вообще.",
+		"Агентская система сочетает ML и backend: она статистична, может не падать, а правдоподобно врать, и требует непрерывного validation-monitoring loop.",
+		"До кода формализуются input, output, scope, non-goals, success criteria, edge cases и human fallback.",
+		"Экономика оценивается через cost per successful session с учётом inference, infrastructure, verification и rework, а не только token price.",
+		"Зрелое качество опирается на versioned prompts, offline validation, trajectory tracing и online signals; финальный answer не доказывает корректность пути.",
+		"Engineering trade-off связывает latency, quality и cost, а production admission pipeline идёт через offline tests, shadow, canary и monitored rollout.",
+		"Многоагентная architecture нуждается в control plane для registry, routing, budgets, observability и governance и следует тем же cohesion/coupling principles, что обычное ПО.",
+		"Framework выбирается по задаче — graph, hierarchy, conversation, computer-use или MCP-native — а MCP/A2A сохраняют стандартные boundaries при смене реализации.",
+		"Модели становятся commodity, поэтому ценность смещается к orchestration, tools, data, guardrails, feedback loops и UX."
+	],
+	"chapters": [
+		{
+			"start": 45.46,
+			"title": "Decision tree: нужен ли агент",
+			"summary": "Кирилл формализует путь от правил и классического ML к single-call LLM и только затем к автономному агенту.",
+			"anchor": "Привет!",
+			"theses": [
+				"Каждый шаг вправо медленнее, дороже и менее надёжен.",
+				"Agent используется, когда простые approaches не покрывают требуемую autonomy и flexibility.",
+				"Первый design question — нужен ли агент вообще."
+			]
+		},
+		{
+			"start": 122.9,
+			"title": "Агент — другой класс систем",
+			"summary": "В отличие от обычного service, агент статистичен, не гарантирует одинаковый output и часто деградирует без exception.",
+			"anchor": "И если ответ на все три вопроса, которые сейчас вы видите на слайде,",
+			"theses": [
+				"Success описывается rate, а не одним binary test.",
+				"Failure может быть невоспроизводимым или выглядеть правдоподобным.",
+				"Разработка замыкает prompt, validation, monitoring и production feedback.",
+				"Engineer проектирует среду, а не полностью программирует behavior."
+			]
+		},
+		{
+			"start": 309.78,
+			"title": "Формализация до первой строки кода",
+			"summary": "Input, output, scope, non-goals и measurable success задают границы системы и будущего eval.",
+			"anchor": "Нужно формализовать задачу.",
+			"theses": [
+				"Input может быть text, voice, documents или structured data.",
+				"Output — answer, action, document или structured result.",
+				"Non-goals важнее общего обещания полезности.",
+				"Task suite и metrics начинают собирать на этапе design."
+			]
+		},
+		{
+			"start": 445.54,
+			"title": "Edge cases, fallback и unit economics",
+			"summary": "Недоступный tool или неверный input не должны каскадировать hallucination; сложные случаи эскалируются человеку, а экономика проверяется ещё до роста.",
+			"anchor": "очень важном вопросе, и это экономика.",
+			"theses": [
+				"Multi-agent hallucination становится input следующего шага.",
+				"Human fallback имеет явную trigger point.",
+				"Если экономика не работает на 10 users, масштаб не исправит её.",
+				"В agent product каждый request имеет переменную себестоимость."
+			]
+		},
+		{
+			"start": 494.54,
+			"title": "Три уровня costs и успешная сессия",
+			"summary": "Полная стоимость объединяет inference, infrastructure и hidden human verification/rework.",
+			"anchor": "На самом деле существует три уровня costs AI-агента.",
+			"theses": [
+				"Один session содержит несколько model и tool calls.",
+				"Compute, vector storage и embeddings входят в infrastructure cost.",
+				"Сравнивать с человеком нужно cost per successful session.",
+				"Низкий success rate способен уничтожить выгоду дешёвой попытки."
+			]
+		},
+		{
+			"start": 617.8,
+			"title": "Три столпа управляемого качества",
+			"summary": "Prompt engineering, validation и tracing образуют единую систему, где prompts живут как code с versions, tests и CI.",
+			"anchor": "У нас есть, на самом деле, три важных столпа,",
+			"theses": [
+				"Небольшая формулировка prompt резко меняет behavior.",
+				"Long context вызывает attention decay системной инструкции.",
+				"Declarative prompt design, например DSPy, облегчает versioning и optimization."
+			]
+		},
+		{
+			"start": 728.1,
+			"title": "Ограничения offline validation",
+			"summary": "Task suite полезен, но способен вызвать overfitting под известные examples и не отражает меняющуюся production-среду.",
+			"anchor": "в оценке качества – это валидация.",
+			"theses": [
+				"Model, data и environment меняются после benchmark run.",
+				"Production содержит бесконечный набор unknown tasks.",
+				"Правильный answer через 15 лишних tools — хрупкий и дорогой success."
+			]
+		},
+		{
+			"start": 841.48,
+			"title": "Trajectory tracing",
+			"summary": "Количество steps, tool selection, reasoning, error handling и tokens объясняют, как агент получил результат.",
+			"anchor": "И обычно в валидации траекторий оценивают следующие вещи.",
+			"theses": [
+				"Три steps надёжнее и дешевле десяти.",
+				"Нужный tool не должен сопровождаться лишними calls.",
+				"Trace отличает reasoning от случайного угадывания.",
+				"Чем богаче logs, тем быстрее debugging и comparison."
+			]
+		},
+		{
+			"start": 945.28,
+			"title": "Online validation и реальные signals",
+			"summary": "На traffic без known output качество оценивается judge sampling, feedback, repeat contacts, escalation, task rate, resolution time и session cost.",
+			"anchor": "При онлайн-валидации можно использовать разные подходы.",
+			"theses": [
+				"LLM-as-a-judge проверяет случайную выборку conversations.",
+				"Thumbs, recontact и human escalation дают behavioral signal.",
+				"A/B и shadow mode сравнивают новый prompt/pipeline со старым.",
+				"Способность решать benchmark не равна полезности реальным users."
+			]
+		},
+		{
+			"start": 1065.4,
+			"title": "Инструменты eval и tracing",
+			"summary": "Framework выбирается по существующему stack и требованиям к hosting или CI.",
+			"anchor": "удобно использовать различные инструменты, такие как, например, Langfuse, который мы обсуждали в прошлом занятии.",
+			"theses": [
+				"LangSmith естественен для LangChain ecosystem.",
+				"Langfuse подходит для self-host open-source deployment.",
+				"Braintrust акцентирует eval in CI, Helicone — быстрый старт."
+			]
+		},
+		{
+			"start": 1121.76,
+			"title": "Latency, quality и cost",
+			"summary": "У production-agent есть три взаимосвязанных рычага: улучшение двух обычно оплачивается третьим.",
+			"anchor": "Давайте сейчас перейдем к инженерным компромиссам.",
+			"theses": [
+				"Fast + cheap снижает quality.",
+				"Fast + quality увеличивает price.",
+				"Quality + cheap повышает latency.",
+				"Routing, prompt caching и batch/async modes адаптируют компромисс к workload."
+			]
+		},
+		{
+			"start": 1240.64,
+			"title": "Admission pipeline: offline → shadow → canary → rollout",
+			"summary": "Изменение проходит последовательные gates, а online validation и alerts продолжаются после полного релиза.",
+			"anchor": "можно посмотреть, например, того, как вообще может выглядеть pipeline-приемки.",
+			"theses": [
+				"Offline suite блокирует очевидный regression.",
+				"Shadow получает real input без влияния на users.",
+				"Canary проверяет метрики на 5% traffic.",
+				"Rollout на 100% не завершает monitoring loop."
+			]
+		},
+		{
+			"start": 1309.34,
+			"title": "Шесть слоёв agent system",
+			"summary": "Infrastructure, models, memory, tools, orchestration и UX образуют layered architecture, причём большинство production failures живёт наверху.",
+			"anchor": "На самом деле можно выделить 6 слоев наших AI-агентов.",
+			"theses": [
+				"Нижние layers включают compute, inference, routing, cache, state и RAG.",
+				"Tools связывают MCP, API и databases.",
+				"Orchestration и UX получают мало engineering time, хотя создают большинство проблем.",
+				"Streaming может решить perceived latency без ускорения model."
+			]
+		},
+		{
+			"start": 1432.46,
+			"title": "Control plane для multi-agent",
+			"summary": "Аналог Kubernetes control plane централизует inventory, routing, budgets, observability и governance.",
+			"anchor": "Например, для Kubernetes у нас есть Control Plane.",
+			"theses": [
+				"Agent registry хранит capabilities, tools и access.",
+				"Router выбирает исполнителя запроса.",
+				"Budget/limit layer контролирует inference.",
+				"Governance ведёт audit trail, guardrails и compliance checks."
+			]
+		},
+		{
+			"start": 1512.8,
+			"title": "Cohesion, coupling и single responsibility",
+			"summary": "Agent modules следуют обычным software principles: один domain — одна ответственность, общий context — один agent, связи — через interfaces.",
+			"anchor": "Поэтому при декомпозиции следует следовать тем же правилам.",
+			"theses": [
+				"High cohesion удерживает связанную domain logic вместе.",
+				"Low coupling минимизирует cascading changes.",
+				"Agents тестируются изолированно.",
+				"SOLID можно переосмыслить для agent architecture."
+			]
+		},
+		{
+			"start": 1606.12,
+			"title": "Паттерны Anthropic от простого к сложному",
+			"summary": "Known chains, routing, parallelization, orchestrator-workers и evaluator-optimizer комбинируются в сложные flows.",
+			"anchor": "И на самом деле сейчас есть два основных паттерна.",
+			"theses": [
+				"Chain подходит заранее известным steps.",
+				"Router классифицирует разные request types.",
+				"Independent subtasks выполняются параллельно.",
+				"Orchestrator динамически создаёт workers.",
+				"Evaluator повторяет generation до прохождения explicit criteria."
+			]
+		},
+		{
+			"start": 1770.46,
+			"title": "Три механизма Google ADK",
+			"summary": "Google ADK организует multi-agent communication через shared state, LLM delegation и agent-as-tool.",
+			"anchor": "И Google ADK предлагает три механизма взаимодействия между агентами.",
+			"theses": [
+				"Shared Session State поддерживает sequences и loops.",
+				"LLM-driven delegation выбирает subagent по описанию без жёсткого if/else.",
+				"Explicit Agent Tool вызывает agent как function.",
+				"Инкапсуляция скрывает внутренние LLM, RAG и reasoning."
+			]
+		},
+		{
+			"start": 1877.94,
+			"title": "Landscape agent frameworks",
+			"summary": "Frameworks различаются фундаментальной моделью orchestration, поэтому универсального победителя пока нет.",
+			"anchor": "Давайте их обсудим и разберемся в ландшафте.",
+			"theses": [
+				"LangGraph даёт explicit graph и максимальный control.",
+				"Google ADK и OpenAI Agents SDK используют hierarchy.",
+				"CrewAI и AutoGen моделируют разговор ролей.",
+				"Claude Agent SDK открывает computer-use/code environment.",
+				"Amazon Strands Agents строит MCP-native approach."
+			]
+		},
+		{
+			"start": 2064.56,
+			"title": "MCP, A2A и правило простоты",
+			"summary": "MCP стандартизирует agent-to-tool, A2A — agent-to-agent; эти boundaries переживают смену framework.",
+			"anchor": "Во-первых, MCP –",
+			"theses": [
+				"MCP подобен универсальному разъёму для capabilities.",
+				"A2A задаёт контракт вызова другого agent.",
+				"Framework — локальный выбор, protocols — архитектурная основа.",
+				"К framework переходят только после предела simple code."
+			]
+		},
+		{
+			"start": 2136.74,
+			"title": "Модели становятся commodity",
+			"summary": "Падение inference cost смещает differentiation от модели и prompt к целой системе вокруг них.",
+			"anchor": "что модели становятся commodity.",
+			"theses": [
+				"Models становятся дешевле и взаимозаменяемее.",
+				"Orchestration, tools и UX определяют основную ценность.",
+				"Prompt объясняет лишь часть поведения; data, guardrails и feedback loops важнее.",
+				"MCP и A2A приближают agents к microservice architecture.",
+				"Растёт спрос на agent architects, eval engineers и AgentOps."
+			]
+		}
+	],
+	"has_transcript": true,
+	"glossary": [
+		{
+			"term": "Cost per successful session",
+			"definition": "Полная стоимость всех попыток, infrastructure и human work, делённая на число успешно решённых sessions."
+		},
+		{
+			"term": "Attention decay",
+			"definition": "Снижение влияния ранних инструкций при росте контекста диалога."
+		},
+		{
+			"term": "Shadow mode",
+			"definition": "Параллельный запуск новой версии на real traffic без отправки её ответов пользователям."
+		},
+		{
+			"term": "Control plane",
+			"definition": "Общий слой registry, routing, budgets, observability и governance для agent system."
+		},
+		{
+			"term": "High cohesion",
+			"definition": "Сосредоточение тесно связанной domain responsibility внутри одного модуля или агента."
+		},
+		{
+			"term": "Low coupling",
+			"definition": "Связь модулей через явные interfaces с минимальной зависимостью от внутренних state и implementation."
+		},
+		{
+			"term": "Orchestrator-workers",
+			"definition": "Паттерн, где coordinator динамически определяет и запускает набор параллельных workers."
+		},
+		{
+			"term": "Evaluator-optimizer",
+			"definition": "Цикл generation и проверки, продолжающийся до достижения явных quality criteria."
+		},
+		{
+			"term": "Agent-as-tool",
+			"definition": "Инкапсуляция subagent за интерфейсом обычного tool/function."
+		},
+		{
+			"term": "A2A",
+			"definition": "Стандартный протокол взаимодействия и делегирования между agents."
+		},
+		{
+			"term": "Commodity model",
+			"definition": "Взаимозаменяемая доступная модель, перестающая быть главным источником product differentiation."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Decision tree до разработки",
+			"items": [
+				"Докажите, что rules, classifier и single LLM call недостаточны.",
+				"Опишите input/output, scope/non-goals и human fallback.",
+				"Посчитайте cost per successful session для текущего success rate."
+			]
+		},
+		{
+			"title": "Continuous validation",
+			"items": [
+				"Версионируйте prompts как code.",
+				"Сочетайте offline suite с trajectory checks.",
+				"Добавьте shadow, A/B, canary и online signals.",
+				"Сохраняйте costs и errors по session."
+			]
+		},
+		{
+			"title": "Architecture design",
+			"items": [
+				"Разложите систему на шесть layers.",
+				"Опишите control plane и governance.",
+				"Проверьте agents на cohesion, coupling и isolation.",
+				"Выберите минимальный паттерн orchestration."
+			]
+		},
+		{
+			"title": "Framework choice",
+			"items": [
+				"Graph выбирайте для явного control, hierarchy — для delegation.",
+				"Conversation подходит role teams, computer-use — open-ended environment.",
+				"Зафиксируйте MCP/A2A boundaries, чтобы implementation можно было заменить.",
+				"Начинайте с простого code и усложняйте только по измеренному failure."
+			]
+		}
+	],
+	"video": {
+		"provider": "vk",
+		"id": "-84793390_456240041",
+		"poster": "media/agents-week-2026-5-2-production-engineering.jpg"
+	}
+}

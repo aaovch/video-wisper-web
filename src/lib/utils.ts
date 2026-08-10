@@ -3,6 +3,7 @@ import type { VideoSource } from '$lib/types';
 /** URL постера/превью для карточки (без сетевых запросов). */
 export function getVideoPosterUrl(video: VideoSource | undefined, base = ''): string | null {
 	if (!video) return null;
+	if ('poster' in video && video.poster) return `${base}/${video.poster}`;
 	switch (video.provider) {
 		case 'youtube':
 			return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
@@ -13,7 +14,7 @@ export function getVideoPosterUrl(video: VideoSource | undefined, base = ''): st
 				: null;
 		}
 		case 'file':
-			return video.poster ? `${base}/${video.poster}` : null;
+			return null;
 		default:
 			return null;
 	}

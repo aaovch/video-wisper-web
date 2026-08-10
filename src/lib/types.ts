@@ -79,6 +79,8 @@ export type VideoSource =
 			provider: EmbedProvider;
 			/** ID видео у провайдера (YouTube — 11-символьный id, VK — owner_id, Rutube/Vimeo — id ролика) */
 			id: string;
+			/** Локальная обложка карточки относительно base, если провайдер не даёт стабильное превью. */
+			poster?: string;
 			/** Токен `p` для приватной Rutube-ссылки. */
 			privateToken?: string;
 	  }

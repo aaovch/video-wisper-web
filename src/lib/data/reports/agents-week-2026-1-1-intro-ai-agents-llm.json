@@ -375,6 +375,7 @@
 	],
 	"video": {
 		"provider": "vk",
-		"id": "-84793390_456240032"
+		"id": "-84793390_456240032",
+		"poster": "media/agents-week-2026-1-1-intro-ai-agents-llm.jpg"
 	}
 }

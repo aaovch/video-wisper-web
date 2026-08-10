@@ -1,0 +1,359 @@
+{
+	"slug": "agents-week-2026-4-agent-evaluation-seminar",
+	"title": "Agents Week 2026 — семинар 4: Agent Evaluation — From Metrics to Managed Quality",
+	"subtitle": "Airline-agent, task suite, strict graders, Iron User и пять итераций LLM judge с измерением kappa и стоимости",
+	"source_name": "Agents Week 2026 ｜ Семинар 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240039].mp4",
+	"note": "Практический семинар Сергея Купцова, повторяющий четыре части eval-пайплайна на небольшом airline-agent. Расшифровка выполнена локально Whisper Turbo на CUDA; названия методов, метрик и моделей исправлены без изменения таймкодов.",
+	"duration": 2406.95,
+	"tags": [
+		"AI-агенты",
+		"Agents Week 2026",
+		"evaluation",
+		"LangGraph",
+		"ReAct",
+		"Eval Harness",
+		"Iron User",
+		"LLM judge",
+		"Cohen’s kappa",
+		"few-shot"
+	],
+	"overview_theses": [
+		"Практика собирает eval без готовой библиотеки, чтобы показать связи между agent, suite, criteria, graders и multi-turn harness.",
+		"Task suite объединяет ручные и проверенные LLM-generated cases, tags, difficulty, ожидаемое состояние и сценарий Iron User.",
+		"Strict state и policy graders быстро находят failures, но single-turn прогон ошибочно проваливает задачи, где агент должен запросить подтверждение.",
+		"Iron User превращает harness в multi-turn систему; обнаруженный бесконечный цикл показал, что качество tools и max_turns являются частью eval.",
+		"Human golden labels используются как эталон для калибровки usefulness, groundedness и efficiency через Cohen’s kappa.",
+		"Определение rubric, отдельный call на критерий, reasoning, few-shot и сильная модель последовательно подняли kappa с 0,11 до 0,30.",
+		"Даже лучший judge не достиг доверительного порога 0,6, а стоимость выросла почти на порядок, поэтому улучшение agreement нужно оценивать вместе с cost.",
+		"Eval остаётся циклом: сохраняются все runs, failures пополняют suite, offline metrics сверяются с production feedback."
+	],
+	"chapters": [
+		{
+			"start": 52.11,
+			"title": "Практический маршрут eval-пайплайна",
+			"summary": "Семинар вручную собирает agent, suite, criteria, graders, Iron User, human labels и несколько LLM judges.",
+			"anchor": "Добро пожаловать на практическую часть четвертого дня, в которой мы постараемся продемонстрировать и вместе пройти по шагам все то, что мы до этого проходили в лекции.",
+			"theses": [
+				"Готовые eval-библиотеки намеренно не используются.",
+				"Цель — увидеть внутренние связи всех компонентов и trade-off качества со стоимостью."
+			]
+		},
+		{
+			"start": 111.17,
+			"title": "Минимальный airline-agent",
+			"summary": "Полноценный ReAct-agent строится на LangGraph с четырьмя tools и пятью policies.",
+			"anchor": "Давайте начнем с агента.",
+			"theses": [
+				"Для быстрых итераций используется GPT-4o mini.",
+				"Agent работает с рейсами и бронированиями через read/write tools.",
+				"Policies считаются частью environment."
+			]
+		},
+		{
+			"start": 142.73,
+			"title": "Mock database и tools",
+			"summary": "Тестовая база содержит восемь рейсов и два бронирования и восстанавливается через snapshot_db.",
+			"anchor": "Мы будем для итерации агента сначала использовать GPT-4o mini.",
+			"theses": [
+				"get_booking и search_flights читают данные.",
+				"change_booking и cancel выполняют side effects.",
+				"Reset state нужен перед каждым trial."
+			]
+		},
+		{
+			"start": 228.07,
+			"title": "Модель trajectory",
+			"summary": "Отдельные dataclasses сохраняют задачу, query, state before/after и каждый атомарный шаг агента.",
+			"anchor": "У нас получается, как я говорил, 8 рейсов, 2 резервирования.",
+			"theses": [
+				"Eval получает не только финальный output.",
+				"Trajectory хранит tool calls, reasoning, responses и state changes."
+			]
+		},
+		{
+			"start": 282.19,
+			"title": "Prompt, graph и простой harness",
+			"summary": "Короткий system prompt, LangGraph ReAct и run_agent образуют минимальный рабочий агент и локальный harness.",
+			"anchor": "И есть какие-то helper-методы, которые позволят ее как-то отобразить.",
+			"theses": [
+				"Prompt задаёт дату, доступные tools и policies.",
+				"run_agent сбрасывает базу и заполняет trajectory.",
+				"Notebook-исполнение осознанно нарушает production-требование для учебной наглядности."
+			]
+		},
+		{
+			"start": 382.21,
+			"title": "Первый trace: просмотр бронирования",
+			"summary": "Простой task показывает query, выбранный tool, параметры, observation, ответ и неизменённую базу.",
+			"anchor": "Значит, попробуем запустить.",
+			"theses": [
+				"Агент вызывает get_booking с правильным ID.",
+				"Отсутствие state change соответствует информационному запросу.",
+				"Trace позволяет сопоставить ответ с mock database."
+			]
+		},
+		{
+			"start": 459.21,
+			"title": "Ручная корзина задач",
+			"summary": "Task включает ID, user query, tags, difficulty, dialog flag, expected state, policies и Iron User context.",
+			"anchor": "Из формального запроса пользователя, потому что интерфейс нашего агента — это вот чат-вый интерфейс,",
+			"theses": [
+				"Strict grading заранее поддерживается структурой task.",
+				"Есть simple, medium и complex cases.",
+				"Скрытый context помогает simulator отвечать на уточнения, не раскрывая всё сразу."
+			]
+		},
+		{
+			"start": 600.75,
+			"title": "Расширение suite через LLM",
+			"summary": "Prompt генерирует 15 дополнительных JSON-задач по tools, policies и состоянию базы; объединённый suite содержит 27 cases.",
+			"anchor": "Мы формулируем prompt, в котором говорим в системе, в LLM, к которому мы отправим в prompt.",
+			"theses": [
+				"Generated tasks приводятся к той же схеме, что ручные.",
+				"Баланс difficulty и category проверяется статистикой.",
+				"Suite намеренно усложнён для демонстрации слабости наивных judges."
+			]
+		},
+		{
+			"start": 678.19,
+			"title": "State, policy и LLM graders",
+			"summary": "Три вида оценки покрывают конечное состояние, ожидаемую последовательность tools и смысловые критерии.",
+			"anchor": "И переходим дальше к самим критериям.",
+			"theses": [
+				"State grader детерминированно сравнивает database outcome.",
+				"Policy grader проверяет необходимые steps.",
+				"LLM judge оценивает usefulness, groundedness и efficiency."
+			]
+		},
+		{
+			"start": 782.23,
+			"title": "Почему single-turn eval проваливается",
+			"summary": "Strict graders обнаруживают, что state-changing tasks не проходят, потому что harness не продолжает диалог после запроса подтверждения.",
+			"anchor": "Значит, здесь мы просто в цикле пробегаемся по всем заданиям,",
+			"theses": [
+				"Один user message недостаточен для multi-turn policy.",
+				"Failure принадлежит eval-инфраструктуре, а не обязательно агенту.",
+				"Следующий шаг — симуляция пользователя."
+			]
+		},
+		{
+			"start": 901.25,
+			"title": "Iron User v2 и max_turns",
+			"summary": "Улучшенный simulator получает task, скрытый context, историю и правила реалистичного поведения и отвечает обычным текстом.",
+			"anchor": "Строим iron-юзера второй версии.",
+			"theses": [
+				"Первая версия выявила ошибку search_flights без flight_key.",
+				"Недостающий ключ приводил к бесконечному циклу.",
+				"max_turns ограничивает число итераций.",
+				"Multi-turn harness повышает долю успешных state checks."
+			]
+		},
+		{
+			"start": 1014.63,
+			"title": "Три смысловых критерия",
+			"summary": "После strict checks вводятся usefulness, groundedness и efficiency по короткой шкале good / so-so / bad.",
+			"anchor": "Значит, мы проверили, что наш eval стал значительно зрелее",
+			"theses": [
+				"Usefulness проверяет решение пользовательской задачи.",
+				"Groundedness связывает параметры и утверждения с данными dialogue/environment.",
+				"Efficiency оценивает достаточность числа steps."
+			]
+		},
+		{
+			"start": 1127.81,
+			"title": "Human golden labels",
+			"summary": "Все trajectories вручную размечаются по трём критериям и становятся эталоном для сравнения judges.",
+			"anchor": "расставить golden set критериев.",
+			"theses": [
+				"В production labels должны пересекаться между несколькими experts.",
+				"Комбинированный quality score агента составил около 5,1 из 6.",
+				"Agreement judge измеряется относительно gold set."
+			]
+		},
+		{
+			"start": 1251.47,
+			"title": "Judge v1: один наивный prompt",
+			"summary": "Один call получает task, trajectory и ответ и сразу возвращает три оценки в JSON.",
+			"anchor": "И переходим, значит,",
+			"theses": [
+				"Kappa с human labels — 0,11 при accuracy около 60%.",
+				"Judge завышает положительные оценки и плохо понимает efficiency.",
+				"Низкая цена объясняется одним call на task."
+			]
+		},
+		{
+			"start": 1482.57,
+			"title": "Judge v2: явная rubric",
+			"summary": "Определения good, so-so и bad по каждому параметру уменьшают число расхождений без увеличения стоимости.",
+			"anchor": "В данном",
+			"theses": [
+				"Kappa растёт с 0,11 до 0,16.",
+				"Число расхождений уменьшается с 32 до 26.",
+				"Один prompt всё ещё оценивает все criteria вместе."
+			]
+		},
+		{
+			"start": 1541.07,
+			"title": "Judge v3: критерии раздельно и reasoning",
+			"summary": "Каждый критерий получает собственный call и step-by-step объяснение, упрощающее отладку.",
+			"anchor": "Первое",
+			"theses": [
+				"Kappa повышается примерно до 0,19.",
+				"Стоимость утраивается из-за трёх calls на task.",
+				"Reasoning показывает, почему judge выбрал label.",
+				"Рост не обязан быть равномерным по каждому criterion."
+			]
+		},
+		{
+			"start": 1673.11,
+			"title": "Judge v4: few-shot примеры",
+			"summary": "К предыдущим улучшениям добавляются размеченные expert examples для каждого критерия.",
+			"anchor": "В JJVers4",
+			"theses": [
+				"Kappa достигает 0,23.",
+				"Efficiency улучшается сильнее usefulness и groundedness.",
+				"На маленьком suite большая доля gold labels протекает в prompt, что ограничивает достоверность эксперимента."
+			]
+		},
+		{
+			"start": 1882.79,
+			"title": "Judge v5: более сильная модель",
+			"summary": "Без изменения prompts переход с GPT-4o mini на GPT-4o поднимает agreement, но значительно увеличивает стоимость.",
+			"anchor": "Этот",
+			"theses": [
+				"Kappa достигает 0,30 — лучший результат практики.",
+				"Значение всё равно ниже условного доверительного порога 0,6.",
+				"Usefulness как самый субъективный criterion выигрывает от сильной модели."
+			]
+		},
+		{
+			"start": 2011.37,
+			"title": "Agreement против стоимости",
+			"summary": "Графики по пяти judges показывают рост качества, неодинаковые ошибки по criteria и почти десятикратное удорожание evaluation.",
+			"anchor": "Еще ряд",
+			"theses": [
+				"Groundedness остаётся слабым местом.",
+				"Kappa растёт, но judge ещё нельзя считать production-ready.",
+				"Небольшое ускорение run не компенсирует кратный cost."
+			]
+		},
+		{
+			"start": 2125.53,
+			"title": "Итоговый eval-чек-лист",
+			"summary": "Финальные выводы возвращают четыре компонента, ранний старт, цикличность, trajectory evaluation и инженерную культуру LLM judge.",
+			"anchor": "И закончить",
+			"theses": [
+				"20 реальных задач достаточно для раннего старта.",
+				"Failures должны менять suite, criteria и graders.",
+				"Capability eval развивает систему, regression eval предотвращает деградацию.",
+				"Стохастичность измеряется, а не игнорируется."
+			]
+		},
+		{
+			"start": 2247.91,
+			"title": "Сначала качество, затем оптимизация",
+			"summary": "Команда задаёт quality goals до cost/latency оптимизации и ограничивает набор метрик наиболее информативными сигналами.",
+			"anchor": "Цели",
+			"theses": [
+				"Достаточно 2–5 устойчивых metrics.",
+				"Каждый run, agent version, parameters и tasks сохраняются для воспроизводимости.",
+				"Tails и outliers важнее одной средней оценки.",
+				"No-go thresholds сами требуют калибровки."
+			]
+		},
+		{
+			"start": 2359.45,
+			"title": "Замыкание offline eval на production",
+			"summary": "Изолированные прогоны должны пополняться user logs и feedback, а offline metrics — коррелировать с online behaviour.",
+			"anchor": "И",
+			"theses": [
+				"Начинают с сильной модели и полного context, затем удешевляют.",
+				"Production failures превращаются в новые regression tasks.",
+				"Ранние инвестиции в eval ускоряют и делают увереннее выпуск качественных агентов."
+			]
+		}
+	],
+	"has_transcript": true,
+	"glossary": [
+		{
+			"term": "State grader",
+			"definition": "Детерминированная проверка ожидаемого конечного состояния базы или среды."
+		},
+		{
+			"term": "Policy grader",
+			"definition": "Проверка обязательных tool calls и шагов, вытекающих из бизнес-политики."
+		},
+		{
+			"term": "Usefulness",
+			"definition": "Критерий того, решена ли фактическая задача пользователя."
+		},
+		{
+			"term": "Groundedness",
+			"definition": "Соответствие утверждений и tool parameters данным запроса, диалога и environment."
+		},
+		{
+			"term": "Efficiency",
+			"definition": "Отсутствие лишних шагов и разумная стоимость trajectory."
+		},
+		{
+			"term": "Golden labels",
+			"definition": "Эталонная human-разметка, относительно которой калибруется автоматический judge."
+		},
+		{
+			"term": "Cohen’s kappa",
+			"definition": "Метрика agreement judge с человеком с поправкой на случайные совпадения."
+		},
+		{
+			"term": "Few-shot",
+			"definition": "Включение в prompt примеров tasks, expert reasoning и ожидаемых labels."
+		},
+		{
+			"term": "Capability eval",
+			"definition": "Набор сложных задач, показывающий направления развития агента."
+		},
+		{
+			"term": "Regression eval",
+			"definition": "Стабильный suite, предотвращающий возврат уже исправленных ошибок."
+		}
+	],
+	"seminar_notes": [
+		{
+			"title": "Упражнение: minimal harness",
+			"items": [
+				"Сбрасывайте database snapshot перед каждым trial.",
+				"Сохраняйте query, state before/after, tool calls и observations.",
+				"Сначала проверьте один простой trace вручную."
+			]
+		},
+		{
+			"title": "Упражнение: task suite и strict grading",
+			"items": [
+				"Опишите ID, query, tags, difficulty и dialog flag.",
+				"Добавьте expected state и required policy steps.",
+				"Объедините ручные и reviewed LLM-generated tasks."
+			]
+		},
+		{
+			"title": "Упражнение: Iron User",
+			"items": [
+				"Передайте simulator цель, скрытый context и dialog history.",
+				"Возвращайте только естественную user message.",
+				"Установите max_turns и исследуйте cycles как отдельные failures."
+			]
+		},
+		{
+			"title": "Упражнение: итерации judge",
+			"items": [
+				"Создайте human gold labels по 2–5 criteria.",
+				"Измерьте kappa на наивном prompt.",
+				"По очереди добавьте rubric, отдельный call, reasoning и few-shot.",
+				"Для каждой версии сохраните agreement, latency и cost."
+			]
+		}
+	],
+	"video": {
+		"provider": "vk",
+		"id": "-84793390_456240039",
+		"poster": "media/agents-week-2026-4-agent-evaluation-seminar.jpg"
+	}
+}
