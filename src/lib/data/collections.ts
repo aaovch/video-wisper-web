@@ -213,7 +213,8 @@ export const collections: Collection[] = [
 			'podlodka-vector-search',
 			'podlodka-slm-468',
 			'podlodka-naim-ai-482',
-			'berezhnoy-ai'
+			'berezhnoy-ai',
+			'agentic-engineering-ai-workflow-deksden-1'
 		]
 	},
 	{
