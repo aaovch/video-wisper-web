@@ -225,6 +225,45 @@ export const collections: Collection[] = [
 			'podlodka-naim-ai-482',
 			'berezhnoy-ai',
 			'agentic-engineering-ai-workflow-deksden-1'
+		],
+		sections: [
+			{
+				title: 'Agents Week 2026',
+				subtitle:
+					'Последовательный курс: основы агентов, инструменты, память, multi-agent workflow, evaluation и production.',
+				items: [
+					'agents-week-2026-1-1-intro-ai-agents-llm',
+					'agents-week-2026-1-2-tools-mcp',
+					'agents-week-2026-2-memory-guardrails-lecture',
+					'agents-week-2026-2-memory-guardrails-seminar',
+					'agents-week-2026-3-workflow-multi-agent-multimodality-lecture',
+					'agents-week-2026-3-workflow-multi-agent-multimodality-seminar',
+					'agents-week-2026-4-agent-evaluation-lecture',
+					'agents-week-2026-4-agent-evaluation-seminar',
+					'agents-week-2026-5-1-production-engineering',
+					'agents-week-2026-5-2-production-engineering'
+				]
+			},
+			{
+				title: 'Фундамент и новые подходы к разработке',
+				subtitle: 'Context engineering, базы знаний, устройство LLM и Software 3.0.',
+				items: [
+					'context-engineering-29min',
+					'obsidian-wiki-karpathy',
+					'llm-deep-dive-karpathy',
+					'software-3-0'
+				]
+			},
+			{
+				title: 'Подлодка: AI в продуктах и командах',
+				subtitle: 'Поиск, компактные модели и изменения в найме.',
+				items: ['podlodka-vector-search', 'podlodka-slm-468', 'podlodka-naim-ai-482']
+			},
+			{
+				title: 'Практические кейсы и образование',
+				subtitle: 'Как ИИ меняет рабочий процесс, обучение и инженерную практику.',
+				items: ['berezhnoy-ai', 'agentic-engineering-ai-workflow-deksden-1']
+			}
 		]
 	},
 	{
