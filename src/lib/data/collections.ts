@@ -51,6 +51,16 @@ export interface Collection {
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
+		slug: 'ii-i-hema',
+		title: 'ИИ и HEMA',
+		hema: true,
+		facets: { authors: ['Пётр Васильев', 'Александр Овчинников'] },
+		subtitle: 'ИИ-инструменты, данные и проверяемые гипотезы для анализа боёв и тренировочного процесса.',
+		description:
+			'Разговоры и разборы о том, как применять языковые модели и спортивную аналитику в HEMA, не подменяя данными тренерскую модель и проверку гипотез.',
+		items: ['ii-dlya-analiza-hema-boev']
+	},
+	{
 		slug: 'hema-english',
 		title: 'HEMA: English',
 		hema: true,
