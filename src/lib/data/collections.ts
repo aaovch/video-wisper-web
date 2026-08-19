@@ -234,7 +234,8 @@ export const collections: Collection[] = [
 			'podlodka-slm-468',
 			'podlodka-naim-ai-482',
 			'berezhnoy-ai',
-			'agentic-engineering-ai-workflow-deksden-1'
+			'agentic-engineering-ai-workflow-deksden-1',
+			'vibe-coding-lovushki-myshleniya'
 		],
 		sections: [
 			{
@@ -272,7 +273,11 @@ export const collections: Collection[] = [
 			{
 				title: 'Практические кейсы и образование',
 				subtitle: 'Как ИИ меняет рабочий процесс, обучение и инженерную практику.',
-				items: ['berezhnoy-ai', 'agentic-engineering-ai-workflow-deksden-1']
+				items: [
+					'berezhnoy-ai',
+					'agentic-engineering-ai-workflow-deksden-1',
+					'vibe-coding-lovushki-myshleniya'
+				]
 			}
 		]
 	},

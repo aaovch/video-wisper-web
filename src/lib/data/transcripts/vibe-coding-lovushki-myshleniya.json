@@ -1,0 +1,928 @@
+{
+	"transcript": "There is a rat in your brain that craves only dopamine and thinks that 10 minutes is a long time. That rat may not like this video. This is because it is slightly more educational than usual. I would even recommend taking notes. I tried to make it fun, but I'm not Mr. Beast and I don't really want to be, so this is a video about boredom and difficulty and learning to code. And if there's anything I really wanted to teach you, it's that it is possible and advisable to ignore that rat as best you can. Last video, I talked about an experiment where novices were observed as they completed a beginner programming task. Put simply, some of them were bad and some of them were good. The difference was mostly in how much they actually thought about it before trying to solve it. Shocking. The thing is, if you look at what the students turned in, it's all pretty decent. Every single student found a solution within the 30 minutes given to them thanks to their AI tutor. The thing about the study that made me a bit worried is that the ones who had offloaded all problem solving to AI were completely unaware of their own incompetency. They thought that they had solved it mostly on their own. You've probably heard the term vibe coding to describe this practice of using AI without fully understanding the code it produces. It's pretty great for doing and pretty terrible for learning. The following video is about how to actually use and develop the most important tool in programming, your brain. What do you do when you get stuck on a programming problem? Before AI tools, your options were to look it up on Stack Overflow, ask a friend if you have any, or pause to think about it. Since the introduction of AI to answer every possible question we have, it's increasingly the thing we turn to when we get stuck. Typing out a prompt and reading something feels more productive than an empty pause. But is it? In the experiment, we see that subject 7 read the question and started coding, but was distracted and overwhelmed by an autocomplete suggestion. They abandoned their code, opened ChatGPT, and asked it what to do. See what happened there? They interpreted this moment of confusion as a sign that they wouldn't be able to solve the problem on their own. So, within 10 seconds of starting, they're already having the AI think for them. And again, if you're a professional developer and you're a little eepy, then sure, vibe code away. But if you're a student in school, your whole purpose is to learn and develop your thinking. Give yourself that minute to think and try to do it on your own. Otherwise, my friends, smooth brain is coming for us all. Pauses in learning are necessary, even if they feel unproductive. Struggling, getting stuck, getting frustrated, these aren't signs that you're not going to be able to solve the problem. They are what solving a problem feels like most of the time. Speaking of what things feel like, let's talk about psychology. Researchers use a lot of words that most people don't need to know, but if there's one which I think should become common usage, it's the concept of metacognitive awareness. Granted, the reason that it hasn't is probably because metacognitive awareness is not a very sexy term, but the idea is pretty simple. It's about your ability to recognize common traps in your thinking and effectively problem-solve your way out of them. In the example I just mentioned, the subject had just begun problem-solving when they were distracted by an AI autocomplete suggestion. This is named the interruption trap by the researchers in the paper, and it's a metacognitive difficulty that is specifically introduced by AI use. Real talk, when I first read this paper, I was kind of mad. This list is such a succinct description of everything you struggle with when you're first wrapping your head around learning to program. If I'd known these from the beginning, I think I probably would have felt a lot less confused and frustrated with myself. And I wouldn't be the only one. Research has shown that teaching beginners about common metacognitive difficulties, like the interruption trap, produces immediate and lasting changes to learners' productivity, independence, and self-esteem. confidence. Given that, it might be good to take some time to learn them. This is where I recommend you start taking notes. The first five are forming, dislodging, assumption, location, and achievement. Forming. Right question, wrong answer. You understand the problem, but you're using the wrong approach to solve it. In the experiment, students were asked to write a program that reported whether a user input a sequence of majority positive or majority negative numbers. Participant 1 seemed to understand the problem in their verbal statements, but started writing code to sum the numbers, which was a flawed approach. Right question, wrong answer. Dislodging, or stuck in a rut. Even when you realize your approach isn't working, you struggle to change it. After participant 4 coded a complete solution to determine whether numbers were even or odd, they tested and edited it repeatedly, still confused why it wasn't working. They failed to make the jump from knowing whether a number was even or odd, to counting even and odd. Assumption. Wrong question, right answer. You perfectly solved the problem, just not the one you were supposed to. Participant 21 confidently declared variables num1, num2, num3, and num4, and wrote separate code blocks to handle exactly four numbers. The solution worked, unless you wanted more than four numbers. Location. So close, but so far. You skip important problem-solving steps in the beginning and think you're almost done, only to realize that you skipped something crucial like a loop, or a data structure. Here, participant 9 wrote a complete set of input and output statements, without including a loop. It took until testing for them to realize their omission, where they had to majorly rethink their program structure. Achievement. A band-aid on a broken bone. You've written a lot of code and keep making small fixes in hopes that it'll start working, but actually, it needs a total overhaul. This sounds similar to location, but this doubling down on a bad strategy comes later in the problem-solving process. Participant 1 just kind of threw everything they knew at the problem, without thinking through the logic. They had nested for loops and conditionals and nested conditionals, and their code needed major structural changes. Even after the AI suggested an alternative way to solve the problem, they skimmed over that suggestion and kept tinkering, instead of recognizing that starting over was probably the best next step. Wow. Turns out that when we start learning something new, we're usually bad at it. Shocking. It's easy to see where these participants went wrong from an outside perspective, but much harder to notice them when you're in the middle of the problem. Remember, the goal isn't to never encounter these difficulties, it's to become aware of them in yourself as quickly as possible. In an age before LLMs, this video would be over. Those would have been the five metacognitive difficulties associated with learning to code. Unfortunately, researchers found that rather than helping with these challenges, AI tools actually introduced three new metacognitive difficulties. Namely, progression, falling behind without noticing. You think you're keeping up with the course, but because AI assistants can generate working code that surpasses your current understanding, you're falling behind and you don't realize it. This happened to participant eight, who struggled to set up a simple while loop correctly and needed the AI to tell them to initialize their variables, despite these being concepts that they should have learned earlier in the course. In reality, this student was probably several weeks behind in the core material without realizing it. In the post-test interview, they said that the LLM was helpful in validating their own ideas. In practice, though, they didn't have any. They used the LLM to generate a passable solution, skipping the thinking part. Interruption. Distracting pop-ups. Every time you try to focus, an AI code completion tool throws a suggestion at you, breaking your train of thought. This one's pretty obvious, but it can be a major problem for beginners. Learners have to spend a lot of time, a lot of brain power to pause and think through a solution, and getting interrupted can really derail that mental process. Not to mention the strain of reading unfamiliar code. It's worth noting that in the experiment, non-struggling students mostly ignored the AI autocomplete suggestions. If you've made it this far, congrats for taking the step to learn programming the right way. The final metacognitive difficulty introduced specifically by AI tools is... Mislead. Following bad advice. You trust a suggestion, from an AI, a tutorial, or even your own guess, that seems right, but actually takes you in the wrong direction. In the study, participant 11 accepted a suggestion from the AI assistant, which pushed them in the direction of summing positive and negative numbers, rather than counting them. Thankfully, they were able to backtrack and fix the mistake, but it cost them a lot of extra time and energy. At the moment, most AI coding tools are not built with these challenges in mind. Even if they were, you are the sole expert of your own mind, and there's only so much an external resource can do to see and protect you from the traps in your thoughts. By taking a bit of time to learn about these thinking traps, you're already scientifically better off. But try not to let these lessons slip away. Find your own way to remind yourself of them while you're coding. Write them on a post-it note, point them out to someone else when you're pair coding, respectfully, and try to reflect on which ones you might be the most susceptible to. Most of all, I encourage you to remember to enjoy the process, of learning to program, even if it can be a bit annoying sometimes. I'll also remind you that we have free licenses for education, and free programming courses you can complete right in your IDE, at academy.jetbrains.com. Please subscribe if you enjoy these videos, they take a lot of work, and I'd love to be able to continue making them. That's all for this one, and enjoy your learning.",
+	"chapters": [
+		{
+			"start": 0.0,
+			"segments": [
+				{
+					"start": 0.0,
+					"text": "There is a rat in your brain that craves only dopamine and thinks that 10 minutes is a long time."
+				},
+				{
+					"start": 5.88,
+					"text": "That rat may not like this video."
+				},
+				{
+					"start": 8.06,
+					"text": "This is because it is slightly more educational than usual."
+				},
+				{
+					"start": 11.68,
+					"text": "I would even recommend taking notes."
+				},
+				{
+					"start": 14.64,
+					"text": "I tried to make it fun, but I'm not Mr."
+				},
+				{
+					"start": 16.92,
+					"text": "Beast and I don't"
+				},
+				{
+					"start": 17.7,
+					"text": "really want to be, so this is a video about boredom and difficulty and learning to code."
+				},
+				{
+					"start": 22.88,
+					"text": "And if there's anything I really wanted to teach you, it's that it is possible and advisable to"
+				},
+				{
+					"start": 28.32,
+					"text": "ignore that rat as best you can."
+				}
+			]
+		},
+		{
+			"start": 30.38,
+			"segments": [
+				{
+					"start": 30.38,
+					"text": "Last video, I talked about an experiment where novices were"
+				},
+				{
+					"start": 33.54,
+					"text": "observed as they completed a beginner programming task."
+				},
+				{
+					"start": 36.6,
+					"text": "Put simply, some of them were bad and some"
+				},
+				{
+					"start": 38.96,
+					"text": "of them were good."
+				},
+				{
+					"start": 39.82,
+					"text": "The difference was mostly in how much they actually thought about it before"
+				},
+				{
+					"start": 43.32,
+					"text": "trying to solve it."
+				},
+				{
+					"start": 44.98,
+					"text": "Shocking."
+				},
+				{
+					"start": 45.62,
+					"text": "The thing is, if you look at what the students turned in,"
+				},
+				{
+					"start": 48.02,
+					"text": "it's all pretty decent."
+				},
+				{
+					"start": 49.54,
+					"text": "Every single student found a solution within the 30 minutes given to them"
+				},
+				{
+					"start": 53.0,
+					"text": "thanks to their AI tutor."
+				},
+				{
+					"start": 55.18,
+					"text": "The thing about the study that made me a bit worried"
+				},
+				{
+					"start": 57.04,
+					"text": "is that the ones who had"
+				},
+				{
+					"start": 58.22,
+					"text": "offloaded all problem solving to AI were completely unaware of their own incompetency."
+				},
+				{
+					"start": 63.42,
+					"text": "They thought that they had solved it mostly on their own."
+				}
+			]
+		},
+		{
+			"start": 66.18,
+			"segments": [
+				{
+					"start": 66.18,
+					"text": "You've probably heard the term"
+				},
+				{
+					"start": 67.12,
+					"text": "vibe coding to describe this practice of using AI without fully understanding the code it produces."
+				},
+				{
+					"start": 72.16,
+					"text": "It's pretty great for doing and pretty terrible for learning."
+				},
+				{
+					"start": 75.82,
+					"text": "The following video is about how"
+				},
+				{
+					"start": 77.26,
+					"text": "to actually use and develop the most important tool in programming, your brain."
+				}
+			]
+		},
+		{
+			"start": 83.02,
+			"segments": [
+				{
+					"start": 83.02,
+					"text": "What do you"
+				},
+				{
+					"start": 83.78,
+					"text": "do when you get stuck on a programming problem?"
+				},
+				{
+					"start": 86.02,
+					"text": "Before AI tools, your options were"
+				},
+				{
+					"start": 88.22,
+					"text": "to look it up on Stack Overflow, ask a friend if you have any,"
+				},
+				{
+					"start": 94.34,
+					"text": "or pause to think about it."
+				},
+				{
+					"start": 96.24,
+					"text": "Since the introduction of AI to answer every possible question we have,"
+				},
+				{
+					"start": 99.7,
+					"text": "it's increasingly the thing we turn to when we get stuck."
+				},
+				{
+					"start": 102.72,
+					"text": "Typing out a prompt and reading"
+				},
+				{
+					"start": 103.96,
+					"text": "something feels more productive than an empty pause."
+				},
+				{
+					"start": 107.32,
+					"text": "But is it?"
+				}
+			]
+		},
+		{
+			"start": 108.92,
+			"segments": [
+				{
+					"start": 108.92,
+					"text": "In the experiment, we see that subject 7 read the question and started coding,"
+				},
+				{
+					"start": 113.12,
+					"text": "but was distracted and overwhelmed by an autocomplete suggestion."
+				},
+				{
+					"start": 116.8,
+					"text": "They abandoned their"
+				},
+				{
+					"start": 117.98,
+					"text": "code, opened ChatGPT, and asked it what to do."
+				},
+				{
+					"start": 121.3,
+					"text": "See what happened there?"
+				},
+				{
+					"start": 123.2,
+					"text": "They interpreted this"
+				},
+				{
+					"start": 124.36,
+					"text": "moment of confusion as a sign that they wouldn't be able to solve the problem on their own."
+				},
+				{
+					"start": 128.52,
+					"text": "So,"
+				},
+				{
+					"start": 128.84,
+					"text": "within 10 seconds of starting, they're already having the AI think for them."
+				},
+				{
+					"start": 133.16,
+					"text": "And again, if you're a professional developer and you're a little eepy, then sure, vibe code away."
+				},
+				{
+					"start": 139.1,
+					"text": "But if you're a student in school, your whole purpose is to learn and develop your thinking."
+				},
+				{
+					"start": 144.36,
+					"text": "Give yourself that minute to think and try to do it on your own."
+				},
+				{
+					"start": 147.98,
+					"text": "Otherwise, my friends, smooth brain is coming for us all."
+				}
+			]
+		},
+		{
+			"start": 151.36,
+			"segments": [
+				{
+					"start": 151.36,
+					"text": "Pauses in learning are necessary, even if they feel unproductive."
+				},
+				{
+					"start": 155.48,
+					"text": "Struggling, getting stuck,"
+				},
+				{
+					"start": 156.94,
+					"text": "getting frustrated, these aren't signs that you're not going to be able to solve the problem."
+				},
+				{
+					"start": 161.3,
+					"text": "They are what solving a problem feels like most of the time."
+				}
+			]
+		},
+		{
+			"start": 165.18,
+			"segments": [
+				{
+					"start": 165.18,
+					"text": "Speaking of what things feel like, let's talk about psychology."
+				},
+				{
+					"start": 168.46,
+					"text": "Researchers use a lot of words that most people don't need to know,"
+				},
+				{
+					"start": 171.54,
+					"text": "but if there's one which I think should become common usage, it's the concept of"
+				},
+				{
+					"start": 176.58,
+					"text": "metacognitive awareness."
+				},
+				{
+					"start": 178.26,
+					"text": "Granted, the reason that it hasn't is probably because"
+				},
+				{
+					"start": 180.92,
+					"text": "metacognitive awareness is not a very sexy term, but the idea is pretty simple."
+				},
+				{
+					"start": 186.44,
+					"text": "It's about your ability to recognize common traps in your thinking"
+				},
+				{
+					"start": 190.81,
+					"text": "and effectively problem-solve your way out of them."
+				},
+				{
+					"start": 193.52,
+					"text": "In the example I just mentioned, the subject had just begun problem-solving when they were"
+				},
+				{
+					"start": 197.82,
+					"text": "distracted by an AI autocomplete suggestion."
+				},
+				{
+					"start": 200.92,
+					"text": "This is named the interruption trap by the researchers in the paper,"
+				},
+				{
+					"start": 204.92,
+					"text": "and it's a metacognitive difficulty that is specifically"
+				},
+				{
+					"start": 207.42,
+					"text": "introduced by AI use."
+				}
+			]
+		},
+		{
+			"start": 209.62,
+			"segments": [
+				{
+					"start": 209.62,
+					"text": "Real talk, when I first read this paper, I was kind of mad."
+				},
+				{
+					"start": 212.68,
+					"text": "This list is such a succinct description of everything you struggle with when you're"
+				},
+				{
+					"start": 216.82,
+					"text": "first wrapping your head around learning to program."
+				},
+				{
+					"start": 219.22,
+					"text": "If I'd known these from the beginning, I think I probably would have felt a lot less"
+				},
+				{
+					"start": 222.92,
+					"text": "confused and frustrated with myself."
+				},
+				{
+					"start": 225.26,
+					"text": "And I wouldn't be the only one."
+				},
+				{
+					"start": 226.66,
+					"text": "Research has shown that teaching beginners about common metacognitive difficulties,"
+				},
+				{
+					"start": 230.9,
+					"text": "like the interruption trap, produces immediate and lasting changes to learners' productivity,"
+				},
+				{
+					"start": 236.12,
+					"text": "independence, and self-esteem."
+				},
+				{
+					"start": 237.4,
+					"text": "confidence."
+				},
+				{
+					"start": 238.14,
+					"text": "Given that, it might be good to take some time to learn them."
+				}
+			]
+		},
+		{
+			"start": 252.38,
+			"segments": [
+				{
+					"start": 252.38,
+					"text": "This is where I recommend you start taking notes."
+				},
+				{
+					"start": 256.02,
+					"text": "The first five are forming, dislodging, assumption, location, and achievement."
+				}
+			]
+		},
+		{
+			"start": 262.84,
+			"segments": [
+				{
+					"start": 262.84,
+					"text": "Forming."
+				},
+				{
+					"start": 263.42,
+					"text": "Right question, wrong answer."
+				},
+				{
+					"start": 265.44,
+					"text": "You understand the problem, but you're using the wrong approach to solve it."
+				},
+				{
+					"start": 268.84,
+					"text": "In the experiment, students were asked to write a program that reported whether a user input"
+				},
+				{
+					"start": 273.68,
+					"text": "a sequence of majority positive or majority negative numbers."
+				},
+				{
+					"start": 277.74,
+					"text": "Participant 1 seemed to understand the problem in their verbal statements,"
+				},
+				{
+					"start": 281.14,
+					"text": "but started writing code to sum the numbers, which was a flawed approach."
+				},
+				{
+					"start": 285.52,
+					"text": "Right question, wrong answer."
+				}
+			]
+		},
+		{
+			"start": 288.14,
+			"segments": [
+				{
+					"start": 288.14,
+					"text": "Dislodging, or stuck in a rut."
+				},
+				{
+					"start": 289.9,
+					"text": "Even when you realize your approach isn't working, you struggle to change it."
+				},
+				{
+					"start": 293.64,
+					"text": "After participant 4 coded a complete solution to determine whether numbers were even or odd,"
+				},
+				{
+					"start": 298.72,
+					"text": "they tested and edited it repeatedly, still confused why it wasn't working."
+				},
+				{
+					"start": 302.8,
+					"text": "They failed to make the jump from knowing whether a number was even or odd, to counting even and odd."
+				}
+			]
+		},
+		{
+			"start": 309.4,
+			"segments": [
+				{
+					"start": 309.4,
+					"text": "Assumption."
+				},
+				{
+					"start": 310.02,
+					"text": "Wrong question, right answer."
+				},
+				{
+					"start": 312.14,
+					"text": "You perfectly solved the problem, just not the one you were supposed to."
+				},
+				{
+					"start": 316.34,
+					"text": "Participant 21 confidently declared variables num1, num2, num3, and num4,"
+				},
+				{
+					"start": 321.48,
+					"text": "and wrote separate code blocks to handle exactly four numbers."
+				},
+				{
+					"start": 324.58,
+					"text": "The solution worked, unless you wanted more than four numbers."
+				}
+			]
+		},
+		{
+			"start": 328.2,
+			"segments": [
+				{
+					"start": 328.2,
+					"text": "Location."
+				},
+				{
+					"start": 328.94,
+					"text": "So close, but so far."
+				},
+				{
+					"start": 330.8,
+					"text": "You skip important problem-solving steps in the beginning and think you're almost done,"
+				},
+				{
+					"start": 334.92,
+					"text": "only to realize that you skipped something crucial like a loop,"
+				},
+				{
+					"start": 337.74,
+					"text": "or a data structure."
+				},
+				{
+					"start": 338.9,
+					"text": "Here, participant 9 wrote a complete set of input and output statements,"
+				},
+				{
+					"start": 343.22,
+					"text": "without including a loop."
+				},
+				{
+					"start": 344.48,
+					"text": "It took until testing for them to realize their omission,"
+				},
+				{
+					"start": 347.16,
+					"text": "where they had to majorly rethink their program structure."
+				}
+			]
+		},
+		{
+			"start": 350.64,
+			"segments": [
+				{
+					"start": 350.64,
+					"text": "Achievement."
+				},
+				{
+					"start": 351.26,
+					"text": "A band-aid on a broken bone."
+				},
+				{
+					"start": 353.04,
+					"text": "You've written a lot of code and keep making small fixes in hopes that it'll start working,"
+				},
+				{
+					"start": 357.5,
+					"text": "but actually, it needs a total overhaul."
+				},
+				{
+					"start": 359.64,
+					"text": "This sounds similar to location, but this doubling down on a bad strategy comes"
+				},
+				{
+					"start": 363.72,
+					"text": "later in the problem-solving process."
+				},
+				{
+					"start": 366.4,
+					"text": "Participant 1 just kind of threw"
+				},
+				{
+					"start": 367.72,
+					"text": "everything they knew at the problem, without thinking through the logic."
+				},
+				{
+					"start": 370.88,
+					"text": "They had nested for loops and conditionals and nested conditionals,"
+				},
+				{
+					"start": 374.68,
+					"text": "and their code needed major structural changes."
+				},
+				{
+					"start": 377.78,
+					"text": "Even after the AI suggested an alternative way to solve the problem,"
+				},
+				{
+					"start": 381.5,
+					"text": "they skimmed over that suggestion and kept tinkering,"
+				},
+				{
+					"start": 384.22,
+					"text": "instead of recognizing that starting over was probably the best next step."
+				}
+			]
+		},
+		{
+			"start": 389.32,
+			"segments": [
+				{
+					"start": 389.32,
+					"text": "Wow."
+				},
+				{
+					"start": 390.14,
+					"text": "Turns out that when we start learning something new, we're usually bad at it."
+				},
+				{
+					"start": 394.18,
+					"text": "Shocking."
+				},
+				{
+					"start": 395.64,
+					"text": "It's easy to see where these participants"
+				},
+				{
+					"start": 397.72,
+					"text": "went wrong from an outside perspective,"
+				},
+				{
+					"start": 399.96,
+					"text": "but much harder to notice them when you're in the middle of the problem."
+				},
+				{
+					"start": 402.92,
+					"text": "Remember, the goal isn't to never encounter these difficulties,"
+				},
+				{
+					"start": 406.82,
+					"text": "it's to become aware of them in yourself as quickly as possible."
+				}
+			]
+		},
+		{
+			"start": 410.18,
+			"segments": [
+				{
+					"start": 410.18,
+					"text": "In an age before LLMs, this video would be over."
+				},
+				{
+					"start": 413.62,
+					"text": "Those would have been the five metacognitive difficulties associated with learning to code."
+				},
+				{
+					"start": 418.6,
+					"text": "Unfortunately, researchers found that rather than helping with these challenges,"
+				},
+				{
+					"start": 423.28,
+					"text": "AI tools actually introduced three new metacognitive difficulties."
+				},
+				{
+					"start": 429.12,
+					"text": "Namely,"
+				},
+				{
+					"start": 430.26,
+					"text": "progression, falling behind without noticing."
+				},
+				{
+					"start": 433.08,
+					"text": "You think you're keeping up with the course,"
+				},
+				{
+					"start": 435.22,
+					"text": "but because AI assistants can generate working code that surpasses your current understanding,"
+				},
+				{
+					"start": 439.7,
+					"text": "you're falling behind and you don't realize it."
+				},
+				{
+					"start": 442.28,
+					"text": "This happened to participant eight,"
+				},
+				{
+					"start": 444.44,
+					"text": "who struggled to set up a simple while loop correctly"
+				},
+				{
+					"start": 446.92,
+					"text": "and needed the AI to tell them to initialize their variables,"
+				},
+				{
+					"start": 450.22,
+					"text": "despite these being concepts that they should have learned earlier in the course."
+				},
+				{
+					"start": 454.24,
+					"text": "In reality,"
+				},
+				{
+					"start": 455.22,
+					"text": "this student was probably several weeks behind in the core material without realizing it."
+				},
+				{
+					"start": 459.82,
+					"text": "In the post-test interview,"
+				},
+				{
+					"start": 461.36,
+					"text": "they said that the LLM was helpful in validating their own ideas."
+				},
+				{
+					"start": 464.68,
+					"text": "In practice, though, they didn't have any."
+				},
+				{
+					"start": 467.1,
+					"text": "They used the LLM to generate a passable solution, skipping the thinking part."
+				}
+			]
+		},
+		{
+			"start": 471.68,
+			"segments": [
+				{
+					"start": 471.68,
+					"text": "Interruption."
+				},
+				{
+					"start": 472.8,
+					"text": "Distracting pop-ups."
+				},
+				{
+					"start": 474.3,
+					"text": "Every time you try to focus,"
+				},
+				{
+					"start": 475.86,
+					"text": "an AI code completion tool throws a suggestion at you,"
+				},
+				{
+					"start": 478.52,
+					"text": "breaking your train of thought."
+				},
+				{
+					"start": 480.0,
+					"text": "This one's pretty obvious,"
+				},
+				{
+					"start": 481.36,
+					"text": "but it can be a major problem for beginners."
+				},
+				{
+					"start": 484.1,
+					"text": "Learners have to spend a lot of time,"
+				},
+				{
+					"start": 485.2,
+					"text": "a lot of brain power to pause and think through a solution,"
+				},
+				{
+					"start": 488.1,
+					"text": "and getting interrupted can really derail that mental process."
+				},
+				{
+					"start": 491.7,
+					"text": "Not to mention the strain of reading unfamiliar code."
+				},
+				{
+					"start": 494.8,
+					"text": "It's worth noting that in the experiment,"
+				},
+				{
+					"start": 497.22,
+					"text": "non-struggling students mostly ignored the AI autocomplete suggestions."
+				},
+				{
+					"start": 501.28,
+					"text": "If you've made it this far,"
+				},
+				{
+					"start": 502.62,
+					"text": "congrats for taking the step to learn programming the right way."
+				}
+			]
+		},
+		{
+			"start": 505.2,
+			"segments": [
+				{
+					"start": 505.2,
+					"text": "The final metacognitive difficulty introduced specifically by AI tools is..."
+				},
+				{
+					"start": 510.12,
+					"text": "Mislead."
+				},
+				{
+					"start": 511.52,
+					"text": "Following bad advice."
+				},
+				{
+					"start": 513.28,
+					"text": "You trust a suggestion,"
+				},
+				{
+					"start": 514.52,
+					"text": "from an AI,"
+				},
+				{
+					"start": 515.8,
+					"text": "a tutorial,"
+				},
+				{
+					"start": 516.5,
+					"text": "or even your own guess,"
+				},
+				{
+					"start": 517.7,
+					"text": "that seems right,"
+				},
+				{
+					"start": 518.94,
+					"text": "but actually takes you in the wrong direction."
+				},
+				{
+					"start": 521.3,
+					"text": "In the study,"
+				},
+				{
+					"start": 522.3,
+					"text": "participant 11 accepted a suggestion from the AI assistant,"
+				},
+				{
+					"start": 525.7,
+					"text": "which pushed them in the direction of summing positive and negative numbers,"
+				},
+				{
+					"start": 529.26,
+					"text": "rather than counting them."
+				},
+				{
+					"start": 530.8,
+					"text": "Thankfully,"
+				},
+				{
+					"start": 531.44,
+					"text": "they were able to backtrack and fix the mistake,"
+				},
+				{
+					"start": 533.82,
+					"text": "but it cost them a lot of extra time and energy."
+				}
+			]
+		},
+		{
+			"start": 536.52,
+			"segments": [
+				{
+					"start": 536.52,
+					"text": "At the moment,"
+				},
+				{
+					"start": 537.5,
+					"text": "most AI coding tools are not built with these challenges in mind."
+				},
+				{
+					"start": 540.86,
+					"text": "Even if they were,"
+				},
+				{
+					"start": 542.0,
+					"text": "you are the sole expert of your own mind,"
+				},
+				{
+					"start": 544.18,
+					"text": "and there's only so much an external resource can do"
+				},
+				{
+					"start": 546.82,
+					"text": "to see and protect you from the traps in your thoughts."
+				},
+				{
+					"start": 550.86,
+					"text": "By taking a bit of time to learn about these thinking traps,"
+				},
+				{
+					"start": 553.8,
+					"text": "you're already scientifically better off."
+				},
+				{
+					"start": 556.04,
+					"text": "But try not to let these lessons slip away."
+				},
+				{
+					"start": 558.5,
+					"text": "Find your own way to remind yourself of them while you're coding."
+				},
+				{
+					"start": 562.0,
+					"text": "Write them on a post-it note,"
+				},
+				{
+					"start": 563.6,
+					"text": "point them out to someone else when you're pair coding,"
+				},
+				{
+					"start": 565.76,
+					"text": "respectfully,"
+				},
+				{
+					"start": 566.48,
+					"text": "and try to reflect on which ones you might be the most susceptible to."
+				},
+				{
+					"start": 570.56,
+					"text": "Most of all,"
+				},
+				{
+					"start": 571.36,
+					"text": "I encourage you to remember to enjoy the process,"
+				},
+				{
+					"start": 573.94,
+					"text": "of learning to program,"
+				},
+				{
+					"start": 575.26,
+					"text": "even if it can be a bit annoying sometimes."
+				},
+				{
+					"start": 578.06,
+					"text": "I'll also remind you that we have free licenses for education,"
+				},
+				{
+					"start": 581.12,
+					"text": "and free programming courses you can complete right in your IDE,"
+				},
+				{
+					"start": 584.28,
+					"text": "at academy.jetbrains.com."
+				},
+				{
+					"start": 586.88,
+					"text": "Please subscribe if you enjoy these videos,"
+				},
+				{
+					"start": 589.02,
+					"text": "they take a lot of work,"
+				},
+				{
+					"start": 590.34,
+					"text": "and I'd love to be able to continue making them."
+				},
+				{
+					"start": 593.28,
+					"text": "That's all for this one,"
+				},
+				{
+					"start": 594.56,
+					"text": "and enjoy your learning."
+				}
+			]
+		}
+	]
+}
