@@ -374,7 +374,8 @@ export const collections: Collection[] = [
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',
 			'hema-reflections',
-			'tenouti-i-tyakin-sibori'
+			'tenouti-i-tyakin-sibori',
+			'tsena-adaptatsii-tehnicheskogo-priema'
 		]
 	},
 	{
