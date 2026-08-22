@@ -457,6 +457,16 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'sobraniya-core-noname',
+		title: 'Собрания Core NoName',
+		hema: true,
+		isolated: true,
+		subtitle: 'Стратегические встречи ядра NoName: цели, метрики, ответственные и ежемесячные планы развития клуба.',
+		description:
+			'Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.',
+		items: ['sobranie-core-noname-1']
+	},
+	{
 		slug: 'seminary-korotovskih',
 		title: 'Семинары Вячеслава Коротовских',
 		hema: true,
