@@ -10,6 +10,11 @@ describe('search visibility', () => {
 		expect(searchableReportSlugs(['hema-theory'])).toContain('retention');
 	});
 
+	it('gates Core NoName meeting reports with their collection', () => {
+		expect(searchableReportSlugs([])).not.toContain('sobranie-core-noname-1');
+		expect(searchableReportSlugs(['sobraniya-core-noname'])).toContain('sobranie-core-noname-1');
+	});
+
 	it('keeps public and unassigned reports searchable', () => {
 		const visible = searchableReportSlugs([]);
 		expect(visible).toContain('longsword-a');

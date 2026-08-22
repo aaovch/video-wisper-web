@@ -464,7 +464,8 @@ export const collections: Collection[] = [
 		subtitle: 'Стратегические встречи ядра NoName: цели, метрики, ответственные и ежемесячные планы развития клуба.',
 		description:
 			'Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.',
-		items: ['sobranie-core-noname-1']
+		items: ['sobranie-core-noname-1'],
+		password: 'NoName_2026'
 	},
 	{
 		slug: 'seminary-korotovskih',
