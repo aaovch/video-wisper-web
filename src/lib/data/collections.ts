@@ -468,6 +468,20 @@ export const collections: Collection[] = [
 		password: 'NoName_2026'
 	},
 	{
+		slug: 'noname-kurs-dlya-trenerov',
+		title: 'NoName курс для тренеров',
+		hema: true,
+		isolated: true,
+		facets: {
+			authors: ['Пётр Васильев']
+		},
+		subtitle: 'Внутренний курс о развитии тренеров, структуре команды и единой методике NoName.',
+		description:
+			'Лекции и практические разборы для инструкторов, тренеров и старших тренеров NoName: компетенции, планирование, кадровый резерв и обмен опытом.',
+		items: ['kurs-dlya-trenerov-noname-1-karta-razvitiya'],
+		password: 'NoName_2026'
+	},
+	{
 		slug: 'seminary-korotovskih',
 		title: 'Семинары Вячеслава Коротовских',
 		hema: true,
