@@ -478,7 +478,11 @@ export const collections: Collection[] = [
 		subtitle: 'Внутренний курс о развитии тренеров, структуре команды и единой методике NoName.',
 		description:
 			'Лекции и практические разборы для инструкторов, тренеров и старших тренеров NoName: компетенции, планирование, кадровый резерв и обмен опытом.',
-		items: ['kurs-dlya-trenerov-noname-1-karta-razvitiya'],
+		items: [
+			'kurs-dlya-trenerov-noname-1-karta-razvitiya',
+			'kurs-dlya-trenerov-noname-2-planirovanie-puti-sportsmena',
+			'kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka'
+		],
 		password: 'NoName_2026'
 	},
 	{
