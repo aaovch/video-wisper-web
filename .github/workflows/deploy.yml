@@ -24,29 +24,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Type-check
-        run: npm run check
-
-      - name: Test
-        run: npm test
-
-      - name: Build
+      - name: Validate, test and build
         env:
           # Для project-репозитория сайт публикуется по пути /<repo>/
           BASE_PATH: /${{ github.event.repository.name }}
-        run: npm run build
-
-      - name: Verify search index
-        # Дым: новые/крупные отчёты должны попадать в предсобранный индекс.
-        run: |
-          npm run verify-search-index -- llm-deep-dive-karpathy
-          npm run verify-search-index -- tokarev-silovaya-ofp-2
+        run: npm run qa-report -- --all
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -108,6 +108,8 @@ export interface Report {
 	subtitle: string;
 	/** Имя исходного файла из пайплайна */
 	source_name: string;
+	/** Каноническая папка output/<source_stem>, достаточная для воспроизводимой пересборки. */
+	source_stem?: string;
 	/** Ссылка на исходное видео, если отчёт сделан из внешнего источника */
 	source_url?: string;
 	/** Пояснение к разметке */

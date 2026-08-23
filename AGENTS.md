@@ -7,11 +7,14 @@
 ## Команды
 
 ```powershell
-npm run check              # svelte-check (сначала пересоберёт поисковый индекс)
+npm run check              # svelte-check; данные/индекс не изменяет
 npm test                   # vitest
-npm run build              # prod-сборка в build/ (тоже пересоберёт индекс)
+npm run build              # индекс + prod-сборка в build/
 npm run build-search-index # MiniSearch-индекс + report-meta.json
 npm run verify-search-index -- <slug>  # проверка нового отчёта в индексе
+npm run validate-site -- <slug>        # отчёт, sidecar, source, коллекции/sections
+npm run qa-report -- <slug>            # полный gate: index + data + check + tests + build
+npm run qa-report                      # тот же gate для всех отчётов (режим CI)
 npm run inject-transcripts # legacy: sidecar-транскрипты из output/ (не нужен после build-report CLI)
 ```
 
@@ -51,5 +54,5 @@ $html = [System.Text.Encoding]::UTF8.GetString($ms.ToArray())
 git add -- ':(literal)src/routes/reports/[slug]/+page.svelte'
 ```
 
-- Перед push: `npm run check` без ошибок, `npm run build` успешен, staged diff содержит только ожидаемое.
+- Перед push: `npm run qa-report -- <slug>` успешен, staged diff содержит только ожидаемое.
 - `.codex/`, `.claude/` — рабочие артефакты агентов, в git не добавлять.
