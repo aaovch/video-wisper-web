@@ -481,7 +481,9 @@ export const collections: Collection[] = [
 		items: [
 			'kurs-dlya-trenerov-noname-1-karta-razvitiya',
 			'kurs-dlya-trenerov-noname-2-planirovanie-puti-sportsmena',
-			'kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka'
+			'kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka',
+			'kurs-dlya-trenerov-noname-4-tehnika-bezopasnosti',
+			'makrotsikly-nachalnoy-podgotovki-2026-mech-i-sablya'
 		],
 		password: 'NoName_2026'
 	},
