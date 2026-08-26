@@ -360,7 +360,7 @@ export const collections: Collection[] = [
 		slug: 'ovchinnikov-lectures',
 		title: 'Лекции и семинары Овчинникова Александра',
 		hema: true,
-		facets: { authors: ['Александр Овчинников'], weapons: ['Длинный меч'] },
+		facets: { authors: ['Александр Овчинников'], weapons: ['Длинный меч', 'Катана'] },
 		subtitle: 'Теория HEMA, тренерство, тактика и разборы практики фехтования.',
 		items: [
 			'protivnik-fehtuet-nepravilno',
@@ -375,7 +375,8 @@ export const collections: Collection[] = [
 			'retention-club',
 			'hema-reflections',
 			'tenouti-i-tyakin-sibori',
-			'tsena-adaptatsii-tehnicheskogo-priema'
+			'tsena-adaptatsii-tehnicheskogo-priema',
+			'silovye-porezy-katanoy'
 		]
 	},
 	{
