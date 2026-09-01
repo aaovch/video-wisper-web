@@ -380,6 +380,19 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'dlinnyy-mech-basic-noname',
+		title: 'Длинный меч, Basic, NoName',
+		hema: true,
+		facets: {
+			authors: ['Пётр Васильев'],
+			weapons: ['Длинный меч']
+		},
+		subtitle: 'Базовый цикл NoName по длинному мечу: простая атака, дистанция, тайминг и безопасная механика.',
+		description:
+			'Последовательные занятия группы Basic NoName по длинному мечу: от надёжной базовой атаки и работы ног до применения техники против реакции партнёра.',
+		items: ['prostaya-ataka-mikrotsikl-1-dlinnyy-mech']
+	},
+	{
 		slug: 'noname',
 		title: 'NoName, фехтовальный лагерь 2026',
 		hema: true,
