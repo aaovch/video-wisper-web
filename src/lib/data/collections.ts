@@ -380,6 +380,16 @@ export const collections: Collection[] = [
 		]
 	},
 	{
+		slug: 'mech-i-bakler-noname',
+		title: 'Меч и Баклер, NoName',
+		hema: true,
+		facets: { weapons: ['Меч и баклер'] },
+		subtitle: 'Цикл NoName по мечу и баклеру: стойка, координация двух рук, базовые действия и контратака.',
+		description:
+			'Обзорные и практические занятия NoName по мечу и баклеру: от двигательной базы и хвата до парной работы, оппозиции и тактических провокаций.',
+		items: ['mech-i-bakler-mikrotsikl-1-osnovy']
+	},
+	{
 		slug: 'dlinnyy-mech-basic-noname',
 		title: 'Длинный меч, Basic, NoName',
 		hema: true,
