@@ -376,7 +376,8 @@ export const collections: Collection[] = [
 			'hema-reflections',
 			'tenouti-i-tyakin-sibori',
 			'tsena-adaptatsii-tehnicheskogo-priema',
-			'silovye-porezy-katanoy'
+			'silovye-porezy-katanoy',
+			'rabota-paltsev-pri-prostoy-atake'
 		]
 	},
 	{
