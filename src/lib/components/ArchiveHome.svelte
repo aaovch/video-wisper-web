@@ -33,6 +33,9 @@
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
 
+	let { archived = false }: { archived?: boolean } = $props();
+	const catalogCollections = $derived(collections.filter((collection) => Boolean(collection.archived) === archived));
+	const searchAreaLabel = $derived(archived ? 'в архиве' : 'в каталоге');
 	let query = $state('');
 	let selections = $state<SearchFilterSelections>({ authors: [], places: [], weapons: [], collections: [] });
 	let filterSheetOpen = $state(false);
@@ -73,7 +76,7 @@
 		{
 			id: 'collections',
 			label: 'Коллекция',
-			options: collections.map((collection) => ({
+			options: catalogCollections.map((collection) => ({
 				value: collection.slug,
 				label: collection.title,
 				count: new Set(collection.items).size
@@ -85,7 +88,7 @@
 	const hasFilterGroups = $derived(filterGroups.some((group) => group.options.length > 1));
 
 	const filteredCollections = $derived(
-		collections.filter(
+		catalogCollections.filter(
 			(collection) =>
 				matchesSelection(selections.authors, collection.facets?.authors) &&
 				matchesSelection(selections.places, collection.facets?.places) &&
@@ -96,7 +99,7 @@
 	const primaryCollections = $derived(filteredCollections.filter((collection) => collection.hema));
 	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
 	const filtersActive = $derived(activeFilterCount > 0);
-	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
+	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked, archived ? 'archive' : 'main'));
 	const recentReports = $derived(
 		recentSlugs
 			.filter((slug) => visibleArchiveSlugs.includes(slug))
@@ -121,10 +124,10 @@
 	});
 	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 3));
 	const resultsHeading = $derived.by(() => {
-		if (resultKind === 'prefix') return 'Совпадения по началу слова во всём архиве';
-		if (resultKind === 'correction') return 'Возможные совпадения во всём архиве';
-		if (resultKind === 'semantic') return 'Связанные по смыслу во всём архиве';
-		return 'Совпадения по запросу во всём архиве';
+		if (resultKind === 'prefix') return `Совпадения по началу слова ${searchAreaLabel}`;
+		if (resultKind === 'correction') return `Возможные совпадения ${searchAreaLabel}`;
+		if (resultKind === 'semantic') return `Связанные по смыслу ${searchAreaLabel}`;
+		return `Совпадения по запросу ${searchAreaLabel}`;
 	});
 	const statusText = $derived(
 		loading
@@ -139,7 +142,7 @@
 	function uniqueFacet(key: 'authors' | 'places' | 'weapons'): string[] {
 		return [
 			...new Set(
-				collections.flatMap((collection) => collection.facets?.[key] ?? []).filter(Boolean)
+				catalogCollections.flatMap((collection) => collection.facets?.[key] ?? []).filter(Boolean)
 			)
 		].sort((a, b) => a.localeCompare(b, 'ru'));
 	}
@@ -217,7 +220,7 @@
 			value,
 			label: value,
 			count: new Set(
-				collections
+				catalogCollections
 					.filter((collection) => collection.facets?.[key]?.includes(value))
 					.flatMap((collection) => collection.items)
 			).size
@@ -269,7 +272,7 @@
 			const current = query.trim();
 			const scope: SearchScope = {
 				kind: 'archive',
-				label: 'во всём архиве',
+				label: searchAreaLabel,
 				reportSlugs: scopeSlugs
 			};
 			try {
@@ -330,13 +333,17 @@
 
 	<section class="search-stage" aria-labelledby="archive-search-title">
 	<div class="container search-stage-inner">
-		<h1 id="archive-search-title">Найдите мысль в архиве</h1>
+		<nav class="catalog-navigation" aria-label="Раздел каталога">
+			<a href="{base}/" aria-current={!archived ? 'page' : undefined}>Каталог</a>
+			<a href="{base}/archive/" aria-current={archived ? 'page' : undefined}>Архив</a>
+		</nav>
+		<h1 id="archive-search-title">{archived ? 'Архив' : 'Найдите мысль в каталоге'}</h1>
 		<label class="search-field" onpointerenter={preloadSearchIndex}>
 			<MagnifyingGlass size={30} weight="thin" aria-hidden="true" />
-			<span class="sr-only">Поиск по архиву</span>
+			<span class="sr-only">{archived ? 'Поиск по архиву' : 'Поиск по каталогу'}</span>
 			<input
 				type="search"
-				aria-label="Поиск по архиву"
+				aria-label={archived ? 'Поиск по архиву' : 'Поиск по каталогу'}
 				bind:this={inputEl}
 				bind:value={query}
 				onfocus={preloadSearchIndex}
@@ -473,7 +480,7 @@
 
 <section class="container catalog" aria-labelledby="collection-title">
 	<div class="section-title">
-		<h2 id="collection-title">Коллекции архива</h2>
+		<h2 id="collection-title">{archived ? 'Коллекции архива' : 'Коллекции'}</h2>
 		<span class="label">{collectionCountLabel(filteredCollections.length)}</span>
 	</div>
 
@@ -500,6 +507,9 @@
 </section>
 
 <style>
+	.catalog-navigation { display: flex; gap: 24px; margin-bottom: 24px; }
+	.catalog-navigation a { padding: 8px 0; color: var(--ink-soft); }
+	.catalog-navigation a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid currentColor; }
 	.sr-only {
 		position: absolute;
 		width: 1px;

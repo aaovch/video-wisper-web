@@ -24,6 +24,8 @@ export interface Collection {
 	title: string;
 	/** HEMA-коллекции образуют основной каталог; остальные остаются в архиве вторым слоем. */
 	hema?: boolean;
+	/** Скрыта из основного каталога и поиска; доступна в архиве. */
+	archived?: boolean;
 	/** Автор, место и оружие для фильтров главной страницы. */
 	facets?: CollectionFacets;
 	/** Короткая строка для карточки на главной и meta description. */
@@ -62,6 +64,7 @@ export const collections: Collection[] = [
 	},
 	{
 		slug: 'hema-english',
+		archived: true,
 		title: 'HEMA: English',
 		hema: true,
 		subtitle: 'Английская терминология частей тела, экипировки и команд на площадке.',

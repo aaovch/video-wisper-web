@@ -25,3 +25,16 @@ describe('search visibility', () => {
 		expect(visibleSubset([], searchableReportSlugs([]))).toEqual([]);
 	});
 });
+
+
+describe('archived collections', () => {
+ it('excludes archived reports from general search even after unlocking', () => {
+  expect(searchableReportSlugs(['hema-english'])).not.toContain('hema-english-snaryazhenie');
+ });
+ it('searches archived reports separately and preserves local collection search', () => {
+  expect(searchableReportSlugs([], 'archive')).toContain('hema-english-snaryazhenie');
+  expect(searchableReportSlugs([], 'archive')).not.toContain('longsword-a');
+  expect(searchableReportSlugs([], 'all')).toContain('hema-english-snaryazhenie');
+  expect(searchableReportSlugs([], 'all')).not.toContain('retention');
+ });
+});

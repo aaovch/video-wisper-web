@@ -69,7 +69,7 @@
 	const activeCollection = $derived(getCollection(collectionSlug));
 	const scopedCollection = $derived(kind === 'collection' ? activeCollection : undefined);
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
-	const visibleCollectionSlugs = $derived(visibleSubset(reportSlugs, visibleArchiveSlugs));
+	const visibleCollectionSlugs = $derived(visibleSubset(reportSlugs, searchableReportSlugs(lock.unlocked, 'all')));
 	const reportFacetMap = $derived.by(() => buildReportFacetMap(reportSlugs, collectionSlug));
 	const filteredCollectionSlugs = $derived(
 		kind === 'collection'
