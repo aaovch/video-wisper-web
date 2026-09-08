@@ -1,7 +1,12 @@
 <script lang="ts">
+	import SearchMatchNote from '$lib/components/SearchMatchNote.svelte';
 	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
-	import { goto } from '$app/navigation';
+	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
+	import { page } from '$app/state';
+	import { untrack, tick } from 'svelte';
+	import { readSearchState, writeSearchState } from '$lib/search-url-state';
+	import { modalFocus } from '$lib/modal-focus';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
@@ -39,7 +44,8 @@
 		reportSlugs = [],
 		collectionSlug = '',
 		onCollectionFilterChange,
-		onHit
+		onHit,
+		onResults
 	}: {
 		kind: 'collection' | 'report';
 		reportSlug?: string;
@@ -47,6 +53,7 @@
 		collectionSlug?: string;
 		onCollectionFilterChange?: (reportSlugs: string[]) => void;
 		onHit?: (hit: SearchHit, seek: boolean, href: string) => void;
+		onResults?: (hits: SearchHit[], loading: boolean) => void;
 	} = $props();
 
 	let query = $state('');
@@ -66,6 +73,52 @@
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let indexRequested = false;
 	let filterReturnFocus: HTMLButtonElement | null = null;
+	let restoreScroll = $state<number | null>(null);
+	let searchInput: HTMLInputElement;
+	beforeNavigate(() => {
+		try { sessionStorage.setItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`, String(window.scrollY)); } catch { /* Storage can be disabled; URL state still works. */ }
+	});
+	afterNavigate(({ type }) => {
+		if (type === 'popstate' && !(kind === 'report' && page.url.hash)) {
+			try {
+				const stored = sessionStorage.getItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`);
+				restoreScroll = stored === null ? null : Number(stored);
+			} catch { restoreScroll = null; }
+		}
+	});
+	$effect(() => {
+		if (!loading && restoreScroll !== null) {
+			const y = restoreScroll;
+			restoreScroll = null;
+			void tick().then(() => window.scrollTo(0, y));
+		}
+	});
+	const searchParameters = $derived(page.url.search);
+	$effect(() => {
+		searchParameters;
+		untrack(() => {
+			const state = readSearchState(page.url, selections);
+			query = state.query;
+			selections = state.selections;
+			showAllHits = state.expanded;
+			scheduleSearch();
+		});
+	});
+	function saveSearch() {
+		const url = writeSearchState(page.url, query, selections, showAllHits);
+		if (url.href !== page.url.href) void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
+	}
+	function editSearch() {
+		showAllHits = false;
+		saveSearch();
+		scheduleSearch();
+	}
+	function clearSearch() {
+		query = '';
+		editSearch();
+		searchInput?.focus();
+	}
+
 
 	const label = $derived(kind === 'report' ? 'Поиск в отчёте' : 'Поиск в коллекции');
 	const placeholder = $derived(`${label}…`);
@@ -102,13 +155,14 @@
 				return true;
 			});
 	});
+	$effect(() => { onResults?.(loading ? [] : uniqueHits, loading); });
 	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
 	const resultsHeading = $derived.by(() => {
-		const suffix = resultScopeLabel || (kind === 'report' ? 'в этом отчёте' : 'в этой коллекции');
+		const suffix = '';
 		if (resultKind === 'prefix') return `Совпадения по началу слова ${suffix}`;
 		if (resultKind === 'correction') return `Возможные совпадения ${suffix}`;
 		if (resultKind === 'semantic') return `Связанные по смыслу ${suffix}`;
-		return `Совпадения по запросу ${suffix}`;
+		return 'Результаты';
 	});
 	const statusText = $derived(
 		loading
@@ -258,11 +312,14 @@
 				? current.filter((item) => item !== value)
 				: [...current, value]
 		};
+		showAllHits = false;
+		saveSearch();
 	}
 
 	function clearFilters() {
 		showAllHits = false;
 		selections = { zones: [], sections: [], authors: [], places: [], weapons: [] };
+		saveSearch();
 	}
 
 	function requestIndex() {
@@ -272,9 +329,7 @@
 	}
 
 	function scheduleSearch() {
-		requestIndex();
 		clearTimeout(timer);
-		showAllHits = false;
 		searchError = false;
 		const normalized = query.trim();
 		if (normalized.length < 2) {
@@ -287,6 +342,7 @@
 			loading = false;
 			return;
 		}
+		requestIndex();
 		loading = true;
 		timer = setTimeout(() => {
 			debouncedQuery = query.trim();
@@ -403,16 +459,18 @@
 
 <svelte:window onkeydown={handleWindowKeydown} />
 
-<section class="scope-search" aria-label={label}>
+<section id="report-search" class="scope-search" aria-label={label}>
 	<label class="search-field">
 		<MagnifyingGlass size={25} weight="thin" aria-hidden="true" />
 		<span class="sr-only">{label}</span>
 		<input
 			type="search"
 			aria-label={label}
+			bind:this={searchInput}
 			bind:value={query}
+			onkeydown={(event) => { if (event.key === 'Enter' && visibleHits[0]) { event.preventDefault(); const hit = visibleHits[0]; if (kind === 'report' && hit.reportSlug === reportSlug && onHit) onHit(hit, false, resultHref(hit)); else void goto(resultHref(hit)); } }}
 			onfocus={requestIndex}
-			oninput={scheduleSearch}
+			oninput={editSearch}
 			{placeholder}
 			autocomplete="off"
 			spellcheck="false"
@@ -441,7 +499,7 @@
 
 	{#if filterSheetOpen && hasFilterGroups}
 		<button class="filter-backdrop" type="button" aria-label="Закрыть фильтры" onclick={closeFilters}></button>
-		<div class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
+		<div use:modalFocus class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
 			<SearchFilterPanel
 				groups={filterGroups}
 				{selections}
@@ -459,7 +517,7 @@
 					<div class="results-head">
 						<p>{resultsHeading}</p>
 						<div class="results-tools">
-							<span class="label">{visibleHits.length} из {uniqueHits.length}</span>
+							{#if !loading}<span class="label">{visibleHits.length} из {uniqueHits.length}</span>{/if}
 							{#if hasFilterGroups && !showingFallback}
 								<button
 									type="button"
@@ -488,17 +546,15 @@
 					<button type="button" onclick={retrySearch}>Повторить</button>
 				</div>
 			{:else if !loading && visibleHits.length === 0}
-				<p class="empty">Ничего не найдено.</p>
+				<div class="empty"><p>Ничего не найдено. Попробуйте короче или другое название.</p><button type="button" onclick={clearSearch}>Очистить поиск</button>{#if activeFilterCount > 0}<button type="button" onclick={clearFilters}>Сбросить фильтры</button>{/if}</div>
 			{:else}
 				<ol>
 					{#each visibleHits as hit (uniqueHitKey(hit))}
 						<li>
 							<div class="result-copy">
-								<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
-								<h3>{hit.title}</h3>
-								{#if hit.matchReason?.length && hit.matchReasonKind !== 'correction'}
-									<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
-								{/if}
+								<p class="breadcrumb">{hit.reportTitle}</p>
+								<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
+								<SearchMatchNote {hit} {query} />
 								<p class="snippet">
 									{#each highlightParts(hit.snippet, query) as part}
 										{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
@@ -525,7 +581,7 @@
 						class="show-all"
 						class:expanded={showAllHits}
 						aria-expanded={showAllHits}
-						onclick={() => (showAllHits = !showAllHits)}
+						onclick={() => { showAllHits = !showAllHits; saveSearch(); }}
 					>
 						<span>{showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`}</span>
 						<CaretDown size={16} weight="bold" aria-hidden="true" />
@@ -539,6 +595,8 @@
 </section>
 
 <style>
+	.empty button { min-height: 44px; margin: 8px 12px 0 0; padding: 8px 12px; background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); color: var(--accent-ink); font: inherit; cursor: pointer; }
+	.empty button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 	.scope-search { container-type: inline-size; }
 	.search-field { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 13px; min-height: 58px; padding: 0 17px; border: 1px solid var(--ink-faint); border-radius: var(--radius); background: color-mix(in srgb, var(--paper) 90%, transparent); transition: border-color .2s ease, box-shadow .2s ease; }
@@ -569,11 +627,8 @@
 	ol { margin: 0; padding: 0; list-style: none; }
 	li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, 23%); gap: clamp(18px, 3vw, 34px); padding: 18px 0; border-bottom: 1px solid var(--line-strong); }
 	.breadcrumb { margin: 0 0 7px; color: var(--accent); font-size: 13px; }
-	.breadcrumb span { padding: 0 4px; color: var(--ink-faint); }
 	h3 { margin: 0 0 7px; font-size: clamp(21px, 2.3vw, 28px); font-weight: 500; line-height: 1.1; }
 	.snippet { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.48; }
-	.match-reason { display: flex; flex-wrap: wrap; gap: 5px 9px; margin: 0 0 7px; color: var(--ink-faint); font-size: 12px; line-height: 1.35; }
-	.match-reason span { color: var(--accent); font-family: var(--font-ui); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
 	.actions { display: flex; flex-direction: column; gap: 7px; padding-left: 16px; border-left: 1px solid var(--line-strong); }
 	.actions a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 7px; min-height: 44px; padding: 5px 0; color: var(--accent); font-size: 14px; }

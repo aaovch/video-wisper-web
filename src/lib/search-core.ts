@@ -1,3 +1,4 @@
+import { searchSnippet } from '$lib/search-snippet';
 import { base } from '$app/paths';
 import MiniSearch, { type SearchOptions, type SearchResult } from 'minisearch';
 import type {
@@ -249,35 +250,6 @@ function suggestShards(query: string, options: SearchOptions): string | undefine
 	return suggestions[0]?.suggestion;
 }
 
-function snippet(text: string, parsed: ParsedQuery, max = 156): string {
-	const normalizedText = norm(text);
-	const candidates = [parsed.raw, ...parsed.meaningfulWords].filter(Boolean);
-	let hitIndex = -1;
-	let hitLength = 0;
-
-	for (const candidate of candidates) {
-		const at = normalizedText.indexOf(candidate);
-		if (at >= 0 && (hitIndex < 0 || at < hitIndex)) {
-			hitIndex = at;
-			hitLength = candidate.length;
-		}
-	}
-	if (hitIndex < 0) {
-		const queryStems = new Set(parsed.stems);
-		for (const match of text.matchAll(/[\p{L}\p{N}]+/gu)) {
-			if (!queryStems.has(stemRu(norm(match[0])))) continue;
-			hitIndex = match.index;
-			hitLength = match[0].length;
-			break;
-		}
-	}
-
-	if (hitIndex < 0) return text.slice(0, max).trim() + (text.length > max ? '…' : '');
-	const start = Math.max(0, hitIndex - 52);
-	const end = Math.min(text.length, Math.max(start + max, hitIndex + hitLength + 72));
-	const chunk = text.slice(start, end).trim();
-	return `${start > 0 ? '…' : ''}${chunk}${end < text.length ? '…' : ''}`;
-}
 
 function matchReason(
 	result: SearchResult,
@@ -338,7 +310,7 @@ function toHit(
 		reportTitle: docReportTitle(doc),
 		chapterIndex: doc.chapterIndex,
 		title: docTitle(doc),
-		snippet: snippet(doc.text, parsed),
+		snippet: searchSnippet(doc.text, [...parsed.meaningfulWords, ...(reason?.labels ?? [])]),
 		matchKind: matchMode,
 		matchReason: reason?.labels,
 		matchReasonKind: reason?.kind,

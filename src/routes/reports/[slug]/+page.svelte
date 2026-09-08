@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { pushState } from '$app/navigation';
+	import { goto, afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import BookOpenText from 'phosphor-svelte/lib/BookOpenText';
@@ -24,6 +24,9 @@
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
 	import { formatDuration, formatTime } from '$lib/utils';
+	import { highlightParts } from '$lib/text-highlight';
+	import { fragmentAnchor, reportSearchFragments } from '$lib/search-fragments';
+	import { tick } from 'svelte';
 	import type { SearchHit } from '$lib/search';
 	import type { PageData } from './$types';
 
@@ -33,6 +36,47 @@
 	const reportCollections = $derived(collectionsForReport(report.slug));
 	const locked = $derived(gate.length > 0 && !gate.some((c) => lock.isUnlocked(c.slug)));
 	let highlightQuery = $state('');
+	let searchHits = $state<SearchHit[]>([]);
+	let searchBusy = $state(false);
+	let selectedSearchAnchor = $state('');
+	let initialSearchAnchor = '';
+	afterNavigate(({ from, to, type }) => {
+		if (!from || from.url.pathname !== to?.url.pathname) initialSearchAnchor = page.url.hash.slice(1);
+		else if (type === 'popstate' && page.url.hash && highlightQuery) {
+			const anchor = page.url.hash.slice(1);
+			void tick().then(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ block: 'start' })));
+		}
+	});
+	function updateSearchResults(hits: SearchHit[], busy: boolean) {
+		searchHits = hits;
+		searchBusy = busy;
+		if (!busy && hits.length && initialSearchAnchor) {
+			const anchor = initialSearchAnchor;
+			initialSearchAnchor = '';
+			void tick().then(() => document.getElementById(anchor)?.scrollIntoView({ block: 'start' }));
+		}
+	}
+
+	const searchFragments = $derived(reportSearchFragments(searchHits, report.slug));
+	const searchFragmentIndex = $derived(searchFragments.findIndex(hit => fragmentAnchor(hit) === selectedSearchAnchor));
+	let searchContextEl = $state<HTMLDivElement | null>(null);
+	$effect(() => {
+		if (!browser || !searchContextEl) return;
+		const node = searchContextEl;
+		const update = () => node.closest<HTMLElement>('.report')?.style.setProperty('--search-context-height', `${node.offsetHeight}px`);
+		const observer = new ResizeObserver(update);
+		observer.observe(node); update();
+		return () => { observer.disconnect(); node.closest<HTMLElement>('.report')?.style.removeProperty('--search-context-height'); };
+	});
+	function stepSearchFragment(direction: number) {
+		const next = searchFragments[searchFragmentIndex + direction];
+		if (!next) return;
+		const url = new URL(page.url);
+		url.hash = fragmentAnchor(next);
+		url.searchParams.delete('t');
+		onSearchHit(next, false, url.href);
+	}
+
 	let requestedCollectionSlug = $state('');
 	const returnCollection = $derived(
 		reportCollections.find((collection) => collection.slug === requestedCollectionSlug) ?? reportCollections[0]
@@ -48,6 +92,7 @@
 	$effect(() => {
 		if (!browser) return;
 		highlightQuery = page.url.searchParams.get('q') ?? '';
+		selectedSearchAnchor = page.url.hash.slice(1);
 		requestedCollectionSlug = page.url.searchParams.get('from') ?? '';
 	});
 
@@ -55,9 +100,10 @@
 	$effect(() => {
 		if (!browser || !playerEl || !layoutEl) return;
 		const mq = window.matchMedia('(max-width: 960px)');
+		const stickyPlayback = playbackStarted;
 		const sync = () => {
 			if (!layoutEl) return;
-			if (!mq.matches) {
+			if (!mq.matches || !stickyPlayback) {
 				layoutEl.style.removeProperty('--mobile-sticky-h');
 				return;
 			}
@@ -80,6 +126,8 @@
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
 	let additionalOpen = $state(false);
+	let overviewExpanded = $state(false);
+	$effect(() => { if (highlightQuery && selectedSearchAnchor === 'overview-title') overviewExpanded = true; });
 	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
 	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
@@ -597,8 +645,13 @@
 		document.getElementById(`ch-${index + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
-	function onSearchHit(hit: SearchHit, seek: boolean, href: string) {
-		pushState(href, {});
+	async function onSearchHit(hit: SearchHit, seek: boolean, href: string) {
+		await goto(href, { noScroll: true, keepFocus: true });
+		selectedSearchAnchor = fragmentAnchor(hit);
+		void tick().then(() => {
+			const target = document.getElementById(selectedSearchAnchor);
+			if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+		});
 		if (hit.chapterIndex != null) {
 			const target = seek
 				? Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start)
@@ -640,10 +693,22 @@
 	/>
 {:else}
 <article class="report container">
+	{#if highlightQuery.trim()}
+		<div bind:this={searchContextEl} class="search-context" aria-label="Активный поиск">
+			<span class="search-query">Поиск: <strong>{highlightQuery}</strong></span>
+			<div class="fragment-navigation" role="group" aria-label="Навигация по найденным фрагментам">
+				<button type="button" aria-label="Предыдущий фрагмент" disabled={searchBusy || searchFragmentIndex <= 0} onclick={() => stepSearchFragment(-1)}>Предыдущий</button>
+				<span role="status" aria-live="polite">{searchBusy ? 'Ищем…' : searchFragmentIndex >= 0 ? `Фрагмент ${searchFragmentIndex + 1} из ${searchFragments.length}` : `Фрагментов: ${searchFragments.length}`}</span>
+				<button type="button" aria-label="Следующий фрагмент" disabled={searchBusy || !searchFragments.length || searchFragmentIndex >= searchFragments.length - 1} onclick={() => stepSearchFragment(1)}>Следующий</button>
+			</div>
+			<button type="button" onclick={() => { document.getElementById('report-search')?.scrollIntoView({ block: 'start' }); document.querySelector<HTMLInputElement>('#report-search input')?.focus({ preventScroll: true }); }}>К результатам</button>
+			<button type="button" onclick={() => { const url = new URL(page.url); url.searchParams.delete('q'); url.searchParams.delete('results'); void goto(url, { replaceState: true, noScroll: true, keepFocus: true }); }}>Убрать подсветку</button>
+		</div>
+	{/if}
 	<header class="report-head reveal" {@attach reveal()}>
 		<nav class="breadcrumbs" aria-label="Хлебные крошки">
 			{#if !returnCollection?.isolated}
-				<a href="{base}/">Архив</a><span aria-hidden="true">/</span>
+				<a href="{base}/{returnCollection?.archived ? 'archive/' : ''}">{returnCollection?.archived ? 'Архив' : 'Каталог'}</a><span aria-hidden="true">/</span>
 			{/if}
 			{#if returnCollection}
 				<a href="{base}/collections/{returnCollection.slug}/">{returnCollection.title}</a><span aria-hidden="true">/</span>
@@ -698,6 +763,7 @@
 					reportSlugs={returnCollection?.items ?? [report.slug]}
 					collectionSlug={returnCollection?.slug ?? ''}
 					onHit={onSearchHit}
+					onResults={updateSearchResults}
 				/>
 			</div>
 
@@ -721,7 +787,7 @@
 
 			{#snippet thesisItem(thesis: string)}
 				<li>
-					<span class="thesis-text">{thesis}</span>
+					<span class="thesis-text">{#each highlightParts(thesis, highlightQuery) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</span>
 					<button
 						type="button"
 						class="copy-quote"
@@ -735,13 +801,13 @@
 				</li>
 			{/snippet}
 
-			<section class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
+			<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'overview-title'} class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
 				<div class="section-heading section-heading--plain"><h2 id="overview-title">Главное</h2></div>
 				<ul>
 					{#each report.overview_theses.slice(0, 3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}
 				</ul>
 				{#if report.overview_theses.length > 3}
-					<details class="more-theses">
+					<details class="more-theses" bind:open={overviewExpanded}>
 						<summary>Все тезисы <CaretDown size={16} /></summary>
 						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}</ul>
 					</details>
@@ -750,7 +816,7 @@
 			</section>
 
 			{#if hasAdditional}
-				<section class="additional" aria-labelledby="additional-title">
+				<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'additional-title'} class="additional" aria-labelledby="additional-title">
 					<details class="additional-disclosure" bind:open={additionalOpen}>
 						<summary id="additional-title" class="additional-summary">
 							<span class="additional-title" role="heading" aria-level="2">Материалы лекции</span>
@@ -1070,7 +1136,7 @@
 				<div class="section-heading section-heading--plain"><h2 id="chapters-title">Смысловые блоки</h2></div>
 				{#each report.chapters as chapter, i (chapter.start)}
 					<div class="reveal" {@attach reveal()}>
-						<ChapterCard {chapter} index={i} onSeek={report.video ? seekVideo : undefined} playing={playingIndex === i} live={videoPlaying && playingIndex === i} highlight={highlightQuery} />
+						<ChapterCard {chapter} index={i} onSeek={report.video ? seekVideo : undefined} playing={playingIndex === i} live={videoPlaying && playingIndex === i} highlight={highlightQuery} searchSelected={Boolean(highlightQuery) && selectedSearchAnchor === `ch-${i + 1}`} />
 					</div>
 				{/each}
 			</section>
@@ -1082,6 +1148,26 @@
 {/if}
 
 <style>
+	.current-search-fragment { outline: 2px solid var(--accent); outline-offset: 8px; }
+	:global(#report-search), :global(#overview-title), :global(#additional-title) { scroll-margin-top: calc(var(--search-context-height, 150px) + 20px); }
+	.fragment-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+	.fragment-navigation span { min-width: 130px; text-align: center; font-family: var(--font-ui); font-size: 12px; }
+	.search-context .search-query { flex-basis: 100%; padding-right: 44px; }
+	.search-context button:disabled { opacity: .45; cursor: default; }
+	@media (max-width: 600px) {
+		.search-context { gap: 6px !important; padding: 8px !important; }
+		.search-context .search-query { min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+		.fragment-navigation { width: 100%; justify-content: space-between; gap: 4px; }
+		.fragment-navigation span { min-width: 0; font-size: 11px; }
+		.search-context button { font-size: 12px !important; padding: 6px !important; }
+	}
+	@media (max-height: 500px) { .search-context { position: static !important; } .report { --search-context-height: 0px !important; } }
+
+	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
+	.search-context { position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px; background: var(--paper); border-bottom: 1px solid var(--line-strong); font-size: 14px; }
+	.search-context span { overflow-wrap: anywhere; min-width: 0; }
+	.search-context button { min-height: 44px; padding: 6px 10px; color: var(--accent-ink); background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); font: inherit; cursor: pointer; }
+	.search-context button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 	.report {
 		padding-top: clamp(24px, 4vw, 52px);
 		padding-bottom: 64px;
@@ -1107,18 +1193,18 @@
 
 	.rail {
 		position: sticky;
-		top: 12px;
+		top: calc(var(--search-context-height, 0px) + 12px);
 		align-self: start;
 		display: flex;
 		flex-direction: column;
 		gap: 14px;
-		max-height: calc(100vh - 24px);
+		max-height: calc(100vh - var(--search-context-height, 0px) - 24px);
 		min-height: 0;
 	}
 
 	.video-pin {
 		flex-shrink: 0;
-		scroll-margin-top: 12px;
+		scroll-margin-top: calc(var(--search-context-height, 0px) + 12px);
 	}
 
 	.nav-scroll {
@@ -1932,6 +2018,8 @@
 		.top-sections { grid-template-columns: minmax(0, 1fr); }
 		.report { padding-top: 22px; }
 		.report-head { padding-bottom: 24px; }
+		/* справа плавает кнопка темы — не пускаем под неё текст крошек */
+		.breadcrumbs { padding-right: 52px; }
 		.layout { margin-top: 28px; }
 		.chapters { margin-top: 32px; }
 		.layout,
@@ -1958,7 +2046,7 @@
 
 		.video-pin.playback-started {
 			position: sticky;
-			top: 8px;
+			top: calc(var(--search-context-height, 0px) + 8px);
 			z-index: 5;
 			box-shadow: 0 10px 0 var(--paper);
 		}
@@ -1966,7 +2054,7 @@
 		.chapters :global(.chapter),
 		#overview-title,
 		#additional-title {
-			scroll-margin-top: calc(var(--mobile-sticky-h, 0px) + 16px);
+			scroll-margin-top: calc(var(--search-context-height, 0px) + var(--mobile-sticky-h, 0px) + 16px);
 		}
 
 		.video-hint {

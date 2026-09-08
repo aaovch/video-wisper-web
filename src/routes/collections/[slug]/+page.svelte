@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { page } from '$app/state';
 	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
 	import Lock from '$lib/components/Lock.svelte';
 	import ReportCard from '$lib/components/ReportCard.svelte';
@@ -53,7 +54,7 @@
 	<header class="container hero reveal" {@attach reveal()}>
 		{#if !collection.isolated}
 			<nav class="breadcrumbs" aria-label="Хлебные крошки">
-				<a href="{base}/"><ArrowLeft size={16} /> Архив</a>
+				<a href="{base}/{collection.archived ? 'archive/' : ''}"><ArrowLeft size={16} /> {collection.archived ? 'Архив' : 'Каталог'}</a>
 				<span aria-hidden="true">/</span>
 				<span>{collection.title}</span>
 			</nav>
@@ -93,6 +94,10 @@
 	{/if}
 
 	<section class="container index">
+		{#if page.url.searchParams.get('q')}
+			<h2>Материалы коллекции</h2>
+			<p>Список с учётом выбранных фильтров. Результаты поиска — выше.</p>
+		{/if}
 		{#if visibleSections?.length}
 			{#each visibleSections as section (section.title)}
 				{@const sectionIndex = collection.sections?.findIndex((item) => item.title === section.title) ?? 0}
@@ -169,7 +174,8 @@
 
 	@media (max-width: 760px) {
 		.hero { padding-top: 22px; }
-		.breadcrumbs { margin-bottom: 24px; }
+		/* справа плавает кнопка темы — не пускаем под неё текст крошек */
+		.breadcrumbs { margin-bottom: 24px; padding-right: 52px; }
 		h1 { max-width: 17ch; }
 		.section-title { grid-template-columns: 34px minmax(0, 1fr); gap: 8px; }
 		.lede, .findings, .outcome, .index-list { margin-left: 42px; }

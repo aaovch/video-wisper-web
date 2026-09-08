@@ -1,8 +1,13 @@
 <script lang="ts">
+	import SearchMatchNote from '$lib/components/SearchMatchNote.svelte';
 	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
+	import { page } from '$app/state';
+	import { untrack, tick } from 'svelte';
+	import { readSearchState, writeSearchState } from '$lib/search-url-state';
+	import { modalFocus } from '$lib/modal-focus';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
@@ -51,6 +56,51 @@
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let requestId = 0;
 	let filterReturnFocus: HTMLButtonElement | null = null;
+	let restoreScroll = $state<number | null>(null);
+	beforeNavigate(() => {
+		try { sessionStorage.setItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`, String(window.scrollY)); } catch { /* Storage can be disabled; URL state still works. */ }
+	});
+	afterNavigate(({ type }) => {
+		if (type === 'popstate') {
+			try {
+				const stored = sessionStorage.getItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`);
+				restoreScroll = stored === null ? null : Number(stored);
+			} catch { restoreScroll = null; }
+		}
+	});
+	$effect(() => {
+		if (!loading && restoreScroll !== null) {
+			const y = restoreScroll;
+			restoreScroll = null;
+			void tick().then(() => window.scrollTo(0, y));
+		}
+	});
+	const searchParameters = $derived(page.url.search);
+	$effect(() => {
+		searchParameters;
+		untrack(() => {
+			const state = readSearchState(page.url, selections);
+			query = state.query;
+			selections = state.selections;
+			showAllHits = state.expanded;
+			scheduleSearch();
+		});
+	});
+	function saveSearch() {
+		const url = writeSearchState(page.url, query, selections, showAllHits);
+		if (url.href !== page.url.href) void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
+	}
+	function editSearch() {
+		showAllHits = false;
+		saveSearch();
+		scheduleSearch();
+	}
+	function clearSearch() {
+		query = '';
+		editSearch();
+		inputEl?.focus();
+	}
+
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let activeHit = $state(-1);
 
@@ -194,8 +244,8 @@
 			event.preventDefault();
 			activeHit = Math.max(activeHit - 1, 0);
 			focusActiveHit();
-		} else if (event.key === 'Enter' && activeHit >= 0) {
-			const hit = visibleHits[activeHit];
+		} else if (event.key === 'Enter') {
+			const hit = visibleHits[Math.max(activeHit, 0)];
 			if (hit) {
 				event.preventDefault();
 				void goto(resultHref(hit, false));
@@ -249,12 +299,13 @@
 				? current.filter((item) => item !== value)
 				: [...current, value]
 		};
+		showAllHits = false;
+		saveSearch();
 	}
 
 	function scheduleSearch() {
 		clearTimeout(timer);
 		const runId = ++requestId;
-		showAllHits = false;
 		searchError = false;
 		activeHit = -1;
 		const normalized = query.trim();
@@ -324,6 +375,7 @@
 
 	function resetFilters() {
 		selections = { authors: [], places: [], weapons: [], collections: [] };
+		saveSearch();
 	}
 
 </script>
@@ -346,9 +398,9 @@
 				bind:this={inputEl}
 				bind:value={query}
 				onfocus={preloadSearchIndex}
-				oninput={scheduleSearch}
+				oninput={editSearch}
 				onkeydown={onSearchKeydown}
-				placeholder="Например: как подготовить атаку против позиционной защиты?"
+				placeholder="Например: подготовка атаки"
 				autocomplete="off"
 				spellcheck="false"
 			/>
@@ -379,7 +431,7 @@
 
 {#if filterSheetOpen && hasFilterGroups}
 	<button class="filter-backdrop" type="button" aria-label="Закрыть фильтры" onclick={closeFilters}></button>
-	<div class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
+	<div use:modalFocus class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
 		<SearchFilterPanel
 			groups={filterGroups}
 			{selections}
@@ -408,7 +460,7 @@
 		<div class="section-title">
 			<h2>{resultsHeading}</h2>
 			<div class="results-tools">
-				<span class="label">{visibleHits.length} из {uniqueHits.length}</span>
+				{#if !loading}<span class="label">{visibleHits.length} из {uniqueHits.length}</span>{/if}
 				{#if hasFilterGroups}
 					<button
 						type="button"
@@ -432,17 +484,15 @@
 				<button type="button" onclick={scheduleSearch}>Повторить</button>
 			</div>
 		{:else if !loading && visibleHits.length === 0}
-			<p class="empty">Ничего близкого не нашлось. Попробуйте описать мысль другими словами.</p>
+			<div class="empty"><p>Ничего не найдено. Попробуйте короче или другое название.</p><button type="button" onclick={clearSearch}>Очистить поиск</button>{#if activeFilterCount > 0}<button type="button" onclick={resetFilters}>Сбросить фильтры</button>{/if}</div>
 		{:else}
 			<ol class="result-list">
 				{#each visibleHits as hit, index (uniqueHitKey(hit))}
 					<li id={`hit-${index}`} class:kbd-active={activeHit === index}>
 						<div class="result-copy">
-							<p class="breadcrumb">{hit.reportTitle} <span>›</span> {hit.title}</p>
-							<h3>{hit.title}</h3>
-							{#if hit.matchReason?.length && hit.matchReasonKind !== 'correction'}
-								<p class="match-reason"><span>{hit.matchReasonKind === 'tag' ? 'Метка отчёта' : 'Связано по смыслу'}</span> {hit.matchReason.join(' · ')}</p>
-							{/if}
+							<p class="breadcrumb">{hit.reportTitle}</p>
+							<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
+							<SearchMatchNote {hit} {query} />
 							<p class="snippet">
 								{#each highlightParts(hit.snippet, query) as part}
 									{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
@@ -451,7 +501,7 @@
 							<SearchSourceLinks {hit} scope={linkScope} />
 						</div>
 						<div class="result-actions">
-							<span class="relevance label">релевантность {String(index + 1).padStart(2, '0')}</span>
+
 							<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
 							{#if hit.start != null}
 								<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
@@ -466,7 +516,7 @@
 					class="show-all"
 					class:expanded={showAllHits}
 					aria-expanded={showAllHits}
-					onclick={() => (showAllHits = !showAllHits)}
+					onclick={() => { showAllHits = !showAllHits; saveSearch(); }}
 				>
 					<span>{showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} совпадений`}</span>
 					<CaretDown size={17} weight="bold" aria-hidden="true" />
@@ -480,7 +530,7 @@
 
 <section class="container catalog" aria-labelledby="collection-title">
 	<div class="section-title">
-		<h2 id="collection-title">{archived ? 'Коллекции архива' : 'Коллекции'}</h2>
+		<h2 id="collection-title">{query.trim().length >= 2 ? 'Все коллекции' : archived ? 'Коллекции архива' : 'Коллекции'}</h2>
 		<span class="label">{collectionCountLabel(filteredCollections.length)}</span>
 	</div>
 
@@ -507,6 +557,8 @@
 </section>
 
 <style>
+	.empty button { min-height: 44px; margin: 8px 12px 0 0; padding: 8px 12px; background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); color: var(--accent-ink); font: inherit; cursor: pointer; }
+	.empty button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.catalog-navigation { display: flex; gap: 24px; margin-bottom: 24px; }
 	.catalog-navigation a { padding: 8px 0; color: var(--ink-soft); }
 	.catalog-navigation a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid currentColor; }
@@ -700,11 +752,6 @@
 		color: var(--accent);
 	}
 
-	.breadcrumb span {
-		padding: 0 5px;
-		color: var(--ink-faint);
-	}
-
 	.result-copy h3 {
 		font-size: clamp(24px, 2.4vw, 34px);
 		line-height: 1.1;
@@ -717,24 +764,6 @@
 		font-size: 17px;
 		line-height: 1.58;
 		color: var(--ink-soft);
-	}
-
-	.match-reason {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 5px 9px;
-		margin: 0 0 7px;
-		color: var(--ink-faint);
-		font-size: 12px;
-		line-height: 1.35;
-	}
-
-	.match-reason span {
-		color: var(--accent);
-		font-family: var(--font-ui);
-		font-size: 10px;
-		letter-spacing: .12em;
-		text-transform: uppercase;
 	}
 
 	mark {
@@ -751,9 +780,6 @@
 		border-left: 1px solid var(--line-strong);
 	}
 
-	.relevance {
-		margin-bottom: 4px;
-	}
 
 	.result-actions a {
 		display: grid;

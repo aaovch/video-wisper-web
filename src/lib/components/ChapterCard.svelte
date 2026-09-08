@@ -10,7 +10,8 @@
 		onSeek,
 		playing = false,
 		live = false,
-		highlight = ''
+		highlight = '',
+		searchSelected = false
 	}: {
 		chapter: Chapter;
 		index: number;
@@ -18,11 +19,13 @@
 		playing?: boolean;
 		live?: boolean;
 		highlight?: string;
+		searchSelected?: boolean;
 	} = $props();
 </script>
 
-<article class="chapter" class:playing id="ch-{index + 1}">
+<article class="chapter" class:playing class:search-selected={searchSelected} id="ch-{index + 1}">
 	<header class="head">
+		{#if searchSelected}<span class="current-fragment">Текущий фрагмент</span>{/if}
 		<a class="num" href="#ch-{index + 1}" title="Ссылка на этот блок" aria-label="Ссылка на блок {index + 1}"
 			>{String(index + 1).padStart(2, '0')}</a
 		>
@@ -65,11 +68,14 @@
 </article>
 
 <style>
+	.current-fragment { color: var(--accent-ink); font-family: var(--font-ui); font-size: 11px; }
+	.search-selected mark { background: color-mix(in srgb, var(--accent) 22%, var(--paper)); }
+	.chapter.search-selected { border-left: 3px solid var(--accent); padding-left: 14px; background: color-mix(in srgb, var(--accent) 4%, transparent); }
 	.chapter {
 		position: relative;
 		padding: 26px 0;
 		border-top: 1px solid var(--line);
-		scroll-margin-top: 18px;
+		scroll-margin-top: calc(var(--search-context-height, 150px) + 20px);
 	}
 
 	/* Блок, на котором сейчас воспроизведение — тонкая пометка на полях, без заливки */
@@ -91,6 +97,7 @@
 	}
 
 	.head {
+		flex-wrap: wrap;
 		display: flex;
 		align-items: center;
 		gap: 14px;
