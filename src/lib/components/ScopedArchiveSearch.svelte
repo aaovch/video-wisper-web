@@ -459,7 +459,7 @@
 
 <svelte:window onkeydown={handleWindowKeydown} />
 
-<section id="report-search" class="scope-search" aria-label={label}>
+<section id="report-search" class="scope-search" class:report-scope={kind === 'report'} aria-label={label}>
 	<label class="search-field">
 		<MagnifyingGlass size={25} weight="thin" aria-hidden="true" />
 		<span class="sr-only">{label}</span>
@@ -552,7 +552,7 @@
 					{#each visibleHits as hit (uniqueHitKey(hit))}
 						<li>
 							<div class="result-copy">
-								<p class="breadcrumb">{hit.reportTitle}</p>
+								{#if kind !== 'report' || hit.reportSlug !== reportSlug}<p class="breadcrumb">{hit.reportTitle}</p>{/if}
 								<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
 								<SearchMatchNote {hit} {query} />
 								<p class="snippet">
@@ -564,11 +564,11 @@
 							</div>
 							<div class="actions">
 								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}>
-									<FileText size={19} weight="thin" /> {hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'} <ArrowRight size={18} weight="thin" />
+									<FileText size={19} weight="thin" /> <span>{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}</span> <ArrowRight size={18} weight="thin" />
 								</a>
 								{#if hit.start != null}
 									<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}>
-										<Play size={19} weight="thin" /> Смотреть с {formatTime(hit.start)} <ArrowRight size={18} weight="thin" />
+										<Play size={19} weight="thin" /> <span>Смотреть с {formatTime(hit.start)}</span> <ArrowRight size={18} weight="thin" />
 									</a>
 								{/if}
 							</div>
@@ -632,6 +632,10 @@
 	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
 	.actions { display: flex; flex-direction: column; gap: 7px; padding-left: 16px; border-left: 1px solid var(--line-strong); }
 	.actions a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 7px; min-height: 44px; padding: 5px 0; color: var(--accent); font-size: 14px; }
+	.report-scope li { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 22px 0; }
+	.report-scope .actions { flex-direction: row; flex-wrap: wrap; gap: 8px 28px; padding: 0; border: 0; }
+	.report-scope .actions a span { white-space: nowrap; }
+	.actions a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.show-all { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; margin-top: 14px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: transparent; color: var(--accent); font: inherit; font-size: 14px; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
 	.show-all:hover, .show-all:focus-visible { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, transparent); }
 	.show-all:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

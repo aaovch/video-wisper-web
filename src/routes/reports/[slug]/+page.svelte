@@ -693,18 +693,6 @@
 	/>
 {:else}
 <article class="report container">
-	{#if highlightQuery.trim()}
-		<div bind:this={searchContextEl} class="search-context" aria-label="Активный поиск">
-			<span class="search-query">Поиск: <strong>{highlightQuery}</strong></span>
-			<div class="fragment-navigation" role="group" aria-label="Навигация по найденным фрагментам">
-				<button type="button" aria-label="Предыдущий фрагмент" disabled={searchBusy || searchFragmentIndex <= 0} onclick={() => stepSearchFragment(-1)}>Предыдущий</button>
-				<span role="status" aria-live="polite">{searchBusy ? 'Ищем…' : searchFragmentIndex >= 0 ? `Фрагмент ${searchFragmentIndex + 1} из ${searchFragments.length}` : `Фрагментов: ${searchFragments.length}`}</span>
-				<button type="button" aria-label="Следующий фрагмент" disabled={searchBusy || !searchFragments.length || searchFragmentIndex >= searchFragments.length - 1} onclick={() => stepSearchFragment(1)}>Следующий</button>
-			</div>
-			<button type="button" onclick={() => { document.getElementById('report-search')?.scrollIntoView({ block: 'start' }); document.querySelector<HTMLInputElement>('#report-search input')?.focus({ preventScroll: true }); }}>К результатам</button>
-			<button type="button" onclick={() => { const url = new URL(page.url); url.searchParams.delete('q'); url.searchParams.delete('results'); void goto(url, { replaceState: true, noScroll: true, keepFocus: true }); }}>Убрать подсветку</button>
-		</div>
-	{/if}
 	<header class="report-head reveal" {@attach reveal()}>
 		<nav class="breadcrumbs" aria-label="Хлебные крошки">
 			{#if !returnCollection?.isolated}
@@ -731,6 +719,19 @@
 			</p>
 		{/if}
 	</header>
+
+	{#if highlightQuery.trim()}
+		<div bind:this={searchContextEl} class="search-context" aria-label="Активный поиск">
+			<span class="search-query">Поиск: <strong>{highlightQuery}</strong></span>
+			<div class="fragment-navigation" role="group" aria-label="Навигация по найденным фрагментам">
+				<button type="button" aria-label="Предыдущий фрагмент" disabled={searchBusy || searchFragmentIndex <= 0} onclick={() => stepSearchFragment(-1)}>Предыдущий</button>
+				<span role="status" aria-live="polite">{searchBusy ? 'Ищем…' : searchFragmentIndex >= 0 ? `Фрагмент ${searchFragmentIndex + 1} из ${searchFragments.length}` : `Фрагментов: ${searchFragments.length}`}</span>
+				<button type="button" aria-label="Следующий фрагмент" disabled={searchBusy || !searchFragments.length || searchFragmentIndex >= searchFragments.length - 1} onclick={() => stepSearchFragment(1)}>Следующий</button>
+			</div>
+			<button type="button" onclick={() => { document.getElementById('report-search')?.scrollIntoView({ block: 'start' }); document.querySelector<HTMLInputElement>('#report-search input')?.focus({ preventScroll: true }); }}>К результатам</button>
+			<button type="button" onclick={() => { const url = new URL(page.url); url.searchParams.delete('q'); url.searchParams.delete('results'); void goto(url, { replaceState: true, noScroll: true, keepFocus: true }); }}>Убрать подсветку</button>
+		</div>
+	{/if}
 
 	<div class="layout" class:no-video={!report.video} bind:this={layoutEl}>
 		<aside class="rail">
@@ -1152,11 +1153,11 @@
 	:global(#report-search), :global(#overview-title), :global(#additional-title) { scroll-margin-top: calc(var(--search-context-height, 150px) + 20px); }
 	.fragment-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 	.fragment-navigation span { min-width: 130px; text-align: center; font-family: var(--font-ui); font-size: 12px; }
-	.search-context .search-query { flex-basis: 100%; padding-right: 44px; }
+	.search-context .search-query { flex: 1 1 180px; }
 	.search-context button:disabled { opacity: .45; cursor: default; }
 	@media (max-width: 600px) {
 		.search-context { gap: 6px !important; padding: 8px !important; }
-		.search-context .search-query { min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+		.search-context .search-query { flex-basis: 100%; padding-right: 44px; min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 		.fragment-navigation { width: 100%; justify-content: space-between; gap: 4px; }
 		.fragment-navigation span { min-width: 0; font-size: 11px; }
 		.search-context button { font-size: 12px !important; padding: 6px !important; }
@@ -1164,9 +1165,11 @@
 	@media (max-height: 500px) { .search-context { position: static !important; } .report { --search-context-height: 0px !important; } }
 
 	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
-	.search-context { position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px; background: var(--paper); border-bottom: 1px solid var(--line-strong); font-size: 14px; }
+	.search-context { position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; padding: 8px 0; background: var(--paper); border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); font-size: 14px; }
 	.search-context span { overflow-wrap: anywhere; min-width: 0; }
 	.search-context button { min-height: 44px; padding: 6px 10px; color: var(--accent-ink); background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); font: inherit; cursor: pointer; }
+	.search-context > button { border-color: transparent; }
+	.search-context button:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, var(--paper)); }
 	.search-context button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 	.report {
 		padding-top: clamp(24px, 4vw, 52px);
