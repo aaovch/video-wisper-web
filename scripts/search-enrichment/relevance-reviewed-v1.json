@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "protocol": {
+    "originalRegistrySha256": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+    "author": "Codex",
+    "scope": "Five source-reviewed cases from disclosed expanded pilot; source-grounded interpretation, not independent human gold or an algorithm change.",
+    "coverage": "Judged sources only; unjudged hits remain unknown. Chapter matches mean access to that chapter, not proof that the displayed snippet answers the question. Timed exercise items require matching start as well as title.",
+    "reason": "Separate requested information from an arbitrary number of expected chapters; distinguish concrete exercise items."
+  },
+  "cases": [
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "originalJudgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 5,
+          "grade": 3,
+          "title": "Динамика пары при батмане",
+          "evidence": "Разбор отработки: второй номер должен завершать атаку, чтобы видеть правильную динамику; без неё получается защита отбивом.",
+          "sourceHash": "dd3fed67d32f29bae78df10ad082f794201c14ef46394e06488bdfed28f4a705"
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Стимул как в реальном бою",
+          "evidence": "Третье правило: атакующее движение должно быть полноценным; нельзя останавливать или ломать удар — иначе у ученика ложное ощущение успеха.",
+          "sourceHash": "b8377375c6fb4d49154c051d02502475fbd598bb5fb9bc89814b3136e9958fde"
+        }
+      ],
+      "facets": [
+        {
+          "id": "movement",
+          "label": "Полноценное завершение атакующего движения"
+        },
+        {
+          "id": "distortion",
+          "label": "Объяснение искажения учебного результата"
+        }
+      ],
+      "reason": "Два источника описывают перекрывающиеся требования. Не обязательно найти именно оба, если один объясняет и действие, и учебную ошибку.",
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "path": [
+            "chapters",
+            5
+          ],
+          "selector": {
+            "chapterIndex": 5
+          },
+          "grade": 3,
+          "supports": [
+            "movement",
+            "distortion"
+          ],
+          "evidence": [
+            "Разбор отработки: второй номер должен завершать атаку, чтобы видеть правильную динамику; без неё получается защита отбивом."
+          ],
+          "sourceHash": "a7916cba16713545cd962f1259fe3dc85f23dba6c961674d865879a04b2c2791",
+          "reason": "Завершение атаки необходимо для проверки тайминга; без динамики получается другое действие."
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "path": [
+            "chapters",
+            4
+          ],
+          "selector": {
+            "chapterIndex": 4
+          },
+          "grade": 3,
+          "supports": [
+            "movement",
+            "distortion"
+          ],
+          "evidence": [
+            "Третье правило: атакующее движение должно быть полноценным; нельзя останавливать или ломать удар — иначе у ученика ложное ощущение успеха."
+          ],
+          "sourceHash": "3be4b328b32f6e76afe0fc27b7a975bf6a768008ed71349a35736b81ff70226e",
+          "reason": "Полноценный удар противопоставлен остановленному; названа причина ложного ощущения успеха."
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "path": [
+            "chapters",
+            1
+          ],
+          "selector": {
+            "chapterIndex": 1
+          },
+          "grade": 1,
+          "supports": [],
+          "evidence": [
+            "На прошлой тренировке атлеты противодействовали партнёрам вместо мониторинга; первое правило — стимул должен быть релевантен нужной адаптации."
+          ],
+          "sourceHash": "df88169572a0b28ee2ee3caa6b00a5654ecf0bb7a8d713c15d4adb3df13a9f6e",
+          "reason": "Общий принцип релевантной адаптации полезен, но не объясняет конкретную ошибку недоведённой атаки."
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "originalJudgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 15,
+          "grade": 3,
+          "title": "Ответ на проигранное соединение",
+          "evidence": "При проигрыше соединения выбор зависит от дистанции, но базовый учебный ответ — сохранить контакт, перейти в подвешенную сексту и атаковать с другой стороны.",
+          "sourceHash": "02c156605945c6ce0874eaa4562f9e2f84165c77384ae8ce2f36ef7ebab02333"
+        },
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Виндены: уступающий и силовой",
+          "evidence": "Винден — обкручивание в точке касания: уступающий на давлении защиты и преднамеренный силовой с захватом соединения.",
+          "sourceHash": "1ea3e76d9ea760965dc2ab904ee016cd8eca9a228e35dfc06b8b18f519991b29"
+        }
+      ],
+      "facets": [
+        {
+          "id": "continuation",
+          "label": "Продолжение после проигрыша соединения с сохранением контроля"
+        }
+      ],
+      "reason": "Вопрос просит решение одной ситуации, а не два разных приёма. Винден — условный дополнительный пример, а не обязательный второй источник.",
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "path": [
+            "chapters",
+            15
+          ],
+          "selector": {
+            "chapterIndex": 15
+          },
+          "grade": 3,
+          "supports": [
+            "continuation"
+          ],
+          "evidence": [
+            "При проигрыше соединения выбор зависит от дистанции, но базовый учебный ответ — сохранить контакт, перейти в подвешенную сексту и атаковать с другой стороны."
+          ],
+          "sourceHash": "f980e50b10e834a7e5294e4b795a7b32d3122a86aef6aa49a3d27c4ba2fe8517",
+          "reason": "Прямо описаны проигрыш соединения, сохранение контакта, подвешенная секста и нападение с другой стороны; выбор зависит от дистанции."
+        },
+        {
+          "reportSlug": "longsword-a",
+          "path": [
+            "chapters",
+            14
+          ],
+          "selector": {
+            "chapterIndex": 14
+          },
+          "grade": 2,
+          "supports": [],
+          "evidence": [
+            "Уступающий: на его давлении расслабить кисти и доколоть под ~90°."
+          ],
+          "sourceHash": "2ddc025dbe37ee7e41ac16eba28af43b6a13b4841b23df59f1ed92414559569b",
+          "reason": "Уступающий винден описан при давлении защиты. Это полезный частный случай, но не универсальный ответ после любого проигрыша соединения."
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "originalJudgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Базовая стойка и шаг",
+          "evidence": "Группа собирает короткую фронтальную стойку с развёрнутыми стопами и учится сохранять её в приставных шагах.",
+          "sourceHash": "3f1de6d07cb27b5622a03909443de66b9bd09b45a30d78f9b280889d78feb2d5"
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "grade": 3,
+          "title": "Шаффл и смена ведущей ноги",
+          "evidence": "Шаффл мечника тренирует четыре способа раскрыть стойку и быстро поменять ведущую ногу без потери ширины опоры.",
+          "sourceHash": "8e848bd0d8cd36ea2e9bca394233c15da37d638fae6a669f659f193644d9897a"
+        }
+      ],
+      "facets": [
+        {
+          "id": "steps",
+          "label": "Сохранение опоры при передвижении"
+        },
+        {
+          "id": "switch",
+          "label": "Смена ведущей ноги без разрушения стойки"
+        }
+      ],
+      "reason": "Сохраняются две разные части задачи. Конспект может покрыть обе, упражнения оцениваются по конкретному пункту и времени.",
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "chapters",
+            4
+          ],
+          "selector": {
+            "chapterIndex": 4
+          },
+          "grade": 3,
+          "supports": [
+            "steps"
+          ],
+          "evidence": [
+            "Группа собирает короткую фронтальную стойку с развёрнутыми стопами и учится сохранять её в приставных шагах."
+          ],
+          "sourceHash": "be739e342caa3322e78c31983daa2b1d971e7231307e6bf5b3fd3aa7d00e5988",
+          "reason": "Описаны опора и проверка обеих ног после шага."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "chapters",
+            5
+          ],
+          "selector": {
+            "chapterIndex": 5
+          },
+          "grade": 3,
+          "supports": [
+            "switch"
+          ],
+          "evidence": [
+            "Шаффл мечника тренирует четыре способа раскрыть стойку и быстро поменять ведущую ногу без потери ширины опоры."
+          ],
+          "sourceHash": "7bd5f0846bbb3212372a6760ecb708377ffc70a3c012a1052eb94fa1125c62f0",
+          "reason": "Описана смена ведущей ноги без потери ширины опоры."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_notes",
+            1
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Конспект: Стойка и работа ног"
+          },
+          "grade": 3,
+          "supports": [
+            "steps",
+            "switch"
+          ],
+          "evidence": [
+            "Держать базу короткой и прямоугольной, не растягиваться до прижатой задней пятки.",
+            "Проверять стойку после каждого приставного шага, а не только в начале дорожки.",
+            "Менять ведущую ногу через сбор и раскрытие стойки без лишнего подъёма корпуса."
+          ],
+          "sourceHash": "d885d36b4b0fc8c4ec5093b50b3fb1c8ad82456334d221a85376bbe9404672a6",
+          "reason": "Конспект явно содержит проверку стойки при шагах и смену ведущей ноги."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            8
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 1098.54
+          },
+          "grade": 3,
+          "supports": [
+            "steps"
+          ],
+          "evidence": [
+            "Делайте приставной шаг вперёд и назад через разметку мечом, после каждого шага проверяя положение обеих стоп."
+          ],
+          "sourceHash": "b75a19340c300a54eb7265ae992c357f266355d3ea0c30df3f094ce9ed8da171",
+          "reason": "Проверка обеих стоп после приставного шага."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            9
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 1269.28
+          },
+          "grade": 3,
+          "supports": [
+            "switch"
+          ],
+          "evidence": [
+            "Выполняйте шаффл мечника: соберите ноги в центре и раскройте стойку одним из четырёх способов со сменой ведущей ноги."
+          ],
+          "sourceHash": "46bd766b8234d44ddf6993b62515bd14afb0558ecf64872d573d3bb67d38f4ee",
+          "reason": "Шаффл со сбором, раскрытием стойки и сменой ведущей ноги."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            15
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 3703.02
+          },
+          "grade": 1,
+          "supports": [],
+          "evidence": [
+            "Соедините dritto, короткий отход с толчком баклером и верхний укол на смене ведущей ноги."
+          ],
+          "sourceHash": "b74be34a972243fb809ecd71dac6924edc78e66b8f0135b5eececb9382c83634",
+          "reason": "Связка dritto и укола содержит смену ноги, но не объясняет устойчивость; не засчитывается только за совпадение названия раздела."
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "originalJudgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Преднамеренно-экспромтные",
+          "evidence": "Средняя категория: видим сигнал, выбираем отработанное решение — тактически оптимальнее, но медленнее.",
+          "sourceHash": "bcbd12c372299e9cdc47fa7b2558310e787dfb66db004356d1d4ad7d84298df9"
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Учить не технику в воздухе, а распознавание",
+          "evidence": "Финальный акцент: упражнение должно связывать распознавание боевой ситуации, переход в нужную субтактику и завершение угрозы, иначе развивается неправильный навык.",
+          "sourceHash": "acc3cea962017d1b18ba1804d724540b001b4dc1aeb704216cd2cfa4483ac91d"
+        }
+      ],
+      "facets": [
+        {
+          "id": "prepared",
+          "label": "Выбор отработанного решения после распознавания сигнала"
+        },
+        {
+          "id": "threat",
+          "label": "Применение распознавания в тренировке угрозы"
+        }
+      ],
+      "reason": "Разделены общий механизм подготовленного решения и его применение к угрозе; один общий текст не заменяет оба аспекта.",
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "path": [
+            "chapters",
+            7
+          ],
+          "selector": {
+            "chapterIndex": 7
+          },
+          "grade": 3,
+          "supports": [
+            "prepared"
+          ],
+          "evidence": [
+            "Средняя категория: видим сигнал, выбираем отработанное решение — тактически оптимальнее, но медленнее."
+          ],
+          "sourceHash": "0d8c5eb67a12408a70689a5a7370b30b482c3dbecc85183b9ecf76a9ab73761a",
+          "reason": "Прямо указаны распознавание сигнала и выбор отработанного решения."
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "path": [
+            "chapters",
+            4
+          ],
+          "selector": {
+            "chapterIndex": 4
+          },
+          "grade": 3,
+          "supports": [
+            "threat"
+          ],
+          "evidence": [
+            "Финальный акцент: упражнение должно связывать распознавание боевой ситуации, переход в нужную субтактику и завершение угрозы, иначе развивается неправильный навык."
+          ],
+          "sourceHash": "c800039404ca0c90d942d95854e9f9d8f6e9cd376fa7335f1b3dedc15c546479",
+          "reason": "Упражнение связывает распознавание ситуации и реализацию угрозы, углубляя одну ветку ответов."
+        }
+      ]
+    },
+    {
+      "id": "expanded-5-3-original",
+      "query": "Какое игровое упражнение учит вызвать удар в ноги и вовремя уйти?",
+      "originalJudgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 19,
+          "grade": 3,
+          "title": "Игра ниндзя и самурай",
+          "evidence": "Игровое задание тренирует провокацию нижней атаки, реакцию ног и безопасный выход из дистанции.",
+          "sourceHash": "193abcce5fb84eca570552465a6b0ff8d80b307a72fdebd0407111d2ebdd7704"
+        }
+      ],
+      "facets": [
+        {
+          "id": "game",
+          "label": "Идентификация игрового упражнения на вызов нижней атаки и выход"
+        }
+      ],
+      "reason": "Конкретное упражнение является допустимой альтернативой главе. Другие упражнения с тем же заголовком не являются ответом.",
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "chapters",
+            19
+          ],
+          "selector": {
+            "chapterIndex": 19
+          },
+          "grade": 3,
+          "supports": [
+            "game"
+          ],
+          "evidence": [
+            "Игровое задание тренирует провокацию нижней атаки, реакцию ног и безопасный выход из дистанции."
+          ],
+          "sourceHash": "722c51b30540216e83739b2eaf14af43cf0656df9ee5236306ffdf161b3ba157",
+          "reason": "Игра ниндзя и самурай прямо соответствует запросу."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            17
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 4822.24
+          },
+          "grade": 3,
+          "supports": [
+            "game"
+          ],
+          "evidence": [
+            "Сыграйте в «ниндзю и самурая»: один входит в размеченную зону и выходит, второй мягко ловит его ударом тимбары ниже колена."
+          ],
+          "sourceHash": "6f07d6f7b0ee5c5f4dcff45b786acefc459c729fc98edc52d240f00c310a91fe",
+          "reason": "Указана конкретная игра: вход и выход из зоны, атака ниже колена."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            4
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 528.89
+          },
+          "grade": 0,
+          "supports": [],
+          "evidence": [
+            "Прыгайте вперёд и назад с толчком одной ногой; при дискомфорте приземляйтесь на две ноги, снижая ударную нагрузку."
+          ],
+          "sourceHash": "64c5126998d4de2447af5679cf76ae8e7a7f1c641d54cf1352b9c271d560303e",
+          "reason": "Прыжки вперёд и назад не являются игрой на вызов нижней атаки."
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "path": [
+            "seminar_exercises",
+            0,
+            "items",
+            15
+          ],
+          "selector": {
+            "kind": "material",
+            "title": "Упражнения: Упражнения семинара",
+            "start": 3703.02
+          },
+          "grade": 0,
+          "supports": [],
+          "evidence": [
+            "Соедините dritto, короткий отход с толчком баклером и верхний укол на смене ведущей ноги."
+          ],
+          "sourceHash": "b74be34a972243fb809ecd71dac6924edc78e66b8f0135b5eececb9382c83634",
+          "reason": "Парная связка dritto и укола не отвечает запросу об игровом задании."
+        }
+      ]
+    }
+  ]
+}

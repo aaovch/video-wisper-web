@@ -1,0 +1,115 @@
+{
+  "split": "holdout",
+  "registryHash": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+  "before": {
+    "loadMs": 2924.6630999999998,
+    "coreGzipBytes": 1659312,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 48,
+        "hit5": 35,
+        "mrr": 0.5347222222222223,
+        "p95": 147.70349999999598
+      },
+      {
+        "scope": "collection",
+        "n": 66,
+        "hit5": 39,
+        "mrr": 0.42128427128427126,
+        "p95": 320.9163000000008
+      },
+      {
+        "scope": "archive",
+        "n": 48,
+        "hit5": 16,
+        "mrr": 0.2303819444444444,
+        "p95": 2209.7649999999994
+      }
+    ],
+    "multi": [
+      {
+        "id": "expanded-multi-1",
+        "coverage5": 0
+      },
+      {
+        "id": "expanded-multi-2",
+        "coverage5": 0.5
+      },
+      {
+        "id": "expanded-multi-3",
+        "coverage5": 0.5
+      },
+      {
+        "id": "expanded-multi-4",
+        "coverage5": 0.5
+      }
+    ],
+    "unsupported": {
+      "n": 4,
+      "nonempty": 4,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "after": {
+    "loadMs": 3159.8605000000007,
+    "coreGzipBytes": 1664681,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 48,
+        "hit5": 42,
+        "mrr": 0.6631944444444443,
+        "p95": 141.4875000000029
+      },
+      {
+        "scope": "collection",
+        "n": 66,
+        "hit5": 55,
+        "mrr": 0.5967171717171718,
+        "p95": 314.08810000000085
+      },
+      {
+        "scope": "archive",
+        "n": 48,
+        "hit5": 26,
+        "mrr": 0.3663194444444445,
+        "p95": 2216.467499999999
+      }
+    ],
+    "multi": [
+      {
+        "id": "expanded-multi-1",
+        "coverage5": 0
+      },
+      {
+        "id": "expanded-multi-2",
+        "coverage5": 0.5
+      },
+      {
+        "id": "expanded-multi-3",
+        "coverage5": 0.5
+      },
+      {
+        "id": "expanded-multi-4",
+        "coverage5": 0.5
+      }
+    ],
+    "unsupported": {
+      "n": 4,
+      "nonempty": 4,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "losses": [],
+  "sourceLosses": [],
+  "collectionGain": 0.24242424242424243,
+  "gates": {
+    "collectionGain10pp": true,
+    "noIndividualHit5Loss": true,
+    "noMultiSourceCoverageLoss": true,
+    "coreGzipGrowth20pct": true,
+    "warmP95Growth10pct": true
+  },
+  "caveat": "Same author, incomplete relevance judgments. Node timings are not mobile UX evidence. Holdout results are disclosed once run."
+}

@@ -1,0 +1,12 @@
+{
+  "protocol": "Targeted source review by the same Codex assistant after the frozen evaluation. These grades do not alter the benchmark qrels. 0=does not answer, 1=related but insufficient, 2=answers. Not independent human review.",
+  "judgments": [
+    {"queryId":"f01","documentId":"kontseptsiya-monitoringa:chapter:5","grade":0,"evidence":"Давление в конце траектории — типичная ошибка начинающих мониторов.","reason":"The question is about prematurely choosing a defensive sector, not pressure at the end of a strike."},
+    {"queryId":"f03","documentId":"hema-prednamerennye-ekspromtnye:chapter:5","grade":0,"evidence":"Нет задержки между движениями — последовательность запускается заранее.","reason":"This is the contrasting preplanned category. The question explicitly requires recognizing the attack before choosing a practiced response."},
+    {"queryId":"f03","documentId":"hema-prednamerennye-ekspromtnye:chapter:7","grade":2,"evidence":"Средняя категория: видим сигнал, выбираем отработанное решение — тактически оптимальнее, но медленнее.","reason":"Directly identifies the requested decision process."},
+    {"queryId":"f17","documentId":"soedinenie-dlinnyi-mech-lager-noname-3:chapter:4","grade":1,"evidence":"Клинок используется как сенсор: пока контакта нет, информация о сопернике потеряна.","reason":"Useful related material about recovering contact, but it does not explain why a won lever can still permit a double hit."},
+    {"queryId":"f20","documentId":"soedinenie-dlinnyi-mech-lager-noname-2-utro:chapter:20","grade":0,"evidence":"К выигрышу линии добавляется небольшой технический акцент: собственный клинок располагается над оружием партнёра.","reason":"A technical positional detail rather than the requested tactile learning exercise."},
+    {"queryId":"f30","documentId":"mech-i-bakler-mikrotsikl-1-osnovy:chapter:14","grade":1,"evidence":"Базовый dritto дополняется отходом с контролем клинка и верхним уколом на смене ведущей ноги.","reason":"Describes the combination, but the precise timing relative to the opponent's reply is explained in chapter 17."},
+    {"queryId":"f30","documentId":"mech-i-bakler-mikrotsikl-1-osnovy:chapter:17","grade":2,"evidence":"Цель прогрессии — не ждать завершения ответа, а входить в него следующим действием.","reason":"Direct answer to whether to wait for the opponent's reply to finish."}
+  ]
+}

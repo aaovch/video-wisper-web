@@ -1,0 +1,428 @@
+[
+  {
+    "id": "h01",
+    "split": "holdout",
+    "query": "Почему модель с большим окном забывает середину разговора?",
+    "reportSlug": "context-engineering-29min",
+    "chapters": [
+      2
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 2,
+        "title": "Context rot и lost in the middle",
+        "quote": "Производительность падает уже при ~50k tokens у модели с 200k окном."
+      }
+    ]
+  },
+  {
+    "id": "h02",
+    "split": "holdout",
+    "query": "Как отделить исследование от написания кода в контексте агента?",
+    "reportSlug": "context-engineering-29min",
+    "chapters": [
+      7,
+      10
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 7,
+        "title": "Стратегия Isolate",
+        "quote": "Contamination хуже, чем просто нехватка места: старый research мешает писать код."
+      },
+      {
+        "chapterIndex": 10,
+        "title": "Фазовая compaction: research → plan → code",
+        "quote": "Research artifact сжимает 60–80% raw context до 15–20%."
+      }
+    ]
+  },
+  {
+    "id": "h03",
+    "split": "holdout",
+    "query": "Чем инженерия контекста отличается от написания промпта?",
+    "reportSlug": "context-engineering-29min",
+    "chapters": [
+      1
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 1,
+        "title": "Context vs prompt engineering",
+        "quote": "Агент действует автономно: web, API, code, commands — каждый шаг добавляет output в контекст."
+      }
+    ]
+  },
+  {
+    "id": "h04",
+    "split": "holdout",
+    "query": "Энергосистемы включаются по очереди или работают вместе?",
+    "reportSlug": "bioenergetika-trenirovki-tri-energosistemy",
+    "chapters": [
+      5,
+      23
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 5,
+        "title": "Три системы работают одновременно",
+        "quote": "Нет момента полного выключения одной системы и включения другой."
+      },
+      {
+        "chapterIndex": 23,
+        "title": "Главный вывод: вклад систем определяется задачей",
+        "quote": "Программу строят не по названию одной энергосистемы, а по мощности, объёму, паузам и требуемой повторяемости усилий."
+      }
+    ]
+  },
+  {
+    "id": "h05",
+    "split": "holdout",
+    "query": "Почему пауза помогает повторить короткий спринт?",
+    "reportSlug": "bioenergetika-trenirovki-tri-energosistemy",
+    "chapters": [
+      8,
+      16
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 8,
+        "title": "Массовое действие и восстановление PCr",
+        "quote": "Чем полнее пауза, тем больше PCr успевает восстановиться перед следующим спринтом."
+      },
+      {
+        "chapterIndex": 16,
+        "title": "Окислительная система",
+        "quote": "Окислительная система важна не только в длительном беге, но и в паузах между спринтами."
+      }
+    ]
+  },
+  {
+    "id": "h06",
+    "split": "holdout",
+    "query": "Правда ли лактат вызывает жжение в мышцах?",
+    "reportSlug": "bioenergetika-trenirovki-tri-energosistemy",
+    "chapters": [
+      12
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 12,
+        "title": "Лактат: не причина жжения и усталости",
+        "quote": "Лактат не является источником ацидоза: его образование скорее потребляет протоны."
+      }
+    ]
+  },
+  {
+    "id": "h07",
+    "split": "holdout",
+    "query": "Почему дополнительная разминка не решает боль в суставе?",
+    "reportSlug": "fehtovat-dolgo-ne-travmirovatsya",
+    "chapters": [
+      4,
+      6
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 4,
+        "title": "Игнорирование восстановления",
+        "quote": "Разогрев и резинка не заменяют лечение уже болящего сустава."
+      },
+      {
+        "chapterIndex": 6,
+        "title": "Разогрев ≠ лечение",
+        "quote": "Больше разогрева при боли — типичная ошибка."
+      }
+    ]
+  },
+  {
+    "id": "h08",
+    "split": "holdout",
+    "query": "Может ли эффективная техника из трактата вредить телу?",
+    "reportSlug": "fehtovat-dolgo-ne-travmirovatsya",
+    "chapters": [
+      2
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 2,
+        "title": "Модель vs тело",
+        "quote": "Шаблон из книги может быть успешным и при этом нефизиологичным."
+      }
+    ]
+  },
+  {
+    "id": "h09",
+    "split": "holdout",
+    "query": "Почему много повторений неудобного движения опаснее одного?",
+    "reportSlug": "fehtovat-dolgo-ne-travmirovatsya",
+    "chapters": [
+      1
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 1,
+        "title": "Четыре внутренние причины",
+        "quote": "Одно неудобное движение редко травмирует — опасны повторения в шаблоне."
+      }
+    ]
+  },
+  {
+    "id": "h10",
+    "split": "holdout",
+    "query": "Чем заранее решённое действие отличается от реакции по ходу боя?",
+    "reportSlug": "hema-prednamerennye-ekspromtnye",
+    "chapters": [
+      5,
+      6,
+      7
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 5,
+        "title": "Преднамеренные действия",
+        "quote": "Пример: атака в четвёрку и сразу шестая защита «на ответ»."
+      },
+      {
+        "chapterIndex": 6,
+        "title": "Экспромтные действия",
+        "quote": "Плюсы: скорость, неожиданность (особенно у новичков)."
+      },
+      {
+        "chapterIndex": 7,
+        "title": "Преднамеренно-экспромтные",
+        "quote": "Есть фазы обработки и принятия решения — самые «длинные»."
+      }
+    ]
+  },
+  {
+    "id": "h11",
+    "split": "holdout",
+    "query": "Почему новичок бросает начатую атаку при любом сигнале?",
+    "reportSlug": "hema-prednamerennye-ekspromtnye",
+    "chapters": [
+      9
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 9,
+        "title": "Проблема учеников и «Око»",
+        "quote": "Новички не верят в атаку и бросают её при любом сигнале."
+      }
+    ]
+  },
+  {
+    "id": "h12",
+    "split": "holdout",
+    "query": "Как в одной фразе сочетаются три типа принятия решений?",
+    "reportSlug": "hema-prednamerennye-ekspromtnye",
+    "chapters": [
+      8
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 8,
+        "title": "Три типа в одной фразе",
+        "quote": "Преднамеренное: атака — защита — ответ по прогнозу на «пятёрку»."
+      }
+    ]
+  },
+  {
+    "id": "h13",
+    "split": "holdout",
+    "query": "Как правдоподобный ответ скрывает ошибку параметров инструмента?",
+    "reportSlug": "agents-week-2026-4-agent-evaluation-lecture",
+    "chapters": [
+      3
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 3,
+        "title": "Оценивать всю цепочку",
+        "quote": "Ошибочный tool parameter может быть скрыт правдоподобным ответом."
+      }
+    ]
+  },
+  {
+    "id": "h14",
+    "split": "holdout",
+    "query": "Чем pass@k отличается от pass^k?",
+    "reportSlug": "agents-week-2026-4-agent-evaluation-lecture",
+    "chapters": [
+      18
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 18,
+        "title": "Стабильность: pass@k и pass^k",
+        "quote": "pass@k растёт с числом попыток и полезен там, где retry допустим."
+      }
+    ]
+  },
+  {
+    "id": "h15",
+    "split": "holdout",
+    "query": "Как проверить согласие экспертов при оценке агента?",
+    "reportSlug": "agents-week-2026-4-agent-evaluation-lecture",
+    "chapters": [
+      20,
+      21
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 20,
+        "title": "Agreement и Cohen’s kappa",
+        "quote": "Сравнивать можно expert-to-expert и human-to-LLM."
+      },
+      {
+        "chapterIndex": 21,
+        "title": "Калибровка LLM-as-a-judge",
+        "quote": "Сначала проверяется agreement между экспертами."
+      }
+    ]
+  },
+  {
+    "id": "h16",
+    "split": "holdout",
+    "query": "Почему четыре миллимоля лактата не универсальная граница?",
+    "reportSlug": "laktatnyi-porog-bioenergetika",
+    "chapters": [
+      6
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 6,
+        "title": "Определение порога и проблема 4 ммоль/л",
+        "quote": "Фиксированные 4 ммоль/л обозначают метод OBLA, но индивидуальная точка устойчивого состояния может быть ниже или значительно выше."
+      }
+    ]
+  },
+  {
+    "id": "h17",
+    "split": "holdout",
+    "query": "Что означает сдвиг лактатной кривой вправо?",
+    "reportSlug": "laktatnyi-porog-bioenergetika",
+    "chapters": [
+      11
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 11,
+        "title": "Как тренировка сдвигает кривую вправо",
+        "quote": "Сдвиг отражает изменения транспорта и окисления лактата, митохондриальной способности, капилляризации и экономичности."
+      }
+    ]
+  },
+  {
+    "id": "h18",
+    "split": "holdout",
+    "query": "Является ли лактатный резерв буквальным запасом места?",
+    "reportSlug": "laktatnyi-porog-bioenergetika",
+    "chapters": [
+      14
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 14,
+        "title": "«Лактатный резерв»: полезная метафора с ограничениями",
+        "quote": "Это не общепринятый самостоятельный физиологический показатель и не буквальный запас места для лактата."
+      }
+    ]
+  },
+  {
+    "id": "h19",
+    "split": "holdout",
+    "query": "Как надколенник увеличивает механическое преимущество?",
+    "reportSlug": "biomehanika-i-myshechnye-rychagi",
+    "chapters": [
+      9
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 9,
+        "title": "Надколенник улучшает рычаг квадрицепса",
+        "quote": "Даже небольшое увеличение расстояния до оси заметно влияет на отношение плеч."
+      }
+    ]
+  },
+  {
+    "id": "h20",
+    "split": "holdout",
+    "query": "Почему вес гантели не равен нагрузке на мышцу?",
+    "reportSlug": "biomehanika-i-myshechnye-rychagi",
+    "chapters": [
+      11
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 11,
+        "title": "Внешняя сила не равна нагрузке на ткани",
+        "quote": "Большинство скелетных мышц человеческого тела работает при существенном механическом проигрыше."
+      }
+    ]
+  },
+  {
+    "id": "h21",
+    "split": "holdout",
+    "query": "Какой рычаг работает при подъёме на носки?",
+    "reportSlug": "biomehanika-i-myshechnye-rychagi",
+    "chapters": [
+      7
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 7,
+        "title": "Рычаг второго рода: подъём на носки",
+        "quote": "При подъёме на носки ось проходит через переднюю часть стопы, вес тела действует около голеностопа, а икроножная мышца тянет через пяточную кость."
+      }
+    ]
+  },
+  {
+    "id": "h22",
+    "split": "holdout",
+    "query": "С какой силой бить в интенсивном раунде какари кейко?",
+    "reportSlug": "gruppa-b-5-kakari-keiko",
+    "chapters": [
+      11
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 11,
+        "title": "Правила интенсивного раунда",
+        "quote": "Сила удара ограничивается примерно 30–40 процентами: цель — контролируемый щелчок по защите, а не тяжелое попадание."
+      }
+    ]
+  },
+  {
+    "id": "h23",
+    "split": "holdout",
+    "query": "Почему после тяжёлого раунда продолжают двигаться?",
+    "reportSlug": "gruppa-b-5-kakari-keiko",
+    "chapters": [
+      14
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 14,
+        "title": "Активное восстановление после нагрузки",
+        "quote": "Работающие мышцы помогают сердцу поддерживать кровообращение, поэтому резкая полная остановка нежелательна."
+      }
+    ]
+  },
+  {
+    "id": "h24",
+    "split": "holdout",
+    "query": "Чем метроном отличается от какари кейко для выносливости?",
+    "reportSlug": "gruppa-b-5-kakari-keiko",
+    "chapters": [
+      17
+    ],
+    "evidence": [
+      {
+        "chapterIndex": 17,
+        "title": "Метроном, гандикапы и честные ограничения",
+        "quote": "Метроном сильнее проверяет ритм и координационную выносливость, а какари-кейко — самостоятельно выбранную планку и волю удерживать ее."
+      }
+    ]
+  }
+]

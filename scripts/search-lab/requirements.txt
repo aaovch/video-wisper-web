@@ -1,0 +1,4 @@
+# Optional offline experiments only; no Python dependency in the deployed site.
+numpy==2.4.6
+onnxruntime==1.28.0
+tokenizers==0.23.1

@@ -1,0 +1,152 @@
+{
+  "date": "2026-09-08",
+  "comparisons": [
+    {
+      "name": "existing-questions",
+      "registryHash": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+      "beforeIndexHash": "239e1af9195e67eb3fe4d033d2cfce8f6d986dee090948756af660b89c557f8d",
+      "afterIndexHash": "9b0f7fa7154e8ee066599e32f942f1ee57a89c1fbf77932bb59c8d0e86df0a80",
+      "scenarios": 170,
+      "groups": [
+        {
+          "scope": "report",
+          "questions": 48,
+          "beforeHit5": 42,
+          "afterHit5": 42
+        },
+        {
+          "scope": "collection",
+          "questions": 66,
+          "beforeHit5": 55,
+          "afterHit5": 55
+        },
+        {
+          "scope": "archive",
+          "questions": 48,
+          "beforeHit5": 26,
+          "afterHit5": 26
+        }
+      ],
+      "losses": [],
+      "sourceCoverageLosses": [],
+      "coreGzipBefore": 1683087,
+      "coreGzipAfter": 1686747
+    },
+    {
+      "name": "rollout-questions",
+      "registryHash": "034ff7d2a7c99a74d15b0976bd1491ec24762ff5a81a6e68d301f5f3f52182f7",
+      "beforeIndexHash": "1cf4c44241868f1a10a50048dd2d9164b2338b156dba80b55a8b1bad10c817d0",
+      "afterIndexHash": "9b0f7fa7154e8ee066599e32f942f1ee57a89c1fbf77932bb59c8d0e86df0a80",
+      "scenarios": 36,
+      "groups": [
+        {
+          "scope": "report",
+          "questions": 12,
+          "beforeHit5": 10,
+          "afterHit5": 10
+        },
+        {
+          "scope": "collection",
+          "questions": 12,
+          "beforeHit5": 9,
+          "afterHit5": 9
+        },
+        {
+          "scope": "archive",
+          "questions": 12,
+          "beforeHit5": 5,
+          "afterHit5": 6
+        }
+      ],
+      "losses": [],
+      "sourceCoverageLosses": [],
+      "coreGzipBefore": 1683944,
+      "coreGzipAfter": 1686747
+    }
+  ],
+  "requiredFencingReports": [
+    {
+      "slug": "2026-07-06-19-26-42",
+      "chapters": 5
+    },
+    {
+      "slug": "hema-prednamerennye-ekspromtnye",
+      "chapters": 11
+    },
+    {
+      "slug": "kontseptsiya-monitoringa",
+      "chapters": 7
+    },
+    {
+      "slug": "longsword-a",
+      "chapters": 24
+    },
+    {
+      "slug": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "chapters": 22
+    },
+    {
+      "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+      "chapters": 23
+    },
+    {
+      "slug": "rapira-almaty-2026",
+      "chapters": 14
+    },
+    {
+      "slug": "sablya-10",
+      "chapters": 13
+    },
+    {
+      "slug": "sablya-12",
+      "chapters": 8
+    },
+    {
+      "slug": "sablya-4",
+      "chapters": 9
+    },
+    {
+      "slug": "sablya-6",
+      "chapters": 9
+    },
+    {
+      "slug": "sablya-8",
+      "chapters": 10
+    },
+    {
+      "slug": "sablya-a-2",
+      "chapters": 7
+    },
+    {
+      "slug": "sablya-a-3",
+      "chapters": 10
+    },
+    {
+      "slug": "sablya-a-5",
+      "chapters": 9
+    },
+    {
+      "slug": "sablya-a-7",
+      "chapters": 9
+    },
+    {
+      "slug": "sablya-a-9",
+      "chapters": 10
+    },
+    {
+      "slug": "sablya-vvodnaya",
+      "chapters": 9
+    },
+    {
+      "slug": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "chapters": 25
+    }
+  ],
+  "fencingCards": 234,
+  "caveats": [
+    "Same-author source-aware rollout questions; disclosed after first run.",
+    "One card clarified after two baseline losses; rejected results retained.",
+    "New report lifecycle replay uses cached real sources, not two new transcriptions.",
+    "Runtime ranking unchanged; no claim of complete answers to multi-source questions."
+  ]
+}

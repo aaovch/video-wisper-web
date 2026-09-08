@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "protocol": "Source review 2026-09-08. Adds an equivalent source in the SAME report, not a related new report. Original chapter judgments remain unchanged; source-rank and chapter-rank are reported separately. This is a relevance correction, not a ranking gain.",
+  "cases": [
+    {
+      "id": "q07",
+      "alternatives": [
+        {
+          "reportSlug": "vibe-coding-lovushki-myshleniya",
+          "kind": "material",
+          "title": "Глоссарий: Vibe coding",
+          "sourcePath": [
+            "glossary",
+            0
+          ],
+          "sourceHash": "14efcf8a36c92a14d55b05c8e0a800c651f9f39f0c763056d65654f49e36ca39",
+          "evidence": "Использование сгенерированного ИИ кода без полного понимания того, как и почему он работает.",
+          "grade": 3,
+          "reason": "The glossary explicitly defines using generated code without understanding how or why it works. It states the same accepted proposition as original expected chapter 2, thesis 0. The question does not require the experimental results specific to chapter 1."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "protocol": {
+    "author": "Codex",
+    "reason": "Nine new formulations after fixing the condition candidate, six treated topics and three unchanged chapter controls. Same author, known source topics; not independent human gold.",
+    "candidateSha256": "2a5f8fd1c66143905656387887fac84b6fecf5a2dc71322dfb36a3a72e6a9007"
+  },
+  "registryHash": "aeaf3776b058b61d7ec53bc0f45459676138d50b448a1aa844d824c1060d7261",
+  "beforeIndexHash": "4bd63e656be263f95725783bee499d85c27d0685d6e89f74dc5575fe7749b932",
+  "afterIndexHash": "3ff7c60c8db65ae60694d445daec1037c6d90da8a5307ddb6799889981451028",
+  "groups": [
+    {
+      "scope": "report",
+      "n": 9,
+      "before": 8,
+      "after": 8
+    },
+    {
+      "scope": "collection",
+      "n": 9,
+      "before": 8,
+      "after": 8
+    },
+    {
+      "scope": "archive",
+      "n": 9,
+      "before": 7,
+      "after": 7
+    }
+  ],
+  "losses": [],
+  "coreGzipBefore": 1680020,
+  "coreGzipAfter": 1680246,
+  "gates": {
+    "collectionGain10pp": false,
+    "noIndividualLoss": true
+  },
+  "restoredAcceptedCards": true
+}

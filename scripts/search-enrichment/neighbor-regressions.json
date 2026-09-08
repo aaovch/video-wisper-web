@@ -1,0 +1,490 @@
+[
+  {
+    "id": "expanded-4-1-original",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Как увеличить дальность рубки и не показать заранее её сторону?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 4,
+        "grade": 3,
+        "title": "Удар по гипотенузе и маскировка",
+        "evidence": "Максимально длинный удар идёт выше по гипотенузе, а не по двум катетам; навершие скрывает сторону удара.",
+        "sourceHash": "ab828b90d0e6ce359a5f1bdae02137b5b16c6969b411bea3bc340c56ad31495d"
+      }
+    ]
+  },
+  {
+    "id": "expanded-4-1-typo",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Как увелчить дальность рубки и не показать заранее её сторону?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 4,
+        "grade": 3,
+        "title": "Удар по гипотенузе и маскировка",
+        "evidence": "Максимально длинный удар идёт выше по гипотенузе, а не по двум катетам; навершие скрывает сторону удара.",
+        "sourceHash": "ab828b90d0e6ce359a5f1bdae02137b5b16c6969b411bea3bc340c56ad31495d"
+      }
+    ]
+  },
+  {
+    "id": "expanded-4-3-original",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Что сделать кистью после встречи с чужой защитой, чтобы пресечь поздний ответный удар?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 20,
+        "grade": 3,
+        "title": "Отсечение",
+        "evidence": "После попадания в клинок или защиту — прокрутка кистью (как перехват контратаки) гасит афтерблоу противника.",
+        "sourceHash": "f3ee4a8c6bd03d4b15d38dc672a66e043c431f2cf3df534dc44b98b0dc9764f7"
+      }
+    ]
+  },
+  {
+    "id": "expanded-4-3-typo",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Что сделать кистью после встречи с чужой защитой, чтобы пресеч поздний ответный удар?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 20,
+        "grade": 3,
+        "title": "Отсечение",
+        "evidence": "После попадания в клинок или защиту — прокрутка кистью (как перехват контратаки) гасит афтерблоу противника.",
+        "sourceHash": "f3ee4a8c6bd03d4b15d38dc672a66e043c431f2cf3df534dc44b98b0dc9764f7"
+      }
+    ]
+  },
+  {
+    "id": "expanded-6-2-original",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Почему заранее решённая атака может быть быстрой и чистой, но уйти не в ту цель?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "title": "Преднамеренные действия",
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "expanded-6-2-typo",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Почему заране решённая атака может быть быстрой и чистой, но уйти не в ту цель?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "title": "Преднамеренные действия",
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "noname-9",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Я опускаю руку вниз, но поддевка всё равно попадает. Что должно разворачиваться в девятке?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+        "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+      }
+    ]
+  },
+  {
+    "id": "p-single-5",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Соперник останавливается перед моим отбивом, и я не достаю. Как добрать расстояние?",
+    "judgments": [
+      {
+        "reportSlug": "sablya-a-3",
+        "chapterIndex": 9,
+        "grade": 3,
+        "title": "Расширение, когда противник тормозит",
+        "evidence": "Опытные противники останавливаются перед батманом. Решение — расширение: короткий выпад вперёд и сразу назад-выше, не заваливаться.",
+        "sourceHash": "00ebde3804c067600ef8bdfe582bca090434b65e81ecfc837bd39e6cb0322108"
+      }
+    ]
+  },
+  {
+    "id": "p-single-15",
+    "scope": "report",
+    "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+    "query": "Почему соперник отказывается долго бороться клинками и сразу разрывает расстояние?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+        "chapterIndex": 1,
+        "grade": 3,
+        "title": "Соединение — короткий эпизод",
+        "evidence": "Соединение рассматривается как очень короткий контакт в игре с нулевой суммой, где каждый боец старается навязать выгодный именно ему сценарий.",
+        "sourceHash": "36f158b0aa45134543602a7fedb11de956dde522286620ed3c740bf13117fe32"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-1",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Как навершие помогает скрыть направление длинного рубящего удара?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Максимально длинный удар идёт выше по гипотенузе, а не по двум катетам; навершие скрывает сторону удара.",
+        "sourceHash": "ab828b90d0e6ce359a5f1bdae02137b5b16c6969b411bea3bc340c56ad31495d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-1",
+    "scope": "collection",
+    "label": "almaty-2026",
+    "query": "Как навершие помогает скрыть направление длинного рубящего удара?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Максимально длинный удар идёт выше по гипотенузе, а не по двум катетам; навершие скрывает сторону удара.",
+        "sourceHash": "ab828b90d0e6ce359a5f1bdae02137b5b16c6969b411bea3bc340c56ad31495d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-1",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Как навершие помогает скрыть направление длинного рубящего удара?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Максимально длинный удар идёт выше по гипотенузе, а не по двум катетам; навершие скрывает сторону удара.",
+        "sourceHash": "ab828b90d0e6ce359a5f1bdae02137b5b16c6969b411bea3bc340c56ad31495d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-2",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Чем погасить афтерблоу после попадания моего меча в защиту?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 20,
+        "grade": 3,
+        "evidence": "После попадания в клинок или защиту — прокрутка кистью (как перехват контратаки) гасит афтерблоу противника.",
+        "sourceHash": "f3ee4a8c6bd03d4b15d38dc672a66e043c431f2cf3df534dc44b98b0dc9764f7"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-2",
+    "scope": "collection",
+    "label": "almaty-2026",
+    "query": "Чем погасить афтерблоу после попадания моего меча в защиту?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 20,
+        "grade": 3,
+        "evidence": "После попадания в клинок или защиту — прокрутка кистью (как перехват контратаки) гасит афтерблоу противника.",
+        "sourceHash": "f3ee4a8c6bd03d4b15d38dc672a66e043c431f2cf3df534dc44b98b0dc9764f7"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-2",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Чем погасить афтерблоу после попадания моего меча в защиту?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 20,
+        "grade": 3,
+        "evidence": "После попадания в клинок или защиту — прокрутка кистью (как перехват контратаки) гасит афтерблоу противника.",
+        "sourceHash": "f3ee4a8c6bd03d4b15d38dc672a66e043c431f2cf3df534dc44b98b0dc9764f7"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-3",
+    "scope": "report",
+    "label": "hema-prednamerennye-ekspromtnye",
+    "query": "Почему заранее запущенная последовательность может пройти без задержки, но ошибиться сектором?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-3",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "query": "Почему заранее запущенная последовательность может пройти без задержки, но ошибиться сектором?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-3",
+    "scope": "collection",
+    "label": "golden-falcon-astana",
+    "query": "Почему заранее запущенная последовательность может пройти без задержки, но ошибиться сектором?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-3",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Почему заранее запущенная последовательность может пройти без задержки, но ошибиться сектором?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+        "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-4",
+    "scope": "report",
+    "label": "avstriyskaya-sablya-obratnoe-lezvie",
+    "query": "В девятой защите от поддевки нужно опускать руку или поворачивать клинок пальцами?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+        "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-4",
+    "scope": "collection",
+    "label": "noname",
+    "query": "В девятой защите от поддевки нужно опускать руку или поворачивать клинок пальцами?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+        "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-4",
+    "scope": "archive",
+    "label": "archive",
+    "query": "В девятой защите от поддевки нужно опускать руку или поворачивать клинок пальцами?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+        "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-5",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Почему при уколе с центра не надо подавать плечи вперёд?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Укол без супинации и без подачи плеч — сила спины держит острие на линии, укол жёстче и переводит в афтерблоу.",
+        "sourceHash": "c9146ff85bdafbf8483f2f31372c99803cb48ec7319b47dd433050c7863363bd"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-5",
+    "scope": "collection",
+    "label": "almaty-2026",
+    "query": "Почему при уколе с центра не надо подавать плечи вперёд?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Укол без супинации и без подачи плеч — сила спины держит острие на линии, укол жёстче и переводит в афтерблоу.",
+        "sourceHash": "c9146ff85bdafbf8483f2f31372c99803cb48ec7319b47dd433050c7863363bd"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-5",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Почему при уколе с центра не надо подавать плечи вперёд?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Укол без супинации и без подачи плеч — сила спины держит острие на линии, укол жёстче и переводит в афтерблоу.",
+        "sourceHash": "c9146ff85bdafbf8483f2f31372c99803cb48ec7319b47dd433050c7863363bd"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-6",
+    "scope": "report",
+    "label": "longsword-a",
+    "query": "Почему привычная средняя дистанция мешает использовать длинный удар по гипотенузе?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 19,
+        "grade": 3,
+        "evidence": "Главная ошибка — привычка работать на средней дистанции; длинный удар по гипотенузе расширяет дистанцию входа.",
+        "sourceHash": "ff41642ca45884e02f572cca55c31360414985a61707aa01d74c6f3a0a99243d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-6",
+    "scope": "collection",
+    "label": "almaty-2026",
+    "query": "Почему привычная средняя дистанция мешает использовать длинный удар по гипотенузе?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 19,
+        "grade": 3,
+        "evidence": "Главная ошибка — привычка работать на средней дистанции; длинный удар по гипотенузе расширяет дистанцию входа.",
+        "sourceHash": "ff41642ca45884e02f572cca55c31360414985a61707aa01d74c6f3a0a99243d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-6",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Почему привычная средняя дистанция мешает использовать длинный удар по гипотенузе?",
+    "judgments": [
+      {
+        "reportSlug": "longsword-a",
+        "chapterIndex": 19,
+        "grade": 3,
+        "evidence": "Главная ошибка — привычка работать на средней дистанции; длинный удар по гипотенузе расширяет дистанцию входа.",
+        "sourceHash": "ff41642ca45884e02f572cca55c31360414985a61707aa01d74c6f3a0a99243d"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-7",
+    "scope": "report",
+    "label": "hema-prednamerennye-ekspromtnye",
+    "query": "Чем опасна быстрая реакция с прерыванием собственного движения на приоритетный сигнал?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-7",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "query": "Чем опасна быстрая реакция с прерыванием собственного движения на приоритетный сигнал?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-7",
+    "scope": "collection",
+    "label": "golden-falcon-astana",
+    "query": "Чем опасна быстрая реакция с прерыванием собственного движения на приоритетный сигнал?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  },
+  {
+    "id": "neighbor-confirm-7",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Чем опасна быстрая реакция с прерыванием собственного движения на приоритетный сигнал?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  }
+]

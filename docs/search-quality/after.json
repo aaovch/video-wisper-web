@@ -1,0 +1,2470 @@
+{
+  "metrics": [
+    {
+      "scope": "report",
+      "questions": 24,
+      "reportHit3": 24,
+      "passageHit5": 24,
+      "passageMRR": 0.924
+    },
+    {
+      "scope": "collection",
+      "questions": 24,
+      "reportHit3": 23,
+      "passageHit5": 23,
+      "passageMRR": 0.84
+    },
+    {
+      "scope": "archive",
+      "questions": 24,
+      "reportHit3": 21,
+      "passageHit5": 22,
+      "passageMRR": 0.754
+    }
+  ],
+  "rows": [
+    {
+      "id": "q01",
+      "query": "Зачем нужен гибрид текстового и векторного поиска?",
+      "scope": "report",
+      "scopeLabel": "podlodka-vector-search",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 17,
+          "title": "Будущее векторного поиска"
+        }
+      ]
+    },
+    {
+      "id": "q01",
+      "query": "Зачем нужен гибрид текстового и векторного поиска?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 17,
+          "title": "Будущее векторного поиска"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Почему текстовый поиск устарел"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q01",
+      "query": "Зачем нужен гибрид текстового и векторного поиска?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 17,
+          "title": "Будущее векторного поиска"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Почему текстовый поиск устарел"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "query": "Как бинарная квантизация уменьшает память для векторов?",
+      "scope": "report",
+      "scopeLabel": "podlodka-vector-search",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 2,
+          "title": "Что такое вектор"
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "query": "Как бинарная квантизация уменьшает память для векторов?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 2,
+          "title": "Что такое вектор"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 2,
+          "title": "Что такое вектор"
+        },
+        {
+          "slug": "podlodka-slm-468",
+          "chapter": 17,
+          "title": "Дистилляция, квантизация, pruning"
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "query": "Как бинарная квантизация уменьшает память для векторов?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 16,
+          "title": "Бинарная квантизация"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 2,
+          "title": "Что такое вектор"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 2,
+          "title": "Что такое вектор"
+        },
+        {
+          "slug": "podlodka-slm-468",
+          "chapter": 17,
+          "title": "Дистилляция, квантизация, pruning"
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "query": "Как CLIP связывает картинки и текст?",
+      "scope": "report",
+      "scopeLabel": "podlodka-vector-search",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 7,
+          "title": "«Псина сутулая» и негативы"
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "query": "Как CLIP связывает картинки и текст?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 7,
+          "title": "«Псина сутулая» и негативы"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "llm-deep-dive-karpathy",
+          "chapter": 7,
+          "title": "Inference: генерация текста"
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "query": "Как CLIP связывает картинки и текст?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 6,
+          "title": "Мультимодальность и CLIP"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 7,
+          "title": "«Псина сутулая» и негативы"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 8,
+          "title": "Зачем не текстовый поиск"
+        },
+        {
+          "slug": "llm-deep-dive-karpathy",
+          "chapter": 7,
+          "title": "Inference: генерация текста"
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "query": "Почему для RAG нужны маленькие чанки?",
+      "scope": "report",
+      "scopeLabel": "podlodka-vector-search",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "query": "Почему для RAG нужны маленькие чанки?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Почему текстовый поиск устарел"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "query": "Почему для RAG нужны маленькие чанки?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "chapter": 12,
+          "title": "Когда нужна векторная база"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Почему текстовый поиск устарел"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        },
+        {
+          "slug": "podlodka-vector-search",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "query": "Почему автодополнение прерывает самостоятельную мысль?",
+      "scope": "report",
+      "scopeLabel": "vibe-coding-lovushki-myshleniya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 16,
+          "title": "Interruption: разрыв мысли"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "query": "Почему автодополнение прерывает самостоятельную мысль?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 16,
+          "title": "Interruption: разрыв мысли"
+        },
+        {
+          "slug": "agents-week-2026-2-memory-guardrails-lecture",
+          "chapter": 5,
+          "title": "Почему базовый retrieval ошибается"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "berezhnoy-ai",
+          "chapter": 7,
+          "title": "Почему соискатели чувствуют отсев"
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "query": "Почему автодополнение прерывает самостоятельную мысль?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 16,
+          "title": "Interruption: разрыв мысли"
+        },
+        {
+          "slug": "agents-week-2026-2-memory-guardrails-lecture",
+          "chapter": 5,
+          "title": "Почему базовый retrieval ошибается"
+        },
+        {
+          "slug": "avstriyskaya-sablya-2",
+          "chapter": 3,
+          "title": "Почему турнирная сабля стала легче"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 4,
+          "title": "Автодополнение как сигнал капитуляции"
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "query": "Какая ловушка заставляет суммировать числа вместо подсчёта?",
+      "scope": "report",
+      "scopeLabel": "vibe-coding-lovushki-myshleniya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "query": "Какая ловушка заставляет суммировать числа вместо подсчёта?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "query": "Какая ловушка заставляет суммировать числа вместо подсчёта?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "trenerskoe-sobranie-novyi-zal-chast-4",
+          "chapter": 3,
+          "title": "Главный риск — прогноз по числу атлетов"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 13,
+          "title": "Achievement: заплатки вместо переделки"
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "query": "Почему работающий код не означает понимание?",
+      "scope": "report",
+      "scopeLabel": "vibe-coding-lovushki-myshleniya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Глоссарий: Vibe coding"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 1,
+          "title": "Результат без понимания"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Конспект: Главный конфликт учебного AI"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 1,
+          "title": "Результат без понимания"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 1,
+          "title": "Результат без понимания"
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "query": "Почему работающий код не означает понимание?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Глоссарий: Vibe coding"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 1,
+          "title": "Результат без понимания"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Конспект: Главный конфликт учебного AI"
+        },
+        {
+          "slug": "agents-week-2026-5-2-production-engineering",
+          "chapter": 2,
+          "title": "Формализация до первой строки кода"
+        },
+        {
+          "slug": "berezhnoy-ai",
+          "chapter": 12,
+          "title": "Сообразительность и запуск кода"
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "query": "Почему работающий код не означает понимание?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 5,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Глоссарий: Vibe coding"
+        },
+        {
+          "slug": "istoschenie-i-vosstanovlenie-substratov",
+          "chapter": 20,
+          "title": "Почему термин «кислородный долг» ограничен"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 9,
+          "title": "Почему порез с дистанции не работает"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 9,
+          "title": "Почему порез с дистанции не работает"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 1,
+          "title": "Результат без понимания"
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "query": "Как распознать застревание в неверной стратегии?",
+      "scope": "report",
+      "scopeLabel": "vibe-coding-lovushki-myshleniya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Главное"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "query": "Как распознать застревание в неверной стратегии?",
+      "scope": "collection",
+      "scopeLabel": "podcasts",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Главное"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "query": "Как распознать застревание в неверной стратегии?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "title": "Главное"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 10,
+          "title": "Dislodging: застревание в колее"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 9,
+          "title": "Forming: неверный метод"
+        },
+        {
+          "slug": "vibe-coding-lovushki-myshleniya",
+          "chapter": 17,
+          "title": "Misleading: убедительный неверный совет"
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "query": "Закрывает ли силовая тренировка ростковые зоны у детей?",
+      "scope": "report",
+      "scopeLabel": "silovaya-trenirovka-detey",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "query": "Закрывает ли силовая тренировка ростковые зоны у детей?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Силовая тренировка детей: безопасность и долгосрочное развитие"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "query": "Закрывает ли силовая тренировка ростковые зоны у детей?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Силовая тренировка детей: безопасность и долгосрочное развитие"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 4,
+          "title": "Ростковая зона и риск травмы"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "query": "Чем биологический возраст отличается от календарного?",
+      "scope": "report",
+      "scopeLabel": "silovaya-trenirovka-detey",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Глоссарий: Биологическое созревание"
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "query": "Чем биологический возраст отличается от календарного?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Глоссарий: Биологическое созревание"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 2,
+          "title": "Биологический и хронологический возраст"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 2,
+          "title": "Биологический и хронологический возраст"
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "query": "Чем биологический возраст отличается от календарного?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 2,
+          "title": "Биологический и календарный возраст"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "title": "Глоссарий: Биологическое созревание"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 2,
+          "title": "Биологический и хронологический возраст"
+        },
+        {
+          "slug": "sablya-vvodnaya",
+          "chapter": 6,
+          "title": "Чем подготовка отличается от двух шагов"
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "query": "Сколько подходов и повторений делать детям?",
+      "scope": "report",
+      "scopeLabel": "silovaya-trenirovka-detey",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 13,
+          "title": "Нагрузка, повторы и упражнения"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 0,
+          "title": "Подробная глава о детях"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 1,
+          "title": "Нужно ли детям сопротивление"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 0,
+          "title": "Подробная глава о детях"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 0,
+          "title": "Подробная глава о детях"
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "query": "Сколько подходов и повторений делать детям?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 5,
+      "passageRank": 12,
+      "top": [
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 62,
+          "title": "Q&A: оборудование и повторения"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        },
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 51,
+          "title": "Где уместны повторные усилия"
+        },
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 76,
+          "title": "Отдых между повторениями"
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "query": "Сколько подходов и повторений делать детям?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 0,
+      "passageRank": 0,
+      "top": [
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 62,
+          "title": "Q&A: оборудование и повторения"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        },
+        {
+          "slug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapter": 14,
+          "title": "Темп повторений и организация дорожки"
+        },
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 51,
+          "title": "Где уместны повторные усилия"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "query": "Почему отбор по силе теряет поздно созревающих детей?",
+      "scope": "report",
+      "scopeLabel": "silovaya-trenirovka-detey",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 8,
+          "title": "Прирост силы до пубертата"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "query": "Почему отбор по силе теряет поздно созревающих детей?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 5,
+          "title": "Как дети набирают силу"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        },
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 5,
+          "title": "Когда сила переносится в мощность"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "query": "Почему отбор по силе теряет поздно созревающих детей?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "silovaya-trenirovka-detey",
+          "chapter": 6,
+          "title": "Раннее и позднее созревание"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 5,
+          "title": "Как дети набирают силу"
+        },
+        {
+          "slug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "chapter": 16,
+          "title": "Почему скорость и сила ломают движение"
+        },
+        {
+          "slug": "deti-ne-malenkie-vzroslye",
+          "chapter": 0,
+          "title": "Почему дети требуют отдельного подхода"
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "query": "Как делать короткую стопу без сгибания большого пальца?",
+      "scope": "report",
+      "scopeLabel": "ukreplenie-stopy-i-golenostopa",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "query": "Как делать короткую стопу без сгибания большого пальца?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Глоссарий: Короткая стопа"
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "query": "Как делать короткую стопу без сгибания большого пальца?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 6,
+          "title": "Сгибание большого пальца с резинкой"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Глоссарий: Короткая стопа"
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "query": "Зачем класть монету под большой палец при тренировке баланса?",
+      "scope": "report",
+      "scopeLabel": "ukreplenie-stopy-i-golenostopa",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 9,
+          "title": "Баланс и одноногие движения"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 7,
+          "title": "Высокая нагрузка на большой палец и свод"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "query": "Зачем класть монету под большой палец при тренировке баланса?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 9,
+          "title": "Баланс и одноногие движения"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 7,
+          "title": "Высокая нагрузка на большой палец и свод"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 7,
+          "title": "Высокая нагрузка на большой палец и свод"
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "query": "Зачем класть монету под большой палец при тренировке баланса?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 9,
+          "title": "Баланс и одноногие движения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 0,
+          "title": "Зачем сравнивать тренировки"
+        },
+        {
+          "slug": "kinezio-trenirovka-4-kisti-paltsy-lokti",
+          "chapter": 14,
+          "title": "Большой палец и прокат кулака"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Упражнения: Свод и большой палец"
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "query": "Как прогрессировать подъёмы на носки?",
+      "scope": "report",
+      "scopeLabel": "ukreplenie-stopy-i-golenostopa",
+      "matchKind": "correction",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 8,
+          "title": "Силовая работа для стопы и голеностопа"
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "query": "Как прогрессировать подъёмы на носки?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Сильная стопа: подробная прогрессия упражнений"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 8,
+          "title": "Силовая работа для стопы и голеностопа"
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "query": "Как прогрессировать подъёмы на носки?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 2,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Сильная стопа: подробная прогрессия упражнений"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 8,
+          "title": "Силовая работа для стопы и голеностопа"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "query": "Какие упражнения для стопы делать после иммобилизации?",
+      "scope": "report",
+      "scopeLabel": "ukreplenie-stopy-i-golenostopa",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 14,
+          "title": "Три сценария программы"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Главное"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 0,
+          "title": "Зачем тренировать стопу"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "query": "Какие упражнения для стопы делать после иммобилизации?",
+      "scope": "collection",
+      "scopeLabel": "silovaya-konditsionnaya",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 14,
+          "title": "Три сценария программы"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Главное"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "title": "Сильная стопа: подробная прогрессия упражнений"
+        },
+        {
+          "slug": "tokarev-silovaya-ofp-2",
+          "chapter": 48,
+          "title": "Выбор ПМ и упражнений"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 5,
+          "title": "Короткая стопа"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "query": "Какие упражнения для стопы делать после иммобилизации?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 4,
+      "passageRank": 4,
+      "top": [
+        {
+          "slug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Упражнения: Упражнения семинара"
+        },
+        {
+          "slug": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+          "chapter": 25,
+          "title": "Когда делать глубокое расслабление"
+        },
+        {
+          "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "title": "Упражнения: Упражнения семинара"
+        },
+        {
+          "slug": "ukreplenie-stopy-i-golenostopa",
+          "chapter": 14,
+          "title": "Три сценария программы"
+        },
+        {
+          "slug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapter": 15,
+          "title": "Риск и смена темпа делают сигнал значимым"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "query": "Почему удар по манекену скрывает потерю равновесия при промахе?",
+      "scope": "report",
+      "scopeLabel": "tsena-adaptatsii-tehnicheskogo-priema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "query": "Почему удар по манекену скрывает потерю равновесия при промахе?",
+      "scope": "collection",
+      "scopeLabel": "ovchinnikov-lectures",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        },
+        {
+          "slug": "rabota-paltsev-pri-prostoy-atake",
+          "chapter": 5,
+          "title": "Почему выпрямления недостаточно"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "query": "Почему удар по манекену скрывает потерю равновесия при промахе?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 2,
+      "passageRank": 3,
+      "top": [
+        {
+          "slug": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+          "chapter": 5,
+          "title": "Разгон перед потерей равновесия"
+        },
+        {
+          "slug": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+          "chapter": 5,
+          "title": "Разгон перед потерей равновесия"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 8,
+          "title": "Сравнение вариантов при промахе"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "query": "Как дистанция меняет технический приём?",
+      "scope": "report",
+      "scopeLabel": "tsena-adaptatsii-tehnicheskogo-priema",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "query": "Как дистанция меняет технический приём?",
+      "scope": "collection",
+      "scopeLabel": "ovchinnikov-lectures",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "title": "Цена адаптации технического приёма"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "query": "Как дистанция меняет технический приём?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "exact",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 5,
+          "title": "Дистанция меняет сам приём"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "title": "Цена адаптации технического приёма"
+        },
+        {
+          "slug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "title": "Австрийская сабля — тренировка 4: повторение и отработка"
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "query": "Зачем контролировать инерцию после атаки?",
+      "scope": "report",
+      "scopeLabel": "tsena-adaptatsii-tehnicheskogo-priema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "title": "Глоссарий: Контроль инерции"
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "query": "Зачем контролировать инерцию после атаки?",
+      "scope": "collection",
+      "scopeLabel": "ovchinnikov-lectures",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 1,
+          "title": "Зачем выделять угрозу"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 8,
+          "title": "Вход прямой атакой"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 1,
+          "title": "Зачем выделять угрозу"
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "query": "Зачем контролировать инерцию после атаки?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "avstriyskaya-sablya-2",
+          "chapter": 20,
+          "title": "Зачем рапирная база нужна сабле"
+        },
+        {
+          "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "title": "Главное"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        },
+        {
+          "slug": "gruppa-b-2-ataki-fendenti-na-vypade",
+          "chapter": 10,
+          "title": "Защита после атаки"
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "query": "Почему нельзя замедлять удар ради устойчивости?",
+      "scope": "report",
+      "scopeLabel": "tsena-adaptatsii-tehnicheskogo-priema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 11,
+          "title": "Два эмпирических правила"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "title": "Главное"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 0,
+          "title": "Рамки технического приёма"
+        },
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 10,
+          "title": "Контроль инерции в атаке"
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "query": "Почему нельзя замедлять удар ради устойчивости?",
+      "scope": "collection",
+      "scopeLabel": "ovchinnikov-lectures",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        },
+        {
+          "slug": "rabota-paltsev-pri-prostoy-atake",
+          "chapter": 5,
+          "title": "Почему выпрямления недостаточно"
+        },
+        {
+          "slug": "tenouti-i-tyakin-sibori",
+          "chapter": 6,
+          "title": "Стягивающий удар и мера усилия"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 9,
+          "title": "Почему порез с дистанции не работает"
+        },
+        {
+          "slug": "rabota-paltsev-pri-prostoy-atake",
+          "chapter": 5,
+          "title": "Почему выпрямления недостаточно"
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "query": "Почему нельзя замедлять удар ради устойчивости?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+          "chapter": 9,
+          "title": "Проверка промахом вместо замедления"
+        },
+        {
+          "slug": "dofamin-neyronnye-svyazi-pasha",
+          "chapter": 6,
+          "title": "Навык нельзя стереть"
+        },
+        {
+          "slug": "pitanie-i-ves-fekhtovalshchika-turin",
+          "chapter": 7,
+          "title": "Плохой рацион нельзя натренировать"
+        },
+        {
+          "slug": "silovaya-konditsiya-hema",
+          "chapter": 11,
+          "title": "Почему не в зале"
+        },
+        {
+          "slug": "rabota-paltsev-pri-prostoy-atake",
+          "chapter": 5,
+          "title": "Почему выпрямления недостаточно"
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "query": "Как превратить комментарий тренера в последовательность действий боя?",
+      "scope": "report",
+      "scopeLabel": "ii-dlya-analiza-hema-boev",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 3,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Главное"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 4,
+          "title": "LLM как переводчик комментария"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Глоссарий: Скелет фразы"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 4,
+          "title": "LLM как переводчик комментария"
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "query": "Как превратить комментарий тренера в последовательность действий боя?",
+      "scope": "collection",
+      "scopeLabel": "ii-i-hema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 4,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Главное"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "ИИ для анализа HEMA-боёв — разговор с Петром Васильевым"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 4,
+          "title": "LLM как переводчик комментария"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Глоссарий: Скелет фразы"
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "query": "Как превратить комментарий тренера в последовательность действий боя?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 4,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Главное"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "ИИ для анализа HEMA-боёв — разговор с Петром Васильевым"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 4,
+          "title": "LLM как переводчик комментария"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Глоссарий: Скелет фразы"
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "query": "Почему одного успешного турнира мало для оценки работы тренера?",
+      "scope": "report",
+      "scopeLabel": "ii-dlya-analiza-hema-boev",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 3,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 10,
+          "title": "Конкурирующие гипотезы тренера"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 8,
+          "title": "Как тренер читает сводку"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 16,
+          "title": "Почему группы трудно сравнивать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "query": "Почему одного успешного турнира мало для оценки работы тренера?",
+      "scope": "collection",
+      "scopeLabel": "ii-i-hema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 3,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 10,
+          "title": "Конкурирующие гипотезы тренера"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 8,
+          "title": "Как тренер читает сводку"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 16,
+          "title": "Почему группы трудно сравнивать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 2,
+          "title": "Кризис тренера и искажения"
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "query": "Почему одного успешного турнира мало для оценки работы тренера?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 6,
+      "passageRank": 14,
+      "top": [
+        {
+          "slug": "sablya-vvodnaya",
+          "chapter": 3,
+          "title": "Выпад и шаг-выпад: техника и работа в паре"
+        },
+        {
+          "slug": "agents-week-2026-4-agent-evaluation-lecture",
+          "chapter": 4,
+          "title": "Почему агентский eval сложен"
+        },
+        {
+          "slug": "avstriyskaya-sablya-2",
+          "chapter": 3,
+          "title": "Почему турнирная сабля стала легче"
+        },
+        {
+          "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "chapter": 21,
+          "title": "Семинары цикла и турнир"
+        },
+        {
+          "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "chapter": 21,
+          "title": "Семинары цикла и турнир"
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "query": "Сколько времени занимает подробная разметка фехтовальной фразы?",
+      "scope": "report",
+      "scopeLabel": "ii-dlya-analiza-hema-boev",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Глоссарий: Фехтовальная фраза"
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "query": "Сколько времени занимает подробная разметка фехтовальной фразы?",
+      "scope": "collection",
+      "scopeLabel": "ii-i-hema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Глоссарий: Фехтовальная фраза"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 6,
+          "title": "От речи к скелету фразы"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 6,
+          "title": "От речи к скелету фразы"
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "query": "Сколько времени занимает подробная разметка фехтовальной фразы?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 13,
+          "title": "Цена подробной разметки"
+        },
+        {
+          "slug": "sudya-gayd-dlya-nachinayushchikh",
+          "chapter": 6,
+          "title": "Азбука фехтовальной фразы"
+        },
+        {
+          "slug": "fehtovanie-s-prioritetom-v-atake-korotovskih",
+          "chapter": 2,
+          "title": "Фехтовальный темп и фраза"
+        },
+        {
+          "slug": "fehtovanie-s-prioritetom-v-atake-korotovskih",
+          "chapter": 2,
+          "title": "Фехтовальный темп и фраза"
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "query": "Почему модель тренера нужно формализовать?",
+      "scope": "report",
+      "scopeLabel": "ii-dlya-analiza-hema-boev",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "query": "Почему модель тренера нужно формализовать?",
+      "scope": "collection",
+      "scopeLabel": "ii-i-hema",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "title": "Конспект: Модель тренера"
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "query": "Почему модель тренера нужно формализовать?",
+      "scope": "archive",
+      "scopeLabel": "public archive",
+      "matchKind": "semantic",
+      "reportRank": 1,
+      "passageRank": 1,
+      "top": [
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 18,
+          "title": "Модель нужно формализовать"
+        },
+        {
+          "slug": "trenerskoe-sobranie-novyi-zal-chast-4",
+          "title": "Конспект: Финансовая модель, которую нужно зафиксировать"
+        },
+        {
+          "slug": "struktura-i-funktsiya-myshtsy",
+          "chapter": 0,
+          "title": "Зачем тренеру понимать физиологию мышцы"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        }
+      ]
+    }
+  ]
+}

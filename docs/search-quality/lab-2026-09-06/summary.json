@@ -1,0 +1,3135 @@
+{
+  "manifest": {
+    "createdAt": "2026-09-06T10:29:52.420Z",
+    "corpusHash": "d1fccdc86e17fbc263ee1d88cdd8d1f018c05166697e728678952a76ad3fd251",
+    "questionsHash": "ac475d349279384496fa8bb5d665e49d0827ed196641e83527fb0855abdd4f6e",
+    "productionIndexHash": "8c106427ce2ce5a7c44caa184bdb59d6519c4371e8294fb7af82d7d16ed5f93e",
+    "reports": 150,
+    "chapters": 2572,
+    "questions": 114,
+    "tasks": 330,
+    "coldMs": 3136.3932000000004,
+    "indexBytes": {
+      "plain": 1375876,
+      "contextual": 1476044
+    },
+    "exploratorySystems": [
+      "current-query-clean-exploratory"
+    ],
+    "protocol": "Frozen 24 development + 24 holdout families; parameters chosen before first holdout run. Binary incomplete chapter qrels. Negative questions only in archive."
+  },
+  "summaries": [
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9236,
+      "ndcg10": 0.9052,
+      "recall10": 0.9236
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 0.9167,
+      "hit5": 0.9167,
+      "mrr10": 0.8889,
+      "ndcg10": 0.8257,
+      "recall10": 0.8194
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.9018,
+      "ndcg10": 0.9131,
+      "recall10": 0.9792
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.9365,
+      "ndcg10": 0.9384,
+      "recall10": 0.9792
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.9157,
+      "ndcg10": 0.9253,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.9583,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9792,
+      "ndcg10": 0.9379,
+      "recall10": 0.9861
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9514,
+      "ndcg10": 0.9498,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9583,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9722,
+      "ndcg10": 0.9594,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.9167,
+      "hit5": 0.9583,
+      "mrr10": 0.8368,
+      "ndcg10": 0.8222,
+      "recall10": 0.8889
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.8333,
+      "hit5": 0.9167,
+      "mrr10": 0.8125,
+      "ndcg10": 0.7719,
+      "recall10": 0.8403
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.9167,
+      "hit5": 0.9167,
+      "mrr10": 0.8601,
+      "ndcg10": 0.8498,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.8879,
+      "ndcg10": 0.8806,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.8948,
+      "ndcg10": 0.8942,
+      "recall10": 0.9792
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.9479,
+      "ndcg10": 0.894,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9097,
+      "ndcg10": 0.8932,
+      "recall10": 0.9653
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9514,
+      "ndcg10": 0.9464,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.7917,
+      "hit5": 0.9167,
+      "mrr10": 0.7604,
+      "ndcg10": 0.7482,
+      "recall10": 0.8264
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.8333,
+      "hit5": 0.9167,
+      "mrr10": 0.7896,
+      "ndcg10": 0.736,
+      "recall10": 0.7986
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.875,
+      "hit5": 0.9167,
+      "mrr10": 0.8438,
+      "ndcg10": 0.8242,
+      "recall10": 0.8819
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9167,
+      "hit5": 0.9583,
+      "mrr10": 0.8715,
+      "ndcg10": 0.855,
+      "recall10": 0.9236
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.875,
+      "hit5": 0.9583,
+      "mrr10": 0.8472,
+      "ndcg10": 0.8282,
+      "recall10": 0.9236
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.875,
+      "hit5": 1,
+      "mrr10": 0.8625,
+      "ndcg10": 0.8255,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.875,
+      "ndcg10": 0.8478,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9583,
+      "ndcg10": 0.9098,
+      "recall10": 0.9167
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.9583,
+      "hit5": 0.9583,
+      "mrr10": 0.8611,
+      "ndcg10": 0.8366,
+      "recall10": 0.8819
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.875,
+      "hit5": 0.9167,
+      "mrr10": 0.7674,
+      "ndcg10": 0.7733,
+      "recall10": 0.8611
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.8333,
+      "hit5": 0.9583,
+      "mrr10": 0.8187,
+      "ndcg10": 0.8604,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.875,
+      "hit5": 1,
+      "mrr10": 0.8257,
+      "ndcg10": 0.8697,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.7917,
+      "hit3": 0.9167,
+      "hit5": 1,
+      "mrr10": 0.8639,
+      "ndcg10": 0.8901,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9375,
+      "ndcg10": 0.9121,
+      "recall10": 0.9861
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9097,
+      "ndcg10": 0.9251,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9583,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9792,
+      "ndcg10": 0.9679,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.875,
+      "hit5": 0.9167,
+      "mrr10": 0.816,
+      "ndcg10": 0.7828,
+      "recall10": 0.8403
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.7917,
+      "hit5": 0.875,
+      "mrr10": 0.7201,
+      "ndcg10": 0.7234,
+      "recall10": 0.8194
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.7917,
+      "hit5": 0.875,
+      "mrr10": 0.7736,
+      "ndcg10": 0.796,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.7917,
+      "hit5": 0.9167,
+      "mrr10": 0.783,
+      "ndcg10": 0.8163,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.875,
+      "hit5": 0.9583,
+      "mrr10": 0.8083,
+      "ndcg10": 0.8282,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.8556,
+      "ndcg10": 0.8411,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.8993,
+      "ndcg10": 0.8842,
+      "recall10": 0.9444
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9375,
+      "ndcg10": 0.9316,
+      "recall10": 0.9861
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.7917,
+      "hit5": 0.8333,
+      "mrr10": 0.7211,
+      "ndcg10": 0.6961,
+      "recall10": 0.8056
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.7917,
+      "hit5": 0.8333,
+      "mrr10": 0.7118,
+      "ndcg10": 0.6852,
+      "recall10": 0.7569
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.75,
+      "hit5": 0.7917,
+      "mrr10": 0.7455,
+      "ndcg10": 0.7483,
+      "recall10": 0.8194
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.75,
+      "hit5": 0.8333,
+      "mrr10": 0.7601,
+      "ndcg10": 0.7817,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.7917,
+      "hit5": 0.875,
+      "mrr10": 0.7768,
+      "ndcg10": 0.7833,
+      "recall10": 0.9028
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.7917,
+      "hit5": 0.8333,
+      "mrr10": 0.6995,
+      "ndcg10": 0.7153,
+      "recall10": 0.8611
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.875,
+      "hit5": 0.9583,
+      "mrr10": 0.8306,
+      "ndcg10": 0.8251,
+      "recall10": 0.9236
+    },
+    {
+      "split": "development",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9583,
+      "ndcg10": 0.904,
+      "recall10": 0.9236
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "current",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.3333,
+      "mrr10": 0.2222,
+      "ndcg10": 0.25,
+      "recall10": 0.3333
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.3333,
+      "mrr10": 0.2222,
+      "ndcg10": 0.25,
+      "recall10": 0.3333
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.8333,
+      "hit5": 0.8333,
+      "mrr10": 0.5278,
+      "ndcg10": 0.5407,
+      "recall10": 0.75
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.8333,
+      "hit5": 0.8333,
+      "mrr10": 0.5278,
+      "ndcg10": 0.5407,
+      "recall10": 0.75
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.8333,
+      "hit5": 0.8333,
+      "mrr10": 0.5278,
+      "ndcg10": 0.5407,
+      "recall10": 0.75
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.6667,
+      "hit5": 0.8333,
+      "mrr10": 0.6181,
+      "ndcg10": 0.6492,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.8333,
+      "hit5": 0.8333,
+      "mrr10": 0.4907,
+      "ndcg10": 0.6124,
+      "recall10": 1
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.8333,
+      "hit5": 0.8333,
+      "mrr10": 0.5278,
+      "ndcg10": 0.6093,
+      "recall10": 0.9167
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "current",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.5,
+      "mrr10": 0.2556,
+      "ndcg10": 0.2895,
+      "recall10": 0.4167
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.5,
+      "mrr10": 0.2556,
+      "ndcg10": 0.2895,
+      "recall10": 0.4167
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0.6667,
+      "hit5": 0.6667,
+      "mrr10": 0.3056,
+      "ndcg10": 0.3634,
+      "recall10": 0.6667
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0.6667,
+      "hit5": 0.6667,
+      "mrr10": 0.3056,
+      "ndcg10": 0.3634,
+      "recall10": 0.6667
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0.6667,
+      "hit5": 0.6667,
+      "mrr10": 0.3056,
+      "ndcg10": 0.3634,
+      "recall10": 0.6667
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.4167,
+      "ndcg10": 0.4227,
+      "recall10": 0.5833
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.5,
+      "hit5": 0.6667,
+      "mrr10": 0.3944,
+      "ndcg10": 0.5008,
+      "recall10": 0.8333
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.6667,
+      "hit5": 0.6667,
+      "mrr10": 0.4167,
+      "ndcg10": 0.4519,
+      "recall10": 0.5833
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "current",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0.0556,
+      "ndcg10": 0.1187,
+      "recall10": 0.3333
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0.0556,
+      "ndcg10": 0.1187,
+      "recall10": 0.3333
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0,
+      "hit5": 0.1667,
+      "mrr10": 0.0542,
+      "ndcg10": 0.0967,
+      "recall10": 0.25
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0.0486,
+      "ndcg10": 0.0916,
+      "recall10": 0.25
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0,
+      "hit3": 0.1667,
+      "hit5": 0.1667,
+      "mrr10": 0.0764,
+      "ndcg10": 0.1156,
+      "recall10": 0.25
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.3333,
+      "mrr10": 0.25,
+      "ndcg10": 0.2311,
+      "recall10": 0.25
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.3333,
+      "hit5": 0.3333,
+      "mrr10": 0.2778,
+      "ndcg10": 0.3458,
+      "recall10": 0.5833
+    },
+    {
+      "split": "development",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.3056,
+      "ndcg10": 0.3229,
+      "recall10": 0.4167
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.7917,
+      "hit5": 0.8333,
+      "mrr10": 0.7326,
+      "ndcg10": 0.741,
+      "recall10": 0.7986
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.7917,
+      "hit5": 0.8333,
+      "mrr10": 0.7535,
+      "ndcg10": 0.7564,
+      "recall10": 0.7986
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.875,
+      "hit5": 0.875,
+      "mrr10": 0.7917,
+      "ndcg10": 0.8235,
+      "recall10": 0.9167
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.8333,
+      "hit5": 0.875,
+      "mrr10": 0.7882,
+      "ndcg10": 0.8222,
+      "recall10": 0.9167
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.8333,
+      "hit5": 0.875,
+      "mrr10": 0.7465,
+      "ndcg10": 0.7914,
+      "recall10": 0.9167
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.875,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9236,
+      "ndcg10": 0.9464,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.9167,
+      "hit5": 1,
+      "mrr10": 0.8243,
+      "ndcg10": 0.8628,
+      "recall10": 0.9792
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9583,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9792,
+      "ndcg10": 0.9819,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.625,
+      "hit5": 0.6667,
+      "mrr10": 0.5424,
+      "ndcg10": 0.5531,
+      "recall10": 0.6528
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.625,
+      "hit5": 0.6667,
+      "mrr10": 0.5428,
+      "ndcg10": 0.5657,
+      "recall10": 0.6736
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.6667,
+      "hit5": 0.7083,
+      "mrr10": 0.646,
+      "ndcg10": 0.6813,
+      "recall10": 0.8125
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.6667,
+      "hit5": 0.7083,
+      "mrr10": 0.6529,
+      "ndcg10": 0.6877,
+      "recall10": 0.8125
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.5,
+      "hit3": 0.6667,
+      "hit5": 0.7083,
+      "mrr10": 0.61,
+      "ndcg10": 0.655,
+      "recall10": 0.8125
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.9167,
+      "hit5": 0.9583,
+      "mrr10": 0.8069,
+      "ndcg10": 0.822,
+      "recall10": 0.9375
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.5417,
+      "hit3": 0.75,
+      "hit5": 0.8333,
+      "mrr10": 0.6692,
+      "ndcg10": 0.7229,
+      "recall10": 0.875
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.9063,
+      "ndcg10": 0.903,
+      "recall10": 0.9583
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.25,
+      "hit3": 0.5,
+      "hit5": 0.5833,
+      "mrr10": 0.3889,
+      "ndcg10": 0.4301,
+      "recall10": 0.5694
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.375,
+      "hit3": 0.5,
+      "hit5": 0.5417,
+      "mrr10": 0.4462,
+      "ndcg10": 0.4782,
+      "recall10": 0.5694
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.5,
+      "hit3": 0.5833,
+      "hit5": 0.625,
+      "mrr10": 0.5451,
+      "ndcg10": 0.5651,
+      "recall10": 0.625
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.5,
+      "hit3": 0.5833,
+      "hit5": 0.625,
+      "mrr10": 0.5563,
+      "ndcg10": 0.5762,
+      "recall10": 0.6389
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.5833,
+      "hit5": 0.625,
+      "mrr10": 0.5338,
+      "ndcg10": 0.5592,
+      "recall10": 0.6389
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.7917,
+      "hit5": 0.875,
+      "mrr10": 0.6983,
+      "ndcg10": 0.7227,
+      "recall10": 0.8681
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.5,
+      "hit3": 0.7083,
+      "hit5": 0.7917,
+      "mrr10": 0.6183,
+      "ndcg10": 0.6723,
+      "recall10": 0.8333
+    },
+    {
+      "split": "holdout",
+      "variant": "natural",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.875,
+      "hit5": 0.875,
+      "mrr10": 0.7824,
+      "ndcg10": 0.7984,
+      "recall10": 0.875
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.7917,
+      "hit5": 0.7917,
+      "mrr10": 0.7292,
+      "ndcg10": 0.7217,
+      "recall10": 0.7569
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.75,
+      "hit3": 0.7917,
+      "hit5": 0.7917,
+      "mrr10": 0.7708,
+      "ndcg10": 0.7524,
+      "recall10": 0.7569
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.8333,
+      "hit5": 0.9167,
+      "mrr10": 0.7549,
+      "ndcg10": 0.7838,
+      "recall10": 0.8958
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.875,
+      "hit5": 0.9167,
+      "mrr10": 0.7861,
+      "ndcg10": 0.8075,
+      "recall10": 0.8958
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.875,
+      "hit5": 0.9167,
+      "mrr10": 0.7653,
+      "ndcg10": 0.7921,
+      "recall10": 0.8958
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.8993,
+      "ndcg10": 0.9202,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.7083,
+      "hit3": 0.9583,
+      "hit5": 1,
+      "mrr10": 0.8278,
+      "ndcg10": 0.8557,
+      "recall10": 0.9792
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9583,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9792,
+      "ndcg10": 0.9701,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.5417,
+      "hit3": 0.625,
+      "hit5": 0.6667,
+      "mrr10": 0.591,
+      "ndcg10": 0.5895,
+      "recall10": 0.6528
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.5417,
+      "hit3": 0.625,
+      "hit5": 0.6667,
+      "mrr10": 0.591,
+      "ndcg10": 0.594,
+      "recall10": 0.6528
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.625,
+      "hit5": 0.75,
+      "mrr10": 0.6424,
+      "ndcg10": 0.6706,
+      "recall10": 0.7708
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.7083,
+      "hit5": 0.75,
+      "mrr10": 0.6771,
+      "ndcg10": 0.697,
+      "recall10": 0.7708
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.7083,
+      "hit5": 0.75,
+      "mrr10": 0.6563,
+      "ndcg10": 0.6808,
+      "recall10": 0.7708
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.6667,
+      "hit3": 0.8333,
+      "hit5": 0.9583,
+      "mrr10": 0.7743,
+      "ndcg10": 0.7939,
+      "recall10": 0.9167
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.625,
+      "hit3": 0.75,
+      "hit5": 0.7917,
+      "mrr10": 0.7216,
+      "ndcg10": 0.7528,
+      "recall10": 0.9167
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.9167,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr10": 0.9583,
+      "ndcg10": 0.912,
+      "recall10": 0.9375
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "current",
+      "n": 24,
+      "hit1": 0.375,
+      "hit3": 0.5417,
+      "hit5": 0.5833,
+      "mrr10": 0.4618,
+      "ndcg10": 0.4787,
+      "recall10": 0.5556
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.5,
+      "hit5": 0.5417,
+      "mrr10": 0.4942,
+      "ndcg10": 0.5085,
+      "recall10": 0.5556
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.5833,
+      "hit5": 0.5833,
+      "mrr10": 0.5353,
+      "ndcg10": 0.5732,
+      "recall10": 0.6875
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 24,
+      "hit1": 0.5,
+      "hit3": 0.625,
+      "hit5": 0.625,
+      "mrr10": 0.5771,
+      "ndcg10": 0.6141,
+      "recall10": 0.7153
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 24,
+      "hit1": 0.4583,
+      "hit3": 0.625,
+      "hit5": 0.625,
+      "mrr10": 0.5459,
+      "ndcg10": 0.5803,
+      "recall10": 0.6806
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 24,
+      "hit1": 0.5833,
+      "hit3": 0.75,
+      "hit5": 0.8333,
+      "mrr10": 0.6692,
+      "ndcg10": 0.6984,
+      "recall10": 0.8611
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 24,
+      "hit1": 0.5417,
+      "hit3": 0.7083,
+      "hit5": 0.75,
+      "mrr10": 0.647,
+      "ndcg10": 0.6697,
+      "recall10": 0.7917
+    },
+    {
+      "split": "holdout",
+      "variant": "typo",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 24,
+      "hit1": 0.8333,
+      "hit3": 0.9167,
+      "hit5": 0.9167,
+      "mrr10": 0.8819,
+      "ndcg10": 0.8527,
+      "recall10": 0.8958
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "current",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5238,
+      "ndcg10": 0.5556,
+      "recall10": 0.6667
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.6667,
+      "mrr10": 0.5655,
+      "ndcg10": 0.6273,
+      "recall10": 0.8333
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5208,
+      "ndcg10": 0.5526,
+      "recall10": 0.6667
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5208,
+      "ndcg10": 0.5526,
+      "recall10": 0.6667
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5208,
+      "ndcg10": 0.5526,
+      "recall10": 0.6667
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.6667,
+      "hit5": 0.8333,
+      "mrr10": 0.625,
+      "ndcg10": 0.7145,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.5,
+      "hit5": 1,
+      "mrr10": 0.5167,
+      "ndcg10": 0.6319,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "report",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.8333,
+      "hit5": 1,
+      "mrr10": 0.6806,
+      "ndcg10": 0.7603,
+      "recall10": 1
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "current",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.1667,
+      "hit5": 0.1667,
+      "mrr10": 0.1875,
+      "ndcg10": 0.2192,
+      "recall10": 0.3333
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.3333,
+      "hit5": 0.5,
+      "mrr10": 0.375,
+      "ndcg10": 0.4051,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "collection",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "current",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "chapter-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "context-bm25",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "context-coverage",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "e5-dense",
+      "n": 6,
+      "hit1": 0.1667,
+      "hit3": 0.1667,
+      "hit5": 0.1667,
+      "mrr10": 0.1667,
+      "ndcg10": 0.1667,
+      "recall10": 0.1667
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "rrf-hybrid",
+      "n": 6,
+      "hit1": 0.3333,
+      "hit3": 0.3333,
+      "hit5": 0.3333,
+      "mrr10": 0.3519,
+      "ndcg10": 0.3835,
+      "recall10": 0.5
+    },
+    {
+      "split": "holdout",
+      "variant": "paraphrase",
+      "scope": "archive",
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "hit1": 0.5,
+      "hit3": 0.5,
+      "hit5": 0.5,
+      "mrr10": 0.5,
+      "ndcg10": 0.5,
+      "recall10": 0.5
+    }
+  ],
+  "paired": [
+    {
+      "system": "current-query-clean-exploratory",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0,
+      "ci95": [
+        -0.125,
+        0.125
+      ],
+      "wins": 1,
+      "losses": 1
+    },
+    {
+      "system": "current-query-clean-exploratory",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.0573,
+      "ci95": [
+        -0.0156,
+        0.1563
+      ],
+      "wins": 3,
+      "losses": 1
+    },
+    {
+      "system": "current-query-clean-exploratory",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.0481,
+      "ci95": [
+        -0.0064,
+        0.1173
+      ],
+      "wins": 3,
+      "losses": 1
+    },
+    {
+      "system": "chapter-bm25",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.0833,
+      "ci95": [
+        -0.0833,
+        0.25
+      ],
+      "wins": 3,
+      "losses": 1
+    },
+    {
+      "system": "chapter-bm25",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.1563,
+      "ci95": [
+        0.0417,
+        0.2847
+      ],
+      "wins": 8,
+      "losses": 1
+    },
+    {
+      "system": "chapter-bm25",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.135,
+      "ci95": [
+        0.0318,
+        0.2519
+      ],
+      "wins": 8,
+      "losses": 1
+    },
+    {
+      "system": "context-bm25",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.0833,
+      "ci95": [
+        -0.0833,
+        0.25
+      ],
+      "wins": 3,
+      "losses": 1
+    },
+    {
+      "system": "context-bm25",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.1674,
+      "ci95": [
+        0.0521,
+        0.2958
+      ],
+      "wins": 8,
+      "losses": 1
+    },
+    {
+      "system": "context-bm25",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.1461,
+      "ci95": [
+        0.0446,
+        0.2647
+      ],
+      "wins": 8,
+      "losses": 1
+    },
+    {
+      "system": "context-coverage",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.0833,
+      "ci95": [
+        -0.0833,
+        0.25
+      ],
+      "wins": 3,
+      "losses": 1
+    },
+    {
+      "system": "context-coverage",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.1449,
+      "ci95": [
+        0.015,
+        0.2806
+      ],
+      "wins": 8,
+      "losses": 3
+    },
+    {
+      "system": "context-coverage",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.1291,
+      "ci95": [
+        0.0166,
+        0.2527
+      ],
+      "wins": 8,
+      "losses": 3
+    },
+    {
+      "system": "e5-dense",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.2917,
+      "ci95": [
+        0.0417,
+        0.5417
+      ],
+      "wins": 9,
+      "losses": 2
+    },
+    {
+      "system": "e5-dense",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.3094,
+      "ci95": [
+        0.0861,
+        0.5243
+      ],
+      "wins": 14,
+      "losses": 4
+    },
+    {
+      "system": "e5-dense",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.2926,
+      "ci95": [
+        0.0928,
+        0.4773
+      ],
+      "wins": 14,
+      "losses": 4
+    },
+    {
+      "system": "rrf-hybrid",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.2083,
+      "ci95": [
+        0,
+        0.4167
+      ],
+      "wins": 6,
+      "losses": 1
+    },
+    {
+      "system": "rrf-hybrid",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.2294,
+      "ci95": [
+        0.0694,
+        0.3799
+      ],
+      "wins": 15,
+      "losses": 2
+    },
+    {
+      "system": "rrf-hybrid",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.2422,
+      "ci95": [
+        0.0888,
+        0.3779
+      ],
+      "wins": 16,
+      "losses": 1
+    },
+    {
+      "system": "rrf-jina-rerank20",
+      "metric": "hit3",
+      "n": 24,
+      "delta": 0.375,
+      "ci95": [
+        0.1667,
+        0.5833
+      ],
+      "wins": 10,
+      "losses": 1
+    },
+    {
+      "system": "rrf-jina-rerank20",
+      "metric": "mrr10",
+      "n": 24,
+      "delta": 0.3935,
+      "ci95": [
+        0.191,
+        0.5833
+      ],
+      "wins": 16,
+      "losses": 1
+    },
+    {
+      "system": "rrf-jina-rerank20",
+      "metric": "ndcg10",
+      "n": 24,
+      "delta": 0.3683,
+      "ci95": [
+        0.1763,
+        0.5436
+      ],
+      "wins": 17,
+      "losses": 1
+    }
+  ],
+  "negatives": [
+    {
+      "system": "current",
+      "n": 6,
+      "returnedAny": 5,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 15,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 4.878195826314731
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:chapter:3",
+              "score": 3.5965534492654743
+            },
+            {
+              "id": "silovaya-konditsiya-hema:chapter:7",
+              "score": 2.954065916396232
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 15,
+          "top": [
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 5.505574122326935
+            },
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 5.460086960290069
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:4",
+              "score": 5.209135494547293
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 12,
+          "top": [
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+              "score": 103.15378114563072
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:1",
+              "score": 55.405001414897455
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-2:chapter:2",
+              "score": 29.448646957338887
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 14,
+          "top": [
+            {
+              "id": "psihologiya-6-narcissicheskaya:chapter:29",
+              "score": 31.039317403920617
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:report",
+              "score": 27.67526340281808
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:overview",
+              "score": 26.454652148676477
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 12,
+          "top": [
+            {
+              "id": "kendzyu-pravila-1:overview",
+              "score": 43.88628070727747
+            },
+            {
+              "id": "manevrovo-atakuyushchiy-stil-4-2:chapter:6",
+              "score": 37.47308001773566
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+              "score": 35.61787230329721
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 0,
+          "top": []
+        }
+      ]
+    },
+    {
+      "system": "current-query-clean-exploratory",
+      "n": 6,
+      "returnedAny": 5,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 15,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 4.878195826314731
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:chapter:3",
+              "score": 3.5965534492654743
+            },
+            {
+              "id": "silovaya-konditsiya-hema:chapter:7",
+              "score": 2.954065916396232
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 15,
+          "top": [
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 5.505574122326935
+            },
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 5.460086960290069
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:4",
+              "score": 5.209135494547293
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 13,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-2:chapter:2",
+              "score": 31.852618137529817
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+              "score": 23.586703816226315
+            },
+            {
+              "id": "trenerskoe-sobranie-dva-zala:additional:Глоссарий: Заморозка абонемента",
+              "score": 23.02193092624453
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 14,
+          "top": [
+            {
+              "id": "psihologiya-6-narcissicheskaya:chapter:29",
+              "score": 31.039317403920617
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:report",
+              "score": 27.67526340281808
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:overview",
+              "score": 26.454652148676477
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 12,
+          "top": [
+            {
+              "id": "kendzyu-pravila-1:overview",
+              "score": 43.88628070727747
+            },
+            {
+              "id": "manevrovo-atakuyushchiy-stil-4-2:chapter:6",
+              "score": 37.47308001773566
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+              "score": 35.61787230329721
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 0,
+          "top": []
+        }
+      ]
+    },
+    {
+      "system": "chapter-bm25",
+      "n": 6,
+      "returnedAny": 5,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 1,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 9.91251788660284
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 4,
+          "top": [
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 10.57927119851822
+            },
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 10.511095256133462
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:4",
+              "score": 9.228264286955659
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 88,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-dva-zala:chapter:10",
+              "score": 30.55199707071512
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:23",
+              "score": 25.91448665531977
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+              "score": 21.276749183158646
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 94,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:3",
+              "score": 27.27333124461253
+            },
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:5",
+              "score": 26.626677715093237
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:23",
+              "score": 25.91448665531977
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 94,
+          "top": [
+            {
+              "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:5",
+              "score": 28.197585899368594
+            },
+            {
+              "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:6",
+              "score": 26.923476598503072
+            },
+            {
+              "id": "obuchenie-trenerov-poisk-znaniy:chapter:16",
+              "score": 24.420924407234104
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 0,
+          "top": []
+        }
+      ]
+    },
+    {
+      "system": "context-bm25",
+      "n": 6,
+      "returnedAny": 5,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 1,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 9.91251788660284
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 4,
+          "top": [
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 10.57927119851822
+            },
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 10.511095256133462
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:4",
+              "score": 9.228264286955659
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 88,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-dva-zala:chapter:10",
+              "score": 30.55199707071512
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:23",
+              "score": 25.91448665531977
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+              "score": 21.276749183158646
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:8",
+              "score": 44.807440773122465
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:0",
+              "score": 29.27208846091176
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:3",
+              "score": 27.27333124461253
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:5",
+              "score": 28.197585899368594
+            },
+            {
+              "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:6",
+              "score": 26.923476598503072
+            },
+            {
+              "id": "kendzyu-pravila-1:chapter:4",
+              "score": 24.46788825948314
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 0,
+          "top": []
+        }
+      ]
+    },
+    {
+      "system": "context-coverage",
+      "n": 6,
+      "returnedAny": 5,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 1,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 0.6195323679126775
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 4,
+          "top": [
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 0.6612044499073888
+            },
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 0.6569434535083414
+            },
+            {
+              "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:4",
+              "score": 0.5767665179347287
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 88,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-dva-zala:chapter:10",
+              "score": 4.88831953131442
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:23",
+              "score": 1.036579466212791
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+              "score": 0.851069967326346
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:8",
+              "score": 7.169190523699596
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:0",
+              "score": 4.6835341537458826
+            },
+            {
+              "id": "trenerskiy-kurs-3-planirovanie-zanyatiy:chapter:5",
+              "score": 3.824111450926989
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:6",
+              "score": 4.307756255760492
+            },
+            {
+              "id": "kendzyu-pravila-1:chapter:4",
+              "score": 3.914862121517303
+            },
+            {
+              "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:5",
+              "score": 1.127903435974744
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 0,
+          "top": []
+        }
+      ]
+    },
+    {
+      "system": "e5-dense",
+      "n": 6,
+      "returnedAny": 6,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "poisk-novogo-ruchya:chapter:8",
+              "score": 0.8006032705307007
+            },
+            {
+              "id": "poisk-novogo-ruchya:chapter:15",
+              "score": 0.8005557656288147
+            },
+            {
+              "id": "podlodka-slm-468:chapter:17",
+              "score": 0.7965078353881836
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "agents-week-2026-5-2-production-engineering:chapter:13",
+              "score": 0.8160591125488281
+            },
+            {
+              "id": "obsidian-wiki-karpathy:chapter:8",
+              "score": 0.8114484548568726
+            },
+            {
+              "id": "context-engineering-29min:chapter:11",
+              "score": 0.8071805238723755
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:1",
+              "score": 0.8172672390937805
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:0",
+              "score": 0.816499650478363
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:2",
+              "score": 0.8154503703117371
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:3",
+              "score": 0.8151594400405884
+            },
+            {
+              "id": "agents-week-2026-4-agent-evaluation-seminar:chapter:14",
+              "score": 0.8146893978118896
+            },
+            {
+              "id": "agents-week-2026-2-memory-guardrails-seminar:chapter:7",
+              "score": 0.8145899772644043
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:26",
+              "score": 0.8200185298919678
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:18",
+              "score": 0.8088083863258362
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:22",
+              "score": 0.8076404333114624
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 100,
+          "top": [
+            {
+              "id": "berezhnoy-ai:chapter:8",
+              "score": 0.8118551969528198
+            },
+            {
+              "id": "llm-deep-dive-karpathy:chapter:18",
+              "score": 0.7959046363830566
+            },
+            {
+              "id": "podlodka-slm-468:chapter:17",
+              "score": 0.7953356504440308
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "system": "rrf-hybrid",
+      "n": 6,
+      "returnedAny": 6,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:19",
+              "score": 0.02445795875198308
+            },
+            {
+              "id": "poisk-novogo-ruchya:chapter:8",
+              "score": 0.01639344262295082
+            },
+            {
+              "id": "poisk-novogo-ruchya:chapter:15",
+              "score": 0.016129032258064516
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": 0.01639344262295082
+            },
+            {
+              "id": "agents-week-2026-5-2-production-engineering:chapter:13",
+              "score": 0.01639344262295082
+            },
+            {
+              "id": "osnovnye-anabolicheskie-gormony:chapter:31",
+              "score": 0.016129032258064516
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:1",
+              "score": 0.031099324975891997
+            },
+            {
+              "id": "trenerskoe-sobranie-dva-zala:chapter:10",
+              "score": 0.030886196246139225
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:2",
+              "score": 0.030158730158730156
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:3",
+              "score": 0.032266458495966696
+            },
+            {
+              "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:23",
+              "score": 0.024818577648766327
+            },
+            {
+              "id": "sablya-12:chapter:2",
+              "score": 0.02420289855072464
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 100,
+          "top": [
+            {
+              "id": "kendzyu-pravila-1:chapter:4",
+              "score": 0.029957522915269395
+            },
+            {
+              "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:6",
+              "score": 0.02928692699490662
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+              "score": 0.026515151515151516
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 100,
+          "top": [
+            {
+              "id": "berezhnoy-ai:chapter:8",
+              "score": 0.01639344262295082
+            },
+            {
+              "id": "llm-deep-dive-karpathy:chapter:18",
+              "score": 0.016129032258064516
+            },
+            {
+              "id": "podlodka-slm-468:chapter:17",
+              "score": 0.015873015873015872
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "system": "rrf-jina-rerank20",
+      "n": 6,
+      "returnedAny": 6,
+      "queries": [
+        {
+          "query": "Как вырастить закваску левито мадре?",
+          "returned": 20,
+          "top": [
+            {
+              "id": "sablya-10:chapter:6",
+              "score": -3.0504150390625
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:6",
+              "score": -3.05509877204895
+            },
+            {
+              "id": "poisk-novogo-ruchya:chapter:8",
+              "score": -3.119001626968384
+            }
+          ]
+        },
+        {
+          "query": "Как настроить квантовую телепортацию кубита?",
+          "returned": 20,
+          "top": [
+            {
+              "id": "gruppa-b-5-kakari-keiko:chapter:2",
+              "score": -2.5388925075531006
+            },
+            {
+              "id": "context-engineering-29min:chapter:11",
+              "score": -2.6034250259399414
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:6",
+              "score": -2.764305591583252
+            }
+          ]
+        },
+        {
+          "query": "Сколько стоит абонемент NoName в 2035 году?",
+          "returned": 20,
+          "top": [
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:0",
+              "score": -2.100226879119873
+            },
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:0",
+              "score": -2.113525152206421
+            },
+            {
+              "id": "trenerskoe-sobranie-novyi-zal-chast-3:chapter:2",
+              "score": -2.7126543521881104
+            }
+          ]
+        },
+        {
+          "query": "Какой прогноз курса тугрика на 2042 год?",
+          "returned": 20,
+          "top": [
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:1",
+              "score": -2.3542239665985107
+            },
+            {
+              "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:8",
+              "score": -2.6182212829589844
+            },
+            {
+              "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:5",
+              "score": -2.6603310108184814
+            }
+          ]
+        },
+        {
+          "query": "Где описан приём фехтования зюзюбра-91827?",
+          "returned": 20,
+          "top": [
+            {
+              "id": "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:16",
+              "score": -2.0309128761291504
+            },
+            {
+              "id": "hema-prednamerennye-ekspromtnye:chapter:10",
+              "score": -2.2774295806884766
+            },
+            {
+              "id": "kendzyu-pravila-1:chapter:4",
+              "score": -2.56282114982605
+            }
+          ]
+        },
+        {
+          "query": "жжжщщщ ыыыъъъ",
+          "returned": 20,
+          "top": [
+            {
+              "id": "berezhnoy-ai:chapter:8",
+              "score": -1.8664358854293823
+            },
+            {
+              "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:17",
+              "score": -1.9442116022109985
+            },
+            {
+              "id": "ii-dlya-analiza-hema-boev:chapter:13",
+              "score": -2.254683017730713
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "latency": [
+    {
+      "system": "current",
+      "n": 114,
+      "medianMs": 182.6211,
+      "p95Ms": 417.6667
+    },
+    {
+      "system": "current-query-clean-exploratory",
+      "n": 114,
+      "medianMs": 137.7847,
+      "p95Ms": 399.5376
+    },
+    {
+      "system": "chapter-bm25",
+      "n": 114,
+      "medianMs": 0.3339,
+      "p95Ms": 0.7053
+    },
+    {
+      "system": "context-bm25",
+      "n": 114,
+      "medianMs": 0.3078,
+      "p95Ms": 0.7009
+    },
+    {
+      "system": "context-coverage",
+      "n": 114,
+      "medianMs": 0.2001,
+      "p95Ms": 0.6137
+    }
+  ],
+  "neural": {
+    "models": {
+      "e5": [
+        "intfloat/multilingual-e5-small",
+        "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+        "onnx/model_qint8_avx512_vnni.onnx"
+      ],
+      "reranker": [
+        "jinaai/jina-reranker-v2-base-multilingual",
+        "9cfeff2df7d40d1b78e75e5e9cebec92a99813c9",
+        "onnx/model_quantized.onnx"
+      ]
+    },
+    "provider": "CPUExecutionProvider",
+    "threads": 4,
+    "batch": 8,
+    "sourceManifest": {
+      "corpusHash": "d1fccdc86e17fbc263ee1d88cdd8d1f018c05166697e728678952a76ad3fd251",
+      "questionsHash": "ac475d349279384496fa8bb5d665e49d0827ed196641e83527fb0855abdd4f6e",
+      "productionIndexHash": "8c106427ce2ce5a7c44caa184bdb59d6519c4371e8294fb7af82d7d16ed5f93e"
+    },
+    "maxTokens": 512,
+    "embeddingBytes": 3950592,
+    "embeddingCached": true,
+    "indexingSeconds": 0.5900948999997127,
+    "queryBatchSeconds": 0.22855609999987792,
+    "rerankSeconds": 0.004562900000564696,
+    "latencyNote": "Row ms for dense/hybrid excludes query encoding and lexical retrieval; rerank cached timings are not per-request latency."
+  },
+  "abstention": [
+    {
+      "threshold": -3,
+      "development": {
+        "n": 24,
+        "accepted": 24,
+        "hit3AfterGate": 24
+      },
+      "holdout": {
+        "n": 24,
+        "accepted": 24,
+        "hit3AfterGate": 21
+      },
+      "negative": {
+        "n": 6,
+        "accepted": 5,
+        "hit3AfterGate": 0
+      }
+    },
+    {
+      "threshold": -2,
+      "development": {
+        "n": 24,
+        "accepted": 24,
+        "hit3AfterGate": 24
+      },
+      "holdout": {
+        "n": 24,
+        "accepted": 24,
+        "hit3AfterGate": 21
+      },
+      "negative": {
+        "n": 6,
+        "accepted": 1,
+        "hit3AfterGate": 0
+      }
+    },
+    {
+      "threshold": -1,
+      "development": {
+        "n": 24,
+        "accepted": 24,
+        "hit3AfterGate": 24
+      },
+      "holdout": {
+        "n": 24,
+        "accepted": 23,
+        "hit3AfterGate": 20
+      },
+      "negative": {
+        "n": 6,
+        "accepted": 0,
+        "hit3AfterGate": 0
+      }
+    },
+    {
+      "threshold": 0,
+      "development": {
+        "n": 24,
+        "accepted": 16,
+        "hit3AfterGate": 16
+      },
+      "holdout": {
+        "n": 24,
+        "accepted": 13,
+        "hit3AfterGate": 13
+      },
+      "negative": {
+        "n": 6,
+        "accepted": 0,
+        "hit3AfterGate": 0
+      }
+    },
+    {
+      "threshold": 1,
+      "development": {
+        "n": 24,
+        "accepted": 4,
+        "hit3AfterGate": 4
+      },
+      "holdout": {
+        "n": 24,
+        "accepted": 1,
+        "hit3AfterGate": 1
+      },
+      "negative": {
+        "n": 6,
+        "accepted": 0,
+        "hit3AfterGate": 0
+      }
+    }
+  ]
+}

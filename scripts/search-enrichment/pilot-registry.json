@@ -1,0 +1,1314 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "generationOrder": "Cards authored and materialized before questions; questions frozen before ranking evaluation. Same author, not independent human gold.",
+    "grades": {
+      "0": "Judged irrelevant",
+      "1": "Related context that cannot answer the requested personal fact",
+      "2": "Useful partial answer",
+      "3": "Known direct support; multi tasks require all listed sources"
+    },
+    "unjudged": "Unjudged is not irrelevant; metrics are based on known support only.",
+    "unsupported": "Personal facts/observations not supplied by the user. Related material is explicitly allowed, but is not a complete answer.",
+    "holdout": "Do not use the holdout split for tuning. Once evaluated it is considered disclosed."
+  },
+  "cases": [
+    {
+      "id": "p-single-1",
+      "kind": "single",
+      "split": "development",
+      "query": "Пытаюсь удержать саблю соперника, а она изгибается и всё равно достаёт. Что поменять?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 2,
+          "grade": 3,
+          "title": "Почему на сабле — батман, а не захват",
+          "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+          "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+        }
+      ]
+    },
+    {
+      "id": "p-single-2",
+      "kind": "single",
+      "split": "development",
+      "query": "Как перестать заранее показывать противнику, что собираюсь ударить по его клинку?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Техника батмана",
+          "evidence": "Технически: ударный центр в ударный центр, без замаха — замах виден как предсигнал. Затем разбор вариантов на дорожках.",
+          "sourceHash": "81e093633f2f7be86e1e1d6c5e48a1c555e407d8d982c9ac624f8d30313fbe1b"
+        }
+      ]
+    },
+    {
+      "id": "p-single-3",
+      "kind": "single",
+      "split": "development",
+      "query": "В какой фазе чужого наступления отбив ещё считается батманом?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 8,
+          "grade": 3,
+          "title": "Батман и защита отбивом: один технический приём",
+          "evidence": "Технически батман и защита отбивом одинаковы. Разница только в моменте: вторжение в середину атаки — батман, встреча в конце — защита.",
+          "sourceHash": "a59f402d6c406f145c4f88bd97820ca0af5fd74b6e966040c94561cfa45db07e"
+        }
+      ]
+    },
+    {
+      "id": "p-single-4",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Какие действия по оружию перекрывают больше пространства и затрудняют уход?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 6,
+          "grade": 3,
+          "title": "Батман 2 и батман мулинетом — широкие",
+          "evidence": "Батман 2 и батман мулинетом — большая зона перекрытия, уйти тяжелее. Именно они применяются чаще в реальных схватках.",
+          "sourceHash": "62c02d0d4c1b03617f7c3dab162cf7320277e98f33ac7589dbba35cb0289584e"
+        }
+      ]
+    },
+    {
+      "id": "p-single-5",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Соперник останавливается перед моим отбивом, и я не достаю. Как добрать расстояние?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 9,
+          "grade": 3,
+          "title": "Расширение, когда противник тормозит",
+          "evidence": "Опытные противники останавливаются перед батманом. Решение — расширение: короткий выпад вперёд и сразу назад-выше, не заваливаться.",
+          "sourceHash": "00ebde3804c067600ef8bdfe582bca090434b65e81ecfc837bd39e6cb0322108"
+        }
+      ]
+    },
+    {
+      "id": "p-single-6",
+      "kind": "single",
+      "split": "development",
+      "query": "Сбил оружие слишком рано, а оппонент уже успел закрыться. Как учитывать это в продолжении?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Три момента атакующего батмана",
+          "evidence": "Разбор трёх таймингов атакующего батмана: на расширение, с показа и силовой на выпаде — у каждого свои риски и сила.",
+          "sourceHash": "ecdabcfe008030202ecce0a33ae02ce7bd9b8d1cf30669355a24d67ab32840d9"
+        }
+      ]
+    },
+    {
+      "id": "p-single-7",
+      "kind": "single",
+      "split": "development",
+      "query": "Встречаю оружие, когда соперник уже видит мой замысел. В какой момент нужно начинать?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Ловить в движении, не в реакции",
+          "evidence": "Чтобы не опоздать, встречайте клинок в момент движения противника, а не когда он уже на вас реагирует — мозг не переключит программу на лету.",
+          "sourceHash": "4eac5c01508f82f13bb267ea38ea94a081dbe450ca74d15c08bbbfa0a4825c1a"
+        }
+      ]
+    },
+    {
+      "id": "p-single-8",
+      "kind": "single",
+      "split": "development",
+      "query": "Не ощутил клинок при попытке батмана: продолжать руками или сразу спасаться ногами?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Чувство клинка: бей или ноги",
+          "evidence": "Как на рапире: почувствовали клинок — бейте; не почувствовали — отыгрывайте ногами, они начнут реагировать раньше, чем руки после батмана.",
+          "sourceHash": "a6117743c098f5b19302bda0378b9891ab2def1c1c1950f5c7d006df1a9ce725"
+        }
+      ]
+    },
+    {
+      "id": "p-single-9",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Исходное положение неудобно для батмана мулинетом. На каком шаге подготовить клинок?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 2,
+          "grade": 3,
+          "title": "Батман на подготовку",
+          "evidence": "Если из текущего положения неудобно (например, батман мулинетом) — сделайте подготовку на первом шаге и батман оттуда.",
+          "sourceHash": "8582cf8c9cec2edf3e081018058fdedfdfef9adef4d2cb313ba5e77f358bbdb6"
+        }
+      ]
+    },
+    {
+      "id": "p-single-10",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Как вынудить атакующего не подходить вплотную и оставить мне пространство для защиты?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 8,
+          "grade": 3,
+          "title": "Вилка ограничивает глубокий вход",
+          "evidence": "Итог: вилка в защите не даёт противнику зайти глубоко — клинок в полуметре от лица неудобен; заставь держать клинок на дистанции выпада.",
+          "sourceHash": "4b1f3b1eebcd603aca656af82213f0379f86e6bf851bbef99ab8c95fb70f914b"
+        }
+      ]
+    },
+    {
+      "id": "p-single-11",
+      "kind": "single",
+      "split": "development",
+      "query": "Как слегка приблизиться для контакта клинков, не теряя возможности быстро отступить?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Вход на расширении стойки",
+          "evidence": "Первый способ получить захват 4 — коротко расширить стойку вперёд, сохранив заднюю ногу свободной для отхода или развития атаки.",
+          "sourceHash": "d9a3e095ae98357eb5d3c7d58a60296361de33fbb7c26117ae525d6249da7d3a"
+        }
+      ]
+    },
+    {
+      "id": "p-single-12",
+      "kind": "single",
+      "split": "development",
+      "query": "Путаюсь между шагами и движением рук. Какой один сигнал оставить для входа?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Упрощение через заднюю ногу",
+          "evidence": "Когда координационных деталей становится слишком много, тренер оставляет один триггер: движение задней ноги должно запускать выход рук в соединение.",
+          "sourceHash": "1aaf4fbc666a7605a1551c32205aeaa4967c0b7c9f13c38ea5c33497a9499e85"
+        }
+      ]
+    },
+    {
+      "id": "p-single-13",
+      "kind": "single",
+      "split": "development",
+      "query": "Получаю открытую линию, но затем зависаю. Какое продолжение должно стать автоматическим?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Мгновенная атака из открытия",
+          "evidence": "Выигранное открытое соединение связывается с автоматическим уколом или ударом, а мягкий и жёсткий клинок монитора создают первую реакцию выбора.",
+          "sourceHash": "07061f0b55c892b709d0a8efefcfaa25b3f0dde6cc0dcb891baa3fefc403890f"
+        }
+      ]
+    },
+    {
+      "id": "p-single-14",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Как показать реальную угрозу корпусом, не упав вперёд и сохранив отход?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Стопа, плечо и угроза",
+          "evidence": "Расширение уточняется по опоре и намерению: для продолжения флеш-атакой носок должен быть готов к работе, а плечо подаётся вперёд без потери способности отступить.",
+          "sourceHash": "0946dfbf14a05806f26d33b692c3fe02214ad1809f5c3e2df9a992757dcd96bd"
+        }
+      ]
+    },
+    {
+      "id": "p-single-15",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Почему соперник отказывается долго бороться клинками и сразу разрывает расстояние?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Соединение — короткий эпизод",
+          "evidence": "Соединение рассматривается как очень короткий контакт в игре с нулевой суммой, где каждый боец старается навязать выгодный именно ему сценарий.",
+          "sourceHash": "36f158b0aa45134543602a7fedb11de956dde522286620ed3c740bf13117fe32"
+        }
+      ]
+    },
+    {
+      "id": "p-single-16",
+      "kind": "single",
+      "split": "development",
+      "query": "За счёт какого встречного движения учат длинному рубящему удару с прямой спиной?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Длинный рубящий: реверсивное ускорение",
+          "evidence": "Нанесение удара из стойки: компенсация выброса навершия отводом корпуса и реверсивное ускорение как в ударных единоборствах.",
+          "sourceHash": "bd3d2171172eba08065665baedd0489d6e6dd1c2ce20aa49862aa1e48f639493"
+        }
+      ]
+    },
+    {
+      "id": "p-single-17",
+      "kind": "single",
+      "split": "development",
+      "query": "В какой момент подшагнуть при уколе из фальса, чтобы контролировать встречное острие?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Уколы из фальса",
+          "evidence": "Заброс острия в малый треугольник без выхода на центр; подшаг при пролёте квиллонов и подсаживание для контроля встречного.",
+          "sourceHash": "51562e1b8719974894655bcc202eb7cc764da7ea9ec534477bff241059a90b20"
+        }
+      ]
+    },
+    {
+      "id": "p-single-18",
+      "kind": "single",
+      "split": "development",
+      "query": "На моё оружие давят защитой. Как уступить кистями и закончить укол в контакте?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Виндены: уступающий и силовой",
+          "evidence": "Винден — обкручивание в точке касания: уступающий на давлении защиты и преднамеренный силовой с захватом соединения.",
+          "sourceHash": "1ea3e76d9ea760965dc2ab904ee016cd8eca9a228e35dfc06b8b18f519991b29"
+        }
+      ]
+    },
+    {
+      "id": "p-single-19",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Можно ли выполнить силовой винден заранее, не ожидая давления противника?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Виндены: уступающий и силовой",
+          "evidence": "Винден — обкручивание в точке касания: уступающий на давлении защиты и преднамеренный силовой с захватом соединения.",
+          "sourceHash": "1ea3e76d9ea760965dc2ab904ee016cd8eca9a228e35dfc06b8b18f519991b29"
+        }
+      ]
+    },
+    {
+      "id": "p-single-20",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Зачем подсаживаться при уколе, который не выводится предварительно на центр?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Уколы из фальса",
+          "evidence": "Заброс острия в малый треугольник без выхода на центр; подшаг при пролёте квиллонов и подсаживание для контроля встречного.",
+          "sourceHash": "51562e1b8719974894655bcc202eb7cc764da7ea9ec534477bff241059a90b20"
+        }
+      ]
+    },
+    {
+      "id": "p-single-21",
+      "kind": "single",
+      "split": "development",
+      "query": "Чем тренировать одновременную работу обеих рук без оружия?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Координация с двумя мячами",
+          "evidence": "Теннисные мячи дают дешёвую обратную связь по реакции, глазомеру и способности двух рук действовать одновременно.",
+          "sourceHash": "713883ed2e012ca902748499f9e1602be0631422b6889e145c0702e92d2dfc47"
+        }
+      ]
+    },
+    {
+      "id": "p-single-22",
+      "kind": "single",
+      "split": "development",
+      "query": "Под давлением на щит кисть складывается. Как проверить и изменить положение рукояти?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Структурный хват баклера",
+          "evidence": "Баклер разворачивают в промежуточное положение, которое держит удар структурой руки и сохраняет защиту обеих сторон.",
+          "sourceHash": "162a2dc1e1cc2a1ee3cf6be7ec1394e53e7e681913adb65674eb6b5a078230c0"
+        }
+      ]
+    },
+    {
+      "id": "p-single-23",
+      "kind": "single",
+      "split": "development",
+      "query": "Что делает рука со щитом, пока меч после удара возвращается к голове для укола?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Связка удара, защиты и укола",
+          "evidence": "Базовый dritto дополняется отходом с контролем клинка и верхним уколом на смене ведущей ноги.",
+          "sourceHash": "f4528ab940eefc336b75da7fab5692eef47c6b8e0ad4b5c77fc2d4971fb6dbe9"
+        }
+      ]
+    },
+    {
+      "id": "p-single-24",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Когда в цикле занятий увеличивают долю свободных боёв после технической работы?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 18,
+          "grade": 3,
+          "title": "Техника до спарринга",
+          "evidence": "Тренер объясняет, почему в начале мезоцикла объём технической работы выше, а регулярные спарринги добавляются позже.",
+          "sourceHash": "c4bf18b6aa5d0b10123acd649ec7be258db0c2d46465610df5d036c12d577c15"
+        }
+      ]
+    },
+    {
+      "id": "p-single-25",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Нужна игра на провокацию атаки по ногам и обязательный выход без попадания.",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 19,
+          "grade": 3,
+          "title": "Игра ниндзя и самурай",
+          "evidence": "Игровое задание тренирует провокацию нижней атаки, реакцию ног и безопасный выход из дистанции.",
+          "sourceHash": "193abcce5fb84eca570552465a6b0ff8d80b307a72fdebd0407111d2ebdd7704"
+        }
+      ]
+    },
+    {
+      "id": "p-single-26",
+      "kind": "single",
+      "split": "development",
+      "query": "Ученик то заранее закрывается, то бросает начатое движение. Какие два механизма ошибок различать?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Две категории ошибок",
+          "evidence": "Первая проблема — преднамеренные действия без распознавания сигнала; вторая — незавершённые экспромтные реакции на любой сигнал.",
+          "sourceHash": "8a0326f6c4797c7c74581ad17d47b4ade83253755e1bffebf16481a92453e6e7"
+        }
+      ]
+    },
+    {
+      "id": "p-single-27",
+      "kind": "single",
+      "split": "development",
+      "query": "Как называется выбор заранее выученного ответа после того, как распознан сигнал?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Преднамеренно-экспромтные",
+          "evidence": "Средняя категория: видим сигнал, выбираем отработанное решение — тактически оптимальнее, но медленнее.",
+          "sourceHash": "bcbd12c372299e9cdc47fa7b2558310e787dfb66db004356d1d4ad7d84298df9"
+        }
+      ]
+    },
+    {
+      "id": "p-single-28",
+      "kind": "single",
+      "split": "development",
+      "query": "Как обучать новичка распознавать сектор, продолжая свою атаку до сигнала?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 9,
+          "grade": 3,
+          "title": "Проблема учеников и «Око»",
+          "evidence": "Ученикам не хватает преднамеренно-экспромтной работы; упражнение «Око фехтовальщика» — распознавать сектор ответа, не прерывать движения.",
+          "sourceHash": "39d861fe4584c5ae80213907a2699235a22805555d2e13a60b849928068d90a5"
+        }
+      ]
+    },
+    {
+      "id": "p-single-29",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Почему очень быстрая заранее запущенная связка может привести к защите не того сектора?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 5,
+          "grade": 3,
+          "title": "Преднамеренные действия",
+          "evidence": "Прогноз на этапе анализа: почти нет фазы обработки сигнала; быстро и технично, но легко ошибиться в секторе.",
+          "sourceHash": "2fba212c54dd5e135ac08a3a3942e80a191941f1cdff6dbacf4fdf5b471faf1a"
+        }
+      ]
+    },
+    {
+      "id": "p-single-30",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Покажите пример фразы, где прогноз, импровизация и распознанный ответ сменяют друг друга.",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 8,
+          "grade": 3,
+          "title": "Три типа в одной фразе",
+          "evidence": "Демонстрация на себе: преднамеренная связка, экспромтный контрудар, преднамеренно-экспромтная цепочка с распознаванием.",
+          "sourceHash": "ece0f8fec4ce03eb7d4137a5413a7b55297ce8d335bfd540d2bc940ad8621bf0"
+        }
+      ]
+    },
+    {
+      "id": "p-single-31",
+      "kind": "single",
+      "split": "development",
+      "query": "Партнёр постоянно пытается выиграть отработку. Почему это мешает задаче тренера?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Ошибки прошлой тренировки",
+          "evidence": "На прошлой тренировке атлеты противодействовали партнёрам вместо мониторинга; первое правило — стимул должен быть релевантен нужной адаптации.",
+          "sourceHash": "d2ec960300ee320b4dea7bb6c23ec90b613f3894676ac6884180d871672afe0b"
+        }
+      ]
+    },
+    {
+      "id": "p-single-32",
+      "kind": "single",
+      "split": "development",
+      "query": "Как менять темп, если новичок не успевает, а опытному упражнение слишком легко?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Адаптация под уровень атлета",
+          "evidence": "Второе правило: в бесконечной парад-репостной игре монитор замедляется для новичка и ускоряется, когда опытному становится легко.",
+          "sourceHash": "2c17ae07d68dcebbfc9a442bb50cb9e0922b3bcab4da44e863e19679fb2e7a6f"
+        }
+      ]
+    },
+    {
+      "id": "p-single-33",
+      "kind": "single",
+      "split": "development",
+      "query": "Партнёр недоводит удары, и защита кажется успешной. Как исправить работу монитора?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Стимул как в реальном бою",
+          "evidence": "Третье правило: атакующее движение должно быть полноценным; нельзя останавливать или ломать удар — иначе у ученика ложное ощущение успеха.",
+          "sourceHash": "b8377375c6fb4d49154c051d02502475fbd598bb5fb9bc89814b3136e9958fde"
+        }
+      ]
+    },
+    {
+      "id": "p-single-34",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Чем отличаются сигналы партнёра в упражнении на распознавание и на скорость защиты?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 2,
+          "grade": 3,
+          "title": "Примеры релевантных стимулов",
+          "evidence": "Два примера: явные предсигналы атаки для распознавания и неожиданная атака «мимо» для тренировки быстрых защит на скорости.",
+          "sourceHash": "baf802904bf849187d8b51cebf4007a6c1376af19af1036b4635e9eaf9361985"
+        }
+      ]
+    },
+    {
+      "id": "p-single-35",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Стоит ли после замедленного удара специально дожимать клинок ученика?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 5,
+          "grade": 3,
+          "title": "Не давить в конце удара",
+          "evidence": "Нюанс для новичков: в бою на высокой скорости нет «давления» после удара — клинок проходит или уже в цели.",
+          "sourceHash": "57b606b69d83e7bd9416c352582776034038936dac6ba047a3ee25f383ea23cc"
+        }
+      ]
+    },
+    {
+      "id": "p-single-36",
+      "kind": "single",
+      "split": "development",
+      "query": "Вышел остриём вперёд, а противник никак не отвечает. Чем завершить угрозу?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 2,
+          "grade": 3,
+          "title": "Базовая ветка угрозы",
+          "evidence": "Основной кейс тренировки: один атлет выходит в длинное острие и идет в угрозу, а реакции должны быть автоматизированы.",
+          "sourceHash": "da74a4aa3f203107712050f7630f763dfdf3585e71e20f1107410014e81ca4a4"
+        }
+      ]
+    },
+    {
+      "id": "p-single-37",
+      "kind": "single",
+      "split": "development",
+      "query": "Какие ответы противника делают автоматический перенос из угрозы неправильным?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Перенос и границы применения",
+          "evidence": "Перенос объясняется как ответ на отведение клинка, но сразу фиксируются ситуации, где эта ветка уже не лучшая: батман, уход назад и контратака в руки.",
+          "sourceHash": "6dc40dc6534ab6c47ffce53f7b625462fe00d435f221bf20c8d0806551167689"
+        }
+      ]
+    },
+    {
+      "id": "p-single-38",
+      "kind": "single",
+      "split": "development",
+      "query": "Почему красивое движение угрозы в воздухе ещё не означает освоения боевой ситуации?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Учить не технику в воздухе, а распознавание",
+          "evidence": "Финальный акцент: упражнение должно связывать распознавание боевой ситуации, переход в нужную субтактику и завершение угрозы, иначе развивается неправильный навык.",
+          "sourceHash": "acc3cea962017d1b18ba1804d724540b001b4dc1aeb704216cd2cfa4483ac91d"
+        }
+      ]
+    },
+    {
+      "id": "p-single-39",
+      "kind": "single",
+      "split": "holdout",
+      "query": "Зачем выделять угрозу отдельно, если её формально можно считать атакой?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Зачем выделять угрозу",
+          "evidence": "Угроза клинком формально может читаться как атака, но отдельная субтактика нужна, чтобы лучше предсказывать развитие конкретной ситуации.",
+          "sourceHash": "8e64f980e3c4e8fb258b8e942b6cefb3b8db561eb05bc9fd2ab7ca91919632e0"
+        }
+      ]
+    },
+    {
+      "id": "p-single-40",
+      "kind": "single",
+      "split": "holdout",
+      "query": "С чего начинается работа рук при переносе после отведения клинка?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Перенос и границы применения",
+          "evidence": "Перенос объясняется как ответ на отведение клинка, но сразу фиксируются ситуации, где эта ветка уже не лучшая: батман, уход назад и контратака в руки.",
+          "sourceHash": "6dc40dc6534ab6c47ffce53f7b625462fe00d435f221bf20c8d0806551167689"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-1",
+      "kind": "multi",
+      "split": "development",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 2,
+          "grade": 3,
+          "title": "Почему на сабле — батман, а не захват",
+          "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+          "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+        },
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Виндены: уступающий и силовой",
+          "evidence": "Винден — обкручивание в точке касания: уступающий на давлении защиты и преднамеренный силовой с захватом соединения.",
+          "sourceHash": "1ea3e76d9ea760965dc2ab904ee016cd8eca9a228e35dfc06b8b18f519991b29"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-2",
+      "kind": "multi",
+      "split": "development",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Чувство клинка: бей или ноги",
+          "evidence": "Как на рапире: почувствовали клинок — бейте; не почувствовали — отыгрывайте ногами, они начнут реагировать раньше, чем руки после батмана.",
+          "sourceHash": "a6117743c098f5b19302bda0378b9891ab2def1c1c1950f5c7d006df1a9ce725"
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Перенос и границы применения",
+          "evidence": "Перенос объясняется как ответ на отведение клинка, но сразу фиксируются ситуации, где эта ветка уже не лучшая: батман, уход назад и контратака в руки.",
+          "sourceHash": "6dc40dc6534ab6c47ffce53f7b625462fe00d435f221bf20c8d0806551167689"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-3",
+      "kind": "multi",
+      "split": "development",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Вход на расширении стойки",
+          "evidence": "Первый способ получить захват 4 — коротко расширить стойку вперёд, сохранив заднюю ногу свободной для отхода или развития атаки.",
+          "sourceHash": "d9a3e095ae98357eb5d3c7d58a60296361de33fbb7c26117ae525d6249da7d3a"
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Структурный хват баклера",
+          "evidence": "Баклер разворачивают в промежуточное положение, которое держит удар структурой руки и сохраняет защиту обеих сторон.",
+          "sourceHash": "162a2dc1e1cc2a1ee3cf6be7ec1394e53e7e681913adb65674eb6b5a078230c0"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-4",
+      "kind": "multi",
+      "split": "development",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Уколы из фальса",
+          "evidence": "Заброс острия в малый треугольник без выхода на центр; подшаг при пролёте квиллонов и подсаживание для контроля встречного.",
+          "sourceHash": "51562e1b8719974894655bcc202eb7cc764da7ea9ec534477bff241059a90b20"
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "grade": 3,
+          "title": "Связка удара, защиты и укола",
+          "evidence": "Базовый dritto дополняется отходом с контролем клинка и верхним уколом на смене ведущей ноги.",
+          "sourceHash": "f4528ab940eefc336b75da7fab5692eef47c6b8e0ad4b5c77fc2d4971fb6dbe9"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-5",
+      "kind": "multi",
+      "split": "development",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Координация с двумя мячами",
+          "evidence": "Теннисные мячи дают дешёвую обратную связь по реакции, глазомеру и способности двух рук действовать одновременно.",
+          "sourceHash": "713883ed2e012ca902748499f9e1602be0631422b6889e145c0702e92d2dfc47"
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Адаптация под уровень атлета",
+          "evidence": "Второе правило: в бесконечной парад-репостной игре монитор замедляется для новичка и ускоряется, когда опытному становится легко.",
+          "sourceHash": "2c17ae07d68dcebbfc9a442bb50cb9e0922b3bcab4da44e863e19679fb2e7a6f"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-6",
+      "kind": "multi",
+      "split": "development",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 1,
+          "grade": 3,
+          "title": "Две категории ошибок",
+          "evidence": "Первая проблема — преднамеренные действия без распознавания сигнала; вторая — незавершённые экспромтные реакции на любой сигнал.",
+          "sourceHash": "8a0326f6c4797c7c74581ad17d47b4ade83253755e1bffebf16481a92453e6e7"
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Стимул как в реальном бою",
+          "evidence": "Третье правило: атакующее движение должно быть полноценным; нельзя останавливать или ломать удар — иначе у ученика ложное ощущение успеха.",
+          "sourceHash": "b8377375c6fb4d49154c051d02502475fbd598bb5fb9bc89814b3136e9958fde"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-7",
+      "kind": "multi",
+      "split": "holdout",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 3,
+          "grade": 3,
+          "title": "Адаптация под уровень атлета",
+          "evidence": "Второе правило: в бесконечной парад-репостной игре монитор замедляется для новичка и ускоряется, когда опытному становится легко.",
+          "sourceHash": "2c17ae07d68dcebbfc9a442bb50cb9e0922b3bcab4da44e863e19679fb2e7a6f"
+        },
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Преднамеренно-экспромтные",
+          "evidence": "Средняя категория: видим сигнал, выбираем отработанное решение — тактически оптимальнее, но медленнее.",
+          "sourceHash": "bcbd12c372299e9cdc47fa7b2558310e787dfb66db004356d1d4ad7d84298df9"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-8",
+      "kind": "multi",
+      "split": "holdout",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "scopes": [
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 4,
+          "grade": 3,
+          "title": "Учить не технику в воздухе, а распознавание",
+          "evidence": "Финальный акцент: упражнение должно связывать распознавание боевой ситуации, переход в нужную субтактику и завершение угрозы, иначе развивается неправильный навык.",
+          "sourceHash": "acc3cea962017d1b18ba1804d724540b001b4dc1aeb704216cd2cfa4483ac91d"
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 7,
+          "grade": 3,
+          "title": "Упрощение через заднюю ногу",
+          "evidence": "Когда координационных деталей становится слишком много, тренер оставляет один триггер: движение задней ноги должно запускать выход рук в соединение.",
+          "sourceHash": "1aaf4fbc666a7605a1551c32205aeaa4967c0b7c9f13c38ea5c33497a9499e85"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-1",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Какую именно модель сабли я купил вчера и подходит ли она для этого батмана?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "В записи нет сведений о личной покупке пользователя; выбор конкретного приобретённого снаряда нельзя восстановить из общих свойств сабли.",
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 2,
+          "grade": 1,
+          "title": "Почему на сабле — батман, а не захват",
+          "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+          "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-2",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Какую ошибку замаха допустил я на моей последней тренировке?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Личная тренировка пользователя не предоставлена. Общая ошибка замаха не устанавливает факт ошибки конкретного человека.",
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 4,
+          "grade": 1,
+          "title": "Техника батмана",
+          "evidence": "Технически: ударный центр в ударный центр, без замаха — замах виден как предсигнал. Затем разбор вариантов на дорожках.",
+          "sourceHash": "81e093633f2f7be86e1e1d6c5e48a1c555e407d8d982c9ac624f8d30313fbe1b"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-3",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Был ли у меня контакт с клинком в последней попытке батмана?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Нет наблюдения последней попытки пользователя; условие выбора действий нельзя определить по общему уроку.",
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 7,
+          "grade": 1,
+          "title": "Чувство клинка: бей или ноги",
+          "evidence": "Как на рапире: почувствовали клинок — бейте; не почувствовали — отыгрывайте ногами, они начнут реагировать раньше, чем руки после батмана.",
+          "sourceHash": "a6117743c098f5b19302bda0378b9891ab2def1c1c1950f5c7d006df1a9ce725"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-4",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "В какой миллисекунде моей вчерашней атаки следовало сделать батман?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Не предоставлена запись конкретной атаки и её временная разметка.",
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-5",
+          "chapterIndex": 1,
+          "grade": 1,
+          "title": "Три момента атакующего батмана",
+          "evidence": "Разбор трёх таймингов атакующего батмана: на расширение, с показа и силовой на выпаде — у каждого свои риски и сила.",
+          "sourceHash": "ecdabcfe008030202ecce0a33ae02ce7bd9b8d1cf30669355a24d67ab32840d9"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-5",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "На сколько сантиметров лично мне расширять стойку с моими пропорциями тела?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Не заданы пропорции и исходная стойка пользователя. Общий ориентир не определяет персональное число сантиметров.",
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 3,
+          "grade": 1,
+          "title": "Вход на расширении стойки",
+          "evidence": "Первый способ получить захват 4 — коротко расширить стойку вперёд, сохранив заднюю ногу свободной для отхода или развития атаки.",
+          "sourceHash": "d9a3e095ae98357eb5d3c7d58a60296361de33fbb7c26117ae525d6249da7d3a"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-6",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Почему я проиграл соединение в последнем бою?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Последний бой пользователя не приложен; известные варианты причин не доказывают конкретную причину.",
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 14,
+          "grade": 1,
+          "title": "Мгновенная атака из открытия",
+          "evidence": "Выигранное открытое соединение связывается с автоматическим уколом или ударом, а мягкий и жёсткий клинок монитора создают первую реакцию выбора.",
+          "sourceHash": "07061f0b55c892b709d0a8efefcfaa25b3f0dde6cc0dcb891baa3fefc403890f"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-7",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Какой из двух винденов я применил на соревновании в прошлые выходные?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Нет сведений о личном выступлении; определения двух вариантов недостаточны для идентификации эпизода.",
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "grade": 1,
+          "title": "Виндены: уступающий и силовой",
+          "evidence": "Винден — обкручивание в точке касания: уступающий на давлении защиты и преднамеренный силовой с захватом соединения.",
+          "sourceHash": "1ea3e76d9ea760965dc2ab904ee016cd8eca9a228e35dfc06b8b18f519991b29"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-8",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Разрешил ли мой лечащий врач выполнять эти уколы после операции?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Личное медицинское разрешение отсутствует в источнике; техника упражнения не является таким разрешением.",
+      "judgments": [
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 7,
+          "grade": 1,
+          "title": "Уколы из фальса",
+          "evidence": "Заброс острия в малый треугольник без выхода на центр; подшаг при пролёте квиллонов и подсаживание для контроля встречного.",
+          "sourceHash": "51562e1b8719974894655bcc202eb7cc764da7ea9ec534477bff241059a90b20"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-9",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Какой конкретно диагноз объясняет мою боль при удержании баклера?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Нет клинических данных; описание хвата не устанавливает индивидуальный диагноз.",
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 7,
+          "grade": 1,
+          "title": "Структурный хват баклера",
+          "evidence": "Баклер разворачивают в промежуточное положение, которое держит удар структурой руки и сохраняет защиту обеих сторон.",
+          "sourceHash": "162a2dc1e1cc2a1ee3cf6be7ec1394e53e7e681913adb65674eb6b5a078230c0"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-10",
+      "kind": "unsupported",
+      "split": "development",
+      "query": "Сколько раз именно я прервал атаку на сегодняшней отработке «Око»?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Не предоставлены наблюдения сегодняшней отработки пользователя; количество его ошибок неизвестно.",
+      "judgments": [
+        {
+          "reportSlug": "hema-prednamerennye-ekspromtnye",
+          "chapterIndex": 9,
+          "grade": 1,
+          "title": "Проблема учеников и «Око»",
+          "evidence": "Ученикам не хватает преднамеренно-экспромтной работы; упражнение «Око фехтовальщика» — распознавать сектор ответа, не прерывать движения.",
+          "sourceHash": "39d861fe4584c5ae80213907a2699235a22805555d2e13a60b849928068d90a5"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-11",
+      "kind": "unsupported",
+      "split": "holdout",
+      "query": "Какой темп назначил мне тренер на следующую персональную тренировку?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Будущее персональное назначение не представлено; общие принципы адаптации не определяют это решение.",
+      "judgments": [
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 3,
+          "grade": 1,
+          "title": "Адаптация под уровень атлета",
+          "evidence": "Второе правило: в бесконечной парад-репостной игре монитор замедляется для новичка и ускоряется, когда опытному становится легко.",
+          "sourceHash": "2c17ae07d68dcebbfc9a442bb50cb9e0922b3bcab4da44e863e19679fb2e7a6f"
+        }
+      ]
+    },
+    {
+      "id": "p-unsupported-12",
+      "kind": "unsupported",
+      "split": "holdout",
+      "query": "Какой ответ на мою угрозу выберет мой следующий соперник?",
+      "scopes": [
+        "report"
+      ],
+      "missingInformation": "Будущий выбор конкретного соперника неизвестен; дерево допустимых ответов не предсказывает его однозначно.",
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 3,
+          "grade": 1,
+          "title": "Перенос и границы применения",
+          "evidence": "Перенос объясняется как ответ на отведение клинка, но сразу фиксируются ситуации, где эта ветка уже не лучшая: батман, уход назад и контратака в руки.",
+          "sourceHash": "6dc40dc6534ab6c47ffce53f7b625462fe00d435f221bf20c8d0806551167689"
+        }
+      ]
+    }
+  ]
+}

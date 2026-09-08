@@ -1,0 +1,4249 @@
+{
+  "indexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+  "scenarios": 424,
+  "losses": 0,
+  "gains": 7,
+  "multiGains": 2,
+  "rows": [
+    {
+      "id": "p-single-1",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-1",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-1",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-2",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-2",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-2",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-3",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-3",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-3",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-4",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-4",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-4",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-5",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-5",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-5",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-6",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-6",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-6",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-7",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-7",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-7",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-8",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-8",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-8",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-9",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-9",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-9",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-10",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-10",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-10",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-11",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-11",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-11",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-12",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-12",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-12",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-13",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-13",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-13",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-14",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-14",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-14",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-15",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-15",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-15",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-16",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-16",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-16",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-17",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-17",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-17",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-18",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-18",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-18",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-19",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-19",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-19",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-20",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-20",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-20",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-21",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-21",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-21",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-22",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-22",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-22",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-23",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-23",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-23",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-24",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-24",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-24",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-25",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-25",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-25",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-26",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-26",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-26",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-26",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-27",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-27",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-27",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-27",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-28",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-28",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-28",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-28",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-29",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-29",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-29",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-29",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-30",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-30",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-30",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-30",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-31",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-31",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-31",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-31",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-32",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-32",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-32",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-32",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-33",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-33",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-33",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-33",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-34",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-34",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-34",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-34",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-35",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-35",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-35",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-35",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-single-36",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-36",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-36",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-36",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-37",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-37",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-37",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-37",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-38",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-38",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-38",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-38",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-39",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-39",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-39",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-39",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-40",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-40",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-40",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-single-40",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-multi-1",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-multi-2",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-multi-3",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "p-multi-4",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "p-multi-5",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "p-multi-6",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "p-multi-7",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "p-multi-8",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "p-unsupported-1",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-2",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-3",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-4",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-5",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-6",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-7",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-8",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-9",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-10",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-11",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "p-unsupported-12",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "expanded-1-1-original",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-1-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-1-1-typo",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-1-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-1-2-original",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-2-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-2-typo",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-2-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-original",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-typo",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-1-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-original",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-typo",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-original",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-typo",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-3-original",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-2-3-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-2-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-2-3-typo",
+      "scope": "report",
+      "label": "sablya-a-5",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-2-3-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-2-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-3-1-original",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-1-original",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-1-typo",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-1-typo",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-original",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-original",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-typo",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-typo",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-3-original",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-3-original",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-3-3-typo",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-3-3-typo",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-3-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-original",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-typo",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-2-original",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-2-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-2-typo",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-2-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-3-original",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-3-original",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-4-3-typo",
+      "scope": "report",
+      "label": "longsword-a",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-3-typo",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-4-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-1-original",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-1-original",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-1-typo",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-1-typo",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-2-original",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-2-original",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-2-typo",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-2-typo",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-5-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-original",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-original",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-typo",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-typo",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-5-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-1-original",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-typo",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-original",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-2-typo",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-3-original",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-3-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-3-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-3-typo",
+      "scope": "report",
+      "label": "hema-prednamerennye-ekspromtnye",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-3-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-6-3-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-6-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-7-1-original",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-7-1-typo",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-7-2-original",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-typo",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-original",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-typo",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-7-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-original",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-typo",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-1-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-original",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-typo",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-2-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-original",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-original",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-original",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-original",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-8-3-typo",
+      "scope": "report",
+      "label": "2026-07-06-19-26-42",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-typo",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-typo",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "expanded-8-3-typo",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-multi-1",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "expanded-multi-2",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "expanded-multi-3",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "expanded-multi-4",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "expanded-unsupported-1",
+      "scope": "report",
+      "label": "sablya-a-3",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "expanded-unsupported-2",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "expanded-unsupported-3",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "expanded-unsupported-4",
+      "scope": "report",
+      "label": "kontseptsiya-monitoringa",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-1",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-1",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-1",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-2",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-2",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-2",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-3",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-3",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-3",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-4",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-4",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-4",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-4",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-5",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-7",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-5",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-5",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-6",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-6",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-6",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-7",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-2",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-7",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-7",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-8",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-3",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-8",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-8",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-9",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-obratnoe-lezvie",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-9",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-9",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-10",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-10",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-10",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-11",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-11",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-11",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-12",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-12",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-12",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-13",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-13",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-14",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "noname-14",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "noname-15",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "noname-15",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 0.5,
+      "coverage5": 0.5
+    },
+    {
+      "id": "noname-16",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "multi",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-16",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "multi",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "noname-17",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-17",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-17",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-18",
+      "scope": "report",
+      "label": "soedinenie-dlinnyi-mech-lager-noname-7",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-18",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "noname-18",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "unsupported",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": null,
+      "coverage5": null
+    },
+    {
+      "id": "context-1",
+      "scope": "report",
+      "label": "ii-dlya-analiza-hema-boev",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-1",
+      "scope": "collection",
+      "label": "ii-i-hema",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-1",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-2",
+      "scope": "report",
+      "label": "hema-english-snaryazhenie",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-2",
+      "scope": "collection",
+      "label": "hema-english",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-2",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-3",
+      "scope": "report",
+      "label": "tokarev-silovaya-ofp-2",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-3",
+      "scope": "collection",
+      "label": "silovaya-konditsionnaya",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-3",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-4",
+      "scope": "report",
+      "label": "printsipy-silovoy-konditsionnoy-podgotovki",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-4",
+      "scope": "collection",
+      "label": "silovaya-konditsionnaya",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-4",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-5",
+      "scope": "report",
+      "label": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-5",
+      "scope": "collection",
+      "label": "lager-vladivostok",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": true,
+      "beforeCoverage5": 0,
+      "coverage5": 1
+    },
+    {
+      "id": "context-5",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": false,
+      "hit5": false,
+      "beforeCoverage5": 0,
+      "coverage5": 0
+    },
+    {
+      "id": "context-6",
+      "scope": "report",
+      "label": "manevrovo-oboronitelnyi-tip",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-6",
+      "scope": "collection",
+      "label": "lager-vladivostok",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-6",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-7",
+      "scope": "report",
+      "label": "retention",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-7",
+      "scope": "collection",
+      "label": "hema-theory",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-7",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-8",
+      "scope": "report",
+      "label": "kendzyu-sparring-ali-andrey",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-8",
+      "scope": "collection",
+      "label": "kendzyu",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-8",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-9",
+      "scope": "report",
+      "label": "kompresiya-taktiki-lektsiya",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-9",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-9",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-9",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-10",
+      "scope": "report",
+      "label": "tenouti-i-tyakin-sibori",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-10",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-10",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-11",
+      "scope": "report",
+      "label": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-11",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-11",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-12",
+      "scope": "report",
+      "label": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-12",
+      "scope": "collection",
+      "label": "noname-kurs-dlya-trenerov",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-12",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-13",
+      "scope": "report",
+      "label": "podgotovka-ataki-na-sable-korotovskih",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-13",
+      "scope": "collection",
+      "label": "seminary-korotovskih",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-13",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-14",
+      "scope": "report",
+      "label": "fedotikov-mironov",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-14",
+      "scope": "collection",
+      "label": "noname-sparring",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-14",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-15",
+      "scope": "report",
+      "label": "dofamin-neyronnye-svyazi-pasha",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-15",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-15",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-16",
+      "scope": "report",
+      "label": "pitanie-i-ves-fekhtovalshchika-turin",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-16",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-16",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    }
+  ]
+}

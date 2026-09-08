@@ -1,0 +1,18 @@
+{
+  "protocol": "Disclosed questions, literal adjacent chapter titles in contextual field; production default unchanged.",
+  "comparisons": [
+    {
+      "registry": "neighbor-confirmation",
+      "split": "holdout",
+      "scenarios": 23,
+      "registryHash": "f16058ae7943de3619ca83ba510b1236029281b7586452344d4d37cec39a9776",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [],
+      "multi": []
+    }
+  ]
+}

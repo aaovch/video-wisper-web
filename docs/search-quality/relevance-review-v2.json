@@ -1,0 +1,637 @@
+{
+  "protocol": "Same retrieved hits, different documented assessment. This is NOT a search-quality gain or algorithm comparison. Unjudged hits are unknown, not irrelevant.",
+  "indexHash": "4bd63e656be263f95725783bee499d85c27d0685d6e89f74dc5575fe7749b932",
+  "reviewSha256": "d1cf3c3581d2d1b70a7279971fc15d61b56fca94328cd1f9847f164adb2a6cab",
+  "captureSha256": "d1a84e5cafe4506812d8d4da81cc39dd8d5983f570d9df9c3c4145e2dc9b4efa",
+  "rows": [
+    {
+      "scope": "archive",
+      "id": "expanded-multi-1",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "movement",
+        "distortion"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "ataka-prosche-ne-byvaet-udar",
+          "title": "Группа Б — 1. Атака проще не бывает: техника удара",
+          "grade": null
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "title": "Австрийская сабля — тренировка 4: повторение и отработка",
+          "grade": null
+        },
+        {
+          "reportSlug": "ataka-prosche-ne-byvaet-udar",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 9,
+          "title": "Безопасность провоцирующего удара",
+          "start": 1907.7,
+          "grade": null
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 1,
+          "title": "Ошибки прошлой тренировки",
+          "start": 39.1,
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-2",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 1,
+      "complete": true,
+      "covered": [
+        "continuation"
+      ],
+      "missing": [],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 15,
+          "title": "Ответ на проигранное соединение",
+          "start": 2574.57,
+          "grade": 3
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 2,
+          "title": "Разметка клинка и геометрия контакта",
+          "start": 133.91,
+          "grade": null
+        },
+        {
+          "reportSlug": "fizpodgotovka-dlya-fekhtovalshchika-turin",
+          "chapterIndex": 2,
+          "title": "Требования зависят от оружия и контакта",
+          "start": 359.66,
+          "grade": null
+        },
+        {
+          "reportSlug": "manevrovo-atakuyushchiy-stil-4-2",
+          "chapterIndex": 5,
+          "title": "Ритм оружия и ног",
+          "start": 1514.49,
+          "grade": null
+        },
+        {
+          "reportSlug": "rapira-protiv-vstrechnogo-ukola-korotovskih",
+          "title": "Рапира — семинар: против встречного укола",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-3",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "switch"
+      ],
+      "missing": [
+        "steps"
+      ],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "title": "Шаффл и смена ведущей ноги",
+          "start": 1268.16,
+          "grade": 3
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Упражнения: Упражнения семинара",
+          "start": 3703.02,
+          "grade": 1
+        },
+        {
+          "reportSlug": "manevrovo-oboronitelnyi-tip",
+          "title": "Упражнения: Подводящая работа ног",
+          "start": 424.16,
+          "grade": null
+        },
+        {
+          "reportSlug": "manevrovo-oboronitelnyi-tip",
+          "chapterIndex": 1,
+          "title": "Прыжковая разминка и устойчивость",
+          "start": 69.52,
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 6,
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "start": 2122.33,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-4",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "threat"
+      ],
+      "missing": [
+        "prepared"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 4,
+          "title": "Учить не технику в воздухе, а распознавание",
+          "start": 383.74,
+          "grade": 3
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "title": "Угроза и обработка угрозы",
+          "grade": null
+        },
+        {
+          "reportSlug": "obuchenie-situatsiya-subtaktika",
+          "title": "Обучение распознаванию ситуации и выбору субтактик",
+          "grade": null
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "obuchenie-situatsiya-subtaktika",
+          "title": "Главное",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-5-3-original",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "game"
+      ],
+      "unjudged": 5,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "title": "Упражнения: Удар, шаг и выпад",
+          "start": 1949.78,
+          "grade": null
+        },
+        {
+          "reportSlug": "vid-20260708-200742",
+          "title": "Группа А — 2. Позиционно-атакующий тип: подготовка атаки перемещениями",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "title": "Упражнения: Подготовки ногами",
+          "start": 2086.86,
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-2-ataki-fendenti-na-vypade",
+          "title": "Упражнения: Парные упражнения на удар",
+          "start": 1189,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "report",
+      "id": "expanded-5-3-original",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "game"
+      ],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Упражнения: Упражнения семинара",
+          "start": 528.89,
+          "grade": 0
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "title": "Связка удара, защиты и укола",
+          "start": 3698.72,
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "title": "Шаффл и смена ведущей ноги",
+          "start": 1268.16,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-1",
+      "originalChapterCoverage5": 1,
+      "reviewedFacetCoverage5": 1,
+      "complete": true,
+      "covered": [
+        "sabre",
+        "winden"
+      ],
+      "missing": [],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 2,
+          "title": "Почему на сабле — батман, а не захват",
+          "start": 162.88,
+          "grade": 3
+        },
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 14,
+          "title": "Виндены: уступающий и силовой",
+          "start": 1449.02,
+          "grade": 3
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "title": "Длинный меч — тренировка 4: соединение через ложную атаку",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "title": "Длинный меч — тренировка 2: чувство меча и захват 4",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+          "title": "Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-2",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "miss",
+        "threat"
+      ],
+      "unjudged": 5,
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 16,
+          "title": "Два сигнала: финт или батман",
+          "start": 2902.36,
+          "grade": null
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "title": "Австрийская сабля — тренировка 5: батманы и тактический выбор",
+          "grade": null
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "title": "Конспект: Критерии батмана",
+          "grade": null
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 20,
+          "title": "Финт в руки и два ответа",
+          "start": 3570.36,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-3",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "structure"
+      ],
+      "missing": [
+        "entry"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+          "title": "Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Меч и баклер: микроцикл 1 — основы",
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 7,
+          "title": "Структурный хват баклера",
+          "start": 1634.38,
+          "grade": 3
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "title": "Упражнения: Атака из открытого соединения",
+          "start": 2317.68,
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-5-kakari-keiko",
+          "chapterIndex": 7,
+          "title": "Координация руки и ноги из Posta Breve",
+          "start": 1814.63,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-4",
+      "originalChapterCoverage5": 1,
+      "reviewedFacetCoverage5": 1,
+      "complete": true,
+      "covered": [
+        "buckler",
+        "falso"
+      ],
+      "missing": [],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "title": "Длинный меч — тренировка 3: дистанция входа",
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "title": "Связка удара, защиты и укола",
+          "start": 3698.72,
+          "grade": 3
+        },
+        {
+          "reportSlug": "longsword-a",
+          "chapterIndex": 7,
+          "title": "Уколы из фальса",
+          "start": 636.08,
+          "grade": 3
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "title": "Длинный меч — тренировка 2: чувство меча и захват 4",
+          "grade": null
+        },
+        {
+          "reportSlug": "rapira-protiv-vstrechnogo-ukola-korotovskih",
+          "title": "Рапира — семинар: против встречного укола",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-5",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "balls"
+      ],
+      "missing": [
+        "pace"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 3,
+          "title": "Координация с двумя мячами",
+          "start": 645.7,
+          "grade": 3
+        },
+        {
+          "reportSlug": "kinezio-trenirovka-1-razminka-koordinatsiya",
+          "chapterIndex": 20,
+          "title": "Мяч и координация шага",
+          "start": 3068.44,
+          "grade": null
+        },
+        {
+          "reportSlug": "kinezio-trenirovka-1-razminka-koordinatsiya",
+          "title": "Кинезиотренировка 1: разминка всего тела и координация",
+          "grade": null
+        },
+        {
+          "reportSlug": "dofamin-neyronnye-svyazi-pasha",
+          "chapterIndex": 15,
+          "title": "Точный фидбэк и усложнение",
+          "start": 2783.65,
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-a-1-vvodnaya",
+          "chapterIndex": 16,
+          "title": "Захват и работа от соединения",
+          "start": 5009.1,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-6",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "monitor"
+      ],
+      "missing": [
+        "student"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "chapterIndex": 9,
+          "title": "Ложная защита на финт",
+          "start": 1996.74,
+          "grade": null
+        },
+        {
+          "reportSlug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "title": "Группа А — 3. Позиционно-оборонительный тип",
+          "grade": null
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 4,
+          "title": "Стимул как в реальном бою",
+          "start": 297.35,
+          "grade": 3
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "title": "Длинный меч — тренировка 4: соединение через ложную атаку",
+          "grade": null
+        },
+        {
+          "reportSlug": "fehtovanie-s-prioritetom-v-atake-korotovskih",
+          "title": "Глоссарий: Защита-ответ",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-7",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "decision",
+        "adapt"
+      ],
+      "unjudged": 5,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 16,
+          "title": "От заданного ответа к выбору",
+          "start": 2952.53,
+          "grade": null
+        },
+        {
+          "reportSlug": "kompresiya-taktiki-lektsiya",
+          "chapterIndex": 9,
+          "title": "Новички: мониторинг и фриплей",
+          "start": 573.8,
+          "grade": null
+        },
+        {
+          "reportSlug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "chapterIndex": 2,
+          "title": "Выбор защиты или контратаки",
+          "start": 249.18,
+          "grade": null
+        },
+        {
+          "reportSlug": "protivnik-fehtuet-nepravilno",
+          "chapterIndex": 16,
+          "title": "Цель обучения новичков",
+          "start": 1606.95,
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-5-kakari-keiko",
+          "chapterIndex": 9,
+          "title": "Ускорение, торможение и ответ после атаки",
+          "start": 2919.36,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "p-multi-8",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "trigger"
+      ],
+      "missing": [
+        "branch"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 7,
+          "title": "Упрощение через заднюю ногу",
+          "start": 748.96,
+          "grade": 3
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "title": "Длинный меч — тренировка 1: вход в соединение",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+          "title": "Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "title": "Длинный меч — тренировка 3: дистанция входа",
+          "grade": null
+        }
+      ]
+    }
+  ]
+}

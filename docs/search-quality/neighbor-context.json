@@ -1,0 +1,164 @@
+{
+  "protocol": "Disclosed questions, literal adjacent chapter titles in contextual field; production default unchanged.",
+  "comparisons": [
+    {
+      "registry": "pilot-expanded",
+      "scenarios": 170,
+      "registryHash": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [
+        {
+          "id": "expanded-4-1-original",
+          "scope": "report",
+          "label": "longsword-a"
+        },
+        {
+          "id": "expanded-4-1-typo",
+          "scope": "report",
+          "label": "longsword-a"
+        },
+        {
+          "id": "expanded-4-3-original",
+          "scope": "archive",
+          "label": "archive"
+        },
+        {
+          "id": "expanded-4-3-typo",
+          "scope": "archive",
+          "label": "archive"
+        },
+        {
+          "id": "expanded-6-2-original",
+          "scope": "archive",
+          "label": "archive"
+        },
+        {
+          "id": "expanded-6-2-typo",
+          "scope": "archive",
+          "label": "archive"
+        }
+      ],
+      "multi": [
+        {
+          "id": "expanded-multi-1",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "expanded-multi-2",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "expanded-multi-3",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "expanded-multi-4",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        }
+      ]
+    },
+    {
+      "registry": "noname-registry",
+      "scenarios": 50,
+      "registryHash": "4c997ae1bb1611d50f7620e447c5deb8594498314d0ef04c655bb76fc500d0c1",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [
+        {
+          "id": "noname-9",
+          "scope": "archive",
+          "label": "archive"
+        }
+      ],
+      "multi": [
+        {
+          "id": "noname-13",
+          "scope": "collection",
+          "label": "noname",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "noname-13",
+          "scope": "archive",
+          "label": "archive",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "noname-14",
+          "scope": "collection",
+          "label": "noname",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "noname-14",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-15",
+          "scope": "collection",
+          "label": "noname",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-15",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-16",
+          "scope": "collection",
+          "label": "noname",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "noname-16",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "registry": "context-registry",
+      "scenarios": 49,
+      "registryHash": "e935d0a6be357726e8b19825adb93b97a0e0fd29605ad803488290b202da6020",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [],
+      "multi": []
+    }
+  ]
+}

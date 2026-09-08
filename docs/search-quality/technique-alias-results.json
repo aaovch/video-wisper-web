@@ -1,0 +1,523 @@
+{
+  "protocol": "Six fixed named lookups, source-grounded chapter judgments, paired flag off/on. Incomplete relevance judgments.",
+  "rows": [
+    {
+      "query": "scheitelhau",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "scheitelhau",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "scheitelhau",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "scheitelhau",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "scheitelhau",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "scheitelhau",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "neyromyshechnaya-sistema-motornye-edinitsy",
+          "chapter": 11,
+          "title": "Как тренировка повышает силовой потенциал"
+        }
+      ]
+    },
+    {
+      "query": "scheitel hau",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 4,
+          "title": "Удар по гипотенузе и маскировка"
+        }
+      ]
+    },
+    {
+      "query": "winden",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "winden",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        }
+      ]
+    },
+    {
+      "query": "winden",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "winden",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        }
+      ]
+    },
+    {
+      "query": "winden",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "llm-deep-dive-karpathy",
+          "chapter": 15,
+          "title": "Tool use: search и working memory"
+        }
+      ]
+    },
+    {
+      "query": "winden",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        }
+      ]
+    },
+    {
+      "query": "виндунг",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "виндунг",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        }
+      ]
+    },
+    {
+      "query": "виндунг",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "виндунг",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        }
+      ]
+    },
+    {
+      "query": "виндунг",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "ataka-prosche-ne-byvaet-udar",
+          "chapter": 1,
+          "title": "Логика тренировки и двигательный эталон"
+        }
+      ]
+    },
+    {
+      "query": "виндунг",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "longsword-a",
+          "chapter": 14,
+          "title": "Виндены: уступающий и силовой"
+        },
+        {
+          "slug": "ii-dlya-analiza-hema-boev",
+          "chapter": 17,
+          "title": "Фехтование по модели тренера"
+        }
+      ]
+    },
+    {
+      "query": "posta longa",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "posta longa",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 2,
+          "title": "Базовая ветка угрозы"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "query": "posta longa",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "optimizatsiya-parad-ripost-hema",
+          "chapter": 7,
+          "title": "Posta del Falcone и другие паттерны"
+        }
+      ]
+    },
+    {
+      "query": "posta longa",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 2,
+      "top": [
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 7,
+          "title": "Вход из длинного острия"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 2,
+          "title": "Базовая ветка угрозы"
+        },
+        {
+          "slug": "kompresiya-taktiki-lektsiya",
+          "chapter": 7,
+          "title": "Субтактика обработки угрозы"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "title": "Глоссарий: Длинное остриё"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "query": "posta longa",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "title": "Глоссарий: Posta Longa"
+        },
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "chapter": 11,
+          "title": "Атака на скрестном выпаде и группировка"
+        },
+        {
+          "slug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "chapter": 6,
+          "title": "Угроза руками и ложная атака"
+        },
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "chapter": 12,
+          "title": "Переход к активному маневрированию"
+        }
+      ]
+    },
+    {
+      "query": "posta longa",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "title": "Глоссарий: Posta Longa"
+        },
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "chapter": 11,
+          "title": "Атака на скрестном выпаде и группировка"
+        },
+        {
+          "slug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "chapter": 6,
+          "title": "Угроза руками и ложная атака"
+        },
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "chapter": 12,
+          "title": "Переход к активному маневрированию"
+        }
+      ]
+    },
+    {
+      "query": "постолонга",
+      "scope": "report",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "постолонга",
+      "scope": "report",
+      "mode": "1",
+      "rank": 1,
+      "top": [
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 2,
+          "title": "Базовая ветка угрозы"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "query": "постолонга",
+      "scope": "collection",
+      "mode": "0",
+      "rank": 0,
+      "top": []
+    },
+    {
+      "query": "постолонга",
+      "scope": "collection",
+      "mode": "1",
+      "rank": 2,
+      "top": [
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 7,
+          "title": "Вход из длинного острия"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 2,
+          "title": "Базовая ветка угрозы"
+        },
+        {
+          "slug": "kompresiya-taktiki-lektsiya",
+          "chapter": 7,
+          "title": "Субтактика обработки угрозы"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "title": "Глоссарий: Длинное остриё"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "title": "Главное"
+        }
+      ]
+    },
+    {
+      "query": "постолонга",
+      "scope": "archive",
+      "mode": "0",
+      "rank": 0,
+      "top": [
+        {
+          "slug": "trenerskoe-sobranie-novyi-zal-chast-2",
+          "chapter": 0,
+          "title": "Потолок текущего зала"
+        },
+        {
+          "slug": "fizpodgotovka-dlya-fekhtovalshchika-turin",
+          "chapter": 24,
+          "title": "Генетика, рычаги и личный потолок"
+        },
+        {
+          "slug": "trenerskoe-sobranie-novyi-zal-chast-4",
+          "chapter": 1,
+          "title": "Потолок, освещение и пожарные датчики"
+        },
+        {
+          "slug": "trenerskoe-sobranie-novyi-zal-chast-3",
+          "chapter": 9,
+          "title": "Ненулевой риск и потолок текущего зала"
+        },
+        {
+          "slug": "sablya-10",
+          "chapter": 12,
+          "title": "Средняя скорость и итоги"
+        }
+      ]
+    },
+    {
+      "query": "постолонга",
+      "scope": "archive",
+      "mode": "1",
+      "rank": 4,
+      "top": [
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 7,
+          "title": "Вход из длинного острия"
+        },
+        {
+          "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "chapter": 11,
+          "title": "Атака на скрестном выпаде и группировка"
+        },
+        {
+          "slug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+          "chapter": 6,
+          "title": "Угроза руками и ложная атака"
+        },
+        {
+          "slug": "2026-07-06-19-26-42",
+          "chapter": 2,
+          "title": "Базовая ветка угрозы"
+        },
+        {
+          "slug": "kompresiya-taktiki-lektsiya",
+          "chapter": 7,
+          "title": "Субтактика обработки угрозы"
+        }
+      ]
+    }
+  ]
+}

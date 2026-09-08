@@ -1,0 +1,147 @@
+{
+  "beforeHash": "834b2f93b1fb4a05893d508ad673f661e78d4f66a3a6e7cf40e2a5db2dccb23d",
+  "afterHash": "c060e751b314fd5c0adce4ac91b86303516ebe597f292d7c7bec11dfd38a04b3",
+  "protocol": "Existing exploratory questions, actual searchScoped with UI deduplication; same queries, scopes and qrels. Rank 0 means relevant chapter absent.",
+  "groups": [
+    {
+      "scope": "report",
+      "count": 108,
+      "beforeHit3": 90,
+      "afterHit3": 92,
+      "beforeHit5": 91,
+      "afterHit5": 94,
+      "negativeCount": 0,
+      "beforeNonempty": 0,
+      "afterNonempty": 0
+    },
+    {
+      "scope": "collection",
+      "count": 108,
+      "beforeHit3": 78,
+      "afterHit3": 83,
+      "beforeHit5": 83,
+      "afterHit5": 87,
+      "negativeCount": 0,
+      "beforeNonempty": 0,
+      "afterNonempty": 0
+    },
+    {
+      "scope": "archive",
+      "count": 108,
+      "beforeHit3": 66,
+      "afterHit3": 70,
+      "beforeHit5": 73,
+      "afterHit5": 78,
+      "negativeCount": 6,
+      "beforeNonempty": 5,
+      "afterNonempty": 5
+    }
+  ],
+  "differences": [
+    {
+      "id": "h01:report",
+      "query": "Почему модель с большим окном забывает середину разговора?",
+      "scope": "report",
+      "beforeRank": 2,
+      "afterRank": 1
+    },
+    {
+      "id": "h01-typo:report",
+      "query": "Почему модель с большим окном забывает середину разгвора?",
+      "scope": "report",
+      "beforeRank": 2,
+      "afterRank": 1
+    },
+    {
+      "id": "h02:report",
+      "query": "Как отделить исследование от написания кода в контексте агента?",
+      "scope": "report",
+      "beforeRank": 0,
+      "afterRank": 5
+    },
+    {
+      "id": "h03:report",
+      "query": "Чем инженерия контекста отличается от написания промпта?",
+      "scope": "report",
+      "beforeRank": 0,
+      "afterRank": 1
+    },
+    {
+      "id": "h03-typo:report",
+      "query": "Чем инженерия контекста отличется от написания промпта?",
+      "scope": "report",
+      "beforeRank": 0,
+      "afterRank": 1
+    },
+    {
+      "id": "h01:collection",
+      "query": "Почему модель с большим окном забывает середину разговора?",
+      "scope": "collection",
+      "beforeRank": 0,
+      "afterRank": 1
+    },
+    {
+      "id": "h01-typo:collection",
+      "query": "Почему модель с большим окном забывает середину разгвора?",
+      "scope": "collection",
+      "beforeRank": 0,
+      "afterRank": 1
+    },
+    {
+      "id": "h03:collection",
+      "query": "Чем инженерия контекста отличается от написания промпта?",
+      "scope": "collection",
+      "beforeRank": 0,
+      "afterRank": 2
+    },
+    {
+      "id": "h03-typo:collection",
+      "query": "Чем инженерия контекста отличется от написания промпта?",
+      "scope": "collection",
+      "beforeRank": 0,
+      "afterRank": 2
+    },
+    {
+      "id": "h04:collection",
+      "query": "Энергосистемы включаются по очереди или работают вместе?",
+      "scope": "collection",
+      "beforeRank": 4,
+      "afterRank": 3
+    },
+    {
+      "id": "h01:archive",
+      "query": "Почему модель с большим окном забывает середину разговора?",
+      "scope": "archive",
+      "beforeRank": 0,
+      "afterRank": 2
+    },
+    {
+      "id": "h01-typo:archive",
+      "query": "Почему модель с большим окном забывает середину разгвора?",
+      "scope": "archive",
+      "beforeRank": 0,
+      "afterRank": 2
+    },
+    {
+      "id": "h03:archive",
+      "query": "Чем инженерия контекста отличается от написания промпта?",
+      "scope": "archive",
+      "beforeRank": 0,
+      "afterRank": 3
+    },
+    {
+      "id": "h03-typo:archive",
+      "query": "Чем инженерия контекста отличется от написания промпта?",
+      "scope": "archive",
+      "beforeRank": 0,
+      "afterRank": 2
+    },
+    {
+      "id": "h04:archive",
+      "query": "Энергосистемы включаются по очереди или работают вместе?",
+      "scope": "archive",
+      "beforeRank": 13,
+      "afterRank": 4
+    }
+  ]
+}

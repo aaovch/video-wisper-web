@@ -1,0 +1,100 @@
+{
+  "protocol": "Disclosed questions, literal adjacent chapter titles in contextual field; production default unchanged.",
+  "comparisons": [
+    {
+      "registry": "pilot-registry",
+      "split": "development",
+      "scenarios": 97,
+      "registryHash": "7553329a4383842170ff6a98464d9340629149efef1494ceb9298ec4d8c1cf27",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [],
+      "multi": [
+        {
+          "id": "p-multi-1",
+          "scope": "archive",
+          "label": "archive",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "p-multi-2",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "p-multi-3",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "p-multi-4",
+          "scope": "archive",
+          "label": "archive",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "p-multi-5",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "p-multi-6",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        }
+      ]
+    },
+    {
+      "registry": "pilot-registry",
+      "split": "holdout",
+      "scenarios": 58,
+      "registryHash": "7553329a4383842170ff6a98464d9340629149efef1494ceb9298ec4d8c1cf27",
+      "beforeIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "afterIndexHash": "c715dc033a6c82b137ef60700a2c121e481cc47b725ca8f355ab80bf68e9a8a5",
+      "gzipBefore": 1722272,
+      "gzipAfter": 1749728,
+      "losses": [],
+      "gains": [
+        {
+          "id": "p-single-5",
+          "scope": "archive",
+          "label": "archive"
+        },
+        {
+          "id": "p-single-15",
+          "scope": "report",
+          "label": "soedinenie-dlinnyi-mech-lager-noname-1"
+        }
+      ],
+      "multi": [
+        {
+          "id": "p-multi-7",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "p-multi-8",
+          "scope": "archive",
+          "label": "archive",
+          "before": 0.5,
+          "after": 0.5
+        }
+      ]
+    }
+  ]
+}

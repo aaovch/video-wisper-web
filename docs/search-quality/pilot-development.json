@@ -1,0 +1,131 @@
+{
+  "split": "development",
+  "registryHash": "7553329a4383842170ff6a98464d9340629149efef1494ceb9298ec4d8c1cf27",
+  "before": {
+    "loadMs": 3078.7613999999994,
+    "coreGzipBytes": 1659312,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 24,
+        "hit5": 18,
+        "mrr": 0.5131944444444444,
+        "p95": 161.33450000000084
+      },
+      {
+        "scope": "collection",
+        "n": 33,
+        "hit5": 15,
+        "mrr": 0.30202020202020197,
+        "p95": 459.66289999999935
+      },
+      {
+        "scope": "archive",
+        "n": 24,
+        "hit5": 7,
+        "mrr": 0.24826388888888887,
+        "p95": 1941.1381000000001
+      }
+    ],
+    "multi": [
+      {
+        "id": "p-multi-1",
+        "coverage5": 1
+      },
+      {
+        "id": "p-multi-2",
+        "coverage5": 0
+      },
+      {
+        "id": "p-multi-3",
+        "coverage5": 0
+      },
+      {
+        "id": "p-multi-4",
+        "coverage5": 0.5
+      },
+      {
+        "id": "p-multi-5",
+        "coverage5": 0.5
+      },
+      {
+        "id": "p-multi-6",
+        "coverage5": 0
+      }
+    ],
+    "unsupported": {
+      "n": 10,
+      "nonempty": 10,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "after": {
+    "loadMs": 3120.1139000000003,
+    "coreGzipBytes": 1661127,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 24,
+        "hit5": 21,
+        "mrr": 0.6809523809523809,
+        "p95": 146.86729999999807
+      },
+      {
+        "scope": "collection",
+        "n": 33,
+        "hit5": 26,
+        "mrr": 0.5182539682539683,
+        "p95": 444.66690000000017
+      },
+      {
+        "scope": "archive",
+        "n": 24,
+        "hit5": 11,
+        "mrr": 0.3323412698412698,
+        "p95": 1949.9043999999994
+      }
+    ],
+    "multi": [
+      {
+        "id": "p-multi-1",
+        "coverage5": 1
+      },
+      {
+        "id": "p-multi-2",
+        "coverage5": 0
+      },
+      {
+        "id": "p-multi-3",
+        "coverage5": 0.5
+      },
+      {
+        "id": "p-multi-4",
+        "coverage5": 1
+      },
+      {
+        "id": "p-multi-5",
+        "coverage5": 0.5
+      },
+      {
+        "id": "p-multi-6",
+        "coverage5": 0.5
+      }
+    ],
+    "unsupported": {
+      "n": 10,
+      "nonempty": 10,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "losses": [],
+  "sourceLosses": [],
+  "collectionGain": 0.3333333333333333,
+  "gates": {
+    "collectionGain10pp": true,
+    "noIndividualHit5Loss": true,
+    "noMultiSourceCoverageLoss": true,
+    "coreGzipGrowth20pct": true,
+    "warmP95Growth10pct": true
+  },
+  "caveat": "Same author, incomplete relevance judgments. Node timings are not mobile UX evidence. Holdout results are disclosed once run."
+}

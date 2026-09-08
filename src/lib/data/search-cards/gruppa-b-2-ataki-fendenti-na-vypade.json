@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "gruppa-b-2-ataki-fendenti-na-vypade",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "50d6d27447d5bb8b228e756306b48015527e142707b022ecf8216e56fb9e6acc",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nТема занятия и подготовка",
+        "evidence": "Тренер обозначает продолжение курса «Атака проще не бывает» и переводит группу к гимнастике с мечом."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "b8c21fb4d4031b2a1f7961e8a9c2d9febcce89493db87281ff9bb1d77c365e2b",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nМеханика mezzo fendente",
+        "evidence": "Группа повторяет выведение меча, работу корпуса и завершение центрального fendente."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "a3c8ae1e0b1c6fd990ca8f2ebd7c0d2eb7931b244f46da028c4b596e67d9e8d5",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nБезопасная механика выпада",
+        "evidence": "Тренер разбирает старт, приземление и распределение нагрузки в выпаде из фронтальной стойки."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "55ca482ec468c5b10b283a7ce7bdddae79b8c9e25eed689c3aa677090e5973c5",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nСборка полного выпада",
+        "evidence": "Отдельные движения ног объединяются в устойчивый выпад с контролируемым приземлением."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "bf4725da468d342c8dfb17e7f085b54d7d0d4623954f6bd8daa24ec6e2109cc4",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nВозврат из выпада",
+        "evidence": "Базовый возврат выполняется через заднюю ногу без лишнего подъема корпуса и потери центральной линии."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "48d6bf24143dd42c477c9f325a567d489d87499f26e54193cfb6d988b839abf8",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nПереход к парной работе",
+        "evidence": "Группа надевает защиту, после чего тренер вводит первый парный блок."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "c72a73f35b0c21a52b80f739bac0b8c416b01e297d7f5928715e723acd835987",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nЭталон удара по голове",
+        "evidence": "Первое парное упражнение закрепляет mezzo fendente по движущейся цели с работой преимущественно кистями."
+      }
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "90ac1bb763f53134c1e26e8e9d7972dc8b9f483e2c431247b75127dd2ed71e1f",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nЗамах, шаг и удар",
+        "evidence": "Эталонный удар связывается с шагом при опережающем движении оружия."
+      }
+    },
+    {
+      "chapterIndex": 8,
+      "sourceHash": "3a6bb69d76ed410090ac6969c5b854f8e7ef48199736d113330dc15e00327bb4",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nАтака из Porta Breve",
+        "evidence": "Удар начинается из позиции с угрозой уколом и маскируется непрерывным приближением клинка."
+      }
+    },
+    {
+      "chapterIndex": 9,
+      "sourceHash": "9c47219725cad51ebf61ebd4dd94f4c7dae4079317a954faea1d38867ce2f1c5",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nFendente на выпаде",
+        "evidence": "Освоенный удар переносится на выпад с отдельной отработкой ритма и дистанции."
+      }
+    },
+    {
+      "chapterIndex": 10,
+      "sourceHash": "1445a617be41f5abbca183725706e534c801bd64eaa1c721e8645ccf98fbb5a9",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nЗащита после атаки",
+        "evidence": "К выпаду добавляется имитация ответа, которую ученик встречает на прямых руках."
+      }
+    },
+    {
+      "chapterIndex": 11,
+      "sourceHash": "c1fc5195dbf66fa7176ff938e91b0b6adff3f3abcb21d84df504e400d5231138",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nАтака на фоне маневрирования",
+        "evidence": "Ученик прессингует, читает динамическое открытие и выбирает удар с шага или с выпада."
+      }
+    },
+    {
+      "chapterIndex": 12,
+      "sourceHash": "3b11610fcee88540e91aa9a1146188ce9f9ceb263c33899092119dbb83ef4384",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nПереход к тренировке тайминга",
+        "evidence": "После повторения базы тренер вводит новую тему и разбирает индивидуальную адаптацию стойки и атакующего шага."
+      }
+    },
+    {
+      "chapterIndex": 13,
+      "sourceHash": "2c4f605f0f7fa5ae828c7810efbff0a205ed6de915bcf95acb993ea7506de1c8",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nРитм и момент открытия",
+        "evidence": "Ученик атакует на начало опускания меча, переходя от предсказуемого ритма к аритмичным сигналам."
+      }
+    },
+    {
+      "chapterIndex": 14,
+      "sourceHash": "e05e3ecb31365d86dd90db594efebf891b3afcf0e19aa1336ec0d1dbdf77daa8",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nКак монитор строит сигнал",
+        "evidence": "Тренер объясняет, как сделать открытие частым, различимым и не приучающим ученика к лишнему темпу."
+      }
+    },
+    {
+      "chapterIndex": 15,
+      "sourceHash": "00a650065bb6d61e5dcce56dfb4452d0fa2adb243e19a970961b3d969f5ddf4c",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nЗаключительное задание на тайминг",
+        "evidence": "Монитор управляет ногами, а ученик одновременно держит дистанцию и реагирует на ограниченное по времени открытие."
+      }
+    },
+    {
+      "chapterIndex": 16,
+      "sourceHash": "830a00e430099f6bdb170ac892a96f1f72f6dc97f976bbc8edc252243f80b285",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nДва типа атакующего сигнала",
+        "evidence": "Финальная прогрессия разделяет заранее ожидаемую атаку и экспромтную реакцию на внезапное открытие."
+      }
+    },
+    {
+      "chapterIndex": 17,
+      "sourceHash": "01f8fd40e0295c658bf529bae27bf4b841e369990428edf5f31141bbc31a1b34",
+      "termIds": [],
+      "context": {
+        "text": "Группа Б — 2. Атаки fendente на выпаде\nИтоги и продолжение курса",
+        "evidence": "Тренер связывает повторенный эталон удара с добавленным маневрированием и обозначает следующий шаг курса."
+      }
+    }
+  ]
+}

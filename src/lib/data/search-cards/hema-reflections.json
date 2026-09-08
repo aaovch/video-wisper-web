@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "hema-reflections",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "447951c92492a4446933c127b9342c1047f0a6e1a98ca4404ac890c2b6344ab0",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nВступление и личное противоречие",
+        "evidence": "Автор пришёл в фехтование из «Горца» и фэнтези, а оказался в исторических дисциплинах — и долго искал ответ, что такое HEMA."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "151d1605a382cd1c5efed546753b3233d2cd2e08bbe1f3a501eda0db1b6bfce2",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nHEMA: контекст и проявления",
+        "evidence": "HEMA распадается на исторический/культурный контекст и проявления боевых искусств — от турниров до рубки мишеней."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "576058238e4e509141707c7d00dc8f0601af8fed666cc9feb1e27dd90edc4969",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nЗачем фиксировать связку",
+        "evidence": "Можно просто махать мечом, но ограниченный набор связок «контекст → проявление» концентрирует сообщество."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "4a088126278a1b3a421c3e73da39f193f1f392c05eb14ba5be94e03a61a34177",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nИсторический vs вымышленный контекст",
+        "evidence": "Культурный контекст (Горец, Ведьмак) тоже возможен, но исторический даёт связь с реальностью и традицией."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "d67e541d4ac7ae98062df1c86842c6721d86964a3e035671a496770de20b4076",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nКакое проявление лучше",
+        "evidence": "Снова критерий — связь с реальностью: турниры и sparring дают долгий измеримый рост; новички всё равно хотят «просто помахать»."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "21d7c190e793d16b27313e3235567d6ce6f468af0d89ebe84e9af1baab319071",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nМодель: контекст → правила",
+        "evidence": "Идеальная цепочка: пул источников → тезисы → выбор проявления → ядро правил → модульные изменения с обоснованием."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "4744b7ce63ab29d7dcbf29ba80dd5742d70348ae60c21253bce570c57cff4bef",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nБой на мечах и «классика»",
+        "evidence": "Абстрактный «бой на мечах» возможен, но без исторических источников спор о ядре правил не разрешается — как в номинации «классика»."
+      }
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "78ad185b89c159da0f49c7d5f82512bedafc3b262978f80445ce2a94bd6dbe11",
+      "termIds": [],
+      "context": {
+        "text": "Что такое HEMA?\nИтог: противоречие снято",
+        "evidence": "Автор занимается тем, чем хочет, в рамках сообщества и прозрачных турниров — и призывает чаще показывать работу организаторов."
+      }
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "protocol": "Exploratory: fixed existing questions were NOT used as expansion text; author has seen earlier evaluations. No new independent holdout claim. Fixed weights title=2/context=.65/questions=.8; OR, no fuzzy. Partial-corpus pilot. All query variants included; report metrics are chapter retrieval, not full UI.",
+  "chapters": 2572,
+  "enriched": 36,
+  "corpusHash": "d1fccdc86e17fbc263ee1d88cdd8d1f018c05166697e728678952a76ad3fd251",
+  "tasksHash": "c060e751b314fd5c0adce4ac91b86303516ebe597f292d7c7bec11dfd38a04b3",
+  "expansionHash": "7b44846807e67f7b55714f4575c9a2c9dda113b0ec8777f423397fd77d041249",
+  "sizes": {
+    "chapter-original": 1481204,
+    "chapter-context": 1487064,
+    "chapter-context-questions": 1492191
+  },
+  "groups": [
+    {
+      "population": "all",
+      "scope": "report",
+      "system": "chapter-original",
+      "count": 108,
+      "hit3": 93,
+      "hit5": 98,
+      "mrr10": 0.799702380952381,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "report",
+      "system": "chapter-context",
+      "count": 108,
+      "hit3": 94,
+      "hit5": 99,
+      "mrr10": 0.815597442680776,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "report",
+      "system": "chapter-context-questions",
+      "count": 108,
+      "hit3": 95,
+      "hit5": 99,
+      "mrr10": 0.8163690476190477,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "collection",
+      "system": "chapter-original",
+      "count": 108,
+      "hit3": 82,
+      "hit5": 87,
+      "mrr10": 0.7116328630217519,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "collection",
+      "system": "chapter-context",
+      "count": 108,
+      "hit3": 84,
+      "hit5": 89,
+      "mrr10": 0.731382275132275,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "collection",
+      "system": "chapter-context-questions",
+      "count": 108,
+      "hit3": 85,
+      "hit5": 91,
+      "mrr10": 0.7336199294532627,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "archive",
+      "system": "chapter-original",
+      "count": 108,
+      "hit3": 72,
+      "hit5": 76,
+      "mrr10": 0.644918430335097,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "archive",
+      "system": "chapter-context",
+      "count": 108,
+      "hit3": 74,
+      "hit5": 78,
+      "mrr10": 0.6658509700176368,
+      "nonempty": 108
+    },
+    {
+      "population": "all",
+      "scope": "archive",
+      "system": "chapter-context-questions",
+      "count": 108,
+      "hit3": 75,
+      "hit5": 80,
+      "mrr10": 0.6683752204585538,
+      "nonempty": 108
+    },
+    {
+      "population": "pilot",
+      "scope": "report",
+      "system": "chapter-original",
+      "count": 13,
+      "hit3": 11,
+      "hit5": 12,
+      "mrr10": 0.6948717948717948,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "report",
+      "system": "chapter-context",
+      "count": 13,
+      "hit3": 12,
+      "hit5": 13,
+      "mrr10": 0.8269230769230769,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "report",
+      "system": "chapter-context-questions",
+      "count": 13,
+      "hit3": 13,
+      "hit5": 13,
+      "mrr10": 0.8333333333333334,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "collection",
+      "system": "chapter-original",
+      "count": 13,
+      "hit3": 5,
+      "hit5": 6,
+      "mrr10": 0.43803418803418803,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "collection",
+      "system": "chapter-context",
+      "count": 13,
+      "hit3": 7,
+      "hit5": 8,
+      "mrr10": 0.6039377289377289,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "collection",
+      "system": "chapter-context-questions",
+      "count": 13,
+      "hit3": 8,
+      "hit5": 10,
+      "mrr10": 0.6225274725274728,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "archive",
+      "system": "chapter-original",
+      "count": 13,
+      "hit3": 5,
+      "hit5": 5,
+      "mrr10": 0.4019230769230769,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "archive",
+      "system": "chapter-context",
+      "count": 13,
+      "hit3": 7,
+      "hit5": 7,
+      "mrr10": 0.5758241758241758,
+      "nonempty": 13
+    },
+    {
+      "population": "pilot",
+      "scope": "archive",
+      "system": "chapter-context-questions",
+      "count": 13,
+      "hit3": 8,
+      "hit5": 9,
+      "mrr10": 0.5967948717948718,
+      "nonempty": 13
+    },
+    {
+      "population": "unmodified",
+      "scope": "report",
+      "system": "chapter-original",
+      "count": 95,
+      "hit3": 82,
+      "hit5": 86,
+      "mrr10": 0.814047619047619,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "report",
+      "system": "chapter-context",
+      "count": 95,
+      "hit3": 82,
+      "hit5": 86,
+      "mrr10": 0.814047619047619,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "report",
+      "system": "chapter-context-questions",
+      "count": 95,
+      "hit3": 82,
+      "hit5": 86,
+      "mrr10": 0.814047619047619,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "collection",
+      "system": "chapter-original",
+      "count": 95,
+      "hit3": 77,
+      "hit5": 81,
+      "mrr10": 0.7490726817042607,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "collection",
+      "system": "chapter-context",
+      "count": 95,
+      "hit3": 77,
+      "hit5": 81,
+      "mrr10": 0.7488220551378445,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "collection",
+      "system": "chapter-context-questions",
+      "count": 95,
+      "hit3": 77,
+      "hit5": 81,
+      "mrr10": 0.7488220551378445,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "archive",
+      "system": "chapter-original",
+      "count": 95,
+      "hit3": 67,
+      "hit5": 71,
+      "mrr10": 0.6781704260651629,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "archive",
+      "system": "chapter-context",
+      "count": 95,
+      "hit3": 67,
+      "hit5": 71,
+      "mrr10": 0.6781704260651629,
+      "nonempty": 95
+    },
+    {
+      "population": "unmodified",
+      "scope": "archive",
+      "system": "chapter-context-questions",
+      "count": 95,
+      "hit3": 67,
+      "hit5": 71,
+      "mrr10": 0.6781704260651629,
+      "nonempty": 95
+    },
+    {
+      "population": "negative",
+      "scope": "archive",
+      "system": "chapter-original",
+      "count": 6,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0,
+      "nonempty": 5
+    },
+    {
+      "population": "negative",
+      "scope": "archive",
+      "system": "chapter-context",
+      "count": 6,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0,
+      "nonempty": 5
+    },
+    {
+      "population": "negative",
+      "scope": "archive",
+      "system": "chapter-context-questions",
+      "count": 6,
+      "hit3": 0,
+      "hit5": 0,
+      "mrr10": 0,
+      "nonempty": 5
+    }
+  ]
+}

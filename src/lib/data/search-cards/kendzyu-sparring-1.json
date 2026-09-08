@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "kendzyu-sparring-1",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "9f26e003bff502f6172ea5537a9bd0456d0d8e7a15d95e7b466d167e91379302",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 1: удар и апелляция",
+        "evidence": "После первого боя судьи засчитывают квалифицированный удар; идёт апелляция, но визуально удар признают достаточным — раунд Али."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "94251512af028f9e89706723577f6ae56898f90e3700d7c3fc2f255b9feab88a",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 2: укол и фаза контроля",
+        "evidence": "Спор о фиксации предплечьем: это укол или фаза контроля? Решение — укол, «стоп» был преждевременным; счёт 2:0 Али."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "4d20d08b6e63f0ec999ca7ad17e776ce9229ffbb1d08ac7fd59712012c4693a6",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 3: начало",
+        "evidence": "При счёте 2:0 объявляют третий раунд."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "11f79d9eddf3f7b0b0eb97406cfe7805f7a1f1d1a92016fa330491b5586546aa",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 3: счёт 3:0",
+        "evidence": "Судья отдаёт раунд Али набором баллов — счёт 3:0."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "b0bcd26b9a1da48abbf58ddfe82b71e144c9f6dc7828432cec2b4eb673cd4b5d",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 4: порез в клинче",
+        "evidence": "В четвёртом раунде в конце клинча обсуждают фиксацию клинка: предплечьем дожали до корпуса — хороший порез."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "8f91634957755703ed3a34109ba3e8b02eadfbee86e66d5bddd3470ee25fbaa4",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 5: локти без пореза",
+        "evidence": "Следующий эпизод: давление лезвием без фиксации, клинч локтями — фазы пореза не было, раунд без баллов."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "fc35a61bf1997302fed52eb62ed39e9bb128e38a113adec3e67f762166633af2",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nРаунд 6: доведённый укол",
+        "evidence": "Спор: промах или укол? Судьи сходятся — доведённый укол, раунд за Али."
+      }
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "fe3f2fc587309cd746c973803bba3ae431f6e6f6f8845ea6363dfcb90c3f7642",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Али — Тимирбат\nпобеда Али 4:1",
+        "evidence": "Итог матча: Али выигрывает со счётом 4:1 в раундах."
+      }
+    }
+  ]
+}

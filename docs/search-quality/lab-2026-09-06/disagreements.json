@@ -1,0 +1,2210 @@
+[
+  {
+    "task": "h01:archive",
+    "system": "current",
+    "ms": 208.32640000000174,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 14,
+    "top": [
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:4",
+        "score": 61.12180529894601
+      },
+      {
+        "id": "agents-week-2026-1-1-intro-ai-agents-llm:additional:Глоссарий: Контекстное окно",
+        "score": 40.57889801423538
+      },
+      {
+        "id": "fehtovat-dolgo-ne-travmirovatsya:chapter:2",
+        "score": 39.252534292812825
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:20",
+        "score": 34.419956738917776
+      },
+      {
+        "id": "kompresiya-taktiki-lektsiya:chapter:1",
+        "score": 33.06121997974018
+      },
+      {
+        "id": "kompresiya-taktiki-lektsiya:chapter:3",
+        "score": 31.550551815216227
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:14",
+        "score": 31.372817582859266
+      },
+      {
+        "id": "agents-week-2026-1-1-intro-ai-agents-llm:chapter:8",
+        "score": 31.136115354976898
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-4:chapter:9",
+        "score": 30.91933749184832
+      },
+      {
+        "id": "biomehanika-i-myshechnye-rychagi:chapter:10",
+        "score": 29.421386219737784
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h01",
+    "query": "Почему модель с большим окном забывает середину разговора?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h07:archive",
+    "system": "current",
+    "ms": 258.94650000000183,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 13,
+    "top": [
+      {
+        "id": "avstriyskaya-sablya-2:chapter:3",
+        "score": 91.04850719746746
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:5",
+        "score": 90.20807649838962
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:3",
+        "score": 81.13633754809125
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:report",
+        "score": 79.64270020098542
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:additional:Конспект: Проблема, которую решают",
+        "score": 66.15089445734269
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:4",
+        "score": 56.402436265173314
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:overview",
+        "score": 55.591151265413664
+      },
+      {
+        "id": "trenerskiy-kurs-3-planirovanie-zanyatiy:chapter:11",
+        "score": 53.76360937357017
+      },
+      {
+        "id": "gruppa-a-1-vvodnaya:chapter:2",
+        "score": 53.16723019733582
+      },
+      {
+        "id": "kinezio-trenirovka-5-plechevoy-poyas:chapter:6",
+        "score": 52.36950466350523
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h07",
+    "query": "Почему дополнительная разминка не решает боль в суставе?",
+    "split": "holdout",
+    "family": "h07",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h10:archive",
+    "system": "current",
+    "ms": 289.05159999999887,
+    "rank": 2,
+    "hit1": 0,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 0.5,
+    "ndcg10": 0.43734888382569426,
+    "recall10": 0.6666666666666666,
+    "returned": 13,
+    "top": [
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:additional:Глоссарий: Реакция выбора",
+        "score": 145.9758035807414
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:5",
+        "score": 121.83976520364854
+      },
+      {
+        "id": "sablya-vvodnaya:chapter:6",
+        "score": 103.0488285742608
+      },
+      {
+        "id": "manevrovo-atakuyushchiy-stil:chapter:9",
+        "score": 87.20363020217327
+      },
+      {
+        "id": "manevrovo-oboronitelnyi-tip:additional:Конспект: Решение по реакции",
+        "score": 75.19143409760395
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:report",
+        "score": 71.34603348510532
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-2-utro:chapter:17",
+        "score": 64.96196537263779
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:report",
+        "score": 64.83630311477161
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:6",
+        "score": 60.32739652994833
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:chapter:4",
+        "score": 60.223811841912905
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h10",
+    "query": "Чем заранее решённое действие отличается от реакции по ходу боя?",
+    "split": "holdout",
+    "family": "h10",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h14:archive",
+    "system": "current",
+    "ms": 95.95300000000134,
+    "rank": 2,
+    "hit1": 0,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 0.5,
+    "ndcg10": 0.6309297535714575,
+    "recall10": 1,
+    "returned": 11,
+    "top": [
+      {
+        "id": "sablya-vvodnaya:chapter:6",
+        "score": 178.05774865194178
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:18",
+        "score": 79.4382088692977
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:additional:Глоссарий: pass@k",
+        "score": 42.63017716016965
+      },
+      {
+        "id": "osnovnye-anabolicheskie-gormony:chapter:0",
+        "score": 24.63218301505358
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:71",
+        "score": 24.171280279327917
+      },
+      {
+        "id": "software-3-0:chapter:16",
+        "score": 23.10470618330913
+      },
+      {
+        "id": "berezhnoy-ai:chapter:18",
+        "score": 22.12387129928242
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:additional:Глоссарий: pass^k",
+        "score": 17.216781890875815
+      },
+      {
+        "id": "software-3-0:chapter:6",
+        "score": 14.43058204997712
+      },
+      {
+        "id": "psihologiya-4-depressivnaya:chapter:17",
+        "score": 13.373485976953441
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h14",
+    "query": "Чем pass@k отличается от pass^k?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h20:archive",
+    "system": "current",
+    "ms": 202.11569999999483,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 12,
+    "top": [
+      {
+        "id": "ukreplenie-stopy-i-golenostopa:chapter:1",
+        "score": 131.0835041944722
+      },
+      {
+        "id": "gormon-myshechnye-vzaimodeystviya:chapter:19",
+        "score": 123.87754223539085
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:18",
+        "score": 116.24092433751142
+      },
+      {
+        "id": "kinezio-trenirovka-5-plechevoy-poyas:chapter:6",
+        "score": 109.92433185770854
+      },
+      {
+        "id": "kinezio-trenirovka-2-stopa-golenostop:chapter:19",
+        "score": 102.8215482811893
+      },
+      {
+        "id": "kinezio-trenirovka-4-kisti-paltsy-lokti:additional:Конспект: Как дозировать нагрузку",
+        "score": 95.46109133150279
+      },
+      {
+        "id": "kinezio-trenirovka-4-kisti-paltsy-lokti:chapter:11",
+        "score": 85.36381791392418
+      },
+      {
+        "id": "kinezio-trenirovka-4-kisti-paltsy-lokti:chapter:18",
+        "score": 65.71092959762728
+      },
+      {
+        "id": "gruppa-b-5-kakari-keiko:chapter:14",
+        "score": 62.83357884631778
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+        "score": 61.17853907201078
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h20",
+    "query": "Почему вес гантели не равен нагрузке на мышцу?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "q11-paraphrase:archive",
+    "system": "current",
+    "ms": 122.18309999999474,
+    "rank": 6,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0.16666666666666666,
+    "ndcg10": 0.3562071871080222,
+    "recall10": 1,
+    "returned": 10,
+    "top": [
+      {
+        "id": "kinezio-trenirovka-2-stopa-golenostop:chapter:22",
+        "score": 30.29289826273474
+      },
+      {
+        "id": "avstriyskaya-sablya-obratnoe-lezvie:chapter:20",
+        "score": 26.408461400943434
+      },
+      {
+        "id": "kinezio-trenirovka-5-plechevoy-poyas:chapter:29",
+        "score": 23.227151717362684
+      },
+      {
+        "id": "vibe-coding-lovushki-myshleniya:chapter:12",
+        "score": 22.34386123441694
+      },
+      {
+        "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:3",
+        "score": 21.194162755707943
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:13",
+        "score": 20.403561646711672
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:12",
+        "score": 19.836126130484494
+      },
+      {
+        "id": "avstriyskaya-sablya-2:chapter:0",
+        "score": 18.401672279991477
+      },
+      {
+        "id": "mcwilliams-10-aspects:chapter:4",
+        "score": 17.20707950752451
+      },
+      {
+        "id": "mech-i-bakler-mikrotsikl-1-osnovy:report",
+        "score": 16.200787894801895
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "q11-paraphrase",
+    "query": "Сеты и повторы для ребёнка: какие числа взять за основу?",
+    "split": "development",
+    "family": "q11",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h01-paraphrase:archive",
+    "system": "current",
+    "ms": 211.85059999999794,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 15,
+    "top": [
+      {
+        "id": "context-engineering-29min:chapter:2",
+        "score": 86.83973252817677
+      },
+      {
+        "id": "rabota-paltsev-pri-prostoy-atake:chapter:5",
+        "score": 44.938112936124085
+      },
+      {
+        "id": "podlodka-slm-468:chapter:22",
+        "score": 42.92417753966137
+      },
+      {
+        "id": "podlodka-naim-ai-482:chapter:22",
+        "score": 37.371709868102194
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+        "score": 35.10385526492053
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:10",
+        "score": 34.046161164444165
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:8",
+        "score": 29.682277538238644
+      },
+      {
+        "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:7",
+        "score": 28.894098187086946
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:chapter:20",
+        "score": 28.21256212672153
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:4",
+        "score": 26.671953918522096
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h01-paraphrase",
+    "query": "Начало помнит, конец помнит, а данные посередине потерялись. Почему?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h08-paraphrase:archive",
+    "system": "current",
+    "ms": 403.24809999999707,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 12,
+    "top": [
+      {
+        "id": "agents-week-2026-1-1-intro-ai-agents-llm:chapter:14",
+        "score": 72.39499804429344
+      },
+      {
+        "id": "podgotovka-ataki-na-sable-korotovskih:chapter:13",
+        "score": 51.698993486816455
+      },
+      {
+        "id": "protivnik-fehtuet-nepravilno:chapter:13",
+        "score": 46.9096671592995
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-3:chapter:8",
+        "score": 44.25677328802787
+      },
+      {
+        "id": "ukol-po-centralnoy-linii:chapter:8",
+        "score": 42.71493774948273
+      },
+      {
+        "id": "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:14",
+        "score": 41.719314652708775
+      },
+      {
+        "id": "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:11",
+        "score": 40.53050929966073
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:13",
+        "score": 39.549669561749994
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:7",
+        "score": 38.473154002131906
+      },
+      {
+        "id": "kontseptsiya-monitoringa:chapter:0",
+        "score": 37.38876877917013
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h08-paraphrase",
+    "query": "Приём побеждает соперника, но суставам от него плохо. Такое возможно?",
+    "split": "holdout",
+    "family": "h08",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h14-paraphrase:archive",
+    "system": "current",
+    "ms": 193.60089999999764,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 12,
+    "top": [
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:18",
+        "score": 160.80133141878156
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:9",
+        "score": 113.75158235675336
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:5",
+        "score": 66.86803770079436
+      },
+      {
+        "id": "vid-20260708-200742:additional:Конспект: Как должен работать монитор",
+        "score": 48.09137083086
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:16",
+        "score": 45.94339395600672
+      },
+      {
+        "id": "trenerskoe-sobranie-dva-zala:chapter:8",
+        "score": 43.9341913948988
+      },
+      {
+        "id": "tri-rezhima-myshechnogo-deystviya:chapter:6",
+        "score": 43.50016516817711
+      },
+      {
+        "id": "motivatsiya-vnimanie-fokus-v-sporte:chapter:3",
+        "score": 43.46398573738505
+      },
+      {
+        "id": "psihologiya-3-isterechnaya:chapter:25",
+        "score": 43.09333898254265
+      },
+      {
+        "id": "agents-week-2026-5-1-production-engineering:chapter:14",
+        "score": 36.24858759145982
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h14-paraphrase",
+    "query": "Как отличить успех хотя бы одной попытки от успеха каждой попытки?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h16-paraphrase:archive",
+    "system": "current",
+    "ms": 341.82590000000346,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 14,
+    "top": [
+      {
+        "id": "laktatnyi-porog-bioenergetika:chapter:6",
+        "score": 65.01047032231978
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:87",
+        "score": 50.13602089483516
+      },
+      {
+        "id": "silovye-porezy-katanoy:chapter:10",
+        "score": 50.01118886753738
+      },
+      {
+        "id": "laktatnyi-porog-bioenergetika:chapter:15",
+        "score": 42.02234910494791
+      },
+      {
+        "id": "printsipy-silovoy-konditsionnoy-podgotovki:chapter:6",
+        "score": 35.45489577492804
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-5-povtorenie:chapter:23",
+        "score": 33.24298269275413
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:chapter:19",
+        "score": 31.701901800632807
+      },
+      {
+        "id": "neyronnye-adaptatsii-k-anaerobnoy-trenirovke:chapter:27",
+        "score": 29.659795821568753
+      },
+      {
+        "id": "agents-week-2026-1-1-intro-ai-agents-llm:chapter:18",
+        "score": 29.065372278407967
+      },
+      {
+        "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:2",
+        "score": 26.662060104464764
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h16-paraphrase",
+    "query": "Можно всем спортсменам поставить одну и ту же границу 4 ммоль/л?",
+    "split": "holdout",
+    "family": "h16",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h20-paraphrase:archive",
+    "system": "current",
+    "ms": 311.489800000003,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 11,
+    "top": [
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:4",
+        "score": 129.81589494393475
+      },
+      {
+        "id": "kinezio-trenirovka-2-stopa-golenostop:chapter:19",
+        "score": 127.4820371938451
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:51",
+        "score": 83.58006677859996
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:0",
+        "score": 74.56698852445645
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:19",
+        "score": 71.00370929337424
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:22",
+        "score": 63.76022151245325
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:21",
+        "score": 58.65347556302328
+      },
+      {
+        "id": "struktura-i-funktsiya-myshtsy:chapter:8",
+        "score": 53.10026086010275
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:1",
+        "score": 50.11488464518616
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:9",
+        "score": 46.38851957155916
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h20-paraphrase",
+    "query": "Почему маленький снаряд требует от мышц гораздо большего усилия?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h23-paraphrase:archive",
+    "system": "current",
+    "ms": 126.48059999999532,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 10,
+    "top": [
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:5",
+        "score": 51.79030884345893
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:71",
+        "score": 45.7212715782918
+      },
+      {
+        "id": "sablya-a-7:chapter:2",
+        "score": 42.4569060216435
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:66",
+        "score": 42.299650147867474
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:53",
+        "score": 33.91163535136631
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:63",
+        "score": 33.056228648637045
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:0",
+        "score": 23.453689178873628
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:54",
+        "score": 21.202949667822633
+      },
+      {
+        "id": "kinezio-trenirovka-2-stopa-golenostop:chapter:16",
+        "score": 21.1525707746348
+      },
+      {
+        "id": "osnovnye-anabolicheskie-gormony:chapter:5",
+        "score": 20.945190685212264
+      }
+    ],
+    "matchKind": "semantic",
+    "queryId": "h23-paraphrase",
+    "query": "Закончил тяжёлую серию: замереть или немного походить?",
+    "split": "holdout",
+    "family": "h23",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h01:archive",
+    "system": "e5-dense",
+    "ms": 0.5572999998548767,
+    "rank": 2,
+    "hit1": 0,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 0.5,
+    "ndcg10": 0.6309297535714575,
+    "recall10": 1,
+    "returned": 100,
+    "top": [
+      {
+        "id": "agents-week-2026-2-memory-guardrails-lecture:chapter:12",
+        "score": 0.8462480306625366
+      },
+      {
+        "id": "context-engineering-29min:chapter:2",
+        "score": 0.8406347036361694
+      },
+      {
+        "id": "podlodka-slm-468:chapter:18",
+        "score": 0.8342650532722473
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-seminar:chapter:12",
+        "score": 0.8320052623748779
+      },
+      {
+        "id": "podlodka-slm-468:chapter:22",
+        "score": 0.8311973810195923
+      },
+      {
+        "id": "context-engineering-29min:chapter:0",
+        "score": 0.8297022581100464
+      },
+      {
+        "id": "podlodka-slm-468:chapter:9",
+        "score": 0.8287637829780579
+      },
+      {
+        "id": "podlodka-slm-468:chapter:0",
+        "score": 0.8284909725189209
+      },
+      {
+        "id": "psihologiya-tyazhest-klinicheskaya:chapter:26",
+        "score": 0.8271402716636658
+      },
+      {
+        "id": "podlodka-slm-468:chapter:8",
+        "score": 0.8268359899520874
+      }
+    ],
+    "queryId": "h01",
+    "query": "Почему модель с большим окном забывает середину разговора?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h07:archive",
+    "system": "e5-dense",
+    "ms": 0.5658999998559011,
+    "rank": 20,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:10",
+        "score": 0.8586910367012024
+      },
+      {
+        "id": "silovaya-trenirovka-pozhilyh:chapter:7",
+        "score": 0.8584926128387451
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:3",
+        "score": 0.8549973964691162
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:5",
+        "score": 0.8546739816665649
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:22",
+        "score": 0.8525986075401306
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:13",
+        "score": 0.8520716428756714
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:1",
+        "score": 0.8481639623641968
+      },
+      {
+        "id": "gruppa-a-1-vvodnaya:chapter:2",
+        "score": 0.8458192944526672
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:16",
+        "score": 0.8452566862106323
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:25",
+        "score": 0.8448442816734314
+      }
+    ],
+    "queryId": "h07",
+    "query": "Почему дополнительная разминка не решает боль в суставе?",
+    "split": "holdout",
+    "family": "h07",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h10:archive",
+    "system": "e5-dense",
+    "ms": 0.5715999996027676,
+    "rank": 7,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0.14285714285714285,
+    "ndcg10": 0.15642624200758548,
+    "recall10": 0.3333333333333333,
+    "returned": 100,
+    "top": [
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:1",
+        "score": 0.8523392677307129
+      },
+      {
+        "id": "silovye-porezy-katanoy:chapter:6",
+        "score": 0.8371635675430298
+      },
+      {
+        "id": "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:4",
+        "score": 0.8281909227371216
+      },
+      {
+        "id": "obuchenie-situatsiya-subtaktika:chapter:1",
+        "score": 0.8277093172073364
+      },
+      {
+        "id": "sablya-12:chapter:2",
+        "score": 0.8271381855010986
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:2",
+        "score": 0.8263189792633057
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:7",
+        "score": 0.8253952860832214
+      },
+      {
+        "id": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:chapter:3",
+        "score": 0.824306309223175
+      },
+      {
+        "id": "podgotovka-ataki-na-sable-korotovskih:chapter:8",
+        "score": 0.8241980075836182
+      },
+      {
+        "id": "gruppa-b-3-vybor-zony-i-distantsii-v-atake:chapter:11",
+        "score": 0.8241048455238342
+      }
+    ],
+    "queryId": "h10",
+    "query": "Чем заранее решённое действие отличается от реакции по ходу боя?",
+    "split": "holdout",
+    "family": "h10",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h14:archive",
+    "system": "e5-dense",
+    "ms": 0.5657000001519918,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 100,
+    "top": [
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:18",
+        "score": 0.872685432434082
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-seminar:chapter:15",
+        "score": 0.8172792196273804
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:11",
+        "score": 0.81538325548172
+      },
+      {
+        "id": "podlodka-vector-search:chapter:3",
+        "score": 0.8149774670600891
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:17",
+        "score": 0.8111648559570312
+      },
+      {
+        "id": "agents-week-2026-3-workflow-multi-agent-multimodality-seminar:chapter:12",
+        "score": 0.810717761516571
+      },
+      {
+        "id": "longsword-a:chapter:12",
+        "score": 0.8090139031410217
+      },
+      {
+        "id": "fehtovanie-s-prioritetom-v-atake-korotovskih:chapter:3",
+        "score": 0.8079540729522705
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:10",
+        "score": 0.8057804107666016
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:4",
+        "score": 0.8057529330253601
+      }
+    ],
+    "queryId": "h14",
+    "query": "Чем pass@k отличается от pass^k?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h20:archive",
+    "system": "e5-dense",
+    "ms": 0.5416000003606314,
+    "rank": 4,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 1,
+    "mrr10": 0.25,
+    "ndcg10": 0.43067655807339306,
+    "recall10": 1,
+    "returned": 100,
+    "top": [
+      {
+        "id": "faktory-myshechnoy-sily-i-moshchnosti:chapter:10",
+        "score": 0.8477742671966553
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:18",
+        "score": 0.8472018241882324
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:18",
+        "score": 0.8436977863311768
+      },
+      {
+        "id": "biomehanika-i-myshechnye-rychagi:chapter:11",
+        "score": 0.843501627445221
+      },
+      {
+        "id": "faktory-myshechnoy-sily-i-moshchnosti:chapter:8",
+        "score": 0.8432821035385132
+      },
+      {
+        "id": "kinezio-trenirovka-4-kisti-paltsy-lokti:chapter:16",
+        "score": 0.842634916305542
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:22",
+        "score": 0.8411989212036133
+      },
+      {
+        "id": "tri-rezhima-myshechnogo-deystviya:chapter:4",
+        "score": 0.8406939506530762
+      },
+      {
+        "id": "trenirovka-muzhchin-i-zhenshchin:chapter:2",
+        "score": 0.8386006355285645
+      },
+      {
+        "id": "faktory-myshechnoy-sily-i-moshchnosti:chapter:9",
+        "score": 0.8381086587905884
+      }
+    ],
+    "queryId": "h20",
+    "query": "Почему вес гантели не равен нагрузке на мышцу?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "q11-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.6033000008756062,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 100,
+    "top": [
+      {
+        "id": "silovaya-trenirovka-detey:chapter:13",
+        "score": 0.8390267491340637
+      },
+      {
+        "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:3",
+        "score": 0.8333255052566528
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:2",
+        "score": 0.8294615745544434
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:7",
+        "score": 0.8248165249824524
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:5",
+        "score": 0.8230569362640381
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:12",
+        "score": 0.8223179578781128
+      },
+      {
+        "id": "trenerskoe-sobranie-novyi-zal-chast-2:chapter:4",
+        "score": 0.8220223188400269
+      },
+      {
+        "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:4",
+        "score": 0.8219221234321594
+      },
+      {
+        "id": "silovaya-plan-hema:chapter:12",
+        "score": 0.8217140436172485
+      },
+      {
+        "id": "trenerskiy-kurs-3-planirovanie-zanyatiy:chapter:9",
+        "score": 0.8207659721374512
+      }
+    ],
+    "queryId": "q11-paraphrase",
+    "query": "Сеты и повторы для ребёнка: какие числа взять за основу?",
+    "split": "development",
+    "family": "q11",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h01-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5426999996416271,
+    "rank": 13,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "vibe-coding-lovushki-myshleniya:chapter:12",
+        "score": 0.8484026193618774
+      },
+      {
+        "id": "podlodka-naim-ai-482:chapter:22",
+        "score": 0.8448566198348999
+      },
+      {
+        "id": "vibe-coding-lovushki-myshleniya:chapter:7",
+        "score": 0.8430364727973938
+      },
+      {
+        "id": "podlodka-vector-search:chapter:20",
+        "score": 0.8398798108100891
+      },
+      {
+        "id": "berezhnoy-ai:chapter:26",
+        "score": 0.8397926092147827
+      },
+      {
+        "id": "podlodka-vector-search:chapter:21",
+        "score": 0.8394457697868347
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-lecture:chapter:12",
+        "score": 0.8378955721855164
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:3",
+        "score": 0.8370348811149597
+      },
+      {
+        "id": "kontseptsiya-monitoringa:chapter:5",
+        "score": 0.8369522094726562
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:6",
+        "score": 0.8369485139846802
+      }
+    ],
+    "queryId": "h01-paraphrase",
+    "query": "Начало помнит, конец помнит, а данные посередине потерялись. Почему?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h08-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5481000007421244,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "protivnik-fehtuet-nepravilno:chapter:7",
+        "score": 0.8424516320228577
+      },
+      {
+        "id": "2026-06-20-18-43-53:chapter:3",
+        "score": 0.8402410745620728
+      },
+      {
+        "id": "2026-06-20-18-43-53:chapter:1",
+        "score": 0.8401985168457031
+      },
+      {
+        "id": "trenirovka-muzhchin-i-zhenshchin:chapter:3",
+        "score": 0.8373968601226807
+      },
+      {
+        "id": "kendzyu-sparring-oleg-golub:chapter:1",
+        "score": 0.836448073387146
+      },
+      {
+        "id": "2026-06-20-185936:chapter:2",
+        "score": 0.8361310362815857
+      },
+      {
+        "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:6",
+        "score": 0.8354921340942383
+      },
+      {
+        "id": "sablya-10:chapter:2",
+        "score": 0.8346804976463318
+      },
+      {
+        "id": "sudya-gayd-dlya-nachinayushchikh:chapter:15",
+        "score": 0.8345370292663574
+      },
+      {
+        "id": "podgotovka-ataki-na-sable-korotovskih:chapter:11",
+        "score": 0.8342955708503723
+      }
+    ],
+    "queryId": "h08-paraphrase",
+    "query": "Приём побеждает соперника, но суставам от него плохо. Такое возможно?",
+    "split": "holdout",
+    "family": "h08",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h14-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5534000001716777,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "motivatsiya-vnimanie-fokus-v-sporte:chapter:3",
+        "score": 0.8445353507995605
+      },
+      {
+        "id": "sudya-gayd-dlya-nachinayushchikh:chapter:15",
+        "score": 0.835390031337738
+      },
+      {
+        "id": "vibe-coding-lovushki-myshleniya:chapter:14",
+        "score": 0.8320733308792114
+      },
+      {
+        "id": "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:8",
+        "score": 0.8315098881721497
+      },
+      {
+        "id": "motivatsiya-vnimanie-fokus-v-sporte:chapter:2",
+        "score": 0.8299072980880737
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:15",
+        "score": 0.8294986486434937
+      },
+      {
+        "id": "sudya-gayd-dlya-nachinayushchikh:chapter:3",
+        "score": 0.8291000127792358
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:5",
+        "score": 0.8290905952453613
+      },
+      {
+        "id": "subtaktika-teh-realizacii:chapter:7",
+        "score": 0.8290902376174927
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-seminar:chapter:16",
+        "score": 0.82887202501297
+      }
+    ],
+    "queryId": "h14-paraphrase",
+    "query": "Как отличить успех хотя бы одной попытки от успеха каждой попытки?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h16-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5776999996669474,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 100,
+    "top": [
+      {
+        "id": "laktatnyi-porog-bioenergetika:chapter:6",
+        "score": 0.8566632270812988
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:14",
+        "score": 0.8344829678535461
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:12",
+        "score": 0.8318909406661987
+      },
+      {
+        "id": "sem-dvigatelnyh-patternov:chapter:8",
+        "score": 0.8316413760185242
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:11",
+        "score": 0.8296182155609131
+      },
+      {
+        "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:5",
+        "score": 0.8283003568649292
+      },
+      {
+        "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:12",
+        "score": 0.8279562592506409
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:8",
+        "score": 0.8265721797943115
+      },
+      {
+        "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:7",
+        "score": 0.8256563544273376
+      },
+      {
+        "id": "trenerskiy-kurs-4-tekhnika-bezopasnosti:chapter:2",
+        "score": 0.8251701593399048
+      }
+    ],
+    "queryId": "h16-paraphrase",
+    "query": "Можно всем спортсменам поставить одну и ту же границу 4 ммоль/л?",
+    "split": "holdout",
+    "family": "h16",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h20-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5385000004025642,
+    "rank": 60,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:5",
+        "score": 0.8623257875442505
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:22",
+        "score": 0.8491365909576416
+      },
+      {
+        "id": "faktory-myshechnoy-sily-i-moshchnosti:chapter:7",
+        "score": 0.846565842628479
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:7",
+        "score": 0.8455698490142822
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:2",
+        "score": 0.8450552225112915
+      },
+      {
+        "id": "tenouti-i-tyakin-sibori:chapter:1",
+        "score": 0.8430727124214172
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:5",
+        "score": 0.842418372631073
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:8",
+        "score": 0.8424137830734253
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:9",
+        "score": 0.8418197631835938
+      },
+      {
+        "id": "avstriyskaya-sablya-2:chapter:7",
+        "score": 0.8414775133132935
+      }
+    ],
+    "queryId": "h20-paraphrase",
+    "query": "Почему маленький снаряд требует от мышц гораздо большего усилия?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h23-paraphrase:archive",
+    "system": "e5-dense",
+    "ms": 0.5686999993486097,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 100,
+    "top": [
+      {
+        "id": "gruppa-b-5-kakari-keiko:chapter:18",
+        "score": 0.8119298219680786
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:75",
+        "score": 0.8084461688995361
+      },
+      {
+        "id": "2026-06-20-18-43-53:chapter:1",
+        "score": 0.8082394599914551
+      },
+      {
+        "id": "kendzyu-sparring-ali-andrey:chapter:0",
+        "score": 0.8077875375747681
+      },
+      {
+        "id": "woodcreek-ch1:chapter:10",
+        "score": 0.8067299723625183
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:5",
+        "score": 0.8064604997634888
+      },
+      {
+        "id": "psihologiya-tyazhest-klinicheskaya:chapter:5",
+        "score": 0.8060770034790039
+      },
+      {
+        "id": "psihologiya-tyazhest-klinicheskaya:chapter:14",
+        "score": 0.8048268556594849
+      },
+      {
+        "id": "fedotikov-mironov:chapter:8",
+        "score": 0.8045623302459717
+      },
+      {
+        "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:7",
+        "score": 0.8040891289710999
+      }
+    ],
+    "queryId": "h23-paraphrase",
+    "query": "Закончил тяжёлую серию: замереть или немного походить?",
+    "split": "holdout",
+    "family": "h23",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h01:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "context-engineering-29min:chapter:2",
+        "score": -0.7479214668273926
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-lecture:chapter:12",
+        "score": -1.0823564529418945
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-seminar:chapter:5",
+        "score": -1.7907730340957642
+      },
+      {
+        "id": "podlodka-slm-468:chapter:18",
+        "score": -2.272617816925049
+      },
+      {
+        "id": "kompresiya-taktiki-lektsiya:chapter:6",
+        "score": -2.2938973903656006
+      },
+      {
+        "id": "podlodka-slm-468:chapter:22",
+        "score": -2.4645497798919678
+      },
+      {
+        "id": "agents-week-2026-1-1-intro-ai-agents-llm:chapter:7",
+        "score": -2.5453104972839355
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:chapter:18",
+        "score": -2.5795414447784424
+      },
+      {
+        "id": "agents-week-2026-3-workflow-multi-agent-multimodality-lecture:chapter:7",
+        "score": -2.6455085277557373
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:chapter:17",
+        "score": -2.6469390392303467
+      }
+    ],
+    "queryId": "h01",
+    "query": "Почему модель с большим окном забывает середину разговора?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h07:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 9,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0.1111111111111111,
+    "ndcg10": 0.18457569677956817,
+    "recall10": 0.5,
+    "returned": 20,
+    "top": [
+      {
+        "id": "silovaya-trenirovka-pozhilyh:chapter:7",
+        "score": -0.6768738627433777
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:14",
+        "score": -0.9983089566230774
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:10",
+        "score": -1.2939938306808472
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:0",
+        "score": -1.3395663499832153
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:2",
+        "score": -1.4444270133972168
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:22",
+        "score": -1.5038681030273438
+      },
+      {
+        "id": "gruppa-a-1-vvodnaya:chapter:2",
+        "score": -1.5429049730300903
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:1",
+        "score": -1.5573831796646118
+      },
+      {
+        "id": "fehtovat-dolgo-ne-travmirovatsya:chapter:4",
+        "score": -1.5877164602279663
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:9",
+        "score": -1.5981525182724
+      }
+    ],
+    "queryId": "h07",
+    "query": "Почему дополнительная разминка не решает боль в суставе?",
+    "split": "holdout",
+    "family": "h07",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h10:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 2,
+    "hit1": 0,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 0.5,
+    "ndcg10": 0.6797310500037655,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:1",
+        "score": -0.41101595759391785
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:6",
+        "score": -0.6072174906730652
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:4",
+        "score": -0.7458325624465942
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:7",
+        "score": -0.8599373698234558
+      },
+      {
+        "id": "hema-prednamerennye-ekspromtnye:chapter:5",
+        "score": -0.9992467761039734
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-1:chapter:13",
+        "score": -1.5114834308624268
+      },
+      {
+        "id": "podgotovka-ataki-na-sable-korotovskih:chapter:8",
+        "score": -1.5942919254302979
+      },
+      {
+        "id": "kompresiya-taktiki-lektsiya:chapter:2",
+        "score": -1.669138789176941
+      },
+      {
+        "id": "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:4",
+        "score": -1.6728925704956055
+      },
+      {
+        "id": "sablya-a-5:chapter:4",
+        "score": -1.7034052610397339
+      }
+    ],
+    "queryId": "h10",
+    "query": "Чем заранее решённое действие отличается от реакции по ходу боя?",
+    "split": "holdout",
+    "family": "h10",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h14:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:18",
+        "score": 0.39752137660980225
+      },
+      {
+        "id": "sablya-vvodnaya:chapter:6",
+        "score": -2.5328879356384277
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:71",
+        "score": -2.7819507122039795
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:10",
+        "score": -2.8696377277374268
+      },
+      {
+        "id": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:chapter:4",
+        "score": -2.9216256141662598
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:5",
+        "score": -2.9665961265563965
+      },
+      {
+        "id": "fehtovanie-s-prioritetom-v-atake-korotovskih:chapter:3",
+        "score": -3.007798910140991
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:4",
+        "score": -3.141594886779785
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:8",
+        "score": -3.1589362621307373
+      },
+      {
+        "id": "agents-week-2026-3-workflow-multi-agent-multimodality-seminar:chapter:12",
+        "score": -3.173229455947876
+      }
+    ],
+    "queryId": "h14",
+    "query": "Чем pass@k отличается от pass^k?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "h20:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "biomehanika-i-myshechnye-rychagi:chapter:11",
+        "score": -1.2551792860031128
+      },
+      {
+        "id": "gormon-myshechnye-vzaimodeystviya:chapter:19",
+        "score": -1.6091437339782715
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:18",
+        "score": -1.8000606298446655
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:15",
+        "score": -2.0612969398498535
+      },
+      {
+        "id": "kinezio-trenirovka-4-kisti-paltsy-lokti:chapter:16",
+        "score": -2.275902271270752
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:20",
+        "score": -2.311673879623413
+      },
+      {
+        "id": "kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka:chapter:9",
+        "score": -2.312746286392212
+      },
+      {
+        "id": "kinezio-trenirovka-3-tazobedrennyy-sustav:chapter:18",
+        "score": -2.3141684532165527
+      },
+      {
+        "id": "tri-rezhima-myshechnogo-deystviya:chapter:3",
+        "score": -2.343634843826294
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:23",
+        "score": -2.5597097873687744
+      }
+    ],
+    "queryId": "h20",
+    "query": "Почему вес гантели не равен нагрузке на мышцу?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "natural",
+    "scope": "archive"
+  },
+  {
+    "task": "q11-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "silovaya-trenirovka-detey:chapter:13",
+        "score": -0.6575145125389099
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:49",
+        "score": -2.1651623249053955
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:81",
+        "score": -2.219320058822632
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:5",
+        "score": -2.2525794506073
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:42",
+        "score": -2.3285505771636963
+      },
+      {
+        "id": "agents-week-2026-3-workflow-multi-agent-multimodality-seminar:chapter:13",
+        "score": -2.6029703617095947
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:5",
+        "score": -2.9426932334899902
+      },
+      {
+        "id": "trenerstvo-2-zadachi-uprazhneniya:chapter:3",
+        "score": -2.9953060150146484
+      },
+      {
+        "id": "silovaya-trenirovka-detey:chapter:9",
+        "score": -3.044969081878662
+      },
+      {
+        "id": "deti-ne-malenkie-vzroslye:chapter:7",
+        "score": -3.05713152885437
+      }
+    ],
+    "queryId": "q11-paraphrase",
+    "query": "Сеты и повторы для ребёнка: какие числа взять за основу?",
+    "split": "development",
+    "family": "q11",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h01-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "context-engineering-29min:chapter:2",
+        "score": 0.547636091709137
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:9",
+        "score": -1.029114842414856
+      },
+      {
+        "id": "vibe-coding-lovushki-myshleniya:chapter:12",
+        "score": -1.5829720497131348
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-lecture:chapter:12",
+        "score": -1.8464690446853638
+      },
+      {
+        "id": "agents-week-2026-2-memory-guardrails-seminar:chapter:5",
+        "score": -1.9026554822921753
+      },
+      {
+        "id": "llm-deep-dive-karpathy:chapter:13",
+        "score": -1.9790127277374268
+      },
+      {
+        "id": "fedotikov-mironov:chapter:8",
+        "score": -2.4387733936309814
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:3",
+        "score": -2.51584792137146
+      },
+      {
+        "id": "biomehanika-i-myshechnye-rychagi:chapter:2",
+        "score": -2.533261775970459
+      },
+      {
+        "id": "podlodka-vector-search:chapter:21",
+        "score": -2.61118483543396
+      }
+    ],
+    "queryId": "h01-paraphrase",
+    "query": "Начало помнит, конец помнит, а данные посередине потерялись. Почему?",
+    "split": "holdout",
+    "family": "h01",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h08-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 20,
+    "top": [
+      {
+        "id": "podgotovka-ataki-na-sable-korotovskih:chapter:4",
+        "score": -1.0446720123291016
+      },
+      {
+        "id": "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:11",
+        "score": -1.5123461484909058
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:16",
+        "score": -1.6735907793045044
+      },
+      {
+        "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:5",
+        "score": -1.7927075624465942
+      },
+      {
+        "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:2",
+        "score": -1.8724981546401978
+      },
+      {
+        "id": "2026-06-20-18-43-53:chapter:1",
+        "score": -2.061493396759033
+      },
+      {
+        "id": "protivnik-fehtuet-nepravilno:chapter:7",
+        "score": -2.230396032333374
+      },
+      {
+        "id": "2026-06-20-18-43-53:chapter:3",
+        "score": -2.2752249240875244
+      },
+      {
+        "id": "sablya-10:chapter:8",
+        "score": -2.44966983795166
+      },
+      {
+        "id": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:chapter:5",
+        "score": -2.468501329421997
+      }
+    ],
+    "queryId": "h08-paraphrase",
+    "query": "Приём побеждает соперника, но суставам от него плохо. Такое возможно?",
+    "split": "holdout",
+    "family": "h08",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h14-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:18",
+        "score": -0.3838762640953064
+      },
+      {
+        "id": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:9",
+        "score": -1.2218494415283203
+      },
+      {
+        "id": "motivatsiya-vnimanie-fokus-v-sporte:chapter:3",
+        "score": -1.5005874633789062
+      },
+      {
+        "id": "vid-20260708-200742:chapter:6",
+        "score": -1.5898714065551758
+      },
+      {
+        "id": "agents-week-2026-4-agent-evaluation-lecture:chapter:5",
+        "score": -1.8113425970077515
+      },
+      {
+        "id": "dofamin-neyronnye-svyazi-pasha:chapter:15",
+        "score": -2.004685878753662
+      },
+      {
+        "id": "kontseptsiya-monitoringa:chapter:3",
+        "score": -2.0420925617218018
+      },
+      {
+        "id": "ii-dlya-analiza-hema-boev:chapter:2",
+        "score": -2.0692501068115234
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:0",
+        "score": -2.130965232849121
+      },
+      {
+        "id": "motivatsiya-vnimanie-fokus-v-sporte:chapter:2",
+        "score": -2.1620359420776367
+      }
+    ],
+    "queryId": "h14-paraphrase",
+    "query": "Как отличить успех хотя бы одной попытки от успеха каждой попытки?",
+    "split": "holdout",
+    "family": "h14",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h16-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 1,
+    "hit1": 1,
+    "hit3": 1,
+    "hit5": 1,
+    "mrr10": 1,
+    "ndcg10": 1,
+    "recall10": 1,
+    "returned": 20,
+    "top": [
+      {
+        "id": "laktatnyi-porog-bioenergetika:chapter:6",
+        "score": -0.34963080286979675
+      },
+      {
+        "id": "soedinenie-dlinnyi-mech-lager-noname-2-utro:chapter:16",
+        "score": -1.7378348112106323
+      },
+      {
+        "id": "trenerskoe-sobranie-novyi-zal-chast-4:chapter:2",
+        "score": -2.0235819816589355
+      },
+      {
+        "id": "laktatnyi-porog-bioenergetika:chapter:15",
+        "score": -2.1974236965179443
+      },
+      {
+        "id": "tokarev-silovaya-ofp-2:chapter:87",
+        "score": -2.2800703048706055
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:12",
+        "score": -2.469693183898926
+      },
+      {
+        "id": "tsena-adaptatsii-tehnicheskogo-priema:chapter:2",
+        "score": -2.689969062805176
+      },
+      {
+        "id": "metabolicheskaya-spetsifichnost-trenirovki:chapter:4",
+        "score": -2.7321996688842773
+      },
+      {
+        "id": "printsipy-silovoy-konditsionnoy-podgotovki:chapter:6",
+        "score": -2.797703742980957
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:14",
+        "score": -3.009908437728882
+      }
+    ],
+    "queryId": "h16-paraphrase",
+    "query": "Можно всем спортсменам поставить одну и ту же границу 4 ммоль/л?",
+    "split": "holdout",
+    "family": "h16",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h20-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 20,
+    "top": [
+      {
+        "id": "faktory-myshechnoy-sily-i-moshchnosti:chapter:7",
+        "score": -0.7209094762802124
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:1",
+        "score": -1.4732725620269775
+      },
+      {
+        "id": "biomehanika-i-myshechnye-rychagi:chapter:8",
+        "score": -1.6091787815093994
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:6",
+        "score": -1.6941665410995483
+      },
+      {
+        "id": "rabota-paltsev-pri-prostoy-atake:chapter:2",
+        "score": -1.7657361030578613
+      },
+      {
+        "id": "fizpodgotovka-dlya-fekhtovalshchika-turin:chapter:2",
+        "score": -1.9811158180236816
+      },
+      {
+        "id": "kinezio-trenirovka-2-stopa-golenostop:chapter:19",
+        "score": -2.111703395843506
+      },
+      {
+        "id": "silovaya-plan-hema:chapter:11",
+        "score": -2.118445873260498
+      },
+      {
+        "id": "struktura-i-funktsiya-myshtsy:chapter:8",
+        "score": -2.2837905883789062
+      },
+      {
+        "id": "pitanie-i-ves-fekhtovalshchika-turin:chapter:22",
+        "score": -2.3129889965057373
+      }
+    ],
+    "queryId": "h20-paraphrase",
+    "query": "Почему маленький снаряд требует от мышц гораздо большего усилия?",
+    "split": "holdout",
+    "family": "h20",
+    "variant": "paraphrase",
+    "scope": "archive"
+  },
+  {
+    "task": "h23-paraphrase:archive",
+    "system": "rrf-jina-rerank20",
+    "ms": null,
+    "rank": 0,
+    "hit1": 0,
+    "hit3": 0,
+    "hit5": 0,
+    "mrr10": 0,
+    "ndcg10": 0,
+    "recall10": 0,
+    "returned": 20,
+    "top": [
+      {
+        "id": "manevrovo-oboronitelnyi-tip:chapter:7",
+        "score": -1.2663967609405518
+      },
+      {
+        "id": "trenerskiy-kurs-3-planirovanie-zanyatiy:chapter:20",
+        "score": -1.4779983758926392
+      },
+      {
+        "id": "istoschenie-i-vosstanovlenie-substratov:chapter:5",
+        "score": -1.5972529649734497
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:75",
+        "score": -1.7205396890640259
+      },
+      {
+        "id": "trenirovka-muzhchin-i-zhenshchin:chapter:8",
+        "score": -1.8500103950500488
+      },
+      {
+        "id": "kinezio-trenirovka-1-razminka-koordinatsiya:chapter:5",
+        "score": -1.9134238958358765
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:32",
+        "score": -1.9803637266159058
+      },
+      {
+        "id": "gruppa-b-5-kakari-keiko:chapter:18",
+        "score": -2.0045437812805176
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:71",
+        "score": -2.1229615211486816
+      },
+      {
+        "id": "nri-staraya-shahta:chapter:53",
+        "score": -2.1373720169067383
+      }
+    ],
+    "queryId": "h23-paraphrase",
+    "query": "Закончил тяжёлую серию: замереть или немного походить?",
+    "split": "holdout",
+    "family": "h23",
+    "variant": "paraphrase",
+    "scope": "archive"
+  }
+]

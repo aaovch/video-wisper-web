@@ -1,0 +1,99 @@
+{
+  "split": "holdout",
+  "registryHash": "7553329a4383842170ff6a98464d9340629149efef1494ceb9298ec4d8c1cf27",
+  "before": {
+    "loadMs": 3094.3821999999996,
+    "coreGzipBytes": 1659312,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 16,
+        "hit5": 14,
+        "mrr": 0.84375,
+        "p95": 1483.2871000000005
+      },
+      {
+        "scope": "collection",
+        "n": 22,
+        "hit5": 17,
+        "mrr": 0.7304292929292928,
+        "p95": 285.41070000000036
+      },
+      {
+        "scope": "archive",
+        "n": 16,
+        "hit5": 9,
+        "mrr": 0.4578125,
+        "p95": 1992.1425999999992
+      }
+    ],
+    "multi": [
+      {
+        "id": "p-multi-7",
+        "coverage5": 0
+      },
+      {
+        "id": "p-multi-8",
+        "coverage5": 0.5
+      }
+    ],
+    "unsupported": {
+      "n": 2,
+      "nonempty": 2,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "after": {
+    "loadMs": 2525.8282,
+    "coreGzipBytes": 1661127,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 16,
+        "hit5": 14,
+        "mrr": 0.8125,
+        "p95": 799.7736999999997
+      },
+      {
+        "scope": "collection",
+        "n": 22,
+        "hit5": 17,
+        "mrr": 0.7531565656565656,
+        "p95": 192.11709999999948
+      },
+      {
+        "scope": "archive",
+        "n": 16,
+        "hit5": 9,
+        "mrr": 0.5390625,
+        "p95": 2050.0591999999997
+      }
+    ],
+    "multi": [
+      {
+        "id": "p-multi-7",
+        "coverage5": 0
+      },
+      {
+        "id": "p-multi-8",
+        "coverage5": 0.5
+      }
+    ],
+    "unsupported": {
+      "n": 2,
+      "nonempty": 2,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "losses": [],
+  "sourceLosses": [],
+  "collectionGain": 0,
+  "gates": {
+    "collectionGain10pp": false,
+    "noIndividualHit5Loss": true,
+    "noMultiSourceCoverageLoss": true,
+    "coreGzipGrowth20pct": true,
+    "warmP95Growth10pct": true
+  },
+  "caveat": "Same author, incomplete relevance judgments. Node timings are not mobile UX evidence. Holdout results are disclosed once run."
+}

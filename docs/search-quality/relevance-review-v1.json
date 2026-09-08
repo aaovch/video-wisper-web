@@ -1,0 +1,272 @@
+{
+  "protocol": "Same retrieved hits, different documented assessment. This is NOT a search-quality gain or algorithm comparison. Unjudged hits are unknown, not irrelevant.",
+  "indexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+  "reviewSha256": "b08dcf26c5682f44eaf026fdd3e354f3e72c6278eeab08d7369a5536bef5efa5",
+  "captureSha256": "04e9130461e04dbf62d86b783c831fb61ddcf945da301ede889a50e35ad5c6f4",
+  "rows": [
+    {
+      "scope": "archive",
+      "id": "expanded-5-3-original",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "game"
+      ],
+      "unjudged": 5,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+          "title": "Упражнения: Удар, шаг и выпад",
+          "start": 1949.78,
+          "grade": null
+        },
+        {
+          "reportSlug": "vid-20260708-200742",
+          "title": "Группа А — 2. Позиционно-атакующий тип: подготовка атаки перемещениями",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "title": "Упражнения: Подготовки ногами",
+          "start": 2086.86,
+          "grade": null
+        },
+        {
+          "reportSlug": "gruppa-b-2-ataki-fendenti-na-vypade",
+          "title": "Упражнения: Парные упражнения на удар",
+          "start": 1189,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "report",
+      "id": "expanded-5-3-original",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "game"
+      ],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Упражнения: Упражнения семинара",
+          "start": 528.89,
+          "grade": 0
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "title": "Связка удара, защиты и укола",
+          "start": 3698.72,
+          "grade": null
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "title": "Шаффл и смена ведущей ноги",
+          "start": 1268.16,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-1",
+      "originalChapterCoverage5": 0,
+      "reviewedFacetCoverage5": 0,
+      "complete": false,
+      "covered": [],
+      "missing": [
+        "movement",
+        "distortion"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "ataka-prosche-ne-byvaet-udar",
+          "title": "Группа Б — 1. Атака проще не бывает: техника удара",
+          "grade": null
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "title": "Австрийская сабля — тренировка 4: повторение и отработка",
+          "grade": null
+        },
+        {
+          "reportSlug": "ataka-prosche-ne-byvaet-udar",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 9,
+          "title": "Безопасность провоцирующего удара",
+          "start": 1907.7,
+          "grade": null
+        },
+        {
+          "reportSlug": "kontseptsiya-monitoringa",
+          "chapterIndex": 1,
+          "title": "Ошибки прошлой тренировки",
+          "start": 39.1,
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-2",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 1,
+      "complete": true,
+      "covered": [
+        "continuation"
+      ],
+      "missing": [],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+          "chapterIndex": 15,
+          "title": "Ответ на проигранное соединение",
+          "start": 2574.57,
+          "grade": 3
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 2,
+          "title": "Разметка клинка и геометрия контакта",
+          "start": 133.91,
+          "grade": null
+        },
+        {
+          "reportSlug": "fizpodgotovka-dlya-fekhtovalshchika-turin",
+          "chapterIndex": 2,
+          "title": "Требования зависят от оружия и контакта",
+          "start": 359.66,
+          "grade": null
+        },
+        {
+          "reportSlug": "manevrovo-atakuyushchiy-stil-4-2",
+          "chapterIndex": 5,
+          "title": "Ритм оружия и ног",
+          "start": 1514.49,
+          "grade": null
+        },
+        {
+          "reportSlug": "rapira-protiv-vstrechnogo-ukola-korotovskih",
+          "title": "Рапира — семинар: против встречного укола",
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-3",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "switch"
+      ],
+      "missing": [
+        "steps"
+      ],
+      "unjudged": 3,
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "title": "Шаффл и смена ведущей ноги",
+          "start": 1268.16,
+          "grade": 3
+        },
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "title": "Упражнения: Упражнения семинара",
+          "start": 3703.02,
+          "grade": 1
+        },
+        {
+          "reportSlug": "manevrovo-oboronitelnyi-tip",
+          "title": "Упражнения: Подводящая работа ног",
+          "start": 424.16,
+          "grade": null
+        },
+        {
+          "reportSlug": "manevrovo-oboronitelnyi-tip",
+          "chapterIndex": 1,
+          "title": "Прыжковая разминка и устойчивость",
+          "start": 69.52,
+          "grade": null
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 6,
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "start": 2122.33,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "scope": "archive",
+      "id": "expanded-multi-4",
+      "originalChapterCoverage5": 0.5,
+      "reviewedFacetCoverage5": 0.5,
+      "complete": false,
+      "covered": [
+        "threat"
+      ],
+      "missing": [
+        "prepared"
+      ],
+      "unjudged": 4,
+      "judgments": [
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "chapterIndex": 4,
+          "title": "Учить не технику в воздухе, а распознавание",
+          "start": 383.74,
+          "grade": 3
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "title": "Угроза и обработка угрозы",
+          "grade": null
+        },
+        {
+          "reportSlug": "obuchenie-situatsiya-subtaktika",
+          "title": "Обучение распознаванию ситуации и выбору субтактик",
+          "grade": null
+        },
+        {
+          "reportSlug": "2026-07-06-19-26-42",
+          "title": "Главное",
+          "grade": null
+        },
+        {
+          "reportSlug": "obuchenie-situatsiya-subtaktika",
+          "title": "Главное",
+          "grade": null
+        }
+      ]
+    }
+  ]
+}

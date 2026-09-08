@@ -1,0 +1,917 @@
+{
+  "manualParts": {
+    "p-multi-1": [
+      "захват гибкой сабли не сработал",
+      "силовой винден длинный меч выигрыш соединения"
+    ],
+    "p-multi-2": [
+      "нет контакта после своего батмана ограничения продолжения",
+      "чужой батман в ответ на угрозу ограничения продолжения"
+    ],
+    "p-multi-3": [
+      "упражнение устойчивость обратимый вход ногами в соединение",
+      "упражнение устойчивость проверка структуры руки с баклером"
+    ],
+    "p-multi-4": [
+      "контроль встречного оружия укол из фальса длинный меч",
+      "контроль встречного оружия укол после отхода с баклером"
+    ],
+    "p-multi-5": [
+      "постепенное усложнение координации двумя мячами",
+      "постепенное усложнение темпа партнёрской работы под уровень ученика"
+    ],
+    "p-multi-6": [
+      "ошибка ученика преждевременная защита",
+      "ложный успех защиты недоведённый удар монитора"
+    ],
+    "p-multi-7": [
+      "новичку нужно время на выбор распознанного ответа",
+      "как монитор должен адаптировать темп для новичка"
+    ],
+    "p-multi-8": [
+      "упрощение тренировки до одной ветки угрозы",
+      "упрощение тренировки до одного пускового сигнала задней ноги вход в соединение"
+    ],
+    "expanded-multi-1": [
+      "ошибка партнёра завершение атаки при отработке",
+      "ошибка партнёра доведение удара при отработке"
+    ],
+    "expanded-multi-2": [
+      "контакт с чужим оружием проигран сохранить возможность продолжения",
+      "продолжение после проигрыша контакта оружием"
+    ],
+    "expanded-multi-3": [
+      "устойчивость при перемещении в упражнениях с баклером",
+      "устойчивость при смене ног в упражнениях с баклером"
+    ],
+    "expanded-multi-4": [
+      "подготовленные решения распознавание ситуации",
+      "распознавание ситуации угрозы"
+    ]
+  },
+  "protocol": "Disclosed diagnostic corpus: 12 multi-source questions, plus 24 ordinary topics for automatic splitting. Manual parts (when present) were written after the automatic result, from query wording, without changing relevance judgments. Not a fresh holdout; production unchanged.",
+  "indexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+  "implementationHash": "ef841ac9a14490c1ead68a84c8326f582cb9014ee62642e68761e0a25210055a",
+  "summary": [
+    {
+      "mode": "baseline",
+      "single": 0,
+      "hit5": 0,
+      "singleLosses": [],
+      "multi": 12,
+      "coverage5": 0.4583333333333333,
+      "coverageAll": 0.4583333333333333,
+      "multiLosses": []
+    },
+    {
+      "mode": "interleave",
+      "single": 0,
+      "hit5": 0,
+      "singleLosses": [],
+      "multi": 12,
+      "coverage5": 0.4583333333333333,
+      "coverageAll": 0.5416666666666666,
+      "multiLosses": []
+    },
+    {
+      "mode": "rank-sum",
+      "single": 0,
+      "hit5": 0,
+      "singleLosses": [],
+      "multi": 12,
+      "coverage5": 0.4583333333333333,
+      "coverageAll": 0.5416666666666666,
+      "multiLosses": []
+    }
+  ],
+  "rows": [
+    {
+      "id": "p-multi-1",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "захват гибкой сабли не сработал",
+        "силовой винден длинный меч выигрыш соединения"
+      ],
+      "baselineMs": 2841.2255000000005,
+      "additionalMs": 1218.8141999999998,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "sablya-a-3:2",
+            "longsword-a:14",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "kinezio-trenirovka-2-stopa-golenostop:26"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "sablya-a-3:2",
+            "longsword-a:14",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:11",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "avstriyskaya-sablya-2:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "sablya-a-3:2",
+            "longsword-a:14",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "soedinenie-dlinnyi-mech-lager-noname-4:overview:Главное"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-2",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "нет контакта после своего батмана ограничения продолжения",
+        "чужой батман в ответ на угрозу ограничения продолжения"
+      ],
+      "baselineMs": 1832.2389999999996,
+      "additionalMs": 1572.6413000000011,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:report:Австрийская сабля — тренировка 5: батманы и тактический выбор",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Конспект: Критерии батмана",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-1:20",
+            "avstriyskaya-sablya-trenirovka-3:14",
+            "avstriyskaya-sablya-2:27",
+            "sablya-a-5:1",
+            "sablya-a-3:3",
+            "sablya-12:0"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:report:Австрийская сабля — тренировка 5: батманы и тактический выбор",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Конспект: Критерии батмана",
+            "avstriyskaya-sablya-trenirovka-3:14",
+            "sablya-a-9:6",
+            "avstriyskaya-sablya-trenirovka-3:material:Упражнения: Батман и продолжение",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:overview:Главное",
+            "sablya-a-5:1",
+            "soedinenie-dlinnyi-mech-lager-noname-1:20",
+            "soedinenie-dlinnyi-mech-lager-noname-3:material:Конспект: Тактильный контакт"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Конспект: Критерии батмана",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+            "avstriyskaya-sablya-trenirovka-3:material:Упражнения: Батман и продолжение",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:report:Австрийская сабля — тренировка 5: батманы и тактический выбор",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:overview:Главное",
+            "avstriyskaya-sablya-trenirovka-3:14",
+            "sablya-a-5:1",
+            "sablya-12:0",
+            "avstriyskaya-sablya-2:27",
+            "sablya-a-3:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-3",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "упражнение устойчивость обратимый вход ногами в соединение",
+        "упражнение устойчивость проверка структуры руки с баклером"
+      ],
+      "baselineMs": 1809.5051999999996,
+      "additionalMs": 2375.7106999999996,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "mech-i-bakler-mikrotsikl-1-osnovy:report:Меч и баклер: микроцикл 1 — основы",
+            "mech-i-bakler-mikrotsikl-1-osnovy:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:material:Упражнения: Атака из открытого соединения",
+            "gruppa-b-5-kakari-keiko:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "ukol-po-centralnoy-linii:4",
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "soedinenie-dlinnyi-mech-lager-noname-1:material:Упражнения: Механика входа без партнёра"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "mech-i-bakler-mikrotsikl-1-osnovy:report:Меч и баклер: микроцикл 1 — основы",
+            "mech-i-bakler-mikrotsikl-1-osnovy:7",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+            "ukol-po-centralnoy-linii:4",
+            "soedinenie-dlinnyi-mech-lager-noname-1:material:Упражнения: Атака из открытого соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Упражнения: Упражнения семинара",
+            "gruppa-b-5-kakari-keiko:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "mech-i-bakler-mikrotsikl-1-osnovy:7",
+            "mech-i-bakler-mikrotsikl-1-osnovy:report:Меч и баклер: микроцикл 1 — основы",
+            "ukol-po-centralnoy-linii:4",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:material:Упражнения: Механика входа без партнёра",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "soedinenie-dlinnyi-mech-lager-noname-1:material:Упражнения: Атака из открытого соединения"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-4",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "контроль встречного оружия укол из фальса длинный меч",
+        "контроль встречного оружия укол после отхода с баклером"
+      ],
+      "baselineMs": 1352.0152999999991,
+      "additionalMs": 2352.025099999999,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "mech-i-bakler-mikrotsikl-1-osnovy:14",
+            "longsword-a:7",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-3:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "mech-i-bakler-mikrotsikl-1-osnovy:8"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "mech-i-bakler-mikrotsikl-1-osnovy:14",
+            "longsword-a:7",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+            "soedinenie-dlinnyi-mech-lager-noname-7:10",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 1,
+          "coverageAll": 1,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "longsword-a:7",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "mech-i-bakler-mikrotsikl-1-osnovy:14",
+            "soedinenie-dlinnyi-mech-lager-noname-3:overview:Главное",
+            "mech-i-bakler-mikrotsikl-1-osnovy:8",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-5",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "постепенное усложнение координации двумя мячами",
+        "постепенное усложнение темпа партнёрской работы под уровень ученика"
+      ],
+      "baselineMs": 1633.5113999999994,
+      "additionalMs": 1468.4379999999983,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "mech-i-bakler-mikrotsikl-1-osnovy:3",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:report:Кинезиотренировка 1: разминка всего тела и координация",
+            "dofamin-neyronnye-svyazi-pasha:15",
+            "gruppa-a-1-vvodnaya:16",
+            "obuchenie-trenerov-poisk-znaniy:material:Конспект: Пример с выносливостью",
+            "ataka-prosche-ne-byvaet-udar:8",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Конспект: Координация двух рук",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:23",
+            "sablya-6:5"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 1,
+          "ranking": [
+            "mech-i-bakler-mikrotsikl-1-osnovy:3",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+            "dofamin-neyronnye-svyazi-pasha:15",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:report:Кинезиотренировка 1: разминка всего тела и координация",
+            "gruppa-a-1-vvodnaya:16",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Конспект: Координация двух рук",
+            "sablya-6:5",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:overview:Главное",
+            "kontseptsiya-monitoringa:3",
+            "obuchenie-trenerov-poisk-znaniy:material:Конспект: Пример с выносливостью"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 1,
+          "ranking": [
+            "dofamin-neyronnye-svyazi-pasha:15",
+            "mech-i-bakler-mikrotsikl-1-osnovy:3",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+            "gruppa-a-1-vvodnaya:16",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:report:Кинезиотренировка 1: разминка всего тела и координация",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Конспект: Координация двух рук",
+            "sablya-6:5",
+            "kinezio-trenirovka-1-razminka-koordinatsiya:overview:Главное",
+            "obuchenie-trenerov-poisk-znaniy:material:Конспект: Пример с выносливостью",
+            "ataka-prosche-ne-byvaet-udar:8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-6",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "ошибка ученика преждевременная защита",
+        "ложный успех защиты недоведённый удар монитора"
+      ],
+      "baselineMs": 1615.5953000000009,
+      "additionalMs": 1414.7078000000001,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:report:Группа А — 3. Позиционно-оборонительный тип",
+            "kontseptsiya-monitoringa:4",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:material:Глоссарий: Защита-ответ",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:material:Глоссарий: Ложная защита",
+            "ataka-prosche-ne-byvaet-udar:8",
+            "vid-20260708-200742:material:Конспект: Как должен работать монитор",
+            "dofamin-neyronnye-svyazi-pasha:9"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:report:Группа А — 3. Позиционно-оборонительный тип",
+            "dofamin-neyronnye-svyazi-pasha:report:Дофамин и образование нейронных связей",
+            "kontseptsiya-monitoringa:4",
+            "dofamin-neyronnye-svyazi-pasha:9",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "dofamin-neyronnye-svyazi-pasha:11",
+            "vid-20260708-200742:material:Конспект: Как должен работать монитор",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:material:Глоссарий: Защита-ответ",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:6"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+            "kontseptsiya-monitoringa:4",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:material:Глоссарий: Защита-ответ",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+            "dofamin-neyronnye-svyazi-pasha:9",
+            "vid-20260708-200742:material:Конспект: Как должен работать монитор",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:report:Группа А — 3. Позиционно-оборонительный тип",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "soedinenie-dlinnyi-mech-lager-noname-7:material:Упражнения: Защита кистей крестовиной",
+            "gruppa-b-2-ataki-fendenti-na-vypade:10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-7",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "новичку нужно время на выбор распознанного ответа",
+        "как монитор должен адаптировать темп для новичка"
+      ],
+      "baselineMs": 1678.0136999999995,
+      "additionalMs": 1953.9808000000012,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:16",
+            "kompresiya-taktiki-lektsiya:9",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:2",
+            "protivnik-fehtuet-nepravilno:16",
+            "gruppa-b-5-kakari-keiko:9",
+            "manevrovo-oboronitelnyi-tip:8",
+            "podgotovka-ataki-na-sable-korotovskih:7",
+            "pitanie-i-ves-fekhtovalshchika-turin:11",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:material:Конспект: Выбор реакции",
+            "kompresiya-taktiki-lektsiya:report:Компрессия тактики"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:16",
+            "kompresiya-taktiki-lektsiya:9",
+            "vid-20260708-200742:material:Конспект: Как должен работать монитор",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:2",
+            "pitanie-i-ves-fekhtovalshchika-turin:11",
+            "protivnik-fehtuet-nepravilno:16",
+            "kontseptsiya-monitoringa:3",
+            "gruppa-b-5-kakari-keiko:9",
+            "kompresiya-taktiki-lektsiya:report:Компрессия тактики",
+            "gruppa-a-1-vvodnaya:7"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:16",
+            "kompresiya-taktiki-lektsiya:9",
+            "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:2",
+            "pitanie-i-ves-fekhtovalshchika-turin:11",
+            "protivnik-fehtuet-nepravilno:16",
+            "manevrovo-oboronitelnyi-tip:8",
+            "kompresiya-taktiki-lektsiya:report:Компрессия тактики",
+            "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+            "gruppa-b-5-kakari-keiko:9",
+            "podgotovka-ataki-na-sable-korotovskih:7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-multi-8",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "упрощение тренировки до одной ветки угрозы",
+        "упрощение тренировки до одного пускового сигнала задней ноги вход в соединение"
+      ],
+      "baselineMs": 1677.413800000002,
+      "additionalMs": 2511.8184,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-1:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "2026-07-06-19-26-42:2",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "2026-07-06-19-26-42:2",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:14",
+            "soedinenie-dlinnyi-mech-lager-noname-1:overview:Главное",
+            "avstriyskaya-sablya-2:27",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:report:Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+            "soedinenie-dlinnyi-mech-lager-noname-1:7",
+            "soedinenie-dlinnyi-mech-lager-noname-1:report:Длинный меч — тренировка 1: вход в соединение",
+            "avstriyskaya-sablya-2:report:Австрийская сабля — тренировка 1: рапирная база и соединение",
+            "2026-07-06-19-26-42:2",
+            "soedinenie-dlinnyi-mech-lager-noname-1:overview:Главное",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:report:Австрийская сабля — тренировка 4: повторение и отработка",
+            "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:report:Длинный меч — тренировка 2: чувство меча и захват 4",
+            "soedinenie-dlinnyi-mech-lager-noname-4:report:Длинный меч — тренировка 4: соединение через ложную атаку"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "ошибка партнёра завершение атаки при отработке",
+        "ошибка партнёра доведение удара при отработке"
+      ],
+      "baselineMs": 1718.0776000000042,
+      "additionalMs": 2774.811999999998,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "ataka-prosche-ne-byvaet-udar:report:Группа Б — 1. Атака проще не бывает: техника удара",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:report:Австрийская сабля — тренировка 4: повторение и отработка",
+            "ataka-prosche-ne-byvaet-udar:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-3:9",
+            "kontseptsiya-monitoringa:1",
+            "soedinenie-dlinnyi-mech-lager-noname-3:8",
+            "kontseptsiya-monitoringa:6",
+            "obuchenie-situatsiya-subtaktika:report:Обучение распознаванию ситуации и выбору субтактик",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:overview:Главное",
+            "obuchenie-situatsiya-subtaktika:8"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "ataka-prosche-ne-byvaet-udar:report:Группа Б — 1. Атака проще не бывает: техника удара",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:report:Австрийская сабля — тренировка 4: повторение и отработка",
+            "kontseptsiya-monitoringa:1",
+            "ataka-prosche-ne-byvaet-udar:overview:Главное",
+            "soedinenie-dlinnyi-mech-lager-noname-3:9",
+            "kontseptsiya-monitoringa:6",
+            "soedinenie-dlinnyi-mech-lager-noname-3:8",
+            "obuchenie-situatsiya-subtaktika:8",
+            "subtaktika-teh-realizacii:8",
+            "longsword-a:19"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": false,
+          "coverage5": 0,
+          "coverageAll": 0,
+          "ranking": [
+            "ataka-prosche-ne-byvaet-udar:report:Группа Б — 1. Атака проще не бывает: техника удара",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:report:Австрийская сабля — тренировка 4: повторение и отработка",
+            "kontseptsiya-monitoringa:1",
+            "ataka-prosche-ne-byvaet-udar:overview:Главное",
+            "kontseptsiya-monitoringa:6",
+            "soedinenie-dlinnyi-mech-lager-noname-3:9",
+            "subtaktika-teh-realizacii:8",
+            "soedinenie-dlinnyi-mech-lager-noname-3:8",
+            "obuchenie-situatsiya-subtaktika:8",
+            "obuchenie-situatsiya-subtaktika:report:Обучение распознаванию ситуации и выбору субтактик"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "контакт с чужим оружием проигран сохранить возможность продолжения",
+        "продолжение после проигрыша контакта оружием"
+      ],
+      "baselineMs": 641.4066999999995,
+      "additionalMs": 1366.3652999999977,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:15",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:2",
+            "fizpodgotovka-dlya-fekhtovalshchika-turin:2",
+            "manevrovo-atakuyushchiy-stil-4-2:5",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:9",
+            "avstriyskaya-sablya-2:27",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Конспект: Критерии батмана",
+            "tsena-adaptatsii-tehnicheskogo-priema:3",
+            "soedinenie-dlinnyi-mech-lager-noname-4:15"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:15",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:2",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:material:Упражнения: Проигрыш захвата и рубящее продолжение",
+            "fizpodgotovka-dlya-fekhtovalshchika-turin:2",
+            "avstriyskaya-sablya-obratnoe-lezvie:9",
+            "manevrovo-atakuyushchiy-stil-4-2:5",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:9",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:4",
+            "avstriyskaya-sablya-2:27"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "soedinenie-dlinnyi-mech-lager-noname-1:15",
+            "fizpodgotovka-dlya-fekhtovalshchika-turin:2",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:2",
+            "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+            "manevrovo-atakuyushchiy-stil-4-2:5",
+            "tsena-adaptatsii-tehnicheskogo-priema:3",
+            "soedinenie-dlinnyi-mech-lager-noname-2-utro:9",
+            "avstriyskaya-sablya-2:27",
+            "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Конспект: Критерии батмана",
+            "soedinenie-dlinnyi-mech-lager-noname-4:15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "устойчивость при перемещении в упражнениях с баклером",
+        "устойчивость при смене ног в упражнениях с баклером"
+      ],
+      "baselineMs": 1225.5093999999954,
+      "additionalMs": 1942.9140999999945,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "mech-i-bakler-mikrotsikl-1-osnovy:5",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Упражнения: Упражнения семинара",
+            "manevrovo-oboronitelnyi-tip:material:Упражнения: Подводящая работа ног",
+            "manevrovo-oboronitelnyi-tip:1",
+            "soedinenie-dlinnyi-mech-lager-noname-4:6",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:material:Упражнения: Удар, шаг и выпад",
+            "vid-20260708-200742:report:Группа А — 2. Позиционно-атакующий тип: подготовка атаки перемещениями",
+            "mech-i-bakler-mikrotsikl-1-osnovy:report:Меч и баклер: микроцикл 1 — основы",
+            "manevrovo-atakuyushchiy-stil:material:Упражнения: Работа ног и ритм",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:15"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "mech-i-bakler-mikrotsikl-1-osnovy:5",
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Упражнения: Упражнения семинара",
+            "gruppa-b-5-kakari-keiko:material:Упражнения: Разминка и механика удара",
+            "manevrovo-oboronitelnyi-tip:material:Упражнения: Подводящая работа ног",
+            "manevrovo-oboronitelnyi-tip:1",
+            "soedinenie-dlinnyi-mech-lager-noname-4:6",
+            "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:6",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:material:Упражнения: Удар, шаг и выпад",
+            "longsword-a:1",
+            "manevrovo-atakuyushchiy-stil:material:Упражнения: Работа ног и ритм"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "mech-i-bakler-mikrotsikl-1-osnovy:material:Упражнения: Упражнения семинара",
+            "mech-i-bakler-mikrotsikl-1-osnovy:5",
+            "manevrovo-oboronitelnyi-tip:material:Упражнения: Подводящая работа ног",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:material:Упражнения: Удар, шаг и выпад",
+            "manevrovo-oboronitelnyi-tip:1",
+            "manevrovo-atakuyushchiy-stil:material:Упражнения: Работа ног и ритм",
+            "soedinenie-dlinnyi-mech-lager-noname-4:6",
+            "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:material:Упражнения: Упражнения семинара",
+            "vid-20260708-200742:report:Группа А — 2. Позиционно-атакующий тип: подготовка атаки перемещениями",
+            "mech-i-bakler-mikrotsikl-1-osnovy:report:Меч и баклер: микроцикл 1 — основы"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "kind": "multi",
+      "scope": "archive",
+      "label": "archive",
+      "parts": [
+        "подготовленные решения распознавание ситуации",
+        "распознавание ситуации угрозы"
+      ],
+      "baselineMs": 393.7787000000026,
+      "additionalMs": 256.52679999999964,
+      "variants": [
+        {
+          "mode": "baseline",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "2026-07-06-19-26-42:4",
+            "2026-07-06-19-26-42:report:Угроза и обработка угрозы",
+            "obuchenie-situatsiya-subtaktika:report:Обучение распознаванию ситуации и выбору субтактик",
+            "2026-07-06-19-26-42:overview:Главное",
+            "obuchenie-situatsiya-subtaktika:overview:Главное",
+            "obuchenie-situatsiya-subtaktika:1",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:2",
+            "manevrovo-atakuyushchiy-stil:12",
+            "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:9",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:13"
+          ]
+        },
+        {
+          "mode": "interleave",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "2026-07-06-19-26-42:4",
+            "2026-07-06-19-26-42:report:Угроза и обработка угрозы",
+            "obuchenie-situatsiya-subtaktika:report:Обучение распознаванию ситуации и выбору субтактик",
+            "2026-07-06-19-26-42:overview:Главное",
+            "obuchenie-situatsiya-subtaktika:1",
+            "obuchenie-situatsiya-subtaktika:overview:Главное",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:2",
+            "avstriyskaya-sablya-obratnoe-lezvie:12",
+            "manevrovo-atakuyushchiy-stil:12",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:16"
+          ]
+        },
+        {
+          "mode": "rank-sum",
+          "hit5": true,
+          "coverage5": 0.5,
+          "coverageAll": 0.5,
+          "ranking": [
+            "2026-07-06-19-26-42:4",
+            "obuchenie-situatsiya-subtaktika:report:Обучение распознаванию ситуации и выбору субтактик",
+            "2026-07-06-19-26-42:report:Угроза и обработка угрозы",
+            "obuchenie-situatsiya-subtaktika:overview:Главное",
+            "2026-07-06-19-26-42:overview:Главное",
+            "obuchenie-situatsiya-subtaktika:1",
+            "avstriyskaya-sablya-trenirovka-5-povtorenie:2",
+            "avstriyskaya-sablya-obratnoe-lezvie:12",
+            "gruppa-b-4-ataki-na-fone-manevrirovaniya:16",
+            "manevrovo-atakuyushchiy-stil:12"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "note": "Source-aware same-author checks after candidate text was fixed; not independent human gold. Frozen before rollout evaluation."
+  },
+  "cases": [
+    {
+      "id": "rollout-1",
+      "query": "На разминке шаг короткий, а перед соперником разрастается. Как контролировать длину подготовки?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-vvodnaya",
+          "chapterIndex": 5,
+          "grade": 3,
+          "evidence": "Тренер ведёт группу через упражнение: замерить свой стандартный шаг, сравнить с предвыпадным, обнаружить эффект мотивации — и впихнуть два шага в длину одного.",
+          "sourceHash": "0c26482c593a5b4a5d6bd668ae8c088648580f17933cd416dcacb6781181798e"
+        }
+      ]
+    },
+    {
+      "id": "rollout-2",
+      "query": "Партнёр закрыл голову пятёркой: в подводящем упражнении касаться его сабли или остановиться?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-2",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Если второй номер берёт пятёрку, первый останавливает руку там, где она была, — без касания. Это прямая подготовка к финту.",
+          "sourceHash": "b4fd3cedca36a07c8f9cc42a3de1dbfb4e0ac32edae6a0cc6d93f52f63dee293"
+        }
+      ]
+    },
+    {
+      "id": "rollout-3",
+      "query": "Показал укол, но реакции нет. Нужно всё равно менять направление?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-4",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Если противник не перекрывает линию атаки — колем прямо, не тратя время на финт; это правило для всех финтов через укол.",
+          "sourceHash": "7bac3391d3e0e63447760a721e8f89b9b1392a20dcc534b63668e83842dda578"
+        }
+      ]
+    },
+    {
+      "id": "rollout-4",
+      "query": "Зачем два отдельных темпа, если одним шагом можно пройти ту же дистанцию?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-6",
+          "chapterIndex": 5,
+          "grade": 3,
+          "evidence": "Два темпа дают время наблюдать работу сабли противника и принять решение; один большой шаг открывает контратаку.",
+          "sourceHash": "40699efb9d6125cad58a33e0b21d3275348782be8b39e2602ad457630a168100"
+        }
+      ]
+    },
+    {
+      "id": "rollout-5",
+      "query": "Прячу руку от батмана и получаю навстречу. В чём компромисс?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-7",
+          "chapterIndex": 6,
+          "grade": 3,
+          "evidence": "Перед спаррингами — баланс дистанции: хотите быть ближе (быстрее), но при пресечении прижимаете ручку; выпрямление нужно против контратак — тактический порочный круг.",
+          "sourceHash": "e10f6add73872d9a867ff8045737bde857965668e67514840e521693ef01d3f2"
+        }
+      ]
+    },
+    {
+      "id": "rollout-6",
+      "query": "Как сделать так, чтобы успеть заметить контратаку и взять её на движении вперёд?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-8",
+          "chapterIndex": 8,
+          "grade": 3,
+          "evidence": "Если раздробить шаги — противник вынужден бить раньше, и у вас появляется честное время на перехват после шага; честная работа делает проход в защите очень трудным.",
+          "sourceHash": "8553c398150113f20844eba1d73543eccf321258ec7d74953582112a33d9ee24"
+        }
+      ]
+    },
+    {
+      "id": "rollout-7",
+      "query": "В начале чужой атаки что выбирать при выставленной и при прижатой руке?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-9",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Простая вилка по положению руки в начале атаки: прижал — добивайте контратакой; вытащил — уберите оружие батманом.",
+          "sourceHash": "f8b80dd1c2b158ff452cba5a0a7c0e4397f9bb7c7eb800cb1ace894d958fba05"
+        }
+      ]
+    },
+    {
+      "id": "rollout-8",
+      "query": "Как организовать отдых между короткими повторениями со счётом?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-10",
+          "chapterIndex": 1,
+          "grade": 3,
+          "evidence": "Во все упражнения добавлен счёт до пяти: работа 1,5–2 секунды, пауза до пяти, снова — фактически отдых вдвое дольше.",
+          "sourceHash": "df995109e554b70036afe22b217f9fee90305ead79e53c34b72242df8423e76c"
+        }
+      ]
+    },
+    {
+      "id": "rollout-9",
+      "query": "Сколько возможных продолжений стоит выбирать под одного соперника, чтобы не перегрузиться?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-12",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Под каждого противника выбирают 2–3 основных варианта; остальные статистически малозначимы — не перегружайте мозг.",
+          "sourceHash": "e1ddb4ed82f939a2d3c56442aa69fad110b2e8776f56a107751c53730316cab2"
+        }
+      ]
+    },
+    {
+      "id": "rollout-10",
+      "query": "Переношу сабельную тройку на рапиру, но угрозы не получается. Что поменять в кисти?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "rapira-almaty-2026",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Частая ошибка третьей защиты — неправильная кисть; на рапире тройку берут иначе, чем на сабле: пальцы внутрь, ручка вперёд, локоть подобран.",
+          "sourceHash": "5ff55751e841382b7b7d433e12801e40772acc529188fc6babde33f90735dea6"
+        }
+      ]
+    },
+    {
+      "id": "rollout-11",
+      "query": "Меч застревает на руке после моего попадания, и я пропускаю ответ сверху. Что делать после контакта?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "chapterIndex": 11,
+          "grade": 3,
+          "evidence": "После удара в руку клинок возвращают рикошетом вверх, чтобы не проиграть ответ в голову.",
+          "sourceHash": "0383f8a7a5eaa776acc08679cf83a57fba1459bd68f0a43cf3ce2923670bb195"
+        }
+      ]
+    },
+    {
+      "id": "rollout-12",
+      "query": "Как готовить удар из короткой позиции, не показывая противнику исчезновение угрозы?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "rollout",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+          "chapterIndex": 15,
+          "grade": 3,
+          "evidence": "Замах из posta breve маскируют встречным движением корпуса и рук вперёд, чтобы не подарить сопернику темп.",
+          "sourceHash": "69a8f711775292ec8b794a1b9059577118b4e17ddcb3337d757cf052012b8fa9"
+        }
+      ]
+    }
+  ]
+}

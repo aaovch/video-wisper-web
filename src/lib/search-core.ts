@@ -9,6 +9,8 @@ import type {
 } from '$lib/search-types';
 import { stemRu } from '$lib/stem-ru';
 import { getReportSummary } from '$lib/data/report-meta';
+import { techniqueAliases, normalizeTechnique } from '$lib/search-techniques';
+import { orderSearchPassages } from '$lib/search-passage-order';
 
 export type {
 	SearchHitKind,
@@ -42,6 +44,7 @@ interface IndexedDoc {
 	field_body: string;
 	field_tags: string;
 	reasonTags?: string;
+	signalTerms?: string;
 }
 
 const ZONE_BY_KIND: Record<SearchHitKind, SearchZone> = {
@@ -137,9 +140,9 @@ function processTerm(term: string): string | null {
 
 const miniSearchOptions = {
 	idField: 'id',
-	fields: ['field_title', 'field_body', 'field_tags'],
-	// Должно совпадать со scripts/build-search-index.mjs (индекс v3).
-	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags'],
+	fields: ['field_title', 'field_body', 'field_tags', 'field_context', 'field_questions'],
+	// Должно совпадать со scripts/build-search-index.mjs (индекс v5).
+	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags', 'signalTerms'],
 	processTerm
 };
 
@@ -389,12 +392,15 @@ function rankKind(result: SearchResult): number {
 	return 0.74;
 }
 
-function signalMultiplier(result: SearchResult, parsed: ParsedQuery): number {
+function signalMultiplier(result: SearchResult, parsed: ParsedQuery, indexedCoverage = false): number {
 	const doc = result as unknown as IndexedDoc;
 	const title = norm(docTitle(doc));
 	const body = norm(doc.text ?? '');
 	const combined = `${title} ${body}`;
 	const combinedStems = new Set(queryWords(combined).map(stemRu));
+	// Only literal query stems from indexed chapter fields count here. Fuzzy
+	// expansions and generated wording must not become exact source quotations.
+	if (indexedCoverage && doc.signalTerms) for (const term of doc.signalTerms.split(' ')) combinedStems.add(term);
 	const coverage = parsed.stems.length
 		? parsed.stems.filter((stem) => combinedStems.has(stem)).length / parsed.stems.length
 		: 0;
@@ -473,9 +479,10 @@ function rankedHits(
 	weight = 1
 ): import('$lib/search-types').SearchHit[] {
 	const ranked = results
-		.map((result) => ({ ...result, score: result.score * weight * signalMultiplier(result, parsed) }))
+		.map((result) => ({ ...result, score: result.score * weight * signalMultiplier(result, parsed, matchKind === 'semantic') }))
 		.sort((a, b) => b.score - a.score);
-	return diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed, matchKind));
+	const hits = diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed, matchKind));
+	return import.meta.env.VITE_SEARCH_PASSAGES_FIRST === '0' ? hits : orderSearchPassages(hits, matchKind);
 }
 
 async function executeTieredSearch(
@@ -489,7 +496,20 @@ async function executeTieredSearch(
 	await loadCore();
 	void loadTranscripts();
 	const directQuery = parsed.meaningfulWords.join(' ');
-	const baseOptions = { boost: { field_title: 4.2, field_tags: 1.55 }, filter };
+	// This position name is a single concept, not independent mentions of
+	// a long sword and a point elsewhere in an aggregated report.
+	const positionPhrase = queryWords('длинное острие').map(stemRu).join(' ');
+	const requiresPosition = ` ${queryWords(query).map(stemRu).join(' ')} `.includes(` ${positionPhrase} `);
+	const requiredNumbers = import.meta.env.VITE_SEARCH_NUMERIC_EVIDENCE !== '0'
+		? parsed.stems.filter(term => /^\d+$/.test(term)) : [];
+	// Generated metadata helps recall only. It must never turn a synthetic
+	// question into an "exact" quotation or affect spelling suggestions.
+	const baseOptions = { fields: ['field_title', 'field_body', 'field_tags'],
+		boost: { field_title: 4.2, field_tags: 1.55, field_context: 0.65, field_questions: 0.8 },
+		filter: (result: SearchResult) => (!filter || filter(result)) &&
+			(!requiresPosition || [docTitle(result as unknown as IndexedDoc), (result as unknown as IndexedDoc).text ?? '']
+				.some(text => ` ${queryWords(text).map(stemRu).join(' ')} `.includes(` ${positionPhrase} `))) &&
+			requiredNumbers.every(term => result.terms.includes(term)) };
 
 	const exact = searchShards(directQuery, {
 		...baseOptions,
@@ -498,6 +518,16 @@ async function executeTieredSearch(
 		prefix: false
 	});
 	if (exact.length) {
+		// A catalog document aggregates the entire report. An AND match there
+		// need not exist in any one passage; still surface passages from that report.
+		if (!insideSingleReport && exact.every(result => (result as unknown as IndexedDoc).kind === 'report')) {
+			const slugs = new Set(exact.map(result => (result as unknown as IndexedDoc).reportSlug));
+			const passages = await executeTieredSearch(query, Math.max(1, limit - exact.length), result => {
+				const doc = result as unknown as IndexedDoc;
+				return doc.kind !== 'report' && slugs.has(doc.reportSlug) && (!filter || filter(result));
+			}, true);
+			return { hits: [...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits].slice(0, limit), matchKind: 'exact' };
+		}
 		return { hits: rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05), matchKind: 'exact' };
 	}
 
@@ -511,13 +541,32 @@ async function executeTieredSearch(
 		return { hits: rankedHits(prefix, parsed, 'prefix', limit, insideSingleReport, 1.82), matchKind: 'prefix' };
 	}
 
+	// A known alternative name is more reliable than an unrelated fuzzy typo.
+	// Exact/prefix source matches above retain priority; strict APIs are unchanged.
+	const named = new Map<string, SearchResult>();
+	if (import.meta.env.VITE_SEARCH_TECHNIQUE_ALIASES !== '0') {
+		for (const alias of techniqueAliases(query)) {
+			const hits = searchShards(alias, { ...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false })
+				.filter(result => {
+					const doc = result as unknown as IndexedDoc;
+					return [docTitle(doc), doc.text ?? ''].some(text =>
+						` ${normalizeTechnique(text)} `.includes(` ${alias} `));
+				});
+			// Multiple spellings of one name do not stack ranking bonuses.
+			for (const hit of hits) if (!named.has(String(hit.id)) || named.get(String(hit.id))!.score < hit.score) named.set(String(hit.id), hit);
+		}
+	}
+	if (named.size) return { hits: rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport), matchKind: 'semantic' };
+
 	const correctionRanked = new Map<string, SearchResult>();
-	const suggestion = suggestShards(directQuery, {
+	// Long questions usually contain paraphrases, not a typo in every word.
+	// Broad autoSuggest can replace their subject (e.g. immobilization -> mobilization).
+	const suggestion = parsed.stems.length <= 3 ? suggestShards(directQuery, {
 		...baseOptions,
 		combineWith: 'AND',
 		fuzzy: 0.34,
 		prefix: false
-	});
+	}) : undefined;
 	let correctedQuery: string | undefined;
 	if (suggestion && norm(suggestion) !== directQuery) {
 		const corrected = searchShards(suggestion, {
@@ -531,7 +580,9 @@ async function executeTieredSearch(
 			mergeResults(correctionRanked, corrected, 1.72);
 		}
 	}
-	mergeResults(
+	// Long-query correction results were discarded below. Avoid that expensive
+	// fuzzy AND search entirely; long questions still use semantic fuzzy OR.
+	if (parsed.stems.length <= 3) mergeResults(
 		correctionRanked,
 		searchShards(directQuery, {
 			...baseOptions,
@@ -541,7 +592,7 @@ async function executeTieredSearch(
 		}),
 		1.35
 	);
-	if (correctionRanked.size) {
+	if (correctionRanked.size && parsed.stems.length <= 3) {
 		return {
 			hits: rankedHits([...correctionRanked.values()], parsed, 'correction', limit, insideSingleReport),
 			matchKind: 'correction',
@@ -550,14 +601,22 @@ async function executeTieredSearch(
 	}
 
 	const semanticRanked = new Map<string, SearchResult>();
+	const directSemantic = searchShards(directQuery, {
+		...baseOptions, fields: miniSearchOptions.fields, combineWith: 'OR', fuzzy: adaptiveFuzzy, prefix: false
+	});
+	// Experimental evidence gate: only original query matches count, never
+	// synonyms introduced below. Exact numeric identifiers cannot be fuzzy.
+	const evidenceFloor = Number(import.meta.env.VITE_SEARCH_EVIDENCE_FLOOR ?? '0');
+	const numbers = parsed.stems.filter(term => /^\d+$/.test(term));
+	if (evidenceFloor > 0) {
+		const supported = directSemantic.some(result =>
+			numbers.every(term => result.terms.includes(term)) &&
+			new Set(result.queryTerms.filter(term => parsed.stems.includes(term))).size / parsed.stems.length >= evidenceFloor);
+		if (!supported) return { hits: [], matchKind: 'empty' };
+	}
 	mergeResults(
 		semanticRanked,
-		searchShards(directQuery, {
-			...baseOptions,
-			combineWith: 'OR',
-			fuzzy: adaptiveFuzzy,
-			prefix: false
-		}),
+		directSemantic,
 		parsed.stems.length > 1 ? 0.62 : 1
 	);
 	const expandedTerms = expandSemanticQuery(parsed);
@@ -579,7 +638,10 @@ async function executeTieredSearch(
 				[...semanticRanked.values()],
 				parsed,
 				'semantic',
-				Math.min(limit, insideSingleReport ? 8 : 16),
+				// Offline diagnostic only: inspect candidates hidden by the normal cap.
+				Math.min(limit, Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT) > 0
+					? Math.min(120, Math.floor(Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT)))
+					: insideSingleReport ? 8 : 16),
 				insideSingleReport
 			),
 			matchKind: 'semantic'
@@ -600,6 +662,7 @@ async function executeExactSearch(
 	await loadCore();
 	void loadTranscripts();
 	const results = searchShards(parsed.meaningfulWords.join(' '), {
+		fields: ['field_title', 'field_body', 'field_tags'],
 		boost: { field_title: 4.2, field_tags: 1.55 },
 		filter,
 		combineWith: 'AND',

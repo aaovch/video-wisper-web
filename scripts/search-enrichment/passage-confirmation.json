@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "note": "New wording after candidate fixed; source-aware and same-author, not independent holdout. Two compound paraphrases share the disclosed theme. No source or card edits."
+  },
+  "cases": [
+    {
+      "id": "passage-confirm-1",
+      "query": "Противник положил меч на плечо после неудачных соединений. Как заставить его снова выставить оружие?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 9,
+          "grade": 3,
+          "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+          "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-2",
+      "query": "В коротком входе на меня давят клинком. Чем начинать перенос: руками или поворотом корпуса?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 6,
+          "grade": 3,
+          "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+          "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-3",
+      "query": "При разведении резинки над головой меня дёргает всем корпусом. Как изменить сопротивление или хват?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "kinezio-trenirovka-5-plechevoy-poyas",
+          "chapterIndex": 12,
+          "grade": 3,
+          "evidence": "Резинку держат над головой и тремя импульсами разводят руки, после чего прижимают её к спине и плавно возвращают.",
+          "sourceHash": "ee8f83b72a0912f1915643bcf5e67b91b521fc7cfc3cae7166f43381ed158e77"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-4",
+      "query": "От чего выбирать метод силовой подготовки, если одинаковый прирост силы дают разные механизмы?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "tokarev-silovaya-ofp-2",
+          "chapterIndex": 24,
+          "grade": 3,
+          "evidence": "Переход к типам адаптаций: разные схемы делают атлета сильнее через разные механизмы и с разной ценой.",
+          "sourceHash": "80685c1961df4b23d21fffe71c5934cdbf4df71353dc4c0aba4eddd317646d12"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-5",
+      "query": "После широкого батмана моё острие тоже улетает в сторону. Чем заменить замах?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+          "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-6",
+      "query": "Чужая гибкая сабля отгибается из захвата и всё равно меня достаёт. Какой приём надёжнее?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "sablya-a-3",
+          "chapterIndex": 2,
+          "grade": 3,
+          "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+          "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-7",
+      "query": "Как вернуть спрятанный на плече меч на линию и что делать затем при давлении в коротком соединении?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 9,
+          "grade": 3,
+          "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+          "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 6,
+          "grade": 3,
+          "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+          "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-8",
+      "query": "Какая подготовка заставляет чужой клинок вернуться с плеча и чем отличается продолжение по открытой линии от переноса под давлением?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 9,
+          "grade": 3,
+          "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+          "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 6,
+          "grade": 3,
+          "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+          "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+        }
+      ]
+    },
+    {
+      "id": "passage-confirm-9",
+      "query": "Сколько очков я заработал батманом на прошлой неделе?",
+      "kind": "unsupported",
+      "split": "holdout",
+      "coverage": "unsupported",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 4,
+          "grade": 1,
+          "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+          "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+        }
+      ]
+    }
+  ]
+}

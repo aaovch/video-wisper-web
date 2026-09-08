@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-08",
+  "collections": 16,
+  "reports": 128,
+  "modes": {
+    "situational-rewrite": {
+      "reports": 29,
+      "chapters": 434
+    },
+    "extractive-context": {
+      "reports": 99,
+      "chapters": 1526
+    }
+  },
+  "comparisons": [
+    {
+      "tag": "expanded",
+      "registryHash": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+      "beforeIndexHash": "e8fafc8e7e9e87d07d8c85dc6beb557aec7b033265c51b26795fdfb798234ff0",
+      "afterIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "scenarios": 170,
+      "losses": [],
+      "sourceLosses": [],
+      "coreGzipBefore": 1691906,
+      "coreGzipAfter": 1722272,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 48,
+          "beforeHit5": 42,
+          "afterHit5": 42
+        },
+        {
+          "scope": "collection",
+          "n": 66,
+          "beforeHit5": 55,
+          "afterHit5": 55
+        },
+        {
+          "scope": "archive",
+          "n": 48,
+          "beforeHit5": 26,
+          "afterHit5": 26
+        }
+      ]
+    },
+    {
+      "tag": "noname",
+      "registryHash": "4c997ae1bb1611d50f7620e447c5deb8594498314d0ef04c655bb76fc500d0c1",
+      "beforeIndexHash": "e8fafc8e7e9e87d07d8c85dc6beb557aec7b033265c51b26795fdfb798234ff0",
+      "afterIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "scenarios": 50,
+      "losses": [],
+      "sourceLosses": [],
+      "coreGzipBefore": 1691906,
+      "coreGzipAfter": 1722272,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "beforeHit5": 11,
+          "afterHit5": 11
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "beforeHit5": 9,
+          "afterHit5": 11
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "beforeHit5": 8,
+          "afterHit5": 8
+        }
+      ]
+    },
+    {
+      "tag": "context",
+      "registryHash": "e935d0a6be357726e8b19825adb93b97a0e0fd29605ad803488290b202da6020",
+      "beforeIndexHash": "e8fafc8e7e9e87d07d8c85dc6beb557aec7b033265c51b26795fdfb798234ff0",
+      "afterIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+      "scenarios": 49,
+      "losses": [],
+      "sourceLosses": [],
+      "coreGzipBefore": 1691906,
+      "coreGzipAfter": 1722272,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 16,
+          "beforeHit5": 15,
+          "afterHit5": 16
+        },
+        {
+          "scope": "collection",
+          "n": 17,
+          "beforeHit5": 15,
+          "afterHit5": 16
+        },
+        {
+          "scope": "archive",
+          "n": 16,
+          "beforeHit5": 13,
+          "afterHit5": 15
+        }
+      ]
+    }
+  ],
+  "caveats": [
+    "New sample is same-author and source-aware, not independent holdout.",
+    "Extractive mode copies existing report/chapter titles; no new model call or inferred technique.",
+    "Coverage does not prove relevance for every possible question. Compound-source completeness remains unresolved.",
+    "Gated collections are evaluated as unlocked; application visibility is unchanged."
+  ]
+}

@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const hash=b=>createHash('sha256').update(b).digest('hex');
+const reportSlug='vibe-coding-lovushki-myshleniya';
+const report=JSON.parse(readFileSync(`src/lib/data/reports/${reportSlug}.json`,'utf8'));
+const item=report.glossary.find(g=>g.term==='Vibe coding');
+const data={version:1,protocol:'Source review 2026-09-08. Adds an equivalent source in the SAME report, not a related new report. Original chapter judgments remain unchanged; source-rank and chapter-rank are reported separately. This is a relevance correction, not a ranking gain.',cases:[{id:'q07',alternatives:[{reportSlug,kind:'material',title:'Глоссарий: Vibe coding',sourcePath:['glossary',0],sourceHash:hash(JSON.stringify(item)),evidence:item.definition,grade:3,reason:'The glossary explicitly defines using generated code without understanding how or why it works. It states the same accepted proposition as original expected chapter 2, thesis 0. The question does not require the experimental results specific to chapter 1.'}]}]};
+const raw=JSON.stringify(data,null,2)+'\n',path='scripts/search-enrichment/quality-alternatives.json';
+if(existsSync(path)&&readFileSync(path,'utf8')!==raw)throw Error('Reviewed alternatives changed; create a new revision');
+writeFileSync(path,raw);writeFileSync(path.replace('.json','.sha256'),hash(raw)+'\n');

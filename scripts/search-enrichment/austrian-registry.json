@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "note": "Questions written after the candidate was fixed; same author, source-aware evaluation, not independent human gold. No tuning after disclosure.",
+    "candidateHashes": {
+      "avstriyskaya-sablya-obratnoe-lezvie": "5ae6f0e7d78333cce9a065d50b7e34ae94d476a0d8c728d738a2584470b5e897",
+      "avstriyskaya-sablya-trenirovka-6-batmany-vybor": "ecd24b3a06006ce755af0e16961800fb5c0a08e28473bacaf24748b162548b85"
+    }
+  },
+  "cases": [
+    {
+      "id": "austrian-1",
+      "query": "При ударе снизу работает вся рука вместо пальцев. Как это исправляют в парах?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Пары медленно повторяют поддевку снизу по манжете перчатки, удерживая точную дистанцию и изолируя пальцы.",
+          "sourceHash": "876f481d1826e8d09066ae0e21364dd9e335326c370a308b783a373d0a556e49"
+        }
+      ]
+    },
+    {
+      "id": "austrian-2",
+      "query": "Опускаю саблю вниз, а нижний удар всё равно проходит. Что неверно в защите?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 7,
+          "grade": 3,
+          "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+          "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+        }
+      ]
+    },
+    {
+      "id": "austrian-3",
+      "query": "Как рубящим действием пройти обычную четвёрку до столкновения клинков?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 10,
+          "grade": 3,
+          "evidence": "Удар в грудь сразу разворачивается обратным лезвием так, чтобы обычная четвёртая защита не закрыла конечную траекторию.",
+          "sourceHash": "7bc2d3a9c37dbd683a09cffc9bd652bad55c32599359ff8f673ee81ef8424ca1"
+        }
+      ]
+    },
+    {
+      "id": "austrian-4",
+      "query": "После защиты стало тесно для обычного замаха. Как отвечать и когда такой ответ не годится?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 14,
+          "grade": 3,
+          "evidence": "Пары сравнивают обычный ответ на дальней дистанции с компактным ответом обратным лезвием в тесной позиции.",
+          "sourceHash": "67df167e3141e167f9a1f15faf229192cf6032df4b3aa3cc872ef38316ca6578"
+        }
+      ]
+    },
+    {
+      "id": "austrian-5",
+      "query": "Как разучить ногами выход в сторону, чтобы наступающий не загнал в клинч?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 17,
+          "grade": 3,
+          "evidence": "Сложную связку разнимают на части и сначала отдельно осваивают уход ногами по диагонали.",
+          "sourceHash": "4083752b6d6797500c7a0e827f1f0ed3788d5f9bcfb3dcd30361f6b636e6d533"
+        }
+      ]
+    },
+    {
+      "id": "austrian-6",
+      "query": "Была ли на занятии про обратное лезвие полноценная отработка батманов?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 20,
+          "grade": 3,
+          "evidence": "В финале тренер повторяет поддевку, девятую защиту, обход четвёртой, ответы после первой и круговой ответ после второй защиты.",
+          "sourceHash": "f272c28b70e988d8d79751434cfaec02e382c0916b3b974908663b001eec003c"
+        }
+      ]
+    },
+    {
+      "id": "austrian-7",
+      "query": "Где должна быть точка сбива, чтобы не промахнуться у острия и не упереться в гарду?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 2,
+          "grade": 3,
+          "evidence": "Отметки на оружии используются как учебные ориентиры: защита принимается ближе к центру массы, поражающий удар наносится рабочей частью, а батман попадает между средней и слабой зонами чужого клинка.",
+          "sourceHash": "2664555ef0d8b9f4e6d2a62d25da0c3f02f557e9016c5d29b9de7968d31cec98"
+        }
+      ]
+    },
+    {
+      "id": "austrian-8",
+      "query": "Сбиваю чужую саблю, но своё острие тоже улетает. Как сохранить возможность сразу атаковать?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+          "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+        }
+      ]
+    },
+    {
+      "id": "austrian-9",
+      "query": "Как после угрозы кисти провести укол мимо появившейся защиты?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 8,
+          "grade": 3,
+          "evidence": "Правильная последовательность состоит из батмана обратным лезвием, начала удара в кисть, обхода возникшей защиты снизу и укола в новую линию.",
+          "sourceHash": "c8ada93af71bbd91c33ef925107aef40ef5f24d297ee72194c01316c7ed49978"
+        }
+      ]
+    },
+    {
+      "id": "austrian-10",
+      "query": "Можно ли войти через первую защиту мягким контактом, без удара по оружию?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 10,
+          "grade": 3,
+          "evidence": "Следующее действие внешне похоже на батман, но выполняется без удара: на шаге вперёд обратные лезвия соприкасаются, клинок проходит через первую защиту и сразу отвечает.",
+          "sourceHash": "98d70f3c9bbeb017fc56477cbf1d4fd0e9906bdbceb36e9071a846eee3c7c872"
+        }
+      ]
+    },
+    {
+      "id": "austrian-11",
+      "query": "Почему финт не обманывает, если всё время работать быстро?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 13,
+          "grade": 3,
+          "evidence": "Финт работает как смена привычного рисунка: сначала оба партнёра привыкают к медленному ритму, затем один неожиданно ускоряет и меняет сектор.",
+          "sourceHash": "3acf0e593667915f22302bb9f4702124fcf190e2f301e491e44d8cdd466a1d61"
+        }
+      ]
+    },
+    {
+      "id": "austrian-12",
+      "query": "Как по предъявленному положению сабли решить, делать показ или сбивать оружие?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "new-card-report",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 16,
+          "grade": 3,
+          "evidence": "Финальный блок соединяет две ранее изолированные темы: готовая защита требует финта, а выставленная угроза с доступной слабой частью клинка — батмана.",
+          "sourceHash": "62e6879fe752a98b581aa3e03833477a880e2f7744e7a1f67f2b622bb3496a5a"
+        }
+      ]
+    }
+  ]
+}

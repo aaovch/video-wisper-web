@@ -1,0 +1,98 @@
+{
+  "revision": "expanded-113",
+  "baselineIndexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+  "comparisons": [
+    {
+      "beforePath": ".codex/search-fencing/ranking-numeric.json",
+      "afterPath": ".codex/search-fencing/ranking-expanded-regression.json",
+      "experimental": false,
+      "scenarios": 228,
+      "beforeIndexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 140,
+      "afterHit5": 150
+    },
+    {
+      "beforePath": ".codex/search-fencing/ranking-numeric-holdout.json",
+      "afterPath": ".codex/search-fencing/ranking-expanded-holdout.json",
+      "experimental": false,
+      "scenarios": 68,
+      "beforeIndexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 28,
+      "afterHit5": 28
+    },
+    {
+      "beforePath": ".codex/search-pilot/development-baseline.json",
+      "afterPath": ".codex/search-pilot/expanded-regression-development-cards.json",
+      "experimental": false,
+      "scenarios": 97,
+      "beforeIndexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 43,
+      "afterHit5": 62
+    },
+    {
+      "beforePath": ".codex/search-pilot/holdout-baseline.json",
+      "afterPath": ".codex/search-pilot/expanded-regression-holdout-cards.json",
+      "experimental": false,
+      "scenarios": 58,
+      "beforeIndexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 41,
+      "afterHit5": 41
+    },
+    {
+      "beforePath": ".codex/search-pilot/development-cards.json",
+      "afterPath": ".codex/search-pilot/expanded-regression-development-cards.json",
+      "experimental": true,
+      "scenarios": 97,
+      "beforeIndexHash": "8e7d9b916e2b9cf973969ae86428197736e5f13393114ed135c2af8d3871fd69",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [
+        {
+          "id": "p-single-31",
+          "scope": "collection",
+          "label": "golden-falcon-astana",
+          "before": 5,
+          "after": 6
+        }
+      ],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 63,
+      "afterHit5": 62
+    },
+    {
+      "beforePath": ".codex/search-pilot/holdout-cards.json",
+      "afterPath": ".codex/search-pilot/expanded-regression-holdout-cards.json",
+      "experimental": true,
+      "scenarios": 58,
+      "beforeIndexHash": "8e7d9b916e2b9cf973969ae86428197736e5f13393114ed135c2af8d3871fd69",
+      "afterIndexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+      "losses": [],
+      "sourceLosses": [],
+      "negativeRegressions": [],
+      "beforeHit5": 41,
+      "afterHit5": 41
+    }
+  ],
+  "gates": {
+    "noBaselineHit5Loss": true,
+    "noBaselineSourceCoverageLoss": true,
+    "noNegativeRegression": true
+  },
+  "caveat": "Historical results are reused only after matching the baseline index hash and unchanged search runtime. Old 24-card experiment is shown separately and was never enabled."
+}

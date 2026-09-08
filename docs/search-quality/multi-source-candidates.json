@@ -1,0 +1,474 @@
+{
+  "protocol": "Disclosed questions; diagnostic cap comparison, not a new holdout. Production cap unchanged.",
+  "indexHash": "033cdcab367e9af5694a3d4eea1fb04e6e2e4d6be49982c783836211826a41f8",
+  "summary": [
+    {
+      "cap": 16,
+      "coverage5": 0.4583333333333333,
+      "coverageAll": 0.4583333333333333
+    },
+    {
+      "cap": 120,
+      "coverage5": 0.4583333333333333,
+      "coverageAll": 0.5833333333333334
+    }
+  ],
+  "rows": [
+    {
+      "id": "p-multi-1",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "cap": 16,
+      "ms": 3183.5996000000005,
+      "returned": 14,
+      "positions": [
+        {
+          "key": "sablya-a-3:2",
+          "rank": 1
+        },
+        {
+          "key": "longsword-a:14",
+          "rank": 2
+        }
+      ],
+      "coverage5": 1,
+      "coverageAll": 1
+    },
+    {
+      "id": "p-multi-2",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "cap": 16,
+      "ms": 2077.5874999999996,
+      "returned": 11,
+      "positions": [
+        {
+          "key": "sablya-a-5:7",
+          "rank": 0
+        },
+        {
+          "key": "2026-07-06-19-26-42:3",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0
+    },
+    {
+      "id": "p-multi-3",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "cap": 16,
+      "ms": 1982.1291,
+      "returned": 15,
+      "positions": [
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:3",
+          "rank": 0
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "rank": 3
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-4",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "cap": 16,
+      "ms": 1495.1596000000009,
+      "returned": 15,
+      "positions": [
+        {
+          "key": "longsword-a:7",
+          "rank": 3
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:14",
+          "rank": 2
+        }
+      ],
+      "coverage5": 1,
+      "coverageAll": 1
+    },
+    {
+      "id": "p-multi-5",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "cap": 16,
+      "ms": 1815.7975999999999,
+      "returned": 13,
+      "positions": [
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "rank": 1
+        },
+        {
+          "key": "kontseptsiya-monitoringa:3",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-6",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "cap": 16,
+      "ms": 1726.7081999999991,
+      "returned": 14,
+      "positions": [
+        {
+          "key": "hema-prednamerennye-ekspromtnye:1",
+          "rank": 0
+        },
+        {
+          "key": "kontseptsiya-monitoringa:4",
+          "rank": 3
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-7",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "cap": 16,
+      "ms": 1808.9334000000017,
+      "returned": 12,
+      "positions": [
+        {
+          "key": "kontseptsiya-monitoringa:3",
+          "rank": 0
+        },
+        {
+          "key": "hema-prednamerennye-ekspromtnye:7",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0
+    },
+    {
+      "id": "p-multi-8",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "cap": 16,
+      "ms": 1845.264900000002,
+      "returned": 14,
+      "positions": [
+        {
+          "key": "2026-07-06-19-26-42:4",
+          "rank": 0
+        },
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "cap": 16,
+      "ms": 1946.0036,
+      "returned": 14,
+      "positions": [
+        {
+          "key": "sablya-a-5:5",
+          "rank": 0
+        },
+        {
+          "key": "kontseptsiya-monitoringa:4",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "cap": 16,
+      "ms": 725.3842000000004,
+      "returned": 11,
+      "positions": [
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "rank": 1
+        },
+        {
+          "key": "longsword-a:14",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "cap": 16,
+      "ms": 1337.365099999999,
+      "returned": 13,
+      "positions": [
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "rank": 0
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "cap": 16,
+      "ms": 416.47520000000077,
+      "returned": 13,
+      "positions": [
+        {
+          "key": "hema-prednamerennye-ekspromtnye:7",
+          "rank": 0
+        },
+        {
+          "key": "2026-07-06-19-26-42:4",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-1",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "cap": 120,
+      "ms": 1622.1061000000009,
+      "returned": 89,
+      "positions": [
+        {
+          "key": "sablya-a-3:2",
+          "rank": 1
+        },
+        {
+          "key": "longsword-a:14",
+          "rank": 2
+        }
+      ],
+      "coverage5": 1,
+      "coverageAll": 1
+    },
+    {
+      "id": "p-multi-2",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "cap": 120,
+      "ms": 2049.477500000001,
+      "returned": 86,
+      "positions": [
+        {
+          "key": "sablya-a-5:7",
+          "rank": 0
+        },
+        {
+          "key": "2026-07-06-19-26-42:3",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0
+    },
+    {
+      "id": "p-multi-3",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "cap": 120,
+      "ms": 2051.673300000002,
+      "returned": 90,
+      "positions": [
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:3",
+          "rank": 0
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "rank": 3
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-4",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "cap": 120,
+      "ms": 1532.9915,
+      "returned": 88,
+      "positions": [
+        {
+          "key": "longsword-a:7",
+          "rank": 3
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:14",
+          "rank": 2
+        }
+      ],
+      "coverage5": 1,
+      "coverageAll": 1
+    },
+    {
+      "id": "p-multi-5",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "cap": 120,
+      "ms": 1795.260299999998,
+      "returned": 89,
+      "positions": [
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "rank": 1
+        },
+        {
+          "key": "kontseptsiya-monitoringa:3",
+          "rank": 14
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 1
+    },
+    {
+      "id": "p-multi-6",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "cap": 120,
+      "ms": 1778.311099999999,
+      "returned": 94,
+      "positions": [
+        {
+          "key": "hema-prednamerennye-ekspromtnye:1",
+          "rank": 0
+        },
+        {
+          "key": "kontseptsiya-monitoringa:4",
+          "rank": 3
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "p-multi-7",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "cap": 120,
+      "ms": 1838.875199999995,
+      "returned": 99,
+      "positions": [
+        {
+          "key": "kontseptsiya-monitoringa:3",
+          "rank": 0
+        },
+        {
+          "key": "hema-prednamerennye-ekspromtnye:7",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0
+    },
+    {
+      "id": "p-multi-8",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "cap": 120,
+      "ms": 1977.635000000002,
+      "returned": 93,
+      "positions": [
+        {
+          "key": "2026-07-06-19-26-42:4",
+          "rank": 0
+        },
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "cap": 120,
+      "ms": 1946.4755000000005,
+      "returned": 93,
+      "positions": [
+        {
+          "key": "sablya-a-5:5",
+          "rank": 55
+        },
+        {
+          "key": "kontseptsiya-monitoringa:4",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "cap": 120,
+      "ms": 759.2972000000009,
+      "returned": 94,
+      "positions": [
+        {
+          "key": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "rank": 1
+        },
+        {
+          "key": "longsword-a:14",
+          "rank": 0
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "cap": 120,
+      "ms": 1354.7805999999982,
+      "returned": 92,
+      "positions": [
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "rank": 0
+        },
+        {
+          "key": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 0.5
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "cap": 120,
+      "ms": 432.52350000000297,
+      "returned": 77,
+      "positions": [
+        {
+          "key": "hema-prednamerennye-ekspromtnye:7",
+          "rank": 32
+        },
+        {
+          "key": "2026-07-06-19-26-42:4",
+          "rank": 1
+        }
+      ],
+      "coverage5": 0.5,
+      "coverageAll": 1
+    }
+  ]
+}

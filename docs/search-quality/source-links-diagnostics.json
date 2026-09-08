@@ -1,0 +1,3157 @@
+{
+  "protocol": "Disclosed diagnostic. Original 84-source denominator preserved in evaluation. Scope exclusions are not retrieval failures. Rank120 is a separate diagnostic run, not production ranking.",
+  "indexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+  "graphHash": "a223f84c4910434e614e556960adb3666c084e45a6b9cdf29cec44b7efba7808",
+  "counts": {
+    "direct": 48,
+    "deeper-candidate": 5,
+    "absent-from-120": 9,
+    "linked": 19,
+    "outside-scope": 2,
+    "below-top-five": 1
+  },
+  "rows": [
+    {
+      "id": "p-multi-1",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "sablya-a-3:2",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "sablya-a-3:2",
+          "title": "Почему на сабле — батман, а не захват",
+          "kind": "chapter"
+        },
+        {
+          "source": "longsword-a:14",
+          "title": "Виндены: уступающий и силовой",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-2-stopa-golenostop:26",
+          "title": "Перенос на саблю и длинный меч",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-1",
+      "query": "Почему захват гибкой сабли может не сработать, а силовой винден на длинном мече строится на выигрыше соединения?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "longsword-a:14",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "sablya-a-3:2",
+          "title": "Почему на сабле — батман, а не захват",
+          "kind": "chapter"
+        },
+        {
+          "source": "longsword-a:14",
+          "title": "Виндены: уступающий и силовой",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-2-stopa-golenostop:26",
+          "title": "Перенос на саблю и длинный меч",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-2",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "sablya-a-5:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 64,
+      "status": "deeper-candidate",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-12:0",
+          "title": "Развитие после батмана",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:14",
+          "title": "Батман против выставленной угрозы",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-2:27",
+          "title": "Итог тренировки: убрать угрозу и сохранить свою",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-2",
+      "query": "Сопоставьте два ограничения: отсутствие контакта после своего батмана и чужой батман в ответ на нашу угрозу. Какие продолжения нельзя делать автоматически?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "2026-07-06-19-26-42:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-12:0",
+          "title": "Развитие после батмана",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:14",
+          "title": "Батман против выставленной угрозы",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-2:27",
+          "title": "Итог тренировки: убрать угрозу и сохранить свою",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-3",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "title": "Структурный хват баклера",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:7",
+          "title": "Координация руки и ноги из Posta Breve",
+          "kind": "chapter"
+        },
+        {
+          "source": "ukol-po-centralnoy-linii:4",
+          "title": "Проверка структуры рычагом",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+          "title": "Интегральное упражнение и коррекция ног",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-3",
+      "query": "Найдите два упражнения на устойчивость: обратимый вход ногами в соединение и проверку структуры руки с баклером.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "title": "Структурный хват баклера",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:7",
+          "title": "Координация руки и ноги из Posta Breve",
+          "kind": "chapter"
+        },
+        {
+          "source": "ukol-po-centralnoy-linii:4",
+          "title": "Проверка структуры рычагом",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+          "title": "Интегральное упражнение и коррекция ног",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-4",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "longsword-a:7",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:14",
+          "title": "Связка удара, защиты и укола",
+          "kind": "chapter"
+        },
+        {
+          "source": "longsword-a:7",
+          "title": "Уколы из фальса",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:8",
+          "title": "Контроль центральной линии",
+          "kind": "chapter"
+        },
+        {
+          "source": "ukol-po-centralnoy-linii:14",
+          "title": "Подготовка длинного укола",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:undefined",
+          "title": "Длинный меч — тренировка 3: дистанция входа",
+          "kind": "report"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-4",
+      "query": "Сравните контроль встречного оружия при уколе из фальса на длинном мече и при уколе после отхода с баклером.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:14",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:14",
+          "title": "Связка удара, защиты и укола",
+          "kind": "chapter"
+        },
+        {
+          "source": "longsword-a:7",
+          "title": "Уколы из фальса",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:8",
+          "title": "Контроль центральной линии",
+          "kind": "chapter"
+        },
+        {
+          "source": "ukol-po-centralnoy-linii:14",
+          "title": "Подготовка длинного укола",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:undefined",
+          "title": "Длинный меч — тренировка 3: дистанция входа",
+          "kind": "report"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-5",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "title": "Координация с двумя мячами",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+          "title": "Мяч и координация шага",
+          "kind": "chapter"
+        },
+        {
+          "source": "dofamin-neyronnye-svyazi-pasha:15",
+          "title": "Точный фидбэк и усложнение",
+          "kind": "chapter"
+        },
+        {
+          "source": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:1",
+          "title": "Координационная разминка с мячом",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-a-1-vvodnaya:16",
+          "title": "Захват и работа от соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-5",
+      "query": "Нужны примеры постепенного усложнения координации двумя мячами и темпа партнёрской работы под уровень ученика.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 10,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "title": "Координация с двумя мячами",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+          "title": "Мяч и координация шага",
+          "kind": "chapter"
+        },
+        {
+          "source": "dofamin-neyronnye-svyazi-pasha:15",
+          "title": "Точный фидбэк и усложнение",
+          "kind": "chapter"
+        },
+        {
+          "source": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:1",
+          "title": "Координационная разминка с мячом",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-a-1-vvodnaya:16",
+          "title": "Захват и работа от соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-6",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:1",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+          "title": "Ложная защита на финт",
+          "kind": "chapter"
+        },
+        {
+          "source": "ataka-prosche-ne-byvaet-udar:8",
+          "title": "Скорость, ошибки и работа монитора",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+          "title": "Сценарий для защиты-ответа",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-3-vybor-zony-i-distantsii-v-atake:7",
+          "title": "Удар по движущемуся монитору",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-6",
+      "query": "Как различить ошибку ученика с преждевременной защитой и ложный успех защиты из-за недоведённого удара монитора?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+          "title": "Ложная защита на финт",
+          "kind": "chapter"
+        },
+        {
+          "source": "ataka-prosche-ne-byvaet-udar:8",
+          "title": "Скорость, ошибки и работа монитора",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+          "title": "Сценарий для защиты-ответа",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-3-vybor-zony-i-distantsii-v-atake:7",
+          "title": "Удар по движущемуся монитору",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-7",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:16",
+          "title": "От заданного ответа к выбору",
+          "kind": "chapter"
+        },
+        {
+          "source": "kompresiya-taktiki-lektsiya:9",
+          "title": "Новички: мониторинг и фриплей",
+          "kind": "transcript"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:2",
+          "title": "Выбор защиты или контратаки",
+          "kind": "thesis"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:9",
+          "title": "Ускорение, торможение и ответ после атаки",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-7",
+      "query": "Почему новичку нужно время на выбор распознанного ответа и как монитор должен адаптировать темп?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:16",
+          "title": "От заданного ответа к выбору",
+          "kind": "chapter"
+        },
+        {
+          "source": "kompresiya-taktiki-lektsiya:9",
+          "title": "Новички: мониторинг и фриплей",
+          "kind": "transcript"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:2",
+          "title": "Выбор защиты или контратаки",
+          "kind": "thesis"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:9",
+          "title": "Ускорение, торможение и ответ после атаки",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-8",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:2",
+          "title": "Базовая ветка угрозы",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:4",
+          "title": "Соединение как сигнал для реакции выбора",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:undefined",
+          "title": "Длинный меч — тренировка 1: вход в соединение",
+          "kind": "report"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:undefined",
+          "title": "Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+          "kind": "report"
+        }
+      ]
+    },
+    {
+      "id": "p-multi-8",
+      "query": "Сопоставьте упрощение тренировки до одной ветки угрозы и до одного пускового сигнала задней ноги при входе в соединение.",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:2",
+          "title": "Базовая ветка угрозы",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:4",
+          "title": "Соединение как сигнал для реакции выбора",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:undefined",
+          "title": "Длинный меч — тренировка 1: вход в соединение",
+          "kind": "report"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:undefined",
+          "title": "Длинный меч — тренировка 5: универсальные принципы подготовки соединения",
+          "kind": "report"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "sablya-a-5:5",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 35,
+      "status": "deeper-candidate",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:8",
+          "title": "Граница, на которой соперник решает ударить",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:9",
+          "title": "Безопасность провоцирующего удара",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:8",
+          "title": "План отработки",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:9",
+          "title": "Ускорение, торможение и ответ после атаки",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-1",
+      "query": "Какие ошибки партнёра искажают отработку атаки: её завершение и доведение удара?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:8",
+          "title": "Граница, на которой соперник решает ударить",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:9",
+          "title": "Безопасность провоцирующего удара",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:8",
+          "title": "План отработки",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-5-kakari-keiko:9",
+          "title": "Ускорение, торможение и ответ после атаки",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:2",
+          "title": "Разметка клинка и геометрия контакта",
+          "kind": "chapter"
+        },
+        {
+          "source": "fizpodgotovka-dlya-fekhtovalshchika-turin:2",
+          "title": "Требования зависят от оружия и контакта",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil-4-2:5",
+          "title": "Ритм оружия и ног",
+          "kind": "thesis"
+        },
+        {
+          "source": "tsena-adaptatsii-tehnicheskogo-priema:3",
+          "title": "Техника сохраняет продолжение",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-2",
+      "query": "Как сохранить возможность продолжения, если контакт с чужим оружием проигран?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "longsword-a:14",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:2",
+          "title": "Разметка клинка и геометрия контакта",
+          "kind": "chapter"
+        },
+        {
+          "source": "fizpodgotovka-dlya-fekhtovalshchika-turin:2",
+          "title": "Требования зависят от оружия и контакта",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil-4-2:5",
+          "title": "Ритм оружия и ног",
+          "kind": "thesis"
+        },
+        {
+          "source": "tsena-adaptatsii-tehnicheskogo-priema:3",
+          "title": "Техника сохраняет продолжение",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "transcript"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:1",
+          "title": "Прыжковая разминка и устойчивость",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:6",
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "kind": "thesis"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+          "title": "Интегральное упражнение и коррекция ног",
+          "kind": "thesis"
+        },
+        {
+          "source": "vid-20260708-200742:10",
+          "title": "Итог подготовки ногами",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-3",
+      "query": "Как обеспечить устойчивость при перемещении и смене ног в упражнениях с баклером?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "transcript"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:1",
+          "title": "Прыжковая разминка и устойчивость",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:6",
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "kind": "thesis"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:15",
+          "title": "Интегральное упражнение и коррекция ног",
+          "kind": "thesis"
+        },
+        {
+          "source": "vid-20260708-200742:10",
+          "title": "Итог подготовки ногами",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 23,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:1",
+          "title": "Фаза распознавания",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:2",
+          "title": "Роль помогающего: создать учебную ситуацию",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil:12",
+          "title": "Убедительная угроза издалека",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "expanded-multi-4",
+      "query": "Как подготовленные решения сочетаются с распознаванием ситуации угрозы?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:1",
+          "title": "Фаза распознавания",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:2",
+          "title": "Роль помогающего: создать учебную ситуацию",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil:12",
+          "title": "Убедительная угроза издалека",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-13",
+      "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "silovye-porezy-katanoy:10",
+          "title": "Давление всем телом",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+          "title": "Открытая линия — удар, давление — перенос",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:4",
+          "title": "Стопа, плечо и угроза",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "noname-13",
+      "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+      "inScope": true,
+      "rank": 4,
+      "diagnosticRank120": 4,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "silovye-porezy-katanoy:10",
+          "title": "Давление всем телом",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+          "title": "Открытая линия — удар, давление — перенос",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:4",
+          "title": "Стопа, плечо и угроза",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "noname-13",
+      "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+          "title": "Открытая линия — удар, давление — перенос",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:4",
+          "title": "Стопа, плечо и угроза",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:undefined",
+          "title": "Упражнения: Проигрыш захвата и рубящее продолжение",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "noname-13",
+      "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:9",
+          "title": "Почему спрятанный клинок надо вернуть на центр",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:6",
+          "title": "Открытая линия — удар, давление — перенос",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:4",
+          "title": "Стопа, плечо и угроза",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:undefined",
+          "title": "Упражнения: Проигрыш захвата и рубящее продолжение",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "noname-14",
+      "query": "Как не ошибиться с выбором батмана или финта и не потерять преимущество широким замахом?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+      "inScope": true,
+      "rank": 7,
+      "diagnosticRank120": 7,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:6",
+          "title": "Контратака против замаха и финта",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:13",
+          "title": "Финт замахом и финт выдержкой",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-2:6",
+          "title": "Прямая vs финт: выбор позиции руки",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-a-3:6",
+          "title": "Батман 2 и батман мулинетом — широкие",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-14",
+      "query": "Как не ошибиться с выбором батмана или финта и не потерять преимущество широким замахом?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:6",
+          "title": "Контратака против замаха и финта",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:13",
+          "title": "Финт замахом и финт выдержкой",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-2:6",
+          "title": "Прямая vs финт: выбор позиции руки",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-a-3:6",
+          "title": "Батман 2 и батман мулинетом — широкие",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-14",
+      "query": "Как не ошибиться с выбором батмана или финта и не потерять преимущество широким замахом?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:13",
+          "title": "Финт замахом и финт выдержкой",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:6",
+          "title": "Свободный выбор одной из трёх атак",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-14",
+      "query": "Как не ошибиться с выбором батмана или финта и не потерять преимущество широким замахом?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-3:13",
+          "title": "Финт замахом и финт выдержкой",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:6",
+          "title": "Свободный выбор одной из трёх атак",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-15",
+      "query": "Как различается ответ обратной кромкой после первой защиты вдали и в тесной позиции?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+          "title": "Обычный и компактный ответы после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:17",
+          "title": "Ответ обратным лезвием после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:14",
+          "title": "Переход к ответам обратным лезвием",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-15",
+      "query": "Как различается ответ обратной кромкой после первой защиты вдали и в тесной позиции?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-obratnoe-lezvie:15",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 31,
+      "status": "deeper-candidate",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+          "title": "Обычный и компактный ответы после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:17",
+          "title": "Ответ обратным лезвием после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:14",
+          "title": "Переход к ответам обратным лезвием",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-15",
+      "query": "Как различается ответ обратной кромкой после первой защиты вдали и в тесной позиции?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+          "title": "Обычный и компактный ответы после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:17",
+          "title": "Ответ обратным лезвием после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:14",
+          "title": "Переход к ответам обратным лезвием",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-15",
+      "query": "Как различается ответ обратной кромкой после первой защиты вдали и в тесной позиции?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-obratnoe-lezvie:15",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 17,
+      "status": "deeper-candidate",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-obratnoe-lezvie:14",
+          "title": "Обычный и компактный ответы после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:17",
+          "title": "Ответ обратным лезвием после первой защиты",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-5-povtorenie:14",
+          "title": "Переход к ответам обратным лезвием",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:20",
+          "title": "Финт в руки и два ответа",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "noname-16",
+      "query": "Как научиться чувствовать соединение без зрения и зачем это ограничение используется в обучении?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:13",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "neyronnye-adaptatsii-k-anaerobnoy-trenirovke:7",
+          "title": "Сила и обучение упражнению",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-reflections:2",
+          "title": "Зачем фиксировать связку",
+          "kind": "chapter"
+        },
+        {
+          "source": "agents-week-2026-2-memory-guardrails-lecture:11",
+          "title": "Выбор между RAG и обучением",
+          "kind": "transcript"
+        },
+        {
+          "source": "trenerstvo-2-zadachi-uprazhneniya:2",
+          "title": "Три этапа обучения движению",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "noname-16",
+      "query": "Как научиться чувствовать соединение без зрения и зачем это ограничение используется в обучении?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:15",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "neyronnye-adaptatsii-k-anaerobnoy-trenirovke:7",
+          "title": "Сила и обучение упражнению",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-reflections:2",
+          "title": "Зачем фиксировать связку",
+          "kind": "chapter"
+        },
+        {
+          "source": "agents-week-2026-2-memory-guardrails-lecture:11",
+          "title": "Выбор между RAG и обучением",
+          "kind": "transcript"
+        },
+        {
+          "source": "trenerstvo-2-zadachi-uprazhneniya:2",
+          "title": "Три этапа обучения движению",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "noname-16",
+      "query": "Как научиться чувствовать соединение без зрения и зачем это ограничение используется в обучении?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:13",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:19",
+          "title": "Зачем нужны подготовки",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:1",
+          "title": "Тактильное соединение с закрытыми глазами",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:15",
+          "title": "Соединение длится доли секунды",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:0",
+          "title": "Зачем третьему занятию дистанция",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "noname-16",
+      "query": "Как научиться чувствовать соединение без зрения и зачем это ограничение используется в обучении?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:15",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 32,
+      "status": "deeper-candidate",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:19",
+          "title": "Зачем нужны подготовки",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:1",
+          "title": "Тактильное соединение с закрытыми глазами",
+          "kind": "transcript"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:15",
+          "title": "Соединение длится доли секунды",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:0",
+          "title": "Зачем третьему занятию дистанция",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:6",
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "kind": "thesis"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "vid-20260708-200742:10",
+          "title": "Итог подготовки ногами",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-2:4",
+          "title": "Упражнение 2: рука после первого шага",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:6",
+          "title": "Инструменты ног: расширение, степ и смена ритма",
+          "kind": "thesis"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "vid-20260708-200742:10",
+          "title": "Итог подготовки ногами",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-2:4",
+          "title": "Упражнение 2: рука после первого шага",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Конспект: Стойка и работа ног",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Конспект: Стойка и работа ног",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Конспект: Стойка и работа ног",
+          "kind": "material"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Упражнения: Упражнения семинара",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-1",
+      "query": "Как контролировать положение ног после приставного шага и при смене ведущей ноги?",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:5",
+          "title": "Шаффл и смена ведущей ноги",
+          "kind": "chapter"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:4",
+          "title": "Базовая стойка и шаг",
+          "kind": "transcript"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Конспект: Стойка и работа ног",
+          "kind": "material"
+        },
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:undefined",
+          "title": "Упражнения: Упражнения семинара",
+          "kind": "material"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-2",
+      "query": "Какие разные продолжения с контактом показаны при проигрыше соединения и при давлении защиты на винден?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+      "inScope": true,
+      "rank": 4,
+      "diagnosticRank120": 4,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "longsword-a:14",
+          "title": "Виндены: уступающий и силовой",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:11",
+          "title": "Давление партнёра и перевод одними пальцами",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:4",
+          "title": "Проигрыш захвата: защита 6 и удар с другой стороны",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-2",
+      "query": "Какие разные продолжения с контактом показаны при проигрыше соединения и при давлении защиты на винден?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "longsword-a:14",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "longsword-a:14",
+          "title": "Виндены: уступающий и силовой",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:11",
+          "title": "Давление партнёра и перевод одними пальцами",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:4",
+          "title": "Проигрыш захвата: защита 6 и удар с другой стороны",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-2",
+      "query": "Какие разные продолжения с контактом показаны при проигрыше соединения и при давлении защиты на винден?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:11",
+          "title": "Давление партнёра и перевод одними пальцами",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:4",
+          "title": "Проигрыш захвата: защита 6 и удар с другой стороны",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:4",
+          "title": "Маневрирование внутри соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-2",
+      "query": "Какие разные продолжения с контактом показаны при проигрыше соединения и при давлении защиты на винден?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "longsword-a:14",
+      "inScope": false,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "outside-scope",
+      "topFive": [
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:11",
+          "title": "Давление партнёра и перевод одними пальцами",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-2-utro:4",
+          "title": "Проигрыш захвата: защита 6 и удар с другой стороны",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:15",
+          "title": "Ответ на проигранное соединение",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:10",
+          "title": "Мягкое соединение через первую защиту",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-4:4",
+          "title": "Маневрирование внутри соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "vibe-coding-lovushki-myshleniya:7",
+          "title": "Зачем учить карту ловушек",
+          "kind": "chapter"
+        },
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-6:5",
+          "title": "Два темпа подготовки",
+          "kind": "chapter"
+        },
+        {
+          "source": "psihologiya-3-isterechnaya:22",
+          "title": "Медленный темп и частота сессий",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "vibe-coding-lovushki-myshleniya:7",
+          "title": "Зачем учить карту ловушек",
+          "kind": "chapter"
+        },
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-6:5",
+          "title": "Два темпа подготовки",
+          "kind": "chapter"
+        },
+        {
+          "source": "psihologiya-3-isterechnaya:22",
+          "title": "Медленный темп и частота сессий",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:8",
+          "title": "Как учить и учиться",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:4",
+          "title": "Модель принятия решений",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 20,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:8",
+          "title": "Как учить и учиться",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:4",
+          "title": "Модель принятия решений",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:8",
+          "title": "Как учить и учиться",
+          "kind": "chapter"
+        },
+        {
+          "source": "dofamin-neyronnye-svyazi-pasha:7",
+          "title": "Стресс выбирает дорогу",
+          "kind": "transcript"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-3",
+      "query": "Почему новичку нужен более медленный темп партнёра, когда он учится выбирать подготовленное решение по сигналу?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 25,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "kompresiya-taktiki-lektsiya:12",
+          "title": "Q&A: новичок и опытный",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:7",
+          "title": "Преднамеренно-экспромтные",
+          "kind": "chapter"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:8",
+          "title": "Как учить и учиться",
+          "kind": "chapter"
+        },
+        {
+          "source": "dofamin-neyronnye-svyazi-pasha:7",
+          "title": "Стресс выбирает дорогу",
+          "kind": "transcript"
+        },
+        {
+          "source": "protivnik-fehtuet-nepravilno:16",
+          "title": "Цель обучения новичков",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-4",
+      "query": "Зачем партнёру доводить атаку в батманном упражнении и в работе монитора, даже если ученик не защищается?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "sablya-a-5:5",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:0",
+          "title": "Кто такой монитор",
+          "kind": "chapter"
+        },
+        {
+          "source": "vid-20260708-200742:4",
+          "title": "Работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:7",
+          "title": "От простого батмана к многоходовой связке",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-a-1-vvodnaya:16",
+          "title": "Захват и работа от соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-4",
+      "query": "Зачем партнёру доводить атаку в батманном упражнении и в работе монитора, даже если ученик не защищается?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "absent-from-120",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:0",
+          "title": "Кто такой монитор",
+          "kind": "chapter"
+        },
+        {
+          "source": "vid-20260708-200742:4",
+          "title": "Работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:7",
+          "title": "От простого батмана к многоходовой связке",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-a-1-vvodnaya:16",
+          "title": "Захват и работа от соединения",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-4",
+      "query": "Зачем партнёру доводить атаку в батманном упражнении и в работе монитора, даже если ученик не защищается?",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "source": "sablya-a-5:5",
+      "inScope": true,
+      "rank": 8,
+      "diagnosticRank120": 8,
+      "status": "below-top-five",
+      "topFive": [
+        {
+          "source": "sablya-a-7:7",
+          "title": "Упражнение: финт и батман",
+          "kind": "transcript"
+        },
+        {
+          "source": "longsword-a:21",
+          "title": "Тактика: ответная атака и манёвр",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-10:3",
+          "title": "Финты на атаку",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-vvodnaya:8",
+          "title": "Финальное упражнение и анонс следующей тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-5:3",
+          "title": "Батманы в защите: упражнение",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-confirm-4",
+      "query": "Зачем партнёру доводить атаку в батманном упражнении и в работе монитора, даже если ученик не защищается?",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": false,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "outside-scope",
+      "topFive": [
+        {
+          "source": "sablya-a-7:7",
+          "title": "Упражнение: финт и батман",
+          "kind": "transcript"
+        },
+        {
+          "source": "longsword-a:21",
+          "title": "Тактика: ответная атака и манёвр",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-10:3",
+          "title": "Финты на атаку",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-vvodnaya:8",
+          "title": "Финальное упражнение и анонс следующей тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "sablya-a-5:3",
+          "title": "Батманы в защите: упражнение",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-1",
+      "query": "Какими разными проверками убедиться, что из входа ногами можно отступить, а рука с баклером держит давление?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:3",
+      "inScope": true,
+      "rank": 9,
+      "diagnosticRank120": 9,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "title": "Структурный хват баклера",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:12",
+          "title": "Глубокий присед как проверка корпуса и ног",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil-4-2:4",
+          "title": "Проверка дистанции в руки",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:4",
+          "title": "Три варианта координации рук и ног",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-1",
+      "query": "Какими разными проверками убедиться, что из входа ногами можно отступить, а рука с баклером держит давление?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:7",
+          "title": "Структурный хват баклера",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:12",
+          "title": "Глубокий присед как проверка корпуса и ног",
+          "kind": "chapter"
+        },
+        {
+          "source": "manevrovo-atakuyushchiy-stil-4-2:4",
+          "title": "Проверка дистанции в руки",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:12",
+          "title": "Проверка захвата без коррекции",
+          "kind": "chapter"
+        },
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:4",
+          "title": "Три варианта координации рук и ног",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-2",
+      "query": "Как усложняют задание с двумя мячами и работу монитора, когда простой вариант стал слишком лёгким?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "title": "Координация с двумя мячами",
+          "kind": "chapter"
+        },
+        {
+          "source": "ataka-prosche-ne-byvaet-udar:8",
+          "title": "Скорость, ошибки и работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "vid-20260708-200742:4",
+          "title": "Работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-2:3",
+          "title": "Почему турнирная сабля стала легче",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+          "title": "Мяч и координация шага",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-2",
+      "query": "Как усложняют задание с двумя мячами и работу монитора, когда простой вариант стал слишком лёгким?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:3",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 21,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "mech-i-bakler-mikrotsikl-1-osnovy:3",
+          "title": "Координация с двумя мячами",
+          "kind": "chapter"
+        },
+        {
+          "source": "ataka-prosche-ne-byvaet-udar:8",
+          "title": "Скорость, ошибки и работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "vid-20260708-200742:4",
+          "title": "Работа монитора",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-2:3",
+          "title": "Почему турнирная сабля стала легче",
+          "kind": "chapter"
+        },
+        {
+          "source": "kinezio-trenirovka-1-razminka-koordinatsiya:20",
+          "title": "Мяч и координация шага",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:1",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 46,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:6",
+          "title": "Угроза руками и ложная атака",
+          "kind": "thesis"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+          "title": "Ложная защита на финт",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+          "title": "Сценарий для защиты-ответа",
+          "kind": "thesis"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:8",
+          "title": "Ложная контратака и финальный выбор",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:6",
+          "title": "Угроза руками и ложная атака",
+          "kind": "thesis"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:9",
+          "title": "Ложная защита на финт",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "fehtovanie-s-prioritetom-v-atake-korotovskih:7",
+          "title": "Сценарий для защиты-ответа",
+          "kind": "thesis"
+        },
+        {
+          "source": "manevrovo-oboronitelnyi-tip:8",
+          "title": "Ложная контратака и финальный выбор",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "hema-prednamerennye-ekspromtnye:1",
+      "inScope": true,
+      "rank": 6,
+      "diagnosticRank120": 6,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "optimizatsiya-parad-ripost-hema:9",
+          "title": "Парад-репост: защита и жим",
+          "kind": "chapter"
+        },
+        {
+          "source": "silovye-porezy-katanoy:7",
+          "title": "Вход из длинного острия",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "optimizatsiya-parad-ripost-hema:9",
+          "title": "Парад-репост: защита и жим",
+          "kind": "chapter"
+        },
+        {
+          "source": "silovye-porezy-katanoy:7",
+          "title": "Вход из длинного острия",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "hema-prednamerennye-ekspromtnye:1",
+      "inScope": true,
+      "rank": 5,
+      "diagnosticRank120": 5,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "optimizatsiya-parad-ripost-hema:9",
+          "title": "Парад-репост: защита и жим",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:1",
+          "title": "Две категории ошибок",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-3",
+      "query": "Как отличить поднятую заранее защиту ученика от ошибки партнёра, который остановил удар и создал ложный успех?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "kontseptsiya-monitoringa:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "kontseptsiya-monitoringa:4",
+          "title": "Стимул как в реальном бою",
+          "kind": "chapter"
+        },
+        {
+          "source": "kontseptsiya-monitoringa:1",
+          "title": "Ошибки прошлой тренировки",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:9",
+          "title": "Проблема учеников и «Око»",
+          "kind": "chapter"
+        },
+        {
+          "source": "optimizatsiya-parad-ripost-hema:9",
+          "title": "Парад-репост: защита и жим",
+          "kind": "chapter"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:1",
+          "title": "Две категории ошибок",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-4",
+      "query": "Как уменьшить сложность обучения: ограничить варианты угрозы и оставить один сигнал ноги для запуска рук?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": null,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:4",
+          "title": "Три варианта координации рук и ног",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:6",
+          "title": "Скорость и ложные варианты",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:6",
+          "title": "Угроза руками и ложная атака",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-a-2:2",
+          "title": "Варианты начала распрямления руки",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-4",
+      "query": "Как уменьшить сложность обучения: ограничить варианты угрозы и оставить один сигнал ноги для запуска рук?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "gruppa-b-4-ataki-na-fone-manevrirovaniya:4",
+          "title": "Три варианта координации рук и ног",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:6",
+          "title": "Скорость и ложные варианты",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-1:7",
+          "title": "Упрощение через заднюю ногу",
+          "kind": "chapter"
+        },
+        {
+          "source": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:6",
+          "title": "Угроза руками и ложная атака",
+          "kind": "thesis"
+        },
+        {
+          "source": "sablya-a-2:2",
+          "title": "Варианты начала распрямления руки",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 50,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "obuchenie-situatsiya-subtaktika:7",
+          "title": "Довести атаку до конца",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:4",
+          "title": "Соединение как сигнал для реакции выбора",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "obuchenie-situatsiya-subtaktika:7",
+          "title": "Довести атаку до конца",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:4",
+          "title": "Соединение как сигнал для реакции выбора",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 16,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "obuchenie-situatsiya-subtaktika:7",
+          "title": "Довести атаку до конца",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:5",
+          "title": "Преднамеренные действия",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "obuchenie-situatsiya-subtaktika:7",
+          "title": "Довести атаку до конца",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "obuchenie-situatsiya-subtaktika:5",
+          "title": "Атака–защита и угроза",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:5",
+          "title": "Преднамеренные действия",
+          "kind": "transcript"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "hema-prednamerennye-ekspromtnye:7",
+      "inScope": true,
+      "rank": null,
+      "diagnosticRank120": 10,
+      "status": "linked",
+      "topFive": [
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:5",
+          "title": "Преднамеренные действия",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:6",
+          "title": "Экспромтные действия",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:4",
+          "title": "Модель принятия решений",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-5",
+      "query": "Как соединить выбор заученного действия по сигналу с распознаванием ситуации и доведением угрозы до конца?",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "source": "2026-07-06-19-26-42:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "2026-07-06-19-26-42:4",
+          "title": "Учить не технику в воздухе, а распознавание",
+          "kind": "chapter"
+        },
+        {
+          "source": "2026-07-06-19-26-42:1",
+          "title": "Зачем выделять угрозу",
+          "kind": "thesis"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:5",
+          "title": "Преднамеренные действия",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:6",
+          "title": "Экспромтные действия",
+          "kind": "transcript"
+        },
+        {
+          "source": "hema-prednamerennye-ekspromtnye:4",
+          "title": "Модель принятия решений",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-7:10",
+          "title": "Захват вместо батмана: непрерывный укол с оппозицией",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "archive",
+      "label": "archive",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-7:10",
+          "title": "Захват вместо батмана: непрерывный укол с оппозицией",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+      "inScope": true,
+      "rank": 2,
+      "diagnosticRank120": 2,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:13",
+          "title": "Разрыв ритма: зачем финту нужна подготовка",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "report",
+      "label": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:13",
+          "title": "Разрыв ритма: зачем финту нужна подготовка",
+          "kind": "thesis"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+      "inScope": true,
+      "rank": 3,
+      "diagnosticRank120": 3,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-7:10",
+          "title": "Захват вместо батмана: непрерывный укол с оппозицией",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        }
+      ]
+    },
+    {
+      "id": "source-link-v2-6",
+      "query": "Когда нужно выбирать батман вместо финта и как не потерять открывшуюся линию широким движением?",
+      "scope": "collection",
+      "label": "noname",
+      "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+      "inScope": true,
+      "rank": 1,
+      "diagnosticRank120": 1,
+      "status": "direct",
+      "topFive": [
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:4",
+          "title": "Короткий импульс пальцами вместо широкого замаха",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-3:4",
+          "title": "«Липкий меч» вместо широкого круга",
+          "kind": "chapter"
+        },
+        {
+          "source": "avstriyskaya-sablya-trenirovka-6-batmany-vybor:16",
+          "title": "Два сигнала: финт или батман",
+          "kind": "thesis"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-7:10",
+          "title": "Захват вместо батмана: непрерывный укол с оппозицией",
+          "kind": "chapter"
+        },
+        {
+          "source": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya:11",
+          "title": "Сначала захват, потом выбор: альтернативы высокой линии",
+          "kind": "chapter"
+        }
+      ]
+    }
+  ]
+}

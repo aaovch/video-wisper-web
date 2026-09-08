@@ -1,0 +1,1587 @@
+{
+  "protocol": "Exploratory fencing set authored AFTER freezing 55 chapter expansions. Same assistant, not independent human judgments. No expansion tuning against this set. Binary known relevant chapters; other valid answers may exist.",
+  "enrichedReports": [
+    "hema-prednamerennye-ekspromtnye",
+    "ukol-po-centralnoy-linii",
+    "soedinenie-dlinnyi-mech-lager-noname-1"
+  ],
+  "addedChapters": 55,
+  "fixtureHash": "fa74d92e08da20a0c6dec126bbc53df966df070e2c2a594cc51d791a9687229a",
+  "beforeIndex": "f4bba2527350b00e691b8010a8f24376ee47d6e1d561e50ba10700d5285906d0",
+  "afterIndex": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+  "scenarios": 436,
+  "groups": [
+    {
+      "area": "report",
+      "scopeSize": 1,
+      "count": 64,
+      "beforeHit3": 48,
+      "afterHit3": 50,
+      "beforeHit5": 52,
+      "afterHit5": 56,
+      "beforeMRR": 0.6226934523809524,
+      "afterMRR": 0.6854166666666668,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection:ovchinnikov-lectures",
+      "scopeSize": 15,
+      "count": 16,
+      "beforeHit3": 4,
+      "afterHit3": 7,
+      "beforeHit5": 6,
+      "afterHit5": 7,
+      "beforeMRR": 0.21875,
+      "afterMRR": 0.2589285714285714,
+      "negative": 4,
+      "beforeFalsePositive": 3,
+      "afterFalsePositive": 3
+    },
+    {
+      "area": "collection-flow:ovchinnikov-lectures",
+      "scopeSize": 15,
+      "count": 16,
+      "beforeHit3": 4,
+      "afterHit3": 7,
+      "beforeHit5": 6,
+      "afterHit5": 7,
+      "beforeMRR": 0.21875,
+      "afterMRR": 0.2589285714285714,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection:golden-falcon-astana",
+      "scopeSize": 15,
+      "count": 16,
+      "beforeHit3": 6,
+      "afterHit3": 7,
+      "beforeHit5": 6,
+      "afterHit5": 7,
+      "beforeMRR": 0.2625,
+      "afterMRR": 0.3630952380952381,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection-flow:golden-falcon-astana",
+      "scopeSize": 15,
+      "count": 16,
+      "beforeHit3": 6,
+      "afterHit3": 7,
+      "beforeHit5": 6,
+      "afterHit5": 7,
+      "beforeMRR": 0.2625,
+      "afterMRR": 0.3630952380952381,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "catalog",
+      "scopeSize": 149,
+      "count": 64,
+      "beforeHit3": 23,
+      "afterHit3": 27,
+      "beforeHit5": 27,
+      "afterHit5": 34,
+      "beforeMRR": 0.33246527777777773,
+      "afterMRR": 0.4005208333333333,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "archive",
+      "scopeSize": 150,
+      "count": 64,
+      "beforeHit3": 23,
+      "afterHit3": 27,
+      "beforeHit5": 27,
+      "afterHit5": 34,
+      "beforeMRR": 0.33246527777777773,
+      "afterMRR": 0.4005208333333333,
+      "negative": 4,
+      "beforeFalsePositive": 3,
+      "afterFalsePositive": 3
+    },
+    {
+      "area": "fallback",
+      "scopeSize": 1,
+      "count": 64,
+      "beforeHit3": 48,
+      "afterHit3": 50,
+      "beforeHit5": 52,
+      "afterHit5": 56,
+      "beforeMRR": 0.6226934523809524,
+      "afterMRR": 0.6854166666666668,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection:lager-vladivostok",
+      "scopeSize": 17,
+      "count": 16,
+      "beforeHit3": 10,
+      "afterHit3": 13,
+      "beforeHit5": 11,
+      "afterHit5": 14,
+      "beforeMRR": 0.5017361111111112,
+      "afterMRR": 0.7001488095238095,
+      "negative": 4,
+      "beforeFalsePositive": 3,
+      "afterFalsePositive": 3
+    },
+    {
+      "area": "collection-flow:lager-vladivostok",
+      "scopeSize": 17,
+      "count": 16,
+      "beforeHit3": 10,
+      "afterHit3": 13,
+      "beforeHit5": 11,
+      "afterHit5": 14,
+      "beforeMRR": 0.5017361111111112,
+      "afterMRR": 0.7001488095238095,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection:noname",
+      "scopeSize": 18,
+      "count": 16,
+      "beforeHit3": 9,
+      "afterHit3": 10,
+      "beforeHit5": 10,
+      "afterHit5": 10,
+      "beforeMRR": 0.5364583333333333,
+      "afterMRR": 0.5625,
+      "negative": 4,
+      "beforeFalsePositive": 3,
+      "afterFalsePositive": 3
+    },
+    {
+      "area": "collection-flow:noname",
+      "scopeSize": 18,
+      "count": 16,
+      "beforeHit3": 9,
+      "afterHit3": 10,
+      "beforeHit5": 10,
+      "afterHit5": 10,
+      "beforeMRR": 0.5364583333333333,
+      "afterMRR": 0.5625,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    },
+    {
+      "area": "collection:mech-i-bakler-noname",
+      "scopeSize": 1,
+      "count": 16,
+      "beforeHit3": 10,
+      "afterHit3": 10,
+      "beforeHit5": 12,
+      "afterHit5": 12,
+      "beforeMRR": 0.4,
+      "afterMRR": 0.4,
+      "negative": 4,
+      "beforeFalsePositive": 3,
+      "afterFalsePositive": 3
+    },
+    {
+      "area": "collection-flow:mech-i-bakler-noname",
+      "scopeSize": 1,
+      "count": 16,
+      "beforeHit3": 10,
+      "afterHit3": 10,
+      "beforeHit5": 12,
+      "afterHit5": 12,
+      "beforeMRR": 0.4,
+      "afterMRR": 0.4,
+      "negative": 0,
+      "beforeFalsePositive": 0,
+      "afterFalsePositive": 0
+    }
+  ],
+  "differences": [
+    {
+      "id": "f02",
+      "query": "Почему заранее выученная связка может привести к пропущенному удару?",
+      "area": "report",
+      "beforeRank": 0,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:5"
+      ]
+    },
+    {
+      "id": "f02",
+      "query": "Почему заранее выученная связка может привести к пропущенному удару?",
+      "area": "fallback",
+      "beforeRank": 0,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:5"
+      ]
+    },
+    {
+      "id": "f02-typo",
+      "query": "Почему заранее выученная связка может привести к пропущнному удару?",
+      "area": "report",
+      "beforeRank": 0,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:5"
+      ]
+    },
+    {
+      "id": "f02-typo",
+      "query": "Почему заранее выученная связка может привести к пропущнному удару?",
+      "area": "fallback",
+      "beforeRank": 0,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:5"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "report",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:1",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "rabota-paltsev-pri-prostoy-atake:material:Упражнения: Проверка механики простой атаки",
+        "retention-club:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:1",
+        "hema-prednamerennye-ekspromtnye:chapter:2"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "rabota-paltsev-pri-prostoy-atake:material:Упражнения: Проверка механики простой атаки",
+        "retention-club:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:1",
+        "hema-prednamerennye-ekspromtnye:chapter:2"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection:golden-falcon-astana",
+      "beforeRank": 10,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "dofamin-neyronnye-svyazi-pasha:chapter:14",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "kontseptsiya-monitoringa:chapter:6",
+        "optimizatsiya-parad-ripost-hema:chapter:11"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection-flow:golden-falcon-astana",
+      "beforeRank": 10,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "dofamin-neyronnye-svyazi-pasha:chapter:14",
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "kontseptsiya-monitoringa:chapter:6",
+        "optimizatsiya-parad-ripost-hema:chapter:11"
+      ]
+    },
+    {
+      "id": "f04",
+      "query": "Есть упражнение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "fallback",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:9",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "hema-prednamerennye-ekspromtnye:chapter:1",
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f04-typo",
+      "query": "Есть упражение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 12,
+      "afterRank": 11,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:1",
+        "optimizatsiya-parad-ripost-hema:overview:Главное",
+        "tsena-adaptatsii-tehnicheskogo-priema:material:Глоссарий: Движение последнего намерения",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:3",
+        "retention-club:chapter:9"
+      ]
+    },
+    {
+      "id": "f04-typo",
+      "query": "Есть упражение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 12,
+      "afterRank": 11,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:1",
+        "optimizatsiya-parad-ripost-hema:overview:Главное",
+        "tsena-adaptatsii-tehnicheskogo-priema:material:Глоссарий: Движение последнего намерения",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:3",
+        "retention-club:chapter:9"
+      ]
+    },
+    {
+      "id": "f04-typo",
+      "query": "Есть упражение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection:golden-falcon-astana",
+      "beforeRank": 10,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "optimizatsiya-parad-ripost-hema:overview:Главное",
+        "optimizatsiya-parad-ripost-hema:report:Оптимизация паттернов движений в парад-репостной игре",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "dofamin-neyronnye-svyazi-pasha:chapter:14",
+        "fehtovat-dolgo-ne-travmirovatsya:chapter:2"
+      ]
+    },
+    {
+      "id": "f04-typo",
+      "query": "Есть упражение, чтобы перестать дёргаться на каждое движение соперника?",
+      "area": "collection-flow:golden-falcon-astana",
+      "beforeRank": 10,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "optimizatsiya-parad-ripost-hema:overview:Главное",
+        "optimizatsiya-parad-ripost-hema:report:Оптимизация паттернов движений в парад-репостной игре",
+        "hema-prednamerennye-ekspromtnye:chapter:2",
+        "dofamin-neyronnye-svyazi-pasha:chapter:14",
+        "fehtovat-dolgo-ne-travmirovatsya:chapter:2"
+      ]
+    },
+    {
+      "id": "f06",
+      "query": "Быстрая неожиданная реакция новичка всегда технически хорошая?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:0",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "hema-prednamerennye-ekspromtnye:report:Преднамеренные и экспромтные действия",
+        "kompresiya-taktiki-lektsiya:chapter:12"
+      ]
+    },
+    {
+      "id": "f06",
+      "query": "Быстрая неожиданная реакция новичка всегда технически хорошая?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:0",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "hema-prednamerennye-ekspromtnye:report:Преднамеренные и экспромтные действия",
+        "kompresiya-taktiki-lektsiya:chapter:12"
+      ]
+    },
+    {
+      "id": "f06",
+      "query": "Быстрая неожиданная реакция новичка всегда технически хорошая?",
+      "area": "collection:golden-falcon-astana",
+      "beforeRank": 0,
+      "afterRank": 6,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "trenerskoe-sobranie:chapter:11",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "hema-prednamerennye-ekspromtnye:report:Преднамеренные и экспромтные действия",
+        "kompresiya-taktiki-lektsiya:chapter:12"
+      ]
+    },
+    {
+      "id": "f06",
+      "query": "Быстрая неожиданная реакция новичка всегда технически хорошая?",
+      "area": "collection-flow:golden-falcon-astana",
+      "beforeRank": 0,
+      "afterRank": 6,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "trenerskoe-sobranie:chapter:11",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "hema-prednamerennye-ekspromtnye:report:Преднамеренные и экспромтные действия",
+        "kompresiya-taktiki-lektsiya:chapter:12"
+      ]
+    },
+    {
+      "id": "f06-typo",
+      "query": "Быстрая неожианная реакция новичка всегда технически хорошая?",
+      "area": "report",
+      "beforeRank": 4,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:6",
+        "hema-prednamerennye-ekspromtnye:chapter:7",
+        "hema-prednamerennye-ekspromtnye:chapter:5",
+        "hema-prednamerennye-ekspromtnye:chapter:10",
+        "hema-prednamerennye-ekspromtnye:chapter:9"
+      ]
+    },
+    {
+      "id": "f06-typo",
+      "query": "Быстрая неожианная реакция новичка всегда технически хорошая?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 12,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:0",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "kompresiya-taktiki-lektsiya:chapter:12",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:2"
+      ]
+    },
+    {
+      "id": "f06-typo",
+      "query": "Быстрая неожианная реакция новичка всегда технически хорошая?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 0,
+      "afterRank": 12,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:0",
+        "protivnik-fehtuet-nepravilno:chapter:16",
+        "kompresiya-taktiki-lektsiya:chapter:9",
+        "kompresiya-taktiki-lektsiya:chapter:12",
+        "tsena-adaptatsii-tehnicheskogo-priema:chapter:2"
+      ]
+    },
+    {
+      "id": "f06-typo",
+      "query": "Быстрая неожианная реакция новичка всегда технически хорошая?",
+      "area": "fallback",
+      "beforeRank": 4,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:6",
+        "hema-prednamerennye-ekspromtnye:chapter:7",
+        "hema-prednamerennye-ekspromtnye:chapter:5",
+        "hema-prednamerennye-ekspromtnye:chapter:10",
+        "hema-prednamerennye-ekspromtnye:chapter:9"
+      ]
+    },
+    {
+      "id": "f07",
+      "query": "Какая последовательность от анализа до выполнения действия используется в модели?",
+      "area": "catalog",
+      "beforeRank": 5,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "sudya-gayd-dlya-nachinayushchikh:chapter:12",
+        "ii-dlya-analiza-hema-boev:material:Конспект: Модель тренера",
+        "hema-prednamerennye-ekspromtnye:chapter:4",
+        "agents-week-2026-2-memory-guardrails-lecture:chapter:19"
+      ]
+    },
+    {
+      "id": "f07",
+      "query": "Какая последовательность от анализа до выполнения действия используется в модели?",
+      "area": "archive",
+      "beforeRank": 5,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "sudya-gayd-dlya-nachinayushchikh:chapter:12",
+        "ii-dlya-analiza-hema-boev:material:Конспект: Модель тренера",
+        "hema-prednamerennye-ekspromtnye:chapter:4",
+        "agents-week-2026-2-memory-guardrails-lecture:chapter:19"
+      ]
+    },
+    {
+      "id": "f07-typo",
+      "query": "Какая последоваельность от анализа до выполнения действия используется в модели?",
+      "area": "catalog",
+      "beforeRank": 5,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "sudya-gayd-dlya-nachinayushchikh:chapter:12",
+        "ii-dlya-analiza-hema-boev:material:Конспект: Модель тренера",
+        "hema-prednamerennye-ekspromtnye:chapter:4",
+        "agents-week-2026-2-memory-guardrails-lecture:chapter:19"
+      ]
+    },
+    {
+      "id": "f07-typo",
+      "query": "Какая последоваельность от анализа до выполнения действия используется в модели?",
+      "area": "archive",
+      "beforeRank": 5,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:overview:Главное",
+        "sudya-gayd-dlya-nachinayushchikh:chapter:12",
+        "ii-dlya-analiza-hema-boev:material:Конспект: Модель тренера",
+        "hema-prednamerennye-ekspromtnye:chapter:4",
+        "agents-week-2026-2-memory-guardrails-lecture:chapter:19"
+      ]
+    },
+    {
+      "id": "f08",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровизировать?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 4,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "obuchenie-situatsiya-subtaktika:chapter:8",
+        "subtaktika-teh-realizacii:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6"
+      ]
+    },
+    {
+      "id": "f08",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровизировать?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 4,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "obuchenie-situatsiya-subtaktika:chapter:8",
+        "subtaktika-teh-realizacii:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6"
+      ]
+    },
+    {
+      "id": "f08",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровизировать?",
+      "area": "collection:golden-falcon-astana",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6",
+        "kompresiya-taktiki-lektsiya:chapter:0",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f08",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровизировать?",
+      "area": "collection-flow:golden-falcon-astana",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6",
+        "kompresiya-taktiki-lektsiya:chapter:0",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f08-typo",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровиировать?",
+      "area": "collection:ovchinnikov-lectures",
+      "beforeRank": 4,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "obuchenie-situatsiya-subtaktika:chapter:8",
+        "subtaktika-teh-realizacii:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6"
+      ]
+    },
+    {
+      "id": "f08-typo",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровиировать?",
+      "area": "collection-flow:ovchinnikov-lectures",
+      "beforeRank": 4,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "obuchenie-situatsiya-subtaktika:chapter:8",
+        "subtaktika-teh-realizacii:chapter:8",
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6"
+      ]
+    },
+    {
+      "id": "f08-typo",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровиировать?",
+      "area": "collection:golden-falcon-astana",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6",
+        "kompresiya-taktiki-lektsiya:chapter:0",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f08-typo",
+      "query": "Можно в одном обмене сначала действовать по плану, а потом импровиировать?",
+      "area": "collection-flow:golden-falcon-astana",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "hema-prednamerennye-ekspromtnye:chapter:8",
+        "protivnik-fehtuet-nepravilno:chapter:4",
+        "optimizatsiya-parad-ripost-hema:chapter:6",
+        "kompresiya-taktiki-lektsiya:chapter:0",
+        "hema-prednamerennye-ekspromtnye:chapter:4"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "report",
+      "beforeRank": 4,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:3",
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:chapter:4",
+        "ukol-po-centralnoy-linii:chapter:2",
+        "ukol-po-centralnoy-linii:chapter:1"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:4",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:4",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "catalog",
+      "beforeRank": 0,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "sablya-a-7:chapter:8",
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "soedinenie-dlinnyi-mech-lager-noname-2-utro:chapter:9"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "archive",
+      "beforeRank": 0,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "sablya-a-7:chapter:8",
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "soedinenie-dlinnyi-mech-lager-noname-2-utro:chapter:9"
+      ]
+    },
+    {
+      "id": "f11",
+      "query": "Остриё гуляет мимо цели. Как проверить положение ведущей руки?",
+      "area": "fallback",
+      "beforeRank": 4,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:3",
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:chapter:4",
+        "ukol-po-centralnoy-linii:chapter:2",
+        "ukol-po-centralnoy-linii:chapter:1"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "report",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:3",
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:chapter:2",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "ukol-po-centralnoy-linii:chapter:6"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:chapter:9"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:chapter:9"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "catalog",
+      "beforeRank": 0,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "sablya-a-7:chapter:8",
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "archive",
+      "beforeRank": 0,
+      "afterRank": 4,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "sablya-a-7:chapter:8",
+        "gruppa-b-5-kakari-keiko:chapter:8",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:chapter:3",
+        "ukol-po-centralnoy-linii:chapter:3",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:material:Упражнения: Выбор дистанции и цели"
+      ]
+    },
+    {
+      "id": "f11-typo",
+      "query": "Остриё гуляет мимо цели. Как проврить положение ведущей руки?",
+      "area": "fallback",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:3",
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:chapter:2",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "ukol-po-centralnoy-linii:chapter:6"
+      ]
+    },
+    {
+      "id": "f12",
+      "query": "При уколе сначала выставлять меч или двигаться ногами?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-2-ataki-fendenti-na-vypade:chapter:7",
+        "gruppa-b-2-ataki-fendenti-na-vypade:report:Группа Б — 2. Атаки fendente на выпаде",
+        "ukol-po-centralnoy-linii:report:Укол по центральной линии",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:5"
+      ]
+    },
+    {
+      "id": "f12",
+      "query": "При уколе сначала выставлять меч или двигаться ногами?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-2-ataki-fendenti-na-vypade:chapter:7",
+        "gruppa-b-2-ataki-fendenti-na-vypade:report:Группа Б — 2. Атаки fendente на выпаде",
+        "ukol-po-centralnoy-linii:report:Укол по центральной линии",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:5"
+      ]
+    },
+    {
+      "id": "f12",
+      "query": "При уколе сначала выставлять меч или двигаться ногами?",
+      "area": "catalog",
+      "beforeRank": 11,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+        "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:report:Простая атака: микроцикл 1 длинного меча",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:2",
+        "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа"
+      ]
+    },
+    {
+      "id": "f12",
+      "query": "При уколе сначала выставлять меч или двигаться ногами?",
+      "area": "archive",
+      "beforeRank": 11,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+        "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:report:Простая атака: микроцикл 1 длинного меча",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:2",
+        "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа"
+      ]
+    },
+    {
+      "id": "f12-typo",
+      "query": "При уколе сначала высталять меч или двигаться ногами?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-2-ataki-fendenti-na-vypade:chapter:7",
+        "gruppa-b-2-ataki-fendenti-na-vypade:report:Группа Б — 2. Атаки fendente на выпаде",
+        "ukol-po-centralnoy-linii:report:Укол по центральной линии",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:5"
+      ]
+    },
+    {
+      "id": "f12-typo",
+      "query": "При уколе сначала высталять меч или двигаться ногами?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-2-ataki-fendenti-na-vypade:chapter:7",
+        "gruppa-b-2-ataki-fendenti-na-vypade:report:Группа Б — 2. Атаки fendente на выпаде",
+        "ukol-po-centralnoy-linii:report:Укол по центральной линии",
+        "manevrovo-atakuyushchiy-stil-4-2:chapter:5"
+      ]
+    },
+    {
+      "id": "f12-typo",
+      "query": "При уколе сначала высталять меч или двигаться ногами?",
+      "area": "catalog",
+      "beforeRank": 9,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+        "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:report:Простая атака: микроцикл 1 длинного меча",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:2",
+        "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+        "ukol-po-centralnoy-linii:chapter:5"
+      ]
+    },
+    {
+      "id": "f12-typo",
+      "query": "При уколе сначала высталять меч или двигаться ногами?",
+      "area": "archive",
+      "beforeRank": 9,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-7:report:Длинный меч — тренировка 6 (заключительная): сборка всего цикла",
+        "prostaya-ataka-mikrotsikl-1-dlinnyy-mech:report:Простая атака: микроцикл 1 длинного меча",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:2",
+        "soedinenie-dlinnyi-mech-lager-noname-3:report:Длинный меч — тренировка 3: дистанция входа",
+        "ukol-po-centralnoy-linii:chapter:5"
+      ]
+    },
+    {
+      "id": "f15",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встречного укола?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:material:Конспект: Маневрирование и окно атаки"
+      ]
+    },
+    {
+      "id": "f15",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встречного укола?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "gruppa-b-4-ataki-na-fone-manevrirovaniya:material:Конспект: Маневрирование и окно атаки"
+      ]
+    },
+    {
+      "id": "f15",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встречного укола?",
+      "area": "catalog",
+      "beforeRank": 6,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:7",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:overview:Главное",
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование"
+      ]
+    },
+    {
+      "id": "f15",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встречного укола?",
+      "area": "archive",
+      "beforeRank": 6,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:chapter:7",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:overview:Главное",
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "report",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "ukol-po-centralnoy-linii:material:Конспект: Контратака",
+        "ukol-po-centralnoy-linii:chapter:14",
+        "ukol-po-centralnoy-linii:chapter:2"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 9,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:material:Конспект: Провокация дистанцией"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 9,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "pozitsionno-oboronitelnyi-tip-osnovnaya-chast:material:Конспект: Провокация дистанцией"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "catalog",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "mech-i-bakler-mikrotsikl-1-osnovy:chapter:15",
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "archive",
+      "beforeRank": 0,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "gruppa-b-2-ataki-fendenti-na-vypade:material:Конспект: Дистанция и маневрирование",
+        "mech-i-bakler-mikrotsikl-1-osnovy:chapter:15",
+        "ukol-po-centralnoy-linii:chapter:8",
+        "gruppa-b-3-vybor-zony-i-distantsii-v-atake:report:Группа Б — 3. Выбор зоны и дистанции в атаке",
+        "rapira-protiv-vstrechnogo-ukola-korotovskih:report:Рапира — семинар: против встречного укола"
+      ]
+    },
+    {
+      "id": "f15-typo",
+      "query": "Противник быстро сокращает дистанцию. Нужен ли мне шаг для встреного укола?",
+      "area": "fallback",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:chapter:8",
+        "ukol-po-centralnoy-linii:chapter:5",
+        "ukol-po-centralnoy-linii:material:Конспект: Контратака",
+        "ukol-po-centralnoy-linii:chapter:14",
+        "ukol-po-centralnoy-linii:chapter:2"
+      ]
+    },
+    {
+      "id": "f16",
+      "query": "Где должна находиться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "report",
+      "beforeRank": 7,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ukol-po-centralnoy-linii:material:Конспект: Почему важна геометрия",
+        "ukol-po-centralnoy-linii:chapter:9"
+      ]
+    },
+    {
+      "id": "f16",
+      "query": "Где должна находиться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ataka-prosche-ne-byvaet-udar:chapter:6",
+        "ataka-prosche-ne-byvaet-udar:material:Глоссарий: Сильная доля клинка"
+      ]
+    },
+    {
+      "id": "f16",
+      "query": "Где должна находиться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ataka-prosche-ne-byvaet-udar:chapter:6",
+        "ataka-prosche-ne-byvaet-udar:material:Глоссарий: Сильная доля клинка"
+      ]
+    },
+    {
+      "id": "f16",
+      "query": "Где должна находиться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "fallback",
+      "beforeRank": 7,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ukol-po-centralnoy-linii:material:Конспект: Почему важна геометрия",
+        "ukol-po-centralnoy-linii:chapter:9"
+      ]
+    },
+    {
+      "id": "f16-typo",
+      "query": "Где должна находться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "report",
+      "beforeRank": 7,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ukol-po-centralnoy-linii:material:Конспект: Почему важна геометрия",
+        "ukol-po-centralnoy-linii:chapter:9"
+      ]
+    },
+    {
+      "id": "f16-typo",
+      "query": "Где должна находться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "collection:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ataka-prosche-ne-byvaet-udar:chapter:6",
+        "ataka-prosche-ne-byvaet-udar:material:Глоссарий: Сильная доля клинка"
+      ]
+    },
+    {
+      "id": "f16-typo",
+      "query": "Где должна находться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "collection-flow:lager-vladivostok",
+      "beforeRank": 0,
+      "afterRank": 7,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ataka-prosche-ne-byvaet-udar:chapter:6",
+        "ataka-prosche-ne-byvaet-udar:material:Глоссарий: Сильная доля клинка"
+      ]
+    },
+    {
+      "id": "f16-typo",
+      "query": "Где должна находться точка контакта сильной и слабой частей клинков для оппозиции?",
+      "area": "fallback",
+      "beforeRank": 7,
+      "afterRank": 5,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "ukol-po-centralnoy-linii:overview:Главное",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Слабая доля клинка",
+        "ukol-po-centralnoy-linii:material:Глоссарий: Сильная доля клинка",
+        "ukol-po-centralnoy-linii:material:Конспект: Почему важна геометрия",
+        "ukol-po-centralnoy-linii:chapter:9"
+      ]
+    },
+    {
+      "id": "f17",
+      "query": "Я сильнее давлю на меч, но мы всё равно попадаем друг в друга. Почему?",
+      "area": "report",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:11",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:9",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:24",
+        "soedinenie-dlinnyi-mech-lager-noname-1:overview:Главное"
+      ]
+    },
+    {
+      "id": "f17",
+      "query": "Я сильнее давлю на меч, но мы всё равно попадаем друг в друга. Почему?",
+      "area": "fallback",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:11",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:9",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:24",
+        "soedinenie-dlinnyi-mech-lager-noname-1:overview:Главное"
+      ]
+    },
+    {
+      "id": "f19",
+      "query": "Монитор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "collection:noname",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:material:Конспект: Роль монитора",
+        "soedinenie-dlinnyi-mech-lager-noname-1:material:Конспект: Базовая реакция выбора"
+      ]
+    },
+    {
+      "id": "f19",
+      "query": "Монитор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "collection-flow:noname",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:material:Конспект: Роль монитора",
+        "soedinenie-dlinnyi-mech-lager-noname-1:material:Конспект: Базовая реакция выбора"
+      ]
+    },
+    {
+      "id": "f19",
+      "query": "Монитор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "catalog",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:10"
+      ]
+    },
+    {
+      "id": "f19",
+      "query": "Монитор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "archive",
+      "beforeRank": 3,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:10"
+      ]
+    },
+    {
+      "id": "f19-typo",
+      "query": "Монтор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "collection:noname",
+      "beforeRank": 4,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Упражнения: Мягкое действие через первую защиту",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:17"
+      ]
+    },
+    {
+      "id": "f19-typo",
+      "query": "Монтор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "collection-flow:noname",
+      "beforeRank": 4,
+      "afterRank": 2,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16",
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:material:Упражнения: Мягкое действие через первую защиту",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:17"
+      ]
+    },
+    {
+      "id": "f19-typo",
+      "query": "Монтор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "catalog",
+      "beforeRank": 6,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16"
+      ]
+    },
+    {
+      "id": "f19-typo",
+      "query": "Монтор должен давать мягкий и жёсткий клинок строго через раз?",
+      "area": "archive",
+      "beforeRank": 6,
+      "afterRank": 3,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "avstriyskaya-sablya-trenirovka-6-batmany-vybor:chapter:10",
+        "ukol-po-centralnoy-linii:chapter:1",
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:16",
+        "ukol-po-centralnoy-linii:chapter:10",
+        "soedinenie-dlinnyi-mech-lager-noname-4:chapter:16"
+      ]
+    },
+    {
+      "id": "f23",
+      "query": "Что делать после финта в кисти, если противник отбивает, а что — если отходит?",
+      "area": "catalog",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:20",
+        "manevrovo-atakuyushchiy-stil:chapter:3",
+        "sablya-6:chapter:3",
+        "sablya-12:chapter:0",
+        "sablya-6:chapter:4"
+      ]
+    },
+    {
+      "id": "f23",
+      "query": "Что делать после финта в кисти, если противник отбивает, а что — если отходит?",
+      "area": "archive",
+      "beforeRank": 3,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:20",
+        "manevrovo-atakuyushchiy-stil:chapter:3",
+        "sablya-6:chapter:3",
+        "sablya-12:chapter:0",
+        "sablya-6:chapter:4"
+      ]
+    },
+    {
+      "id": "f23-typo",
+      "query": "Что делать после финта в кисти, если протвник отбивает, а что — если отходит?",
+      "area": "catalog",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:20",
+        "manevrovo-atakuyushchiy-stil:chapter:3",
+        "sablya-6:chapter:3",
+        "avstriyskaya-sablya-trenirovka-3:chapter:13",
+        "sablya-12:chapter:0"
+      ]
+    },
+    {
+      "id": "f23-typo",
+      "query": "Что делать после финта в кисти, если протвник отбивает, а что — если отходит?",
+      "area": "archive",
+      "beforeRank": 2,
+      "afterRank": 1,
+      "beforeFallback": false,
+      "afterFallback": false,
+      "afterTop": [
+        "soedinenie-dlinnyi-mech-lager-noname-1:chapter:20",
+        "manevrovo-atakuyushchiy-stil:chapter:3",
+        "sablya-6:chapter:3",
+        "avstriyskaya-sablya-trenirovka-3:chapter:13",
+        "sablya-12:chapter:0"
+      ]
+    }
+  ]
+}

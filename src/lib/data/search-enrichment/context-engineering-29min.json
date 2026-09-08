@@ -1,0 +1,224 @@
+{
+  "version": 1,
+  "reportSlug": "context-engineering-29min",
+  "promptVersion": "chapter-search-v1",
+  "generator": "Codex assistant; source-grounded authoring in session 2026-09-06; exploratory pilot, no independent human review",
+  "chapters": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "413764332c589102743cbb3ff5adae3e8681f92ea6a0e256f8211ab014e1bc04",
+      "context": {
+        "text": "Деградация автономного AI-агента по мере накопления шагов рассматривается как проблема организации доступной модели информации.",
+        "evidence": "Marina объясняет типичную деградацию агента после 15–20 шагов и представляет курс по context engineering."
+      },
+      "questions": [
+        {
+          "text": "Отчего агент начинает ошибаться после долгой работы?",
+          "evidence": "Marina объясняет типичную деградацию агента после 15–20 шагов и представляет курс по context engineering.\nПроблема чаще в том, что видит модель, а не в «слабой» LLM.\nКурс собран из engineering blogs, talks, papers и practitioner reports.\nПлан: определение, 4 стратегии, failure modes, сравнение платформ."
+        },
+        {
+          "text": "Всегда ли сбои агента означают, что нужна более сильная модель?",
+          "evidence": "Marina объясняет типичную деградацию агента после 15–20 шагов и представляет курс по context engineering.\nПроблема чаще в том, что видит модель, а не в «слабой» LLM.\nКурс собран из engineering blogs, talks, papers и practitioner reports.\nПлан: определение, 4 стратегии, failure modes, сравнение платформ."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "3da1e508225373efca105c69fda50fd14e14417521d6baa8eb56a56b8ffbfcb8",
+      "context": {
+        "text": "Инженерия контекста агента охватывает инструкции, инструменты и историю действий на каждом шаге, включая написание промптов как частный случай.",
+        "evidence": "Prompt engineering хватает для чатбота; агенту нужен контекст целиком — system prompt, tools, history на каждом шаге."
+      },
+      "questions": [
+        {
+          "text": "Что нужно организовать вокруг модели кроме инструкций?",
+          "evidence": "Prompt engineering хватает для чатбота; агенту нужен контекст целиком — system prompt, tools, history на каждом шаге.\nАгент действует автономно: web, API, code, commands — каждый шаг добавляет output в контекст.\nAnthropic: context = tokens при sampling; CE = оптимизация utility этих tokens.\nPrompt engineering — подмножество context engineering."
+        },
+        {
+          "text": "Что пополняет память агента при обращениях к внешним инструментам?",
+          "evidence": "Prompt engineering хватает для чатбота; агенту нужен контекст целиком — system prompt, tools, history на каждом шаге.\nАгент действует автономно: web, API, code, commands — каждый шаг добавляет output в контекст.\nAnthropic: context = tokens при sampling; CE = оптимизация utility этих tokens.\nPrompt engineering — подмножество context engineering."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "ecb1ab3bb965e1f584d98ac651dba4609d332e1243eb5d1c01f391704b3b5a60",
+      "context": {
+        "text": "Большое окно LLM не гарантирует одинаковое внимание ко всему содержимому: информация в середине и инструкции под длинными результатами инструментов теряются.",
+        "evidence": "LLM как OS: модель = CPU, context window = RAM; исследования Chroma и Anthropic показывают градиентную деградацию."
+      },
+      "questions": [
+        {
+          "text": "Сохраняется ли точность LLM при заполнении большого окна?",
+          "evidence": "LLM как OS: модель = CPU, context window = RAM; исследования Chroma и Anthropic показывают градиентную деградацию.\nПроизводительность падает уже при ~50k tokens у модели с 200k окном.\nU‑образная кривая внимания: начало и конец помнятся, середина теряется (−30 pp accuracy).\nИнструкции под 50k tokens tool outputs «исчезают» для модели."
+        },
+        {
+          "text": "Отчего модель перестаёт замечать инструкции после длинных ответов инструментов?",
+          "evidence": "LLM как OS: модель = CPU, context window = RAM; исследования Chroma и Anthropic показывают градиентную деградацию.\nПроизводительность падает уже при ~50k tokens у модели с 200k окном.\nU‑образная кривая внимания: начало и конец помнятся, середина теряется (−30 pp accuracy).\nИнструкции под 50k tokens tool outputs «исчезают» для модели."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "509ae84910e96f4614a390cd1fa28d5a7781d0ce60b04510f6483955408c1606",
+      "context": {
+        "text": "В окне агента конкурируют семь видов информации: инструкции, описания и результаты инструментов, найденные документы, история, память и состояние задачи.",
+        "evidence": "Разбор того, что конкурирует за окно: system prompt, tools, tool results, RAG, history, memory, agent state."
+      },
+      "questions": [
+        {
+          "text": "Из каких частей складывается содержимое окна агента?",
+          "evidence": "Разбор того, что конкурирует за окно: system prompt, tools, tool results, RAG, history, memory, agent state.\nSystem prompt задаёт identity, rules и control flow — не «helpful assistant».\nTool definitions и их outputs могут съедать тысячи tokens на шаг.\nMemory и agent state (plan, todo, scratchpad) растут вместе с сессией."
+        },
+        {
+          "text": "Куда расходуются токены во время выполнения задачи агентом?",
+          "evidence": "Разбор того, что конкурирует за окно: system prompt, tools, tool results, RAG, history, memory, agent state.\nSystem prompt задаёт identity, rules и control flow — не «helpful assistant».\nTool definitions и их outputs могут съедать тысячи tokens на шаг.\nMemory и agent state (plan, todo, scratchpad) растут вместе с сессией."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "d571767d6c5f7352f72e00960b404f6ea8fb5e72d25eaa50dcdc983d5250f7f2",
+      "context": {
+        "text": "Стратегия Write сохраняет заметки и процедурную память агента вне окна, чтобы пережить сжатие истории; сохранённое затем нужно отбирать через Select.",
+        "evidence": "LangChain: Write, Select, Compress, Isolate; Write — scratchpads, CLAUDE.md, memory extraction вне окна."
+      },
+      "questions": [
+        {
+          "text": "Как сохранить важные сведения агента после сжатия истории?",
+          "evidence": "LangChain: Write, Select, Compress, Isolate; Write — scratchpads, CLAUDE.md, memory extraction вне окна.\nWrite решает «agents forget things» при compaction.\nScratchpads и Think Tool (+54% на benchmark); rules files как procedural memory.\nПамять вне окна бесполезна без Select на следующем шаге."
+        },
+        {
+          "text": "Достаточно ли записать память в файл, чтобы агент ею воспользовался?",
+          "evidence": "LangChain: Write, Select, Compress, Isolate; Write — scratchpads, CLAUDE.md, memory extraction вне окна.\nWrite решает «agents forget things» при compaction.\nScratchpads и Think Tool (+54% на benchmark); rules files как procedural memory.\nПамять вне окна бесполезна без Select на следующем шаге."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "94ab68c94ba0d88bfc41e33f91979a493c3633c3b449be2ca75d19a29f66afef",
+      "context": {
+        "text": "Стратегия Select выбирает нужные сведения и определения инструментов под текущий шаг вместо загрузки всего доступного в окно модели.",
+        "evidence": "Не всё в контекст — только релевантное; agentic RAG, три типа памяти и RAG over tool definitions."
+      },
+      "questions": [
+        {
+          "text": "Как не загружать агенту все документы и инструменты сразу?",
+          "evidence": "Не всё в контекст — только релевантное; agentic RAG, три типа памяти и RAG over tool definitions.\nAgentic RAG: модель сама решает, что искать на каждом шаге.\nEpisodic / semantic / procedural memory — разные источники для select.\nRAG-MCP: accuracy tool selection 14% → 43%, tokens ≈ −50%."
+        },
+        {
+          "text": "Какие виды памяти отбираются для текущей задачи агента?",
+          "evidence": "Не всё в контекст — только релевантное; agentic RAG, три типа памяти и RAG over tool definitions.\nAgentic RAG: модель сама решает, что искать на каждом шаге.\nEpisodic / semantic / procedural memory — разные источники для select.\nRAG-MCP: accuracy tool selection 14% → 43%, tokens ≈ −50%."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "d2767a726e6b9b975f7d04d5820c5dd2e50a17a179d047ecb3d726eb2e5858bd",
+      "context": {
+        "text": "Стратегия Compress уменьшает объём входных данных, старых сообщений и результатов инструментов, сохраняя последние сообщения дословно.",
+        "evidence": "Сжатие на трёх этапах: до входа (chunking), во время работы (summarization, auto-compaction), после действия (tool result clearing)."
+      },
+      "questions": [
+        {
+          "text": "Как уменьшить накопившуюся историю вызовов инструментов?",
+          "evidence": "Сжатие на трёх этапах: до входа (chunking), во время работы (summarization, auto-compaction), после действия (tool result clearing).\n80k tokens tool outputs после 20 calls — большинство уже irrelevant.\nHybrid: последние N сообщений verbatim, старое — summary.\nClaude Code auto-compaction при 95% capacity — safety net, не стратегия."
+        },
+        {
+          "text": "Какие сообщения оставлять полностью при сжатии диалога?",
+          "evidence": "Сжатие на трёх этапах: до входа (chunking), во время работы (summarization, auto-compaction), после действия (tool result clearing).\n80k tokens tool outputs после 20 calls — большинство уже irrelevant.\nHybrid: последние N сообщений verbatim, старое — summary.\nClaude Code auto-compaction при 95% capacity — safety net, не стратегия."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "aa919548572157859b5c244f92d6939f9ea71c8171be9a2a3a7160423543850e",
+      "context": {
+        "text": "Стратегия Isolate поручает исследование отдельным агентам с собственным окном и возвращает основному агенту краткие выводы.",
+        "evidence": "Sub-agents с отдельными окнами: parent получает condensed summary, «грязный» research не contaminates implementation."
+      },
+      "questions": [
+        {
+          "text": "Как избежать влияния лишних результатов исследования на реализацию?",
+          "evidence": "Sub-agents с отдельными окнами: parent получает condensed summary, «грязный» research не contaminates implementation.\nContamination хуже, чем просто нехватка места: старый research мешает писать код.\nSub-agent изолирует grep/search; parent видит только summary.\nWSCI — каркас для всего дальнейшего материала."
+        },
+        {
+          "text": "Что основной агент получает от помощника, который искал по файлам?",
+          "evidence": "Sub-agents с отдельными окнами: parent получает condensed summary, «грязный» research не contaminates implementation.\nContamination хуже, чем просто нехватка места: старый research мешает писать код.\nSub-agent изолирует grep/search; parent видит только summary.\nWSCI — каркас для всего дальнейшего материала."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 8,
+      "sourceHash": "c854fc2cbc9c3164467e954c54b797bf597cab44a1d338d276d5628caefb9387",
+      "context": {
+        "text": "Ошибки контекста включают отравление неверными результатами, отвлечение, путаницу инструментов и конфликт источников; исправления зависят от типа сбоя.",
+        "evidence": "Breunig: poisoning, distraction, confusion, clash — и fixes через prune, summarize, dynamic tools, authority ordering."
+      },
+      "questions": [
+        {
+          "text": "Как неверный ответ инструмента распространяется на дальнейшие действия?",
+          "evidence": "Breunig: poisoning, distraction, confusion, clash — и fixes через prune, summarize, dynamic tools, authority ordering.\nPoisoning: bad tool output каскадирует — prune и validate inputs.\nConfusion: 46 tools vs 19 — Geoengine fail; RAG-MCP и phase-specific tools.\nClash: system prompt > retrieved facts > history; XML sections для источников."
+        },
+        {
+          "text": "Как упорядочить противоречащие инструкции и найденные сведения?",
+          "evidence": "Breunig: poisoning, distraction, confusion, clash — и fixes через prune, summarize, dynamic tools, authority ordering.\nPoisoning: bad tool output каскадирует — prune и validate inputs.\nConfusion: 46 tools vs 19 — Geoengine fail; RAG-MCP и phase-specific tools.\nClash: system prompt > retrieved facts > history; XML sections для источников."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 9,
+      "sourceHash": "371c94ec68a87f5a439574d7a339c6c2c5401a92affd228611e7df2ed4472828",
+      "context": {
+        "text": "Системные инструкции задают управление работой агента; постоянные инструкции и инструменты размещаются перед изменяемыми данными для использования KV-cache.",
+        "evidence": "«Right altitude» для system prompt; MCP для tools; Manus tool masking vs RAG для KV-cache и больших tool sets."
+      },
+      "questions": [
+        {
+          "text": "Как расположить постоянные и меняющиеся части запроса для кэша?",
+          "evidence": "«Right altitude» для system prompt; MCP для tools; Manus tool masking vs RAG для KV-cache и больших tool sets.\nAgent system prompt = job description с control flow, не tone chatbot.\nStable prefix (prompt + tools) сверху, dynamic content снизу — для KV-cache.\nCached tokens Sonnet: $0.30 vs $3/M — 10× разница на длинных agent runs."
+        },
+        {
+          "text": "Что должен описывать системный промпт автономного агента?",
+          "evidence": "«Right altitude» для system prompt; MCP для tools; Manus tool masking vs RAG для KV-cache и больших tool sets.\nAgent system prompt = job description с control flow, не tone chatbot.\nStable prefix (prompt + tools) сверху, dynamic content снизу — для KV-cache.\nCached tokens Sonnet: $0.30 vs $3/M — 10× разница на длинных agent runs."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 10,
+      "sourceHash": "58e85e3a2f649ddef2c4c07b686e0e20b3a6371f87db8054d60c4c6a6ff6905e",
+      "context": {
+        "text": "Фазовый процесс отделяет исследование, план и реализацию, сжимает промежуточные результаты и сбрасывает контекст между фазами.",
+        "evidence": "Dex Horthy (Human Layer): intentional compaction, subagents на research, context reset между фазами, progress.md."
+      },
+      "questions": [
+        {
+          "text": "Когда проверять план человеком до начала реализации?",
+          "evidence": "Dex Horthy (Human Layer): intentional compaction, subagents на research, context reset между фазами, progress.md.\nResearch artifact сжимает 60–80% raw context до 15–20%.\nPhase 2 (plan) — главная точка human review до implementation.\nДержать utilization ниже 40–60% окна — осознанная цель."
+        },
+        {
+          "text": "Как передавать результаты между этапами работы с чистым контекстом?",
+          "evidence": "Dex Horthy (Human Layer): intentional compaction, subagents на research, context reset между фазами, progress.md.\nResearch artifact сжимает 60–80% raw context до 15–20%.\nPhase 2 (plan) — главная точка human review до implementation.\nДержать utilization ниже 40–60% окна — осознанная цель."
+        }
+      ]
+    },
+    {
+      "chapterIndex": 11,
+      "sourceHash": "32b4278c0095ccbbfbc891d535db59446b985d70669cf251898d0a09830e9575",
+      "context": {
+        "text": "Сравнение платформ показывает разные способы отбора, сжатия и организации контекста: поиск по запросу, файлы состояния, маскирование инструментов и явные преобразования.",
+        "evidence": "Claude Code (hybrid JIT), Manus (KV-cache, masking), ChatGPT Agent (visual), Google ADK (pipeline); collect → select → compress → arrange → call."
+      },
+      "questions": [
+        {
+          "text": "Какие приёмы работы с контекстом использует Manus?",
+          "evidence": "Claude Code (hybrid JIT), Manus (KV-cache, masking), ChatGPT Agent (visual), Google ADK (pipeline); collect → select → compress → arrange → call.\nClaude Code: CLAUDE.md upfront + Glob/Grep JIT + sub-agents + auto-compaction.\nManus: observation compression, todo state, filesystem overflow; tool masking не removal.\nADK: separate storage/presentation, explicit transformations, scope by default."
+        },
+        {
+          "text": "Из каких этапов состоит общий цикл подготовки контекста?",
+          "evidence": "Claude Code (hybrid JIT), Manus (KV-cache, masking), ChatGPT Agent (visual), Google ADK (pipeline); collect → select → compress → arrange → call.\nClaude Code: CLAUDE.md upfront + Glob/Grep JIT + sub-agents + auto-compaction.\nManus: observation compression, todo state, filesystem overflow; tool masking не removal.\nADK: separate storage/presentation, explicit transformations, scope by default."
+        }
+      ]
+    }
+  ]
+}

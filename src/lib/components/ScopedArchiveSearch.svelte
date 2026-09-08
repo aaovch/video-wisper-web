@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
+	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
@@ -50,6 +52,7 @@
 	let query = $state('');
 	let debouncedQuery = $state('');
 	let hits = $state<SearchHit[]>([]);
+	let linkScope = $state<SearchScope | undefined>();
 	let selections = $state<SearchFilterSelections>({ zones: [], sections: [], authors: [], places: [], weapons: [] });
 	let filterSheetOpen = $state(false);
 	let showAllHits = $state(false);
@@ -121,12 +124,7 @@
 		return value.toLocaleLowerCase('ru').replace(/ё/g, 'е');
 	}
 
-	function uniqueHitKey(hit: SearchHit): string {
-		if (hit.chapterIndex != null) return `${hit.reportSlug}:chapter:${hit.chapterIndex}`;
-		if (hit.kind === 'overview') return `${hit.reportSlug}:overview`;
-		if (hit.kind === 'report') return `${hit.reportSlug}:report`;
-		return `${hit.reportSlug}:${hit.zone}:${hit.title}`;
-	}
+
 
 	function openFilters(event: MouseEvent) {
 		filterReturnFocus = event.currentTarget as HTMLButtonElement;
@@ -353,6 +351,7 @@
 			.then((response) => {
 				if (!cancelled && q === debouncedQuery.trim()) {
 					hits = response.hits;
+					linkScope = response.resultScope;
 					showingFallback = response.fallback;
 					resultKind = response.matchKind;
 					resultScopeLabel = response.resultScope.label;
@@ -505,6 +504,7 @@
 										{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
 									{/each}
 								</p>
+							<SearchSourceLinks {hit} scope={linkScope} />
 							</div>
 							<div class="actions">
 								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}>

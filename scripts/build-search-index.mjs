@@ -7,8 +7,12 @@ import MiniSearch from 'minisearch';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readEnrichment } from './search-enrichment/core.mjs';
+import { readCards, cardText } from './search-enrichment/cards.mjs';
+import { auditSourceLinks } from './search-enrichment/source-links.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+auditSourceLinks(root);
 const reportsDir = join(root, 'src/lib/data/reports');
 const transcriptsDir = join(root, 'src/lib/data/transcripts');
 const searchDir = join(root, 'static/search');
@@ -24,7 +28,15 @@ const outMeta = join(root, 'src/lib/data/report-meta.json');
 
 import { stemRu } from '../src/lib/stem-ru.js';
 
-const INDEX_VERSION = 4;
+const INDEX_VERSION = 5;
+// Deterministic rollback/ablation; no network or model runs during site build.
+const useEnrichment = process.env.SEARCH_ENRICHMENT !== '0';
+// Opt-in experiments: combined ranking regressed an archive holdout question.
+// Evidence and reproduction: docs/search-quality/fencing/ranking.md.
+const wholeChapters = process.env.SEARCH_CHAPTER_BODY === '1';
+const indexedCoverage = process.env.SEARCH_SIGNAL_TERMS === '1';
+const excludedEnrichment = new Set((process.env.SEARCH_ENRICHMENT_EXCLUDE ?? '').split(',').filter(Boolean));
+let enrichedChapters = 0;
 const TRANSCRIPT_TARGET_CHARS = 620;
 const TRANSCRIPT_MAX_CHARS = 920;
 const TRANSCRIPT_MAX_SECONDS = 45;
@@ -127,6 +139,10 @@ function readTranscriptSidecar(slug) {
 for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json')).sort()) {
 	const report = JSON.parse(readFileSync(join(reportsDir, file), 'utf8'));
 	const slug = report.slug;
+	const enrichment = useEnrichment && !excludedEnrichment.has(slug) ? readEnrichment(root, report) : null;
+	const cards = process.env.SEARCH_CARDS !== '0' ? readCards(root, report) : null;
+	const situationCards = new Map((cards?.cards ?? []).map(card => [card.chapterIndex, cardText(card)]));
+	const expansions = new Map((enrichment?.chapters ?? []).map(entry => [entry.chapterIndex, entry]));
 	const common = { reportSlug: slug };
 	const sidecar = readTranscriptSidecar(slug);
 	if (sidecar?.transcript) {
@@ -172,6 +188,9 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 	}
 
 	for (const [chapterIndex, chapter] of (report.chapters ?? []).entries()) {
+		const chapterBody = joined([chapter.title, chapter.summary, ...(wholeChapters ? chapter.theses ?? [] : [])]);
+		const expansionText = joined([expansions.get(chapterIndex)?.context.text, situationCards.get(chapterIndex),
+			...(expansions.get(chapterIndex)?.questions ?? []).map(item => item.text)]);
 		addDoc({
 			kind: 'chapter',
 			...common,
@@ -179,7 +198,14 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 			start: chapter.start,
 			text: chapter.summary || chapter.title,
 			field_title: chapter.title,
-			field_body: joined([chapter.title, chapter.summary]),
+			field_body: chapterBody,
+			...(indexedCoverage ? { signalTerms: [...new Set((norm(joined([chapterBody, expansionText])).match(/[\p{L}\p{N}]+/gu) ?? [])
+				.filter(term => term.length >= 2).map(stemRu))].join(' ') } : {}),
+			field_context: joined([expansions.get(chapterIndex)?.context.text, situationCards.get(chapterIndex),
+				// Rejected offline experiment; never enabled by default.
+				...(process.env.SEARCH_NEIGHBOR_CONTEXT === '1' && cards ?
+					[report.chapters[chapterIndex - 1]?.title, report.chapters[chapterIndex + 1]?.title] : [])]),
+			field_questions: (expansions.get(chapterIndex)?.questions ?? []).map(item => item.text).join(' '),
 			field_tags: ''
 		});
 
@@ -267,11 +293,12 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 	}
 }
 
+enrichedChapters = docs.filter(doc => doc.field_context).length;
 const miniSearchOptions = {
 	idField: 'id',
-	fields: ['field_title', 'field_body', 'field_tags'],
+	fields: ['field_title', 'field_body', 'field_tags', 'field_context', 'field_questions'],
 	// zone/href/reportTitle и заголовки глав вычисляются на клиенте — не храним.
-	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags'],
+	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags', 'signalTerms'],
 	processTerm
 };
 
@@ -302,6 +329,9 @@ writeFileSync(outTranscriptIndex, serializedTranscripts);
 writeFileSync(outChapterTitles, JSON.stringify(chapterTitlesBySlug));
 writeFileSync(outManifest, JSON.stringify({
 	version: INDEX_VERSION,
+	enrichment: { enabled: useEnrichment, chapters: enrichedChapters },
+	ranking: { wholeChapters, indexedCoverage },
+	situationCards: { enabled: process.env.SEARCH_CARDS !== '0' },
 	documents: docs.length,
 	reports: meta.length,
 	kinds,

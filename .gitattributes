@@ -1,0 +1,3 @@
+# Frozen search fixtures are hashed as bytes on Windows and Linux.
+/scripts/search-enrichment/*.json text eol=lf
+/src/lib/data/search-source-links.json text eol=lf

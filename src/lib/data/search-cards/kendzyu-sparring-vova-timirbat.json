@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "kendzyu-sparring-vova-timirbat",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "f69c0de089290cd149737d54084df8073772a9eeb579f3f3a9b9d9cb4658a2c8",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nПорез Вовы в раунде",
+        "evidence": "Судья останавливает бой и засчитывает победу Вовы за квалифицированный порез."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "009401efa9c856dbbf95803324d569cc4a253bc1cedd91a5bf74cd547118396d",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nРаунд: укол Тимирбата",
+        "evidence": "Тимирбат проводит успешный укол; останавливающее действие — от импульса Вовы, не от его сознательного изгиба."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "60b927024d6119dacb02c7cf6d799a0713155ca8797c5a3dac02f280ebb2a91e",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nСпор: рука или корпус",
+        "evidence": "Судья видел удар в руку, пореза не видел; после обсуждения зоны раунд отдают Тимирбату — счёт 2:1."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "c64103a0b5289a43c12004d9a03673e68f0049fff3cf503d8b386427bab25a95",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nПлоскость vs лезвие на шее",
+        "evidence": "Вова зафиксировал плоскостью, не лезвием; Тимирбат лезвием на шее — раунд ему, счёт 3:2."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "539ad57e61685a431c543111f8b1346d012311c7a1d6240d0f4ca1f251baf0f1",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nФиксация через клинок",
+        "evidence": "Фиксация лезвия через клинок полумечом без достаточного давления и с убеганием — счёт без изменений."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "c0cfd22122d70428e6f19a9eb626669f2771b82b6931d983adfea67a594624f5",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nРемень с уколом Вовы",
+        "evidence": "Вова забирает раунд ударом ремнём с уколом — счёт 3:2, матч продолжается."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "ac1048b085e82793d50f5297518c5941b3cb2d2bdec7b4af1196153011c47631",
+      "termIds": [],
+      "context": {
+        "text": "Пробный спарринг: Вова — Тимирбат\nФинал: контратака Тимирбата",
+        "evidence": "Контратака уколом — победа Тимирбата 4:2; последний бой дня."
+      }
+    }
+  ]
+}

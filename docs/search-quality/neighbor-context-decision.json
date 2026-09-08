@@ -1,0 +1,26 @@
+{
+  "decision": "rejected",
+  "scenarios": 472,
+  "losses": [
+    {
+      "id": "passage-confirm-1",
+      "scope": "archive",
+      "label": "archive",
+      "beforeRank": 4,
+      "afterRank": 0,
+      "query": "Противник положил меч на плечо после неудачных соединений. Как заставить его снова выставить оружие?"
+    }
+  ],
+  "defaultIndexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+  "restored": true,
+  "reason": "New permanent passage regression lost expected source despite gains on initial disclosed sets.",
+  "legacyDataErrors": {
+    "report": "longsword-a",
+    "chapters": [
+      14,
+      15
+    ],
+    "code": "ANCHOR_MISMATCH",
+    "reportAndTranscriptUnchangedFromHEAD": true
+  }
+}

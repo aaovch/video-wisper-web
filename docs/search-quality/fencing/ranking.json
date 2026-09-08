@@ -1,0 +1,287 @@
+{
+  "protocol": "Fixed factorial experiment: full title/summary/theses in chapter document; indexed source/expansion stems for semantic coverage only. Synthetic questions; see fixture protocol.",
+  "fixtureProtocol": "Exploratory fencing set authored AFTER freezing 55 chapter expansions. Same assistant, not independent human judgments. No expansion tuning against this set. Binary known relevant chapters; other valid answers may exist.",
+  "fixtureHash": "fa74d92e08da20a0c6dec126bbc53df966df070e2c2a594cc51d791a9687229a",
+  "summary": [
+    {
+      "variant": "baseline",
+      "indexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "groups": [
+        {
+          "area": "report",
+          "n": 64,
+          "hit3": 50,
+          "hit5": 56,
+          "mrr10": 0.6854166666666668,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 16,
+          "hit3": 7,
+          "hit5": 7,
+          "mrr10": 0.2589285714285714,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:golden-falcon-astana",
+          "n": 16,
+          "hit3": 7,
+          "hit5": 7,
+          "mrr10": 0.3630952380952381,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "archive",
+          "n": 64,
+          "hit3": 27,
+          "hit5": 34,
+          "mrr10": 0.4005208333333333,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 16,
+          "hit3": 13,
+          "hit5": 14,
+          "mrr10": 0.7001488095238095,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 10,
+          "mrr10": 0.5625,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 12,
+          "mrr10": 0.4,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "variant": "chapters",
+      "indexHash": "fe5f53ada932843162fd1c88ab6e676b5c630724ebf1d810ce2a4884c869e30f",
+      "groups": [
+        {
+          "area": "report",
+          "n": 64,
+          "hit3": 56,
+          "hit5": 58,
+          "mrr10": 0.7205729166666667,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 16,
+          "hit3": 9,
+          "hit5": 10,
+          "mrr10": 0.34895833333333326,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:golden-falcon-astana",
+          "n": 16,
+          "hit3": 9,
+          "hit5": 10,
+          "mrr10": 0.47916666666666663,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "archive",
+          "n": 64,
+          "hit3": 28,
+          "hit5": 34,
+          "mrr10": 0.39806547619047616,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 16,
+          "hit3": 15,
+          "hit5": 16,
+          "mrr10": 0.765625,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 10,
+          "mrr10": 0.5625,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 16,
+          "hit3": 12,
+          "hit5": 14,
+          "mrr10": 0.465625,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "variant": "coverage",
+      "indexHash": "3229290fad092f9d3c7b84737778f16287496ab2465a230b183e6c10ba33cbdc",
+      "groups": [
+        {
+          "area": "report",
+          "n": 64,
+          "hit3": 52,
+          "hit5": 56,
+          "mrr10": 0.7078125000000001,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 16,
+          "hit3": 7,
+          "hit5": 8,
+          "mrr10": 0.26875,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:golden-falcon-astana",
+          "n": 16,
+          "hit3": 7,
+          "hit5": 8,
+          "mrr10": 0.3830357142857143,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "archive",
+          "n": 64,
+          "hit3": 31,
+          "hit5": 34,
+          "mrr10": 0.4395833333333333,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 16,
+          "hit3": 13,
+          "hit5": 16,
+          "mrr10": 0.828125,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 10,
+          "mrr10": 0.5625,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 12,
+          "mrr10": 0.4,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "variant": "combined",
+      "indexHash": "f70eb5419ead1468cce183659fce591378559b69d8209b121abd9e2a8de1c089",
+      "groups": [
+        {
+          "area": "report",
+          "n": 64,
+          "hit3": 58,
+          "hit5": 58,
+          "mrr10": 0.7812500000000001,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 10,
+          "mrr10": 0.3824404761904761,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:golden-falcon-astana",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 12,
+          "mrr10": 0.4895833333333333,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "archive",
+          "n": 64,
+          "hit3": 35,
+          "hit5": 38,
+          "mrr10": 0.46666666666666656,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 16,
+          "hit3": 15,
+          "hit5": 16,
+          "mrr10": 0.8802083333333334,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:noname",
+          "n": 16,
+          "hit3": 10,
+          "hit5": 10,
+          "mrr10": 0.6116071428571428,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 16,
+          "hit3": 14,
+          "hit5": 14,
+          "mrr10": 0.5416666666666665,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": []
+    }
+  ]
+}

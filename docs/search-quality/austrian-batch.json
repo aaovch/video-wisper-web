@@ -1,0 +1,144 @@
+{
+  "registryHash": "ccab3c59faecf91e70904f19a03febee2c0936d19d744c28bb1b0376199ab1f2",
+  "protocol": {
+    "author": "Codex",
+    "note": "Questions written after the candidate was fixed; same author, source-aware evaluation, not independent human gold. No tuning after disclosure.",
+    "candidateHashes": {
+      "avstriyskaya-sablya-obratnoe-lezvie": "5ae6f0e7d78333cce9a065d50b7e34ae94d476a0d8c728d738a2584470b5e897",
+      "avstriyskaya-sablya-trenirovka-6-batmany-vybor": "ecd24b3a06006ce755af0e16961800fb5c0a08e28473bacaf24748b162548b85"
+    }
+  },
+  "summary": {
+    "before": {
+      "indexHash": "239e1af9195e67eb3fe4d033d2cfce8f6d986dee090948756af660b89c557f8d",
+      "coreGzipBytes": 1683087,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "hit5": 9
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "hit5": 5
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "hit5": 4
+        }
+      ],
+      "losses": []
+    },
+    "after": {
+      "indexHash": "950857c54570f48908a05a248e701a63125b598b4d858c30ff9cefffc8173f44",
+      "coreGzipBytes": 1684383,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "hit5": 9
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "hit5": 5
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "hit5": 4
+        }
+      ],
+      "losses": []
+    },
+    "no-expansion": {
+      "indexHash": "950857c54570f48908a05a248e701a63125b598b4d858c30ff9cefffc8173f44",
+      "coreGzipBytes": 1684383,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "hit5": 9
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "hit5": 5
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "hit5": 5
+        }
+      ],
+      "losses": []
+    },
+    "distinct": {
+      "indexHash": "950857c54570f48908a05a248e701a63125b598b4d858c30ff9cefffc8173f44",
+      "coreGzipBytes": 1684383,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "hit5": 9
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "hit5": 5
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "hit5": 4
+        }
+      ],
+      "losses": []
+    },
+    "literal": {
+      "indexHash": "950857c54570f48908a05a248e701a63125b598b4d858c30ff9cefffc8173f44",
+      "coreGzipBytes": 1684383,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "hit5": 8
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "hit5": 4
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "hit5": 4
+        }
+      ],
+      "losses": [
+        {
+          "id": "austrian-2",
+          "scope": "collection",
+          "before": 5,
+          "after": 0
+        },
+        {
+          "id": "austrian-3",
+          "scope": "report",
+          "before": 3,
+          "after": 0
+        }
+      ]
+    }
+  },
+  "accepted": false,
+  "reason": "No collection Hit@5 gain. New cards removed, diagnostic runtime flags removed; candidates remain reproducible from source-reviewed script.",
+  "qualityGateFailure": {
+    "id": "q07",
+    "scope": "collection",
+    "rawRank": 6,
+    "note": "Also occurs after candidate removal. Concurrent report edits and raw duplicate-counting prevent attribution to this candidate; UI-aligned evaluation retains the same expected sources."
+  }
+}

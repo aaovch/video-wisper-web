@@ -1,0 +1,469 @@
+[
+  {
+    "id": "p-single-11",
+    "scope": "report",
+    "label": "soedinenie-dlinnyi-mech-lager-noname-1",
+    "query": "Как слегка приблизиться для контакта клинков, не теряя возможности быстро отступить?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+        "chapterIndex": 3,
+        "grade": 3,
+        "title": "Вход на расширении стойки",
+        "evidence": "Первый способ получить захват 4 — коротко расширить стойку вперёд, сохранив заднюю ногу свободной для отхода или развития атаки.",
+        "sourceHash": "d9a3e095ae98357eb5d3c7d58a60296361de33fbb7c26117ae525d6249da7d3a"
+      }
+    ]
+  },
+  {
+    "id": "p-single-37",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Какие ответы противника делают автоматический перенос из угрозы неправильным?",
+    "judgments": [
+      {
+        "reportSlug": "2026-07-06-19-26-42",
+        "chapterIndex": 3,
+        "grade": 3,
+        "title": "Перенос и границы применения",
+        "evidence": "Перенос объясняется как ответ на отведение клинка, но сразу фиксируются ситуации, где эта ветка уже не лучшая: батман, уход назад и контратака в руки.",
+        "sourceHash": "6dc40dc6534ab6c47ffce53f7b625462fe00d435f221bf20c8d0806551167689"
+      }
+    ]
+  },
+  {
+    "id": "expanded-3-3-original",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Как спрятать вход в глубокий захват от собранного противника?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
+        "chapterIndex": 21,
+        "grade": 3,
+        "title": "Скольжение как скрытая подготовка",
+        "evidence": "Против собранного соперника клинок несколько раз мягко скользит в нейтральном соединении, после чего один из подъёмов превращается в более глубокий захват и атаку.",
+        "sourceHash": "66a6f1728aedbfccb749f53bfe781b4afad97b7d676acd9b599c24611c7b2b55"
+      }
+    ]
+  },
+  {
+    "id": "expanded-6-3-original",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "query": "Почему мгновенный ответ на неожиданность часто обрывает начатое движение?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "title": "Экспромтные действия",
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  },
+  {
+    "id": "expanded-6-3-typo",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "query": "Почему мгновенный ответ на неожиданость часто обрывает начатое движение?",
+    "judgments": [
+      {
+        "reportSlug": "hema-prednamerennye-ekspromtnye",
+        "chapterIndex": 6,
+        "grade": 3,
+        "title": "Экспромтные действия",
+        "evidence": "Мало времени на анализ: прерываем своё движение, реагируем на приоритетный сигнал — быстро, но часто незавершённо.",
+        "sourceHash": "ec0d8ec52da36c07e8e35d4afd8dee74b3e7d3d933e271c3c0061315c979c78f"
+      }
+    ]
+  },
+  {
+    "id": "noname-2",
+    "scope": "archive",
+    "label": "archive",
+    "query": "При проверке рычага я всё время сбиваю чужой меч. Как чувствовать контакт мягче?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Тренер корректирует слишком частые резкие удары по клинку: задача состоит в считывании рычага, а не в смещении оружия партнёра.",
+        "sourceHash": "7e6b76304160f53b2b2f0b42566908df6189b24c3d529acbef3ffbf2458e143b"
+      }
+    ]
+  },
+  {
+    "id": "noname-13",
+    "scope": "collection",
+    "label": "noname",
+    "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "noname-13",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "context-5",
+    "scope": "collection",
+    "label": "lager-vladivostok",
+    "query": "Как выбирать выпад по удалённости цели в упражнениях группы Б?",
+    "judgments": [
+      {
+        "reportSlug": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+        "chapterIndex": 8,
+        "grade": 3,
+        "evidence": "К боевой ситуации добавляется простое мнемоническое правило выбора выпада по удаленности цели.",
+        "sourceHash": "283502a17cbdc80f5516ee13b25ba5a3ed16c7e0f9a36d7f89526fe43658ba40"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-1",
+    "scope": "report",
+    "label": "soedinenie-dlinnyi-mech-lager-noname-4",
+    "query": "Противник положил меч на плечо после неудачных соединений. Как заставить его снова выставить оружие?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-1",
+    "scope": "collection",
+    "label": "noname",
+    "query": "Противник положил меч на плечо после неудачных соединений. Как заставить его снова выставить оружие?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-1",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Противник положил меч на плечо после неудачных соединений. Как заставить его снова выставить оружие?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-2",
+    "scope": "report",
+    "label": "soedinenie-dlinnyi-mech-lager-noname-3",
+    "query": "В коротком входе на меня давят клинком. Чем начинать перенос: руками или поворотом корпуса?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-2",
+    "scope": "collection",
+    "label": "noname",
+    "query": "В коротком входе на меня давят клинком. Чем начинать перенос: руками или поворотом корпуса?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-3",
+    "scope": "report",
+    "label": "kinezio-trenirovka-5-plechevoy-poyas",
+    "query": "При разведении резинки над головой меня дёргает всем корпусом. Как изменить сопротивление или хват?",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-5-plechevoy-poyas",
+        "chapterIndex": 12,
+        "grade": 3,
+        "evidence": "Резинку держат над головой и тремя импульсами разводят руки, после чего прижимают её к спине и плавно возвращают.",
+        "sourceHash": "ee8f83b72a0912f1915643bcf5e67b91b521fc7cfc3cae7166f43381ed158e77"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-3",
+    "scope": "collection",
+    "label": "noname",
+    "query": "При разведении резинки над головой меня дёргает всем корпусом. Как изменить сопротивление или хват?",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-5-plechevoy-poyas",
+        "chapterIndex": 12,
+        "grade": 3,
+        "evidence": "Резинку держат над головой и тремя импульсами разводят руки, после чего прижимают её к спине и плавно возвращают.",
+        "sourceHash": "ee8f83b72a0912f1915643bcf5e67b91b521fc7cfc3cae7166f43381ed158e77"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-3",
+    "scope": "archive",
+    "label": "archive",
+    "query": "При разведении резинки над головой меня дёргает всем корпусом. Как изменить сопротивление или хват?",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-5-plechevoy-poyas",
+        "chapterIndex": 12,
+        "grade": 3,
+        "evidence": "Резинку держат над головой и тремя импульсами разводят руки, после чего прижимают её к спине и плавно возвращают.",
+        "sourceHash": "ee8f83b72a0912f1915643bcf5e67b91b521fc7cfc3cae7166f43381ed158e77"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-4",
+    "scope": "report",
+    "label": "tokarev-silovaya-ofp-2",
+    "query": "От чего выбирать метод силовой подготовки, если одинаковый прирост силы дают разные механизмы?",
+    "judgments": [
+      {
+        "reportSlug": "tokarev-silovaya-ofp-2",
+        "chapterIndex": 24,
+        "grade": 3,
+        "evidence": "Переход к типам адаптаций: разные схемы делают атлета сильнее через разные механизмы и с разной ценой.",
+        "sourceHash": "80685c1961df4b23d21fffe71c5934cdbf4df71353dc4c0aba4eddd317646d12"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-5",
+    "scope": "report",
+    "label": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+    "query": "После широкого батмана моё острие тоже улетает в сторону. Чем заменить замах?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+        "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-5",
+    "scope": "collection",
+    "label": "noname",
+    "query": "После широкого батмана моё острие тоже улетает в сторону. Чем заменить замах?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+        "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-5",
+    "scope": "archive",
+    "label": "archive",
+    "query": "После широкого батмана моё острие тоже улетает в сторону. Чем заменить замах?",
+    "judgments": [
+      {
+        "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+        "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-6",
+    "scope": "report",
+    "label": "sablya-a-3",
+    "query": "Чужая гибкая сабля отгибается из захвата и всё равно меня достаёт. Какой приём надёжнее?",
+    "judgments": [
+      {
+        "reportSlug": "sablya-a-3",
+        "chapterIndex": 2,
+        "grade": 3,
+        "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+        "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-6",
+    "scope": "collection",
+    "label": "almaty-2026",
+    "query": "Чужая гибкая сабля отгибается из захвата и всё равно меня достаёт. Какой приём надёжнее?",
+    "judgments": [
+      {
+        "reportSlug": "sablya-a-3",
+        "chapterIndex": 2,
+        "grade": 3,
+        "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+        "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-6",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Чужая гибкая сабля отгибается из захвата и всё равно меня достаёт. Какой приём надёжнее?",
+    "judgments": [
+      {
+        "reportSlug": "sablya-a-3",
+        "chapterIndex": 2,
+        "grade": 3,
+        "evidence": "Сабля гибче рапиры, поэтому захват часто не работает: клинок уходит и противник попадает. Батман надёжнее на любом снаряде.",
+        "sourceHash": "94409c308c55d55bce7378cf12ffa02b71e8accc4ee76f198fa8f07a1aea0d17"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-7",
+    "scope": "collection",
+    "label": "noname",
+    "query": "Как вернуть спрятанный на плече меч на линию и что делать затем при давлении в коротком соединении?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-7",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Как вернуть спрятанный на плече меч на линию и что делать затем при давлении в коротком соединении?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-8",
+    "scope": "collection",
+    "label": "noname",
+    "query": "Какая подготовка заставляет чужой клинок вернуться с плеча и чем отличается продолжение по открытой линии от переноса под давлением?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  },
+  {
+    "id": "passage-confirm-8",
+    "scope": "archive",
+    "label": "archive",
+    "query": "Какая подготовка заставляет чужой клинок вернуться с плеча и чем отличается продолжение по открытой линии от переноса под давлением?",
+    "judgments": [
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+        "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+      },
+      {
+        "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+        "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+      }
+    ]
+  }
+]

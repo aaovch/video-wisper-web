@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
+	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
@@ -40,6 +42,7 @@
 	let selections = $state<SearchFilterSelections>({ authors: [], places: [], weapons: [], collections: [] });
 	let filterSheetOpen = $state(false);
 	let hits = $state<SearchHit[]>([]);
+	let linkScope = $state<SearchScope | undefined>();
 	let showAllHits = $state(false);
 	let loading = $state(false);
 	let searchError = $state(false);
@@ -122,7 +125,7 @@
 				return true;
 			});
 	});
-	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 3));
+	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
 	const resultsHeading = $derived.by(() => {
 		if (resultKind === 'prefix') return `Совпадения по началу слова ${searchAreaLabel}`;
 		if (resultKind === 'correction') return `Возможные совпадения ${searchAreaLabel}`;
@@ -147,12 +150,7 @@
 		].sort((a, b) => a.localeCompare(b, 'ru'));
 	}
 
-	function uniqueHitKey(hit: SearchHit): string {
-		if (hit.chapterIndex != null) return `${hit.reportSlug}:chapter:${hit.chapterIndex}`;
-		if (hit.kind === 'overview') return `${hit.reportSlug}:overview`;
-		if (hit.kind === 'report') return `${hit.reportSlug}:report`;
-		return `${hit.reportSlug}:${hit.zone}:${hit.title}`;
-	}
+
 
 	function openFilters(event: MouseEvent) {
 		filterReturnFocus = event.currentTarget as HTMLButtonElement;
@@ -279,6 +277,7 @@
 				const response = await searchScoped(current, [scope], 30);
 				if (runId === requestId && current === query.trim()) {
 					hits = response.hits;
+					linkScope = response.resultScope;
 					resultKind = response.matchKind;
 					correctedQuery = response.correctedQuery;
 					loading = false;
@@ -449,6 +448,7 @@
 									{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
 								{/each}
 							</p>
+							<SearchSourceLinks {hit} scope={linkScope} />
 						</div>
 						<div class="result-actions">
 							<span class="relevance label">релевантность {String(index + 1).padStart(2, '0')}</span>
@@ -460,7 +460,7 @@
 					</li>
 				{/each}
 			</ol>
-			{#if uniqueHits.length > 3}
+			{#if uniqueHits.length > 5}
 				<button
 					type="button"
 					class="show-all"
@@ -468,7 +468,7 @@
 					aria-expanded={showAllHits}
 					onclick={() => (showAllHits = !showAllHits)}
 				>
-					<span>{showAllHits ? 'Свернуть до 3 совпадений' : `Показать все ${uniqueHits.length} совпадений`}</span>
+					<span>{showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} совпадений`}</span>
 					<CaretDown size={17} weight="bold" aria-hidden="true" />
 				</button>
 			{/if}

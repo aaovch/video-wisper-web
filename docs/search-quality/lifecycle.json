@@ -1,0 +1,29 @@
+{
+  "workspace": "C:\\Users\\aaovc\\AppData\\Local\\Temp\\video-wisper-lifecycle-m26Xrx",
+  "kind": "cached-real-source-replay",
+  "newReports": [
+    {
+      "slug": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "chapters": 22,
+      "dryRun": true,
+      "complete": true,
+      "idempotent": true,
+      "requirementPreserved": true
+    },
+    {
+      "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+      "chapters": 23,
+      "dryRun": true,
+      "complete": true,
+      "idempotent": true,
+      "requirementPreserved": true
+    }
+  ],
+  "changedReport": {
+    "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+    "staleDetected": true,
+    "oldImportRejected": true,
+    "reviewedRecovery": true,
+    "unchangedCardsPreserved": true
+  }
+}

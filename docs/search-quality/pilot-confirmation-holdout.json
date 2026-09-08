@@ -1,0 +1,81 @@
+{
+  "split": "holdout",
+  "registryHash": "b27c91bdea19a1fc155104d71a2c3e0549fba8921c2fa2b1689defcc9aa5ce60",
+  "before": {
+    "loadMs": 3365.9569,
+    "coreGzipBytes": 1659312,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 16,
+        "hit5": 15,
+        "mrr": 0.7239583333333333,
+        "p95": 1671.7043000000003
+      },
+      {
+        "scope": "collection",
+        "n": 22,
+        "hit5": 15,
+        "mrr": 0.4696969696969697,
+        "p95": 346.89350000000013
+      },
+      {
+        "scope": "archive",
+        "n": 16,
+        "hit5": 7,
+        "mrr": 0.328125,
+        "p95": 2457.342499999999
+      }
+    ],
+    "multi": [],
+    "unsupported": {
+      "n": 0,
+      "nonempty": 0,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "after": {
+    "loadMs": 3394.5909999999994,
+    "coreGzipBytes": 1661127,
+    "groups": [
+      {
+        "scope": "report",
+        "n": 16,
+        "hit5": 15,
+        "mrr": 0.828125,
+        "p95": 1561.1996999999992
+      },
+      {
+        "scope": "collection",
+        "n": 22,
+        "hit5": 16,
+        "mrr": 0.5027056277056278,
+        "p95": 337.48049999999967
+      },
+      {
+        "scope": "archive",
+        "n": 16,
+        "hit5": 9,
+        "mrr": 0.3875,
+        "p95": 2440.1526999999987
+      }
+    ],
+    "multi": [],
+    "unsupported": {
+      "n": 0,
+      "nonempty": 0,
+      "note": "Related sources can be useful; nonempty retrieval is not a claim to know a personal fact."
+    }
+  },
+  "losses": [],
+  "sourceLosses": [],
+  "collectionGain": 0.045454545454545525,
+  "gates": {
+    "collectionGain10pp": false,
+    "noIndividualHit5Loss": true,
+    "noMultiSourceCoverageLoss": true,
+    "coreGzipGrowth20pct": true,
+    "warmP95Growth10pct": true
+  },
+  "caveat": "Same author, incomplete relevance judgments. Node timings are not mobile UX evidence. Holdout results are disclosed once run."
+}

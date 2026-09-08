@@ -1,0 +1,411 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "note": "Same-author source-aware evaluation after fixing candidate text. Personal-result negatives have related sources but no answer. Frozen before first run."
+  },
+  "cases": [
+    {
+      "id": "noname-1",
+      "query": "Партнёр отдал захват, но остался далеко. Обязательно ли продолжать нападение?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "chapterIndex": 19,
+          "grade": 3,
+          "evidence": "Базовая развилка дополняется оценкой дистанции: после выигранного захвата нападать можно только при реально полученном сближении.",
+          "sourceHash": "9a7a8a722695ea737be788d928d8fde066c9a0d626a7ddf2ea329c85c02a8a35"
+        }
+      ]
+    },
+    {
+      "id": "noname-2",
+      "query": "При проверке рычага я всё время сбиваю чужой меч. Как чувствовать контакт мягче?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "chapterIndex": 10,
+          "grade": 3,
+          "evidence": "Тренер корректирует слишком частые резкие удары по клинку: задача состоит в считывании рычага, а не в смещении оружия партнёра.",
+          "sourceHash": "7e6b76304160f53b2b2f0b42566908df6189b24c3d529acbef3ffbf2458e143b"
+        }
+      ]
+    },
+    {
+      "id": "noname-3",
+      "query": "После потери линии меч описывает большой круг. Как возвращать контакт экономнее?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Тренер исправляет распространённую ошибку: после потери линии клинок должен возвращаться к контакту по минимальной траектории, а руки оставаться расслабленными.",
+          "sourceHash": "f5d8456dc6e471466cbdac9775880df09673da691b865e01ffd7ce47e9953f00"
+        }
+      ]
+    },
+    {
+      "id": "noname-4",
+      "query": "Человек спрятал меч на плечо, и захватить нечего. Как вернуть его оружие на центр?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 9,
+          "grade": 3,
+          "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+          "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+        }
+      ]
+    },
+    {
+      "id": "noname-5",
+      "query": "Получаю по кистям сверху, когда пробую колоть с соединением. Куда направить гарду?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-7",
+          "chapterIndex": 14,
+          "grade": 3,
+          "evidence": "Контратака сверху в руки встречается не уходом кистей к себе, а движением гарды вперёд-вверх: удар должен застрять в крестовине, пока ученик сохраняет линию будущего укола.",
+          "sourceHash": "9fde6d1fa4a17618ebef9aa235d5d831334d0f05271565ea6aa5dcbb94a1d22f"
+        }
+      ]
+    },
+    {
+      "id": "noname-6",
+      "query": "На ранний контрзахват всегда ли нужен повторный перевод или вблизи есть другой ответ?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+          "chapterIndex": 5,
+          "grade": 3,
+          "evidence": "К трём базовым сигналам добавляют ранний контрзахват с другой стороны. Ответ зависит от дистанции: повторный перевод и атака издалека либо подвес и добивание при глубоком входе.",
+          "sourceHash": "6cac2d38565c19415b0b0b008b704930a1641f4f0808355f35f623d0900448fc"
+        }
+      ]
+    },
+    {
+      "id": "noname-7",
+      "query": "Можно ли просто идти вперёд, когда чужое острие смотрит прямо в меня?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-2",
+          "chapterIndex": 12,
+          "grade": 3,
+          "evidence": "Тренер формулирует центральное правило: нельзя входить, пока чужое острие смотрит в поражаемую поверхность.",
+          "sourceHash": "0c11e92267a9066d327f3c0125b4e1d920d69046f10512cc42ddcf1fb96c758a"
+        }
+      ]
+    },
+    {
+      "id": "noname-8",
+      "query": "Как обойти закрывающийся сектор рапирным переводом, не столкнувшись с защитой?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-3",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Когда партнёр начинает закрывать показанный сектор, острие обходит защиту до контакта и возвращается на линию в открывшуюся цель.",
+          "sourceHash": "9608afe2ece32d2f0555f3df2e5410e0c3fc946974c64814368cc696a6a25410"
+        }
+      ]
+    },
+    {
+      "id": "noname-9",
+      "query": "Я опускаю руку вниз, но поддевка всё равно попадает. Что должно разворачиваться в девятке?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 7,
+          "grade": 3,
+          "evidence": "Тренер останавливает упражнение и разбирает основную ошибку: клинок нужно развернуть поперёк, а не опускать узким вертикальным сектором.",
+          "sourceHash": "0f981b8c8a8d4e53cf5c1c6eba39cab75e39ee228b1a64b6d726421966f3be55"
+        }
+      ]
+    },
+    {
+      "id": "noname-10",
+      "query": "Вторая защита получается ударом по оружию, а круговой ответ разваливается. Как выполнять мягче?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "chapterIndex": 15,
+          "grade": 3,
+          "evidence": "Укол принимается не ударом по клинку, а непрерывным кругом: сильная часть мягко забирает слабую и выводит её с линии.",
+          "sourceHash": "6aa5ff3c8bdb5bb22d0124b15600efa2b8a398352ad4883f072bb8d49f1031fd"
+        }
+      ]
+    },
+    {
+      "id": "noname-11",
+      "query": "Когда выбирать финт, а когда сначала сбивать выставленный клинок?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 16,
+          "grade": 3,
+          "evidence": "Финальный блок соединяет две ранее изолированные темы: готовая защита требует финта, а выставленная угроза с доступной слабой частью клинка — батмана.",
+          "sourceHash": "62e6879fe752a98b581aa3e03833477a880e2f7744e7a1f67f2b622bb3496a5a"
+        }
+      ]
+    },
+    {
+      "id": "noname-12",
+      "query": "Если на показ в голову никто не защищается, надо заранее переносить удар на руку?",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "single",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-5-povtorenie",
+          "chapterIndex": 19,
+          "grade": 3,
+          "evidence": "Атакующий показывает удар в голову, ждёт пятую защиту и только после фактической реакции меняет сектор на руку или локоть.",
+          "sourceHash": "1da33da1ca29610d3324ff99cd19280121a3f78662978fe0a474c04cb11af6b4"
+        }
+      ]
+    },
+    {
+      "id": "noname-13",
+      "query": "Как выманить спрятанный на плече меч и после этого читать встречное давление в захвате?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-4",
+          "chapterIndex": 9,
+          "grade": 3,
+          "evidence": "Тренер ставит основную тактическую задачу: после проигранных соединений соперник убирает меч на плечо, и прямой захват больше невозможен. Клинок вернётся на линию, если соперник сам атакует или вынужден защищаться.",
+          "sourceHash": "a0e542f12dedb71cc78d09075106b37e74f9ccc80550ee6b1accf7bd83972fc5"
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-3",
+          "chapterIndex": 6,
+          "grade": 3,
+          "evidence": "Из короткого входа на расширении стойки исполнитель либо атакует по уже выигранной линии, либо немедленно переносит клинок при встречном давлении.",
+          "sourceHash": "f28ee479f2a4b9b128c7d11472d9155fbeb34c37264c57252184b41e228bf345"
+        }
+      ]
+    },
+    {
+      "id": "noname-14",
+      "query": "Как не ошибиться с выбором батмана или финта и не потерять преимущество широким замахом?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 16,
+          "grade": 3,
+          "evidence": "Финальный блок соединяет две ранее изолированные темы: готовая защита требует финта, а выставленная угроза с доступной слабой частью клинка — батмана.",
+          "sourceHash": "62e6879fe752a98b581aa3e03833477a880e2f7744e7a1f67f2b622bb3496a5a"
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Тренер исправляет широкие силовые движения: они одинаково уводят оба клинка и уничтожают полученное преимущество.",
+          "sourceHash": "9120dfebb61f7cad2072011624ef7060b08f993891559093249a8736920b7c9c"
+        }
+      ]
+    },
+    {
+      "id": "noname-15",
+      "query": "Как различается ответ обратной кромкой после первой защиты вдали и в тесной позиции?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 14,
+          "grade": 3,
+          "evidence": "Пары сравнивают обычный ответ на дальней дистанции с компактным ответом обратным лезвием в тесной позиции.",
+          "sourceHash": "67df167e3141e167f9a1f15faf229192cf6032df4b3aa3cc872ef38316ca6578"
+        },
+        {
+          "reportSlug": "avstriyskaya-sablya-obratnoe-lezvie",
+          "chapterIndex": 15,
+          "grade": 3,
+          "evidence": "После дальней версии группа переходит к ближней: сабля освобождается возле корпуса и разворачивается рядом с лицом.",
+          "sourceHash": "e826ef6badd88d416d18f7a50fcfa1392c80b176875b89f2991fbc5cbb4a79ed"
+        }
+      ]
+    },
+    {
+      "id": "noname-16",
+      "query": "Как научиться чувствовать соединение без зрения и зачем это ограничение используется в обучении?",
+      "kind": "multi",
+      "split": "holdout",
+      "coverage": "multi",
+      "scopes": [
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "chapterIndex": 13,
+          "grade": 3,
+          "evidence": "Во второй половине ученик закрывает глаза и восстанавливает дистанцию только по изменению давления и положения клинков.",
+          "sourceHash": "f1b784840324836d2f748ce263845daae46b70e903a2a495d99992679c43735e"
+        },
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-2-utro",
+          "chapterIndex": 15,
+          "grade": 3,
+          "evidence": "Тренер проговаривает методический смысл искусственного ограничения: уменьшить число решений и выделить слабый тактильный сигнал.",
+          "sourceHash": "4ebdc87720cceca8604e7a180d80909ea1f00d055f516745c548fb8549c17381"
+        }
+      ]
+    },
+    {
+      "id": "noname-17",
+      "query": "Какой процент моих попаданий батманом улучшился после лагеря?",
+      "kind": "unsupported",
+      "split": "holdout",
+      "coverage": "unsupported",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "avstriyskaya-sablya-trenirovka-6-batmany-vybor",
+          "chapterIndex": 18,
+          "grade": 1,
+          "evidence": "Тренер связывает шестой день со всем циклом — от рапирной базы до сабельной механики — и формулирует простое правило применения батмана и финта в бою.",
+          "sourceHash": "570c2301f5493cadef47dc08d2e591e88dc2998c71a7e3b840dce288e74495e9"
+        }
+      ]
+    },
+    {
+      "id": "noname-18",
+      "query": "Какую оценку тренер поставил моему захвату на вчерашнем спарринге?",
+      "kind": "unsupported",
+      "split": "holdout",
+      "coverage": "unsupported",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-7",
+          "chapterIndex": 16,
+          "grade": 1,
+          "evidence": "На построении тренер просит каждого сохранить тот дрил, который лучше всего проявил и исправил его проблему, а затем соединить его с реакцией выбора и повторить базовый материал вечером и после спаррингов.",
+          "sourceHash": "787037f20c3c89bdf2ac5082e7f6edaa6410d57655a4ecc29ae71da08571cbf4"
+        }
+      ]
+    }
+  ]
+}

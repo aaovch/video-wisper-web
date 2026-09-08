@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "protocol": {
+    "author": "Codex",
+    "reason": "Nine new formulations after fixing the condition candidate, six treated topics and three unchanged chapter controls. Same author, known source topics; not independent human gold.",
+    "candidateSha256": "2a5f8fd1c66143905656387887fac84b6fecf5a2dc71322dfb36a3a72e6a9007"
+  },
+  "cases": [
+    {
+      "id": "conditions-1",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "На дорожке стойка постепенно расползается. Что проверять после каждого перемещения?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Группа собирает короткую фронтальную стойку с развёрнутыми стопами и учится сохранять её в приставных шагах.",
+          "sourceHash": "3f1de6d07cb27b5622a03909443de66b9bd09b45a30d78f9b280889d78feb2d5"
+        }
+      ]
+    },
+    {
+      "id": "conditions-2",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "Как поставить заднюю стопу и колено, чтобы сохранить пружинящую опору с баклером?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 4,
+          "grade": 3,
+          "evidence": "Группа собирает короткую фронтальную стойку с развёрнутыми стопами и учится сохранять её в приставных шагах.",
+          "sourceHash": "3f1de6d07cb27b5622a03909443de66b9bd09b45a30d78f9b280889d78feb2d5"
+        }
+      ]
+    },
+    {
+      "id": "conditions-3",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "Какая последовательность ног нужна, чтобы раскрыть шаффл в любую сторону?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "grade": 3,
+          "evidence": "Шаффл мечника тренирует четыре способа раскрыть стойку и быстро поменять ведущую ногу без потери ширины опоры.",
+          "sourceHash": "8e848bd0d8cd36ea2e9bca394233c15da37d638fae6a669f659f193644d9897a"
+        }
+      ]
+    },
+    {
+      "id": "conditions-4",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "Как перераспределять пятку и носок при смене передней ноги в шаффле?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 5,
+          "grade": 3,
+          "evidence": "Шаффл мечника тренирует четыре способа раскрыть стойку и быстро поменять ведущую ногу без потери ширины опоры.",
+          "sourceHash": "8e848bd0d8cd36ea2e9bca394233c15da37d638fae6a669f659f193644d9897a"
+        }
+      ]
+    },
+    {
+      "id": "conditions-5",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "В игре удалось зайти глубоко, но на выходе меня задели по ноге. Засчитывается попытка?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 19,
+          "grade": 3,
+          "evidence": "Игровое задание тренирует провокацию нижней атаки, реакцию ног и безопасный выход из дистанции.",
+          "sourceHash": "193abcce5fb84eca570552465a6b0ff8d80b307a72fdebd0407111d2ebdd7704"
+        }
+      ]
+    },
+    {
+      "id": "conditions-6",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "treated",
+      "query": "Из какого положения и в какую зону действует самурай в парной игре?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 19,
+          "grade": 3,
+          "evidence": "Игровое задание тренирует провокацию нижней атаки, реакцию ног и безопасный выход из дистанции.",
+          "sourceHash": "193abcce5fb84eca570552465a6b0ff8d80b307a72fdebd0407111d2ebdd7704"
+        }
+      ]
+    },
+    {
+      "id": "conditions-7",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "control",
+      "query": "Как усложнить броски двух мячей, когда одновременная ловля уже получается?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 3,
+          "grade": 3,
+          "evidence": "Теннисные мячи дают дешёвую обратную связь по реакции, глазомеру и способности двух рук действовать одновременно.",
+          "sourceHash": "713883ed2e012ca902748499f9e1602be0631422b6889e145c0702e92d2dfc47"
+        }
+      ]
+    },
+    {
+      "id": "conditions-8",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "control",
+      "query": "Как проверить давление на щит, чтобы не складывалась кисть?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 7,
+          "grade": 3,
+          "evidence": "Баклер разворачивают в промежуточное положение, которое держит удар структурой руки и сохраняет защиту обеих сторон.",
+          "sourceHash": "162a2dc1e1cc2a1ee3cf6be7ec1394e53e7e681913adb65674eb6b5a078230c0"
+        }
+      ]
+    },
+    {
+      "id": "conditions-9",
+      "kind": "single",
+      "split": "holdout",
+      "coverage": "control",
+      "query": "Где держать левую руку, пока после отхода меч готовится к верхнему уколу?",
+      "scopes": [
+        "report",
+        "collection",
+        "archive"
+      ],
+      "judgments": [
+        {
+          "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
+          "chapterIndex": 14,
+          "grade": 3,
+          "evidence": "Базовый dritto дополняется отходом с контролем клинка и верхним уколом на смене ведущей ноги.",
+          "sourceHash": "f4528ab940eefc336b75da7fab5692eef47c6b8e0ad4b5c77fc2d4971fb6dbe9"
+        }
+      ]
+    }
+  ]
+}

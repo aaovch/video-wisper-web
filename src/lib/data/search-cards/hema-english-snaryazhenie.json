@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "hema-english-snaryazhenie",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "7c49a009e3cda67ff88fc3e0a0fd994dde7135a169fe06b05e81327a92c2cfe5",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nСхема Protection",
+        "evidence": "Договорились обозначать экипировку как «часть тела + Protection», чтобы быстро называть любой элемент защиты."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "c66c0ed3dab87a7fb46f2623e502a9f8ba2dbbafbd1cdf8def808f96b5cb2c15",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nHead, neck, shoulders",
+        "evidence": "Голова, шея и плечи: neck protection (горжет), мнемоника Head and Shoulders для старшей зоны."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "89ef5022835f7f0b7a6ba00f90064f178140b49be9903af9010e3726695eefa2",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nForearm, hand, arm",
+        "evidence": "Предплечье (forearm), кисть (hand/hands) и вся рука от плеча до запястья (arm) — разные термины."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "fdc6b81d09c0cb9942ae5be4c4a1f3091b16bf1016b9ec40d3c84698f14397b6",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nHand snipes",
+        "evidence": "Намеренное выцеливание рук в спорте — hand snipes: snipe = прицельно атаковать (отсюда sniper)."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "dea9c95de3af6ea14c590c8ef01d931f66f6a9a720b9026dd9dca3602c01944f",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nTorso, chest, belt",
+        "evidence": "Корпус (torso), грудь (chest) до пояса; belt делит зоны Above Belt (старшая) и Below Belt (младшая)."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "ce7abeeb81bd94c4a08e6480f9aaea063dfb36d7751a0254bea958c73668b003",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nGroin, hip, thigh, knee",
+        "evidence": "Ниже пояса: groin (пах), hip (таз), thigh (бедро), knee (колено); затем возврат к elbow."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "f5c2d34eaad7ee48a717c6be7d53b7efd63cf01818a17ec61b8584060ce92db4",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nFoot, toes, heel, joint",
+        "evidence": "Foot — ступня (и единица длины ~30 см); toes — пальцы ног; heel; любой сустав — joint."
+      }
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "d985eba7a84bbff9b0d3f9595be31b36b8343d75732206ab723f8cd320e4091d",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nОбзор protection на куртке",
+        "evidence": "Беглый обзор: head/neck/shoulder/forearm/elbow/chest/hand protection на примере куртки."
+      }
+    },
+    {
+      "chapterIndex": 8,
+      "sourceHash": "16187c334b7a1b81de56b2df69e36b5b3e0001ee73d79dbd34f69748a15ba7bf",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nShin guards и knee protection",
+        "evidence": "Защита ног: shin guards — голень (shin, как «шина»); knee protection — колено; вместе — shin protection."
+      }
+    },
+    {
+      "chapterIndex": 9,
+      "sourceHash": "abcfff126d117b39c5ebfe093e1d78ef3fb7746e8b6b087be99412b7b626e3e9",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nJacket, velcro, zip",
+        "evidence": "Куртка — jacket (protective jacket); липучка — velcro; молния — zip; zip up / unzip."
+      }
+    },
+    {
+      "chapterIndex": 10,
+      "sourceHash": "01cec26892d73e56d7c555878f31b4d7b464acd653b018263538d63c1bd3a3fd",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nPut on, zip up, fix",
+        "evidence": "Put on — «надень» любую одеваемую экипировку; zip up если не застегнул; fix — «поправь» (fix your mask)."
+      }
+    },
+    {
+      "chapterIndex": 11,
+      "sourceHash": "7cfe741734e5e00898b1ecbe4a301ee00850cfaff05219a3d5d16d8215d8d3d8",
+      "termIds": [],
+      "context": {
+        "text": "HEMA English: снаряжение\nSkirt и hip protection",
+        "evidence": "Юбка защиты ног — skirt (protective skirt); альтернатива — hip protection или thigh protection."
+      }
+    }
+  ]
+}

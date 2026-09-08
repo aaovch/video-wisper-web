@@ -138,6 +138,8 @@ export interface Report {
 	exercise_memo?: ReportInfographic;
 	/** Есть ли полная расшифровка (сам текст лежит в static/transcripts/<slug>.json) */
 	has_transcript?: boolean;
+	/** Required by the report workflow; ordinary QA rejects incomplete cards. */
+	search_cards_required?: boolean;
 }
 
 /** Лёгкая карточка отчёта — без глав и транскрипта (report-meta.json). */

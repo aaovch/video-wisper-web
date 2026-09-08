@@ -1,0 +1,19 @@
+{
+ "version":1,
+ "source":"hema_fight_analysator/techniques.yaml",
+ "sourceSha256":"4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+ "groups":[
+  {"id":"zornhau","canonicalId":"technique_presets.presets.zornhau","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"zornhau","to":"цорнхау"},{"type":"spelling","from":"цорн-хау","to":"цорнхау"}],"negative":["хау","оберхау","нисходящий рубящий удар"]},
+  {"id":"mezzano","canonicalId":"technique_presets.presets.mezzano","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"mezzano","to":"мецано"},{"type":"asr","from":"митсана","to":"мецано"}],"negative":["горизонтальный удар","mittelhau"]},
+  {"id":"scheitelhau","canonicalId":"technique_presets.presets.scheitelhau","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"scheitelhau","to":"шайтельхау"},{"type":"spelling","from":"шайтель-хау","to":"шайтельхау"}],"negative":["удар","голова"]},
+  {"id":"winden","canonicalId":"technique_presets.presets.winden","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"winden","to":"винден"},{"type":"spelling","from":"виндунг","to":"винден"}],"negative":["давление","силовой удар"]},
+  {"id":"long_point","canonicalId":"technique_presets.presets.long_point","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"posta longa","to":"длинное острие"},{"type":"asr","from":"постолонга","to":"поста лонга"}],"negative":["длинное","острие","поста"]}
+ ],
+ "blocked":[
+  {"canonicalId":"technique_presets.presets.posta_di_finestra","alias":"окно","reason":"Common UI/building noun; requires fencing context before activation."}
+ ],
+ "nonEquivalent":[
+  {"ids":["technique_presets.presets.zornhau","technique_presets.presets.oberhau"],"reason":"Identical expands_to properties do not establish synonymy."},
+  {"terms":["защита","ответ","контратака"],"reason":"Related tactical actions, not interchangeable names. Existing broad semantic group remains a separate experiment."}
+ ]
+}

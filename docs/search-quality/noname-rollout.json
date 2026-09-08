@@ -1,0 +1,231 @@
+{
+  "date": "2026-09-08",
+  "newReports": 10,
+  "newCards": 200,
+  "totalFencingReports": 29,
+  "totalFencingCards": 434,
+  "comparisons": [
+    {
+      "tag": "noname",
+      "registryHash": "4c53da24d1f25476a53b039c811a60622d1594659d5fea740757ecaf15c870d0",
+      "beforeIndexHash": "9b0f7fa7154e8ee066599e32f942f1ee57a89c1fbf77932bb59c8d0e86df0a80",
+      "afterIndexHash": "e8fafc8e7e9e87d07d8c85dc6beb557aec7b033265c51b26795fdfb798234ff0",
+      "scenarios": 170,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 48,
+          "beforeHit5": 42,
+          "afterHit5": 42
+        },
+        {
+          "scope": "collection",
+          "n": 66,
+          "beforeHit5": 55,
+          "afterHit5": 55
+        },
+        {
+          "scope": "archive",
+          "n": 48,
+          "beforeHit5": 26,
+          "afterHit5": 26
+        }
+      ],
+      "losses": [],
+      "sourceLosses": [],
+      "multi": [
+        {
+          "id": "expanded-multi-1",
+          "scope": "archive",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "expanded-multi-2",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "expanded-multi-3",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "expanded-multi-4",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        }
+      ],
+      "negatives": [
+        {
+          "id": "expanded-unsupported-1",
+          "scope": "report",
+          "beforeReturned": 6,
+          "afterReturned": 6,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "expanded-unsupported-2",
+          "scope": "report",
+          "beforeReturned": 3,
+          "afterReturned": 3,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "expanded-unsupported-3",
+          "scope": "report",
+          "beforeReturned": 4,
+          "afterReturned": 4,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "expanded-unsupported-4",
+          "scope": "report",
+          "beforeReturned": 2,
+          "afterReturned": 2,
+          "matchKind": "semantic"
+        }
+      ],
+      "coreGzipBefore": 1686747,
+      "coreGzipAfter": 1691906
+    },
+    {
+      "tag": "noname-new",
+      "registryHash": "4c997ae1bb1611d50f7620e447c5deb8594498314d0ef04c655bb76fc500d0c1",
+      "beforeIndexHash": "9b0f7fa7154e8ee066599e32f942f1ee57a89c1fbf77932bb59c8d0e86df0a80",
+      "afterIndexHash": "e8fafc8e7e9e87d07d8c85dc6beb557aec7b033265c51b26795fdfb798234ff0",
+      "scenarios": 50,
+      "groups": [
+        {
+          "scope": "report",
+          "n": 12,
+          "beforeHit5": 11,
+          "afterHit5": 11
+        },
+        {
+          "scope": "collection",
+          "n": 12,
+          "beforeHit5": 8,
+          "afterHit5": 9
+        },
+        {
+          "scope": "archive",
+          "n": 12,
+          "beforeHit5": 7,
+          "afterHit5": 8
+        }
+      ],
+      "losses": [],
+      "sourceLosses": [],
+      "multi": [
+        {
+          "id": "noname-13",
+          "scope": "collection",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-13",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-14",
+          "scope": "collection",
+          "before": 1,
+          "after": 1
+        },
+        {
+          "id": "noname-14",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-15",
+          "scope": "collection",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-15",
+          "scope": "archive",
+          "before": 0.5,
+          "after": 0.5
+        },
+        {
+          "id": "noname-16",
+          "scope": "collection",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "id": "noname-16",
+          "scope": "archive",
+          "before": 0,
+          "after": 0
+        }
+      ],
+      "negatives": [
+        {
+          "id": "noname-17",
+          "scope": "report",
+          "beforeReturned": 4,
+          "afterReturned": 4,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "noname-17",
+          "scope": "collection",
+          "beforeReturned": 11,
+          "afterReturned": 12,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "noname-17",
+          "scope": "archive",
+          "beforeReturned": 10,
+          "afterReturned": 10,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "noname-18",
+          "scope": "report",
+          "beforeReturned": 4,
+          "afterReturned": 4,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "noname-18",
+          "scope": "collection",
+          "beforeReturned": 12,
+          "afterReturned": 12,
+          "matchKind": "semantic"
+        },
+        {
+          "id": "noname-18",
+          "scope": "archive",
+          "beforeReturned": 13,
+          "afterReturned": 13,
+          "matchKind": "semantic"
+        }
+      ],
+      "coreGzipBefore": 1686747,
+      "coreGzipAfter": 1691906
+    }
+  ],
+  "gates": {
+    "noIndividualHit5Loss": true,
+    "noSourceCoverageLoss": true
+  },
+  "caveats": [
+    "Same-author source-aware questions; one card clarified after observing a baseline loss. No judgments were changed.",
+    "noname-15 is an overstrict multi-source diagnostic: chapter 14 already compares both distances; chapter 15 elaborates the near case. Do not count failure to show both as proven missing answer.",
+    "Unsupported personal-history questions may retrieve related material; nonempty results do not supply the missing personal facts.",
+    "Only the sword and sabre sections of NoName are complete; the other sections are not included."
+  ]
+}

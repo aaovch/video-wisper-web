@@ -1,0 +1,292 @@
+{
+  "protocol": "Disclosed source-aware pilot; links are a separate one-click navigation path, not direct top-five retrieval or generated answers.",
+  "indexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
+  "graphHash": "07b05a2e0b593d4f9d22d2ed310e9e9ef93636be6b08756c329216ba58bffbb2",
+  "scenarios": 30,
+  "directCoverage": 0.5333333333333333,
+  "linkedCoverage": 0.6166666666666667,
+  "gains": [
+    {
+      "id": "expanded-multi-2",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "expanded-multi-3",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    }
+  ],
+  "rows": [
+    {
+      "id": "p-multi-1",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-2",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-3",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-4",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-5",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-6",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-7",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "p-multi-8",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "expanded-multi-1",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "expanded-multi-2",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "expanded-multi-3",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "expanded-multi-4",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "noname-13",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "noname-13",
+      "scope": "collection",
+      "label": "noname",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "noname-14",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "noname-14",
+      "scope": "collection",
+      "label": "noname",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "noname-15",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "noname-15",
+      "scope": "collection",
+      "label": "noname",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "noname-16",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "noname-16",
+      "scope": "collection",
+      "label": "noname",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-1",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-1",
+      "scope": "report",
+      "label": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-1",
+      "scope": "collection",
+      "label": "mech-i-bakler-noname",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-2",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 2,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-2",
+      "scope": "collection",
+      "label": "noname",
+      "direct": 1,
+      "withLinks": 1,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "collection",
+      "label": "ovchinnikov-lectures",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-3",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "direct": 1,
+      "withLinks": 2,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-4",
+      "scope": "archive",
+      "label": "archive",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    },
+    {
+      "id": "source-link-confirm-4",
+      "scope": "collection",
+      "label": "almaty-2026",
+      "direct": 0,
+      "withLinks": 0,
+      "expected": 2
+    }
+  ]
+}

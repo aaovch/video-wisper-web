@@ -1,0 +1,707 @@
+[
+  {
+    "id": "context-1",
+    "query": "Может ли один профиль HEMA-бойца поддерживать противоположные гипотезы тренера?",
+    "scope": "report",
+    "label": "ii-dlya-analiza-hema-boev",
+    "judgments": [
+      {
+        "reportSlug": "ii-dlya-analiza-hema-boev",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Один профиль способен одновременно поддерживать работу в обороне и необходимость усилить атаку.",
+        "sourceHash": "c227344d884e498adc117be266c596c66d4953010d19ee7bd797e2084fdd9959"
+      }
+    ]
+  },
+  {
+    "id": "context-1",
+    "query": "Может ли один профиль HEMA-бойца поддерживать противоположные гипотезы тренера?",
+    "scope": "collection",
+    "label": "ii-i-hema",
+    "judgments": [
+      {
+        "reportSlug": "ii-dlya-analiza-hema-boev",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Один профиль способен одновременно поддерживать работу в обороне и необходимость усилить атаку.",
+        "sourceHash": "c227344d884e498adc117be266c596c66d4953010d19ee7bd797e2084fdd9959"
+      }
+    ]
+  },
+  {
+    "id": "context-1",
+    "query": "Может ли один профиль HEMA-бойца поддерживать противоположные гипотезы тренера?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "ii-dlya-analiza-hema-boev",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Один профиль способен одновременно поддерживать работу в обороне и необходимость усилить атаку.",
+        "sourceHash": "c227344d884e498adc117be266c596c66d4953010d19ee7bd797e2084fdd9959"
+      }
+    ]
+  },
+  {
+    "id": "context-2",
+    "query": "Как по-английски называются пах, таз и бедро?",
+    "scope": "report",
+    "label": "hema-english-snaryazhenie",
+    "judgments": [
+      {
+        "reportSlug": "hema-english-snaryazhenie",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Ниже пояса: groin (пах), hip (таз), thigh (бедро), knee (колено); затем возврат к elbow.",
+        "sourceHash": "ce7abeeb81bd94c4a08e6480f9aaea063dfb36d7751a0254bea958c73668b003"
+      }
+    ]
+  },
+  {
+    "id": "context-2",
+    "query": "Как по-английски называются пах, таз и бедро?",
+    "scope": "collection",
+    "label": "hema-english",
+    "judgments": [
+      {
+        "reportSlug": "hema-english-snaryazhenie",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Ниже пояса: groin (пах), hip (таз), thigh (бедро), knee (колено); затем возврат к elbow.",
+        "sourceHash": "ce7abeeb81bd94c4a08e6480f9aaea063dfb36d7751a0254bea958c73668b003"
+      }
+    ]
+  },
+  {
+    "id": "context-2",
+    "query": "Как по-английски называются пах, таз и бедро?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "hema-english-snaryazhenie",
+        "chapterIndex": 5,
+        "grade": 3,
+        "evidence": "Ниже пояса: groin (пах), hip (таз), thigh (бедро), knee (колено); затем возврат к elbow.",
+        "sourceHash": "ce7abeeb81bd94c4a08e6480f9aaea063dfb36d7751a0254bea958c73668b003"
+      }
+    ]
+  },
+  {
+    "id": "context-3",
+    "query": "Какой метод силовой ОФП связан с гипертрофией и средним числом повторений?",
+    "scope": "report",
+    "label": "tokarev-silovaya-ofp-2",
+    "judgments": [
+      {
+        "reportSlug": "tokarev-silovaya-ofp-2",
+        "chapterIndex": 50,
+        "grade": 3,
+        "evidence": "Метод повторных усилий описывается как объемная работа в среднеповторных диапазонах, часто связанная с гипертрофией.",
+        "sourceHash": "9705758c1b83ee430f838bc89874cf338afb565aae29c2fcfd86e386c9145f26"
+      }
+    ]
+  },
+  {
+    "id": "context-3",
+    "query": "Какой метод силовой ОФП связан с гипертрофией и средним числом повторений?",
+    "scope": "collection",
+    "label": "silovaya-konditsionnaya",
+    "judgments": [
+      {
+        "reportSlug": "tokarev-silovaya-ofp-2",
+        "chapterIndex": 50,
+        "grade": 3,
+        "evidence": "Метод повторных усилий описывается как объемная работа в среднеповторных диапазонах, часто связанная с гипертрофией.",
+        "sourceHash": "9705758c1b83ee430f838bc89874cf338afb565aae29c2fcfd86e386c9145f26"
+      }
+    ]
+  },
+  {
+    "id": "context-3",
+    "query": "Какой метод силовой ОФП связан с гипертрофией и средним числом повторений?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "tokarev-silovaya-ofp-2",
+        "chapterIndex": 50,
+        "grade": 3,
+        "evidence": "Метод повторных усилий описывается как объемная работа в среднеповторных диапазонах, часто связанная с гипертрофией.",
+        "sourceHash": "9705758c1b83ee430f838bc89874cf338afb565aae29c2fcfd86e386c9145f26"
+      }
+    ]
+  },
+  {
+    "id": "context-4",
+    "query": "Зачем в силовой подготовке менять упражнения по плану, а не случайно?",
+    "scope": "report",
+    "label": "printsipy-silovoy-konditsionnoy-podgotovki",
+    "judgments": [
+      {
+        "reportSlug": "printsipy-silovoy-konditsionnoy-podgotovki",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Запланированная смена упражнений и параметров сохраняет направленность программы, но распределяет нагрузку по тканям, расширяет двигательные решения и снижает монотонность.",
+        "sourceHash": "baf07bcfb74114e40243c4223deab85ea9ad5af8e0446f970e62933f7451b115"
+      }
+    ]
+  },
+  {
+    "id": "context-4",
+    "query": "Зачем в силовой подготовке менять упражнения по плану, а не случайно?",
+    "scope": "collection",
+    "label": "silovaya-konditsionnaya",
+    "judgments": [
+      {
+        "reportSlug": "printsipy-silovoy-konditsionnoy-podgotovki",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Запланированная смена упражнений и параметров сохраняет направленность программы, но распределяет нагрузку по тканям, расширяет двигательные решения и снижает монотонность.",
+        "sourceHash": "baf07bcfb74114e40243c4223deab85ea9ad5af8e0446f970e62933f7451b115"
+      }
+    ]
+  },
+  {
+    "id": "context-4",
+    "query": "Зачем в силовой подготовке менять упражнения по плану, а не случайно?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "printsipy-silovoy-konditsionnoy-podgotovki",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Запланированная смена упражнений и параметров сохраняет направленность программы, но распределяет нагрузку по тканям, расширяет двигательные решения и снижает монотонность.",
+        "sourceHash": "baf07bcfb74114e40243c4223deab85ea9ad5af8e0446f970e62933f7451b115"
+      }
+    ]
+  },
+  {
+    "id": "context-5",
+    "query": "Как выбирать выпад по удалённости цели в упражнениях группы Б?",
+    "scope": "report",
+    "label": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+    "judgments": [
+      {
+        "reportSlug": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+        "chapterIndex": 8,
+        "grade": 3,
+        "evidence": "К боевой ситуации добавляется простое мнемоническое правило выбора выпада по удаленности цели.",
+        "sourceHash": "283502a17cbdc80f5516ee13b25ba5a3ed16c7e0f9a36d7f89526fe43658ba40"
+      }
+    ]
+  },
+  {
+    "id": "context-6",
+    "query": "Как работает ногами маневровый защитник после отхода назад?",
+    "scope": "report",
+    "label": "manevrovo-oboronitelnyi-tip",
+    "judgments": [
+      {
+        "reportSlug": "manevrovo-oboronitelnyi-tip",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Подводящая работа превращается в специфический шаблон стиля: отход, расширение назад, возврат вперед и готовая атака.",
+        "sourceHash": "a1eb9b659482265b173b07b89b6ff9d537b6d7232a52f88f602fffb155f10449"
+      }
+    ]
+  },
+  {
+    "id": "context-6",
+    "query": "Как работает ногами маневровый защитник после отхода назад?",
+    "scope": "collection",
+    "label": "lager-vladivostok",
+    "judgments": [
+      {
+        "reportSlug": "manevrovo-oboronitelnyi-tip",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Подводящая работа превращается в специфический шаблон стиля: отход, расширение назад, возврат вперед и готовая атака.",
+        "sourceHash": "a1eb9b659482265b173b07b89b6ff9d537b6d7232a52f88f602fffb155f10449"
+      }
+    ]
+  },
+  {
+    "id": "context-6",
+    "query": "Как работает ногами маневровый защитник после отхода назад?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "manevrovo-oboronitelnyi-tip",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Подводящая работа превращается в специфический шаблон стиля: отход, расширение назад, возврат вперед и готовая атака.",
+        "sourceHash": "a1eb9b659482265b173b07b89b6ff9d537b6d7232a52f88f602fffb155f10449"
+      }
+    ]
+  },
+  {
+    "id": "context-7",
+    "query": "Какие условия помогают разным атлетам оставаться в одной группе?",
+    "scope": "report",
+    "label": "retention",
+    "judgments": [
+      {
+        "reportSlug": "retention",
+        "chapterIndex": 8,
+        "grade": 3,
+        "evidence": "Комфорт, интерес, разные атлеты в одной группе и переход к обсуждению.",
+        "sourceHash": "942dee3860bb2da80cfde69aeab504ec0821b94633d66152ee7820455c772f62"
+      }
+    ]
+  },
+  {
+    "id": "context-7",
+    "query": "Какие условия помогают разным атлетам оставаться в одной группе?",
+    "scope": "collection",
+    "label": "hema-theory",
+    "judgments": [
+      {
+        "reportSlug": "retention",
+        "chapterIndex": 8,
+        "grade": 3,
+        "evidence": "Комфорт, интерес, разные атлеты в одной группе и переход к обсуждению.",
+        "sourceHash": "942dee3860bb2da80cfde69aeab504ec0821b94633d66152ee7820455c772f62"
+      }
+    ]
+  },
+  {
+    "id": "context-7",
+    "query": "Какие условия помогают разным атлетам оставаться в одной группе?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "retention",
+        "chapterIndex": 8,
+        "grade": 3,
+        "evidence": "Комфорт, интерес, разные атлеты в одной группе и переход к обсуждению.",
+        "sourceHash": "942dee3860bb2da80cfde69aeab504ec0821b94633d66152ee7820455c772f62"
+      }
+    ]
+  },
+  {
+    "id": "context-8",
+    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
+    "scope": "report",
+    "label": "kendzyu-sparring-ali-andrey",
+    "judgments": [
+      {
+        "reportSlug": "kendzyu-sparring-ali-andrey",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
+        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
+      }
+    ]
+  },
+  {
+    "id": "context-8",
+    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
+    "scope": "collection",
+    "label": "kendzyu",
+    "judgments": [
+      {
+        "reportSlug": "kendzyu-sparring-ali-andrey",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
+        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
+      }
+    ]
+  },
+  {
+    "id": "context-8",
+    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "kendzyu-sparring-ali-andrey",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
+        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
+      }
+    ]
+  },
+  {
+    "id": "context-9",
+    "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
+    "scope": "report",
+    "label": "kompresiya-taktiki-lektsiya",
+    "judgments": [
+      {
+        "reportSlug": "kompresiya-taktiki-lektsiya",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Кажется, что опытные — «genii raspoznavaniya» с гигантской моделью в голове; на деле быстро переключаются между маленькими субтактиками.",
+        "sourceHash": "6ebf0027a2d3e6997c15d7236063b5c9d26e7582af37a90d98d14a7219929526"
+      }
+    ]
+  },
+  {
+    "id": "context-9",
+    "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "judgments": [
+      {
+        "reportSlug": "kompresiya-taktiki-lektsiya",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Кажется, что опытные — «genii raspoznavaniya» с гигантской моделью в голове; на деле быстро переключаются между маленькими субтактиками.",
+        "sourceHash": "6ebf0027a2d3e6997c15d7236063b5c9d26e7582af37a90d98d14a7219929526"
+      }
+    ]
+  },
+  {
+    "id": "context-9",
+    "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
+    "scope": "collection",
+    "label": "golden-falcon-astana",
+    "judgments": [
+      {
+        "reportSlug": "kompresiya-taktiki-lektsiya",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Кажется, что опытные — «genii raspoznavaniya» с гигантской моделью в голове; на деле быстро переключаются между маленькими субтактиками.",
+        "sourceHash": "6ebf0027a2d3e6997c15d7236063b5c9d26e7582af37a90d98d14a7219929526"
+      }
+    ]
+  },
+  {
+    "id": "context-9",
+    "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "kompresiya-taktiki-lektsiya",
+        "chapterIndex": 6,
+        "grade": 3,
+        "evidence": "Кажется, что опытные — «genii raspoznavaniya» с гигантской моделью в голове; на деле быстро переключаются между маленькими субтактиками.",
+        "sourceHash": "6ebf0027a2d3e6997c15d7236063b5c9d26e7582af37a90d98d14a7219929526"
+      }
+    ]
+  },
+  {
+    "id": "context-10",
+    "query": "Зачем в первом упражнении тэноути расслаблять руки и делать широкий удар?",
+    "scope": "report",
+    "label": "tenouti-i-tyakin-sibori",
+    "judgments": [
+      {
+        "reportSlug": "tenouti-i-tyakin-sibori",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Для первого упражнения берут широкий нисходящий удар: расслабляют руки, ведут эфес вперёд и используют падение клинка для разгона.",
+        "sourceHash": "175ff2080383df1dd00164600d7f65466e1971b2be03df3086c430a512161209"
+      }
+    ]
+  },
+  {
+    "id": "context-10",
+    "query": "Зачем в первом упражнении тэноути расслаблять руки и делать широкий удар?",
+    "scope": "collection",
+    "label": "ovchinnikov-lectures",
+    "judgments": [
+      {
+        "reportSlug": "tenouti-i-tyakin-sibori",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Для первого упражнения берут широкий нисходящий удар: расслабляют руки, ведут эфес вперёд и используют падение клинка для разгона.",
+        "sourceHash": "175ff2080383df1dd00164600d7f65466e1971b2be03df3086c430a512161209"
+      }
+    ]
+  },
+  {
+    "id": "context-10",
+    "query": "Зачем в первом упражнении тэноути расслаблять руки и делать широкий удар?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "tenouti-i-tyakin-sibori",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Для первого упражнения берут широкий нисходящий удар: расслабляют руки, ведут эфес вперёд и используют падение клинка для разгона.",
+        "sourceHash": "175ff2080383df1dd00164600d7f65466e1971b2be03df3086c430a512161209"
+      }
+    ]
+  },
+  {
+    "id": "context-11",
+    "query": "Как выбрать гантель и защитить колено перед упражнением на тазобедренный сустав?",
+    "scope": "report",
+    "label": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+        "chapterIndex": 15,
+        "grade": 3,
+        "evidence": "Группа надевает обувь, выбирает по одной умеренной гантели и возвращает коврики под колено.",
+        "sourceHash": "c357275e0d163bcd685037a0df817460b4f0ca6bb948361b7ef87fadc0eea9fe"
+      }
+    ]
+  },
+  {
+    "id": "context-11",
+    "query": "Как выбрать гантель и защитить колено перед упражнением на тазобедренный сустав?",
+    "scope": "collection",
+    "label": "noname",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+        "chapterIndex": 15,
+        "grade": 3,
+        "evidence": "Группа надевает обувь, выбирает по одной умеренной гантели и возвращает коврики под колено.",
+        "sourceHash": "c357275e0d163bcd685037a0df817460b4f0ca6bb948361b7ef87fadc0eea9fe"
+      }
+    ]
+  },
+  {
+    "id": "context-11",
+    "query": "Как выбрать гантель и защитить колено перед упражнением на тазобедренный сустав?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+        "chapterIndex": 15,
+        "grade": 3,
+        "evidence": "Группа надевает обувь, выбирает по одной умеренной гантели и возвращает коврики под колено.",
+        "sourceHash": "c357275e0d163bcd685037a0df817460b4f0ca6bb948361b7ef87fadc0eea9fe"
+      }
+    ]
+  },
+  {
+    "id": "context-12",
+    "query": "Почему подробное объяснение удара тренером ещё не учит правильному движению?",
+    "scope": "report",
+    "label": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+    "judgments": [
+      {
+        "reportSlug": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Внутренние ощущения тренера, сказанные слова и то, что понял ученик, неизбежно различаются, особенно при передаче сложного движения.",
+        "sourceHash": "6e990df0bbdf464b29ad49b9bd6dd670055dba85b484c99dcd749daae03debb7"
+      }
+    ]
+  },
+  {
+    "id": "context-12",
+    "query": "Почему подробное объяснение удара тренером ещё не учит правильному движению?",
+    "scope": "collection",
+    "label": "noname-kurs-dlya-trenerov",
+    "judgments": [
+      {
+        "reportSlug": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Внутренние ощущения тренера, сказанные слова и то, что понял ученик, неизбежно различаются, особенно при передаче сложного движения.",
+        "sourceHash": "6e990df0bbdf464b29ad49b9bd6dd670055dba85b484c99dcd749daae03debb7"
+      }
+    ]
+  },
+  {
+    "id": "context-12",
+    "query": "Почему подробное объяснение удара тренером ещё не учит правильному движению?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Внутренние ощущения тренера, сказанные слова и то, что понял ученик, неизбежно различаются, особенно при передаче сложного движения.",
+        "sourceHash": "6e990df0bbdf464b29ad49b9bd6dd670055dba85b484c99dcd749daae03debb7"
+      }
+    ]
+  },
+  {
+    "id": "context-13",
+    "query": "Как в сабельном упражнении выбирать атаку, если монитор остановился или продолжает движение?",
+    "scope": "report",
+    "label": "podgotovka-ataki-na-sable-korotovskih",
+    "judgments": [
+      {
+        "reportSlug": "podgotovka-ataki-na-sable-korotovskih",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Два предыдущих упражнения объединяются: монитор явно показывает остановку или продолжение движения, а атакующий выбирает простую атаку либо атаку на подготовку.",
+        "sourceHash": "f6268acf2ff57fcbbad25115e5360f414eacd9e34099731857c2859f15ebe904"
+      }
+    ]
+  },
+  {
+    "id": "context-13",
+    "query": "Как в сабельном упражнении выбирать атаку, если монитор остановился или продолжает движение?",
+    "scope": "collection",
+    "label": "seminary-korotovskih",
+    "judgments": [
+      {
+        "reportSlug": "podgotovka-ataki-na-sable-korotovskih",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Два предыдущих упражнения объединяются: монитор явно показывает остановку или продолжение движения, а атакующий выбирает простую атаку либо атаку на подготовку.",
+        "sourceHash": "f6268acf2ff57fcbbad25115e5360f414eacd9e34099731857c2859f15ebe904"
+      }
+    ]
+  },
+  {
+    "id": "context-13",
+    "query": "Как в сабельном упражнении выбирать атаку, если монитор остановился или продолжает движение?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "podgotovka-ataki-na-sable-korotovskih",
+        "chapterIndex": 7,
+        "grade": 3,
+        "evidence": "Два предыдущих упражнения объединяются: монитор явно показывает остановку или продолжение движения, а атакующий выбирает простую атаку либо атаку на подготовку.",
+        "sourceHash": "f6268acf2ff57fcbbad25115e5360f414eacd9e34099731857c2859f15ebe904"
+      }
+    ]
+  },
+  {
+    "id": "context-14",
+    "query": "Как Миронов подготовил попадание в руки Федотикову?",
+    "scope": "report",
+    "label": "fedotikov-mironov",
+    "judgments": [
+      {
+        "reportSlug": "fedotikov-mironov",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Арсений через маневрирование вперёд-назад готовит атаку с одной руки в руки — горизонтальное попадание.",
+        "sourceHash": "3008036d3406278d18ef0d29c711c39793285c46449f4955220dca776700654f"
+      }
+    ]
+  },
+  {
+    "id": "context-14",
+    "query": "Как Миронов подготовил попадание в руки Федотикову?",
+    "scope": "collection",
+    "label": "noname-sparring",
+    "judgments": [
+      {
+        "reportSlug": "fedotikov-mironov",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Арсений через маневрирование вперёд-назад готовит атаку с одной руки в руки — горизонтальное попадание.",
+        "sourceHash": "3008036d3406278d18ef0d29c711c39793285c46449f4955220dca776700654f"
+      }
+    ]
+  },
+  {
+    "id": "context-14",
+    "query": "Как Миронов подготовил попадание в руки Федотикову?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "fedotikov-mironov",
+        "chapterIndex": 4,
+        "grade": 3,
+        "evidence": "Арсений через маневрирование вперёд-назад готовит атаку с одной руки в руки — горизонтальное попадание.",
+        "sourceHash": "3008036d3406278d18ef0d29c711c39793285c46449f4955220dca776700654f"
+      }
+    ]
+  },
+  {
+    "id": "context-15",
+    "query": "Почему боец поднимает защиту головы до распознавания сектора атаки?",
+    "scope": "report",
+    "label": "dofamin-neyronnye-svyazi-pasha",
+    "judgments": [
+      {
+        "reportSlug": "dofamin-neyronnye-svyazi-pasha",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Лектор разбирает типичную проблему: боец умеет защиту, но поднимает ее раньше, чем распознал реальный сектор атаки.",
+        "sourceHash": "6cd1b608daa4fb3adb9f172084908f35e4f18ad1608153ec5808ab67756fa35a"
+      }
+    ]
+  },
+  {
+    "id": "context-15",
+    "query": "Почему боец поднимает защиту головы до распознавания сектора атаки?",
+    "scope": "collection",
+    "label": "golden-falcon-astana",
+    "judgments": [
+      {
+        "reportSlug": "dofamin-neyronnye-svyazi-pasha",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Лектор разбирает типичную проблему: боец умеет защиту, но поднимает ее раньше, чем распознал реальный сектор атаки.",
+        "sourceHash": "6cd1b608daa4fb3adb9f172084908f35e4f18ad1608153ec5808ab67756fa35a"
+      }
+    ]
+  },
+  {
+    "id": "context-15",
+    "query": "Почему боец поднимает защиту головы до распознавания сектора атаки?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "dofamin-neyronnye-svyazi-pasha",
+        "chapterIndex": 9,
+        "grade": 3,
+        "evidence": "Лектор разбирает типичную проблему: боец умеет защиту, но поднимает ее раньше, чем распознал реальный сектор атаки.",
+        "sourceHash": "6cd1b608daa4fb3adb9f172084908f35e4f18ad1608153ec5808ab67756fa35a"
+      }
+    ]
+  },
+  {
+    "id": "context-16",
+    "query": "Почему Турин связывает быстрое похудение с откатом веса?",
+    "scope": "report",
+    "label": "pitanie-i-ves-fekhtovalshchika-turin",
+    "judgments": [
+      {
+        "reportSlug": "pitanie-i-ves-fekhtovalshchika-turin",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Резкое похудение связывается с высокой физиологической и психологической ценой и частым возвратом веса. Соревновательные телевизионные примеры показывают эффектную цифру, но не устойчивый результат.",
+        "sourceHash": "8694ed141dd51bad3b98034bb7f28ca89fc4c7194467db0d44014c41bf1119e7"
+      }
+    ]
+  },
+  {
+    "id": "context-16",
+    "query": "Почему Турин связывает быстрое похудение с откатом веса?",
+    "scope": "collection",
+    "label": "noname",
+    "judgments": [
+      {
+        "reportSlug": "pitanie-i-ves-fekhtovalshchika-turin",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Резкое похудение связывается с высокой физиологической и психологической ценой и частым возвратом веса. Соревновательные телевизионные примеры показывают эффектную цифру, но не устойчивый результат.",
+        "sourceHash": "8694ed141dd51bad3b98034bb7f28ca89fc4c7194467db0d44014c41bf1119e7"
+      }
+    ]
+  },
+  {
+    "id": "context-16",
+    "query": "Почему Турин связывает быстрое похудение с откатом веса?",
+    "scope": "archive",
+    "label": "archive",
+    "judgments": [
+      {
+        "reportSlug": "pitanie-i-ves-fekhtovalshchika-turin",
+        "chapterIndex": 10,
+        "grade": 3,
+        "evidence": "Резкое похудение связывается с высокой физиологической и психологической ценой и частым возвратом веса. Соревновательные телевизионные примеры показывают эффектную цифру, но не устойчивый результат.",
+        "sourceHash": "8694ed141dd51bad3b98034bb7f28ca89fc4c7194467db0d44014c41bf1119e7"
+      }
+    ]
+  }
+]

@@ -1,0 +1,144 @@
+{
+  "protocol": "Fixed factorial experiment: full title/summary/theses in chapter document; indexed source/expansion stems for semantic coverage only. Synthetic questions; see fixture protocol.",
+  "fixtureProtocol": "Eight new saber and sword/buckler questions written after fixing the four experiment configurations, before seeing their results. Same assistant; not independent human gold. No tuning on this set.",
+  "fixtureHash": "e21cef4ad80c65b26a619f7c5753389d3fba169d66c3ae7db1939a1f2d4fcaa5",
+  "summary": [
+    {
+      "variant": "baseline",
+      "indexHash": "d666b0bdb1e9bcfa69ec306e735a6dddfa487b61b25677ba9ec4616bbd5c981c",
+      "groups": [
+        {
+          "area": "report",
+          "n": 16,
+          "hit3": 11,
+          "hit5": 11,
+          "mrr10": 0.625,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:noname",
+          "n": 8,
+          "hit3": 2,
+          "hit5": 3,
+          "mrr10": 0.2951388888888889,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "archive",
+          "n": 16,
+          "hit3": 8,
+          "hit5": 8,
+          "mrr10": 0.5104166666666667,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 8,
+          "hit3": 6,
+          "hit5": 6,
+          "mrr10": 0.7857142857142857,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 0,
+          "hit3": 0,
+          "hit5": 0,
+          "mrr10": 0,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 0,
+          "hit3": 0,
+          "hit5": 0,
+          "mrr10": 0,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "variant": "combined",
+      "indexHash": "f70eb5419ead1468cce183659fce591378559b69d8209b121abd9e2a8de1c089",
+      "groups": [
+        {
+          "area": "report",
+          "n": 16,
+          "hit3": 12,
+          "hit5": 12,
+          "mrr10": 0.71875,
+          "negative": 0,
+          "falsePositive": 0
+        },
+        {
+          "area": "collection:noname",
+          "n": 8,
+          "hit3": 4,
+          "hit5": 5,
+          "mrr10": 0.3824404761904762,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "archive",
+          "n": 16,
+          "hit3": 7,
+          "hit5": 8,
+          "mrr10": 0.47678571428571426,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:mech-i-bakler-noname",
+          "n": 8,
+          "hit3": 6,
+          "hit5": 6,
+          "mrr10": 0.78125,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:ovchinnikov-lectures",
+          "n": 0,
+          "hit3": 0,
+          "hit5": 0,
+          "mrr10": 0,
+          "negative": 4,
+          "falsePositive": 3
+        },
+        {
+          "area": "collection:lager-vladivostok",
+          "n": 0,
+          "hit3": 0,
+          "hit5": 0,
+          "mrr10": 0,
+          "negative": 4,
+          "falsePositive": 3
+        }
+      ],
+      "regressions": [
+        {
+          "id": "rh4",
+          "area": "archive",
+          "before": 1,
+          "after": 7,
+          "query": "После батмана соперник прикрывает руку. Как обойти эту защиту для укола?"
+        },
+        {
+          "id": "rh4-typo",
+          "area": "archive",
+          "before": 1,
+          "after": 7,
+          "query": "После батмана соперник прикрвает руку. Как обойти эту защиту для укола?"
+        }
+      ]
+    }
+  ]
+}
