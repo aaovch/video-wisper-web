@@ -236,6 +236,7 @@ export const collections: Collection[] = [
 			'podlodka-vector-search',
 			'podlodka-slm-468',
 			'podlodka-naim-ai-482',
+			'podlodka-ai-vygoranie-493',
 			'berezhnoy-ai',
 			'agentic-engineering-ai-workflow-deksden-1',
 			'vibe-coding-lovushki-myshleniya'
@@ -270,8 +271,8 @@ export const collections: Collection[] = [
 			},
 			{
 				title: 'Подлодка: AI в продуктах и командах',
-				subtitle: 'Поиск, компактные модели и изменения в найме.',
-				items: ['podlodka-vector-search', 'podlodka-slm-468', 'podlodka-naim-ai-482']
+				subtitle: 'Поиск, компактные модели, найм и устойчивая работа с ИИ.',
+				items: ['podlodka-vector-search', 'podlodka-slm-468', 'podlodka-naim-ai-482', 'podlodka-ai-vygoranie-493']
 			},
 			{
 				title: 'Практические кейсы и образование',
