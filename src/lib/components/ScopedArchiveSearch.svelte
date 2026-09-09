@@ -127,11 +127,13 @@
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
 	const visibleCollectionSlugs = $derived(visibleSubset(reportSlugs, searchableReportSlugs(lock.unlocked, 'all')));
 	const reportFacetMap = $derived.by(() => buildReportFacetMap(reportSlugs, collectionSlug));
-	const filteredCollectionSlugs = $derived(
+	// Cards remain available as entry points to password-protected reports.
+	const filteredCardSlugs = $derived(
 		kind === 'collection'
-			? visibleCollectionSlugs.filter((slug) => reportMatchesCollectionFilters(slug))
-			: visibleCollectionSlugs
+			? reportSlugs.filter((slug) => reportMatchesCollectionFilters(slug))
+			: reportSlugs
 	);
+	const filteredCollectionSlugs = $derived(visibleSubset(filteredCardSlugs, visibleCollectionSlugs));
 	const filterGroups = $derived.by<SearchFilterGroup[]>(() =>
 		kind === 'report' ? reportFilterGroups(hits, selections) : collectionFilterGroups()
 	);
@@ -391,7 +393,7 @@
 	}
 
 	$effect(() => {
-		if (kind === 'collection') onCollectionFilterChange?.(filteredCollectionSlugs);
+		if (kind === 'collection') onCollectionFilterChange?.(filteredCardSlugs);
 	});
 
 	$effect(() => {
