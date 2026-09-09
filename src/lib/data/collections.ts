@@ -53,6 +53,16 @@ export interface Collection {
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
+		slug: 'shkola-stal',
+		title: 'Школа Сталь',
+		hema: true,
+		isolated: true,
+		facets: { authors: ['Александр Баленко'] },
+		subtitle: 'Лекции Александра Баленко о фехтовании и тактике.',
+		items: ['taktika-4-0-balenko'],
+		password: 'Баленко'
+	},
+	{
 		slug: 'ii-i-hema',
 		title: 'ИИ и HEMA',
 		hema: true,

@@ -109,6 +109,7 @@ const STOP_WORDS = new Set([
 	'под', 'при', 'про', 'против', 'с', 'со', 'так', 'такой', 'там', 'то', 'того', 'тоже', 'только', 'у',
 	'уже', 'что', 'чтобы', 'это', 'этот', 'я'
 ]);
+const QUESTION_STEMS = new Set(['почему', 'зачем'].map(stemRu));
 
 function norm(value: string): string {
 	return value.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
@@ -373,8 +374,12 @@ function signalMultiplier(result: SearchResult, parsed: ParsedQuery, indexedCove
 	// Only literal query stems from indexed chapter fields count here. Fuzzy
 	// expansions and generated wording must not become exact source quotations.
 	if (indexedCoverage && doc.signalTerms) for (const term of doc.signalTerms.split(' ')) combinedStems.add(term);
-	const coverage = parsed.stems.length
-		? parsed.stems.filter((stem) => combinedStems.has(stem)).length / parsed.stems.length
+	// Question words help retrieve explanations but are not evidence that a
+	// passage covers the subject of a question ("Почему ...", "Зачем ...").
+	const subjectStems = parsed.stems.filter(stem => !QUESTION_STEMS.has(stem));
+	const coverageStems = subjectStems.length ? subjectStems : parsed.stems;
+	const coverage = coverageStems.length
+		? coverageStems.filter((stem) => combinedStems.has(stem)).length / coverageStems.length
 		: 0;
 	let multiplier = 0.58 + coverage * 0.8;
 	if (parsed.raw.length >= 4 && combined.includes(parsed.raw)) multiplier += 0.75;
