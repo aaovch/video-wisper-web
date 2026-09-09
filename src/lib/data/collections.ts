@@ -60,7 +60,7 @@ export const collections: Collection[] = [
 		facets: { authors: ['Александр Баленко'] },
 		subtitle: 'Лекции Александра Баленко о фехтовании и тактике.',
 		items: ['taktika-4-0-balenko'],
-		password: 'Баленко'
+		password: 'T\\@Ct1C15CooL'
 	},
 	{
 		slug: 'ii-i-hema',
