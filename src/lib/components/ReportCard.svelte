@@ -5,6 +5,8 @@
 	import ListBullets from 'phosphor-svelte/lib/ListBullets';
 	import Play from 'phosphor-svelte/lib/Play';
 	import type { ReportSummary } from '$lib/types';
+	import { reportGate } from '$lib/data/collections';
+	import { lock } from '$lib/lock.svelte';
 	import { formatDuration, getVideoPosterUrl } from '$lib/utils';
 
 	let {
@@ -14,6 +16,8 @@
 	}: { report: ReportSummary; index: number; collectionSlug: string } = $props();
 
 	const posterUrl = $derived(getVideoPosterUrl(report.video, base));
+	const gate = $derived(reportGate(report.slug));
+	const locked = $derived(gate.length > 0 && !gate.some(target => lock.isUnlocked(target.slug)));
 	const href = $derived(`${base}/reports/${report.slug}/?from=${encodeURIComponent(collectionSlug)}`);
 	let posterFailed = $state(false);
 </script>
@@ -35,12 +39,12 @@
 		</div>
 		<h3>{report.title}</h3>
 		<p class="subtitle">{report.subtitle}</p>
-		<ul class="leads">
+		{#if !locked}<ul class="leads">
 			{#each report.overview_theses.slice(0, 2) as thesis (thesis)}
 				<li>{thesis}</li>
 			{/each}
-		</ul>
-		<span class="open">Открыть отчёт <ArrowRight size={18} /></span>
+		</ul>{/if}
+		<span class="open">{locked ? 'Видео по паролю' : 'Открыть отчёт'} <ArrowRight size={18} /></span>
 	</div>
 </a>
 

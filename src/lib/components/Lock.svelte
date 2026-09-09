@@ -4,13 +4,13 @@
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import { lock } from '$lib/lock.svelte';
-	import type { Collection } from '$lib/data/collections';
+	import type { AccessTarget } from '$lib/data/collections';
 
 	let {
 		targets,
 		title = 'Закрытая коллекция',
 		subtitle = 'Введите пароль, чтобы открыть доступ.'
-	}: { targets: Collection[]; title?: string; subtitle?: string } = $props();
+	}: { targets: AccessTarget[]; title?: string; subtitle?: string } = $props();
 
 	const hintTarget = $derived(targets.find((c) => c.passwordHint));
 

@@ -689,7 +689,7 @@
 	<Lock
 		targets={gate}
 		title={report.title}
-		subtitle="Этот отчёт входит в закрытую коллекцию. Введите пароль, чтобы открыть доступ."
+		subtitle="Введите пароль, чтобы открыть видео и материалы лекции."
 	/>
 {:else}
 <article class="report container">

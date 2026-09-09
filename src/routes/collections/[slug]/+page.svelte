@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
@@ -94,7 +95,7 @@
 	{/if}
 
 	<section class="container index">
-		{#if page.url.searchParams.get('q')}
+		{#if browser && page.url.searchParams.get('q')}
 			<h2>Материалы коллекции</h2>
 			<p>Список с учётом выбранных фильтров. Результаты поиска — выше.</p>
 		{/if}

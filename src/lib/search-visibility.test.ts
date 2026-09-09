@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
+import { getCollection, reportGate } from '$lib/data/collections';
 
 describe('search visibility', () => {
+	it('keeps the tactics collection public while gating its video independently', () => {
+		expect(getCollection('shkola-stal')?.password).toBeUndefined();
+		expect(reportGate('taktika-4-0-balenko').map(target => target.slug)).toEqual(['report:taktika-4-0-balenko']);
+		expect(searchableReportSlugs([], 'all')).not.toContain('taktika-4-0-balenko');
+		expect(searchableReportSlugs(['shkola-stal'], 'all')).not.toContain('taktika-4-0-balenko');
+		expect(searchableReportSlugs(['report:taktika-4-0-balenko'], 'all')).toContain('taktika-4-0-balenko');
+	});
 	it('hides reports that only belong to locked collections', () => {
 		expect(searchableReportSlugs([])).not.toContain('retention');
 	});

@@ -1,4 +1,4 @@
-import { collections } from '$lib/data/collections';
+import { collections, reportGate } from '$lib/data/collections';
 import { getAllReportSummaries } from '$lib/data/report-meta';
 
 /** Reports visible in search for the current set of unlocked client-side collections. */
@@ -11,8 +11,8 @@ export function searchableReportSlugs(unlockedCollectionSlugs: readonly string[]
 			const archived = memberships.some((collection) => collection.archived);
 			if (area === 'main' && archived) return false;
 			if (area === 'archive' && !archived) return false;
-			if (memberships.length === 0 || memberships.some((collection) => !collection.password)) return true;
-			return memberships.some((collection) => unlocked.has(collection.slug));
+			const gate = reportGate(slug);
+			return gate.length === 0 || gate.some((target) => unlocked.has(target.slug));
 		});
 }
 

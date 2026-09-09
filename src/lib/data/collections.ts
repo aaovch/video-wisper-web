@@ -60,10 +60,7 @@ export const collections: Collection[] = [
 		isolated: true,
 		facets: { authors: ['Александр Баленко'] },
 		subtitle: 'Лекции Александра Баленко о фехтовании и тактике.',
-		items: ['taktika-4-0-balenko'],
-		password: 'T\\@Ct1C15CooL',
-		passwordHint: 'За паролем обратитесь к автору:',
-		passwordContact: { label: 'Александр Баленко во ВКонтакте', url: 'https://vk.ru/balenko_alexander' }
+		items: ['taktika-4-0-balenko']
 	},
 	{
 		slug: 'ii-i-hema',
@@ -614,7 +611,20 @@ export function collectionsForReport(slug: string): Collection[] {
  * одна из его коллекций без пароля. Иначе — список всех коллекций под паролем
  * (подойдёт пароль от любой из них).
  */
-export function reportGate(slug: string): Collection[] {
+export type AccessTarget = Pick<Collection, 'slug' | 'password' | 'passwordHint' | 'passwordContact'>;
+
+/** Индивидуальный доступ к видео не зависит от доступности его коллекций. */
+export const reportAccess: Record<string, AccessTarget> = {
+	'taktika-4-0-balenko': {
+		slug: 'report:taktika-4-0-balenko',
+		password: 'T\\@Ct1C15CooL',
+		passwordHint: 'За паролем обратитесь к автору:',
+		passwordContact: { label: 'Александр Баленко во ВКонтакте', url: 'https://vk.ru/balenko_alexander' }
+	}
+};
+
+export function reportGate(slug: string): AccessTarget[] {
+	if (reportAccess[slug]) return [reportAccess[slug]];
 	const containing = collectionsForReport(slug);
 	if (containing.length === 0) return [];
 	if (containing.some((c) => !c.password)) return [];

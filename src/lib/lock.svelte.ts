@@ -1,4 +1,4 @@
-import type { Collection } from '$lib/data/collections';
+import type { AccessTarget } from '$lib/data/collections';
 
 /**
  * Состояние «разблокированных» коллекций. Лёгкий замок: помним подобранные
@@ -28,7 +28,7 @@ class LockState {
 	 * Пытается разблокировать любую из коллекций подходящим паролем.
 	 * Возвращает true при успехе.
 	 */
-	tryUnlock(targets: Collection[], password: string): boolean {
+	tryUnlock(targets: AccessTarget[], password: string): boolean {
 		const match = targets.find((c) => c.password && c.password === password);
 		if (!match) return false;
 		if (!this.unlocked.includes(match.slug)) {
