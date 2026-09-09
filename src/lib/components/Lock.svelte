@@ -12,7 +12,7 @@
 		subtitle = 'Введите пароль, чтобы открыть доступ.'
 	}: { targets: Collection[]; title?: string; subtitle?: string } = $props();
 
-	const hint = $derived(targets.find((c) => c.passwordHint)?.passwordHint);
+	const hintTarget = $derived(targets.find((c) => c.passwordHint));
 
 	let value = $state('');
 	let failed = $state(false);
@@ -48,8 +48,13 @@
 		</form>
 		{#if failed}
 			<p class="err label" role="alert">Неверный пароль</p>
-		{:else if hint}
-			<p class="hint">{hint}</p>
+		{/if}
+		{#if hintTarget}
+			<p class="hint">{hintTarget.passwordHint}
+				{#if hintTarget.passwordContact}
+					<a href={hintTarget.passwordContact.url} target="_blank" rel="noopener noreferrer">{hintTarget.passwordContact.label}</a>
+				{/if}
+			</p>
 		{/if}
 	</div>
 </section>

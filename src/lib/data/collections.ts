@@ -48,19 +48,22 @@ export interface Collection {
 	password?: string;
 	/** Подсказка под полем пароля: как его получить. */
 	passwordHint?: string;
+	passwordContact?: { label: string; url: string };
 }
 
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
 		slug: 'shkola-stal',
-		title: 'Школа Сталь',
+		title: 'Тактическая подготовка фехтовальщика в HEMA',
 		hema: true,
 		isolated: true,
 		facets: { authors: ['Александр Баленко'] },
 		subtitle: 'Лекции Александра Баленко о фехтовании и тактике.',
 		items: ['taktika-4-0-balenko'],
-		password: 'T\\@Ct1C15CooL'
+		password: 'T\\@Ct1C15CooL',
+		passwordHint: 'За паролем обратитесь к автору:',
+		passwordContact: { label: 'Александр Баленко во ВКонтакте', url: 'https://vk.ru/balenko_alexander' }
 	},
 	{
 		slug: 'ii-i-hema',

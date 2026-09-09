@@ -71,8 +71,13 @@
 		</form>
 		{#if failed}
 			<p class="message error" role="alert">Неверный пароль</p>
-		{:else if collection.passwordHint}
-			<p class="message">{collection.passwordHint}</p>
+		{/if}
+		{#if collection.passwordHint}
+			<p class="message">{collection.passwordHint}
+				{#if collection.passwordContact}
+					<a href={collection.passwordContact.url} target="_blank" rel="noopener noreferrer">{collection.passwordContact.label}</a>
+				{/if}
+			</p>
 		{/if}
 	</div>
 {:else}
