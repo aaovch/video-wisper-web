@@ -124,6 +124,7 @@
 	// --- Подсветка блока по позиции воспроизведения ---
 	let activeChapterIndex = $state(-1);
 	let videoPlaying = $state(false);
+	let videoTime = $state(0);
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
 	let transcriptOpen = $state(false);
@@ -146,6 +147,8 @@
 	let chapterTranscriptPromise: Promise<TranscriptChapter[]> | null = null;
 	let openChapterTranscriptIndex = $state<number | null>(null);
 	let transcriptReturnTarget: HTMLButtonElement | null = null;
+	let readerInitialTime = $state(0);
+	let readerAutoplay = $state(false);
 
 	function ensureTranscript(): Promise<string> {
 		if (!browser || !hasTranscript) return Promise.resolve('');
@@ -191,15 +194,28 @@
 		return chapterTranscriptPromise;
 	}
 
-	function openTranscriptReader(index: number, trigger?: HTMLButtonElement | null) {
+	function openTranscriptReader(
+		index: number,
+		trigger?: HTMLButtonElement | null,
+		start?: number,
+		shouldPlay?: boolean
+	) {
 		if (!report.chapters[index]) return;
 		transcriptReturnTarget = trigger ?? document.querySelector<HTMLButtonElement>(`#chapter-transcript-trigger-${index + 1}`);
+		const continuesCurrentPlayback = playbackStarted && activeChapterIndex === index;
+		readerInitialTime = start ?? (continuesCurrentPlayback ? videoTime : report.chapters[index].start);
+		readerAutoplay = shouldPlay ?? (continuesCurrentPlayback && videoPlaying);
+		videoPlaying = readerAutoplay;
+		seekTo = readerInitialTime;
+		videoTime = readerInitialTime;
+		activeChapterIndex = index;
 		openChapterTranscriptIndex = index;
 		void ensureTranscriptChapters().catch(() => {});
 	}
 
 	function closeTranscriptReader() {
 		const returnTarget = transcriptReturnTarget;
+		seekTo = videoTime;
 		openChapterTranscriptIndex = null;
 		void tick().then(() => requestAnimationFrame(() => returnTarget?.focus()));
 	}
@@ -208,12 +224,14 @@
 		if (openChapterTranscriptIndex === null) return;
 		const nextIndex = openChapterTranscriptIndex + 1;
 		if (!report.chapters[nextIndex]) return;
-		openTranscriptReader(nextIndex);
+		openTranscriptReader(nextIndex, undefined, report.chapters[nextIndex].start, videoPlaying);
 	}
 
 	function seekFromTranscript(start: number) {
-		closeTranscriptReader();
-		seekVideo(start);
+		seekTo = start;
+		videoTime = start;
+		activeChapterIndex = chapterIndexAt(start);
+		playbackStarted = true;
 	}
 
 	async function copyTranscript(event: MouseEvent) {
@@ -608,9 +626,13 @@
 	});
 
 	function onVideoTime(t: number) {
+		videoTime = t;
 		if (!playbackStarted && t > 0.3) playbackStarted = true;
 		const idx = chapterIndexAt(t);
 		if (idx !== activeChapterIndex) activeChapterIndex = idx;
+		if (openChapterTranscriptIndex !== null && videoPlaying && idx !== openChapterTranscriptIndex) {
+			openChapterTranscriptIndex = idx;
+		}
 	}
 
 	function chapterIndexAt(t: number): number {
@@ -704,8 +726,8 @@
 		selectedSearchAnchor = fragmentAnchor(hit);
 		if (hit.chapterIndex != null) {
 			if (hit.kind === 'transcript' && hasTranscript) {
-				openTranscriptReader(hit.chapterIndex);
-				if (seek) seekVideo(Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start));
+				const target = Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start);
+				openTranscriptReader(hit.chapterIndex, undefined, target, seek);
 				return;
 			}
 			void tick().then(() => {
@@ -798,13 +820,13 @@
 
 	<div class="layout" class:no-video={!report.video} bind:this={layoutEl}>
 		<aside class="rail">
-			{#if report.video}
+			{#if report.video && openChapterTranscriptIndex === null}
 				<div class="video-pin" class:playback-started={playbackStarted} bind:this={playerEl}>
 					<VideoPlayer
 						bind:this={playerComp}
 						video={report.video}
 						{seekTo}
-						autoplay={playbackStarted}
+						autoplay={videoPlaying}
 						onTime={onVideoTime}
 						onPlaying={(p) => {
 							videoPlaying = p;
@@ -1225,12 +1247,20 @@
 			chapterIndex={openChapterTranscriptIndex}
 			chapterCount={report.chapters.length}
 			transcriptChapter={transcriptChapters[openChapterTranscriptIndex]}
+			video={report.video}
+			initialTime={readerInitialTime}
+			autoplay={readerAutoplay}
 			loadState={chapterTranscriptLoadState}
 			highlight={highlightQuery}
 			onClose={closeTranscriptReader}
 			onNext={openChapterTranscriptIndex < report.chapters.length - 1 ? showNextTranscriptChapter : undefined}
 			onRetry={() => ensureTranscriptChapters().catch(() => {})}
 			onSeek={report.video ? seekFromTranscript : undefined}
+			onTime={onVideoTime}
+			onPlaying={(playing) => {
+				videoPlaying = playing;
+				if (playing) playbackStarted = true;
+			}}
 		/>
 	{/if}
 {/if}

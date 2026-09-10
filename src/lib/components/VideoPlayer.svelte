@@ -165,9 +165,8 @@
 				events: {
 					onReady: (e: any) => {
 						ytPlayer = e.target;
-						if (!autoplay) return;
-						ytPlayer.seekTo(start, true);
-						playYoutubeWithFallback();
+						if (start > 0) ytPlayer.seekTo(start, true);
+						if (autoplay) playYoutubeWithFallback();
 					},
 					onStateChange: (e: any) => {
 						if (e.data === YT.PlayerState.PLAYING) {
