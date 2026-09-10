@@ -1,46 +1,55 @@
-# Design QA: объединённые материалы лекции
+# Design QA — chapter transcript reader
 
-- Source visual truth: `C:/Users/aaovc/AppData/Local/Temp/codex-clipboard-4deeb24c-cf28-4f72-81b1-39b42b614032.png`
-- Desktop implementation: `C:/Users/aaovc/.codex/visualizations/2026/07/19/019f794c-5b13-7a91-80f5-7b435fcc01e3/psychology-materials-desktop.png`
-- Mobile implementation: `C:/Users/aaovc/.codex/visualizations/2026/07/19/019f794c-5b13-7a91-80f5-7b435fcc01e3/psychology-materials-mobile.png`
-- Viewports: desktop 1210 × 800; mobile 390 × 844
-- State: psychology report, `Конспект` selected; `Глоссарий` and `Расшифровка` interaction states also tested
+## Source
 
-## Full-view comparison evidence
+- Reference: `C:\Users\aaovc\.codex\generated_images\01a08639-b767-7b93-8fde-9fcb6da7d953\exec-de222f1f-f27b-4d0d-af85-005353283ed7.png`
+- Implementation: `C:\Users\aaovc\Desktop\pet projects\video_wisper\video-wisper-web\.codex\design-qa\transcript-reader-open.png`
+- Closed state: `C:\Users\aaovc\Desktop\pet projects\video_wisper\video-wisper-web\.codex\design-qa\chapter-card-closed.png`
+- Side-by-side comparison: `C:\Users\aaovc\Desktop\pet projects\video_wisper\video-wisper-web\.codex\design-qa\comparison.png`
 
-The source and desktop implementation were opened in the same comparison input. The implementation carries over the source pattern rather than cloning its unrelated dashboard content: a compact tab rail, one bordered parent surface, a secondary panel header, and a structured card grid. The colors, typography, borders, and radii deliberately use the existing Video Wisper paper theme.
+## Capture
 
-No separate focused crop was needed: the tab rail, panel header, card dividers, headings, and body copy are legible in the desktop comparison. Mobile was inspected separately at the required 390 × 844 viewport.
+- URL: `http://127.0.0.1:4180/reports/tsena-adaptatsii-tehnicheskogo-priema/`
+- Browser: Codex in-app browser
+- Viewport: 504 × 742 CSS pixels
+- Screenshot: 504 × 742 pixels at 1× density
+- State: dark theme; chapter 07 in the closed report and in the full-height reading mode
 
-## Required fidelity surfaces
+## Comparison
 
-- Fonts and typography: existing serif display/body and mono metadata fonts are preserved. Tab labels, counters, card numbers, headings, and long copy form a clear hierarchy without truncation.
-- Spacing and layout rhythm: the tab rail and panel share one 12 px rounded container; 1 px grid dividers reproduce the grouped dashboard rhythm. Desktop uses two columns and mobile collapses to one.
-- Colors and visual tokens: all surfaces use existing `--paper`, `--paper-2`, `--ink`, `--line`, and `--accent` tokens. Active and focus states retain sufficient contrast in the product theme.
-- Image quality and asset fidelity: the reference contains a body diagram that is unrelated to this content and was not copied. UI icons come from the existing Phosphor icon package; no custom SVG, CSS art, or placeholder asset was introduced.
-- Copy and content: labels are concise and contextual: `Материалы лекции`, `Конспект`, `Глоссарий`, `Расшифровка`, `Короткий конспект`, and `Термины и определения`.
-- Accessibility and behavior: native buttons use tab semantics, `aria-selected`, linked tab panels, visible focus, mouse switching, Arrow Left/Right, Home/End navigation, and a labelled transcript-copy action.
+The implementation preserves the reference hierarchy and interaction: the transcript action sits directly below the chapter title, the reader replaces report chrome with a calm single-column surface, and persistent back/progress/next controls frame the text. Type scale, warm dark palette, terracotta actions, timecode treatment, rules, and readable measure closely match the source while using the existing site tokens and fonts.
 
-## Comparison history
+## Findings and iteration history
 
-1. Initial mobile pass found a P2 responsiveness issue: the third tab label was clipped at 390 px because all three tab icons and counters competed for width.
-2. Fix: reduced mobile tab padding and gap, hid redundant tab icons below 560 px, and kept the panel-header icon as the visual cue.
-3. Post-fix evidence: `psychology-materials-mobile.png` shows all three labels and both counters inside the parent surface with no horizontal clipping.
+1. P1 — The first implementation used an inline accordion, which did not create the focused reading experience selected in the reference. Replaced it with a dedicated modal reader.
+2. P2 — The first reader pass exposed the report behind the modal to assistive technology. Switched the overlay to the native modal dialog, which traps focus and makes background content inert.
+3. P2 — Long single ASR segments could render as one dense paragraph. Reduced the reading threshold and added sentence-boundary coverage so long speech is divided without dropping or rewriting words.
+4. Verified the closed CTA, lazy transcript loading, next-block transition, Escape return, background inertness, and focus restoration in the real local report.
 
-## Findings
+## Local scenario pass — 2026-09-10
 
-No actionable P0, P1, or P2 findings remain. The implementation preserves the source interaction pattern while matching the host product's visual language.
+- All 12 chapter CTAs open the matching heading and progress value. Every chapter contains 2–5 cleaned paragraphs; no text was empty or horizontally clipped.
+- The continuous 01 → 12 flow keeps the reader open, resets scroll between chapters, changes the final action to “Вернуться к конспекту”, and restores focus to the chapter 12 CTA.
+- Escape and “К конспекту” both close the native dialog and restore focus to the originating chapter CTA.
+- A unique transcript-only query (“когда чуваки влетели”) returns chapter 07, opens its reader, and highlights the matching words in the transcript.
+- A reader timecode closes the reader, activates chapter 07, scrolls to it, and starts the player handoff at the chapter time.
+- Lazy-loading states were exercised against a stopped local server: loading appears, the failure is announced as an alert, and “Попробовать ещё раз” succeeds after the server returns.
+- Responsive passes at 390 × 844, 768 × 900, and 1280 × 900 show no horizontal overflow or clipped controls. Touch targets for back and next are 44 px high.
+- Light and dark themes use the expected paper/ink tokens and preserve identical reader geometry.
+- The browser console contains no warnings or errors after the interaction pass.
+- Corpus coverage: all 160 reports currently have transcripts and all 160 chapter sidecars have non-empty chapter segments, so production fixtures do not expose the no-transcript or empty-chapter variants. Their guarded render paths remain covered structurally rather than by a live fixture.
+- Automated gate: `svelte-check` reports 0 errors and 0 warnings; Vitest reports 104 passed and 10 skipped; the production static build succeeds.
 
-## Interaction and console checks
+## Resolved finding
 
-- Mouse tab switching: passed.
-- Keyboard tab switching with Arrow Left/Right: passed.
-- Transcript panel and copy control: passed.
-- Mobile single-column layout: passed.
-- Browser console errors: none. A pre-existing YouTube iframe hydration warning was observed and is unrelated to this change.
+1. P2 — Keyboard focus previously visited `body` and then the `dialog` after the final reader action. The reader now explicitly wraps Tab from the final action to “К конспекту” and Shift+Tab back to the final action. The same loop was verified with the dynamically rendered “Попробовать ещё раз” control in the error state.
 
-## Follow-up polish
+## Post-fix verification
 
-No blocking polish items. A future optional pass could add a subtle panel transition, provided reduced-motion preferences remain respected.
+- `svelte-check`: 0 errors, 0 warnings.
+- Focus order in the ready state: “К конспекту” → timecode → “Следующий блок” → “К конспекту”; reverse wrapping also passes.
+- Focus order in the error state includes “Попробовать ещё раз” and still wraps in both directions.
+- The focused transcript unit suite passes: 4/4.
+- The full report gate currently stops on the unrelated fencing-corpus coverage assertion (118 current HEMA slugs versus the test floor of 128) after concurrent removals appeared elsewhere in the shared worktree. The transcript-reader checks themselves pass.
 
-final result: passed
+Final result: passed

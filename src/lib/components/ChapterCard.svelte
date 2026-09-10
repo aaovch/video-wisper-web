@@ -2,6 +2,7 @@
 	import type { Chapter } from '$lib/types';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
+	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import Play from 'phosphor-svelte/lib/Play';
 
 	let {
@@ -11,7 +12,9 @@
 		playing = false,
 		live = false,
 		highlight = '',
-		searchSelected = false
+		searchSelected = false,
+		transcriptAvailable = false,
+		onOpenTranscript
 	}: {
 		chapter: Chapter;
 		index: number;
@@ -20,6 +23,8 @@
 		live?: boolean;
 		highlight?: string;
 		searchSelected?: boolean;
+		transcriptAvailable?: boolean;
+		onOpenTranscript?: (trigger: HTMLButtonElement) => void;
 	} = $props();
 </script>
 
@@ -48,6 +53,17 @@
 			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
 		{/each}
 	</h3>
+	{#if transcriptAvailable && onOpenTranscript}
+		<button
+			type="button"
+			class="read-transcript"
+			id="chapter-transcript-trigger-{index + 1}"
+			onclick={(event) => onOpenTranscript?.(event.currentTarget)}
+		>
+			<span>Читать расшифровку</span>
+			<ArrowRight size={17} weight="bold" aria-hidden="true" />
+		</button>
+	{/if}
 	<p class="summary">
 		{#each highlightParts(chapter.summary, highlight) as part}
 			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
@@ -65,6 +81,7 @@
 			{/each}
 		</ul>
 	{/if}
+
 </article>
 
 <style>
@@ -217,9 +234,31 @@
 	.title {
 		font-size: clamp(23px, 2.6vw, 30px);
 		font-weight: 500;
-		margin: 0 0 8px;
+		margin: 0 0 6px;
 		max-width: 26ch;
 	}
+
+	.read-transcript {
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		min-height: 44px;
+		margin: 0 0 8px -2px;
+		padding: 8px 2px;
+		border: 0;
+		background: transparent;
+		color: var(--accent);
+		font-family: var(--font-ui);
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+	.read-transcript :global(svg) { transition: transform 0.18s ease; }
+	.read-transcript:hover :global(svg) { transform: translateX(4px); }
+	.read-transcript:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
 	.summary {
 		margin: 0 0 16px;

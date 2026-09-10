@@ -150,6 +150,10 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 			join(staticTranscriptsDir, `${slug}.json`),
 			JSON.stringify({ transcript: sidecar.transcript })
 		);
+		writeFileSync(
+			join(staticTranscriptsDir, `${slug}.chapters.json`),
+			JSON.stringify({ chapters: Array.isArray(sidecar.chapters) ? sidecar.chapters : [] })
+		);
 	}
 
 	meta.push({

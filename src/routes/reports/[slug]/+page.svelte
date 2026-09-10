@@ -15,6 +15,7 @@
 	import TextAlignLeft from 'phosphor-svelte/lib/TextAlignLeft';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
+	import TranscriptReader from '$lib/components/TranscriptReader.svelte';
 	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import Lock from '$lib/components/Lock.svelte';
@@ -28,6 +29,7 @@
 	import { fragmentAnchor, reportSearchFragments } from '$lib/search-fragments';
 	import { tick } from 'svelte';
 	import type { SearchHit } from '$lib/search';
+	import type { TranscriptChapter } from '$lib/types';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -139,6 +141,11 @@
 	let transcriptText = $state('');
 	let transcriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
 	let transcriptPromise: Promise<string> | null = null;
+	let transcriptChapters = $state<TranscriptChapter[]>([]);
+	let chapterTranscriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
+	let chapterTranscriptPromise: Promise<TranscriptChapter[]> | null = null;
+	let openChapterTranscriptIndex = $state<number | null>(null);
+	let transcriptReturnTarget: HTMLButtonElement | null = null;
 
 	function ensureTranscript(): Promise<string> {
 		if (!browser || !hasTranscript) return Promise.resolve('');
@@ -160,6 +167,53 @@
 				throw error;
 			});
 		return transcriptPromise;
+	}
+
+	function ensureTranscriptChapters(): Promise<TranscriptChapter[]> {
+		if (!browser || !hasTranscript) return Promise.resolve([]);
+		if (chapterTranscriptPromise) return chapterTranscriptPromise;
+		chapterTranscriptLoadState = 'loading';
+		chapterTranscriptPromise = fetch(`${base}/transcripts/${report.slug}.chapters.json`)
+			.then((response) => {
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				return response.json();
+			})
+			.then((data: { chapters?: TranscriptChapter[] }) => {
+				transcriptChapters = Array.isArray(data.chapters) ? data.chapters : [];
+				chapterTranscriptLoadState = 'ready';
+				return transcriptChapters;
+			})
+			.catch((error) => {
+				chapterTranscriptPromise = null;
+				chapterTranscriptLoadState = 'error';
+				throw error;
+			});
+		return chapterTranscriptPromise;
+	}
+
+	function openTranscriptReader(index: number, trigger?: HTMLButtonElement | null) {
+		if (!report.chapters[index]) return;
+		transcriptReturnTarget = trigger ?? document.querySelector<HTMLButtonElement>(`#chapter-transcript-trigger-${index + 1}`);
+		openChapterTranscriptIndex = index;
+		void ensureTranscriptChapters().catch(() => {});
+	}
+
+	function closeTranscriptReader() {
+		const returnTarget = transcriptReturnTarget;
+		openChapterTranscriptIndex = null;
+		void tick().then(() => requestAnimationFrame(() => returnTarget?.focus()));
+	}
+
+	function showNextTranscriptChapter() {
+		if (openChapterTranscriptIndex === null) return;
+		const nextIndex = openChapterTranscriptIndex + 1;
+		if (!report.chapters[nextIndex]) return;
+		openTranscriptReader(nextIndex);
+	}
+
+	function seekFromTranscript(start: number) {
+		closeTranscriptReader();
+		seekVideo(start);
 	}
 
 	async function copyTranscript(event: MouseEvent) {
@@ -648,11 +702,16 @@
 	async function onSearchHit(hit: SearchHit, seek: boolean, href: string) {
 		await goto(href, { noScroll: true, keepFocus: true });
 		selectedSearchAnchor = fragmentAnchor(hit);
-		void tick().then(() => {
-			const target = document.getElementById(selectedSearchAnchor);
-			if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
-		});
 		if (hit.chapterIndex != null) {
+			if (hit.kind === 'transcript' && hasTranscript) {
+				openTranscriptReader(hit.chapterIndex);
+				if (seek) seekVideo(Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start));
+				return;
+			}
+			void tick().then(() => {
+				const target = document.getElementById(selectedSearchAnchor);
+				if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+			});
 			const target = seek
 				? Math.ceil(hit.start ?? report.chapters[hit.chapterIndex].start)
 				: hit.start ?? report.chapters[hit.chapterIndex].start;
@@ -660,6 +719,10 @@
 			document.getElementById(`ch-${hit.chapterIndex + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			return;
 		}
+		void tick().then(() => {
+			const target = document.getElementById(selectedSearchAnchor);
+			if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+		});
 		if (hit.zone === 'additional') {
 			additionalOpen = true;
 			requestAnimationFrame(() => {
@@ -1137,7 +1200,17 @@
 				<div class="section-heading section-heading--plain"><h2 id="chapters-title">Смысловые блоки</h2></div>
 				{#each report.chapters as chapter, i (chapter.start)}
 					<div class="reveal" {@attach reveal()}>
-						<ChapterCard {chapter} index={i} onSeek={report.video ? seekVideo : undefined} playing={playingIndex === i} live={videoPlaying && playingIndex === i} highlight={highlightQuery} searchSelected={Boolean(highlightQuery) && selectedSearchAnchor === `ch-${i + 1}`} />
+						<ChapterCard
+							{chapter}
+							index={i}
+							onSeek={report.video ? seekVideo : undefined}
+							playing={playingIndex === i}
+							live={videoPlaying && playingIndex === i}
+							highlight={highlightQuery}
+							searchSelected={Boolean(highlightQuery) && selectedSearchAnchor === `ch-${i + 1}`}
+							transcriptAvailable={hasTranscript}
+							onOpenTranscript={(trigger) => openTranscriptReader(i, trigger)}
+						/>
 					</div>
 				{/each}
 			</section>
@@ -1146,6 +1219,20 @@
 		</div>
 	</div>
 </article>
+	{#if openChapterTranscriptIndex !== null}
+		<TranscriptReader
+			chapter={report.chapters[openChapterTranscriptIndex]}
+			chapterIndex={openChapterTranscriptIndex}
+			chapterCount={report.chapters.length}
+			transcriptChapter={transcriptChapters[openChapterTranscriptIndex]}
+			loadState={chapterTranscriptLoadState}
+			highlight={highlightQuery}
+			onClose={closeTranscriptReader}
+			onNext={openChapterTranscriptIndex < report.chapters.length - 1 ? showNextTranscriptChapter : undefined}
+			onRetry={() => ensureTranscriptChapters().catch(() => {})}
+			onSeek={report.video ? seekFromTranscript : undefined}
+		/>
+	{/if}
 {/if}
 
 <style>

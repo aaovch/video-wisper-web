@@ -23,8 +23,8 @@ export interface TranscriptChapter {
 
 /**
  * Sidecar с полной расшифровкой. Хранится отдельно от отчёта, чтобы страница
- * не тянула сегменты; клиент лениво грузит только строку transcript
- * из static/transcripts/<slug>.json (генерируется на prebuild).
+ * не тянула сегменты; клиент лениво грузит полный текст из
+ * static/transcripts/<slug>.json, а главы — из соседнего <slug>.chapters.json.
  */
 export interface ReportTranscript {
 	transcript: string;
