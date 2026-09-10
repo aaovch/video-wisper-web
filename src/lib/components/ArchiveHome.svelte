@@ -15,10 +15,11 @@
 	import FunnelSimple from 'phosphor-svelte/lib/FunnelSimple';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import Play from 'phosphor-svelte/lib/Play';
+	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import CollectionCard from '$lib/components/CollectionCard.svelte';
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
-	import { collections, type Collection } from '$lib/data/collections';
+	import { collections, collectionsForReport, reportGate, type Collection } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 	import {
 		preloadSearchIndex,
@@ -36,7 +37,12 @@
 	} from '$lib/search-filters';
 	import { readRecentReports } from '$lib/recent-reports';
 	import { getReportSummary } from '$lib/data/report-meta';
-	import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
+	import {
+		catalogReportSlugs,
+		isReportLocked,
+		searchableReportSlugs,
+		visibleSubset
+	} from '$lib/search-visibility';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
 
@@ -152,6 +158,7 @@
 	const primaryCollections = $derived(filteredCollections.filter((collection) => collection.hema));
 	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
 	const filtersActive = $derived(activeFilterCount > 0);
+	const areaReportSlugs = $derived(catalogReportSlugs(archived ? 'archive' : 'main'));
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked, archived ? 'archive' : 'main'));
 	const recentReports = $derived(
 		recentSlugs
@@ -162,14 +169,16 @@
 	);
 	const scopeSlugs = $derived(
 		filtersActive
-			? visibleSubset(filteredCollections.flatMap((collection) => collection.items), visibleArchiveSlugs)
-			: visibleArchiveSlugs
+			? visibleSubset(filteredCollections.flatMap((collection) => collection.items), areaReportSlugs)
+			: areaReportSlugs
 	);
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
 		return hits
 			.filter((hit) => {
-				const key = uniqueHitKey(hit);
+				// A locked video is deliberately one opaque result: no separate chapter,
+				// thesis or transcript rows until its password has been entered.
+				const key = resultIsLocked(hit) ? `locked:${hit.reportSlug}` : uniqueHitKey(hit);
 				if (seen.has(key)) return false;
 				seen.add(key);
 				return true;
@@ -277,6 +286,18 @@
 
 	function matchesSelection(selected: string[], values: string[] | undefined): boolean {
 		return selected.length === 0 || selected.some((value) => values?.includes(value));
+	}
+
+	function resultIsLocked(hit: SearchHit): boolean {
+		return isReportLocked(hit.reportSlug, lock.unlocked);
+	}
+
+	function resultCollection(hit: SearchHit): Collection | undefined {
+		const memberships = collectionsForReport(hit.reportSlug).filter(
+			(collection) => Boolean(collection.archived) === archived
+		);
+		const gatedSlugs = new Set(reportGate(hit.reportSlug).map((target) => target.slug));
+		return memberships.find((collection) => gatedSlugs.has(collection.slug)) ?? memberships[0];
 	}
 
 	function collectionCountLabel(count: number): string {
@@ -488,23 +509,34 @@
 		{:else}
 			<ol class="result-list">
 				{#each visibleHits as hit, index (uniqueHitKey(hit))}
-					<li id={`hit-${index}`} class:kbd-active={activeHit === index}>
+					{@const lockedResult = resultIsLocked(hit)}
+					{@const hitCollection = resultCollection(hit)}
+					<li id={`hit-${index}`} class:kbd-active={activeHit === index} class:locked-result={lockedResult}>
 						<div class="result-copy">
-							<p class="breadcrumb">{hit.reportTitle}</p>
-							<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
-							<SearchMatchNote {hit} {query} />
-							<p class="snippet">
-								{#each highlightParts(hit.snippet, query) as part}
-									{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-								{/each}
-							</p>
-							<SearchSourceLinks {hit} scope={linkScope} />
+							{#if lockedResult}
+								<p class="breadcrumb locked-label"><LockKey size={16} weight="regular" aria-hidden="true" /> Видео по паролю{#if hitCollection} · {hitCollection.title}{/if}</p>
+								<h3>{hit.reportTitle}</h3>
+								<p class="snippet locked-copy">Совпадение найдено внутри закрытого материала. Фрагмент и точное место откроются после ввода пароля.</p>
+							{:else}
+								<p class="breadcrumb">{hit.reportTitle}</p>
+								<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
+								<SearchMatchNote {hit} {query} />
+								<p class="snippet">
+									{#each highlightParts(hit.snippet, query) as part}
+										{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
+									{/each}
+								</p>
+								<SearchSourceLinks {hit} scope={linkScope} />
+							{/if}
 						</div>
 						<div class="result-actions">
-
-							<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
-							{#if hit.start != null}
-								<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
+							{#if lockedResult}
+								<a href={resultHref(hit, hit.start != null)} onclick={(event) => openResult(event, hit, hit.start != null)}><LockKey size={21} weight="thin" aria-hidden="true" />Ввести пароль и открыть<ArrowRight size={20} weight="thin" /></a>
+							{:else}
+								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
+								{#if hit.start != null}
+									<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
+								{/if}
 							{/if}
 						</div>
 					</li>
@@ -750,6 +782,20 @@
 		margin: 0 0 10px;
 		font-size: 14px;
 		color: var(--accent);
+	}
+
+	.locked-label {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+	}
+
+	.locked-result {
+		background: color-mix(in srgb, var(--paper-2) 46%, transparent);
+	}
+
+	.locked-copy {
+		max-width: 58ch;
 	}
 
 	.result-copy h3 {

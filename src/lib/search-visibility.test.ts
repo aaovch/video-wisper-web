@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
+import {
+	catalogReportSlugs,
+	isReportLocked,
+	searchableReportSlugs,
+	visibleSubset
+} from '$lib/search-visibility';
 import { getCollection, reportGate } from '$lib/data/collections';
 
 describe('search visibility', () => {
@@ -12,6 +17,18 @@ describe('search visibility', () => {
 	});
 	it('hides reports that only belong to locked collections', () => {
 		expect(searchableReportSlugs([])).not.toContain('retention');
+	});
+
+	it('keeps locked reports discoverable in the catalog scope without exposing their content', () => {
+		expect(catalogReportSlugs()).toContain('retention');
+		expect(isReportLocked('retention', [])).toBe(true);
+		expect(isReportLocked('retention', ['hema-theory'])).toBe(false);
+	});
+
+	it('keeps individually gated videos discoverable until their own password is entered', () => {
+		expect(catalogReportSlugs('all')).toContain('taktika-4-0-balenko');
+		expect(isReportLocked('taktika-4-0-balenko', ['shkola-stal'])).toBe(true);
+		expect(isReportLocked('taktika-4-0-balenko', ['report:taktika-4-0-balenko'])).toBe(false);
 	});
 
 	it('restores locked reports after their collection is unlocked', () => {
