@@ -1,6 +1,6 @@
 {
-  "indexHash": "2b307ff5140f8bc1ed81003bc84e064c140a54d8187635dbf5744a176ccc0827",
-  "scenarios": 424,
+  "indexHash": "e21a811fdabf421ce1702bd5d004080cd72447d079c05dd33ca3ff7b9bba4736",
+  "scenarios": 421,
   "losses": 0,
   "gains": 7,
   "multiGains": 2,
@@ -3968,36 +3968,6 @@
     {
       "id": "context-8",
       "scope": "report",
-      "label": "kendzyu-sparring-ali-andrey",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-8",
-      "scope": "collection",
-      "label": "kendzyu",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-8",
-      "scope": "archive",
-      "label": "archive",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-9",
-      "scope": "report",
       "label": "kompresiya-taktiki-lektsiya",
       "kind": "single",
       "beforeHit5": true,
@@ -4006,7 +3976,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-9",
+      "id": "context-8",
       "scope": "collection",
       "label": "ovchinnikov-lectures",
       "kind": "single",
@@ -4016,7 +3986,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-9",
+      "id": "context-8",
       "scope": "collection",
       "label": "golden-falcon-astana",
       "kind": "single",
@@ -4026,7 +3996,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-9",
+      "id": "context-8",
       "scope": "archive",
       "label": "archive",
       "kind": "single",
@@ -4036,7 +4006,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-10",
+      "id": "context-9",
       "scope": "report",
       "label": "tenouti-i-tyakin-sibori",
       "kind": "single",
@@ -4046,7 +4016,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-10",
+      "id": "context-9",
       "scope": "collection",
       "label": "ovchinnikov-lectures",
       "kind": "single",
@@ -4056,6 +4026,36 @@
       "coverage5": 1
     },
     {
+      "id": "context-9",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-10",
+      "scope": "report",
+      "label": "kinezio-trenirovka-3-tazobedrennyy-sustav",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-10",
+      "scope": "collection",
+      "label": "noname",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
       "id": "context-10",
       "scope": "archive",
       "label": "archive",
@@ -4068,36 +4068,6 @@
     {
       "id": "context-11",
       "scope": "report",
-      "label": "kinezio-trenirovka-3-tazobedrennyy-sustav",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-11",
-      "scope": "collection",
-      "label": "noname",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-11",
-      "scope": "archive",
-      "label": "archive",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-12",
-      "scope": "report",
       "label": "kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
       "kind": "single",
       "beforeHit5": true,
@@ -4106,7 +4076,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-12",
+      "id": "context-11",
       "scope": "collection",
       "label": "noname-kurs-dlya-trenerov",
       "kind": "single",
@@ -4116,6 +4086,36 @@
       "coverage5": 1
     },
     {
+      "id": "context-11",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-12",
+      "scope": "report",
+      "label": "podgotovka-ataki-na-sable-korotovskih",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-12",
+      "scope": "collection",
+      "label": "seminary-korotovskih",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
       "id": "context-12",
       "scope": "archive",
       "label": "archive",
@@ -4128,36 +4128,6 @@
     {
       "id": "context-13",
       "scope": "report",
-      "label": "podgotovka-ataki-na-sable-korotovskih",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-13",
-      "scope": "collection",
-      "label": "seminary-korotovskih",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-13",
-      "scope": "archive",
-      "label": "archive",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-14",
-      "scope": "report",
       "label": "fedotikov-mironov",
       "kind": "single",
       "beforeHit5": true,
@@ -4166,7 +4136,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-14",
+      "id": "context-13",
       "scope": "collection",
       "label": "noname-sparring",
       "kind": "single",
@@ -4176,6 +4146,36 @@
       "coverage5": 1
     },
     {
+      "id": "context-13",
+      "scope": "archive",
+      "label": "archive",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-14",
+      "scope": "report",
+      "label": "dofamin-neyronnye-svyazi-pasha",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
+      "id": "context-14",
+      "scope": "collection",
+      "label": "golden-falcon-astana",
+      "kind": "single",
+      "beforeHit5": true,
+      "hit5": true,
+      "beforeCoverage5": 1,
+      "coverage5": 1
+    },
+    {
       "id": "context-14",
       "scope": "archive",
       "label": "archive",
@@ -4188,36 +4188,6 @@
     {
       "id": "context-15",
       "scope": "report",
-      "label": "dofamin-neyronnye-svyazi-pasha",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-15",
-      "scope": "collection",
-      "label": "golden-falcon-astana",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-15",
-      "scope": "archive",
-      "label": "archive",
-      "kind": "single",
-      "beforeHit5": true,
-      "hit5": true,
-      "beforeCoverage5": 1,
-      "coverage5": 1
-    },
-    {
-      "id": "context-16",
-      "scope": "report",
       "label": "pitanie-i-ves-fekhtovalshchika-turin",
       "kind": "single",
       "beforeHit5": true,
@@ -4226,7 +4196,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-16",
+      "id": "context-15",
       "scope": "collection",
       "label": "noname",
       "kind": "single",
@@ -4236,7 +4206,7 @@
       "coverage5": 1
     },
     {
-      "id": "context-16",
+      "id": "context-15",
       "scope": "archive",
       "label": "archive",
       "kind": "single",

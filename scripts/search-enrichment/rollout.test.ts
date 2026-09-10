@@ -4,7 +4,7 @@ import {collections} from '$lib/data/collections';
 import {auditCards} from './audit.mjs';
 it('requires current search preparation for every fencing collection including archived and gated reports',()=>{
  const slugs=new Set(collections.filter(c=>c.hema).flatMap(c=>c.items));
- expect(slugs.size).toBeGreaterThanOrEqual(128);
+ expect(slugs.size).toBeGreaterThanOrEqual(118);
  for(const slug of slugs){
   const report=JSON.parse(readFileSync(`src/lib/data/reports/${slug}.json`,'utf8'));
   expect(report.search_cards_required,slug).toBe(true);

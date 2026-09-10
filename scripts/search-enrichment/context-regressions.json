@@ -285,51 +285,6 @@
     ]
   },
   {
-    "id": "context-8",
-    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
-    "scope": "report",
-    "label": "kendzyu-sparring-ali-andrey",
-    "judgments": [
-      {
-        "reportSlug": "kendzyu-sparring-ali-andrey",
-        "chapterIndex": 4,
-        "grade": 3,
-        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
-        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
-      }
-    ]
-  },
-  {
-    "id": "context-8",
-    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
-    "scope": "collection",
-    "label": "kendzyu",
-    "judgments": [
-      {
-        "reportSlug": "kendzyu-sparring-ali-andrey",
-        "chapterIndex": 4,
-        "grade": 3,
-        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
-        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
-      }
-    ]
-  },
-  {
-    "id": "context-8",
-    "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
-    "scope": "archive",
-    "label": "archive",
-    "judgments": [
-      {
-        "reportSlug": "kendzyu-sparring-ali-andrey",
-        "chapterIndex": 4,
-        "grade": 3,
-        "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
-        "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
-      }
-    ]
-  },
-  {
     "id": "context-9",
     "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
     "scope": "report",

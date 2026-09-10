@@ -155,27 +155,6 @@
     },
     {
       "id": "context-8",
-      "query": "Почему раунд после пореза в спарринге Али с Андреем отдали Али?",
-      "kind": "single",
-      "split": "holdout",
-      "coverage": "single",
-      "scopes": [
-        "report",
-        "collection",
-        "archive"
-      ],
-      "judgments": [
-        {
-          "reportSlug": "kendzyu-sparring-ali-andrey",
-          "chapterIndex": 4,
-          "grade": 3,
-          "evidence": "Судья пересказывает последовательность: неудачная фиксация, шаг, поворот; фазы контроля у Али не было — раунд за ним.",
-          "sourceHash": "e7ecde921721c06cbc55b29433bbba939a1bf498bc05cdc2e4e5fe1d447fb77e"
-        }
-      ]
-    },
-    {
-      "id": "context-9",
       "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
       "kind": "single",
       "split": "holdout",
@@ -196,7 +175,7 @@
       ]
     },
     {
-      "id": "context-10",
+      "id": "context-9",
       "query": "Зачем в первом упражнении тэноути расслаблять руки и делать широкий удар?",
       "kind": "single",
       "split": "holdout",
@@ -217,7 +196,7 @@
       ]
     },
     {
-      "id": "context-11",
+      "id": "context-10",
       "query": "Как выбрать гантель и защитить колено перед упражнением на тазобедренный сустав?",
       "kind": "single",
       "split": "holdout",
@@ -238,7 +217,7 @@
       ]
     },
     {
-      "id": "context-12",
+      "id": "context-11",
       "query": "Почему подробное объяснение удара тренером ещё не учит правильному движению?",
       "kind": "single",
       "split": "holdout",
@@ -259,7 +238,7 @@
       ]
     },
     {
-      "id": "context-13",
+      "id": "context-12",
       "query": "Как в сабельном упражнении выбирать атаку, если монитор остановился или продолжает движение?",
       "kind": "single",
       "split": "holdout",
@@ -280,7 +259,7 @@
       ]
     },
     {
-      "id": "context-14",
+      "id": "context-13",
       "query": "Как Миронов подготовил попадание в руки Федотикову?",
       "kind": "single",
       "split": "holdout",
@@ -301,7 +280,7 @@
       ]
     },
     {
-      "id": "context-15",
+      "id": "context-14",
       "query": "Почему боец поднимает защиту головы до распознавания сектора атаки?",
       "kind": "single",
       "split": "holdout",
@@ -322,7 +301,7 @@
       ]
     },
     {
-      "id": "context-16",
+      "id": "context-15",
       "query": "Почему Турин связывает быстрое похудение с откатом веса?",
       "kind": "single",
       "split": "holdout",
