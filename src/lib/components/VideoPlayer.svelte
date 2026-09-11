@@ -2,15 +2,19 @@
 	import { browser } from '$app/environment';
 	import { base } from '$app/paths';
 	import type { VideoSource } from '$lib/types';
+	import { getVideoSourceUrl } from '$lib/utils';
+	import ArrowSquareOut from 'phosphor-svelte/lib/ArrowSquareOut';
 
 	let {
 		video,
+		sourceUrl,
 		seekTo = 0,
 		autoplay = false,
 		onTime,
 		onPlaying
 	}: {
 		video: VideoSource;
+		sourceUrl?: string;
 		seekTo?: number;
 		autoplay?: boolean;
 		onTime?: (time: number) => void;
@@ -18,6 +22,17 @@
 	} = $props();
 
 	const start = $derived(Math.max(0, Math.floor(seekTo)));
+	const externalUrl = $derived(getVideoSourceUrl(video, sourceUrl, base));
+	const externalLabel = $derived.by(() => {
+		switch (video.provider) {
+			case 'youtube': return 'Открыть на YouTube';
+			case 'vk': return 'Открыть в VK Видео';
+			case 'rutube': return 'Открыть на Rutube';
+			case 'vimeo': return 'Открыть на Vimeo';
+			case 'yadisk': return 'Открыть на Яндекс Диске';
+			case 'file': return 'Открыть видео отдельно';
+		}
+	});
 
 	const isNative = $derived(video.provider === 'file' || video.provider === 'yadisk');
 
@@ -323,59 +338,71 @@
 	}
 </script>
 
-<div class="player">
-	{#if isNative}
-		{#if directSrc}
-			<!-- svelte-ignore a11y_media_has_caption -->
-			<video
-				bind:this={videoEl}
-				src={directSrc}
-				poster={poster ?? undefined}
-				controls
-				preload="metadata"
-				ontimeupdate={() => onTime?.(videoEl?.currentTime ?? 0)}
-				onplay={() => onPlaying?.(true)}
-				onpause={() => onPlaying?.(false)}
-				onended={() => onPlaying?.(false)}
-			></video>
-		{:else if failed}
-			<div class="state">
-				<p>Не удалось загрузить видео в плеере.</p>
-				{#if fallbackUrl}
-					<a href={fallbackUrl} target="_blank" rel="noopener noreferrer"
-						>Открыть на Яндекс.Диске →</a
-					>
-				{/if}
-			</div>
-		{:else}
-			<div class="state"><p>Загрузка видео…</p></div>
-		{/if}
-	{:else if video.provider === 'youtube'}
-		<iframe
-			id={ytId}
-			src={ytSrc}
-			title="Видео"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
-	{:else}
-		{#key iframeSrc}
+<div class="video-player">
+	<div class="player">
+		{#if isNative}
+			{#if directSrc}
+				<!-- svelte-ignore a11y_media_has_caption -->
+				<video
+					bind:this={videoEl}
+					src={directSrc}
+					poster={poster ?? undefined}
+					controls
+					preload="metadata"
+					ontimeupdate={() => onTime?.(videoEl?.currentTime ?? 0)}
+					onplay={() => onPlaying?.(true)}
+					onpause={() => onPlaying?.(false)}
+					onended={() => onPlaying?.(false)}
+				></video>
+			{:else if failed}
+				<div class="state">
+					<p>Не удалось загрузить видео в плеере.</p>
+					{#if fallbackUrl}
+						<a href={fallbackUrl} target="_blank" rel="noopener noreferrer"
+							>Открыть на Яндекс.Диске →</a
+						>
+					{/if}
+				</div>
+			{:else}
+				<div class="state"><p>Загрузка видео…</p></div>
+			{/if}
+		{:else if video.provider === 'youtube'}
 			<iframe
-				bind:this={vkFrame}
-				src={iframeSrc}
+				id={ytId}
+				src={ytSrc}
 				title="Видео"
-				loading="lazy"
-				onload={() => {
-					if (video.provider === 'vk') vkReady = true;
-				}}
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				allowfullscreen
 			></iframe>
-		{/key}
+		{:else}
+			{#key iframeSrc}
+				<iframe
+					bind:this={vkFrame}
+					src={iframeSrc}
+					title="Видео"
+					loading="lazy"
+					onload={() => {
+						if (video.provider === 'vk') vkReady = true;
+					}}
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			{/key}
+		{/if}
+	</div>
+	{#if externalUrl}
+		<a class="source-link" href={externalUrl} target="_blank" rel="noopener noreferrer">
+			<span><small>Плеер не открывается?</small><strong>{externalLabel}</strong></span>
+			<ArrowSquareOut size={18} weight="bold" aria-hidden="true" />
+		</a>
 	{/if}
 </div>
 
 <style>
+	.video-player {
+		width: 100%;
+	}
+
 	.player {
 		position: relative;
 		width: 100%;
@@ -415,5 +442,69 @@
 
 	.state a {
 		color: var(--accent-2);
+	}
+
+	.source-link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 14px;
+		margin-top: 8px;
+		padding: 10px 12px;
+		border: 1px solid var(--line);
+		border-radius: 9px;
+		background: color-mix(in srgb, var(--accent) 7%, var(--paper));
+		color: var(--ink);
+		text-decoration: none;
+		transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+	}
+
+	.source-link span {
+		display: flex;
+		align-items: baseline;
+		gap: 8px;
+		min-width: 0;
+	}
+
+	.source-link small {
+		color: var(--ink-faint);
+		font-family: var(--font-mono);
+		font-size: 9px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.source-link strong {
+		color: var(--accent-2);
+		font-size: 13px;
+		font-weight: 650;
+	}
+
+	.source-link :global(svg) {
+		flex: 0 0 auto;
+		color: var(--accent-2);
+	}
+
+	.source-link:hover {
+		border-color: var(--accent-2);
+		background: color-mix(in srgb, var(--accent) 12%, var(--paper));
+		transform: translateY(-1px);
+	}
+
+	.source-link:focus-visible {
+		outline: 2px solid var(--accent-2);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 430px) {
+		.source-link span {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 2px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.source-link { transition: none; }
 	}
 </style>

@@ -825,6 +825,7 @@
 					<VideoPlayer
 						bind:this={playerComp}
 						video={report.video}
+						sourceUrl={report.source_url}
 						{seekTo}
 						autoplay={videoPlaying}
 						onTime={onVideoTime}
@@ -1248,6 +1249,7 @@
 			chapterCount={report.chapters.length}
 			transcriptChapter={transcriptChapters[openChapterTranscriptIndex]}
 			video={report.video}
+			sourceUrl={report.source_url}
 			initialTime={readerInitialTime}
 			autoplay={readerAutoplay}
 			loadState={chapterTranscriptLoadState}

@@ -16,6 +16,7 @@
 		chapterCount,
 		transcriptChapter,
 		video,
+		sourceUrl,
 		initialTime = chapter.start,
 		autoplay = false,
 		loadState = 'idle',
@@ -32,6 +33,7 @@
 		chapterCount: number;
 		transcriptChapter?: TranscriptChapter;
 		video?: VideoSource;
+		sourceUrl?: string;
 		initialTime?: number;
 		autoplay?: boolean;
 		loadState?: 'idle' | 'loading' | 'ready' | 'error';
@@ -194,6 +196,7 @@
 						<VideoPlayer
 							bind:this={playerComp}
 							{video}
+							{sourceUrl}
 							seekTo={playerSeek}
 							{autoplay}
 							onTime={handleTime}

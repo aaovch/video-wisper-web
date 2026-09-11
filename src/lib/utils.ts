@@ -1,5 +1,32 @@
 import type { VideoSource } from '$lib/types';
 
+/** Ссылка на исходное видео вне iframe — запасной путь, если встроенный плеер недоступен. */
+export function getVideoSourceUrl(video: VideoSource, sourceUrl?: string, base = ''): string | null {
+	const explicitUrl = sourceUrl?.trim();
+	if (explicitUrl) return explicitUrl;
+
+	switch (video.provider) {
+		case 'youtube':
+			return `https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`;
+		case 'vk':
+			return `https://vkvideo.ru/video${video.id}`;
+		case 'rutube': {
+			const privateToken = video.privateToken
+				? `?p=${encodeURIComponent(video.privateToken)}`
+				: '';
+			return `https://rutube.ru/video/${encodeURIComponent(video.id)}/${privateToken}`;
+		}
+		case 'vimeo':
+			return `https://vimeo.com/${encodeURIComponent(video.id)}`;
+		case 'yadisk':
+			return video.publicKey;
+		case 'file':
+			return `${base}/${video.src}`;
+		default:
+			return null;
+	}
+}
+
 /** URL постера/превью для карточки (без сетевых запросов). */
 export function getVideoPosterUrl(video: VideoSource | undefined, base = ''): string | null {
 	if (!video) return null;
