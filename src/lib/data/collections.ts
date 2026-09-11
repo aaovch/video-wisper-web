@@ -342,6 +342,16 @@ export const collections: Collection[] = [
 		items: ['mech-i-bakler-mikrotsikl-1-osnovy']
 	},
 	{
+		slug: 'mezotsikl-1-dlinnyy-mech-noname',
+		title: 'Мезоцикл 1, длинный меч, NoName',
+		hema: true,
+		facets: { weapons: ['Длинный меч'] },
+		subtitle: 'Первый мезоцикл NoName по длинному мечу: техника укола, работа ног и выбор момента.',
+		description:
+			'Практические занятия первого мезоцикла NoName по длинному мечу: безопасная механика укола, координация с шагом, контратака, атакующий вход и применение в спарринге.',
+		items: ['ukoly-mezotsikl-1-dlinnyy-mech']
+	},
+	{
 		slug: 'dlinnyy-mech-basic-noname',
 		title: 'Длинный меч, Basic, NoName',
 		hema: true,
