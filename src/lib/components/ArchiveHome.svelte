@@ -47,7 +47,11 @@
 	import { formatTime } from '$lib/utils';
 
 	let { archived = false }: { archived?: boolean } = $props();
-	const catalogCollections = $derived(collections.filter((collection) => Boolean(collection.archived) === archived));
+	const catalogCollections = $derived(
+		collections.filter(
+			(collection) => !collection.catalogHidden && Boolean(collection.archived) === archived
+		)
+	);
 	const searchAreaLabel = $derived(archived ? 'в архиве' : 'в каталоге');
 	let query = $state('');
 	let selections = $state<SearchFilterSelections>({ authors: [], places: [], weapons: [], collections: [] });
@@ -156,6 +160,12 @@
 		)
 	);
 	const primaryCollections = $derived(filteredCollections.filter((collection) => collection.hema));
+	const nonameCollections = $derived(
+		primaryCollections.filter((collection) => collection.catalogGroup === 'noname')
+	);
+	const standalonePrimaryCollections = $derived(
+		primaryCollections.filter((collection) => collection.catalogGroup !== 'noname')
+	);
 	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
 	const filtersActive = $derived(activeFilterCount > 0);
 	const areaReportSlugs = $derived(catalogReportSlugs(archived ? 'archive' : 'main'));
@@ -569,11 +579,29 @@
 	{#if filteredCollections.length === 0}
 		<p class="empty">Нет коллекций с таким сочетанием фильтров.</p>
 	{:else}
-		<div class="catalog-grid">
-			{#each primaryCollections as collection (collection.slug)}
-				<CollectionCard {collection} />
-			{/each}
-		</div>
+		{#if nonameCollections.length}
+			<section class="collection-group" aria-labelledby="noname-group-title">
+				<div class="collection-group__head">
+					<div>
+						<p class="label">Клубная библиотека</p>
+						<h3 id="noname-group-title">NoName</h3>
+					</div>
+					<p>Учебные циклы, лагерь 2026, курс тренеров и собрания Core — в своих режимах доступа.</p>
+				</div>
+				<div class="catalog-grid">
+					{#each nonameCollections as collection (collection.slug)}
+						<CollectionCard {collection} />
+					{/each}
+				</div>
+			</section>
+		{/if}
+		{#if standalonePrimaryCollections.length}
+			<div class="catalog-grid">
+				{#each standalonePrimaryCollections as collection (collection.slug)}
+					<CollectionCard {collection} />
+				{/each}
+			</div>
+		{/if}
 		{#if otherCollections.length}
 			<div class="other-head">
 				<h2>Другие темы</h2>
@@ -876,6 +904,40 @@
 		column-gap: clamp(32px, 5vw, 72px);
 	}
 
+	.collection-group {
+		margin-bottom: 52px;
+		padding: clamp(22px, 3vw, 34px);
+		border: 1px solid var(--line-strong);
+		border-radius: var(--radius);
+		background: color-mix(in srgb, var(--paper-2) 64%, transparent);
+	}
+
+	.collection-group__head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 32px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid var(--line-strong);
+	}
+
+	.collection-group__head .label {
+		margin: 0 0 6px;
+	}
+
+	.collection-group__head h3 {
+		font-size: clamp(30px, 4vw, 44px);
+		line-height: 1;
+	}
+
+	.collection-group__head > p {
+		max-width: 52ch;
+		margin: 0;
+		color: var(--ink-soft);
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
 	.other-head {
 		display: flex;
 		align-items: baseline;
@@ -934,6 +996,17 @@
 
 		.catalog-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.collection-group {
+			margin-bottom: 36px;
+			padding: 20px 16px;
+		}
+
+		.collection-group__head {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 10px;
 		}
 
 		.other-head {

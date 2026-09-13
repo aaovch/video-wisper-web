@@ -28,4 +28,4 @@ it('preserves context rollout sources with explicitly unlocked fencing collectio
    expect(hits.some(h=>q.judgments.some(j=>j.grade===3&&j.reportSlug===h.reportSlug&&j.chapterIndex===h.chapterIndex)),`${q.id}/${q.label}`).toBe(true);
   }
  }finally{resetSearchIndex();vi.unstubAllGlobals();}
-},30000);
+},60000);

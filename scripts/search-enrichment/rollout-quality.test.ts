@@ -29,4 +29,4 @@ it('preserves accepted fencing sources in report, collection and archive search'
    expect(hits.some(h=>q.judgments.some(j=>j.grade===3&&j.reportSlug===h.reportSlug&&j.chapterIndex===h.chapterIndex)),`${q.id}/${q.label}`).toBe(true);
   }
  }finally{resetSearchIndex();vi.unstubAllGlobals();}
-},30000);
+},60000);

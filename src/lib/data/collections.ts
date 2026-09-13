@@ -26,6 +26,10 @@ export interface Collection {
 	hema?: boolean;
 	/** Скрыта из основного каталога и поиска; доступна в архиве. */
 	archived?: boolean;
+	/** Сохраняет старый URL коллекции, но убирает её из каталога и навигации по отчётам. */
+	catalogHidden?: boolean;
+	/** Объединяет самостоятельные коллекции в общий навигационный блок без смешивания доступа. */
+	catalogGroup?: 'noname';
 	/** Автор, место и оружие для фильтров главной страницы. */
 	facets?: CollectionFacets;
 	/** Короткая строка для карточки на главной и meta description. */
@@ -456,6 +460,7 @@ export const collections: Collection[] = [
 		slug: 'mech-i-bakler-noname',
 		title: 'Меч и Баклер, NoName',
 		hema: true,
+		catalogHidden: true,
 		facets: { weapons: ['Меч и баклер'] },
 		subtitle: 'Цикл NoName по мечу и баклеру: стойка, координация двух рук, базовые действия и контратака.',
 		description:
@@ -466,6 +471,7 @@ export const collections: Collection[] = [
 		slug: 'mezotsikl-1-dlinnyy-mech-noname',
 		title: 'Мезоцикл 1, длинный меч, NoName',
 		hema: true,
+		catalogHidden: true,
 		facets: { weapons: ['Длинный меч'] },
 		subtitle: 'Первый мезоцикл NoName по длинному мечу: техника укола, работа ног и выбор момента.',
 		description:
@@ -476,6 +482,7 @@ export const collections: Collection[] = [
 		slug: 'dlinnyy-mech-basic-noname',
 		title: 'Длинный меч, Basic, NoName',
 		hema: true,
+		catalogHidden: true,
 		facets: {
 			authors: ['Пётр Васильев'],
 			weapons: ['Длинный меч']
@@ -486,10 +493,47 @@ export const collections: Collection[] = [
 		items: ['prostaya-ataka-mikrotsikl-1-dlinnyy-mech']
 	},
 	{
+		slug: 'noname-training',
+		title: 'NoName: учебные циклы и практика',
+		hema: true,
+		catalogGroup: 'noname',
+		facets: { weapons: ['Длинный меч', 'Меч и баклер'] },
+		subtitle: 'Учебные циклы NoName по длинному мечу и мечу с баклером, а также разбор спаррингов.',
+		description:
+			'Практические материалы NoName: последовательные учебные циклы по длинному мечу и мечу с баклером, дополненные разбором обменов в спарринге.',
+		items: [
+			'prostaya-ataka-mikrotsikl-1-dlinnyy-mech',
+			'ukoly-mezotsikl-1-dlinnyy-mech',
+			'mech-i-bakler-mikrotsikl-1-osnovy',
+			'fedotikov-mironov'
+		],
+		sections: [
+			{
+				title: 'Длинный меч',
+				subtitle: 'Базовая атака, дистанция, тайминг, укол и выбор момента.',
+				items: [
+					'prostaya-ataka-mikrotsikl-1-dlinnyy-mech',
+					'ukoly-mezotsikl-1-dlinnyy-mech'
+				]
+			},
+			{
+				title: 'Меч и баклер',
+				subtitle: 'Стойка, координация двух рук, базовые действия и контратака.',
+				items: ['mech-i-bakler-mikrotsikl-1-osnovy']
+			},
+			{
+				title: 'Спарринги',
+				subtitle: 'Учебные бои с разбором решений и отдельных обменов.',
+				items: ['fedotikov-mironov']
+			}
+		]
+	},
+	{
 		slug: 'noname',
 		title: 'NoName, фехтовальный лагерь 2026',
 		hema: true,
 		isolated: true,
+		catalogGroup: 'noname',
 		facets: {
 			authors: ['Турин', 'Евген', 'Пётр Васильев', 'Александр Овчинников'],
 			weapons: ['Сабля', 'Длинный меч']
@@ -568,6 +612,7 @@ export const collections: Collection[] = [
 		title: 'Собрания Core NoName',
 		hema: true,
 		isolated: true,
+		catalogGroup: 'noname',
 		subtitle: 'Стратегические встречи ядра NoName: цели, метрики, ответственные и ежемесячные планы развития клуба.',
 		description:
 			'Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.',
@@ -579,6 +624,7 @@ export const collections: Collection[] = [
 		title: 'NoName курс для тренеров',
 		hema: true,
 		isolated: true,
+		catalogGroup: 'noname',
 		facets: {
 			authors: ['Пётр Васильев']
 		},
@@ -613,6 +659,7 @@ export const collections: Collection[] = [
 		slug: 'noname-sparring',
 		title: 'NoName: спарринги',
 		hema: true,
+		catalogHidden: true,
 		facets: { places: ['Алматы'], weapons: ['Длинный меч'] },
 		subtitle: 'Учебные спарринги клуба NoName с комментарием по обменам.',
 		items: ['fedotikov-mironov']
@@ -699,7 +746,7 @@ export function collectionReports(collection: Collection): ReportSummary[] {
 
 /** Коллекции, в которые входит отчёт (для крошек на странице отчёта). */
 export function collectionsForReport(slug: string): Collection[] {
-	return collections.filter((c) => c.items.includes(slug));
+	return collections.filter((c) => !c.catalogHidden && c.items.includes(slug));
 }
 
 /**
@@ -722,7 +769,7 @@ export const reportAccess: Record<string, AccessTarget> = {
 
 export function reportGate(slug: string): AccessTarget[] {
 	if (reportAccess[slug]) return [reportAccess[slug]];
-	const containing = collectionsForReport(slug);
+	const containing = collections.filter((collection) => collection.items.includes(slug));
 	if (containing.length === 0) return [];
 	if (containing.some((c) => !c.password)) return [];
 	return containing;

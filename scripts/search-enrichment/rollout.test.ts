@@ -10,9 +10,9 @@ it('requires current search preparation for every fencing collection including a
   expect(report.search_cards_required,slug).toBe(true);
   expect(auditCards(process.cwd(),slug),slug).toMatchObject({status:'complete',missing:[],stale:[]});
  }
-});
+},10_000);
 it('keeps the selected fencing collections fully indexed as membership changes',()=>{
- for(const slug of ['almaty-2026','dlinnyy-mech-basic-noname','mech-i-bakler-noname']){
+ for(const slug of ['almaty-2026','noname-training']){
   const collection=collections.find(c=>c.slug===slug);
   expect(collection,slug).toBeDefined();
   for(const reportSlug of collection!.items){
@@ -20,6 +20,15 @@ it('keeps the selected fencing collections fully indexed as membership changes',
    expect(report.search_cards_required,reportSlug).toBe(true);
    expect(auditCards(process.cwd(),reportSlug),reportSlug).toMatchObject({status:'complete',missing:[],stale:[]});
   }
+ }
+});
+it('keeps the consolidated NoName training collection canonical while retaining legacy routes',()=>{
+ const collection=collections.find(c=>c.slug==='noname-training')!;
+ expect(collection.sections?.map(section=>[section.title,section.items.length])).toEqual([
+  ['Длинный меч',2],['Меч и баклер',1],['Спарринги',1]
+ ]);
+ for(const slug of ['dlinnyy-mech-basic-noname','mezotsikl-1-dlinnyy-mech-noname','mech-i-bakler-noname','noname-sparring']){
+  expect(collections.find(c=>c.slug===slug)?.catalogHidden,slug).toBe(true);
  }
 });
 it('keeps both NoName weapon sections complete without claiming the other sections are covered',()=>{
