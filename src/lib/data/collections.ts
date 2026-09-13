@@ -58,6 +58,19 @@ export interface Collection {
 // Порядок здесь = порядок карточек на главной.
 export const collections: Collection[] = [
 	{
+		slug: 'aslamov-nikolay',
+		title: 'Асламов Николай',
+		hema: true,
+		facets: {
+			authors: ['Николай Асламов'],
+			weapons: ['Длинный меч']
+		},
+		subtitle: 'Практические семинары Николая Асламова по тактике длинного меча.',
+		items: ['dzhentlmenskiy-nabor-priemov-aslamov'],
+		password: 'Асламов',
+		passwordHint: 'пароль можете спросить у Петра Васильева'
+	},
+	{
 		slug: 'shkola-stal',
 		title: 'Тактическая подготовка фехтовальщика в HEMA',
 		hema: true,
