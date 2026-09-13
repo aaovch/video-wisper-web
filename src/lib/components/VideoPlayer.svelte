@@ -4,6 +4,7 @@
 	import type { VideoSource } from '$lib/types';
 	import { getVideoSourceUrl } from '$lib/utils';
 	import ArrowSquareOut from 'phosphor-svelte/lib/ArrowSquareOut';
+	import { untrack } from 'svelte';
 
 	let {
 		video,
@@ -35,6 +36,37 @@
 	});
 
 	const isNative = $derived(video.provider === 'file' || video.provider === 'yadisk');
+	const seekSourceKey = $derived.by(() => {
+		switch (video.provider) {
+			case 'youtube':
+			case 'vk':
+			case 'rutube':
+			case 'vimeo':
+				return `${video.provider}:${video.id}`;
+			case 'yadisk':
+				return `${video.provider}:${video.publicKey}`;
+			case 'file':
+				return `${video.provider}:${video.src}`;
+		}
+	});
+	// Клик одновременно вызывает seekAndPlay и обновляет seekTo. Запоминаем уже
+	// выполненную команду, чтобы реактивная синхронизация не перематывала повторно.
+	let appliedSeekKey = '';
+
+	function seekKey(t: number) {
+		return `${seekSourceKey}:${Math.max(0, Math.floor(t))}`;
+	}
+
+	function claimSeek(t: number) {
+		const key = seekKey(t);
+		if (key === appliedSeekKey) return false;
+		appliedSeekKey = key;
+		return true;
+	}
+
+	function rememberSeek(t: number) {
+		appliedSeekKey = seekKey(t);
+	}
 
 	const vkOrigin = 'https://vkvideo.ru';
 
@@ -82,7 +114,8 @@
 			if (!data || typeof data !== 'object') return;
 			if (data.event === 'inited') {
 				vkReady = true;
-				seekVk(start, autoplay);
+				rememberSeek(start);
+				seekVk(start, untrack(() => autoplay));
 			} else if (data.event === 'started' || data.event === 'resumed' || data.state === 'playing') {
 				onPlaying?.(true);
 			} else if (data.event === 'paused' || data.event === 'ended' || data.state === 'paused') {
@@ -99,8 +132,9 @@
 
 	$effect(() => {
 		const t = start;
-		const shouldPlay = autoplay;
-		if (video.provider === 'vk' && vkReady) seekVk(t, shouldPlay);
+		if (video.provider === 'vk' && vkReady && claimSeek(t)) {
+			seekVk(t, untrack(() => autoplay));
+		}
 	});
 
 	// --- YouTube: стабильный iframe + IFrame API (читаем время, перематываем через API) ---
@@ -116,6 +150,7 @@
 	);
 
 	let ytPlayer = $state<any>(null);
+	let ytReady = $state(false);
 	let pollTimer: ReturnType<typeof setInterval> | null = null;
 	let ytAutoplayTimer: ReturnType<typeof setTimeout> | null = null;
 	let ytApiPromise: Promise<void> | null = null;
@@ -180,8 +215,7 @@
 				events: {
 					onReady: (e: any) => {
 						ytPlayer = e.target;
-						if (start > 0) ytPlayer.seekTo(start, true);
-						if (autoplay) playYoutubeWithFallback();
+						ytReady = true;
 					},
 					onStateChange: (e: any) => {
 						if (e.data === YT.PlayerState.PLAYING) {
@@ -198,6 +232,7 @@
 		});
 		return () => {
 			cancelled = true;
+			ytReady = false;
 			stopPoll();
 			if (ytAutoplayTimer) clearTimeout(ytAutoplayTimer);
 			try {
@@ -212,10 +247,9 @@
 	// Перемотка YouTube по клику на блок (через API, без пересоздания iframe).
 	$effect(() => {
 		const t = start;
-		const shouldPlay = autoplay;
-		if (video.provider === 'youtube' && ytPlayer?.seekTo) {
+		if (video.provider === 'youtube' && ytReady && ytPlayer?.seekTo && claimSeek(t)) {
 			ytPlayer.seekTo(t, true);
-			if (shouldPlay) playYoutubeWithFallback();
+			if (untrack(() => autoplay)) playYoutubeWithFallback();
 		}
 	});
 
@@ -295,13 +329,12 @@
 	// Перемотка нативного видео по тайм-коду блока.
 	$effect(() => {
 		const t = start;
-		const shouldPlay = autoplay;
-		if (isNative && videoEl && directSrc && t >= 0) {
+		if (isNative && videoEl && directSrc && t >= 0 && claimSeek(t)) {
 			const el = videoEl;
 			const seek = () => {
 				try {
 					el.currentTime = t;
-					if (shouldPlay) playNativeWithFallback(el);
+					if (untrack(() => autoplay)) playNativeWithFallback(el);
 				} catch {
 					/* перемотаем, когда появятся метаданные */
 				}
@@ -319,6 +352,7 @@
 		if (isNative) {
 			const el = videoEl;
 			if (!el) return;
+			rememberSeek(s);
 			const go = () => {
 				try {
 					el.currentTime = s;
@@ -329,10 +363,12 @@
 			};
 			if (el.readyState >= 1) go();
 			else el.addEventListener('loadedmetadata', go, { once: true });
-		} else if (video.provider === 'youtube' && ytPlayer?.seekTo) {
+		} else if (video.provider === 'youtube' && ytReady && ytPlayer?.seekTo) {
+			rememberSeek(s);
 			ytPlayer.seekTo(s, true);
 			playYoutubeWithFallback();
-		} else if (video.provider === 'vk') {
+		} else if (video.provider === 'vk' && vkReady) {
+			rememberSeek(s);
 			seekVk(s, true);
 		}
 	}
