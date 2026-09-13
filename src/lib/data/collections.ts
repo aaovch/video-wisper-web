@@ -93,9 +93,10 @@ export const collections: Collection[] = [
 			'silovaya-konditsiya-hema',
 			'silovaya-plan-hema',
 			'printsipy-silovoy-konditsionnoy-podgotovki',
+			'sem-dvigatelnyh-patternov',
+			'ukreplenie-stopy-i-golenostopa',
 			'struktura-i-funktsiya-myshtsy',
 			'neyromyshechnaya-sistema-motornye-edinitsy',
-			'sem-dvigatelnyh-patternov',
 			'biomehanika-i-myshechnye-rychagi',
 			'sila-moshchnost-i-rabota-v-biomehanike',
 			'tri-rezhima-myshechnogo-deystviya',
@@ -117,8 +118,76 @@ export const collections: Collection[] = [
 			'silovaya-trenirovka-pozhilyh',
 			'silovaya-trenirovka-detey',
 			'vozbuzhdenie-trevoga-stress-v-sporte',
-			'motivatsiya-vnimanie-fokus-v-sporte',
-			'ukreplenie-stopy-i-golenostopa'
+			'motivatsiya-vnimanie-fokus-v-sporte'
+		],
+		sections: [
+			{
+				title: 'Практика и программирование',
+				subtitle: 'Прикладные программы, упражнения, периодизация и прогрессии для подготовки атлета.',
+				items: [
+					'tokarev-silovaya-ofp-2',
+					'pliometrika-hema',
+					'silovaya-konditsiya-hema',
+					'silovaya-plan-hema',
+					'printsipy-silovoy-konditsionnoy-podgotovki',
+					'sem-dvigatelnyh-patternov',
+					'ukreplenie-stopy-i-golenostopa'
+				]
+			},
+			{
+				title: 'Мышцы, движение и биомеханика',
+				subtitle: 'Как устроено движение: мышечная ткань, нервная система, рычаги, сила и мощность.',
+				items: [
+					'struktura-i-funktsiya-myshtsy',
+					'neyromyshechnaya-sistema-motornye-edinitsy',
+					'biomehanika-i-myshechnye-rychagi',
+					'sila-moshchnost-i-rabota-v-biomehanike',
+					'tri-rezhima-myshechnogo-deystviya',
+					'faktory-myshechnoy-sily-i-moshchnosti'
+				]
+			},
+			{
+				title: 'Биоэнергетика и выносливость',
+				subtitle: 'Энергетические системы, аэробная работа, пороги, восстановление и перетренированность.',
+				items: [
+					'bioenergetika-trenirovki-tri-energosistemy',
+					'laktatnyi-porog-bioenergetika',
+					'metabolicheskaya-spetsifichnost-trenirovki',
+					'istoschenie-i-vosstanovlenie-substratov',
+					'ostrye-reaktsii-aerobnaya-nagruzka',
+					'dolgovremennye-adaptatsii-aerobnaya-trenirovka',
+					'vysota-krovyanoi-doping-peretrenirovannost'
+				]
+			},
+			{
+				title: 'Гормоны и адаптации',
+				subtitle: 'Эндокринные, нервные, мышечные и соединительнотканные ответы на тренировку.',
+				items: [
+					'gormon-myshechnye-vzaimodeystviya',
+					'osnovnye-anabolicheskie-gormony',
+					'neyronnye-adaptatsii-k-anaerobnoy-trenirovke',
+					'myshechnye-adaptatsii-anaerobnaya-trenirovka',
+					'kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka'
+				]
+			},
+			{
+				title: 'Дети, женщины и возрастные группы',
+				subtitle: 'Безопасность и особенности подготовки с учётом возраста, пола и этапа развития.',
+				items: [
+					'deti-ne-malenkie-vzroslye',
+					'trenirovka-muzhchin-i-zhenshchin',
+					'silovaya-trenirovka-pozhilyh',
+					'silovaya-trenirovka-detey'
+				]
+			},
+			{
+				title: 'Спортивная психология',
+				subtitle: 'Стресс, тревога, мотивация, внимание и настройка фокуса спортсмена.',
+				items: [
+					'vozbuzhdenie-trevoga-stress-v-sporte',
+					'motivatsiya-vnimanie-fokus-v-sporte'
+				]
+			}
 		]
 	},
 	{
@@ -128,19 +197,36 @@ export const collections: Collection[] = [
 		facets: { places: ['Алматы'], weapons: ['Сабля', 'Длинный меч', 'Рапира'] },
 		subtitle: 'Семинары и тренировки лагеря: сабля (общая и «А») и длинный меч.',
 		items: [
-			'sablya-vvodnaya',
 			'sablya-a-2',
 			'sablya-a-3',
-			'sablya-4',
 			'sablya-a-5',
-			'sablya-6',
 			'sablya-a-7',
-			'sablya-8',
 			'sablya-a-9',
+			'sablya-vvodnaya',
+			'sablya-4',
+			'sablya-6',
+			'sablya-8',
 			'sablya-10',
 			'sablya-12',
 			'longsword-a',
 			'rapira-almaty-2026'
+		],
+		sections: [
+			{
+				title: 'Сабля, группа «А»',
+				subtitle: 'Пять последовательных тренировок продвинутой группы по подготовке атаки, батманам и контратаке.',
+				items: ['sablya-a-2', 'sablya-a-3', 'sablya-a-5', 'sablya-a-7', 'sablya-a-9']
+			},
+			{
+				title: 'Сабля, общая группа',
+				subtitle: 'Общий цикл по финтам, дистанции, контратаке и развитию тактического выбора.',
+				items: ['sablya-vvodnaya', 'sablya-4', 'sablya-6', 'sablya-8', 'sablya-10', 'sablya-12']
+			},
+			{
+				title: 'Длинный меч и рапира',
+				subtitle: 'Отдельные лагерные семинары по длинному мечу и рапире.',
+				items: ['longsword-a', 'rapira-almaty-2026']
+			}
 		]
 	},
 	{
@@ -317,18 +403,53 @@ export const collections: Collection[] = [
 			'protivnik-fehtuet-nepravilno',
 			'optimizatsiya-parad-ripost-hema',
 			'hema-prednamerennye-ekspromtnye',
-			'kontseptsiya-monitoringa',
 			'obuchenie-situatsiya-subtaktika',
 			'subtaktika-teh-realizacii',
 			'2026-07-06-19-26-42',
 			'kompresiya-taktiki-lektsiya',
+			'tsena-adaptatsii-tehnicheskogo-priema',
+			'kontseptsiya-monitoringa',
 			'fehtovat-dolgo-ne-travmirovatsya',
 			'retention-club',
 			'hema-reflections',
 			'tenouti-i-tyakin-sibori',
-			'tsena-adaptatsii-tehnicheskogo-priema',
 			'silovye-porezy-katanoy',
 			'rabota-paltsev-pri-prostoy-atake'
+		],
+		sections: [
+			{
+				title: 'Тактика, субтактики и принятие решений',
+				subtitle: 'Распознавание ситуации, построение угрозы и выбор технической реализации в бою.',
+				items: [
+					'protivnik-fehtuet-nepravilno',
+					'optimizatsiya-parad-ripost-hema',
+					'hema-prednamerennye-ekspromtnye',
+					'obuchenie-situatsiya-subtaktika',
+					'subtaktika-teh-realizacii',
+					'2026-07-06-19-26-42',
+					'kompresiya-taktiki-lektsiya',
+					'tsena-adaptatsii-tehnicheskogo-priema'
+				]
+			},
+			{
+				title: 'Тренерство, клуб и здоровье',
+				subtitle: 'Мониторинг подготовки, удержание участников, профилактика травм и осмысление HEMA.',
+				items: [
+					'kontseptsiya-monitoringa',
+					'fehtovat-dolgo-ne-travmirovatsya',
+					'retention-club',
+					'hema-reflections'
+				]
+			},
+			{
+				title: 'Механика оружия и хвата',
+				subtitle: 'Работа пальцев, управление хватом и механика силового воздействия клинком.',
+				items: [
+					'tenouti-i-tyakin-sibori',
+					'silovye-porezy-katanoy',
+					'rabota-paltsev-pri-prostoy-atake'
+				]
+			}
 		]
 	},
 	{
@@ -520,14 +641,43 @@ export const collections: Collection[] = [
 			'kompresiya-taktiki-lektsiya',
 			'hema-reflections',
 			'protivnik-fehtuet-nepravilno',
+			'dofamin-neyronnye-svyazi-pasha',
+			'2026-07-06-19-26-42',
 			'trenerskoe-sobranie',
 			'trenerskoe-sobranie-novyi-zal',
 			'trenerskoe-sobranie-novyi-zal-chast-2',
 			'trenerskoe-sobranie-novyi-zal-chast-3',
 			'trenerskoe-sobranie-novyi-zal-chast-4',
-			'trenerskoe-sobranie-dva-zala',
-			'dofamin-neyronnye-svyazi-pasha',
-			'2026-07-06-19-26-42'
+			'trenerskoe-sobranie-dva-zala'
+		],
+		sections: [
+			{
+				title: 'Фехтование, тактика и обучение',
+				subtitle: 'Практика длинного меча, тактические модели, обучение движению и здоровье фехтовальщика.',
+				items: [
+					'optimizatsiya-parad-ripost-hema',
+					'hema-prednamerennye-ekspromtnye',
+					'fehtovat-dolgo-ne-travmirovatsya',
+					'kontseptsiya-monitoringa',
+					'kompresiya-taktiki-lektsiya',
+					'hema-reflections',
+					'protivnik-fehtuet-nepravilno',
+					'dofamin-neyronnye-svyazi-pasha',
+					'2026-07-06-19-26-42'
+				]
+			},
+			{
+				title: 'Управление клубом и тренерские собрания',
+				subtitle: 'Стратегия клуба, запуск нового зала, экономика и организация тренерской работы.',
+				items: [
+					'trenerskoe-sobranie',
+					'trenerskoe-sobranie-novyi-zal',
+					'trenerskoe-sobranie-novyi-zal-chast-2',
+					'trenerskoe-sobranie-novyi-zal-chast-3',
+					'trenerskoe-sobranie-novyi-zal-chast-4',
+					'trenerskoe-sobranie-dva-zala'
+				]
+			}
 		]
 	}
 ];
