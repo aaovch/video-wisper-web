@@ -65,8 +65,11 @@ export const collections: Collection[] = [
 			authors: ['Николай Асламов'],
 			weapons: ['Длинный меч']
 		},
-		subtitle: 'Практические семинары Николая Асламова по тактике длинного меча.',
-		items: ['dzhentlmenskiy-nabor-priemov-aslamov'],
+		subtitle: 'Практические семинары и исторические лекции Николая Асламова о фехтовании.',
+		items: [
+			'fehtovalnye-shkoly-v-germanii-aslamov',
+			'dzhentlmenskiy-nabor-priemov-aslamov'
+		],
 		password: 'Асламов',
 		passwordHint: 'пароль можете спросить у Петра Васильева'
 	},
