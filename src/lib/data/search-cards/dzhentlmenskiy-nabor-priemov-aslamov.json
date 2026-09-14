@@ -2,21 +2,21 @@
   "version": 1,
   "reportSlug": "dzhentlmenskiy-nabor-priemov-aslamov",
   "promptVersion": "hema-situation-card-v1",
-  "generator": "Codex; full-transcript and chapter source review on 2026-09-13",
+  "generator": "Codex; full-transcript and chapter source review on 2026-09-14",
   "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
   "cards": [
     {
       "chapterIndex": 0,
-      "sourceHash": "3217444eeee34b7bf0d12f58f4d791d9a59ee76cb850610aaf58ca9f033b6428",
+      "sourceHash": "83e906242b046cab94d12bb8a8839002ffd5fd525e2d08e4460a805d7d49adf0",
       "termIds": [],
       "situation": {
-        "text": "Перед практическим семинаром группу распределяют по парам и проверяют достаточную защитную экипировку.",
-        "evidence": "Для занятия нужны куртка, маска, перчатки и защита предплечий; уколы в программу не входят."
+        "text": "Перед межклубным семинаром организатор собирает участников и объясняет выбор приглашённого тренера.",
+        "evidence": "Организатор называет встречу межклубным мероприятием."
       }
     },
     {
       "chapterIndex": 1,
-      "sourceHash": "6d2501584570db93442d438cd0d4b982024af26986634ca316331e4f9b45ae5c",
+      "sourceHash": "238af48eb07d098de0afd30293b2dcbcd21cd1c920352a490a8490983323b84e",
       "termIds": [],
       "situation": {
         "text": "Фехтовальщик уверенно знает базовые действия и ищет устойчивые типовые розыгрыши для перехода на следующий уровень.",
@@ -29,7 +29,24 @@
     },
     {
       "chapterIndex": 2,
-      "sourceHash": "b840034b5e1377ecd58cc1cc57552c1327418e9dc88e735fc7e71071b27f49af",
+      "sourceHash": "75ac3cdbaf242edf37d5aa40ab335279d3e38c3a51ecce0d1debfa707de1bec4",
+      "termIds": [],
+      "situation": {
+        "text": "Перед практической частью группе нужно надеть защиту и расположиться так, чтобы пары и демонстрации попадали в кадр.",
+        "evidence": "Участники должны встать по парам в две шеренги так, чтобы демонстрации попадали в кадр."
+      },
+      "conditions": {
+        "text": "Используются куртка, маска, перчатки и защита предплечий; для женщин также защита груди.",
+        "evidence": "Для занятия нужны куртка, маска, перчатки и защита предплечий; для женщин также защита груди."
+      },
+      "limitations": {
+        "text": "Уколы и атаки в ноги в программу занятия не входят.",
+        "evidence": "Уколов и атак в ноги в программе нет, горжет остаётся необязательным."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "5988f46ea0e7a90f3f60c876356102aacfcca8475fa9ac7d4cfab48f6497cc1e",
       "termIds": [
         "dimensions.tactic.values.parry",
         "dimensions.tactic.values.riposte",
@@ -45,8 +62,8 @@
       }
     },
     {
-      "chapterIndex": 3,
-      "sourceHash": "d8f751db52985d884963dac135c183f3e0a251c5610c754264b74964d9fcc106",
+      "chapterIndex": 4,
+      "sourceHash": "b1631e928cae3e96629294fa962ae44441ece84ee07af24f17e9139dc028ca37",
       "termIds": [
         "dimensions.offensive_action_type.values.cut"
       ],
@@ -60,8 +77,8 @@
       }
     },
     {
-      "chapterIndex": 4,
-      "sourceHash": "46f854cb68272c716c7491d4630ddd1fcf450c1948a6a91343f1481ff9b97d28",
+      "chapterIndex": 5,
+      "sourceHash": "7b61cfa96c3a584c0dfc299244948a9cce06a20cddc9140900d632b9aec3008b",
       "termIds": [
         "dimensions.tactic.values.counter",
         "dimensions.prep_action.values.feint",
@@ -81,8 +98,8 @@
       }
     },
     {
-      "chapterIndex": 5,
-      "sourceHash": "cec317fbc46a2671b5f4fd34d00b3ae39045671497ccac85a9809d594172c760",
+      "chapterIndex": 6,
+      "sourceHash": "ce0a9a80117c0d52ce98806b84247567b20c549c2f58ecff523fc6d7b2ebfeda",
       "termIds": [],
       "situation": {
         "text": "Короткое окно ещё трудно распознаётся без достаточной насмотренности.",
@@ -98,8 +115,8 @@
       }
     },
     {
-      "chapterIndex": 6,
-      "sourceHash": "0f832c5b17d3eaf465761ed99eb5e2ec168c859c5ff323c6dd7028264d7c51de",
+      "chapterIndex": 7,
+      "sourceHash": "6c79b75817727422f20bdd793c114b3b0170a86d5ccd5e39749ea22c426a3c41",
       "termIds": [
         "dimensions.tactic.values.parry",
         "dimensions.tactic.values.riposte",
@@ -115,8 +132,8 @@
       }
     },
     {
-      "chapterIndex": 7,
-      "sourceHash": "ece5b08d1950cd432e3bdbcf7e8f58b2b4d5be176cd31d699d74f40415034760",
+      "chapterIndex": 8,
+      "sourceHash": "d008eb234cd97b3e0d430bda5ef92c8bb0093f9f4d3e66d91bc72ea8701aa4b8",
       "termIds": [
         "dimensions.tactic.values.riposte",
         "dimensions.blade_control.values.opposition",
@@ -137,8 +154,8 @@
       }
     },
     {
-      "chapterIndex": 8,
-      "sourceHash": "6f9a9e7b762599e29ca4b678d609127228cedd72ca2a09f3ef2a2578f6b0b03d",
+      "chapterIndex": 9,
+      "sourceHash": "a3aa33db716efd5ed9e54cc9dd29d5043a7ea3d98f204082d9c0d69fdad4a222",
       "termIds": [
         "dimensions.tactic.values.counter",
         "dimensions.tactic.values.parry",
@@ -155,8 +172,8 @@
       }
     },
     {
-      "chapterIndex": 9,
-      "sourceHash": "1e6b1a187723c0d917d255b97f1e1f27c3ed9c7f8cc521292e86160a25f4237a",
+      "chapterIndex": 10,
+      "sourceHash": "874fc7f6ee1fc995d12e3ad79915c3bee98c027c1c46709abc393e6abc0dee7e",
       "termIds": [],
       "problem": {
         "text": "Длинный отход передней ногой медленнее, сложнее дозируется и может разрушить момент взаимодействия.",
@@ -172,8 +189,8 @@
       }
     },
     {
-      "chapterIndex": 10,
-      "sourceHash": "e6b0680cf41f3be5ceccf47677286825a43b1366ce4dd3866193dc2c863f0b1b",
+      "chapterIndex": 11,
+      "sourceHash": "950fba19c3ec6ca4b5bc052ac1e53a839d6b5e187a4bcbb92df160eeca0f1c2d",
       "termIds": [
         "dimensions.tactic.values.preparation",
         "dimensions.prep_action.values.feint",
@@ -190,8 +207,8 @@
       }
     },
     {
-      "chapterIndex": 11,
-      "sourceHash": "71ccd79d8fd5c2c984bf0a81f4ff9e714c09b281096b7d0a8679c703bac38190",
+      "chapterIndex": 12,
+      "sourceHash": "d811af3e743cd0aa085d324bce301fe5b08ea75ab9d0a6e512f0a6c74f9bf98f",
       "termIds": [
         "dimensions.prep_action.values.feint"
       ],
@@ -209,8 +226,8 @@
       }
     },
     {
-      "chapterIndex": 12,
-      "sourceHash": "7831cd955d8be6cb6f477f1490f4d1ace53ae837493eb1b8f3511bd6d17fb7c5",
+      "chapterIndex": 13,
+      "sourceHash": "760082f08116f1617904c90a1e9cdfa519dca0bb7956ee9e2d63333eff22123b",
       "termIds": [],
       "situation": {
         "text": "Монитор ритмично отступает, а атакующий должен реализовать тот же розыгрыш на нескольких шагах.",
@@ -222,8 +239,8 @@
       }
     },
     {
-      "chapterIndex": 13,
-      "sourceHash": "529f801e64af9de86039d8dab3ca64221c49993571a4ee89210e916ed1cfae44",
+      "chapterIndex": 14,
+      "sourceHash": "d0f6dec7ec603905e5546ba7d1ca983bef5dd500d2224fb78272318026dce77e",
       "termIds": [
         "dimensions.blade_control.values.opposition",
         "dimensions.tempo.values.afterblow"
@@ -238,8 +255,8 @@
       }
     },
     {
-      "chapterIndex": 14,
-      "sourceHash": "a92457d5f9f16a70412b6d6b45022fee5a849037c9634e7cda5f7ed3e8e6b203",
+      "chapterIndex": 15,
+      "sourceHash": "ea51597399cdc94d040eab936faf1d2a8979594c0e4a8307d9748cc6d22b258d",
       "termIds": [
         "dimensions.prep_action.values.beat",
         "dimensions.blade_part.values.middle",
@@ -259,8 +276,8 @@
       }
     },
     {
-      "chapterIndex": 15,
-      "sourceHash": "b54878a7fb271e37e90e232d61ff866bc67f79fe99077251412ee7fa26f5b273",
+      "chapterIndex": 16,
+      "sourceHash": "2d10144486218a19be0a9dea07c070da41c88ac01db440cc0da9feedf9cebbc5",
       "termIds": [
         "dimensions.prep_action.values.beat",
         "dimensions.offensive_action_type.values.thrust"
@@ -279,8 +296,8 @@
       }
     },
     {
-      "chapterIndex": 16,
-      "sourceHash": "a482029ed6cf89680523b79f13a774b06cf9cc9de13fbacb5a4ba942f17f8ee3",
+      "chapterIndex": 17,
+      "sourceHash": "274162c4ee1c4a0d88d820e761111294e31d7dd2b858cecec642010f073c10ba",
       "termIds": [
         "dimensions.tactic.values.preparation",
         "dimensions.prep_action.values.beat",
@@ -297,8 +314,8 @@
       }
     },
     {
-      "chapterIndex": 17,
-      "sourceHash": "5faad60262375941b450bfd832d851789c7832e6fda1289c8f9eefe6c4477b4a",
+      "chapterIndex": 18,
+      "sourceHash": "424ddd3dee466cccef868366b3edb2ee6fd6ea02731a0b363b1ca7002620c5e4",
       "termIds": [
         "dimensions.prep_action.values.beat",
         "dimensions.prep_action.values.feint",
@@ -318,8 +335,8 @@
       }
     },
     {
-      "chapterIndex": 18,
-      "sourceHash": "34154fdaa3c295f82a99e47f094e0e97a76393cc78632d685ac4034189763ea5",
+      "chapterIndex": 19,
+      "sourceHash": "b3405edfb4d13d17d8132489269f0d00f46103eba440b88b69ab1714cf812228",
       "termIds": [
         "dimensions.tactic.values.preparation",
         "dimensions.preparation_type.values.invitation",
@@ -339,8 +356,8 @@
       }
     },
     {
-      "chapterIndex": 19,
-      "sourceHash": "f1761f9467a6bbdc4edcf81e9d11557d10af872cf40503c380cb26ea08aef678",
+      "chapterIndex": 20,
+      "sourceHash": "b6fee2298210764c9e327bdb6559f56e042e536a8f51ea7ae739df4a6c65c782",
       "termIds": [],
       "situation": {
         "text": "Современные спортивные связки собираются из знакомых ударов, защит и перемещений и при этом сохраняют связь с историческими источниками.",
