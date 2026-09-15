@@ -26,7 +26,7 @@ it('measures linked-source access separately from direct top-five retrieval',asy
   for(const q of cases){
    const scopes:SearchScope[]=[{kind:'archive',label:'archive',reportSlugs:visible}];
    if(q.scopes.includes('report'))scopes.push({kind:'report',label:q.judgments[0].reportSlug,reportSlug:q.judgments[0].reportSlug});
-   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>!c.password&&c.items.includes(q.judgments[0].reportSlug)&&(!q.sharedCollectionsOnly||q.judgments.every((j:any)=>c.items.includes(j.reportSlug)))))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
+   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>!c.access?.master&&c.items.includes(q.judgments[0].reportSlug)&&(!q.sharedCollectionsOnly||q.judgments.every((j:any)=>c.items.includes(j.reportSlug)))))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
    for(const scope of scopes){
     const result=await searchScoped(q.query,[scope],scope.kind==='archive'?30:120),seen=new Set<string>();
     const ranked=result.hits.filter(h=>{const k=searchHitKey(h);if(seen.has(k))return false;seen.add(k);return true;});

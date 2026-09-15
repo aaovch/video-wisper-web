@@ -32,7 +32,7 @@ it.skipIf(!process.env.PILOT_SEARCH_STAGE)('evaluates frozen situation questions
    expect(visible).toContain(slug);
    const scopes:SearchScope[]=[];
    if(q.scopes.includes('report'))scopes.push({kind:'report',label:slug,reportSlug:slug});
-   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>(!c.password||unlocked.includes(c.slug))&&c.items.includes(slug)))
+   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>(!c.access?.master||unlocked.includes(c.access.master.id))&&c.items.includes(slug)))
     scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
    if(q.scopes.includes('archive'))scopes.push({kind:'archive',label:'archive',reportSlugs:visible});
    const expected=q.judgments.filter((j:any)=>j.grade===3).map((j:any)=>`${j.reportSlug}:${j.chapterIndex}`);

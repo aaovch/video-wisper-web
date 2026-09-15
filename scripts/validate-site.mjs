@@ -85,13 +85,33 @@ try {
 	collections = [];
 }
 const collectionSlugs = new Set();
+const accessIds = new Set();
+function validateCredential(credential, context) {
+	if (!credential?.id?.trim()) issue(errors, 'ACCESS_ID_INVALID', context);
+	else if (accessIds.has(credential.id)) issue(errors, 'ACCESS_ID_DUPLICATE', credential.id);
+	else accessIds.add(credential.id);
+	if (!credential?.password?.trim()) issue(errors, 'ACCESS_PASSWORD_INVALID', context);
+	if (
+		credential?.credentialVersion !== undefined &&
+		(!Number.isInteger(credential.credentialVersion) || credential.credentialVersion < 1)
+	) issue(errors, 'ACCESS_VERSION_INVALID', context);
+}
 for (const collection of collections) {
 	if (collectionSlugs.has(collection.slug)) issue(errors, 'COLLECTION_SLUG_DUPLICATE', collection.slug);
 	collectionSlugs.add(collection.slug);
-	if ('password' in collection && !collection.password?.trim()) issue(errors, 'COLLECTION_PASSWORD_INVALID', collection.slug);
 	const items = collection.items ?? [];
 	if (new Set(items).size !== items.length) issue(errors, 'COLLECTION_ITEM_DUPLICATE', collection.slug);
 	for (const slug of items) if (!reports.has(slug)) issue(errors, 'COLLECTION_REPORT_MISSING', `${collection.slug}: ${slug}`);
+	if (collection.access?.master) validateCredential(collection.access.master, `${collection.slug}: master`);
+	for (const pass of collection.access?.passes ?? []) {
+		validateCredential(pass, `${collection.slug}: ${pass?.id ?? 'pass'}`);
+		if (!pass?.title?.trim()) issue(errors, 'ACCESS_PASS_TITLE_INVALID', `${collection.slug}: ${pass?.id ?? 'pass'}`);
+		if (!Array.isArray(pass?.items) || pass.items.length === 0) issue(errors, 'ACCESS_PASS_ITEMS_EMPTY', `${collection.slug}: ${pass?.id ?? 'pass'}`);
+		else {
+			if (new Set(pass.items).size !== pass.items.length) issue(errors, 'ACCESS_PASS_ITEM_DUPLICATE', `${collection.slug}: ${pass.id}`);
+			for (const slug of pass.items) if (!items.includes(slug)) issue(errors, 'ACCESS_PASS_ITEM_OUTSIDE_COLLECTION', `${collection.slug}: ${pass.id}: ${slug}`);
+		}
+	}
 	if (collection.sections?.length) {
 		const sectionItems = collection.sections.flatMap((section) => section.items ?? []);
 		for (const slug of sectionItems) if (!items.includes(slug)) issue(errors, 'SECTION_ITEM_OUTSIDE_ROOT', `${collection.slug}: ${slug}`);

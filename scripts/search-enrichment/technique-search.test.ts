@@ -25,7 +25,7 @@ it('compares named queries on actual shards with strict scopes and source snippe
             const report = JSON.parse(readFileSync(`src/lib/data/reports/${q.slug}.json`, 'utf8'));
             expect(report.chapters[q.chapter].title).toBe(q.title);
             expect(visible).toContain(q.slug);
-            const collection = collections.find(c => !c.password && c.items.includes(q.slug))!;
+            const collection = collections.find(c => !c.access?.master && c.items.includes(q.slug))!;
             expect(collection).toBeDefined();
             const scopes: SearchScope[] = [
                 { kind: 'report', label:q.slug, reportSlug:q.slug },

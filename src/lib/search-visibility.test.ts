@@ -5,15 +5,67 @@ import {
 	searchableReportSlugs,
 	visibleSubset
 } from '$lib/search-visibility';
-import { getCollection, reportGate } from '$lib/data/collections';
+import {
+	accessTargetToken,
+	canAccessReport,
+	canEnterCollection,
+	getCollection,
+	hasFullCollectionAccess,
+	reportGate,
+	type Collection
+} from '$lib/data/collections';
 
 describe('search visibility', () => {
 	it('keeps the tactics collection public while gating its video independently', () => {
-		expect(getCollection('shkola-stal')?.password).toBeUndefined();
-		expect(reportGate('taktika-4-0-balenko').map(target => target.slug)).toEqual(['report:taktika-4-0-balenko']);
+		expect(getCollection('shkola-stal')?.access?.master).toBeUndefined();
+		expect(reportGate('taktika-4-0-balenko').map((target) => target.id)).toEqual(['report:taktika-4-0-balenko']);
 		expect(searchableReportSlugs([], 'all')).not.toContain('taktika-4-0-balenko');
 		expect(searchableReportSlugs(['shkola-stal'], 'all')).not.toContain('taktika-4-0-balenko');
 		expect(searchableReportSlugs(['report:taktika-4-0-balenko'], 'all')).toContain('taktika-4-0-balenko');
+	});
+
+	it('treats a collection password as a master key over package and video keys', () => {
+		const fixture: Collection = {
+			slug: 'course',
+			title: 'Course',
+			subtitle: 'Fixture',
+			items: ['a', 'b', 'c'],
+			access: {
+				master: { id: 'course', password: 'master', credentialVersion: 2 },
+				passes: [
+					{ id: 'course:pack', title: 'Pack', items: ['a', 'b'], password: 'pack' },
+					{ id: 'course:video-c', title: 'Video C', items: ['c'], password: 'video' }
+				]
+			}
+		};
+		const gateA = reportGate('a', [fixture]);
+		const gateC = reportGate('c', [fixture]);
+		const masterToken = accessTargetToken(gateA.find((target) => target.kind === 'master')!);
+		const packToken = accessTargetToken(gateA.find((target) => target.id === 'course:pack')!);
+		const videoToken = accessTargetToken(gateC.find((target) => target.id === 'course:video-c')!);
+
+		expect(gateA.map((target) => target.id)).toEqual(['course', 'course:pack']);
+		expect(canAccessReport('a', [masterToken], [fixture])).toBe(true);
+		expect(canAccessReport('c', [masterToken], [fixture])).toBe(true);
+		expect(canAccessReport('a', [packToken], [fixture])).toBe(true);
+		expect(canAccessReport('c', [packToken], [fixture])).toBe(false);
+		expect(canAccessReport('c', [videoToken], [fixture])).toBe(true);
+		expect(canAccessReport('a', [videoToken], [fixture])).toBe(false);
+		expect(canEnterCollection(fixture, [packToken])).toBe(true);
+		expect(hasFullCollectionAccess(fixture, [packToken])).toBe(false);
+		expect(hasFullCollectionAccess(fixture, [masterToken])).toBe(true);
+	});
+
+	it('invalidates a saved unlock when a credential version changes', () => {
+		const fixture: Collection = {
+			slug: 'versioned',
+			title: 'Versioned',
+			subtitle: 'Fixture',
+			items: ['a'],
+			access: { master: { id: 'versioned', password: 'new', credentialVersion: 2 } }
+		};
+		expect(canAccessReport('a', ['versioned@1'], [fixture])).toBe(false);
+		expect(canAccessReport('a', ['versioned@2'], [fixture])).toBe(true);
 	});
 	it('hides reports that only belong to locked collections', () => {
 		expect(searchableReportSlugs([])).not.toContain('retention');

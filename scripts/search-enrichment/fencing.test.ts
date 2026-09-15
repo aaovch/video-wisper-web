@@ -16,7 +16,7 @@ it.skipIf(!stage)('evaluates fencing questions in their actual collections, repo
 	const rows:any[]=[];
 	const visible=searchableReportSlugs([],'all');
 	const main=searchableReportSlugs([],'main');
-	const publicCollections=collections.filter(c=>!c.password);
+	const publicCollections=collections.filter(c=>!c.access?.master);
 	const files=new Map(['index-core.json','index-transcripts.json','chapter-titles.json'].map(name=>[name,readFileSync(`static/search/${name}`,'utf8')]));
 	const archive:SearchScope={kind:'archive',label:'Весь публичный архив',reportSlugs:visible};
 	const catalog:SearchScope={kind:'archive',label:'Главный каталог',reportSlugs:main};

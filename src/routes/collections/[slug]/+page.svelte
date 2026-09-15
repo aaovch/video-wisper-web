@@ -7,6 +7,12 @@
 	import ReportCard from '$lib/components/ReportCard.svelte';
 	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
 	import { reveal, revealDelay } from '$lib/attachments';
+	import {
+		canEnterCollection,
+		collectionGate,
+		collectionMasterTarget,
+		hasFullCollectionAccess
+	} from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 	import { SITE_NAME } from '$lib/site';
 	import type { PageData } from './$types';
@@ -17,7 +23,13 @@
 	const intro = $derived(collection.description ?? collection.subtitle);
 	const reportIndex = $derived(new Map(reports.map((report, i) => [report.slug, i])));
 	const reportBySlug = $derived(new Map(reports.map((report) => [report.slug, report])));
-	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
+	const gate = $derived(collectionGate(collection));
+	const master = $derived(collectionMasterTarget(collection));
+	const fullAccess = $derived(hasFullCollectionAccess(collection, lock.unlocked));
+	const locked = $derived(!canEnterCollection(collection, lock.unlocked));
+	const partialAccess = $derived(Boolean(master) && !locked && !fullAccess);
+	let masterValue = $state('');
+	let masterFailed = $state(false);
 	let collectionFilterState = $state<{ collectionSlug: string; reportSlugs: string[] } | null>(null);
 	const visibleReportSlugs = $derived(
 		collectionFilterState?.collectionSlug === collection.slug
@@ -37,6 +49,16 @@
 	function updateCollectionFilter(reportSlugs: string[]) {
 		collectionFilterState = { collectionSlug: collection.slug, reportSlugs };
 	}
+
+	function unlockMaster(event: Event) {
+		event.preventDefault();
+		if (master && lock.tryUnlock([master], masterValue.trim())) {
+			masterValue = '';
+			masterFailed = false;
+		} else {
+			masterFailed = true;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -50,7 +72,11 @@
 </svelte:head>
 
 {#if locked}
-	<Lock targets={[collection]} title={collection.title} subtitle="Коллекция закрыта. Введите пароль, чтобы открыть доступ." />
+	<Lock
+		targets={gate}
+		title={collection.title}
+		subtitle="Введите общий пароль коллекции или ключ доступа к части материалов."
+	/>
 {:else}
 	<header class="container hero reveal" {@attach reveal()}>
 		{#if !collection.isolated}
@@ -63,6 +89,27 @@
 		<p class="eyebrow label">Коллекция</p>
 		<h1>{collection.title}</h1>
 		<p class="intro">{intro}</p>
+		{#if partialAccess && master}
+			<aside class="partial-access" aria-label="Частичный доступ">
+				<div>
+					<p class="label">Открыта часть материалов</p>
+					<p>Общий пароль коллекции откроет остальные видео и полный анализ.</p>
+				</div>
+				<form onsubmit={unlockMaster}>
+					<input
+						type="password"
+						bind:value={masterValue}
+						placeholder="Общий пароль"
+						autocomplete="off"
+						aria-label="Общий пароль коллекции"
+						aria-invalid={masterFailed}
+						oninput={() => (masterFailed = false)}
+					/>
+					<button type="submit">Открыть всё</button>
+				</form>
+				{#if masterFailed}<p class="partial-error label" role="alert">Неверный пароль</p>{/if}
+			</aside>
+		{/if}
 	</header>
 
 	<div class="container collection-search reveal" {@attach reveal()}>
@@ -74,7 +121,7 @@
 		/>
 	</div>
 
-	{#if collection.analysis}
+	{#if collection.analysis && fullAccess}
 		<section class="container analysis reveal" {@attach reveal()}>
 			<div class="section-title">
 				<span class="section-num mono">00</span>
@@ -140,6 +187,14 @@
 	.eyebrow { margin: 0 0 8px; color: var(--accent); }
 	h1 { max-width: none; margin: 0 0 8px; font-size: clamp(38px, 4.2vw, 56px); font-weight: 500; line-height: 0.98; }
 	.intro { max-width: 66ch; margin: 0; color: var(--ink-soft); font-size: clamp(17px, 1.7vw, 20px); line-height: 1.45; }
+	.partial-access { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 24px; align-items: end; max-width: 760px; margin-top: 24px; padding: 16px 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line); }
+	.partial-access p { margin: 0; color: var(--ink-soft); line-height: 1.45; }
+	.partial-access .label { margin-bottom: 4px; color: var(--accent); }
+	.partial-access form { display: flex; gap: 8px; }
+	.partial-access input { min-width: 0; width: 190px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--paper); padding: 9px 10px; color: var(--ink); font: inherit; }
+	.partial-access input[aria-invalid='true'] { border-color: var(--accent); }
+	.partial-access button { border: 1px solid var(--accent); border-radius: var(--radius-sm); background: var(--accent); padding: 0 14px; color: var(--paper); font: inherit; cursor: pointer; white-space: nowrap; }
+	.partial-access .partial-error { grid-column: 1 / -1; margin: 0; }
 
 	.collection-search { padding-top: 8px; }
 	.collection-search :global(.search-field) { min-height: 50px; }
@@ -183,6 +238,8 @@
 		.finding { grid-template-columns: 28px 1fr; gap: 14px 10px; }
 		.finding > div { grid-column: 2; }
 		.index-list { grid-template-columns: 1fr; gap: 24px; }
+		.partial-access { grid-template-columns: 1fr; align-items: stretch; }
+		.partial-access input { width: auto; flex: 1; }
 	}
 
 	@media (max-width: 480px) {

@@ -17,7 +17,7 @@
 
 	const posterUrl = $derived(getVideoPosterUrl(report.video, base));
 	const gate = $derived(reportGate(report.slug));
-	const locked = $derived(gate.length > 0 && !gate.some(target => lock.isUnlocked(target.slug)));
+	const locked = $derived(gate.length > 0 && !gate.some((target) => lock.isUnlocked(target)));
 	const href = $derived(`${base}/reports/${report.slug}/?from=${encodeURIComponent(collectionSlug)}`);
 	let posterFailed = $state(false);
 </script>

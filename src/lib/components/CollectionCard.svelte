@@ -4,13 +4,24 @@
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import LockKeyOpen from 'phosphor-svelte/lib/LockKeyOpen';
-	import { collectionStats, type Collection } from '$lib/data/collections';
+	import {
+		canEnterCollection,
+		collectionGate,
+		collectionMasterTarget,
+		collectionStats,
+		hasFullCollectionAccess,
+		type Collection
+	} from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 
 	let { collection }: { collection: Collection } = $props();
 
 	const stats = $derived(collectionStats(collection));
-	const locked = $derived(Boolean(collection.password) && !lock.isUnlocked(collection.slug));
+	const gate = $derived(collectionGate(collection));
+	const master = $derived(collectionMasterTarget(collection));
+	const fullAccess = $derived(hasFullCollectionAccess(collection, lock.unlocked));
+	const locked = $derived(!canEnterCollection(collection, lock.unlocked));
+	const partiallyUnlocked = $derived(Boolean(master) && !locked && !fullAccess);
 	const href = $derived(`${base}/collections/${collection.slug}/`);
 	const facets = $derived([
 		...(collection.facets?.authors ?? []),
@@ -23,7 +34,7 @@
 
 	function submit(e: Event) {
 		e.preventDefault();
-		if (lock.tryUnlock([collection], value.trim())) {
+		if (lock.tryUnlock(gate, value.trim())) {
 			value = '';
 			failed = false;
 			goto(href);
@@ -37,8 +48,8 @@
 	<div class="copy">
 		<div class="title-line">
 			<h3>{collection.title}</h3>
-			{#if collection.password}
-				<span class="lock-state" aria-label={locked ? 'Закрытая коллекция' : 'Коллекция открыта'}>
+			{#if master}
+				<span class="lock-state" aria-label={locked ? 'Закрытая коллекция' : partiallyUnlocked ? 'Часть коллекции открыта' : 'Коллекция открыта'}>
 					{#if locked}<LockKey size={16} weight="regular" />{:else}<LockKeyOpen size={16} weight="regular" />{/if}
 				</span>
 			{/if}
@@ -50,6 +61,7 @@
 	</div>
 	<div class="meta">
 		<span>{stats.videos} {stats.videos === 1 ? 'материал' : stats.videos < 5 ? 'материала' : 'материалов'}</span>
+		{#if partiallyUnlocked}<span class="partial label">частичный доступ</span>{/if}
 		{#if !locked}<span class="arrow"><ArrowRight size={22} weight="thin" aria-hidden="true" /></span>{/if}
 	</div>
 {/snippet}
@@ -72,13 +84,15 @@
 		{#if failed}
 			<p class="message error" role="alert">Неверный пароль</p>
 		{/if}
-		{#if collection.passwordHint}
-			<p class="message">{collection.passwordHint}
-				{#if collection.passwordContact}
-					<a href={collection.passwordContact.url} target="_blank" rel="noopener noreferrer">{collection.passwordContact.label}</a>
+		{#each gate.filter((target) => target.passwordHint) as target (target.id)}
+			<p class="message">
+				{#if gate.length > 1}<span class="hint-label">{target.kind === 'master' ? 'Вся коллекция' : target.title}:</span>{/if}
+				{target.passwordHint}
+				{#if target.passwordContact}
+					<a href={target.passwordContact.url} target="_blank" rel="noopener noreferrer">{target.passwordContact.label}</a>
 				{/if}
 			</p>
-		{/if}
+		{/each}
 	</div>
 {:else}
 	<a class="collection" href={href}>
@@ -153,6 +167,12 @@
 		white-space: nowrap;
 	}
 
+	.partial {
+		color: var(--accent);
+		font-size: 9px;
+		letter-spacing: 0.08em;
+	}
+
 	.arrow {
 		color: var(--accent);
 		transition: transform 0.2s ease;
@@ -210,6 +230,11 @@
 
 	.message.error {
 		color: var(--accent);
+	}
+
+	.hint-label {
+		display: block;
+		color: var(--ink-soft);
 	}
 
 	@media (max-width: 620px) {

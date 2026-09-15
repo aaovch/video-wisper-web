@@ -44,7 +44,7 @@ it('evaluates grounded questions across report, collection and public archive', 
 			expect(source.definition).toBe(alternative.evidence);
 		}
 		expect(visible).toContain(item.reportSlug);
-		const collection = collections.find(c => c.items.includes(item.reportSlug) && !c.password)!;
+		const collection = collections.find(c => c.items.includes(item.reportSlug) && !c.access?.master)!;
 		expect(collection).toBeDefined();
 		const scopes: SearchScope[] = [
 			{ kind: 'report', label: item.reportSlug, reportSlug: item.reportSlug },

@@ -39,7 +39,7 @@ it.skipIf(!process.env.QUERY_PARTS_EVAL)('compares query-part retrieval on discl
   for(const q of cases){
    const slug=q.judgments[0].reportSlug,scopes:SearchScope[]=q.kind==='multi'?[{kind:'archive',label:'archive',reportSlugs:visible}]:[
     {kind:'report',label:slug,reportSlug:slug},
-    ...collections.filter(c=>!c.password&&c.items.includes(slug)).map(c=>({kind:'collection' as const,label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))})),
+    ...collections.filter(c=>!c.access?.master&&c.items.includes(slug)).map(c=>({kind:'collection' as const,label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))})),
     {kind:'archive',label:'archive',reportSlugs:visible}];
    const expected=q.judgments.filter((j:any)=>j.grade===3).map((j:any)=>`${j.reportSlug}:${j.chapterIndex}`);
    for(const scope of scopes){

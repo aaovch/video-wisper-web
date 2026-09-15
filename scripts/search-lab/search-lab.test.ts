@@ -83,7 +83,7 @@ it.skipIf(!enabled)('compares retrieval and scope behavior on frozen development
 		const tasks = [];
 		const rows = [];
 		for (const [i, q] of queries.entries()) {
-			const collection = collections.find(c => c.items.includes(q.reportSlug) && !c.password)!;
+			const collection = collections.find(c => c.items.includes(q.reportSlug) && !c.access?.master)!;
 			const scopes: SearchScope[] = q.split === 'negative'
 				? [{ kind: 'archive', label: 'all', reportSlugs: visible }]
 				: [{ kind: 'report', label: q.reportSlug, reportSlug: q.reportSlug },

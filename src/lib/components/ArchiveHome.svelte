@@ -306,7 +306,7 @@
 		const memberships = collectionsForReport(hit.reportSlug).filter(
 			(collection) => Boolean(collection.archived) === archived
 		);
-		const gatedSlugs = new Set(reportGate(hit.reportSlug).map((target) => target.slug));
+		const gatedSlugs = new Set(reportGate(hit.reportSlug).map((target) => target.collectionSlug));
 		return memberships.find((collection) => gatedSlugs.has(collection.slug)) ?? memberships[0];
 	}
 

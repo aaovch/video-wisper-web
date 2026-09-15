@@ -18,6 +18,28 @@ export interface CollectionFacets {
 	weapons?: string[];
 }
 
+/** Один клиентский ключ доступа. Версию увеличивают при смене пароля. */
+export interface AccessCredential {
+	id: string;
+	password: string;
+	credentialVersion?: number;
+	passwordHint?: string;
+	passwordContact?: { label: string; url: string };
+}
+
+/** Дополнительный ключ, открывающий один материал или явно заданный набор материалов. */
+export interface CollectionAccessPass extends AccessCredential {
+	title: string;
+	items: string[];
+}
+
+export interface CollectionAccess {
+	/** Мастер-ключ: открывает всю коллекцию и каждый входящий в неё отчёт. */
+	master?: AccessCredential;
+	/** Альтернативные ключи к отдельным материалам или пакетам материалов. */
+	passes?: CollectionAccessPass[];
+}
+
 /** Тематическая подборка видео. Видео может входить в несколько коллекций. */
 export interface Collection {
 	slug: string;
@@ -45,14 +67,11 @@ export interface Collection {
 	/** Не выводить из коллекции и её отчётов навигацию или поиск по общему архиву. */
 	isolated?: boolean;
 	/**
-	 * Пароль-«ключ». Если задан — и коллекция, и её отчёты закрыты до ввода пароля.
+	 * Иерархия клиентских ключей. Мастер открывает всё, каждый pass — только свои items.
 	 * Внимание: это «лёгкий замок» на клиенте, а не настоящая защита: контент всё
 	 * равно лежит в JS-бандле. Достаточно, чтобы отсечь случайных людей.
 	 */
-	password?: string;
-	/** Подсказка под полем пароля: как его получить. */
-	passwordHint?: string;
-	passwordContact?: { label: string; url: string };
+	access?: CollectionAccess;
 }
 
 // Порядок здесь = порядок карточек на главной.
@@ -70,8 +89,13 @@ export const collections: Collection[] = [
 			'fehtovalnye-shkoly-v-germanii-aslamov',
 			'dzhentlmenskiy-nabor-priemov-aslamov'
 		],
-		password: 'Асламов',
-		passwordHint: 'пароль можете спросить у Петра Васильева'
+		access: {
+			master: {
+				id: 'aslamov-nikolay',
+				password: 'Асламов',
+				passwordHint: 'пароль можете спросить у Петра Васильева'
+			}
+		}
 	},
 	{
 		slug: 'shkola-stal',
@@ -80,7 +104,19 @@ export const collections: Collection[] = [
 		isolated: true,
 		facets: { authors: ['Александр Баленко'] },
 		subtitle: 'Лекции Александра Баленко о фехтовании и тактике.',
-		items: ['taktika-4-0-balenko']
+		items: ['taktika-4-0-balenko'],
+		access: {
+			passes: [
+				{
+					id: 'report:taktika-4-0-balenko',
+					title: 'Лекция «Тактика 4.0»',
+					items: ['taktika-4-0-balenko'],
+					password: 'T\\@Ct1C15CooL',
+					passwordHint: 'За паролем обратитесь к автору:',
+					passwordContact: { label: 'Александр Баленко во ВКонтакте', url: 'https://vk.ru/balenko_alexander' }
+				}
+			]
+		}
 	},
 	{
 		slug: 'ii-i-hema',
@@ -326,9 +362,14 @@ export const collections: Collection[] = [
 		hema: true,
 		subtitle: 'Контекст HEMA, методика защит и удержание атлетов в клубе.',
 		items: ['metodichka', 'retention'],
-		// Пример закрытой коллекции. Поменяй пароль на свой (или убери строку, чтобы открыть).
-		password: 'hema',
-		passwordHint: 'Чтобы получить пароль — напиши Васильеву Петру.'
+		// Пример закрытой коллекции. Поменяй пароль на свой (или убери master, чтобы открыть).
+		access: {
+			master: {
+				id: 'hema-theory',
+				password: 'hema',
+				passwordHint: 'Чтобы получить пароль — напиши Васильеву Петру.'
+			}
+		}
 	},
 	{
 		slug: 'podcasts',
@@ -633,7 +674,7 @@ export const collections: Collection[] = [
 		description:
 			'Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.',
 		items: ['sobranie-core-noname-1'],
-		password: 'NoName_2026'
+		access: { master: { id: 'sobraniya-core-noname', password: 'NoName_2026' } }
 	},
 	{
 		slug: 'noname-kurs-dlya-trenerov',
@@ -654,7 +695,7 @@ export const collections: Collection[] = [
 			'kurs-dlya-trenerov-noname-4-tehnika-bezopasnosti',
 			'makrotsikly-nachalnoy-podgotovki-2026-mech-i-sablya'
 		],
-		password: 'NoName_2026'
+		access: { master: { id: 'noname-kurs-dlya-trenerov', password: 'NoName_2026' } }
 	},
 	{
 		slug: 'seminary-korotovskih',
@@ -765,30 +806,94 @@ export function collectionsForReport(slug: string): Collection[] {
 	return collections.filter((c) => !c.catalogHidden && c.items.includes(slug));
 }
 
+export interface AccessTarget extends AccessCredential {
+	kind: 'master' | 'pass';
+	collectionSlug: string;
+	title: string;
+}
+
+export function accessTargetToken(target: AccessTarget): string {
+	return `${target.id}@${target.credentialVersion ?? 1}`;
+}
+
+/** Принимает versioned runtime tokens и старые id для тестов/миграции версии 1. */
+export function isAccessTargetUnlocked(target: AccessTarget, unlocked: readonly string[]): boolean {
+	return unlocked.includes(accessTargetToken(target)) ||
+		((target.credentialVersion ?? 1) === 1 && unlocked.includes(target.id));
+}
+
+export function collectionMasterTarget(collection: Collection): AccessTarget | undefined {
+	const master = collection.access?.master;
+	if (!master) return undefined;
+	return {
+		...master,
+		kind: 'master',
+		collectionSlug: collection.slug,
+		title: collection.title
+	};
+}
+
+export function collectionAccessTargets(collection: Collection): AccessTarget[] {
+	const master = collectionMasterTarget(collection);
+	const passes = (collection.access?.passes ?? []).map((pass) => ({
+		...pass,
+		kind: 'pass' as const,
+		collectionSlug: collection.slug
+	}));
+	return [...(master ? [master] : []), ...passes];
+}
+
+export function allAccessTargets(source: readonly Collection[] = collections): AccessTarget[] {
+	return source.flatMap(collectionAccessTargets);
+}
+
+export function collectionGate(collection: Collection): AccessTarget[] {
+	return collectionAccessTargets(collection);
+}
+
+export function hasFullCollectionAccess(collection: Collection, unlocked: readonly string[]): boolean {
+	const master = collectionMasterTarget(collection);
+	return !master || isAccessTargetUnlocked(master, unlocked);
+}
+
+export function canEnterCollection(collection: Collection, unlocked: readonly string[]): boolean {
+	if (!collection.access?.master) return true;
+	return collectionAccessTargets(collection).some((target) => isAccessTargetUnlocked(target, unlocked));
+}
+
 /**
- * Коллекции-«замки», закрывающие доступ к отчёту.
- * Отчёт открыт (пустой массив), если он не входит ни в одну коллекцию или хотя бы
- * одна из его коллекций без пароля. Иначе — список всех коллекций под паролем
- * (подойдёт пароль от любой из них).
+ * Альтернативные ключи отчёта. Мастер любой закрытой коллекции всегда подходит.
+ * Явный pass делает выбранный отчёт закрытым даже внутри открытой коллекции.
+ * Без pass сохраняется прежнее правило: членство хотя бы в одной открытой коллекции
+ * делает общий URL отчёта открытым.
  */
-export type AccessTarget = Pick<Collection, 'slug' | 'password' | 'passwordHint' | 'passwordContact'>;
-
-/** Индивидуальный доступ к видео не зависит от доступности его коллекций. */
-export const reportAccess: Record<string, AccessTarget> = {
-	'taktika-4-0-balenko': {
-		slug: 'report:taktika-4-0-balenko',
-		password: 'T\\@Ct1C15CooL',
-		passwordHint: 'За паролем обратитесь к автору:',
-		passwordContact: { label: 'Александр Баленко во ВКонтакте', url: 'https://vk.ru/balenko_alexander' }
-	}
-};
-
-export function reportGate(slug: string): AccessTarget[] {
-	if (reportAccess[slug]) return [reportAccess[slug]];
-	const containing = collections.filter((collection) => collection.items.includes(slug));
+export function reportGate(slug: string, source: readonly Collection[] = collections): AccessTarget[] {
+	const containing = source.filter((collection) => collection.items.includes(slug));
 	if (containing.length === 0) return [];
-	if (containing.some((c) => !c.password)) return [];
-	return containing;
+	const masters = containing
+		.map(collectionMasterTarget)
+		.filter((target): target is AccessTarget => Boolean(target));
+	const passes = containing.flatMap((collection) =>
+		(collection.access?.passes ?? [])
+			.filter((pass) => pass.items.includes(slug))
+			.map((pass) => ({
+				...pass,
+				kind: 'pass' as const,
+				collectionSlug: collection.slug
+			}))
+	);
+	if (passes.length > 0) return [...masters, ...passes];
+	if (containing.some((collection) => !collection.access?.master)) return [];
+	return masters;
+}
+
+export function canAccessReport(
+	slug: string,
+	unlocked: readonly string[],
+	source: readonly Collection[] = collections
+): boolean {
+	const gate = reportGate(slug, source);
+	return gate.length === 0 || gate.some((target) => isAccessTargetUnlocked(target, unlocked));
 }
 
 export interface CollectionStats {

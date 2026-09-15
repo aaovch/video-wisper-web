@@ -36,7 +36,7 @@
 	const report = $derived(data.report);
 	const gate = $derived(reportGate(report.slug));
 	const reportCollections = $derived(collectionsForReport(report.slug));
-	const locked = $derived(gate.length > 0 && !gate.some((c) => lock.isUnlocked(c.slug)));
+	const locked = $derived(gate.length > 0 && !gate.some((target) => lock.isUnlocked(target)));
 	let highlightQuery = $state('');
 	let searchHits = $state<SearchHit[]>([]);
 	let searchBusy = $state(false);
@@ -771,11 +771,11 @@
 </svelte:head>
 
 {#if locked}
-	<Lock
-		targets={gate}
-		title={report.title}
-		subtitle="Введите пароль, чтобы открыть видео и материалы лекции."
-	/>
+		<Lock
+			targets={gate}
+			title={report.title}
+			subtitle="Введите пароль коллекции или ключ доступа к этому материалу."
+		/>
 {:else}
 <article class="report container">
 	<header class="report-head reveal" {@attach reveal()}>

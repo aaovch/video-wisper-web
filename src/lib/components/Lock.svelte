@@ -12,7 +12,7 @@
 		subtitle = 'Введите пароль, чтобы открыть доступ.'
 	}: { targets: AccessTarget[]; title?: string; subtitle?: string } = $props();
 
-	const hintTarget = $derived(targets.find((c) => c.passwordHint));
+	const hintTargets = $derived(targets.filter((target) => target.passwordHint));
 
 	let value = $state('');
 	let failed = $state(false);
@@ -49,13 +49,15 @@
 		{#if failed}
 			<p class="err label" role="alert">Неверный пароль</p>
 		{/if}
-		{#if hintTarget}
-			<p class="hint">{hintTarget.passwordHint}
-				{#if hintTarget.passwordContact}
-					<a href={hintTarget.passwordContact.url} target="_blank" rel="noopener noreferrer">{hintTarget.passwordContact.label}</a>
+		{#each hintTargets as target (target.id)}
+			<p class="hint">
+				{#if hintTargets.length > 1}<span class="hint-label">{target.kind === 'master' ? 'Вся коллекция' : target.title}:</span>{/if}
+				{target.passwordHint}
+				{#if target.passwordContact}
+					<a href={target.passwordContact.url} target="_blank" rel="noopener noreferrer">{target.passwordContact.label}</a>
 				{/if}
 			</p>
-		{/if}
+		{/each}
 	</div>
 </section>
 
@@ -167,4 +169,6 @@
 		color: var(--ink-faint);
 		line-height: 1.45;
 	}
+
+	.hint-label { display: block; color: var(--ink-soft); }
 </style>
