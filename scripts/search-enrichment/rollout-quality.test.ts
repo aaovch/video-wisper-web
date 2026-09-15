@@ -1,6 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {expect,it,vi} from 'vitest';
-import {collections} from '$lib/data/collections';
+import {accessTargetToken,allAccessTargets,collections} from '$lib/data/collections';
 import {searchScoped,resetSearchIndex,whenSearchComplete} from '$lib/search-core';
 import {searchableReportSlugs} from '$lib/search-visibility';
 import {searchHitKey} from '$lib/search-hit-key';
@@ -12,7 +12,9 @@ it('preserves accepted fencing sources in report, collection and archive search'
  const files=new Map(['index-core.json','index-transcripts.json','chapter-titles.json'].map(n=>[n,readFileSync(`static/search/${n}`,'utf8')]));
  vi.stubGlobal('fetch',vi.fn(async(url:string)=>new Response(files.get(String(url).split('/').pop()!))));
  try{
-  resetSearchIndex();await whenSearchComplete();const visible=searchableReportSlugs([],'all');
+  resetSearchIndex();await whenSearchComplete();
+  const unlocked=allAccessTargets(collections.filter(c=>c.hema)).map(accessTargetToken);
+  const visible=searchableReportSlugs(unlocked,'all');
   for(const q of [...cases,...nonameCases]){
    for(const j of q.judgments){
     const report=JSON.parse(readFileSync(`src/lib/data/reports/${j.reportSlug}.json`,'utf8'));

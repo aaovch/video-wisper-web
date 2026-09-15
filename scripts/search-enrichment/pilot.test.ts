@@ -4,7 +4,7 @@ import {gzipSync} from 'node:zlib';
 import {expect,it,vi} from 'vitest';
 import {searchScoped,resetSearchIndex,whenSearchComplete} from '$lib/search-core';
 import {searchableReportSlugs} from '$lib/search-visibility';
-import {collections} from '$lib/data/collections';
+import {accessTargetToken,allAccessTargets,canEnterCollection,collections} from '$lib/data/collections';
 import type {SearchScope} from '$lib/search-types';
 const hash=(text:string)=>createHash('sha256').update(text).digest('hex');
 it.skipIf(!process.env.PILOT_SEARCH_STAGE)('evaluates frozen situation questions without changing judgments',async()=>{
@@ -22,7 +22,7 @@ it.skipIf(!process.env.PILOT_SEARCH_STAGE)('evaluates frozen situation questions
   expect(fingerprint.digest('hex')).toBe(registry.protocol.cardFingerprint);
  }
  const files=new Map(['index-core.json','index-transcripts.json','chapter-titles.json'].map(n=>[n,readFileSync(`static/search/${n}`,'utf8')]));
- const unlocked=registry.protocol.unlockedHemaCollections?collections.filter(c=>c.hema).map(c=>c.slug):[];
+ const unlocked=registry.protocol.unlockedHemaCollections?allAccessTargets(collections.filter(c=>c.hema)).map(accessTargetToken):[];
  const visible=searchableReportSlugs(unlocked,'all'),rows:any[]=[];
  vi.stubGlobal('fetch',vi.fn(async(url:string)=>new Response(files.get(String(url).split('/').pop()!))));
  try{
@@ -32,7 +32,7 @@ it.skipIf(!process.env.PILOT_SEARCH_STAGE)('evaluates frozen situation questions
    expect(visible).toContain(slug);
    const scopes:SearchScope[]=[];
    if(q.scopes.includes('report'))scopes.push({kind:'report',label:slug,reportSlug:slug});
-   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>(!c.access?.master||unlocked.includes(c.access.master.id))&&c.items.includes(slug)))
+   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>canEnterCollection(c,unlocked)&&c.items.includes(slug)))
     scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
    if(q.scopes.includes('archive'))scopes.push({kind:'archive',label:'archive',reportSlugs:visible});
    const expected=q.judgments.filter((j:any)=>j.grade===3).map((j:any)=>`${j.reportSlug}:${j.chapterIndex}`);

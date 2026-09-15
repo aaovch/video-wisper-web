@@ -5,7 +5,7 @@ import {searchScoped,resetSearchIndex,whenSearchComplete} from '$lib/search-core
 import {searchableReportSlugs} from '$lib/search-visibility';
 import {searchHitKey} from '$lib/search-hit-key';
 import {orderSearchPassages} from '$lib/search-passage-order';
-import {collections} from '$lib/data/collections';
+import {accessTargetToken,allAccessTargets,canEnterCollection,collections} from '$lib/data/collections';
 import type {SearchHit,SearchScope} from '$lib/search-types';
 const modes=['current','passages-first','keep-two','boost-125','boost-150'] as const;
 function reorder(hits:SearchHit[],mode:string){
@@ -26,12 +26,12 @@ it.skipIf(!process.env.PASSAGE_ORDER_EVAL)('compares passage ordering on frozen 
    const raw=readFileSync(`scripts/search-enrichment/${name}.json`,'utf8'),registry=JSON.parse(raw);
    hashes[name]=createHash('sha256').update(raw).digest('hex');
    expect(hashes[name]).toBe(readFileSync(`scripts/search-enrichment/${name}.sha256`,'utf8').trim());
-   const unlocked=registry.protocol.unlockedHemaCollections?collections.filter(c=>c.hema).map(c=>c.slug):[],visible=searchableReportSlugs(unlocked,'all');
+   const unlocked=registry.protocol.unlockedHemaCollections?allAccessTargets(collections.filter(c=>c.hema)).map(accessTargetToken):[],visible=searchableReportSlugs(unlocked,'all');
    for(const q of registry.cases){
     const slug=q.judgments[0].reportSlug,scopes:SearchScope[]=[];
     if(!visible.includes(slug))continue;
     if(q.scopes.includes('report'))scopes.push({kind:'report',label:slug,reportSlug:slug});
-    if(q.scopes.includes('collection'))for(const c of collections.filter(c=>(!c.access?.master||unlocked.includes(c.access.master.id))&&c.items.includes(slug)))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
+    if(q.scopes.includes('collection'))for(const c of collections.filter(c=>canEnterCollection(c,unlocked)&&c.items.includes(slug)))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
     if(q.scopes.includes('archive'))scopes.push({kind:'archive',label:'archive',reportSlugs:visible});
     for(const scope of scopes){
      const result=await searchScoped(q.query,[scope],scope.kind==='archive'?30:120);

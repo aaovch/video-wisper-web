@@ -24,6 +24,52 @@ describe('search visibility', () => {
 		expect(searchableReportSlugs(['report:taktika-4-0-balenko'], 'all')).toContain('taktika-4-0-balenko');
 	});
 
+	it('opens both selected NoName reports with one package key', () => {
+		const selected = [
+			'prostaya-ataka-mikrotsikl-1-dlinnyy-mech',
+			'ukoly-mezotsikl-1-dlinnyy-mech'
+		];
+		const targets = selected.map((slug) => reportGate(slug));
+		expect(targets.map((gate) => gate.map((target) => target.id))).toEqual([
+			['noname-training', 'noname-training:longsword-cycles'],
+			['noname-training', 'noname-training:longsword-cycles']
+		]);
+		const token = accessTargetToken(targets[0][1]);
+		for (const slug of selected) {
+			expect(canAccessReport(slug, [])).toBe(false);
+			expect(canAccessReport(slug, [token])).toBe(true);
+		}
+		expect(canAccessReport('mech-i-bakler-mikrotsikl-1-osnovy', [])).toBe(false);
+		expect(canAccessReport('mech-i-bakler-mikrotsikl-1-osnovy', [token])).toBe(false);
+		expect(canEnterCollection(getCollection('noname-training')!, [token])).toBe(true);
+		expect(hasFullCollectionAccess(getCollection('noname-training')!, [token])).toBe(false);
+	});
+
+	it('requires distinct master keys for all four NoName collections and their direct reports', () => {
+		const slugs = [
+			'noname-training',
+			'noname',
+			'sobraniya-core-noname',
+			'noname-kurs-dlya-trenerov'
+		];
+		const tokens = slugs.map((slug) => {
+			const collection = getCollection(slug)!;
+			const master = reportGate(collection.items[0]).find((target) => target.id === slug)!;
+			expect(collection.protectedReports).toBe(true);
+			expect(collection.access?.master?.passwordHint).toBe('Пароль уточняйте у Петра Васильева.');
+			expect(canEnterCollection(collection, [])).toBe(false);
+			for (const reportSlug of collection.items) {
+				expect(reportGate(reportSlug).some((target) => target.id === slug), reportSlug).toBe(true);
+				expect(canAccessReport(reportSlug, []), reportSlug).toBe(false);
+				expect(canAccessReport(reportSlug, [accessTargetToken(master)]), reportSlug).toBe(true);
+			}
+			return accessTargetToken(master);
+		});
+		expect(new Set(tokens).size).toBe(slugs.length);
+		expect(canEnterCollection(getCollection('sobraniya-core-noname')!, ['sobraniya-core-noname@1'])).toBe(false);
+		expect(canEnterCollection(getCollection('noname-kurs-dlya-trenerov')!, ['noname-kurs-dlya-trenerov@1'])).toBe(false);
+	});
+
 	it('treats a collection password as a master key over package and video keys', () => {
 		const fixture: Collection = {
 			slug: 'course',
@@ -89,7 +135,8 @@ describe('search visibility', () => {
 
 	it('gates Core NoName meeting reports with their collection', () => {
 		expect(searchableReportSlugs([])).not.toContain('sobranie-core-noname-1');
-		expect(searchableReportSlugs(['sobraniya-core-noname'])).toContain('sobranie-core-noname-1');
+		expect(searchableReportSlugs(['sobraniya-core-noname@1'])).not.toContain('sobranie-core-noname-1');
+		expect(searchableReportSlugs(['sobraniya-core-noname@2'])).toContain('sobranie-core-noname-1');
 	});
 
 	it('keeps public and unassigned reports searchable', () => {

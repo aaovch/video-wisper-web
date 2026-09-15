@@ -5,11 +5,12 @@ import {searchScoped,resetSearchIndex,whenSearchComplete} from '$lib/search-core
 import {searchableReportSlugs} from '$lib/search-visibility';
 import {relatedSources} from '$lib/search-source-links';
 import {searchHitKey} from '$lib/search-hit-key';
-import {collections} from '$lib/data/collections';
+import {accessTargetToken,canEnterCollection,collections} from '$lib/data/collections';
 import type {SearchScope} from '$lib/search-types';
 it('measures linked-source access separately from direct top-five retrieval',async()=>{
  const files=new Map(['index-core.json','index-transcripts.json','chapter-titles.json'].map(n=>[n,readFileSync(`static/search/${n}`,'utf8')]));
- const visible=searchableReportSlugs([],'all'),rows:any[]=[],diagnostics:any[]=[];
+ const unlocked=['noname-training','noname'].map(slug=>accessTargetToken(collections.find(c=>c.slug===slug)!.access!.master!));
+ const visible=searchableReportSlugs(unlocked,'all'),rows:any[]=[],diagnostics:any[]=[];
  const indexedChapters=new Set(Object.values(JSON.parse(files.get('index-core.json')!).storedFields).map((d:any)=>`${d.reportSlug}:${d.chapterIndex}`));
  const confirmation=JSON.parse(readFileSync('scripts/search-enrichment/source-link-questions.json','utf8'));
  const frozen=readFileSync('scripts/search-enrichment/source-links-v1.json');
@@ -26,7 +27,7 @@ it('measures linked-source access separately from direct top-five retrieval',asy
   for(const q of cases){
    const scopes:SearchScope[]=[{kind:'archive',label:'archive',reportSlugs:visible}];
    if(q.scopes.includes('report'))scopes.push({kind:'report',label:q.judgments[0].reportSlug,reportSlug:q.judgments[0].reportSlug});
-   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>!c.access?.master&&c.items.includes(q.judgments[0].reportSlug)&&(!q.sharedCollectionsOnly||q.judgments.every((j:any)=>c.items.includes(j.reportSlug)))))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
+   if(q.scopes.includes('collection'))for(const c of collections.filter(c=>canEnterCollection(c,unlocked)&&c.items.includes(q.judgments[0].reportSlug)&&(!q.sharedCollectionsOnly||q.judgments.every((j:any)=>c.items.includes(j.reportSlug)))))scopes.push({kind:'collection',label:c.slug,reportSlugs:c.items.filter(s=>visible.includes(s))});
    for(const scope of scopes){
     const result=await searchScoped(q.query,[scope],scope.kind==='archive'?30:120),seen=new Set<string>();
     const ranked=result.hits.filter(h=>{const k=searchHitKey(h);if(seen.has(k))return false;seen.add(k);return true;});
@@ -74,8 +75,8 @@ it('measures linked-source access separately from direct top-five retrieval',asy
    const actual=rows.find(r=>r.id===baseline.id&&r.scope===baseline.scope&&r.label===baseline.label);
    expect(actual,`${baseline.id}/${baseline.label}`).toBeDefined();
    expect(actual.expected).toBe(baseline.expected);
-   expect(actual.direct).toBeGreaterThanOrEqual(baseline.direct);
-   expect(actual.withLinks).toBeGreaterThanOrEqual(baseline.withLinks);
+   expect(actual.direct,`${baseline.id}/${baseline.scope}/${baseline.label}: direct`).toBeGreaterThanOrEqual(baseline.direct);
+   expect(actual.withLinks,`${baseline.id}/${baseline.scope}/${baseline.label}: linked`).toBeGreaterThanOrEqual(baseline.withLinks);
   }
   if(process.env.SOURCE_LINKS_EVAL)writeFileSync('docs/search-quality/source-links-evaluation.json',JSON.stringify({protocol:'Disclosed source-aware pilot; links are a separate one-click navigation path, not direct top-five retrieval or generated answers.',indexHash:createHash('sha256').update([...files.values()].join('')).digest('hex'),graphHash:createHash('sha256').update(readFileSync('src/lib/data/search-source-links.json')).digest('hex'),scenarios:rows.length,directCoverage:rows.reduce((s,r)=>s+r.direct/r.expected,0)/rows.length,linkedCoverage:rows.reduce((s,r)=>s+r.withLinks/r.expected,0)/rows.length,gains,rows},null,2)+'\n');
  }finally{resetSearchIndex();vi.unstubAllGlobals();vi.unstubAllEnvs();}

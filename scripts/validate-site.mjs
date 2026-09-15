@@ -103,6 +103,8 @@ for (const collection of collections) {
 	if (new Set(items).size !== items.length) issue(errors, 'COLLECTION_ITEM_DUPLICATE', collection.slug);
 	for (const slug of items) if (!reports.has(slug)) issue(errors, 'COLLECTION_REPORT_MISSING', `${collection.slug}: ${slug}`);
 	if (collection.access?.master) validateCredential(collection.access.master, `${collection.slug}: master`);
+	if (collection.protectedReports && !collection.access?.master)
+		issue(errors, 'PROTECTED_REPORTS_MASTER_MISSING', collection.slug);
 	for (const pass of collection.access?.passes ?? []) {
 		validateCredential(pass, `${collection.slug}: ${pass?.id ?? 'pass'}`);
 		if (!pass?.title?.trim()) issue(errors, 'ACCESS_PASS_TITLE_INVALID', `${collection.slug}: ${pass?.id ?? 'pass'}`);

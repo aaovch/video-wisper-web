@@ -4,7 +4,7 @@ import {expect,it,vi} from 'vitest';
 import {searchScoped,resetSearchIndex,whenSearchComplete} from '$lib/search-core';
 import {searchableReportSlugs} from '$lib/search-visibility';
 import {searchHitKey} from '$lib/search-hit-key';
-import {collections} from '$lib/data/collections';
+import {accessTargetToken,allAccessTargets,collections} from '$lib/data/collections';
 import type {SearchScope} from '$lib/search-types';
 it.skipIf(!process.env.PASSAGE_ACCEPT_EVAL)('verifies the actual runtime against all frozen baseline scenarios',async()=>{
  const baseline=JSON.parse(readFileSync('docs/search-quality/passage-order.json','utf8'));
@@ -17,7 +17,8 @@ it.skipIf(!process.env.PASSAGE_ACCEPT_EVAL)('verifies the actual runtime against
   resetSearchIndex();await whenSearchComplete();
   for(const r of baseline.rows){
    const registry=registries[r.registry],q=registry.cases.find((q:any)=>q.id===r.id);
-   const visible=searchableReportSlugs(registry.protocol.unlockedHemaCollections?collections.filter(c=>c.hema).map(c=>c.slug):[],'all');
+   const unlocked=registry.protocol.unlockedHemaCollections?allAccessTargets(collections.filter(c=>c.hema)).map(accessTargetToken):[];
+   const visible=searchableReportSlugs(unlocked,'all');
    const scope:SearchScope=r.scope==='report'?{kind:'report',label:r.label,reportSlug:r.label}:r.scope==='collection'?{kind:'collection',label:r.label,reportSlugs:collections.find(c=>c.slug===r.label)!.items.filter(s=>visible.includes(s))}:{kind:'archive',label:r.label,reportSlugs:visible};
    const response=await searchScoped(q.query,[scope],r.scope==='archive'?30:120),seen=new Set<string>();
    const allowed=scope.kind==='report'?[scope.reportSlug]:scope.reportSlugs;

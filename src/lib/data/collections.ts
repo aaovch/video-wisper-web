@@ -72,6 +72,8 @@ export interface Collection {
 	 * равно лежит в JS-бандле. Достаточно, чтобы отсечь случайных людей.
 	 */
 	access?: CollectionAccess;
+	/** Требовать ключ и для прямого URL отчёта при членстве в открытой подборке. */
+	protectedReports?: boolean;
 }
 
 // Порядок здесь = порядок карточек на главной.
@@ -564,6 +566,25 @@ export const collections: Collection[] = [
 			'mech-i-bakler-mikrotsikl-1-osnovy',
 			'fedotikov-mironov'
 		],
+		access: {
+			master: {
+				id: 'noname-training',
+				password: 'Cycle7P2',
+				passwordHint: 'Пароль уточняйте у Петра Васильева.'
+			},
+			passes: [
+				{
+					id: 'noname-training:longsword-cycles',
+					title: 'Длинный меч: микроцикл и мезоцикл',
+					items: [
+						'prostaya-ataka-mikrotsikl-1-dlinnyy-mech',
+						'ukoly-mezotsikl-1-dlinnyy-mech'
+					],
+					password: 'mech7'
+				}
+			]
+		},
+		protectedReports: true,
 		sections: [
 			{
 				title: 'Длинный меч',
@@ -617,6 +638,14 @@ export const collections: Collection[] = [
 			'avstriyskaya-sablya-trenirovka-5-povtorenie',
 			'avstriyskaya-sablya-trenirovka-6-batmany-vybor'
 		],
+		access: {
+			master: {
+				id: 'noname',
+				password: 'Lager8Q4',
+				passwordHint: 'Пароль уточняйте у Петра Васильева.'
+			}
+		},
+		protectedReports: true,
 		sections: [
 			{
 				title: 'Лекции Турина',
@@ -674,7 +703,15 @@ export const collections: Collection[] = [
 		description:
 			'Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.',
 		items: ['sobranie-core-noname-1'],
-		access: { master: { id: 'sobraniya-core-noname', password: 'NoName_2026' } }
+		access: {
+			master: {
+				id: 'sobraniya-core-noname',
+				password: 'Core5M9',
+				credentialVersion: 2,
+				passwordHint: 'Пароль уточняйте у Петра Васильева.'
+			}
+		},
+		protectedReports: true
 	},
 	{
 		slug: 'noname-kurs-dlya-trenerov',
@@ -695,7 +732,15 @@ export const collections: Collection[] = [
 			'kurs-dlya-trenerov-noname-4-tehnika-bezopasnosti',
 			'makrotsikly-nachalnoy-podgotovki-2026-mech-i-sablya'
 		],
-		access: { master: { id: 'noname-kurs-dlya-trenerov', password: 'NoName_2026' } }
+		access: {
+			master: {
+				id: 'noname-kurs-dlya-trenerov',
+				password: 'Kurs6V3',
+				credentialVersion: 2,
+				passwordHint: 'Пароль уточняйте у Петра Васильева.'
+			}
+		},
+		protectedReports: true
 	},
 	{
 		slug: 'seminary-korotovskih',
@@ -864,8 +909,8 @@ export function canEnterCollection(collection: Collection, unlocked: readonly st
 /**
  * Альтернативные ключи отчёта. Мастер любой закрытой коллекции всегда подходит.
  * Явный pass делает выбранный отчёт закрытым даже внутри открытой коллекции.
- * Без pass сохраняется прежнее правило: членство хотя бы в одной открытой коллекции
- * делает общий URL отчёта открытым.
+ * Без pass открытая коллекция сохраняет публичный URL, кроме случая, когда
+ * другая коллекция явно требует доступ и к каждому своему отчёту.
  */
 export function reportGate(slug: string, source: readonly Collection[] = collections): AccessTarget[] {
 	const containing = source.filter((collection) => collection.items.includes(slug));
@@ -883,7 +928,10 @@ export function reportGate(slug: string, source: readonly Collection[] = collect
 			}))
 	);
 	if (passes.length > 0) return [...masters, ...passes];
-	if (containing.some((collection) => !collection.access?.master)) return [];
+	if (
+		!containing.some((collection) => collection.protectedReports && collection.access?.master) &&
+		containing.some((collection) => !collection.access?.master)
+	) return [];
 	return masters;
 }
 
