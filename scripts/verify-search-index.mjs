@@ -28,11 +28,16 @@ function verify(slug) {
 		throw new Error(`Chapter index mismatch for ${slug}: expected ${expectedChapters}, got ${indexed.chapter ?? 0}`);
 	}
 
-	const expectedTheses = (report.overview_theses?.length ?? 0) +
-		(report.chapters ?? []).reduce((total, chapter) => total + (chapter.theses?.length ?? 0), 0);
-	const indexedTheses = (indexed.overview ?? 0) + (indexed.thesis ?? 0);
-	if (indexedTheses !== expectedTheses) {
-		throw new Error(`Thesis index mismatch for ${slug}: expected ${expectedTheses}, got ${indexedTheses}`);
+	const expectedOverview = (report.overview_theses?.length ?? 0) +
+		(report.long_summary?.trim() ? 1 : 0);
+	if ((indexed.overview ?? 0) !== expectedOverview) {
+		throw new Error(`Overview index mismatch for ${slug}: expected ${expectedOverview}, got ${indexed.overview ?? 0}`);
+	}
+
+	const expectedTheses = (report.chapters ?? [])
+		.reduce((total, chapter) => total + (chapter.theses?.length ?? 0), 0);
+	if ((indexed.thesis ?? 0) !== expectedTheses) {
+		throw new Error(`Thesis index mismatch for ${slug}: expected ${expectedTheses}, got ${indexed.thesis ?? 0}`);
 	}
 
 	const transcriptPath = join(root, 'src/lib/data/transcripts', `${slug}.json`);
@@ -48,7 +53,8 @@ function verify(slug) {
 		throw new Error(`Report ${slug} declares has_transcript, but src/lib/data/transcripts/${slug}.json is missing`);
 	}
 
-	console.log(`search-index OK: ${slug}; ${indexed.chapter ?? 0} chapters, ${indexedTheses} theses, ${indexed.transcript ?? 0} transcript windows, ${indexed.material ?? 0} materials`);
+	const thesisCount = (report.overview_theses?.length ?? 0) + expectedTheses;
+	console.log(`search-index OK: ${slug}; ${indexed.chapter ?? 0} chapters, ${thesisCount} theses, ${indexed.transcript ?? 0} transcript windows, ${indexed.material ?? 0} materials`);
 }
 
 for (const slug of slugs) verify(slug);
