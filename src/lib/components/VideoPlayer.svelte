@@ -532,7 +532,7 @@
 		outline-offset: 2px;
 	}
 
-	@media (max-width: 430px) {
+	@media (max-width: 520px) {
 		.source-link span {
 			align-items: flex-start;
 			flex-direction: column;

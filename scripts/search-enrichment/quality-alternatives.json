@@ -10,6 +10,7 @@
           "kind": "material",
           "title": "Глоссарий: Vibe coding",
           "sourcePath": [
+            "materials",
             "glossary",
             0
           ],

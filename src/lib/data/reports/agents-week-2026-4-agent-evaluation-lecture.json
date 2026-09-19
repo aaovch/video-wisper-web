@@ -3,6 +3,7 @@
 	"title": "Agents Week 2026 — лекция 4: Agent Evaluation — From Metrics to Managed Quality",
 	"subtitle": "Task suite, Eval Harness, критерии, graders и калибровка LLM-as-a-judge для управляемого качества агентов",
 	"source_name": "Agents Week 2026 ｜ Лекция 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240038].mp4",
+	"source_stem": "Agents Week 2026 ｜ Лекция 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240038]",
 	"note": "Развёрнутый конспект лекции Сергея Купцова о системной оценке агентских систем. Расшифровка выполнена локально Whisper Turbo на CUDA; названия метрик, компонентов eval-инфраструктуры и benchmarks выверены без изменения таймкодов.",
 	"duration": 4030.06,
 	"tags": [
@@ -311,99 +312,101 @@
 			]
 		}
 	],
+	"materials": {
+		"notes": [
+			{
+				"title": "Соберите task suite",
+				"items": [
+					"Начните с 5–10 ручных production-like задач.",
+					"Добавьте initial state, policy и expected outcome.",
+					"Включите act/no-act cases и tags по skill и difficulty.",
+					"После каждого production failure добавляйте regression case."
+				]
+			},
+			{
+				"title": "Спроектируйте harness",
+				"items": [
+					"Запускайте production-identical agent в изолированной среде.",
+					"Сохраняйте trajectory после каждого trial.",
+					"Добавьте parallelism, timeout, retry и immutable run history.",
+					"Сравнивайте версии на одинаковом snapshot и task suite."
+				]
+			},
+			{
+				"title": "Формализуйте criteria и graders",
+				"items": [
+					"Отделите output-based checks от trajectory-based rubrics.",
+					"Сделайте safety и state constraints обязательными gates.",
+					"Для каждого критерия укажите диагностическое назначение.",
+					"Измеряйте стабильность несколькими trials."
+				]
+			},
+			{
+				"title": "Калибруйте LLM judge",
+				"items": [
+					"Получите 30–100 экспертных gold labels.",
+					"Проверьте agreement экспертов и human-to-LLM через Cohen’s kappa.",
+					"Разнесите критерии по отдельным calls и добавьте rubric, escape hatch и few-shot.",
+					"Повторяйте цикл после изменения suite или домена."
+				]
+			}
+		],
+		"glossary": [
+			{
+				"term": "Evaluation Suite",
+				"definition": "Версионируемый репрезентативный набор задач для системной оценки агента."
+			},
+			{
+				"term": "Trial",
+				"definition": "Одна полная попытка выполнить конкретную задачу."
+			},
+			{
+				"term": "Trajectory",
+				"definition": "Полная запись входов, reasoning, tool calls, observations и ответов одного trial."
+			},
+			{
+				"term": "Outcome",
+				"definition": "Фактическое конечное состояние среды после работы агента."
+			},
+			{
+				"term": "Eval Harness",
+				"definition": "Инфраструктура запуска, изоляции, логирования, хранения и оценки прогонов."
+			},
+			{
+				"term": "Iron User",
+				"definition": "LLM-симулятор пользователя, продолжающий multi-turn диалог по фиксированному сценарию."
+			},
+			{
+				"term": "Output-based criterion",
+				"definition": "Критерий, проверяющий результат, формат, tool call или конечное состояние."
+			},
+			{
+				"term": "Trajectory-based criterion",
+				"definition": "Критерий, оценивающий путь решения, обоснованность, goal retention и efficiency."
+			},
+			{
+				"term": "LLM-as-a-judge",
+				"definition": "LLM-grader для автоматизированной смысловой оценки результата или trajectory."
+			},
+			{
+				"term": "Cohen’s kappa",
+				"definition": "Метрика agreement двух graders с поправкой на случайные совпадения."
+			},
+			{
+				"term": "pass@k",
+				"definition": "Вероятность хотя бы одного успешного результата среди k попыток."
+			},
+			{
+				"term": "pass^k",
+				"definition": "Вероятность, что все k повторных прогонов завершатся успешно."
+			},
+			{
+				"term": "Escape hatch",
+				"definition": "Разрешение judge вернуть «недостаточно данных», не выдумывая оценку."
+			}
+		]
+	},
 	"has_transcript": true,
-	"glossary": [
-		{
-			"term": "Evaluation Suite",
-			"definition": "Версионируемый репрезентативный набор задач для системной оценки агента."
-		},
-		{
-			"term": "Trial",
-			"definition": "Одна полная попытка выполнить конкретную задачу."
-		},
-		{
-			"term": "Trajectory",
-			"definition": "Полная запись входов, reasoning, tool calls, observations и ответов одного trial."
-		},
-		{
-			"term": "Outcome",
-			"definition": "Фактическое конечное состояние среды после работы агента."
-		},
-		{
-			"term": "Eval Harness",
-			"definition": "Инфраструктура запуска, изоляции, логирования, хранения и оценки прогонов."
-		},
-		{
-			"term": "Iron User",
-			"definition": "LLM-симулятор пользователя, продолжающий multi-turn диалог по фиксированному сценарию."
-		},
-		{
-			"term": "Output-based criterion",
-			"definition": "Критерий, проверяющий результат, формат, tool call или конечное состояние."
-		},
-		{
-			"term": "Trajectory-based criterion",
-			"definition": "Критерий, оценивающий путь решения, обоснованность, goal retention и efficiency."
-		},
-		{
-			"term": "LLM-as-a-judge",
-			"definition": "LLM-grader для автоматизированной смысловой оценки результата или trajectory."
-		},
-		{
-			"term": "Cohen’s kappa",
-			"definition": "Метрика agreement двух graders с поправкой на случайные совпадения."
-		},
-		{
-			"term": "pass@k",
-			"definition": "Вероятность хотя бы одного успешного результата среди k попыток."
-		},
-		{
-			"term": "pass^k",
-			"definition": "Вероятность, что все k повторных прогонов завершатся успешно."
-		},
-		{
-			"term": "Escape hatch",
-			"definition": "Разрешение judge вернуть «недостаточно данных», не выдумывая оценку."
-		}
-	],
-	"seminar_notes": [
-		{
-			"title": "Соберите task suite",
-			"items": [
-				"Начните с 5–10 ручных production-like задач.",
-				"Добавьте initial state, policy и expected outcome.",
-				"Включите act/no-act cases и tags по skill и difficulty.",
-				"После каждого production failure добавляйте regression case."
-			]
-		},
-		{
-			"title": "Спроектируйте harness",
-			"items": [
-				"Запускайте production-identical agent в изолированной среде.",
-				"Сохраняйте trajectory после каждого trial.",
-				"Добавьте parallelism, timeout, retry и immutable run history.",
-				"Сравнивайте версии на одинаковом snapshot и task suite."
-			]
-		},
-		{
-			"title": "Формализуйте criteria и graders",
-			"items": [
-				"Отделите output-based checks от trajectory-based rubrics.",
-				"Сделайте safety и state constraints обязательными gates.",
-				"Для каждого критерия укажите диагностическое назначение.",
-				"Измеряйте стабильность несколькими trials."
-			]
-		},
-		{
-			"title": "Калибруйте LLM judge",
-			"items": [
-				"Получите 30–100 экспертных gold labels.",
-				"Проверьте agreement экспертов и human-to-LLM через Cohen’s kappa.",
-				"Разнесите критерии по отдельным calls и добавьте rubric, escape hatch и few-shot.",
-				"Повторяйте цикл после изменения suite или домена."
-			]
-		}
-	],
 	"video": {
 		"provider": "vk",
 		"id": "-84793390_456240038",

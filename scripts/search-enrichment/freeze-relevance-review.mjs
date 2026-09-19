@@ -11,7 +11,7 @@ function judgment(slug,path,selector,grade,supports,quotePaths,reason){
 const chapter=(s,i,g,f,why)=>judgment(s,['chapters',i],{chapterIndex:i},g,f,[['summary']],why);
 const buckler='mech-i-bakler-mikrotsikl-1-osnovy',monitor='kontseptsiya-monitoringa';
 const exercise=(i,g,f,why)=>{
- const s=report(buckler).seminar_exercises[0];return judgment(buckler,['seminar_exercises',0,'items',i],{kind:'material',title:`Упражнения: ${s.title}`,start:s.items[i].start},g,f,[['text']],why);
+ const s=report(buckler).materials.exercises[0];return judgment(buckler,['materials','exercises',0,'items',i],{kind:'material',title:`Упражнения: ${s.title}`,start:s.items[i].start},g,f,[['text']],why);
 };
 const defs=[
  ['expanded-multi-1',[['movement','Полноценное завершение атакующего движения'],['distortion','Объяснение искажения учебного результата']],
@@ -27,7 +27,7 @@ const defs=[
  'Сохраняются две разные части задачи. Конспект может покрыть обе, упражнения оцениваются по конкретному пункту и времени.',[
  chapter(buckler,4,3,['steps'],'Описаны опора и проверка обеих ног после шага.'),
  chapter(buckler,5,3,['switch'],'Описана смена ведущей ноги без потери ширины опоры.'),
- judgment(buckler,['seminar_notes',1],{kind:'material',title:'Конспект: Стойка и работа ног'},3,['steps','switch'],[['items',0],['items',2],['items',3]],'Конспект явно содержит проверку стойки при шагах и смену ведущей ноги.'),
+ judgment(buckler,['materials','notes',1],{kind:'material',title:'Конспект: Стойка и работа ног'},3,['steps','switch'],[['items',0],['items',2],['items',3]],'Конспект явно содержит проверку стойки при шагах и смену ведущей ноги.'),
  exercise(8,3,['steps'],'Проверка обеих стоп после приставного шага.'),
  exercise(9,3,['switch'],'Шаффл со сбором, раскрытием стойки и сменой ведущей ноги.'),
  exercise(15,1,[],'Связка dritto и укола содержит смену ноги, но не объясняет устойчивость; не засчитывается только за совпадение названия раздела.')]],

@@ -17,7 +17,7 @@ it('continues collapsing passages in the same chapter, without merging other rep
 });
 it('preserves every timed item from the real sword and buckler report',()=>{
  const report=JSON.parse(readFileSync('src/lib/data/reports/mech-i-bakler-mikrotsikl-1-osnovy.json','utf8'));
- const items=report.seminar_exercises.flatMap((s:any)=>s.items??[]).filter((i:any)=>Number.isFinite(i.start));
+ const items=report.materials.exercises.flatMap((s:any)=>s.items??[]).filter((i:any)=>Number.isFinite(i.start));
  expect(items.length).toBeGreaterThan(3);
  const hits=items.map((i:any)=>hit({start:i.start}));
  expect(new Set(hits.map(searchHitKey)).size).toBe(new Set(items.map((i:any)=>i.start)).size);

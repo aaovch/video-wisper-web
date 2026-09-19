@@ -3,6 +3,7 @@
 	"title": "Agents Week 2026 — лекция 5.1: Production Engineering for LLM Agents",
 	"subtitle": "Observability, автоматизация качества, cost/latency engineering, reliability, security и переход от агента к платформе",
 	"source_name": "Agents Week 2026 ｜ Лекция 5.1 Production Engineering for LLM Agents [-84793390_456240040].mp4",
+	"source_stem": "Agents Week 2026 ｜ Лекция 5.1 Production Engineering for LLM Agents [-84793390_456240040]",
 	"note": "Развёрнутый конспект лекции Дани Артамонова о превращении прототипа AI-агента в production-систему для десятков тысяч пользователей. Расшифровка выполнена локально Whisper Turbo на CUDA; инженерные термины и названия инструментов исправлены без изменения таймкодов.",
 	"duration": 4511.34,
 	"tags": [
@@ -307,90 +308,92 @@
 			]
 		}
 	],
+	"materials": {
+		"notes": [
+			{
+				"title": "Production observability",
+				"items": [
+					"Добавьте user_id, agent_id, trace_id и session_id во все logs.",
+					"Измеряйте p95 latency, steps, tokens, dependency success и error rate.",
+					"Создайте dashboards и alerts от текущего baseline."
+				]
+			},
+			{
+				"title": "Quality automation",
+				"items": [
+					"Категоризируйте failures на prompt, tool и architecture.",
+					"Сначала примените simple patterns и code checks.",
+					"Для DSPy переиспользуйте eval dataset и metric.",
+					"Версионируйте optimized prompts через CI."
+				]
+			},
+			{
+				"title": "Cost и reliability",
+				"items": [
+					"Посчитайте unit economics до роста traffic.",
+					"Ограничьте context, steps, time и daily budget.",
+					"Добавьте model router, fallback, parallel calls и caching.",
+					"Возвращайте честный failure при недоступном critical tool."
+				]
+			},
+			{
+				"title": "Security и platform",
+				"items": [
+					"Не передавайте secrets и PII в model context.",
+					"Уберите user identity из tool arguments и проверяйте OAuth scopes в code.",
+					"Выкатывайте рискованные изменения через canary.",
+					"Выносите общую infrastructure только после доказанного повторения."
+				]
+			}
+		],
+		"glossary": [
+			{
+				"term": "Span",
+				"definition": "Атомарная операция trace: model call, tool call, request или response."
+			},
+			{
+				"term": "Trace",
+				"definition": "Полная цепочка spans, относящихся к одному пользовательскому запросу."
+			},
+			{
+				"term": "Session",
+				"definition": "Набор traces одного связанного пользовательского диалога."
+			},
+			{
+				"term": "DSPy",
+				"definition": "Framework для оптимизации prompts по task signature, inference pattern, dataset и metric."
+			},
+			{
+				"term": "Model router",
+				"definition": "Компонент выбора модели по сложности и типу входящего запроса."
+			},
+			{
+				"term": "SLA/SLO",
+				"definition": "Целевое ограничение времени и надёжности обработки пользовательского запроса."
+			},
+			{
+				"term": "Semantic cache",
+				"definition": "Повторное использование ответа на семантически похожий запрос без полного agent cycle."
+			},
+			{
+				"term": "Guardrail",
+				"definition": "Ограничение допустимого input, output или action, уменьшающее риск нежелательного поведения."
+			},
+			{
+				"term": "OAuth",
+				"definition": "Протокол делегированной авторизации с scopes, позволяющий выполнять action от имени пользователя."
+			},
+			{
+				"term": "Canary release",
+				"definition": "Постепенная выкатка на малую долю аудитории с контролем metrics и blast radius."
+			},
+			{
+				"term": "Правило трёх",
+				"definition": "Infrastructure имеет смысл обобщать после повторения одной задачи как минимум в трёх местах."
+			}
+		]
+	},
 	"has_transcript": true,
-	"glossary": [
-		{
-			"term": "Span",
-			"definition": "Атомарная операция trace: model call, tool call, request или response."
-		},
-		{
-			"term": "Trace",
-			"definition": "Полная цепочка spans, относящихся к одному пользовательскому запросу."
-		},
-		{
-			"term": "Session",
-			"definition": "Набор traces одного связанного пользовательского диалога."
-		},
-		{
-			"term": "DSPy",
-			"definition": "Framework для оптимизации prompts по task signature, inference pattern, dataset и metric."
-		},
-		{
-			"term": "Model router",
-			"definition": "Компонент выбора модели по сложности и типу входящего запроса."
-		},
-		{
-			"term": "SLA/SLO",
-			"definition": "Целевое ограничение времени и надёжности обработки пользовательского запроса."
-		},
-		{
-			"term": "Semantic cache",
-			"definition": "Повторное использование ответа на семантически похожий запрос без полного agent cycle."
-		},
-		{
-			"term": "Guardrail",
-			"definition": "Ограничение допустимого input, output или action, уменьшающее риск нежелательного поведения."
-		},
-		{
-			"term": "OAuth",
-			"definition": "Протокол делегированной авторизации с scopes, позволяющий выполнять action от имени пользователя."
-		},
-		{
-			"term": "Canary release",
-			"definition": "Постепенная выкатка на малую долю аудитории с контролем metrics и blast radius."
-		},
-		{
-			"term": "Правило трёх",
-			"definition": "Infrastructure имеет смысл обобщать после повторения одной задачи как минимум в трёх местах."
-		}
-	],
-	"seminar_notes": [
-		{
-			"title": "Production observability",
-			"items": [
-				"Добавьте user_id, agent_id, trace_id и session_id во все logs.",
-				"Измеряйте p95 latency, steps, tokens, dependency success и error rate.",
-				"Создайте dashboards и alerts от текущего baseline."
-			]
-		},
-		{
-			"title": "Quality automation",
-			"items": [
-				"Категоризируйте failures на prompt, tool и architecture.",
-				"Сначала примените simple patterns и code checks.",
-				"Для DSPy переиспользуйте eval dataset и metric.",
-				"Версионируйте optimized prompts через CI."
-			]
-		},
-		{
-			"title": "Cost и reliability",
-			"items": [
-				"Посчитайте unit economics до роста traffic.",
-				"Ограничьте context, steps, time и daily budget.",
-				"Добавьте model router, fallback, parallel calls и caching.",
-				"Возвращайте честный failure при недоступном critical tool."
-			]
-		},
-		{
-			"title": "Security и platform",
-			"items": [
-				"Не передавайте secrets и PII в model context.",
-				"Уберите user identity из tool arguments и проверяйте OAuth scopes в code.",
-				"Выкатывайте рискованные изменения через canary.",
-				"Выносите общую infrastructure только после доказанного повторения."
-			]
-		}
-	],
 	"video": {
 		"provider": "vk",
 		"id": "-84793390_456240040",

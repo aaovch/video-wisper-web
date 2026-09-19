@@ -72,6 +72,19 @@ export interface ReportInfographic {
 	alt: string;
 }
 
+export interface ReportMaterialVisual extends ReportInfographic {
+	kind: 'infographic' | 'exercise-memo' | 'other';
+	label?: string;
+}
+
+/** Единый контракт дополнительных материалов независимо от формата исходного видео. */
+export interface ReportMaterials {
+	notes?: SeminarNoteSection[];
+	exercises?: SeminarExerciseSection[];
+	glossary?: GlossaryItem[];
+	visuals?: ReportMaterialVisual[];
+}
+
 /** Видео встраивается одним из двух способов: */
 export type VideoSource =
 	| {
@@ -110,6 +123,8 @@ export interface Report {
 	source_name: string;
 	/** Каноническая папка output/<source_stem>, достаточная для воспроизводимой пересборки. */
 	source_stem?: string;
+	/** Якоря глав проверены относительно выбранного transcript run. */
+	transcript_anchors_verified?: boolean;
 	/** Ссылка на исходное видео, если отчёт сделан из внешнего источника */
 	source_url?: string;
 	/** Пояснение к разметке */
@@ -120,21 +135,25 @@ export interface Report {
 	tags: string[];
 	/** Главные тезисы всего ролика */
 	overview_theses: string[];
+	/** Связный расширенный пересказ, когда одних тезисов недостаточно. */
+	long_summary?: string;
 	/** Смысловые блоки */
 	chapters: Chapter[];
 	/** Видео для встраивания (опционально) */
 	video?: VideoSource;
-	/** Нетривиальные термины семинара */
+	/** Дополнительные учебные материалы в общем формате. */
+	materials?: ReportMaterials;
+	/** @deprecated Совместимость со старыми отчётами; новые данные пишутся в materials. */
 	glossary?: GlossaryItem[];
-	/** Развёрнутый конспект семинара */
+	/** @deprecated Совместимость со старыми отчётами; новые данные пишутся в materials.notes. */
 	seminar_notes?: SeminarNoteSection[];
-	/** Практические упражнения семинара с таймкодами */
+	/** @deprecated Совместимость со старыми отчётами; новые данные пишутся в materials.exercises. */
 	seminar_exercises?: SeminarExerciseSection[];
 	/** Дополнительные тематические срезы по отчёту */
 	focus_tabs?: FocusTab[];
-	/** Дополнительная инфографика или изображение к отчёту */
+	/** @deprecated Совместимость со старыми отчётами; новые данные пишутся в materials.visuals. */
 	infographic?: ReportInfographic;
-	/** Памятка по упражнениям или дополнительный лист практики */
+	/** @deprecated Совместимость со старыми отчётами; новые данные пишутся в materials.visuals. */
 	exercise_memo?: ReportInfographic;
 	/** Есть ли полная расшифровка (сам текст лежит в static/transcripts/<slug>.json) */
 	has_transcript?: boolean;

@@ -241,7 +241,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_notes",
+            "materials",
+            "notes",
             1
           ],
           "selector": {
@@ -264,7 +265,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             8
@@ -287,7 +289,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             9
@@ -310,7 +313,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             15
@@ -446,7 +450,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             17
@@ -469,7 +474,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             4
@@ -490,7 +496,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             15

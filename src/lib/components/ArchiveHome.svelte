@@ -1,24 +1,18 @@
 <script lang="ts">
-	import SearchMatchNote from '$lib/components/SearchMatchNote.svelte';
-	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
+	import SearchResultItem from '$lib/components/SearchResultItem.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { onMount } from 'svelte';
 	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import { untrack, tick } from 'svelte';
 	import { readSearchState, writeSearchState } from '$lib/search-url-state';
-	import { modalFocus } from '$lib/modal-focus';
 	import { base } from '$app/paths';
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
-	import FileText from 'phosphor-svelte/lib/FileText';
 	import FunnelSimple from 'phosphor-svelte/lib/FunnelSimple';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
-	import Play from 'phosphor-svelte/lib/Play';
-	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import CollectionCard from '$lib/components/CollectionCard.svelte';
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
-	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
+	import SearchFilterDrawer from '$lib/components/SearchFilterDrawer.svelte';
 	import { collections, collectionsForReport, reportGate, type Collection } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 	import {
@@ -43,8 +37,6 @@
 		searchableReportSlugs,
 		visibleSubset
 	} from '$lib/search-visibility';
-	import { highlightParts } from '$lib/text-highlight';
-	import { formatTime } from '$lib/utils';
 
 	let { archived = false }: { archived?: boolean } = $props();
 	const catalogCollections = $derived(
@@ -460,18 +452,14 @@
 	</div>
 </section>
 
-{#if filterSheetOpen && hasFilterGroups}
-	<button class="filter-backdrop" type="button" aria-label="Закрыть фильтры" onclick={closeFilters}></button>
-	<div use:modalFocus class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
-		<SearchFilterPanel
-			groups={filterGroups}
-			{selections}
-			onToggle={toggleFilter}
-			onClear={resetFilters}
-			onClose={closeFilters}
-		/>
-	</div>
-{/if}
+<SearchFilterDrawer
+	open={filterSheetOpen && hasFilterGroups}
+	groups={filterGroups}
+	{selections}
+	onToggle={toggleFilter}
+	onClear={resetFilters}
+	onClose={closeFilters}
+/>
 
 {#if recentReports.length > 0 && query.trim().length < 2}
 	<section class="container recent" aria-label="Недавно открывали">
@@ -521,35 +509,18 @@
 				{#each visibleHits as hit, index (uniqueHitKey(hit))}
 					{@const lockedResult = resultIsLocked(hit)}
 					{@const hitCollection = resultCollection(hit)}
-					<li id={`hit-${index}`} class:kbd-active={activeHit === index} class:locked-result={lockedResult}>
-						<div class="result-copy">
-							{#if lockedResult}
-								<p class="breadcrumb locked-label"><LockKey size={16} weight="regular" aria-hidden="true" /> Видео по паролю{#if hitCollection} · {hitCollection.title}{/if}</p>
-								<h3>{hit.reportTitle}</h3>
-								<p class="snippet locked-copy">Совпадение найдено внутри закрытого материала. Фрагмент и точное место откроются после ввода пароля.</p>
-							{:else}
-								<p class="breadcrumb">{hit.reportTitle}</p>
-								<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
-								<SearchMatchNote {hit} {query} />
-								<p class="snippet">
-									{#each highlightParts(hit.snippet, query) as part}
-										{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-									{/each}
-								</p>
-								<SearchSourceLinks {hit} scope={linkScope} />
-							{/if}
-						</div>
-						<div class="result-actions">
-							{#if lockedResult}
-								<a href={resultHref(hit, hit.start != null)} onclick={(event) => openResult(event, hit, hit.start != null)}><LockKey size={21} weight="thin" aria-hidden="true" />Ввести пароль и открыть<ArrowRight size={20} weight="thin" /></a>
-							{:else}
-								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}><FileText size={21} weight="thin" />{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}<ArrowRight size={20} weight="thin" /></a>
-								{#if hit.start != null}
-									<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}><Play size={21} weight="thin" />Смотреть с {formatTime(hit.start)}<ArrowRight size={20} weight="thin" /></a>
-								{/if}
-							{/if}
-						</div>
-					</li>
+					<SearchResultItem
+						id={`hit-${index}`}
+						{hit}
+						{query}
+						scope={linkScope}
+						layout="archive"
+						locked={lockedResult}
+						lockedCollectionTitle={hitCollection?.title ?? ''}
+						active={activeHit === index}
+						hrefFor={resultHref}
+						onOpen={openResult}
+					/>
 				{/each}
 			</ol>
 			{#if uniqueHits.length > 5}
@@ -705,7 +676,7 @@
 		display: none;
 	}
 
-	@media (hover: none), (max-width: 720px) {
+	@media (hover: none), (max-width: 760px) {
 		.search-kbd {
 			display: none;
 		}
@@ -717,8 +688,6 @@
 	.filter-trigger:hover, .filter-trigger:focus-visible { border-color: var(--accent); color: var(--accent-ink); }
 	.filter-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.filter-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--paper); font-size: 10px; }
-	.filter-backdrop { position: fixed; inset: 0; z-index: 80; width: 100%; height: 100%; border: 0; background: color-mix(in srgb, var(--ink) 28%, transparent); cursor: default; }
-	.filter-sheet { position: fixed; z-index: 81; top: 0; right: 0; width: min(390px, calc(100vw - 28px)); height: 100dvh; overflow-y: auto; padding: 28px; border-left: 1px solid var(--line-strong); background: var(--paper); box-shadow: -18px 0 40px color-mix(in srgb, var(--ink) 12%, transparent); }
 
 	.recent {
 		display: flex;
@@ -788,81 +757,6 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
-	}
-
-	.result-list li {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(230px, 29%);
-		gap: clamp(24px, 4vw, 56px);
-		padding: 24px 0;
-		border-bottom: 1px solid var(--line-strong);
-	}
-
-	/* Активный результат при навигации стрелками */
-	.result-list li.kbd-active {
-		background: color-mix(in srgb, var(--paper-2) 75%, transparent);
-		box-shadow: inset 3px 0 0 var(--accent);
-		padding-left: 14px;
-		padding-right: 8px;
-	}
-
-	.breadcrumb {
-		margin: 0 0 10px;
-		font-size: 14px;
-		color: var(--accent);
-	}
-
-	.locked-label {
-		display: flex;
-		align-items: center;
-		gap: 7px;
-	}
-
-	.locked-result {
-		background: color-mix(in srgb, var(--paper-2) 46%, transparent);
-	}
-
-	.locked-copy {
-		max-width: 58ch;
-	}
-
-	.result-copy h3 {
-		font-size: clamp(24px, 2.4vw, 34px);
-		line-height: 1.1;
-		margin-bottom: 10px;
-	}
-
-	.snippet {
-		max-width: 66ch;
-		margin: 0;
-		font-size: 17px;
-		line-height: 1.58;
-		color: var(--ink-soft);
-	}
-
-	mark {
-		background: color-mix(in srgb, var(--accent) 13%, var(--paper));
-		color: var(--accent-ink);
-		font-weight: 600;
-	}
-
-	.result-actions {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		padding-left: 24px;
-		border-left: 1px solid var(--line-strong);
-	}
-
-
-	.result-actions a {
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr) auto;
-		align-items: center;
-		gap: 10px;
-		padding: 7px 0;
-		font-size: 17px;
-		color: var(--accent);
 	}
 
 	.show-all {
@@ -981,19 +875,6 @@
 		}
 
 		.filter-controls { align-items: flex-start; flex-direction: column; }
-		.filter-sheet { top: auto; bottom: 0; width: 100%; height: auto; max-height: 84dvh; padding: 22px 20px 28px; border-top: 1px solid var(--line-strong); border-left: 0; border-radius: 16px 16px 0 0; box-shadow: 0 -18px 40px color-mix(in srgb, var(--ink) 12%, transparent); }
-
-		.result-list li {
-			grid-template-columns: 1fr;
-			gap: 18px;
-		}
-
-		.result-actions {
-			padding: 14px 0 0;
-			border-top: 1px solid var(--line);
-			border-left: 0;
-		}
-
 		.catalog-grid {
 			grid-template-columns: 1fr;
 		}
@@ -1016,7 +897,7 @@
 		}
 	}
 
-	@media (max-width: 900px) {
+	@media (max-width: 960px) {
 		.results-tools { gap: 9px; }
 	}
 </style>

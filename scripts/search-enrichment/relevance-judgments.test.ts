@@ -34,7 +34,7 @@ it('requires the concrete exercise timestamp and does not credit another item wi
 });
 it('allows one source to cover several requested aspects without counting repeated evidence twice',()=>{
  const q=review.cases.find((c:any)=>c.id==='expanded-multi-3');
- const note=q.judgments.find((j:any)=>j.path[0]==='seminar_notes');
+ const note=q.judgments.find((j:any)=>j.path[0]==='materials'&&j.path[1]==='notes');
  const h={reportSlug:note.reportSlug,kind:'material',zone:'additional',title:note.selector.title};
  expect(evaluateReviewedCase(q,[h,h])).toMatchObject({complete:true,reviewedFacetCoverage5:1});
  const chapter={reportSlug:note.reportSlug,kind:'chapter',chapterIndex:5};

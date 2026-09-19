@@ -6,7 +6,7 @@
     "scope": "All 12 existing multi-source questions plus one game query; same author, source-reviewed, not independent human gold. Previous five cases copied unchanged.",
     "coverage": "Judged sources only; unjudged hits remain unknown. Chapter matches mean access to that chapter, not proof that the displayed snippet answers the question. Timed exercise items require matching start as well as title.",
     "reason": "Separate requested information from an arbitrary number of expected chapters; distinguish concrete exercise items.",
-    "previousReviewSha256": "b08dcf26c5682f44eaf026fdd3e354f3e72c6278eeab08d7369a5536bef5efa5",
+    "previousReviewSha256": "f4735becf704325ff82c6d0705b3b52ce5814a57fc747ace9db2e33f9627ef6a",
     "baseRegistrySha256": "7553329a4383842170ff6a98464d9340629149efef1494ceb9298ec4d8c1cf27"
   },
   "cases": [
@@ -243,7 +243,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_notes",
+            "materials",
+            "notes",
             1
           ],
           "selector": {
@@ -266,7 +267,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             8
@@ -289,7 +291,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             9
@@ -312,7 +315,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             15
@@ -448,7 +452,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             17
@@ -471,7 +476,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             4
@@ -492,7 +498,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             15
@@ -715,7 +722,8 @@
         {
           "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
           "path": [
-            "seminar_notes",
+            "materials",
+            "notes",
             1
           ],
           "selector": {
@@ -755,7 +763,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             11
@@ -854,7 +863,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_notes",
+            "materials",
+            "notes",
             4
           ],
           "selector": {
@@ -875,7 +885,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             15
@@ -952,7 +963,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_notes",
+            "materials",
+            "notes",
             2
           ],
           "selector": {
@@ -993,7 +1005,8 @@
         {
           "reportSlug": "mech-i-bakler-mikrotsikl-1-osnovy",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             7
@@ -1238,7 +1251,8 @@
         {
           "reportSlug": "soedinenie-dlinnyi-mech-lager-noname-1",
           "path": [
-            "seminar_exercises",
+            "materials",
+            "exercises",
             0,
             "items",
             3

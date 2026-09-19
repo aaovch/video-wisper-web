@@ -4,7 +4,7 @@ import { join } from 'node:path';
 const root = process.cwd();
 const reportsDir = join(root, 'src/lib/data/reports');
 const transcriptsDir = join(root, 'src/lib/data/transcripts');
-const collectionsPath = join(root, 'src/lib/data/collections.ts');
+const collectionsPath = join(root, 'src/lib/data/collections.json');
 const requested = process.argv.slice(2).find((arg) => arg !== '--json');
 const jsonOutput = process.argv.includes('--json');
 const errors = [];
@@ -18,18 +18,6 @@ function readJson(path) {
 	return JSON.parse(readFileSync(path, 'utf8'));
 }
 
-function loadCollections() {
-	const source = readFileSync(collectionsPath, 'utf8');
-	const marker = 'export const collections: Collection[] =';
-	const markerIndex = source.indexOf(marker);
-	if (markerIndex < 0) throw new Error('collections export marker not found');
-	const start = source.indexOf('[', markerIndex + marker.length);
-	const end = source.indexOf('\n];', start);
-	if (start < 0 || end < 0) throw new Error('collections array boundary not found');
-	const literal = source.slice(start, end + 2);
-	return Function(`"use strict"; return (${literal});`)();
-}
-
 const reportFiles = readdirSync(reportsDir).filter((name) => name.endsWith('.json')).sort();
 const reports = new Map();
 const sources = new Map();
@@ -37,11 +25,22 @@ for (const file of reportFiles) {
 	const report = readJson(join(reportsDir, file));
 	const fileSlug = file.slice(0, -5);
 	const selectedReport = requested && requested !== '--all' && requested === fileSlug;
-	const strictProvenance = selectedReport || Boolean(report.source_stem);
+	const strictProvenance = selectedReport || report.transcript_anchors_verified === true;
 	reports.set(report.slug, report);
 	if (report.slug !== fileSlug) issue(errors, 'REPORT_FILENAME_MISMATCH', `${file} содержит slug ${report.slug}`);
 	if (!report.title?.trim() || !report.subtitle?.trim()) issue(errors, 'REPORT_TEXT_MISSING', `Нет title/subtitle: ${fileSlug}`);
+	if (!report.source_stem?.trim()) issue(errors, 'SOURCE_STEM_MISSING', fileSlug);
 	if (!Array.isArray(report.overview_theses) || report.overview_theses.length === 0) issue(errors, 'OVERVIEW_MISSING', `Нет overview_theses: ${fileSlug}`);
+	if (report.long_summary !== undefined && !report.long_summary?.trim()) issue(errors, 'LONG_SUMMARY_INVALID', fileSlug);
+	if (report.materials !== undefined && (typeof report.materials !== 'object' || Array.isArray(report.materials))) {
+		issue(errors, 'MATERIALS_INVALID', fileSlug);
+	} else if (report.materials) {
+		for (const field of ['notes', 'exercises', 'glossary', 'visuals']) {
+			if (report.materials[field] !== undefined && !Array.isArray(report.materials[field])) {
+				issue(errors, 'MATERIALS_FIELD_INVALID', `${fileSlug}: ${field}`);
+			}
+		}
+	}
 	if (!Array.isArray(report.chapters) || report.chapters.length === 0) issue(errors, 'CHAPTERS_MISSING', `Нет chapters: ${fileSlug}`);
 	let previousStart = -Infinity;
 	for (const [index, chapter] of (report.chapters ?? []).entries()) {
@@ -74,12 +73,11 @@ for (const file of reportFiles) {
 			}
 		}
 	}
-	if (selectedReport && !report.source_stem) issue(warnings, 'SOURCE_STEM_LEGACY', `Нет source_stem: ${fileSlug}`);
 }
 
 let collections;
 try {
-	collections = loadCollections();
+	collections = readJson(collectionsPath);
 } catch (error) {
 	issue(errors, 'COLLECTIONS_PARSE_FAILED', error.message);
 	collections = [];

@@ -46,7 +46,7 @@ npm run inject-transcripts # legacy: sidecar-транскрипты из output/
 - `src/lib/data/reports/<slug>.json` — «худой» отчёт: без `segments`/`transcript`, с `has_transcript` и `source_stem`.
 - `src/lib/data/transcripts/<slug>.json` — sidecar с сегментами; читают только билд-скрипты.
 - `static/search/` и `static/transcripts/` — генерируются, в git не добавлять.
-- Коллекции: `src/lib/data/collections.ts`; реестр отчётов: `src/lib/data/index.ts`.
+- Данные коллекций: `src/lib/data/collections.json`; типы и функции доступа: `src/lib/data/collections.ts`; реестр отчётов: `src/lib/data/index.ts`.
 
 ## Локальный просмотр
 

@@ -3,6 +3,7 @@
 	"title": "Agents Week 2026 — семинар 4: Agent Evaluation — From Metrics to Managed Quality",
 	"subtitle": "Airline-agent, task suite, strict graders, Iron User и пять итераций LLM judge с измерением kappa и стоимости",
 	"source_name": "Agents Week 2026 ｜ Семинар 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240039].mp4",
+	"source_stem": "Agents Week 2026 ｜ Семинар 4 Agent Evaluation： From Metrics to Managed Quality [-84793390_456240039]",
 	"note": "Практический семинар Сергея Купцова, повторяющий четыре части eval-пайплайна на небольшом airline-agent. Расшифровка выполнена локально Whisper Turbo на CUDA; названия методов, метрик и моделей исправлены без изменения таймкодов.",
 	"duration": 2406.95,
 	"tags": [
@@ -273,84 +274,86 @@
 			]
 		}
 	],
+	"materials": {
+		"notes": [
+			{
+				"title": "Упражнение: minimal harness",
+				"items": [
+					"Сбрасывайте database snapshot перед каждым trial.",
+					"Сохраняйте query, state before/after, tool calls и observations.",
+					"Сначала проверьте один простой trace вручную."
+				]
+			},
+			{
+				"title": "Упражнение: task suite и strict grading",
+				"items": [
+					"Опишите ID, query, tags, difficulty и dialog flag.",
+					"Добавьте expected state и required policy steps.",
+					"Объедините ручные и reviewed LLM-generated tasks."
+				]
+			},
+			{
+				"title": "Упражнение: Iron User",
+				"items": [
+					"Передайте simulator цель, скрытый context и dialog history.",
+					"Возвращайте только естественную user message.",
+					"Установите max_turns и исследуйте cycles как отдельные failures."
+				]
+			},
+			{
+				"title": "Упражнение: итерации judge",
+				"items": [
+					"Создайте human gold labels по 2–5 criteria.",
+					"Измерьте kappa на наивном prompt.",
+					"По очереди добавьте rubric, отдельный call, reasoning и few-shot.",
+					"Для каждой версии сохраните agreement, latency и cost."
+				]
+			}
+		],
+		"glossary": [
+			{
+				"term": "State grader",
+				"definition": "Детерминированная проверка ожидаемого конечного состояния базы или среды."
+			},
+			{
+				"term": "Policy grader",
+				"definition": "Проверка обязательных tool calls и шагов, вытекающих из бизнес-политики."
+			},
+			{
+				"term": "Usefulness",
+				"definition": "Критерий того, решена ли фактическая задача пользователя."
+			},
+			{
+				"term": "Groundedness",
+				"definition": "Соответствие утверждений и tool parameters данным запроса, диалога и environment."
+			},
+			{
+				"term": "Efficiency",
+				"definition": "Отсутствие лишних шагов и разумная стоимость trajectory."
+			},
+			{
+				"term": "Golden labels",
+				"definition": "Эталонная human-разметка, относительно которой калибруется автоматический judge."
+			},
+			{
+				"term": "Cohen’s kappa",
+				"definition": "Метрика agreement judge с человеком с поправкой на случайные совпадения."
+			},
+			{
+				"term": "Few-shot",
+				"definition": "Включение в prompt примеров tasks, expert reasoning и ожидаемых labels."
+			},
+			{
+				"term": "Capability eval",
+				"definition": "Набор сложных задач, показывающий направления развития агента."
+			},
+			{
+				"term": "Regression eval",
+				"definition": "Стабильный suite, предотвращающий возврат уже исправленных ошибок."
+			}
+		]
+	},
 	"has_transcript": true,
-	"glossary": [
-		{
-			"term": "State grader",
-			"definition": "Детерминированная проверка ожидаемого конечного состояния базы или среды."
-		},
-		{
-			"term": "Policy grader",
-			"definition": "Проверка обязательных tool calls и шагов, вытекающих из бизнес-политики."
-		},
-		{
-			"term": "Usefulness",
-			"definition": "Критерий того, решена ли фактическая задача пользователя."
-		},
-		{
-			"term": "Groundedness",
-			"definition": "Соответствие утверждений и tool parameters данным запроса, диалога и environment."
-		},
-		{
-			"term": "Efficiency",
-			"definition": "Отсутствие лишних шагов и разумная стоимость trajectory."
-		},
-		{
-			"term": "Golden labels",
-			"definition": "Эталонная human-разметка, относительно которой калибруется автоматический judge."
-		},
-		{
-			"term": "Cohen’s kappa",
-			"definition": "Метрика agreement judge с человеком с поправкой на случайные совпадения."
-		},
-		{
-			"term": "Few-shot",
-			"definition": "Включение в prompt примеров tasks, expert reasoning и ожидаемых labels."
-		},
-		{
-			"term": "Capability eval",
-			"definition": "Набор сложных задач, показывающий направления развития агента."
-		},
-		{
-			"term": "Regression eval",
-			"definition": "Стабильный suite, предотвращающий возврат уже исправленных ошибок."
-		}
-	],
-	"seminar_notes": [
-		{
-			"title": "Упражнение: minimal harness",
-			"items": [
-				"Сбрасывайте database snapshot перед каждым trial.",
-				"Сохраняйте query, state before/after, tool calls и observations.",
-				"Сначала проверьте один простой trace вручную."
-			]
-		},
-		{
-			"title": "Упражнение: task suite и strict grading",
-			"items": [
-				"Опишите ID, query, tags, difficulty и dialog flag.",
-				"Добавьте expected state и required policy steps.",
-				"Объедините ручные и reviewed LLM-generated tasks."
-			]
-		},
-		{
-			"title": "Упражнение: Iron User",
-			"items": [
-				"Передайте simulator цель, скрытый context и dialog history.",
-				"Возвращайте только естественную user message.",
-				"Установите max_turns и исследуйте cycles как отдельные failures."
-			]
-		},
-		{
-			"title": "Упражнение: итерации judge",
-			"items": [
-				"Создайте human gold labels по 2–5 criteria.",
-				"Измерьте kappa на наивном prompt.",
-				"По очереди добавьте rubric, отдельный call, reasoning и few-shot.",
-				"Для каждой версии сохраните agreement, latency и cost."
-			]
-		}
-	],
 	"video": {
 		"provider": "vk",
 		"id": "-84793390_456240039",

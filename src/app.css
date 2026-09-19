@@ -90,7 +90,7 @@ html[data-theme='dark'] body::before {
 	opacity: 0.35;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
 	body::before {
 		display: none;
 	}

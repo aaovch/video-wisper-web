@@ -3,23 +3,21 @@
 	import { goto, afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
-	import BookOpenText from 'phosphor-svelte/lib/BookOpenText';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
-	import Cards from 'phosphor-svelte/lib/Cards';
 	import Check from 'phosphor-svelte/lib/Check';
 	import Clock from 'phosphor-svelte/lib/Clock';
 	import CopySimple from 'phosphor-svelte/lib/CopySimple';
 	import FilmStrip from 'phosphor-svelte/lib/FilmStrip';
-	import ImageSquare from 'phosphor-svelte/lib/ImageSquare';
 	import Play from 'phosphor-svelte/lib/Play';
-	import TextAlignLeft from 'phosphor-svelte/lib/TextAlignLeft';
 	import ChapterCard from '$lib/components/ChapterCard.svelte';
 	import ChapterNav from '$lib/components/ChapterNav.svelte';
+	import ReportStudyMaterials from '$lib/components/ReportStudyMaterials.svelte';
 	import TranscriptReader from '$lib/components/TranscriptReader.svelte';
 	import ScopedArchiveSearch from '$lib/components/ScopedArchiveSearch.svelte';
 	import VideoPlayer from '$lib/components/VideoPlayer.svelte';
 	import Lock from '$lib/components/Lock.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
+	import { copyText } from '$lib/clipboard';
 	import { reveal } from '$lib/attachments';
 	import { collectionsForReport, reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
@@ -27,6 +25,7 @@
 	import { formatDuration, formatTime } from '$lib/utils';
 	import { highlightParts } from '$lib/text-highlight';
 	import { fragmentAnchor, reportSearchFragments } from '$lib/search-fragments';
+	import { getReportMaterials } from '$lib/report-materials';
 	import { tick } from 'svelte';
 	import type { SearchHit } from '$lib/search';
 	import type { TranscriptChapter } from '$lib/types';
@@ -127,21 +126,12 @@
 	let videoTime = $state(0);
 	let playbackStarted = $state(false);
 	let scrollIndex = $state(0);
-	let transcriptOpen = $state(false);
 	let additionalOpen = $state(false);
 	let overviewExpanded = $state(false);
 	$effect(() => { if (highlightQuery && selectedSearchAnchor === 'overview-title') overviewExpanded = true; });
-	let transcriptCopyState = $state<'idle' | 'copied' | 'error'>('idle');
-	let transcriptCopyResetTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeFocusTab = $state('');
-	type MaterialsTab = 'notes' | 'visuals' | 'glossary' | 'transcript';
-	let materialsTab = $state<MaterialsTab>('notes');
 
-	// Расшифровка не входит в payload страницы — лениво грузим её из static/.
 	const hasTranscript = $derived(Boolean(report.has_transcript));
-	let transcriptText = $state('');
-	let transcriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
-	let transcriptPromise: Promise<string> | null = null;
 	let transcriptChapters = $state<TranscriptChapter[]>([]);
 	let chapterTranscriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
 	let chapterTranscriptPromise: Promise<TranscriptChapter[]> | null = null;
@@ -149,28 +139,6 @@
 	let transcriptReturnTarget: HTMLButtonElement | null = null;
 	let readerInitialTime = $state(0);
 	let readerAutoplay = $state(false);
-
-	function ensureTranscript(): Promise<string> {
-		if (!browser || !hasTranscript) return Promise.resolve('');
-		if (transcriptPromise) return transcriptPromise;
-		transcriptLoadState = 'loading';
-		transcriptPromise = fetch(`${base}/transcripts/${report.slug}.json`)
-			.then((response) => {
-				if (!response.ok) throw new Error(`HTTP ${response.status}`);
-				return response.json();
-			})
-			.then((data: { transcript?: string }) => {
-				transcriptText = data.transcript ?? '';
-				transcriptLoadState = 'ready';
-				return transcriptText;
-			})
-			.catch((error) => {
-				transcriptPromise = null;
-				transcriptLoadState = 'error';
-				throw error;
-			});
-		return transcriptPromise;
-	}
 
 	function ensureTranscriptChapters(): Promise<TranscriptChapter[]> {
 		if (!browser || !hasTranscript) return Promise.resolve([]);
@@ -234,386 +202,33 @@
 		playbackStarted = true;
 	}
 
-	async function copyTranscript(event: MouseEvent) {
-		event.preventDefault();
-		event.stopPropagation();
-		if (!browser || !hasTranscript) return;
-
-		try {
-			const text = await ensureTranscript();
-			if (!text) throw new Error('Empty transcript');
-			let copied = false;
-			if (navigator.clipboard?.writeText) {
-				try {
-					await navigator.clipboard.writeText(text);
-					copied = true;
-				} catch {
-					// Встроенный API может быть заблокирован настройками браузера — используем резервный способ ниже.
-				}
-			}
-
-			if (!copied) {
-				const textarea = document.createElement('textarea');
-				textarea.value = text;
-				textarea.setAttribute('readonly', '');
-				textarea.style.position = 'fixed';
-				textarea.style.opacity = '0';
-				document.body.appendChild(textarea);
-				textarea.select();
-				copied = document.execCommand('copy');
-				textarea.remove();
-			}
-
-			if (!copied) throw new Error('Unable to copy transcript');
-			transcriptCopyState = 'copied';
-		} catch {
-			transcriptCopyState = 'error';
-		}
-
-		if (transcriptCopyResetTimer) clearTimeout(transcriptCopyResetTimer);
-		transcriptCopyResetTimer = setTimeout(() => (transcriptCopyState = 'idle'), 2200);
-	}
-
-	// --- Масштаб шрифта расшифровки: длинные тексты читают по-разному ---
-	const TRANSCRIPT_SCALE_KEY = 'transcript-scale';
-	function readTranscriptScale(): number {
-		try {
-			const saved = Number(localStorage.getItem(TRANSCRIPT_SCALE_KEY));
-			if (saved >= 0.8 && saved <= 1.3) return saved;
-		} catch {
-			// нет доступа к localStorage — используем базовый размер
-		}
-		return 1;
-	}
-	let transcriptScale = $state(browser ? readTranscriptScale() : 1);
-
-	function adjustTranscriptScale(delta: number) {
-		transcriptScale = Math.round(Math.min(1.3, Math.max(0.8, transcriptScale + delta)) * 10) / 10;
-		try {
-			localStorage.setItem(TRANSCRIPT_SCALE_KEY, String(transcriptScale));
-		} catch {
-			// не критично
-		}
-	}
-
 	// --- Копирование тезиса цитатой ---
 	let copiedQuote = $state('');
 	let quoteResetTimer: ReturnType<typeof setTimeout> | undefined;
 
 	async function copyQuote(text: string) {
 		const quote = `«${text}» — ${report.title}`;
-		let copied = false;
-		if (navigator.clipboard?.writeText) {
-			try {
-				await navigator.clipboard.writeText(quote);
-				copied = true;
-			} catch {
-				// clipboard может быть запрещён — фолбэк ниже
-			}
-		}
-		if (!copied) {
-			const textarea = document.createElement('textarea');
-			textarea.value = quote;
-			textarea.setAttribute('readonly', '');
-			textarea.style.position = 'fixed';
-			textarea.style.opacity = '0';
-			document.body.appendChild(textarea);
-			textarea.select();
-			copied = document.execCommand('copy');
-			textarea.remove();
-		}
+		const copied = await copyText(quote);
 		if (!copied) return;
 		copiedQuote = text;
 		clearTimeout(quoteResetTimer);
 		quoteResetTimer = setTimeout(() => (copiedQuote = ''), 1800);
 	}
 
-	const seminarGlossary = [
-		{
-			term: 'Тэноути',
-			definition: 'работа кистей на рукояти: вкручивание и сжатие для контроля клинка.'
-		},
-		{
-			term: 'Заншин',
-			definition: 'боеготовность после первого действия, способность сразу реагировать дальше.'
-		},
-		{
-			term: 'Позиционный атакующий',
-			definition: 'боец, который давит вперед и ждет момент для сильного действия.'
-		},
-		{
-			term: 'Маневровый атакующий',
-			definition: 'боец, который готовит атаку финтами, сменами линий, гвардий и движением.'
-		},
-		{
-			term: 'Позиционный оборонительный',
-			definition: 'боец, который держит позицию, экономит движение и провоцирует раннюю атаку.'
-		},
-		{
-			term: 'Маневровый оборонительный',
-			definition: 'боец, который защищается через движение, переключение и встречные действия.'
-		},
-		{
-			term: 'Двигательный образ',
-			definition: 'внутреннее ощущение и схема правильно выполненного движения.'
-		},
-		{
-			term: 'Сигнал открытия',
-			definition: 'момент, по которому атакующий понимает, что можно входить.'
-		},
-		{
-			term: 'Ложное открытие',
-			definition: 'открытие без подходящей дистанции или времени для безопасной атаки.'
-		}
-	];
-
-	const seminarNotes = [
-		{
-			title: 'Главная идея занятия',
-			items: [
-				'Петр Васильев начинает курс с темы «Атака проще не бывает»: простая нисходящая атака сверху по голове или рукам.',
-				'Смысл занятия не в коллекции приемов, а в качестве одного надежного действия. В бою лучше иметь 2-3 сильные заготовки, чем много редких техник, которые почти не доходят до применения.',
-				'Сложные действия нужны позже: они становятся продолжением сильной базы, а не заменяют ее.'
-			]
-		},
-		{
-			title: 'Разминка и подготовка тела',
-			items: [
-				'Разминка строится вокруг осанки, вертикальных прыжков и работы на одной ноге через воображаемый бросок диска.',
-				'Цель - не просто разогреться, а подготовить суставы, которые чаще всего страдают у фехтовальщика: плечо, локоть, запястье, колено и голеностоп.',
-				'С самого начала Петр связывает технику с безопасностью: хороший удар должен быть не только результативным, но и устойчивым для тела.'
-			]
-		},
-		{
-			title: 'Что можно успеть за короткий курс',
-			items: [
-				'За две недели и несколько занятий нельзя полностью сформировать новый навык, но можно собрать правильный двигательный образ.',
-				'Этот образ должен быть конкретным: как стоят ноги, как идут руки, что делают кисти, где плечи, как завершается удар.',
-				'Если спортсмен запомнит правильную схему и будет возвращаться к ней на тренировках, со временем она станет настоящим навыком.'
-			]
-		},
-		{
-			title: 'Сборка нисходящего удара',
-			items: [
-				'Базовая форма удара собирается по деталям: фронтальная стойка, прямые руки, сходящиеся предплечья и вкручивание кистей в рукоять.',
-				'Тэноути нужно для контроля клинка после попадания. Если пальцы не сжаты и кисти не создают упор, меч отскакивает назад и открывает фехтовальщика для продолжения соперника.',
-				'Плечи не должны подниматься к ушам. Кулаки могут быть выше плеч, но нагрузку нужно уводить в широчайшие мышцы спины, а не в мелкие структуры плечевого сустава.',
-				'Корпус остается собранным: удар идет далеко вперед, но без провала, лишнего прогиба и потери боеготовности.'
-			]
-		},
-		{
-			title: 'Линия, дистанция и заншин',
-			items: [
-				'Удар должен идти по прямой и без лишнего замаха. Чем проще линия, тем меньше времени сопернику на чтение атаки.',
-				'Вход в атаку начинается не от желания «ударить сейчас», а от сигнала открытия: дистанция, момент и положение соперника должны позволять безопасно войти.',
-				'Ложное открытие опасно: цель вроде бы видна, но дистанции или времени для нормальной атаки нет.',
-				'После удара нужен заншин - готовность продолжать бой: защититься, взять соединение, ответить на движение соперника или выйти из опасной дистанции.'
-			]
-		},
-		{
-			title: 'Атака как дилемма',
-			items: [
-				'Хорошая атака ставит соперника перед неприятным выбором. Если он бездействует, его наказывают прямой атакой. Если реагирует, атакующий использует подготовленное продолжение.',
-				'Поэтому прием не должен быть одиночным жестом. Он работает как ситуация, где спортсмен заранее понимает возможные реакции соперника.',
-				'Упражнения с монитором учат видеть настоящий момент входа, не кидаться в подарок и не путать открытие с ловушкой.'
-			]
-		},
-		{
-			title: 'Переход к индивидуальному стилю',
-			items: [
-				'После базовой атаки занятие переходит к вопросу: какие действия стоит тренировать именно этому спортсмену.',
-				'Петр предлагает простую карту из двух осей: атака или защита, позиционность или маневренность.',
-				'Это не ярлык и не окончательный диагноз. Схема нужна, чтобы выбрать приоритеты: что усиливает конкретного бойца, а что будет тратить тренировочное время без большого эффекта.'
-			]
-		},
-		{
-			title: 'Четыре рабочих типа',
-			items: [
-				'Позиционный атакующий давит вперед, бережет простоту и реализует сильные удары через темп, прессинг и точный вход.',
-				'Маневровый атакующий обманывает соперника с помощью финтов, смены гвардий, работы клинком и перемещения.',
-				'Позиционный оборонительный экономит движение, держит дистанцию, провоцирует ранний вход и наказывает защитой-ответом или контратакой с защитой.',
-				'Маневровый оборонительный защищается через отход, смену дистанции и перехват инициативы, а затем может сам перейти в атаку.'
-			]
-		},
-		{
-			title: 'Что тренировать разным типам',
-			items: [
-				'Атакующим типам важно не распыляться: лучше довести до высокого качества свои главные входы и способы подготовки.',
-				'Оборонительным типам важно не превращать защиту в пассивность: нужны провокации, ложные открытия, точный момент ответа и готовность забрать инициативу.',
-				'Маневровым типам полезнее больше работать с перемещением, сменой картины, клинком и переключениями; позиционным - с дистанцией, терпением, моментом и надежностью основного действия.'
-			]
-		},
-		{
-			title: 'Захват и соединение',
-			items: [
-				'Захват появляется как инструмент для маневрового бойца: он снимает угрозу уколом и заставляет соперника решить, что делать дальше.',
-				'Если соперник не реагирует, захват становится подготовкой собственной атаки.',
-				'Если соперник атакует в ответ на захват, дистанция и соединение должны дать возможность защититься и ответить.'
-			]
-		},
-		{
-			title: 'Финальный вывод',
-			items: [
-				'База обязательна для всех: безопасная механика удара, контроль дистанции, защита, ответ и боеготовность после действия.',
-				'После базы тренировки стоит индивидуализировать. Нельзя одинаково хорошо и одинаково быстро прокачивать все шаги, удары, защиты и гвардии, поэтому нужен приоритет.',
-				'Главный ориентир - что делает сильнее именно этого спортсмена: его антропометрия, характер и базовая реакция на стресс.',
-				'Стиль не высечен в камне, он может меняться со временем, но выбранная схема помогает понятнее тренироваться уже сейчас.'
-			]
-		}
-	];
-
-	const seminarExercises = [
-		{
-			title: 'Разминка',
-			items: [
-				{ start: 280, text: 'Вертикальные прыжки из стойки: корпус ровный, прыжок вверх без лишнего прогиба.' },
-				{ start: 313, text: 'Серия прыжков: три низких и один высокий, толчок икрами без сгибания коленей.' },
-				{ start: 344, text: 'Прыжки через меч: старт у острия, прыжок в сторону со сменой рук и мягким приседом.' }
-			]
-		},
-		{
-			title: 'Сборка удара',
-			items: [
-				{ start: 548, text: 'Формирование двигательного образа: фронтальная стойка, меч у корпуса, руки выпрямляются вперед.' },
-				{ start: 755, text: 'Изоляция плеча без меча: вытянутой рукой стиснуть руку в подмышке и опустить плечо вниз.' },
-				{ start: 814, text: 'Удар с контролем плеча: кулак выше плеча, плечо не тянется к уху, крестовина на уровне шеи.' },
-				{ start: 1010, text: 'Медленные удары по прямой линии: самостоятельно работать на форму, а не на скорость.' }
-			]
-		},
-		{
-			title: 'Дистанция и сигнал',
-			items: [
-				{ start: 1472, text: 'Упражнение на истинное и ложное открытие: атаковать только когда есть и дистанция, и открытие.' },
-				{ start: 1608, text: 'Практика после объяснения: ученик идет вперед, монитор удерживает дистанцию и дает разные сигналы.' }
-			]
-		},
-		{
-			title: 'Атакующие типы',
-			items: [
-				{ start: 2560, text: 'Позиционный атакующий: прессинг, ожидание своей дистанции и атака только на сигнал открытия.' },
-				{ start: 2740, text: 'Работа позиционного атакующего: после отскока сразу возвращаться вперед, как на растянутой резинке.' },
-				{ start: 3349, text: 'Маневровый атакующий: готовить вход сменой гвардии, финтом, захватом или работой клинком.' },
-				{ start: 3426, text: 'Усложнение: монитор иногда сам начинает атаку, ученик переключается на защиту и ответ.' }
-			]
-		},
-		{
-			title: 'Оборонительные типы',
-			items: [
-				{ start: 3875, text: 'Позиционная оборона: монитор идет вперед и дает два сигнала; ученик выбирает защиту-ответ или контратаку с защитой.' },
-				{ start: 4228, text: 'Ключевое упражнение обороны: повторить со средней скоростью и честными сигналами монитора.' },
-				{ start: 4834, text: 'Маневровая оборона: удерживать дистанцию, ловить смену направления и при необходимости забирать инициативу.' }
-			]
-		},
-		{
-			title: 'Захват и соединение',
-			items: [
-				{ start: 5039, text: 'Дополнение для сильных: на отходе работать захватом и соединением.' },
-				{ start: 5105, text: 'Практика захвата: монитор идет по центральной линии, ученик отходит, берет захват и читает реакцию.' }
-			]
-		},
-		{
-			title: 'Заминка',
-			items: [
-				{ start: 5353, text: 'Меч за спину: растяжка трицепса с ровной спиной.' },
-				{ start: 5413, text: 'Наклон к мечу на прямых ногах: задняя поверхность бедра.' },
-				{ start: 5444, text: '«Зомби / качок»: округление и раскрытие спины.' },
-				{ start: 5493, text: 'Прокат на колене вперед-назад: тазобедренный сустав и задняя поверхность бедра.' }
-			]
-		}
-	];
-
-	const reportGlossary = $derived(
-		report.glossary ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarGlossary : [])
-	);
-	const reportNotes = $derived(
-		report.seminar_notes ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarNotes : [])
-	);
-	const reportExercises = $derived(
-		report.seminar_exercises ?? (report.slug === 'gruppa-a-1-vvodnaya' ? seminarExercises : [])
-	);
+	const reportMaterials = $derived(getReportMaterials(report));
+	const reportExercises = $derived(reportMaterials.exercises);
 	const reportFocusTabs = $derived(report.focus_tabs ?? []);
-	const reportInfographic = $derived(
-		report.infographic ??
-			(report.slug === 'gruppa-a-1-vvodnaya'
-				? {
-						src: 'media/gruppa-a-1-vvodnaya-infographic.png',
-						alt: 'Инфографика семинара про индивидуальный стиль бойца'
-					}
-				: undefined)
-	);
-	const reportExerciseMemo = $derived(report.exercise_memo);
-	const reportVisualCount = $derived(
-		Number(Boolean(reportInfographic)) + Number(Boolean(reportExerciseMemo))
-	);
 	const hasStudyMaterials = $derived(
-		reportNotes.length > 0 ||
-			reportVisualCount > 0 ||
-			reportGlossary.length > 0
-	);
-	const activeMaterialsTab = $derived(
-		materialsTab === 'notes' && reportNotes.length > 0
-			? 'notes'
-			: materialsTab === 'visuals' && reportVisualCount > 0
-				? 'visuals'
-				: materialsTab === 'glossary' && reportGlossary.length > 0
-					? 'glossary'
-					: materialsTab === 'transcript' && hasTranscript
-						? 'transcript'
-						: reportNotes.length > 0
-							? 'notes'
-							: reportVisualCount > 0
-								? 'visuals'
-								: reportGlossary.length > 0
-									? 'glossary'
-									: 'transcript'
+		reportMaterials.notes.length > 0 ||
+			reportMaterials.visuals.length > 0 ||
+			reportMaterials.glossary.length > 0
 	);
 	const hasAdditional = $derived(
 		reportFocusTabs.length > 0 ||
 			reportExercises.length > 0 ||
-			reportNotes.length > 0 ||
-			reportGlossary.length > 0 ||
-			Boolean(reportInfographic) ||
-			Boolean(reportExerciseMemo) ||
+			hasStudyMaterials ||
 			hasTranscript
 	);
-
-	// Пользователь открыл вкладку/спойлер расшифровки — подтягиваем текст.
-	$effect(() => {
-		if (!browser || !hasTranscript) return;
-		if (activeMaterialsTab === 'transcript' || transcriptOpen) {
-			void ensureTranscript().catch(() => {});
-		}
-	});
-
-	function availableMaterialsTabs(): MaterialsTab[] {
-		const tabs: MaterialsTab[] = [];
-		if (reportNotes.length > 0) tabs.push('notes');
-		if (reportVisualCount > 0) tabs.push('visuals');
-		if (reportGlossary.length > 0) tabs.push('glossary');
-		if (hasTranscript) tabs.push('transcript');
-		return tabs;
-	}
-
-	function selectMaterialsTab(tab: MaterialsTab) {
-		materialsTab = tab;
-	}
-
-	function handleMaterialsTabKeydown(event: KeyboardEvent) {
-		if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-		const tabs = availableMaterialsTabs();
-		if (tabs.length < 2) return;
-		event.preventDefault();
-		const currentIndex = Math.max(0, tabs.indexOf(activeMaterialsTab));
-		const nextIndex =
-			event.key === 'Home'
-				? 0
-				: event.key === 'End'
-					? tabs.length - 1
-					: (currentIndex + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-		const nextTab = tabs[nextIndex];
-		materialsTab = nextTab;
-		queueMicrotask(() => document.getElementById(`materials-tab-${nextTab}`)?.focus());
-	}
 
 	$effect(() => {
 		if (!reportFocusTabs.length) {
@@ -855,23 +470,6 @@
 			</div>
 
 			<div class="top-sections">
-			{#snippet fontControls()}
-				<span class="font-controls" role="group" aria-label="Размер шрифта расшифровки">
-					<button
-						type="button"
-						onclick={() => adjustTranscriptScale(-0.1)}
-						disabled={transcriptScale <= 0.8}
-						aria-label="Уменьшить шрифт"
-					>A−</button>
-					<button
-						type="button"
-						onclick={() => adjustTranscriptScale(0.1)}
-						disabled={transcriptScale >= 1.3}
-						aria-label="Увеличить шрифт"
-					>A+</button>
-				</span>
-			{/snippet}
-
 			{#snippet thesisItem(thesis: string)}
 				<li>
 					<span class="thesis-text">{#each highlightParts(thesis, highlightQuery) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</span>
@@ -898,6 +496,13 @@
 						<summary>Все тезисы <CaretDown size={16} /></summary>
 						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}</ul>
 					</details>
+				{/if}
+				{#if report.long_summary}
+					<div class="long-summary">
+						{#each report.long_summary.split(/\n\s*\n/) as paragraph (paragraph)}
+							<p>{paragraph}</p>
+						{/each}
+					</div>
 				{/if}
 				<span class="sr-only" role="status" aria-live="polite">{copiedQuote ? 'Тезис скопирован' : ''}</span>
 			</section>
@@ -1019,199 +624,8 @@
 				</section>
 			{/if}
 
-			{#if hasStudyMaterials}
-				<section class="study-materials reveal extra-block" aria-label="Материалы лекции" {@attach reveal()}>
-					<div class="materials-tablist" role="tablist" aria-label="Разделы материалов">
-						{#if reportNotes.length > 0}
-							<button
-								id="materials-tab-notes"
-								type="button"
-								role="tab"
-								class:active={activeMaterialsTab === 'notes'}
-								aria-selected={activeMaterialsTab === 'notes'}
-								aria-controls="materials-panel-notes"
-								tabindex={activeMaterialsTab === 'notes' ? 0 : -1}
-								onclick={() => selectMaterialsTab('notes')}
-								onkeydown={handleMaterialsTabKeydown}
-							>
-								<BookOpenText size={17} aria-hidden="true" />
-								<span>Конспект</span>
-								<span class="materials-tab-count">{reportNotes.length}</span>
-							</button>
-						{/if}
-						{#if reportVisualCount > 0}
-							<button
-								id="materials-tab-visuals"
-								type="button"
-								role="tab"
-								class:active={activeMaterialsTab === 'visuals'}
-								aria-selected={activeMaterialsTab === 'visuals'}
-								aria-controls="materials-panel-visuals"
-								tabindex={activeMaterialsTab === 'visuals' ? 0 : -1}
-								onclick={() => selectMaterialsTab('visuals')}
-								onkeydown={handleMaterialsTabKeydown}
-							>
-								<ImageSquare size={17} aria-hidden="true" />
-								<span>{reportVisualCount === 1 ? 'Памятка' : 'Памятки'}</span>
-								{#if reportVisualCount > 1}<span class="materials-tab-count">{reportVisualCount}</span>{/if}
-							</button>
-						{/if}
-						{#if reportGlossary.length > 0}
-							<button
-								id="materials-tab-glossary"
-								type="button"
-								role="tab"
-								class:active={activeMaterialsTab === 'glossary'}
-								aria-selected={activeMaterialsTab === 'glossary'}
-								aria-controls="materials-panel-glossary"
-								tabindex={activeMaterialsTab === 'glossary' ? 0 : -1}
-								onclick={() => selectMaterialsTab('glossary')}
-								onkeydown={handleMaterialsTabKeydown}
-							>
-								<Cards size={17} aria-hidden="true" />
-								<span>Глоссарий</span>
-								<span class="materials-tab-count">{reportGlossary.length}</span>
-							</button>
-						{/if}
-						{#if hasTranscript}
-							<button
-								id="materials-tab-transcript"
-								type="button"
-								role="tab"
-								class:active={activeMaterialsTab === 'transcript'}
-								aria-selected={activeMaterialsTab === 'transcript'}
-								aria-controls="materials-panel-transcript"
-								tabindex={activeMaterialsTab === 'transcript' ? 0 : -1}
-								onclick={() => selectMaterialsTab('transcript')}
-								onkeydown={handleMaterialsTabKeydown}
-							>
-								<TextAlignLeft size={17} aria-hidden="true" />
-								<span>Расшифровка</span>
-							</button>
-						{/if}
-					</div>
-
-					{#if activeMaterialsTab === 'notes'}
-						<div id="materials-panel-notes" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-notes">
-							<header class="materials-panel-head">
-								<span class="materials-panel-kicker"><BookOpenText size={16} aria-hidden="true" /> Короткий конспект</span>
-								<span>{reportNotes.length} {reportNotes.length === 1 ? 'раздел' : reportNotes.length < 5 ? 'раздела' : 'разделов'}</span>
-							</header>
-							<div class="materials-notes-grid">
-								{#each reportNotes as section, i (section.title)}
-									<article class="materials-note-card">
-										<header><span>{String(i + 1).padStart(2, '0')}</span><h3>{section.title}</h3></header>
-										<ul>{#each section.items as item}<li>{item}</li>{/each}</ul>
-									</article>
-								{/each}
-							</div>
-						</div>
-					{:else if activeMaterialsTab === 'visuals'}
-						<div id="materials-panel-visuals" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-visuals">
-							<header class="materials-panel-head">
-								<span class="materials-panel-kicker"><ImageSquare size={16} aria-hidden="true" /> Визуальные памятки</span>
-								<span>{reportVisualCount} {reportVisualCount === 1 ? 'материал' : 'материала'}</span>
-							</header>
-							<div class="materials-visuals">
-								{#if reportInfographic}
-									<figure class="materials-visual">
-										{#if reportVisualCount > 1}<figcaption>Инфографика</figcaption>{/if}
-										<a href={`${base}/${reportInfographic.src}`} target="_blank" rel="noreferrer" aria-label="Открыть инфографику в полном размере">
-											<img src={`${base}/${reportInfographic.src}`} alt={reportInfographic.alt} loading="lazy" decoding="async" />
-										</a>
-									</figure>
-								{/if}
-								{#if reportExerciseMemo}
-									<figure class="materials-visual">
-										{#if reportVisualCount > 1}<figcaption>Памятка по упражнениям</figcaption>{/if}
-										<a href={`${base}/${reportExerciseMemo.src}`} target="_blank" rel="noreferrer" aria-label="Открыть памятку по упражнениям в полном размере">
-											<img src={`${base}/${reportExerciseMemo.src}`} alt={reportExerciseMemo.alt} loading="lazy" decoding="async" />
-										</a>
-									</figure>
-								{/if}
-							</div>
-						</div>
-					{:else if activeMaterialsTab === 'glossary'}
-						<div id="materials-panel-glossary" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-glossary">
-							<header class="materials-panel-head">
-								<span class="materials-panel-kicker"><Cards size={16} aria-hidden="true" /> Термины и определения</span>
-								<span>{reportGlossary.length} терминов</span>
-							</header>
-							<dl class="materials-glossary-grid">
-								{#each reportGlossary as item (item.term)}
-									<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>
-								{/each}
-							</dl>
-						</div>
-					{:else if hasTranscript}
-						<div id="materials-panel-transcript" class="materials-panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
-							<header class="materials-panel-head">
-								<span class="materials-panel-kicker"><TextAlignLeft size={16} aria-hidden="true" /> Полный текст лекции</span>
-								{@render fontControls()}
-								<button
-									type="button"
-									class:copied={transcriptCopyState === 'copied'}
-									class="copy-transcript"
-									aria-label={transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку'}
-									title={transcriptCopyState === 'copied' ? 'Скопировано' : transcriptCopyState === 'error' ? 'Не удалось скопировать' : 'Скопировать расшифровку'}
-									onclick={copyTranscript}
-								>
-									{#if transcriptCopyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}
-								</button>
-								<span class="copy-status" role="status" aria-live="polite">
-									{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
-								</span>
-							</header>
-							<div class="materials-transcript" style="--transcript-scale: {transcriptScale}">
-								{#if transcriptLoadState === 'ready'}
-									<p>{transcriptText}</p>
-								{:else if transcriptLoadState === 'error'}
-									<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
-								{:else}
-									<p class="transcript-status">Загрузка расшифровки…</p>
-								{/if}
-							</div>
-						</div>
-					{/if}
-				</section>
-			{/if}
-
-			{#if hasTranscript && !hasStudyMaterials}
-				<section class="transcript reveal extra-block" {@attach reveal()}>
-					<details bind:open={transcriptOpen}>
-						<summary>
-							<span>Полная расшифровка</span>
-							<span class="transcript-actions">
-								<button
-									type="button"
-									class:copied={transcriptCopyState === 'copied'}
-									class="copy-transcript"
-									aria-label={transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку'}
-									title={transcriptCopyState === 'copied' ? 'Скопировано' : transcriptCopyState === 'error' ? 'Не удалось скопировать' : 'Скопировать расшифровку'}
-									onclick={copyTranscript}
-								>
-									{#if transcriptCopyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}
-								</button>
-								<CaretDown class="transcript-caret" size={17} />
-							</span>
-							<span class="copy-status" role="status" aria-live="polite">
-								{transcriptCopyState === 'copied' ? 'Расшифровка скопирована' : transcriptCopyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}
-							</span>
-						</summary>
-						{#if transcriptOpen}
-							<div class="transcript-toolbar">{@render fontControls()}</div>
-							<div class="transcript-body" style="--transcript-scale: {transcriptScale}">
-								{#if transcriptLoadState === 'ready'}
-									<p>{transcriptText}</p>
-								{:else if transcriptLoadState === 'error'}
-									<p class="transcript-status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>
-								{:else}
-									<p class="transcript-status">Загрузка расшифровки…</p>
-								{/if}
-							</div>
-						{/if}
-					</details>
-				</section>
+			{#if hasStudyMaterials || hasTranscript}
+				<ReportStudyMaterials slug={report.slug} materials={reportMaterials} {hasTranscript} />
 			{/if}
 						</div>
 					</details>
@@ -1274,7 +688,7 @@
 	.fragment-navigation span { min-width: 130px; text-align: center; font-family: var(--font-ui); font-size: 12px; }
 	.search-context .search-query { flex: 1 1 180px; }
 	.search-context button:disabled { opacity: .45; cursor: default; }
-	@media (max-width: 600px) {
+	@media (max-width: 760px) {
 		.search-context { gap: 6px !important; padding: 8px !important; }
 		.search-context .search-query { flex-basis: 100%; padding-right: 44px; min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 		.fragment-navigation { width: 100%; justify-content: space-between; gap: 4px; }
@@ -1443,261 +857,8 @@
 	.more-theses summary :global(svg) { transition: transform 0.2s ease; }
 	.more-theses[open] summary :global(svg) { transform: rotate(180deg); }
 	.more-theses ul { margin-left: 0; }
-
-	.study-materials {
-		margin-top: 14px;
-		border: 1px solid var(--line-strong);
-		border-radius: 12px;
-		overflow: hidden;
-		background: color-mix(in srgb, var(--paper-2) 48%, var(--paper));
-		box-shadow: 0 16px 36px color-mix(in srgb, var(--ink) 5%, transparent);
-	}
-
-	.materials-tablist {
-		display: flex;
-		gap: 4px;
-		padding: 6px;
-		border-bottom: 1px solid var(--line);
-		background: color-mix(in srgb, var(--paper-2) 74%, transparent);
-		overflow-x: auto;
-		scrollbar-width: none;
-	}
-
-	.materials-tablist::-webkit-scrollbar { display: none; }
-
-	.materials-tablist button {
-		flex: 0 0 auto;
-		min-height: 38px;
-		padding: 8px 12px;
-		border: 1px solid transparent;
-		border-radius: 7px;
-		background: transparent;
-		color: var(--ink-faint);
-		font: inherit;
-		font-size: 13px;
-		display: inline-flex;
-		align-items: center;
-		gap: 7px;
-		cursor: pointer;
-		transition:
-			background-color 0.18s ease,
-			border-color 0.18s ease,
-			color 0.18s ease;
-	}
-
-	.materials-tablist button:hover {
-		color: var(--ink);
-		background: color-mix(in srgb, var(--paper) 72%, transparent);
-	}
-
-	.materials-tablist button:focus-visible {
-		outline: 2px solid var(--accent);
-		outline-offset: 1px;
-	}
-
-	.materials-tablist button.active {
-		border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
-		background: var(--paper);
-		color: var(--accent);
-		box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
-	}
-
-	.materials-tablist button :global(svg) { flex: 0 0 auto; }
-
-	.materials-tab-count {
-		min-width: 20px;
-		padding: 1px 6px;
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--ink-faint) 10%, transparent);
-		font-family: var(--font-mono);
-		font-size: 10px;
-		line-height: 1.5;
-		text-align: center;
-	}
-
-	.materials-tablist button.active .materials-tab-count {
-		background: color-mix(in srgb, var(--accent) 12%, transparent);
-	}
-
-	.materials-panel {
-		min-width: 0;
-	}
-
-	.materials-panel-head {
-		min-height: 56px;
-		padding: 16px 18px;
-		border-bottom: 1px solid var(--line);
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		color: var(--ink-faint);
-		font-family: var(--font-mono);
-		font-size: 10px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-	}
-
-	.materials-panel-kicker {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-		margin-right: auto;
-		color: var(--ink);
-		font-weight: 600;
-	}
-
-	.materials-panel-kicker :global(svg) { color: var(--accent); }
-
-	.materials-visuals {
-		display: grid;
-		gap: 1px;
-		background: var(--line);
-	}
-
-	.materials-visual {
-		min-width: 0;
-		margin: 0;
-		padding: 18px;
-		background: var(--paper);
-	}
-
-	.materials-visual figcaption {
-		margin-bottom: 12px;
-		color: var(--ink);
-		font-size: 15px;
-		font-weight: 600;
-	}
-
-	.materials-visual a {
-		display: block;
-		border-radius: 8px;
-	}
-
-	.materials-visual a:focus-visible {
-		outline: 2px solid var(--accent);
-		outline-offset: 3px;
-	}
-
-	.materials-visual img {
-		display: block;
-		width: 100%;
-		height: auto;
-		border: 1px solid var(--line);
-		border-radius: 8px;
-		background: #fff;
-	}
-
-	.materials-notes-grid,
-	.materials-glossary-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1px;
-		margin: 0;
-		padding: 0;
-		background: var(--line);
-	}
-
-	.materials-note-card,
-	.materials-glossary-grid > div {
-		min-width: 0;
-		padding: 20px;
-		background: var(--paper);
-	}
-
-	.materials-note-card header {
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr);
-		align-items: start;
-		gap: 10px;
-		margin-bottom: 12px;
-	}
-
-	.materials-note-card header > span {
-		padding-top: 3px;
-		color: var(--accent);
-		font-family: var(--font-mono);
-		font-size: 10px;
-		letter-spacing: 0.08em;
-	}
-
-	.materials-note-card h3 {
-		margin: 0;
-		color: var(--ink);
-		font-size: 17px;
-		font-weight: 600;
-		line-height: 1.25;
-	}
-
-	.materials-note-card ul {
-		display: grid;
-		gap: 8px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		color: var(--ink-soft);
-		font-size: 14px;
-		line-height: 1.58;
-	}
-
-	.materials-note-card li {
-		position: relative;
-		padding-left: 13px;
-		overflow-wrap: anywhere;
-	}
-
-	.materials-note-card li::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0.72em;
-		width: 5px;
-		height: 1px;
-		background: var(--accent);
-	}
-
-	.materials-glossary-grid dt {
-		margin: 0 0 7px;
-		color: var(--ink);
-		font-size: 16px;
-		font-weight: 600;
-		line-height: 1.3;
-	}
-
-	.materials-glossary-grid dd {
-		margin: 0;
-		color: var(--ink-soft);
-		font-size: 14px;
-		line-height: 1.58;
-		overflow-wrap: anywhere;
-	}
-
-	.materials-panel-head .copy-transcript {
-		margin-left: auto;
-		flex: 0 0 auto;
-	}
-
-	.materials-transcript {
-		max-height: min(62vh, 560px);
-		overflow: auto;
-		overscroll-behavior: contain;
-		scrollbar-width: thin;
-		scrollbar-color: var(--line-strong) transparent;
-	}
-
-	.materials-transcript p {
-		margin: 0;
-		padding: 22px;
-		color: var(--ink-soft);
-		font-size: calc(15px * var(--transcript-scale, 1));
-		line-height: 1.75;
-		white-space: pre-wrap;
-		overflow-wrap: anywhere;
-	}
-
-	.transcript-status {
-		color: var(--ink-muted, var(--ink-soft));
-		font-style: italic;
-	}
+	.long-summary { max-width: var(--measure); margin: 24px 0 0 54px; color: var(--ink-soft); }
+	.long-summary p:last-child { margin-bottom: 0; }
 
 	.seminar-exercises {
 		border: 0;
@@ -1720,16 +881,12 @@
 	}
 
 	.seminar-exercises summary:hover,
-	.transcript summary:hover,
-	.seminar-exercises[open] summary,
-	.transcript details[open] summary {
+	.seminar-exercises[open] summary {
 		background: color-mix(in srgb, var(--paper-2) 58%, transparent);
 	}
 
-	.seminar-exercises summary > :global(svg),
-	.transcript summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
-	.seminar-exercises[open] summary > :global(svg),
-	.transcript details[open] summary > :global(svg) { transform: rotate(180deg); }
+	.seminar-exercises summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
+	.seminar-exercises[open] summary > :global(svg) { transform: rotate(180deg); }
 
 	.seminar-exercises summary::-webkit-details-marker {
 		display: none;
@@ -1996,140 +1153,6 @@
 		color: var(--paper);
 	}
 
-	.transcript {
-		margin-top: 0;
-	}
-
-	.transcript details {
-		border-top: 0;
-	}
-
-	.transcript summary {
-		cursor: pointer;
-		min-height: 50px;
-		margin: 0 -12px;
-		padding: 13px 12px;
-		border-radius: 8px;
-		list-style: none;
-		display: flex;
-		align-items: center;
-		font-size: 17px;
-		transition:
-			background-color 0.18s ease,
-			color 0.18s ease;
-	}
-
-	.transcript summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.transcript-actions {
-		margin-left: auto;
-		display: inline-flex;
-		align-items: center;
-		gap: 9px;
-	}
-
-	.copy-transcript {
-		width: 34px;
-		height: 34px;
-		padding: 0;
-		border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
-		border-radius: 8px;
-		color: var(--accent);
-		background: color-mix(in srgb, var(--paper) 78%, transparent);
-		display: inline-grid;
-		place-items: center;
-		cursor: pointer;
-		transition:
-			color 0.18s ease,
-			background-color 0.18s ease,
-			border-color 0.18s ease,
-			transform 0.18s ease;
-	}
-
-	.copy-transcript:hover {
-		color: var(--paper);
-		background: var(--accent);
-		border-color: var(--accent);
-	}
-
-	.copy-transcript:active {
-		transform: scale(0.94);
-	}
-
-	.copy-transcript.copied {
-		color: var(--paper);
-		background: var(--accent);
-		border-color: var(--accent);
-	}
-
-	.transcript-actions :global(.transcript-caret) {
-		color: var(--accent);
-		transition: transform 0.2s ease;
-	}
-
-	.transcript details[open] :global(.transcript-caret) {
-		transform: rotate(180deg);
-	}
-
-	.copy-status {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-
-	.transcript p {
-		margin: 0 0 24px;
-		color: var(--ink-soft);
-		font-size: calc(17px * var(--transcript-scale, 1));
-		line-height: 1.85;
-		max-width: var(--measure);
-	}
-
-	.transcript-toolbar {
-		display: flex;
-		justify-content: flex-end;
-		margin: 14px 0 6px;
-	}
-
-	.font-controls {
-		display: inline-flex;
-		gap: 4px;
-	}
-
-	.font-controls button {
-		display: inline-grid;
-		place-items: center;
-		min-width: 34px;
-		height: 28px;
-		padding: 0 7px;
-		border: 1px solid var(--line-strong);
-		border-radius: 6px;
-		background: transparent;
-		color: var(--ink-soft);
-		font-family: var(--font-mono);
-		font-size: 12px;
-		cursor: pointer;
-		transition: color 0.2s ease, border-color 0.2s ease;
-	}
-
-	.font-controls button:hover:not(:disabled) {
-		color: var(--accent);
-		border-color: var(--accent);
-	}
-
-	.font-controls button:disabled {
-		opacity: 0.4;
-		cursor: default;
-	}
-
 	.source {
 		margin: 32px 0 0;
 		color: var(--ink-faint);
@@ -2193,23 +1216,14 @@
 		}
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 520px) {
 		.report-meta { display: grid; gap: 9px; }
 		.additional-summary { gap: 12px; }
 		.additional-summary-action > span { display: none; }
 		.section-heading { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; }
 		.overview > ul, .more-theses ul { margin-left: 38px; }
 		.more-theses { margin-left: 38px; }
+		.long-summary { margin-left: 38px; }
 		.focus-item header { grid-template-columns: 1fr; }
-		.materials-tablist { gap: 2px; padding: 4px; }
-		.materials-tablist button { padding: 7px 8px; gap: 5px; font-size: 12px; }
-		.materials-tablist button :global(svg) { display: none; }
-		.materials-panel-head { align-items: flex-start; padding: 14px; }
-		.materials-notes-grid,
-		.materials-glossary-grid { grid-template-columns: 1fr; }
-		.materials-note-card,
-		.materials-glossary-grid > div { padding: 17px 15px; }
-		.materials-visual { padding: 14px; }
-		.materials-transcript p { padding: 18px 15px; }
 	}
 </style>

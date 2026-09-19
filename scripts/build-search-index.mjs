@@ -254,7 +254,17 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		}
 	}
 
-	for (const section of report.seminar_exercises ?? []) {
+	const materials = {
+		notes: report.materials?.notes ?? report.seminar_notes ?? [],
+		exercises: report.materials?.exercises ?? report.seminar_exercises ?? [],
+		glossary: report.materials?.glossary ?? report.glossary ?? [],
+		visuals: report.materials?.visuals ?? [
+			report.infographic && { kind: 'infographic', ...report.infographic },
+			report.exercise_memo && { kind: 'exercise-memo', ...report.exercise_memo }
+		].filter(Boolean)
+	};
+
+	for (const section of materials.exercises) {
 		for (const item of section.items ?? []) {
 			addDoc({
 				kind: 'material', ...common, start: item.start,
@@ -265,7 +275,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		}
 	}
 
-	for (const section of report.seminar_notes ?? []) {
+	for (const section of materials.notes) {
 		addDoc({
 			kind: 'material', ...common,
 			title: `Конспект: ${section.title}`, text: (section.items ?? []).join(' '),
@@ -274,7 +284,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		});
 	}
 
-	for (const item of report.glossary ?? []) {
+	for (const item of materials.glossary) {
 		addDoc({
 			kind: 'material', ...common,
 			title: `Глоссарий: ${item.term}`, text: item.definition,
@@ -283,16 +293,23 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		});
 	}
 
-	for (const [title, asset] of [
-		['Инфографика', report.infographic],
-		['Памятка по упражнениям', report.exercise_memo]
-	]) {
-		if (!asset) continue;
+	for (const asset of materials.visuals) {
+		const title = asset.label ?? (asset.kind === 'exercise-memo' ? 'Памятка по упражнениям' : 'Инфографика');
 		addDoc({
 			kind: 'material', ...common,
 			title, text: asset.alt ?? title,
 			field_title: title, field_body: asset.alt ?? '',
 			field_tags: 'дополнительные материалы инфографика памятка'
+		});
+	}
+
+	if (report.long_summary) {
+		addDoc({
+			kind: 'overview', ...common,
+			title: 'Расширенный пересказ', text: report.long_summary,
+			field_title: `Расширенный пересказ ${report.title}`,
+			field_body: report.long_summary,
+			field_tags: 'обзор пересказ содержание'
 		});
 	}
 }

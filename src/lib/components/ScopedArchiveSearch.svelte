@@ -1,21 +1,16 @@
 <script lang="ts">
-	import SearchMatchNote from '$lib/components/SearchMatchNote.svelte';
-	import SearchSourceLinks from '$lib/components/SearchSourceLinks.svelte';
+	import SearchResultItem from '$lib/components/SearchResultItem.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import { untrack, tick } from 'svelte';
 	import { readSearchState, writeSearchState } from '$lib/search-url-state';
-	import { modalFocus } from '$lib/modal-focus';
 	import { base } from '$app/paths';
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
-	import FileText from 'phosphor-svelte/lib/FileText';
 	import FunnelSimple from 'phosphor-svelte/lib/FunnelSimple';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
-	import Play from 'phosphor-svelte/lib/Play';
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
-	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
+	import SearchFilterDrawer from '$lib/components/SearchFilterDrawer.svelte';
 	import { collections, getCollection } from '$lib/data/collections';
 	import { getReportSummary } from '$lib/data/report-meta';
 	import { lock } from '$lib/lock.svelte';
@@ -35,8 +30,6 @@
 		type SearchFilterSelections
 	} from '$lib/search-filters';
 	import { searchableReportSlugs, visibleSubset } from '$lib/search-visibility';
-	import { highlightParts } from '$lib/text-highlight';
-	import { formatTime } from '$lib/utils';
 
 	let {
 		kind,
@@ -499,18 +492,14 @@
 		</div>
 	{/if}
 
-	{#if filterSheetOpen && hasFilterGroups}
-		<button class="filter-backdrop" type="button" aria-label="Закрыть фильтры" onclick={closeFilters}></button>
-		<div use:modalFocus class="filter-sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
-			<SearchFilterPanel
-				groups={filterGroups}
-				{selections}
-				onToggle={toggleFilter}
-				onClear={clearFilters}
-				onClose={closeFilters}
-			/>
-		</div>
-	{/if}
+	<SearchFilterDrawer
+		open={filterSheetOpen && hasFilterGroups}
+		groups={filterGroups}
+		{selections}
+		onToggle={toggleFilter}
+		onClear={clearFilters}
+		onClose={closeFilters}
+	/>
 
 	{#if query.trim().length >= 2}
 		<div class="results">
@@ -552,29 +541,15 @@
 			{:else}
 				<ol>
 					{#each visibleHits as hit (uniqueHitKey(hit))}
-						<li>
-							<div class="result-copy">
-								{#if kind !== 'report' || hit.reportSlug !== reportSlug}<p class="breadcrumb">{hit.reportTitle}</p>{/if}
-								<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
-								<SearchMatchNote {hit} {query} />
-								<p class="snippet">
-									{#each highlightParts(hit.snippet, query) as part}
-										{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-									{/each}
-								</p>
-							<SearchSourceLinks {hit} scope={linkScope} />
-							</div>
-							<div class="actions">
-								<a href={resultHref(hit)} onclick={(event) => openResult(event, hit, false)}>
-									<FileText size={19} weight="thin" /> <span>{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}</span> <ArrowRight size={18} weight="thin" />
-								</a>
-								{#if hit.start != null}
-									<a href={resultHref(hit, true)} onclick={(event) => openResult(event, hit, true)}>
-										<Play size={19} weight="thin" /> <span>Смотреть с {formatTime(hit.start)}</span> <ArrowRight size={18} weight="thin" />
-									</a>
-								{/if}
-							</div>
-						</li>
+						<SearchResultItem
+							{hit}
+							{query}
+							scope={linkScope}
+							layout={kind === 'report' ? 'report' : 'scoped'}
+							showReportTitle={kind !== 'report' || hit.reportSlug !== reportSlug}
+							hrefFor={resultHref}
+							onOpen={openResult}
+						/>
 					{/each}
 				</ol>
 				{#if uniqueHits.length > 5}
@@ -612,8 +587,6 @@
 	.filter-trigger:hover, .filter-trigger:focus-visible { border-color: var(--accent); color: var(--accent-ink); }
 	.filter-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.filter-badge { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--paper); font-size: 10px; }
-	.filter-backdrop { position: fixed; inset: 0; z-index: 80; width: 100%; height: 100%; border: 0; background: color-mix(in srgb, var(--ink) 28%, transparent); cursor: default; }
-	.filter-sheet { position: fixed; z-index: 81; top: 0; right: 0; width: min(390px, calc(100vw - 28px)); height: 100dvh; overflow-y: auto; padding: 28px; border-left: 1px solid var(--line-strong); background: var(--paper); box-shadow: -18px 0 40px color-mix(in srgb, var(--ink) 12%, transparent); }
 	.results { margin-top: 20px; }
 	.results-layout { display: block; }
 	.results-main { min-width: 0; border-top: 1px solid var(--line-strong); }
@@ -627,17 +600,6 @@
 	.results-tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 	.results-tools > span { flex: 0 0 auto; color: var(--ink-faint); white-space: nowrap; }
 	ol { margin: 0; padding: 0; list-style: none; }
-	li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, 23%); gap: clamp(18px, 3vw, 34px); padding: 18px 0; border-bottom: 1px solid var(--line-strong); }
-	.breadcrumb { margin: 0 0 7px; color: var(--accent); font-size: 13px; }
-	h3 { margin: 0 0 7px; font-size: clamp(21px, 2.3vw, 28px); font-weight: 500; line-height: 1.1; }
-	.snippet { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.48; }
-	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
-	.actions { display: flex; flex-direction: column; gap: 7px; padding-left: 16px; border-left: 1px solid var(--line-strong); }
-	.actions a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 7px; min-height: 44px; padding: 5px 0; color: var(--accent); font-size: 14px; }
-	.report-scope li { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 22px 0; }
-	.report-scope .actions { flex-direction: row; flex-wrap: wrap; gap: 8px 28px; padding: 0; border: 0; }
-	.report-scope .actions a span { white-space: nowrap; }
-	.actions a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.show-all { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; margin-top: 14px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: transparent; color: var(--accent); font: inherit; font-size: 14px; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
 	.show-all:hover, .show-all:focus-visible { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, transparent); }
 	.show-all:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -645,30 +607,13 @@
 	.show-all.expanded :global(svg) { transform: rotate(180deg); }
 	.empty { margin: 0; padding: 18px 0; color: var(--ink-soft); }
 
-	@container (max-width: 560px) {
+	@container (max-width: 520px) {
 		.search-field { min-height: 54px; padding: 0 13px; }
 		input { font-size: 16px; }
 		.filter-controls { align-items: flex-start; flex-direction: column; }
-		li { grid-template-columns: 1fr; gap: 14px; }
-		.actions { flex-direction: row; flex-wrap: wrap; padding: 10px 0 0; border-top: 1px solid var(--line); border-left: 0; }
 	}
 
 	@container (max-width: 760px) {
 		.results-tools { gap: 8px; }
-	}
-
-	@media (max-width: 760px) {
-		.filter-sheet {
-			top: auto;
-			bottom: 0;
-			width: 100%;
-			height: auto;
-			max-height: 84dvh;
-			padding: 22px 20px 28px;
-			border-top: 1px solid var(--line-strong);
-			border-left: 0;
-			border-radius: 16px 16px 0 0;
-			box-shadow: 0 -18px 40px color-mix(in srgb, var(--ink) 12%, transparent);
-		}
 	}
 </style>

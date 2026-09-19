@@ -128,7 +128,7 @@
 	.open :global(svg) { transition: transform 0.2s ease; }
 	.entry:hover .open :global(svg) { transform: translateX(4px); }
 
-	@media (max-width: 620px) {
+	@media (max-width: 760px) {
 		.entry { padding-bottom: 20px; }
 		h3 { font-size: 25px; -webkit-line-clamp: 3; line-clamp: 3; }
 		.subtitle { font-size: 16px; -webkit-line-clamp: 3; line-clamp: 3; }

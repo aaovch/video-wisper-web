@@ -224,7 +224,7 @@
 	.index-list.index-list--flat { margin-top: 0; margin-left: 0; }
 	.filter-empty { margin: 0; padding: 24px 0; border-top: 1px solid var(--line-strong); color: var(--ink-soft); }
 
-	@media (max-width: 1080px) {
+	@media (max-width: 960px) {
 		.index-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	}
 
@@ -242,7 +242,7 @@
 		.partial-access input { width: auto; flex: 1; }
 	}
 
-	@media (max-width: 480px) {
+	@media (max-width: 520px) {
 		.lede, .findings, .outcome, .index-list { margin-left: 0; }
 		.section-title { grid-template-columns: 28px minmax(0, 1fr); }
 		.finding { grid-template-columns: 24px 1fr; }

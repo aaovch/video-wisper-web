@@ -292,7 +292,7 @@
 		}
 	}
 
-	@media (max-width: 900px) {
+	@media (max-width: 960px) {
 		.masthead-inner {
 			flex-wrap: wrap;
 			align-items: flex-start;

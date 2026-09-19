@@ -343,7 +343,7 @@
 	.loading span:nth-child(4) { width: 68%; animation-delay: 0.3s; }
 	@keyframes pulse { to { opacity: 0.42; } }
 	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
-	@media (max-width: 820px) {
+	@media (max-width: 760px) {
 		.reader-nav { grid-template-columns: 1fr auto; min-height: 60px; padding: 8px 18px; }
 		.mode-label { display: none; }
 		.reader-workspace { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); }
@@ -355,7 +355,7 @@
 		.transcript-copy p { font-size: 18px; line-height: 1.7; }
 		.reader-footer { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
 	}
-	@media (max-width: 430px) {
+	@media (max-width: 520px) {
 		.video-caption span { font-size: 9px; letter-spacing: 0.04em; }
 		.video-pane { padding-inline: 10px; }
 		.reader-nav { padding-inline: 14px; }

@@ -3,6 +3,7 @@
 	"title": "Agents Week 2026 — лекция 5.2: Production Engineering — Decision Trees, Architecture and Frameworks",
 	"subtitle": "Нужен ли агент, unit economics, continuous validation, control plane, multi-agent patterns и выбор framework",
 	"source_name": "Agents Week 2026 ｜ Лекция 5.2 Production Engineering for LLM Agents [-84793390_456240041].mp4",
+	"source_stem": "Agents Week 2026 ｜ Лекция 5.2 Production Engineering for LLM Agents [-84793390_456240041]",
 	"note": "Заключительная лекция Кирилла Власова формализует production-решения и архитектурные decision trees для AI-агентов. Расшифровка выполнена локально Whisper Turbo на CUDA; термины, frameworks и protocols выверены без изменения таймкодов.",
 	"duration": 2242.94,
 	"tags": [
@@ -270,90 +271,92 @@
 			]
 		}
 	],
+	"materials": {
+		"notes": [
+			{
+				"title": "Decision tree до разработки",
+				"items": [
+					"Докажите, что rules, classifier и single LLM call недостаточны.",
+					"Опишите input/output, scope/non-goals и human fallback.",
+					"Посчитайте cost per successful session для текущего success rate."
+				]
+			},
+			{
+				"title": "Continuous validation",
+				"items": [
+					"Версионируйте prompts как code.",
+					"Сочетайте offline suite с trajectory checks.",
+					"Добавьте shadow, A/B, canary и online signals.",
+					"Сохраняйте costs и errors по session."
+				]
+			},
+			{
+				"title": "Architecture design",
+				"items": [
+					"Разложите систему на шесть layers.",
+					"Опишите control plane и governance.",
+					"Проверьте agents на cohesion, coupling и isolation.",
+					"Выберите минимальный паттерн orchestration."
+				]
+			},
+			{
+				"title": "Framework choice",
+				"items": [
+					"Graph выбирайте для явного control, hierarchy — для delegation.",
+					"Conversation подходит role teams, computer-use — open-ended environment.",
+					"Зафиксируйте MCP/A2A boundaries, чтобы implementation можно было заменить.",
+					"Начинайте с простого code и усложняйте только по измеренному failure."
+				]
+			}
+		],
+		"glossary": [
+			{
+				"term": "Cost per successful session",
+				"definition": "Полная стоимость всех попыток, infrastructure и human work, делённая на число успешно решённых sessions."
+			},
+			{
+				"term": "Attention decay",
+				"definition": "Снижение влияния ранних инструкций при росте контекста диалога."
+			},
+			{
+				"term": "Shadow mode",
+				"definition": "Параллельный запуск новой версии на real traffic без отправки её ответов пользователям."
+			},
+			{
+				"term": "Control plane",
+				"definition": "Общий слой registry, routing, budgets, observability и governance для agent system."
+			},
+			{
+				"term": "High cohesion",
+				"definition": "Сосредоточение тесно связанной domain responsibility внутри одного модуля или агента."
+			},
+			{
+				"term": "Low coupling",
+				"definition": "Связь модулей через явные interfaces с минимальной зависимостью от внутренних state и implementation."
+			},
+			{
+				"term": "Orchestrator-workers",
+				"definition": "Паттерн, где coordinator динамически определяет и запускает набор параллельных workers."
+			},
+			{
+				"term": "Evaluator-optimizer",
+				"definition": "Цикл generation и проверки, продолжающийся до достижения явных quality criteria."
+			},
+			{
+				"term": "Agent-as-tool",
+				"definition": "Инкапсуляция subagent за интерфейсом обычного tool/function."
+			},
+			{
+				"term": "A2A",
+				"definition": "Стандартный протокол взаимодействия и делегирования между agents."
+			},
+			{
+				"term": "Commodity model",
+				"definition": "Взаимозаменяемая доступная модель, перестающая быть главным источником product differentiation."
+			}
+		]
+	},
 	"has_transcript": true,
-	"glossary": [
-		{
-			"term": "Cost per successful session",
-			"definition": "Полная стоимость всех попыток, infrastructure и human work, делённая на число успешно решённых sessions."
-		},
-		{
-			"term": "Attention decay",
-			"definition": "Снижение влияния ранних инструкций при росте контекста диалога."
-		},
-		{
-			"term": "Shadow mode",
-			"definition": "Параллельный запуск новой версии на real traffic без отправки её ответов пользователям."
-		},
-		{
-			"term": "Control plane",
-			"definition": "Общий слой registry, routing, budgets, observability и governance для agent system."
-		},
-		{
-			"term": "High cohesion",
-			"definition": "Сосредоточение тесно связанной domain responsibility внутри одного модуля или агента."
-		},
-		{
-			"term": "Low coupling",
-			"definition": "Связь модулей через явные interfaces с минимальной зависимостью от внутренних state и implementation."
-		},
-		{
-			"term": "Orchestrator-workers",
-			"definition": "Паттерн, где coordinator динамически определяет и запускает набор параллельных workers."
-		},
-		{
-			"term": "Evaluator-optimizer",
-			"definition": "Цикл generation и проверки, продолжающийся до достижения явных quality criteria."
-		},
-		{
-			"term": "Agent-as-tool",
-			"definition": "Инкапсуляция subagent за интерфейсом обычного tool/function."
-		},
-		{
-			"term": "A2A",
-			"definition": "Стандартный протокол взаимодействия и делегирования между agents."
-		},
-		{
-			"term": "Commodity model",
-			"definition": "Взаимозаменяемая доступная модель, перестающая быть главным источником product differentiation."
-		}
-	],
-	"seminar_notes": [
-		{
-			"title": "Decision tree до разработки",
-			"items": [
-				"Докажите, что rules, classifier и single LLM call недостаточны.",
-				"Опишите input/output, scope/non-goals и human fallback.",
-				"Посчитайте cost per successful session для текущего success rate."
-			]
-		},
-		{
-			"title": "Continuous validation",
-			"items": [
-				"Версионируйте prompts как code.",
-				"Сочетайте offline suite с trajectory checks.",
-				"Добавьте shadow, A/B, canary и online signals.",
-				"Сохраняйте costs и errors по session."
-			]
-		},
-		{
-			"title": "Architecture design",
-			"items": [
-				"Разложите систему на шесть layers.",
-				"Опишите control plane и governance.",
-				"Проверьте agents на cohesion, coupling и isolation.",
-				"Выберите минимальный паттерн orchestration."
-			]
-		},
-		{
-			"title": "Framework choice",
-			"items": [
-				"Graph выбирайте для явного control, hierarchy — для delegation.",
-				"Conversation подходит role teams, computer-use — open-ended environment.",
-				"Зафиксируйте MCP/A2A boundaries, чтобы implementation можно было заменить.",
-				"Начинайте с простого code и усложняйте только по измеренному failure."
-			]
-		}
-	],
 	"video": {
 		"provider": "vk",
 		"id": "-84793390_456240041",

@@ -237,7 +237,7 @@
 		color: var(--ink-soft);
 	}
 
-	@media (max-width: 620px) {
+	@media (max-width: 760px) {
 		.collection,
 		.collection--locked {
 			grid-template-columns: 1fr;

@@ -1,0 +1,890 @@
+[
+	{
+		"slug": "aslamov-nikolay",
+		"title": "Асламов Николай",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Николай Асламов"
+			],
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Практические семинары и исторические лекции Николая Асламова о фехтовании.",
+		"items": [
+			"fehtovalnye-shkoly-v-germanii-aslamov",
+			"dzhentlmenskiy-nabor-priemov-aslamov"
+		],
+		"access": {
+			"master": {
+				"id": "aslamov-nikolay",
+				"password": "Асламов",
+				"passwordHint": "пароль можете спросить у Петра Васильева"
+			}
+		}
+	},
+	{
+		"slug": "shkola-stal",
+		"title": "Тактическая подготовка фехтовальщика в HEMA",
+		"hema": true,
+		"isolated": true,
+		"facets": {
+			"authors": [
+				"Александр Баленко"
+			]
+		},
+		"subtitle": "Лекции Александра Баленко о фехтовании и тактике.",
+		"items": [
+			"taktika-4-0-balenko"
+		],
+		"access": {
+			"passes": [
+				{
+					"id": "report:taktika-4-0-balenko",
+					"title": "Лекция «Тактика 4.0»",
+					"items": [
+						"taktika-4-0-balenko"
+					],
+					"password": "T\\@Ct1C15CooL",
+					"passwordHint": "За паролем обратитесь к автору:",
+					"passwordContact": {
+						"label": "Александр Баленко во ВКонтакте",
+						"url": "https://vk.ru/balenko_alexander"
+					}
+				}
+			]
+		}
+	},
+	{
+		"slug": "ii-i-hema",
+		"title": "ИИ и HEMA",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Пётр Васильев",
+				"Александр Овчинников"
+			]
+		},
+		"subtitle": "ИИ-инструменты, данные и проверяемые гипотезы для анализа боёв и тренировочного процесса.",
+		"description": "Разговоры и разборы о том, как применять языковые модели и спортивную аналитику в HEMA, не подменяя данными тренерскую модель и проверку гипотез.",
+		"items": [
+			"ii-dlya-analiza-hema-boev"
+		]
+	},
+	{
+		"slug": "hema-english",
+		"archived": true,
+		"title": "HEMA: English",
+		"hema": true,
+		"subtitle": "Английская терминология частей тела, экипировки и команд на площадке.",
+		"items": [
+			"hema-english-snaryazhenie"
+		]
+	},
+	{
+		"slug": "silovaya-konditsionnaya",
+		"title": "Силовая и кондиционная подготовка",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Tokarev Coach",
+				"Jacob Goodin"
+			]
+		},
+		"subtitle": "Научные основы, силовой и аэробный тренинг, адаптации, специальные популяции и спортивная психология.",
+		"items": [
+			"tokarev-silovaya-ofp-2",
+			"pliometrika-hema",
+			"silovaya-konditsiya-hema",
+			"silovaya-plan-hema",
+			"printsipy-silovoy-konditsionnoy-podgotovki",
+			"sem-dvigatelnyh-patternov",
+			"ukreplenie-stopy-i-golenostopa",
+			"struktura-i-funktsiya-myshtsy",
+			"neyromyshechnaya-sistema-motornye-edinitsy",
+			"biomehanika-i-myshechnye-rychagi",
+			"sila-moshchnost-i-rabota-v-biomehanike",
+			"tri-rezhima-myshechnogo-deystviya",
+			"faktory-myshechnoy-sily-i-moshchnosti",
+			"bioenergetika-trenirovki-tri-energosistemy",
+			"laktatnyi-porog-bioenergetika",
+			"metabolicheskaya-spetsifichnost-trenirovki",
+			"istoschenie-i-vosstanovlenie-substratov",
+			"gormon-myshechnye-vzaimodeystviya",
+			"osnovnye-anabolicheskie-gormony",
+			"neyronnye-adaptatsii-k-anaerobnoy-trenirovke",
+			"myshechnye-adaptatsii-anaerobnaya-trenirovka",
+			"kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka",
+			"ostrye-reaktsii-aerobnaya-nagruzka",
+			"dolgovremennye-adaptatsii-aerobnaya-trenirovka",
+			"vysota-krovyanoi-doping-peretrenirovannost",
+			"deti-ne-malenkie-vzroslye",
+			"trenirovka-muzhchin-i-zhenshchin",
+			"silovaya-trenirovka-pozhilyh",
+			"silovaya-trenirovka-detey",
+			"vozbuzhdenie-trevoga-stress-v-sporte",
+			"motivatsiya-vnimanie-fokus-v-sporte"
+		],
+		"sections": [
+			{
+				"title": "Практика и программирование",
+				"subtitle": "Прикладные программы, упражнения, периодизация и прогрессии для подготовки атлета.",
+				"items": [
+					"tokarev-silovaya-ofp-2",
+					"pliometrika-hema",
+					"silovaya-konditsiya-hema",
+					"silovaya-plan-hema",
+					"printsipy-silovoy-konditsionnoy-podgotovki",
+					"sem-dvigatelnyh-patternov",
+					"ukreplenie-stopy-i-golenostopa"
+				]
+			},
+			{
+				"title": "Мышцы, движение и биомеханика",
+				"subtitle": "Как устроено движение: мышечная ткань, нервная система, рычаги, сила и мощность.",
+				"items": [
+					"struktura-i-funktsiya-myshtsy",
+					"neyromyshechnaya-sistema-motornye-edinitsy",
+					"biomehanika-i-myshechnye-rychagi",
+					"sila-moshchnost-i-rabota-v-biomehanike",
+					"tri-rezhima-myshechnogo-deystviya",
+					"faktory-myshechnoy-sily-i-moshchnosti"
+				]
+			},
+			{
+				"title": "Биоэнергетика и выносливость",
+				"subtitle": "Энергетические системы, аэробная работа, пороги, восстановление и перетренированность.",
+				"items": [
+					"bioenergetika-trenirovki-tri-energosistemy",
+					"laktatnyi-porog-bioenergetika",
+					"metabolicheskaya-spetsifichnost-trenirovki",
+					"istoschenie-i-vosstanovlenie-substratov",
+					"ostrye-reaktsii-aerobnaya-nagruzka",
+					"dolgovremennye-adaptatsii-aerobnaya-trenirovka",
+					"vysota-krovyanoi-doping-peretrenirovannost"
+				]
+			},
+			{
+				"title": "Гормоны и адаптации",
+				"subtitle": "Эндокринные, нервные, мышечные и соединительнотканные ответы на тренировку.",
+				"items": [
+					"gormon-myshechnye-vzaimodeystviya",
+					"osnovnye-anabolicheskie-gormony",
+					"neyronnye-adaptatsii-k-anaerobnoy-trenirovke",
+					"myshechnye-adaptatsii-anaerobnaya-trenirovka",
+					"kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka"
+				]
+			},
+			{
+				"title": "Дети, женщины и возрастные группы",
+				"subtitle": "Безопасность и особенности подготовки с учётом возраста, пола и этапа развития.",
+				"items": [
+					"deti-ne-malenkie-vzroslye",
+					"trenirovka-muzhchin-i-zhenshchin",
+					"silovaya-trenirovka-pozhilyh",
+					"silovaya-trenirovka-detey"
+				]
+			},
+			{
+				"title": "Спортивная психология",
+				"subtitle": "Стресс, тревога, мотивация, внимание и настройка фокуса спортсмена.",
+				"items": [
+					"vozbuzhdenie-trevoga-stress-v-sporte",
+					"motivatsiya-vnimanie-fokus-v-sporte"
+				]
+			}
+		]
+	},
+	{
+		"slug": "almaty-2026",
+		"title": "Фехтовальный лагерь «Алматы 2026»",
+		"hema": true,
+		"facets": {
+			"places": [
+				"Алматы"
+			],
+			"weapons": [
+				"Сабля",
+				"Длинный меч",
+				"Рапира"
+			]
+		},
+		"subtitle": "Семинары и тренировки лагеря: сабля (общая и «А») и длинный меч.",
+		"items": [
+			"sablya-a-2",
+			"sablya-a-3",
+			"sablya-a-5",
+			"sablya-a-7",
+			"sablya-a-9",
+			"sablya-vvodnaya",
+			"sablya-4",
+			"sablya-6",
+			"sablya-8",
+			"sablya-10",
+			"sablya-12",
+			"longsword-a",
+			"rapira-almaty-2026"
+		],
+		"sections": [
+			{
+				"title": "Сабля, группа «А»",
+				"subtitle": "Пять последовательных тренировок продвинутой группы по подготовке атаки, батманам и контратаке.",
+				"items": [
+					"sablya-a-2",
+					"sablya-a-3",
+					"sablya-a-5",
+					"sablya-a-7",
+					"sablya-a-9"
+				]
+			},
+			{
+				"title": "Сабля, общая группа",
+				"subtitle": "Общий цикл по финтам, дистанции, контратаке и развитию тактического выбора.",
+				"items": [
+					"sablya-vvodnaya",
+					"sablya-4",
+					"sablya-6",
+					"sablya-8",
+					"sablya-10",
+					"sablya-12"
+				]
+			},
+			{
+				"title": "Длинный меч и рапира",
+				"subtitle": "Отдельные лагерные семинары по длинному мечу и рапире.",
+				"items": [
+					"longsword-a",
+					"rapira-almaty-2026"
+				]
+			}
+		]
+	},
+	{
+		"slug": "lager-vladivostok",
+		"title": "Лагерь Владивосток",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Пётр Васильев"
+			],
+			"places": [
+				"Владивосток"
+			],
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Семинары и тренировки лагеря во Владивостоке.",
+		"items": [
+			"gruppa-a-1-vvodnaya",
+			"vid-20260708-200742",
+			"pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+			"manevrovo-atakuyushchiy-stil",
+			"manevrovo-atakuyushchiy-stil-4-2",
+			"manevrovo-oboronitelnyi-tip",
+			"ataka-prosche-ne-byvaet-udar",
+			"gruppa-b-2-ataki-fendenti-na-vypade",
+			"gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+			"gruppa-b-4-ataki-na-fone-manevrirovaniya",
+			"gruppa-b-5-kakari-keiko",
+			"obuchenie-trenerov-poisk-znaniy",
+			"trenerstvo-2-zadachi-uprazhneniya",
+			"trenerskiy-kurs-3-planirovanie-zanyatiy",
+			"trenerskiy-kurs-4-tekhnika-bezopasnosti",
+			"ukol-po-centralnoy-linii",
+			"sudya-gayd-dlya-nachinayushchikh"
+		],
+		"sections": [
+			{
+				"title": "Группа А",
+				"subtitle": "Вводные и позиционные тренировки продвинутой группы.",
+				"items": [
+					"gruppa-a-1-vvodnaya",
+					"vid-20260708-200742",
+					"pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+					"manevrovo-atakuyushchiy-stil",
+					"manevrovo-atakuyushchiy-stil-4-2",
+					"manevrovo-oboronitelnyi-tip"
+				]
+			},
+			{
+				"title": "Группа Б",
+				"subtitle": "Базовая техника атаки и механика удара.",
+				"items": [
+					"ataka-prosche-ne-byvaet-udar",
+					"gruppa-b-2-ataki-fendenti-na-vypade",
+					"gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+					"gruppa-b-4-ataki-na-fone-manevrirovaniya",
+					"gruppa-b-5-kakari-keiko"
+				]
+			},
+			{
+				"title": "Тренерский курс",
+				"subtitle": "Развитие тренера, поиск знаний, постановка упражнений, планирование и техника безопасности.",
+				"items": [
+					"obuchenie-trenerov-poisk-znaniy",
+					"trenerstvo-2-zadachi-uprazhneniya",
+					"trenerskiy-kurs-3-planirovanie-zanyatiy",
+					"trenerskiy-kurs-4-tekhnika-bezopasnosti"
+				]
+			},
+			{
+				"title": "Семинары",
+				"subtitle": "Отдельные практические семинары лагеря.",
+				"items": [
+					"ukol-po-centralnoy-linii",
+					"sudya-gayd-dlya-nachinayushchikh"
+				]
+			}
+		]
+	},
+	{
+		"slug": "hema-theory",
+		"title": "HEMA: теория и тренерство",
+		"hema": true,
+		"subtitle": "Контекст HEMA, методика защит и удержание атлетов в клубе.",
+		"items": [
+			"metodichka",
+			"retention"
+		],
+		"access": {
+			"master": {
+				"id": "hema-theory",
+				"password": "hema",
+				"passwordHint": "Чтобы получить пароль — напиши Васильеву Петру."
+			}
+		}
+	},
+	{
+		"slug": "podcasts",
+		"title": "Подкасты: ИИ и индустрия",
+		"subtitle": "Разговоры про искусственный интеллект, найм и будущее разработки.",
+		"items": [
+			"agents-week-2026-1-1-intro-ai-agents-llm",
+			"agents-week-2026-1-2-tools-mcp",
+			"agents-week-2026-2-memory-guardrails-lecture",
+			"agents-week-2026-2-memory-guardrails-seminar",
+			"agents-week-2026-3-workflow-multi-agent-multimodality-lecture",
+			"agents-week-2026-3-workflow-multi-agent-multimodality-seminar",
+			"agents-week-2026-4-agent-evaluation-lecture",
+			"agents-week-2026-4-agent-evaluation-seminar",
+			"agents-week-2026-5-1-production-engineering",
+			"agents-week-2026-5-2-production-engineering",
+			"context-engineering-29min",
+			"obsidian-wiki-karpathy",
+			"llm-deep-dive-karpathy",
+			"software-3-0",
+			"podlodka-vector-search",
+			"podlodka-slm-468",
+			"podlodka-naim-ai-482",
+			"podlodka-ai-vygoranie-493",
+			"berezhnoy-ai",
+			"agentic-engineering-ai-workflow-deksden-1",
+			"vibe-coding-lovushki-myshleniya"
+		],
+		"sections": [
+			{
+				"title": "Agents Week 2026",
+				"subtitle": "Последовательный курс: основы агентов, инструменты, память, multi-agent workflow, evaluation и production.",
+				"items": [
+					"agents-week-2026-1-1-intro-ai-agents-llm",
+					"agents-week-2026-1-2-tools-mcp",
+					"agents-week-2026-2-memory-guardrails-lecture",
+					"agents-week-2026-2-memory-guardrails-seminar",
+					"agents-week-2026-3-workflow-multi-agent-multimodality-lecture",
+					"agents-week-2026-3-workflow-multi-agent-multimodality-seminar",
+					"agents-week-2026-4-agent-evaluation-lecture",
+					"agents-week-2026-4-agent-evaluation-seminar",
+					"agents-week-2026-5-1-production-engineering",
+					"agents-week-2026-5-2-production-engineering"
+				]
+			},
+			{
+				"title": "Фундамент и новые подходы к разработке",
+				"subtitle": "Context engineering, базы знаний, устройство LLM и Software 3.0.",
+				"items": [
+					"context-engineering-29min",
+					"obsidian-wiki-karpathy",
+					"llm-deep-dive-karpathy",
+					"software-3-0"
+				]
+			},
+			{
+				"title": "Подлодка: AI в продуктах и командах",
+				"subtitle": "Поиск, компактные модели, найм и устойчивая работа с ИИ.",
+				"items": [
+					"podlodka-vector-search",
+					"podlodka-slm-468",
+					"podlodka-naim-ai-482",
+					"podlodka-ai-vygoranie-493"
+				]
+			},
+			{
+				"title": "Практические кейсы и образование",
+				"subtitle": "Как ИИ меняет рабочий процесс, обучение и инженерную практику.",
+				"items": [
+					"berezhnoy-ai",
+					"agentic-engineering-ai-workflow-deksden-1",
+					"vibe-coding-lovushki-myshleniya"
+				]
+			}
+		]
+	},
+	{
+		"slug": "nri",
+		"title": "НРИ",
+		"subtitle": "Настольные ролевые игры: стримы, кампании и разборы сессий.",
+		"items": [
+			"woodcreek-ch1",
+			"poisk-novogo-ruchya",
+			"nri-staraya-shahta"
+		]
+	},
+	{
+		"slug": "psihologiya",
+		"title": "Психология",
+		"subtitle": "Курс Nancy McWilliams: психоаналитическая диагностика и организация личности.",
+		"items": [
+			"mcwilliams-10-aspects",
+			"psihologiya-tyazhest-klinicheskaya",
+			"psihologiya-3-isterechnaya",
+			"psihologiya-4-depressivnaya",
+			"psihologiya-5-shizoidnaya-paranoidnaya",
+			"psihologiya-6-narcissicheskaya"
+		]
+	},
+	{
+		"slug": "ovchinnikov-lectures",
+		"title": "Лекции и семинары Овчинникова Александра",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Александр Овчинников"
+			],
+			"weapons": [
+				"Длинный меч",
+				"Катана"
+			]
+		},
+		"subtitle": "Теория HEMA, тренерство, тактика и разборы практики фехтования.",
+		"items": [
+			"protivnik-fehtuet-nepravilno",
+			"optimizatsiya-parad-ripost-hema",
+			"hema-prednamerennye-ekspromtnye",
+			"obuchenie-situatsiya-subtaktika",
+			"subtaktika-teh-realizacii",
+			"2026-07-06-19-26-42",
+			"kompresiya-taktiki-lektsiya",
+			"tsena-adaptatsii-tehnicheskogo-priema",
+			"kontseptsiya-monitoringa",
+			"fehtovat-dolgo-ne-travmirovatsya",
+			"retention-club",
+			"hema-reflections",
+			"tenouti-i-tyakin-sibori",
+			"silovye-porezy-katanoy",
+			"rabota-paltsev-pri-prostoy-atake"
+		],
+		"sections": [
+			{
+				"title": "Тактика, субтактики и принятие решений",
+				"subtitle": "Распознавание ситуации, построение угрозы и выбор технической реализации в бою.",
+				"items": [
+					"protivnik-fehtuet-nepravilno",
+					"optimizatsiya-parad-ripost-hema",
+					"hema-prednamerennye-ekspromtnye",
+					"obuchenie-situatsiya-subtaktika",
+					"subtaktika-teh-realizacii",
+					"2026-07-06-19-26-42",
+					"kompresiya-taktiki-lektsiya",
+					"tsena-adaptatsii-tehnicheskogo-priema"
+				]
+			},
+			{
+				"title": "Тренерство, клуб и здоровье",
+				"subtitle": "Мониторинг подготовки, удержание участников, профилактика травм и осмысление HEMA.",
+				"items": [
+					"kontseptsiya-monitoringa",
+					"fehtovat-dolgo-ne-travmirovatsya",
+					"retention-club",
+					"hema-reflections"
+				]
+			},
+			{
+				"title": "Механика оружия и хвата",
+				"subtitle": "Работа пальцев, управление хватом и механика силового воздействия клинком.",
+				"items": [
+					"tenouti-i-tyakin-sibori",
+					"silovye-porezy-katanoy",
+					"rabota-paltsev-pri-prostoy-atake"
+				]
+			}
+		]
+	},
+	{
+		"slug": "mech-i-bakler-noname",
+		"title": "Меч и Баклер, NoName",
+		"hema": true,
+		"catalogHidden": true,
+		"facets": {
+			"weapons": [
+				"Меч и баклер"
+			]
+		},
+		"subtitle": "Цикл NoName по мечу и баклеру: стойка, координация двух рук, базовые действия и контратака.",
+		"description": "Обзорные и практические занятия NoName по мечу и баклеру: от двигательной базы и хвата до парной работы, оппозиции и тактических провокаций.",
+		"items": [
+			"mech-i-bakler-mikrotsikl-1-osnovy"
+		]
+	},
+	{
+		"slug": "mezotsikl-1-dlinnyy-mech-noname",
+		"title": "Мезоцикл 1, длинный меч, NoName",
+		"hema": true,
+		"catalogHidden": true,
+		"facets": {
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Первый мезоцикл NoName по длинному мечу: техника укола, работа ног и выбор момента.",
+		"description": "Практические занятия первого мезоцикла NoName по длинному мечу: безопасная механика укола, координация с шагом, контратака, атакующий вход и применение в спарринге.",
+		"items": [
+			"ukoly-mezotsikl-1-dlinnyy-mech"
+		]
+	},
+	{
+		"slug": "dlinnyy-mech-basic-noname",
+		"title": "Длинный меч, Basic, NoName",
+		"hema": true,
+		"catalogHidden": true,
+		"facets": {
+			"authors": [
+				"Пётр Васильев"
+			],
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Базовый цикл NoName по длинному мечу: простая атака, дистанция, тайминг и безопасная механика.",
+		"description": "Последовательные занятия группы Basic NoName по длинному мечу: от надёжной базовой атаки и работы ног до применения техники против реакции партнёра.",
+		"items": [
+			"prostaya-ataka-mikrotsikl-1-dlinnyy-mech"
+		]
+	},
+	{
+		"slug": "noname-training",
+		"title": "NoName: учебные циклы и практика",
+		"hema": true,
+		"catalogGroup": "noname",
+		"facets": {
+			"weapons": [
+				"Длинный меч",
+				"Меч и баклер"
+			]
+		},
+		"subtitle": "Учебные циклы NoName по длинному мечу и мечу с баклером, а также разбор спаррингов.",
+		"description": "Практические материалы NoName: последовательные учебные циклы по длинному мечу и мечу с баклером, дополненные разбором обменов в спарринге.",
+		"items": [
+			"prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+			"ukoly-mezotsikl-1-dlinnyy-mech",
+			"mech-i-bakler-mikrotsikl-1-osnovy",
+			"fedotikov-mironov"
+		],
+		"access": {
+			"master": {
+				"id": "noname-training",
+				"password": "Cycle7P2",
+				"passwordHint": "Пароль уточняйте у Петра Васильева."
+			},
+			"passes": [
+				{
+					"id": "noname-training:longsword-cycles",
+					"title": "Длинный меч: микроцикл и мезоцикл",
+					"items": [
+						"prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+						"ukoly-mezotsikl-1-dlinnyy-mech"
+					],
+					"password": "mech7"
+				}
+			]
+		},
+		"protectedReports": true,
+		"sections": [
+			{
+				"title": "Длинный меч",
+				"subtitle": "Базовая атака, дистанция, тайминг, укол и выбор момента.",
+				"items": [
+					"prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+					"ukoly-mezotsikl-1-dlinnyy-mech"
+				]
+			},
+			{
+				"title": "Меч и баклер",
+				"subtitle": "Стойка, координация двух рук, базовые действия и контратака.",
+				"items": [
+					"mech-i-bakler-mikrotsikl-1-osnovy"
+				]
+			},
+			{
+				"title": "Спарринги",
+				"subtitle": "Учебные бои с разбором решений и отдельных обменов.",
+				"items": [
+					"fedotikov-mironov"
+				]
+			}
+		]
+	},
+	{
+		"slug": "noname",
+		"title": "NoName, фехтовальный лагерь 2026",
+		"hema": true,
+		"isolated": true,
+		"catalogGroup": "noname",
+		"facets": {
+			"authors": [
+				"Турин",
+				"Евген",
+				"Пётр Васильев",
+				"Александр Овчинников"
+			],
+			"weapons": [
+				"Сабля",
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Материалы фехтовального лагеря NoName 2026: лекции Турина, кинезио Евгена, меч Пети и сабля Саши.",
+		"items": [
+			"fizpodgotovka-dlya-fekhtovalshchika-turin",
+			"pitanie-i-ves-fekhtovalshchika-turin",
+			"kinezio-trenirovka-1-razminka-koordinatsiya",
+			"kinezio-trenirovka-2-stopa-golenostop",
+			"kinezio-trenirovka-3-tazobedrennyy-sustav",
+			"kinezio-trenirovka-4-kisti-paltsy-lokti",
+			"kinezio-trenirovka-5-plechevoy-poyas",
+			"soedinenie-dlinnyi-mech-lager-noname-1",
+			"soedinenie-dlinnyi-mech-lager-noname-2-utro",
+			"soedinenie-dlinnyi-mech-lager-noname-3",
+			"soedinenie-dlinnyi-mech-lager-noname-4",
+			"soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+			"soedinenie-dlinnyi-mech-lager-noname-7",
+			"avstriyskaya-sablya-2",
+			"avstriyskaya-sablya-trenirovka-3",
+			"avstriyskaya-sablya-obratnoe-lezvie",
+			"avstriyskaya-sablya-trenirovka-5-povtorenie",
+			"avstriyskaya-sablya-trenirovka-6-batmany-vybor"
+		],
+		"access": {
+			"master": {
+				"id": "noname",
+				"password": "Lager8Q4",
+				"passwordHint": "Пароль уточняйте у Петра Васильева."
+			}
+		},
+		"protectedReports": true,
+		"sections": [
+			{
+				"title": "Лекции Турина",
+				"subtitle": "Физическая подготовка, питание и управление весом фехтовальщика.",
+				"items": [
+					"fizpodgotovka-dlya-fekhtovalshchika-turin",
+					"pitanie-i-ves-fekhtovalshchika-turin"
+				]
+			},
+			{
+				"title": "Кинезио Евгена",
+				"subtitle": "Тренировки 1–5: общая разминка, стопы, ноги, руки и плечевой пояс.",
+				"items": [
+					"kinezio-trenirovka-1-razminka-koordinatsiya",
+					"kinezio-trenirovka-2-stopa-golenostop",
+					"kinezio-trenirovka-3-tazobedrennyy-sustav",
+					"kinezio-trenirovka-4-kisti-paltsy-lokti",
+					"kinezio-trenirovka-5-plechevoy-poyas"
+				]
+			},
+			{
+				"title": "Меч Пети",
+				"subtitle": "Шесть последовательных тренировок по соединению: от входа и чувства клинка до сборки всего цикла.",
+				"items": [
+					"soedinenie-dlinnyi-mech-lager-noname-1",
+					"soedinenie-dlinnyi-mech-lager-noname-2-utro",
+					"soedinenie-dlinnyi-mech-lager-noname-3",
+					"soedinenie-dlinnyi-mech-lager-noname-4",
+					"soedinenie-dlinnyi-mech-lager-noname-poteryannaya",
+					"soedinenie-dlinnyi-mech-lager-noname-7"
+				]
+			},
+			{
+				"title": "Сабля Саши",
+				"subtitle": "Практический цикл по австрийской сабле: пять записанных тренировок, с 1 по 5.",
+				"items": [
+					"avstriyskaya-sablya-2",
+					"avstriyskaya-sablya-trenirovka-3",
+					"avstriyskaya-sablya-obratnoe-lezvie",
+					"avstriyskaya-sablya-trenirovka-5-povtorenie",
+					"avstriyskaya-sablya-trenirovka-6-batmany-vybor"
+				]
+			}
+		]
+	},
+	{
+		"slug": "sobraniya-core-noname",
+		"title": "Собрания Core NoName",
+		"hema": true,
+		"isolated": true,
+		"catalogGroup": "noname",
+		"subtitle": "Стратегические встречи ядра NoName: цели, метрики, ответственные и ежемесячные планы развития клуба.",
+		"description": "Рабочие собрания Core NoName о развитии клуба: от привлечения и удержания атлетов до тренерских процессов, финансовой устойчивости и АХЧ.",
+		"items": [
+			"sobranie-core-noname-1"
+		],
+		"access": {
+			"master": {
+				"id": "sobraniya-core-noname",
+				"password": "Core5M9",
+				"credentialVersion": 2,
+				"passwordHint": "Пароль уточняйте у Петра Васильева."
+			}
+		},
+		"protectedReports": true
+	},
+	{
+		"slug": "noname-kurs-dlya-trenerov",
+		"title": "NoName курс для тренеров",
+		"hema": true,
+		"isolated": true,
+		"catalogGroup": "noname",
+		"facets": {
+			"authors": [
+				"Пётр Васильев"
+			]
+		},
+		"subtitle": "Внутренний курс о развитии тренеров, структуре команды и единой методике NoName.",
+		"description": "Лекции и практические разборы для инструкторов, тренеров и старших тренеров NoName: компетенции, планирование, кадровый резерв и обмен опытом.",
+		"items": [
+			"kurs-dlya-trenerov-noname-1-karta-razvitiya",
+			"kurs-dlya-trenerov-noname-2-planirovanie-puti-sportsmena",
+			"kurs-dlya-trenerov-noname-3-formirovanie-dvigatelnogo-navyka",
+			"kurs-dlya-trenerov-noname-4-tehnika-bezopasnosti",
+			"makrotsikly-nachalnoy-podgotovki-2026-mech-i-sablya"
+		],
+		"access": {
+			"master": {
+				"id": "noname-kurs-dlya-trenerov",
+				"password": "Kurs6V3",
+				"credentialVersion": 2,
+				"passwordHint": "Пароль уточняйте у Петра Васильева."
+			}
+		},
+		"protectedReports": true
+	},
+	{
+		"slug": "seminary-korotovskih",
+		"title": "Семинары Вячеслава Коротовских",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Вячеслав Коротовских"
+			],
+			"weapons": [
+				"Сабля",
+				"Рапира"
+			]
+		},
+		"subtitle": "Практические семинары по тактике сабли и рапиры.",
+		"items": [
+			"podgotovka-ataki-na-sable-korotovskih",
+			"rapira-protiv-vstrechnogo-ukola-korotovskih",
+			"fehtovanie-s-prioritetom-v-atake-korotovskih"
+		]
+	},
+	{
+		"slug": "noname-sparring",
+		"title": "NoName: спарринги",
+		"hema": true,
+		"catalogHidden": true,
+		"facets": {
+			"places": [
+				"Алматы"
+			],
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Учебные спарринги клуба NoName с комментарием по обменам.",
+		"items": [
+			"fedotikov-mironov"
+		]
+	},
+	{
+		"slug": "raznoe",
+		"title": "Разное",
+		"subtitle": "Подкасты и разговоры вне основных тематических коллекций.",
+		"items": [
+			"nikitin-muzhchiny-zhenshiny"
+		]
+	},
+	{
+		"slug": "golden-falcon-astana",
+		"title": "Golden Falcon Astana",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Александр Овчинников"
+			],
+			"places": [
+				"Астана"
+			],
+			"weapons": [
+				"Длинный меч"
+			]
+		},
+		"subtitle": "Тренировки и разборы фехтовального клуба в Астане.",
+		"items": [
+			"optimizatsiya-parad-ripost-hema",
+			"hema-prednamerennye-ekspromtnye",
+			"fehtovat-dolgo-ne-travmirovatsya",
+			"kontseptsiya-monitoringa",
+			"kompresiya-taktiki-lektsiya",
+			"hema-reflections",
+			"protivnik-fehtuet-nepravilno",
+			"dofamin-neyronnye-svyazi-pasha",
+			"2026-07-06-19-26-42",
+			"trenerskoe-sobranie",
+			"trenerskoe-sobranie-novyi-zal",
+			"trenerskoe-sobranie-novyi-zal-chast-2",
+			"trenerskoe-sobranie-novyi-zal-chast-3",
+			"trenerskoe-sobranie-novyi-zal-chast-4",
+			"trenerskoe-sobranie-dva-zala"
+		],
+		"sections": [
+			{
+				"title": "Фехтование, тактика и обучение",
+				"subtitle": "Практика длинного меча, тактические модели, обучение движению и здоровье фехтовальщика.",
+				"items": [
+					"optimizatsiya-parad-ripost-hema",
+					"hema-prednamerennye-ekspromtnye",
+					"fehtovat-dolgo-ne-travmirovatsya",
+					"kontseptsiya-monitoringa",
+					"kompresiya-taktiki-lektsiya",
+					"hema-reflections",
+					"protivnik-fehtuet-nepravilno",
+					"dofamin-neyronnye-svyazi-pasha",
+					"2026-07-06-19-26-42"
+				]
+			},
+			{
+				"title": "Управление клубом и тренерские собрания",
+				"subtitle": "Стратегия клуба, запуск нового зала, экономика и организация тренерской работы.",
+				"items": [
+					"trenerskoe-sobranie",
+					"trenerskoe-sobranie-novyi-zal",
+					"trenerskoe-sobranie-novyi-zal-chast-2",
+					"trenerskoe-sobranie-novyi-zal-chast-3",
+					"trenerskoe-sobranie-novyi-zal-chast-4",
+					"trenerskoe-sobranie-dva-zala"
+				]
+			}
+		]
+	}
+]

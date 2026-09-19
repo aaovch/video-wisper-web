@@ -8,8 +8,8 @@ const report=s=>read(`src/lib/data/reports/${s}.json`);
 const get=(o,p)=>p.reduce((v,k)=>v[k],o);
 function j(slug,path,selector,grade,supports,quotes,reason){const source=get(report(slug),path);return {reportSlug:slug,path,selector,grade,supports,evidence:quotes.map(p=>get(source,p)),sourceHash:hash(JSON.stringify(source)),reason};}
 const ch=(s,i,f,quotes,reason)=>j(s,['chapters',i],{chapterIndex:i},3,[f],quotes,reason);
-const note=(s,i,f,quotes,reason)=>j(s,['seminar_notes',i],{kind:'material',title:'Конспект: '+report(s).seminar_notes[i].title},3,[f],quotes,reason);
-const ex=(s,sec,i,g,f,reason)=>{const section=report(s).seminar_exercises[sec];return j(s,['seminar_exercises',sec,'items',i],{kind:'material',title:'Упражнения: '+section.title,start:section.items[i].start},g,f,[['text']],reason);};
+const note=(s,i,f,quotes,reason)=>j(s,['materials','notes',i],{kind:'material',title:'Конспект: '+report(s).materials.notes[i].title},3,[f],quotes,reason);
+const ex=(s,sec,i,g,f,reason)=>{const section=report(s).materials.exercises[sec];return j(s,['materials','exercises',sec,'items',i],{kind:'material',title:'Упражнения: '+section.title,start:section.items[i].start},g,f,[['text']],reason);};
 const b='mech-i-bakler-mikrotsikl-1-osnovy',c='soedinenie-dlinnyi-mech-lager-noname-1',m='kontseptsiya-monitoringa',h='hema-prednamerennye-ekspromtnye',t='2026-07-06-19-26-42',l='longsword-a';
 const defs=[
  ['p-multi-1',['sabre','Причина ненадёжности захвата гибкой сабли'],['winden','Условие выполнения силового виндена'],[

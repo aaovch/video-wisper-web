@@ -3,6 +3,7 @@
 	"title": "Agents Week 2026 — семинар 3: ReAct, Multi-Agent Systems и критик",
 	"subtitle": "Практическая реализация TAO-цикла, иерархической системы, critic loop и сравнительного benchmark",
 	"source_name": "Agents Week 2026 ｜ Семинар 3 AI Agent Workflow Multi-Agent Systems Multimodality [-84793390_456240037].mp4",
+	"source_stem": "Agents Week 2026 ｜ Семинар 3 AI Agent Workflow Multi-Agent Systems Multimodality [-84793390_456240037]",
 	"note": "Практический семинар Сони с последовательным сравнением трёх архитектур на общей задаче авиаперебронирования. Расшифровка выполнена локально Whisper Turbo на CUDA; ASR-названия паттернов, классов и tools исправлены без изменения таймкодов.",
 	"duration": 2534.2,
 	"tags": [
@@ -227,75 +228,77 @@
 			]
 		}
 	],
+	"materials": {
+		"notes": [
+			{
+				"title": "Упражнение: одиночный ReAct",
+				"items": [
+					"Соберите agent node, tool node и should_continue.",
+					"Выведите thought, action и observation из AIMessage и ToolMessage.",
+					"Сравните простой, явно многошаговый и неявно комплексный запрос."
+				]
+			},
+			{
+				"title": "Упражнение: иерархическая система",
+				"items": [
+					"Опишите Pydantic-модели подзадачи, плана и результата.",
+					"Ограничьте каждому specialist доступные tools.",
+					"Разделите flow на planning, execution и synthesis."
+				]
+			},
+			{
+				"title": "Упражнение: critic loop",
+				"items": [
+					"Верните pass-флаг, score, issues и suggestions.",
+					"Передайте feedback в повторное планирование.",
+					"Установите max retries и проверьте поведение при ошибке самого critic."
+				]
+			},
+			{
+				"title": "Упражнение: сравнительный benchmark",
+				"items": [
+					"Используйте один набор запросов для всех архитектур.",
+					"Фиксируйте latency, ожидаемые tools и quality score.",
+					"Сравнивайте результаты отдельно по уровню сложности, а не только средним значением."
+				]
+			}
+		],
+		"glossary": [
+			{
+				"term": "TAO-цикл",
+				"definition": "Thought–action–observation: итерация рассуждения, вызова действия и обработки результата среды."
+			},
+			{
+				"term": "ReAct",
+				"definition": "Паттерн одиночного агента, чередующий рассуждение с tool calls и observations."
+			},
+			{
+				"term": "Specialist",
+				"definition": "Агент с узкой зоной ответственности и ограниченным набором tools."
+			},
+			{
+				"term": "Coordinator",
+				"definition": "Агент, который строит план, делегирует подзадачи и синтезирует общий ответ."
+			},
+			{
+				"term": "Structured output",
+				"definition": "Ответ LLM, приведённый к заранее заданной типизированной схеме."
+			},
+			{
+				"term": "Critic",
+				"definition": "Отдельный evaluator, оценивающий ответ и формирующий feedback для возможного retry."
+			},
+			{
+				"term": "Retry loop",
+				"definition": "Ограниченный цикл повторного планирования и проверки после отклонения результата."
+			},
+			{
+				"term": "tau2-bench",
+				"definition": "Benchmark пользовательско-агентного взаимодействия, здесь используемый в домене авиаперебронирования."
+			}
+		]
+	},
 	"has_transcript": true,
-	"glossary": [
-		{
-			"term": "TAO-цикл",
-			"definition": "Thought–action–observation: итерация рассуждения, вызова действия и обработки результата среды."
-		},
-		{
-			"term": "ReAct",
-			"definition": "Паттерн одиночного агента, чередующий рассуждение с tool calls и observations."
-		},
-		{
-			"term": "Specialist",
-			"definition": "Агент с узкой зоной ответственности и ограниченным набором tools."
-		},
-		{
-			"term": "Coordinator",
-			"definition": "Агент, который строит план, делегирует подзадачи и синтезирует общий ответ."
-		},
-		{
-			"term": "Structured output",
-			"definition": "Ответ LLM, приведённый к заранее заданной типизированной схеме."
-		},
-		{
-			"term": "Critic",
-			"definition": "Отдельный evaluator, оценивающий ответ и формирующий feedback для возможного retry."
-		},
-		{
-			"term": "Retry loop",
-			"definition": "Ограниченный цикл повторного планирования и проверки после отклонения результата."
-		},
-		{
-			"term": "tau2-bench",
-			"definition": "Benchmark пользовательско-агентного взаимодействия, здесь используемый в домене авиаперебронирования."
-		}
-	],
-	"seminar_notes": [
-		{
-			"title": "Упражнение: одиночный ReAct",
-			"items": [
-				"Соберите agent node, tool node и should_continue.",
-				"Выведите thought, action и observation из AIMessage и ToolMessage.",
-				"Сравните простой, явно многошаговый и неявно комплексный запрос."
-			]
-		},
-		{
-			"title": "Упражнение: иерархическая система",
-			"items": [
-				"Опишите Pydantic-модели подзадачи, плана и результата.",
-				"Ограничьте каждому specialist доступные tools.",
-				"Разделите flow на planning, execution и synthesis."
-			]
-		},
-		{
-			"title": "Упражнение: critic loop",
-			"items": [
-				"Верните pass-флаг, score, issues и suggestions.",
-				"Передайте feedback в повторное планирование.",
-				"Установите max retries и проверьте поведение при ошибке самого critic."
-			]
-		},
-		{
-			"title": "Упражнение: сравнительный benchmark",
-			"items": [
-				"Используйте один набор запросов для всех архитектур.",
-				"Фиксируйте latency, ожидаемые tools и quality score.",
-				"Сравнивайте результаты отдельно по уровню сложности, а не только средним значением."
-			]
-		}
-	],
 	"video": {
 		"provider": "vk",
 		"id": "-84793390_456240037",
