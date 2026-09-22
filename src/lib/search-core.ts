@@ -487,6 +487,26 @@ async function executeTieredSearch(
 			(!requiresPosition || [docTitle(result as unknown as IndexedDoc), (result as unknown as IndexedDoc).text ?? '']
 				.some(text => ` ${queryWords(text).map(stemRu).join(' ')} `.includes(` ${positionPhrase} `))) &&
 			requiredNumbers.every(term => result.terms.includes(term)) };
+	const named = new Map<string, SearchResult>();
+	if (import.meta.env.VITE_SEARCH_TECHNIQUE_ALIASES !== '0') {
+		for (const alias of techniqueAliases(query)) {
+			const hits = searchShards(alias, { ...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false })
+				.filter(result => {
+					const doc = result as unknown as IndexedDoc;
+					return [docTitle(doc), doc.text ?? ''].some(text =>
+						` ${normalizeTechnique(text)} `.includes(` ${alias} `));
+				});
+			// Multiple spellings of one name do not stack ranking bonuses.
+			for (const hit of hits) if (!named.has(String(hit.id)) || named.get(String(hit.id))!.score < hit.score) named.set(String(hit.id), hit);
+		}
+	}
+	const appendNamedHits = (primary: import('$lib/search-types').SearchHit[]) => {
+		if (!named.size || primary.length >= limit) return primary;
+		const seen = new Set(primary.map(hit => hit.href));
+		const aliases = rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport)
+			.filter(hit => !seen.has(hit.href));
+		return [...primary, ...aliases].slice(0, limit);
+	};
 
 	const exact = searchShards(directQuery, {
 		...baseOptions,
@@ -503,9 +523,9 @@ async function executeTieredSearch(
 				const doc = result as unknown as IndexedDoc;
 				return doc.kind !== 'report' && slugs.has(doc.reportSlug) && (!filter || filter(result));
 			}, true);
-			return { hits: [...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits].slice(0, limit), matchKind: 'exact' };
+			return { hits: appendNamedHits([...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits].slice(0, limit)), matchKind: 'exact' };
 		}
-		return { hits: rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05), matchKind: 'exact' };
+		return { hits: appendNamedHits(rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05)), matchKind: 'exact' };
 	}
 
 	const prefix = searchShards(directQuery, {
@@ -515,24 +535,12 @@ async function executeTieredSearch(
 		prefix: adaptivePrefix
 	});
 	if (prefix.length) {
-		return { hits: rankedHits(prefix, parsed, 'prefix', limit, insideSingleReport, 1.82), matchKind: 'prefix' };
+		return { hits: appendNamedHits(rankedHits(prefix, parsed, 'prefix', limit, insideSingleReport, 1.82)), matchKind: 'prefix' };
 	}
 
 	// A known alternative name is more reliable than an unrelated fuzzy typo.
-	// Exact/prefix source matches above retain priority; strict APIs are unchanged.
-	const named = new Map<string, SearchResult>();
-	if (import.meta.env.VITE_SEARCH_TECHNIQUE_ALIASES !== '0') {
-		for (const alias of techniqueAliases(query)) {
-			const hits = searchShards(alias, { ...baseOptions, combineWith: 'AND', fuzzy: false, prefix: false })
-				.filter(result => {
-					const doc = result as unknown as IndexedDoc;
-					return [docTitle(doc), doc.text ?? ''].some(text =>
-						` ${normalizeTechnique(text)} `.includes(` ${alias} `));
-				});
-			// Multiple spellings of one name do not stack ranking bonuses.
-			for (const hit of hits) if (!named.has(String(hit.id)) || named.get(String(hit.id))!.score < hit.score) named.set(String(hit.id), hit);
-		}
-	}
+	// Exact/prefix source matches above retain priority while reviewed aliases
+	// fill remaining slots instead of disappearing behind a new exact source.
 	if (named.size) return { hits: rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport), matchKind: 'semantic' };
 
 	const correctionRanked = new Map<string, SearchResult>();

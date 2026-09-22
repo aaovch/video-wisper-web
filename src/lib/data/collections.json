@@ -779,6 +779,27 @@
 		"protectedReports": true
 	},
 	{
+		"slug": "seminary-petra-vasileva-stambul",
+		"title": "Семинары Петра Васильева в Стамбуле",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Пётр Васильев"
+			],
+			"places": [
+				"Стамбул"
+			],
+			"weapons": [
+				"Меч и баклер"
+			]
+		},
+		"subtitle": "Практические семинары Петра Васильева в Стамбуле по технике и тактике исторического фехтования.",
+		"description": "Семинары о работе оружия, дистанции, координации и тактической подготовке действий на примере практических упражнений.",
+		"items": [
+			"ukol-korol-udarov-mech-i-bakler-stambul"
+		]
+	},
+	{
 		"slug": "seminary-korotovskih",
 		"title": "Семинары Вячеслава Коротовских",
 		"hema": true,

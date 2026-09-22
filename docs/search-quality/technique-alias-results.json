@@ -174,9 +174,9 @@
       "rank": 0,
       "top": [
         {
-          "slug": "llm-deep-dive-karpathy",
-          "chapter": 15,
-          "title": "Tool use: search и working memory"
+          "slug": "ukol-korol-udarov-mech-i-bakler-stambul",
+          "chapter": 11,
+          "title": "Укол по внутренней линии баклера"
         }
       ]
     },
@@ -184,8 +184,13 @@
       "query": "winden",
       "scope": "archive",
       "mode": "1",
-      "rank": 1,
+      "rank": 2,
       "top": [
+        {
+          "slug": "ukol-korol-udarov-mech-i-bakler-stambul",
+          "chapter": 11,
+          "title": "Укол по внутренней линии баклера"
+        },
         {
           "slug": "longsword-a",
           "chapter": 14,
@@ -261,6 +266,11 @@
           "slug": "longsword-a",
           "chapter": 14,
           "title": "Виндены: уступающий и силовой"
+        },
+        {
+          "slug": "ukol-korol-udarov-mech-i-bakler-stambul",
+          "chapter": 11,
+          "title": "Укол по внутренней линии баклера"
         },
         {
           "slug": "ii-dlya-analiza-hema-boev",
@@ -368,7 +378,7 @@
       "query": "posta longa",
       "scope": "archive",
       "mode": "1",
-      "rank": 0,
+      "rank": 6,
       "top": [
         {
           "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
@@ -388,6 +398,11 @@
           "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
           "chapter": 12,
           "title": "Переход к активному маневрированию"
+        },
+        {
+          "slug": "silovye-porezy-katanoy",
+          "chapter": 7,
+          "title": "Вход из длинного острия"
         }
       ]
     },
@@ -465,11 +480,6 @@
           "title": "Потолок текущего зала"
         },
         {
-          "slug": "fizpodgotovka-dlya-fekhtovalshchika-turin",
-          "chapter": 24,
-          "title": "Генетика, рычаги и личный потолок"
-        },
-        {
           "slug": "trenerskoe-sobranie-novyi-zal-chast-4",
           "chapter": 1,
           "title": "Потолок, освещение и пожарные датчики"
@@ -483,6 +493,11 @@
           "slug": "sablya-10",
           "chapter": 12,
           "title": "Средняя скорость и итоги"
+        },
+        {
+          "slug": "silovaya-trenirovka-pozhilyh",
+          "chapter": 4,
+          "title": "Ответ на прогрессивную нагрузку"
         }
       ]
     },
