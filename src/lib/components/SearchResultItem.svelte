@@ -18,6 +18,7 @@
 		locked = false,
 		lockedCollectionTitle = '',
 		active = false,
+		language = 'ru',
 		id,
 		hrefFor,
 		onOpen
@@ -30,6 +31,7 @@
 		locked?: boolean;
 		lockedCollectionTitle?: string;
 		active?: boolean;
+		language?: 'ru' | 'en';
 		id?: string;
 		hrefFor: (hit: SearchHit, seek?: boolean) => string;
 		onOpen: (event: MouseEvent, hit: SearchHit, seek: boolean) => void;
@@ -39,38 +41,38 @@
 <li {id} class:active class:locked class:report-layout={layout === 'report'}>
 	<div class="copy">
 		{#if locked}
-			<p class="breadcrumb locked-label"><LockKey size={16} weight="regular" aria-hidden="true" /> Видео по паролю{#if lockedCollectionTitle} · {lockedCollectionTitle}{/if}</p>
+			<p class="breadcrumb locked-label"><LockKey size={16} weight="regular" aria-hidden="true" /> {language === 'en' ? 'Password-protected video' : 'Видео по паролю'}{#if lockedCollectionTitle} · {lockedCollectionTitle}{/if}</p>
 			<h3>{hit.reportTitle}</h3>
-			<p class="snippet locked-copy">Совпадение найдено внутри закрытого материала. Фрагмент и точное место откроются после ввода пароля.</p>
+			<p class="snippet locked-copy">{language === 'en' ? 'A match was found in protected material. The excerpt and exact position will appear after you enter the password.' : 'Совпадение найдено внутри закрытого материала. Фрагмент и точное место откроются после ввода пароля.'}</p>
 		{:else}
 			{#if showReportTitle}<p class="breadcrumb">{hit.reportTitle}</p>{/if}
 			<h3>{#each highlightParts(hit.title, query) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</h3>
-			<SearchMatchNote {hit} {query} />
+			<SearchMatchNote {hit} {query} {language} />
 			<p class="snippet">
 				{#each highlightParts(hit.snippet, query) as part}
 					{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
 				{/each}
 			</p>
-			<SearchSourceLinks {hit} {scope} />
+			<SearchSourceLinks {hit} {scope} {language} />
 		{/if}
 	</div>
 	<div class="actions">
 		{#if locked}
 			<a href={hrefFor(hit, hit.start != null)} onclick={(event) => onOpen(event, hit, hit.start != null)}>
 				<LockKey size={21} weight="thin" aria-hidden="true" />
-				<span>Ввести пароль и открыть</span>
+				<span>{language === 'en' ? 'Enter password and open' : 'Ввести пароль и открыть'}</span>
 				<ArrowRight size={20} weight="thin" />
 			</a>
 		{:else}
 			<a href={hrefFor(hit)} onclick={(event) => onOpen(event, hit, false)}>
 				<FileText size={19} weight="thin" />
-				<span>{hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок'}</span>
+				<span>{language === 'en' ? (hit.kind === 'report' ? 'Open report' : 'Open chapter') : (hit.kind === 'report' ? 'Открыть отчёт' : 'Открыть блок')}</span>
 				<ArrowRight size={18} weight="thin" />
 			</a>
 			{#if hit.start != null}
 				<a href={hrefFor(hit, true)} onclick={(event) => onOpen(event, hit, true)}>
 					<Play size={19} weight="thin" />
-					<span>Смотреть с {formatTime(hit.start)}</span>
+					<span>{language === 'en' ? 'Watch from' : 'Смотреть с'} {formatTime(hit.start)}</span>
 					<ArrowRight size={18} weight="thin" />
 				</a>
 			{/if}

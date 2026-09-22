@@ -7,13 +7,15 @@
 		selections,
 		onToggle,
 		onClear,
-		onClose
+		onClose,
+		language = 'ru'
 	}: {
 		groups: SearchFilterGroup[];
 		selections: SearchFilterSelections;
 		onToggle: (groupId: string, value: string) => void;
 		onClear: () => void;
 		onClose?: () => void;
+		language?: 'ru' | 'en';
 	} = $props();
 
 	const visibleGroups = $derived(
@@ -31,15 +33,15 @@
 <div class="panel">
 	<header>
 		<div>
-			<p class="label">Фильтры</p>
-			<h2>Уточнить поиск</h2>
+			<p class="label">{language === 'en' ? 'Filters' : 'Фильтры'}</p>
+			<h2>{language === 'en' ? 'Refine search' : 'Уточнить поиск'}</h2>
 		</div>
 		<div class="header-actions">
 			{#if activeCount > 0}
-				<button type="button" class="clear" onclick={onClear}>Сбросить</button>
+				<button type="button" class="clear" onclick={onClear}>{language === 'en' ? 'Reset' : 'Сбросить'}</button>
 			{/if}
 			{#if onClose}
-				<button type="button" class="close" aria-label="Закрыть фильтры" onclick={onClose}>
+				<button type="button" class="close" aria-label={language === 'en' ? 'Close filters' : 'Закрыть фильтры'} onclick={onClose}>
 					<X size={20} weight="regular" aria-hidden="true" />
 				</button>
 			{/if}

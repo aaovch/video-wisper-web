@@ -14,7 +14,8 @@
 		highlight = '',
 		searchSelected = false,
 		transcriptAvailable = false,
-		onOpenTranscript
+		onOpenTranscript,
+		language = 'ru'
 	}: {
 		chapter: Chapter;
 		index: number;
@@ -25,17 +26,18 @@
 		searchSelected?: boolean;
 		transcriptAvailable?: boolean;
 		onOpenTranscript?: (trigger: HTMLButtonElement) => void;
+		language?: 'ru' | 'en';
 	} = $props();
 </script>
 
 <article class="chapter" class:playing class:search-selected={searchSelected} id="ch-{index + 1}">
 	<header class="head">
-		{#if searchSelected}<span class="current-fragment">Текущий фрагмент</span>{/if}
-		<a class="num" href="#ch-{index + 1}" title="Ссылка на этот блок" aria-label="Ссылка на блок {index + 1}"
+		{#if searchSelected}<span class="current-fragment">{language === 'en' ? 'Current match' : 'Текущий фрагмент'}</span>{/if}
+		<a class="num" href="#ch-{index + 1}" title={language === 'en' ? 'Link to this chapter' : 'Ссылка на этот блок'} aria-label={language === 'en' ? `Link to chapter ${index + 1}` : `Ссылка на блок ${index + 1}`}
 			>{String(index + 1).padStart(2, '0')}</a
 		>
 		{#if onSeek}
-			<button type="button" class="tc" onclick={() => onSeek?.(chapter.start)} title="Смотреть с этого момента">
+			<button type="button" class="tc" onclick={() => onSeek?.(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
 				<span class="tc-play" aria-hidden="true"><Play size={10} weight="fill" /></span>
 				<span class="mono">{formatTime(chapter.start)}</span>
 			</button>
@@ -43,8 +45,8 @@
 			<span class="tc tc-static mono">{formatTime(chapter.start)}</span>
 		{/if}
 		{#if playing}
-			<span class="now" class:live aria-label={live ? 'Сейчас воспроизводится' : 'Плеер остановлен здесь'}>
-				<span class="now-dot"></span>{live ? 'сейчас' : 'пауза'}</span>
+			<span class="now" class:live aria-label={language === 'en' ? (live ? 'Playing now' : 'Player paused here') : (live ? 'Сейчас воспроизводится' : 'Плеер остановлен здесь')}>
+				<span class="now-dot"></span>{language === 'en' ? (live ? 'now' : 'paused') : (live ? 'сейчас' : 'пауза')}</span>
 		{/if}
 	</header>
 
@@ -60,7 +62,7 @@
 			id="chapter-transcript-trigger-{index + 1}"
 			onclick={(event) => onOpenTranscript?.(event.currentTarget)}
 		>
-			<span>Читать расшифровку</span>
+			<span>{language === 'en' ? 'Read transcript' : 'Читать расшифровку'}</span>
 			<ArrowRight size={17} weight="bold" aria-hidden="true" />
 		</button>
 	{/if}

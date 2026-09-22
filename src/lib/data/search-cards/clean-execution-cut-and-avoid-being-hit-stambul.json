@@ -1,0 +1,271 @@
+{
+  "version": 1,
+  "sourceMode": "extractive-context",
+  "reportSlug": "clean-execution-cut-and-avoid-being-hit-stambul",
+  "promptVersion": "hema-source-context-v1",
+  "dictionarySha256": "4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+  "generator": "extractive-context-v1; literal existing report and chapter titles; no new LLM call",
+  "cards": [
+    {
+      "chapterIndex": 0,
+      "sourceHash": "dec4630f9b860fa9ff4472f62d90fabfd3f4f69c38213f828d6fd30f0af5367a",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nWarm-Up and Workshop Setup",
+        "evidence": "The group organizes the space, introduces the instructor, and warms the joints and legs for the rotational and retreating movements used later."
+      }
+    },
+    {
+      "chapterIndex": 1,
+      "sourceHash": "eb92634e1ebd74a5ac27a260aeed9e2a00f261260f04f5cb6c2780be2d221f4e",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nClean Execution Means Surviving the Exchange",
+        "evidence": "The seminar’s problem is defined: a fencer often recognizes the attack and the final recovery but lacks a practiced connection between the two."
+      }
+    },
+    {
+      "chapterIndex": 2,
+      "sourceHash": "57f4989894a438952b6217a477661e8800df0699e86fb173cc169bf2d93c9c55",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nThe First Endless Battle Sequence",
+        "evidence": "The first sequence links a stationary countercut, fourth parry, cross-step retreat, guard change, and the mirrored action from the other side."
+      }
+    },
+    {
+      "chapterIndex": 3,
+      "sourceHash": "cc8b74133d573816ee0af0f66960ce91688da16cd71218540c2b9dcf50bd3095",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nBody Mechanics Before Sword Mechanics",
+        "evidence": "The instructor reframes the sword as a tool moved by the whole body and introduces the rubber-band model of extension and contraction."
+      }
+    },
+    {
+      "chapterIndex": 4,
+      "sourceHash": "6ad8a80e17928fa81f8900530868df065b0089b0c81b93c8fb0993e2623307f4",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nTurning the Sequence into a Partner Drill",
+        "evidence": "A partner supplies a deliberate opening, receives the counterattack, gives an afterblow, and then resets distance so the sequence can continue."
+      }
+    },
+    {
+      "chapterIndex": 5,
+      "sourceHash": "5e66c95d8ad0649571978bbe6bebc50f20bcb0de1dcaa8ba40b05d9528e9cf08",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nWhy an Artificial Drill Builds a Real Skill",
+        "evidence": "The instructor explains why a repetitive, noncompetitive drill is useful even though its rhythm does not resemble free fencing."
+      }
+    },
+    {
+      "chapterIndex": 6,
+      "sourceHash": "eacb2d8545563ebc53d4efba9545a8779d3d146999845a570137e91b725bce5d",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nTempo, Acceleration, and the Assistant’s Role",
+        "evidence": "Partners start at a controllable pace and accelerate while the assistant preserves the student’s rhythm instead of turning the exercise into a bout."
+      }
+    },
+    {
+      "chapterIndex": 7,
+      "sourceHash": "f444c6bb9830f2e04a4ec4cdfb6cb9b833d31603aa50690bcb86fab3130ee9e5",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nWhy the Drill Is an Endless Loop",
+        "evidence": "The continuous sequence alternates shoulders, cuts, parries, and retreats until conscious technical commentary gives way to sustained rhythm."
+      }
+    },
+    {
+      "chapterIndex": 8,
+      "sourceHash": "fcb4f075beb8b947b853cbeb7f11786cd18d74a1ace9525203eb3ca775148cd2",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nThe Second Endless Battle Sequence",
+        "evidence": "The second sequence starts from a closed line, attacks the opposite opening, and uses the matching retreating parry before the next guard change."
+      }
+    },
+    {
+      "chapterIndex": 9,
+      "sourceHash": "f21df62803b243a43363ead2b4be51543bff003862b40a300e71831137b88eef",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nWhy the Parry Must Be Intentional",
+        "evidence": "The instructor shows why being merely faster is unreliable and why defense should already be forming as the hit lands."
+      }
+    },
+    {
+      "chapterIndex": 10,
+      "sourceHash": "3623f59e3d940112dd806bbe87225773e3a74519ad8e4c7024415c351c710674",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nDiagonal Retreat and a Stable Crossed Position",
+        "evidence": "When an opponent continues forward, the defender increases distance on a slight diagonal and finishes in a crossed stance that remains stable and adaptable."
+      }
+    },
+    {
+      "chapterIndex": 11,
+      "sourceHash": "3eb66644ffe1812e005d5e5070a3d875540d32e857acb71b68e285fabf1932ef",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nConnect the Pieces Without Breaking Rhythm",
+        "evidence": "Cuts and parries are familiar pieces; the new skill is joining them so the body continues thinking through movement without empty pauses."
+      }
+    },
+    {
+      "chapterIndex": 12,
+      "sourceHash": "81b6f859a9b828f204fc2a48f39b0c49e0d32dab3fc93a8a901aedd9151e8042",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nDouble Hits, Afterblows, and Pre-Emptive Defense",
+        "evidence": "The first section closes by explaining that both fencers are already moving, so a clean exchange depends on defending before the response fully develops."
+      }
+    },
+    {
+      "chapterIndex": 13,
+      "sourceHash": "34d005092b0768fc06decbb6c52012d4c05a2d341301656101b6774d615617c0",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nDistance Questions and Independent Building Blocks",
+        "evidence": "During a break, the instructor answers questions about whether fixed footwork creates bad habits and argues for separating steps from blade actions."
+      }
+    },
+    {
+      "chapterIndex": 14,
+      "sourceHash": "2cff19088db421a3555528a52c930f6c7bc2c43dafba243b2fcfb3b0eade81de",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nFrom Fixed Sequences to Variable Signals",
+        "evidence": "The drill is generalized: once the building blocks are familiar, the assistant may offer different openings and the student chooses the matching cut and parry."
+      }
+    },
+    {
+      "chapterIndex": 15,
+      "sourceHash": "89b5356ba93b343ae0d118ca5343b39b4dba7656e86e87222c879a5f0c3ff7cb",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nCounterattack from the Central Guard",
+        "evidence": "Starting from Posta Breve, the student counterattacks an overprepared entry and immediately closes the line of the expected continuation."
+      }
+    },
+    {
+      "chapterIndex": 16,
+      "sourceHash": "9026bb790f0ac627cdb94660c371f081b735bc179ca5a65b20554b7588036ef9",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nCoordinating the Counterattack with the Retreat",
+        "evidence": "Arm and leg timing is divided into two tempos: counterattack as the rear leg extends, then parry as the lead leg completes the retreat."
+      }
+    },
+    {
+      "chapterIndex": 17,
+      "sourceHash": "68b10ea575a8912313c33480e8273528af5edd812e55aa80989ba1edb578beb7",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nMake the Training Cue Look Like an Attack",
+        "evidence": "The assistant replaces a passive signal with a slow but committed action so the student must find the counterattack and defense inside realistic forward pressure."
+      }
+    },
+    {
+      "chapterIndex": 18,
+      "sourceHash": "996d3c7ad8e2b6722b306904a5610ecc13cf8aceed24d1224d7af66d3f090293",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nParrying Either Side of the Afterblow",
+        "evidence": "The assistant may continue on the original line or redirect to the other side, while the student keeps the first defensive position calm and ready to adapt."
+      }
+    },
+    {
+      "chapterIndex": 19,
+      "sourceHash": "d295c72863dde93c58f1d0f493930323d786a9f036cdc20992bace276c99f9e5",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nFull Extension, Reach, and Joint Safety",
+        "evidence": "The counterattack is refined so the arms reach fully at the hit, the distance is adjusted with the feet, and the retreat absorbs the remaining momentum safely."
+      }
+    },
+    {
+      "chapterIndex": 20,
+      "sourceHash": "ce9bd5d8d4807174d502560300bfca564582872a72bf07c52a41035c23b32218",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nTroubleshooting Distance and Rebound",
+        "evidence": "When the extended counterattack makes the next defense fail, the instructor diagnoses either insufficient retreat or wasted blade momentum."
+      }
+    },
+    {
+      "chapterIndex": 21,
+      "sourceHash": "1c1099b480cc5c412bda68e387b3a184cae456ebe6af4cf321acd2f0e3a21f1a",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nWhen Another Counterattack Is the Better Answer",
+        "evidence": "A participant challenges the long retreat, leading to a tactical discussion of when to counterattack again, thrust, beat the blade, or use the trained parry as a backup."
+      }
+    },
+    {
+      "chapterIndex": 22,
+      "sourceHash": "e1b2f151e45920b88ceb962992263badbc66aba54eab77c8a2607c6ed5a82b21",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nApplying the Principle After a Simple Attack",
+        "evidence": "The seminar moves from defensive counterattacks to initiated attacks: strike the opening, observe the opponent’s blade, and continue toward it immediately."
+      }
+    },
+    {
+      "chapterIndex": 23,
+      "sourceHash": "99423aad03e23209a097ea9c6b94121ed7da956128d75a6ce7b8809bb70f10d2",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nExtended-Arm Parry and Immediate Continuation",
+        "evidence": "The attacker practices receiving the afterblow with nearly straight arms so the sword remains close to the opponent and ready to cut or thrust again."
+      }
+    },
+    {
+      "chapterIndex": 24,
+      "sourceHash": "6e620ce47e4f26e1133e5d171ee3630db0b7810db0ff9f3751f9413d5cbcac2b",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nSeparate a Simple Attack from a Counterattack",
+        "evidence": "The instructor corrects students who keep counterattacking and redesigns the cue so the student clearly initiates a simple attack before parrying and riposting."
+      }
+    },
+    {
+      "chapterIndex": 25,
+      "sourceHash": "9cfcb8eaa961b6fce4c8c553570ac8c7f7b2fa420e056b5995ba9c3b586ae372",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nChoose the Closest Defense After Any Hit",
+        "evidence": "Cuts, parries, leading legs, and directions are treated as modular building blocks for selecting the nearest defense at the instant an attack finishes."
+      }
+    },
+    {
+      "chapterIndex": 26,
+      "sourceHash": "2ed8b637a8f893e4e3d43d575be46c216a099a16b191a84c380c7df0bb6e0728",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nRecovering Safely from a Flèche",
+        "evidence": "The final drill applies the same rule to a flèche, where forward momentum prevents an immediate stop and makes the likely afterblow especially predictable."
+      }
+    },
+    {
+      "chapterIndex": 27,
+      "sourceHash": "4ebdd35766d16e34d03da37fa7dc02f3a1be3cacd9f724639925d245fd00516d",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nShrink the Target in the Crucial Moment",
+        "evidence": "Lowering and contracting the body briefly reduces available targets, reinforces the parry, and creates a protected transition back to normal movement."
+      }
+    },
+    {
+      "chapterIndex": 28,
+      "sourceHash": "c400d48c15a9500bd804fc54ef2cf6e9b103bca8d4884ce2cd1140924af78641",
+      "termIds": [],
+      "context": {
+        "text": "Clean Execution: How to Cut and Avoid Being Hit\nContinue Until the Exchange Is Truly Over",
+        "evidence": "The seminar closes by restating the body-to-blade cycle, the rubber-band model, and the conditions under which a fencer may finally relax."
+      }
+    }
+  ]
+}

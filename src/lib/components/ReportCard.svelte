@@ -12,8 +12,9 @@
 	let {
 		report,
 		index,
-		collectionSlug
-	}: { report: ReportSummary; index: number; collectionSlug: string } = $props();
+		collectionSlug,
+		language = 'ru'
+	}: { report: ReportSummary; index: number; collectionSlug: string; language?: 'ru' | 'en' } = $props();
 
 	const posterUrl = $derived(getVideoPosterUrl(report.video, base));
 	const gate = $derived(reportGate(report.slug));
@@ -34,8 +35,8 @@
 
 	<div class="body">
 		<div class="meta mono">
-			<span><Clock size={14} /> {formatDuration(report.duration)}</span>
-			<span><ListBullets size={14} /> {report.chapterCount} блоков</span>
+			<span><Clock size={14} /> {formatDuration(report.duration, language)}</span>
+			<span><ListBullets size={14} /> {report.chapterCount} {language === 'en' ? 'chapters' : 'блоков'}</span>
 		</div>
 		<h3>{report.title}</h3>
 		<p class="subtitle">{report.subtitle}</p>
@@ -44,7 +45,7 @@
 				<li>{thesis}</li>
 			{/each}
 		</ul>{/if}
-		<span class="open">{locked ? 'Видео по паролю' : 'Открыть отчёт'} <ArrowRight size={18} /></span>
+		<span class="open">{language === 'en' ? (locked ? 'Password-protected video' : 'Open report') : (locked ? 'Видео по паролю' : 'Открыть отчёт')} <ArrowRight size={18} /></span>
 	</div>
 </a>
 

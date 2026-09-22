@@ -558,6 +558,33 @@
 		}
 	},
 	{
+		"slug": "clean-execution-cut-and-avoid-being-hit-stambul",
+		"title": "Clean Execution: How to Cut and Avoid Being Hit",
+		"subtitle": "Petr Vasiliev’s longsword seminar in Istanbul on linking every cut to blade control, managing distance after a hit, and building continuous defensive movement.",
+		"tags": [
+			"HEMA",
+			"longsword",
+			"cut",
+			"parry",
+			"counterattack",
+			"afterblow",
+			"distance",
+			"drill",
+			"Istanbul",
+			"Petr Vasiliev"
+		],
+		"duration": 7352.946939,
+		"overview_theses": [
+			"A clean exchange does not end when the cut lands: the fencer must immediately control the opponent’s blade and leave under cover.",
+			"The central training rule is to move from the opponent’s body to the blade and from the blade back to the body, without a break in attention or momentum."
+		],
+		"chapterCount": 29,
+		"video": {
+			"provider": "youtube",
+			"id": "O8hIOgMn6Rw"
+		}
+	},
+	{
 		"slug": "context-engineering-29min",
 		"title": "Context Engineering in 29 Minutes",
 		"subtitle": "Marina (Twitch) — полный курс по контексту агентов",
@@ -3507,22 +3534,22 @@
 	},
 	{
 		"slug": "ukol-korol-udarov-mech-i-bakler-stambul",
-		"title": "Укол — король атак: меч и баклер",
-		"subtitle": "Семинар Петра Васильева в Стамбуле о стойке, независимой работе рук, контратаке с оппозицией и уколах по разным уровням.",
+		"title": "Thrust — King of Attacks: Sword and Buckler",
+		"subtitle": "Petr Vasiliev’s seminar in Istanbul on stance, independent hand work, counterattacks with opposition, and thrusts at different levels.",
 		"tags": [
 			"HEMA",
-			"меч и баклер",
-			"укол",
-			"контратака",
-			"парирование",
-			"дистанция",
-			"Стамбул",
-			"Пётр Васильев"
+			"sword and buckler",
+			"thrust",
+			"counterattack",
+			"parry",
+			"distance",
+			"Istanbul",
+			"Petr Vasiliev"
 		],
 		"duration": 5265.147937,
 		"overview_theses": [
-			"В мече и баклере две руки должны уметь действовать раздельно и снова соединяться в общей атаке или защите.",
-			"Стойка и координация корпуса нужны не ради формы: они дают обеим рукам место для движения без лишней смены позиции."
+			"In sword and buckler fencing, the two hands must be able to act independently and then come together again in a coordinated attack or defense.",
+			"Stance and body coordination are not ends in themselves: they give both hands room to move without unnecessary repositioning."
 		],
 		"chapterCount": 24,
 		"video": {

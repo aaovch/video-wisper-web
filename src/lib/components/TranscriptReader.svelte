@@ -21,6 +21,7 @@
 		autoplay = false,
 		loadState = 'idle',
 		highlight = '',
+		language = 'ru',
 		onClose,
 		onNext,
 		onRetry,
@@ -38,6 +39,7 @@
 		autoplay?: boolean;
 		loadState?: 'idle' | 'loading' | 'ready' | 'error';
 		highlight?: string;
+		language?: 'ru' | 'en';
 		onClose: () => void;
 		onNext?: () => void;
 		onRetry?: () => void;
@@ -181,16 +183,16 @@
 		<header class="reader-nav">
 			<button bind:this={closeButton} type="button" class="back" onclick={onClose}>
 				<ArrowLeft size={18} weight="bold" aria-hidden="true" />
-				<span>К конспекту</span>
+				<span>{language === 'en' ? 'Back to notes' : 'К конспекту'}</span>
 			</button>
-			<span class="mode-label">Видео + расшифровка</span>
-			<span class="progress" aria-label="Блок {chapterIndex + 1} из {chapterCount}">
-				{String(chapterIndex + 1).padStart(2, '0')} из {String(chapterCount).padStart(2, '0')}
+			<span class="mode-label">{language === 'en' ? 'Video + transcript' : 'Видео + расшифровка'}</span>
+			<span class="progress" aria-label={language === 'en' ? `Chapter ${chapterIndex + 1} of ${chapterCount}` : `Блок ${chapterIndex + 1} из ${chapterCount}`}>
+				{String(chapterIndex + 1).padStart(2, '0')} {language === 'en' ? 'of' : 'из'} {String(chapterCount).padStart(2, '0')}
 			</span>
 		</header>
 
 		<div class="reader-workspace">
-			<aside class="video-pane" aria-label="Видео">
+			<aside class="video-pane" aria-label={language === 'en' ? 'Video' : 'Видео'}>
 				<div class="video-stage">
 					{#if video}
 						<VideoPlayer
@@ -201,13 +203,14 @@
 							{autoplay}
 							onTime={handleTime}
 							onPlaying={handlePlaying}
+							{language}
 						/>
 					{:else}
-						<div class="video-empty">Для этого материала нет встроенного видео.</div>
+						<div class="video-empty">{language === 'en' ? 'This material has no embedded video.' : 'Для этого материала нет встроенного видео.'}</div>
 					{/if}
 				</div>
 				<div class="video-caption">
-					<span class:live={playing}><i></i>{playing ? 'Синхронизация включена' : 'Нажмите Play для синхронизации'}</span>
+					<span class:live={playing}><i></i>{language === 'en' ? (playing ? 'Synchronization enabled' : 'Press Play to synchronize') : (playing ? 'Синхронизация включена' : 'Нажмите Play для синхронизации')}</span>
 					<time>{formatTime(playbackTime)}</time>
 				</div>
 			</aside>
@@ -224,7 +227,7 @@
 				<div class="reader-content">
 					<div class="chapter-meta">
 						<span class="chapter-number">{String(chapterIndex + 1).padStart(2, '0')}</span>
-						<button type="button" class="timecode" onclick={() => seekPhrase(chapter.start)} title="Смотреть с этого момента">
+						<button type="button" class="timecode" onclick={() => seekPhrase(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
 							<Play size={10} weight="fill" aria-hidden="true" />
 							<span>{formatTime(chapter.start)}</span>
 						</button>
@@ -239,7 +242,7 @@
 					{#if !followPlayback && activePhraseStart !== null}
 						<button type="button" class="follow-button" onclick={resumeFollowing}>
 							<Crosshair size={16} weight="bold" aria-hidden="true" />
-							Вернуться к текущему месту
+							{language === 'en' ? 'Return to current position' : 'Вернуться к текущему месту'}
 						</button>
 					{/if}
 
@@ -254,7 +257,7 @@
 											class:active={span.start === activePhraseStart}
 											data-active={span.start === activePhraseStart ? 'true' : undefined}
 											aria-current={span.start === activePhraseStart ? 'true' : undefined}
-											title={`Смотреть с ${formatTime(span.start)}`}
+										title={`${language === 'en' ? 'Watch from' : 'Смотреть с'} ${formatTime(span.start)}`}
 											onclick={() => seekPhrase(span.start)}
 										>{#each highlightParts(span.text, highlight) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</button>
 									{/each}
@@ -263,13 +266,13 @@
 						</div>
 					{:else if loadState === 'error'}
 						<div class="message" role="alert">
-							<p>Не удалось загрузить расшифровку.</p>
-							{#if onRetry}<button type="button" onclick={onRetry}>Попробовать ещё раз</button>{/if}
+							<p>{language === 'en' ? 'The transcript could not be loaded.' : 'Не удалось загрузить расшифровку.'}</p>
+							{#if onRetry}<button type="button" onclick={onRetry}>{language === 'en' ? 'Try again' : 'Попробовать ещё раз'}</button>{/if}
 						</div>
 					{:else if loadState === 'ready'}
-						<p class="message">Для этого блока нет текста расшифровки.</p>
+						<p class="message">{language === 'en' ? 'This chapter has no transcript text.' : 'Для этого блока нет текста расшифровки.'}</p>
 					{:else}
-						<div class="loading" aria-live="polite" aria-label="Загрузка расшифровки">
+						<div class="loading" aria-live="polite" aria-label={language === 'en' ? 'Loading transcript' : 'Загрузка расшифровки'}>
 							<span></span><span></span><span></span><span></span>
 						</div>
 					{/if}
@@ -277,12 +280,12 @@
 					<footer class="reader-footer">
 						{#if onNext}
 							<button type="button" class="next" onclick={onNext}>
-								<span>Следующий блок</span>
+								<span>{language === 'en' ? 'Next chapter' : 'Следующий блок'}</span>
 								<ArrowRight size={18} weight="bold" aria-hidden="true" />
 							</button>
 						{:else}
 							<button type="button" class="next" onclick={onClose}>
-								<span>Вернуться к конспекту</span>
+								<span>{language === 'en' ? 'Back to notes' : 'Вернуться к конспекту'}</span>
 								<ArrowLeft size={18} weight="bold" aria-hidden="true" />
 							</button>
 						{/if}

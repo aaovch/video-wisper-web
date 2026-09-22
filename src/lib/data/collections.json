@@ -780,23 +780,26 @@
 	},
 	{
 		"slug": "seminary-petra-vasileva-stambul",
-		"title": "Семинары Петра Васильева в Стамбуле",
+		"title": "Petr Vasiliev’s Seminars in Istanbul",
 		"hema": true,
+		"language": "en",
 		"facets": {
 			"authors": [
-				"Пётр Васильев"
+				"Petr Vasiliev"
 			],
 			"places": [
-				"Стамбул"
+				"Istanbul"
 			],
 			"weapons": [
-				"Меч и баклер"
+				"Sword and Buckler",
+				"Longsword"
 			]
 		},
-		"subtitle": "Практические семинары Петра Васильева в Стамбуле по технике и тактике исторического фехтования.",
-		"description": "Семинары о работе оружия, дистанции, координации и тактической подготовке действий на примере практических упражнений.",
+		"subtitle": "Practical seminars by Petr Vasiliev in Istanbul on historical fencing technique and tactics.",
+		"description": "Seminars on weapon handling, distance, coordination, and tactical preparation through practical drills.",
 		"items": [
-			"ukol-korol-udarov-mech-i-bakler-stambul"
+			"ukol-korol-udarov-mech-i-bakler-stambul",
+			"clean-execution-cut-and-avoid-being-hit-stambul"
 		]
 	},
 	{

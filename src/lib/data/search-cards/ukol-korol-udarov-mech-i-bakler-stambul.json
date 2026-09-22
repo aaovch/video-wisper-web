@@ -8,218 +8,218 @@
   "cards": [
     {
       "chapterIndex": 0,
-      "sourceHash": "0835b6c6629c82b8d3e228546fe34d60188afc5be218ea498c0790a1492bc7b3",
+      "sourceHash": "9fb2956d34adda1272158d5cfbbcb80035599ebc3d6ec83e66ffae7ea54e4d50",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nОрганизация площадки и снаряжения",
-        "evidence": "Группа выстраивается, освобождает рабочее пространство и готовит мечи с баклерами перед началом темы."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nOrganizing the Training Space and Equipment",
+        "evidence": "The group lines up, clears working space, and prepares swords and bucklers before the main topic begins."
       }
     },
     {
       "chapterIndex": 1,
-      "sourceHash": "75ac095fe7d5559162a17d9b333d7c36a246fc852003d166cc371910a53ddc11",
+      "sourceHash": "90def0de6b731d9d5c5debc05cbb195ff9f31690d0d1d897d94cd4bb84735b31",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПочему укол важен для баклера",
-        "evidence": "Лектор формулирует тему семинара и связывает ценность укола со спецификой двух независимо работающих предметов."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nWhy the Thrust Matters in Sword and Buckler",
+        "evidence": "The instructor introduces the seminar topic and connects the value of the thrust to the use of two independently controlled weapons."
       }
     },
     {
       "chapterIndex": 2,
-      "sourceHash": "b009379dbb2c3f1f537c04e96e1f9678112437889a3795477e4cc3be3a55dda9",
+      "sourceHash": "b5eeebf14633cee5cb1528a64ebe6482369bcb7e2a15229dd58d47c7303dfef4",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nСтойка для независимой работы рук",
-        "evidence": "Участники перестраивают слишком боковую стойку в более фронтальную, чтобы свободнее двигать обе руки и корпус."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nA Stance for Independent Hand Work",
+        "evidence": "Participants adjust an overly side-on stance into a more frontal one so both hands and the torso can move more freely."
       }
     },
     {
       "chapterIndex": 3,
-      "sourceHash": "024f9635204fc1f03bf498cc6df307c1b0770f5244fa112e25c352e7b2f60878",
+      "sourceHash": "e541aa274040c7b166349ddf65b5d7faa0f5ac9cebe4a7bdc593c1318574c340",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nКоординация рук и корпуса",
-        "evidence": "Базовое упражнение связывает шаг, разведение рук и вращение корпуса, а затем переносится на работу с оружием."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nCoordinating the Hands and Body",
+        "evidence": "A basic drill connects stepping, separating the hands, and rotating the torso before transferring the movement to weapon work."
       }
     },
     {
       "chapterIndex": 4,
-      "sourceHash": "a926a9d90adc1277aa79e2247be690ed6f507a5cc424ffd659e27310b12df439",
+      "sourceHash": "a9de26ce4dec56851ccfaa3f5dbc22302b5855108065153c53fea2f6faa16277",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nЗащитный потенциал разных оружий",
-        "evidence": "Через сравнение сабли, рапиры, длинного меча и меча с баклером объясняется, почему выбор основного действия зависит от оружия."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nDefensive Potential of Different Weapons",
+        "evidence": "By comparing saber, rapier, longsword, and sword and buckler, the instructor explains why the preferred action depends on the weapon."
       }
     },
     {
       "chapterIndex": 5,
-      "sourceHash": "bacd83b50cda0f390ada535de65a74fa056c5960d87fd201d5c1fb5310060a2f",
+      "sourceHash": "dd13c2e38e5a3af9ed30ecb635c2292c656384df5f0599834e722dbbae47c574",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nКонтратака с оппозицией",
-        "evidence": "Вместо длинного обмена защитами и ответами предлагается встречать атаку одновременным уколом под прикрытием баклера."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nCounterattack with Opposition",
+        "evidence": "Instead of a long exchange of parries and ripostes, the attacker is met with a simultaneous thrust covered by the buckler."
       }
     },
     {
       "chapterIndex": 6,
-      "sourceHash": "ed515416fe4a4569dd04837bdb72e4df0f32dd4d292062ebdb22765823c9dc72",
+      "sourceHash": "89728693b61195c32f07ee73c80c4a05aae5a25d55ccde7d6b2f3718d66823dc",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПоверхности баклера и угол защиты",
-        "evidence": "Лектор показывает, как встречать клинок не кулаком, а рабочей поверхностью баклера с вытянутой рукой и подходящим углом."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nBuckler Surfaces and Defensive Angles",
+        "evidence": "The instructor shows how to receive the blade with the working surface of the buckler rather than the fist, using an extended arm and a suitable angle."
       }
     },
     {
       "chapterIndex": 7,
-      "sourceHash": "a2ea9cac7cd095ec334480f5b2f96cccd95173ad4b267f681708c6d1580bb2f2",
+      "sourceHash": "97ca50f7ae80bc817e9c6938a2fd7afbe69705ffe0102a2b0db4988969396667",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nДистанция и шаг при защите",
-        "evidence": "К работе рук добавляют работу ног: шаг назад при защите и движение вперёд при контратаке сохраняют безопасную дистанцию."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nDistance and Footwork in Defense",
+        "evidence": "Footwork is added back to the hand actions: stepping back with the parry and moving forward with the counterattack preserve safe distance."
       }
     },
     {
       "chapterIndex": 8,
-      "sourceHash": "819a0132245c98163dd1128dbbfbb9a60d5b26b4776688ad2638fe571c86c2e1",
+      "sourceHash": "2b885bf941e045d7dc7449feea775190ab3601c0b7597b25504c7bf68d5341a2",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nНеобычные углы для укола",
-        "evidence": "Перед работой в полном снаряжении участникам предлагают исследовать непривычные углы, которые дополняют обычную технику укола."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nUnusual Thrusting Angles",
+        "evidence": "Before putting on full protective gear, participants explore less familiar angles that complement standard thrusting mechanics."
       }
     },
     {
       "chapterIndex": 9,
-      "sourceHash": "4f96d6670f0c7e756c0359d03b99ff29347afc006d3e6f2b6367b4f8da0ff11b",
+      "sourceHash": "750c9b5100ce514de024a51b9e87021e16e551911817ec660c811b9d948131ea",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПолушаг и пространство для ответа",
-        "evidence": "Ответ на вопрос уточняет, когда оставаться на месте, когда отходить и почему уколу нужно свободное пространство."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nHalf-Step and Space for the Riposte",
+        "evidence": "A response to a question clarifies when to stay in place, when to retreat, and why a thrust needs free space."
       }
     },
     {
       "chapterIndex": 10,
-      "sourceHash": "4148bb313bb0eac82c4b73d3e5d2b6ca13b330e19599ddb7fca3a7157a17e15d",
+      "sourceHash": "114d92740d772de916b3680e46ce382a3d9cd04b72ed9a67d7cf87a0a507ec5e",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nУкол против повторных силовых атак",
-        "evidence": "На примере бойцов HMB разбирается, почему центральный укол полезен против давления, повторных атак и сильной боковой защиты."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nThrusting Against Repeated Power Attacks",
+        "evidence": "Using HMB fighters as an example, the instructor explains why a central thrust is useful against pressure, repeated attacks, and strong lateral defense."
       }
     },
     {
       "chapterIndex": 11,
-      "sourceHash": "face3eeeb184f63014def578b06ed88f5599915ca76006a99d03f1e7bc6c51aa",
+      "sourceHash": "1ac565cdd754b5a91d6410e25ed56d3ee356c8a1ec97c2889d9fde51697e287d",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nУкол по внутренней линии баклера",
-        "evidence": "Участники осваивают укол по внутренней линии по типу имброкаты: вращают кисть, меняют хват и ведут корпус вокруг защиты."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nThrusting Along the Buckler’s Inside Line",
+        "evidence": "Participants practice an inside-line thrust resembling an imbroccata by rotating the wrist, changing the grip, and moving the body around the defense."
       }
     },
     {
       "chapterIndex": 12,
-      "sourceHash": "dbd2d9751af28fadf92e93ed15dfef33cc2491f9fefda72a2b60ec67e5af98f3",
+      "sourceHash": "acd6c17cb120b1ac364dbb6193cf7f926a0f2de5d3bdacd1b63f61bd570aaf7a",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nСвобода движения вытянутой руки",
-        "evidence": "Сравниваются два варианта хвата и объясняется, как подвижность плеча, локтя и кисти расширяет доступные углы укола."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nFreedom of Movement with an Extended Arm",
+        "evidence": "Two grip options are compared to show how mobility in the shoulder, elbow, and wrist expands the available thrusting angles."
       }
     },
     {
       "chapterIndex": 13,
-      "sourceHash": "ab62ea317cb10c7b5c9a18222eb4758bb669cb93d7cd0b182b8127c1288088e1",
+      "sourceHash": "3e66ebb8925b2b4567db07eab0956132a3eb296ea0aff71c3e0c65fcc0ec05d9",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nКуда направлять давление баклером",
-        "evidence": "В ответе на вопрос баклер направляют в клинок, а не в плечо, чтобы ограничить продолжения соперника и безопасно выйти после укола."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nWhere to Direct Buckler Pressure",
+        "evidence": "In response to a question, the buckler is directed into the blade rather than the shoulder to limit the opponent’s continuations and allow a safe exit after the thrust."
       }
     },
     {
       "chapterIndex": 14,
-      "sourceHash": "6656fbac5a390416ce5bd2699c7355a0f5a6898d6d7b0b313e49e3cc78243cc0",
+      "sourceHash": "af6296fe8ce3f1d680b06aea7696a3e9cd1ce56bccfac0a756784feb801bf2d4",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПродолжение укола вверх по внутренней линии",
-        "evidence": "Траекторию укола по внутренней линии продолжают вверх, чтобы меч и баклер поочерёдно закрывали стороны, голову и ноги."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nContinuing the Thrust Up the Inside Line",
+        "evidence": "The inside-line thrust continues upward so the sword and buckler alternately cover the sides, head, and legs."
       }
     },
     {
       "chapterIndex": 15,
-      "sourceHash": "12cfd8c7473ab897765f8347d74b1c7d47150b1926a7a0471d0a652c90bb7c5b",
+      "sourceHash": "334166f8e9bc2c1c78e155ff0e65bdee7cd782b6107793c788903efbb1f4f6a6",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nЗащита с ответом и контратака",
-        "evidence": "Одна механика отрабатывается сначала как защита с ответом, затем как контратака с движением вперёд."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nParry-Riposte and Counterattack",
+        "evidence": "The same mechanics are practiced first as a parry-riposte and then as a counterattack moving forward."
       }
     },
     {
       "chapterIndex": 16,
-      "sourceHash": "bbfc1046d1dbb104bd4a9c73e2f80b23d9e95d33f01a8f5b56c9c277652f6c61",
+      "sourceHash": "4e9b09c0ed457fe86548b41a500a3721d3fabc97f06a0ad81dee813d6b87a4fc",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nКонтроль угла в отработке",
-        "evidence": "В самостоятельной практике участники уточняют угол острия, разворот корпуса, работу баклера и направление шага."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nControlling the Angle in Partner Practice",
+        "evidence": "During independent practice, participants refine the point angle, torso rotation, buckler work, and stepping direction."
       }
     },
     {
       "chapterIndex": 17,
-      "sourceHash": "be890f5ce998ef43dc88b4567b4d8650a75ae341ec6bc6edf214eccc0a144101",
+      "sourceHash": "2f620d8007a79e7c7ed0fe6419318112e6db2cb8e3b7bd467080d92437914d97",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПауза перед финальным блоком",
-        "evidence": "Группа снимает маски, ослабляет экипировку, пьёт воду и готовится к последней части семинара."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nBreak Before the Final Section",
+        "evidence": "The group removes masks, loosens equipment, drinks water, and prepares for the last part of the seminar."
       }
     },
     {
       "chapterIndex": 18,
-      "sourceHash": "80bd4165ef553491ab425b04bf27b82e5cad0bfd501b1bfb9a32968c35156136",
+      "sourceHash": "94954e8ba8c255ba123be2f8731a7995ab924bec0152e9faa5eebfdb26ea56d3",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПровокация коротким полушагом",
-        "evidence": "Короткая подготовка с опущенным баклером вызывает реакцию соперника и создаёт момент для контратаки или защиты с ответом."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nInvitation with a Short Half-Step",
+        "evidence": "A short preparation with the buckler lowered provokes a reaction and creates an opportunity for a counterattack or parry-riposte."
       }
     },
     {
       "chapterIndex": 19,
-      "sourceHash": "c081bb0dd3b7c3e95b428e50af5f9c043f05ddef6e34a74b772f90f1749f7201",
+      "sourceHash": "15a2737b173dc686a415937590453f926b46d2cb3ce669dca9765f673b40c1a5",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nНисходящий и восходящий уколы",
-        "evidence": "Сначала группа завершает связку с нисходящим уколом, затем нижней угрозой смещает баклер и открывает линию для восходящего укола в корпус."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nDescending and Rising Thrusts",
+        "evidence": "The group first completes the sequence with a descending thrust, then uses a low threat to move the buckler and open a line for a rising thrust to the torso."
       }
     },
     {
       "chapterIndex": 20,
-      "sourceHash": "7bb77f9e6afb1cd7d1a540cc2e70874bd6f287c21f92e6c5174f53a5b63616ea",
+      "sourceHash": "c2754a6c826ac1d6ebe0d25a7ba8d876132d441504dbdfa1559b1fabca3a98b9",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nДальность укола в корпус",
-        "evidence": "Лектор объясняет ценность подготовленного укола в корпус геометрией дистанции и его влиянием на счёт."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nThe Reach of a Thrust to the Torso",
+        "evidence": "The instructor explains the value of a prepared torso thrust through distance geometry and its effect on scoring."
       }
     },
     {
       "chapterIndex": 21,
-      "sourceHash": "29d468eec26b3353dfe5bea226bdae67e0f3a68e2e3ac5e18f1cd1e2493fa0ce",
+      "sourceHash": "0f3081745847facfb511cf1dd0c2bf4b6655439029c5e4b8474d2da937818730",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nПеревод и укол по внутренней линии",
-        "evidence": "Участники поднимают клинок партнёра, делают перевод и ведут остриё по дуге к внутренней линии."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nDisengagement and the Inside-Line Thrust",
+        "evidence": "Participants lift the partner’s blade, disengage, and guide the point in an arc toward the inside line."
       }
     },
     {
       "chapterIndex": 22,
-      "sourceHash": "24322167aaa256ba503e8835d3c3cf86e11ca6c8238d9052b50044b6e9943a27",
+      "sourceHash": "431931332a1163be4fbb776f64149e2506399b13bd413882cd51105058ba99ae",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nХват с клинком плашмя",
-        "evidence": "Коррекция хвата и траектории помогает обойти баклер, не уводя остриё далеко от цели."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nFlat-Blade Grip Around the Buckler",
+        "evidence": "Adjusting the grip and path helps the point move around the buckler without drifting far from the target."
       }
     },
     {
       "chapterIndex": 23,
-      "sourceHash": "a073bab9e5a54748987d50b6f03218f87f76bda4cf6a1c3bed3e4133baddc8ad",
+      "sourceHash": "f50e2da65eb2178c6d37d6ed008c5469e9b165fda9e091efbbc3ee92d40529aa",
       "termIds": [],
       "context": {
-        "text": "Укол — король атак: меч и баклер\nОдна техника в атаке и защите",
-        "evidence": "Финальное упражнение переносит изученную механику между защитой с ответом, контратакой и подготовленной атакой с уколом."
+        "text": "Thrust — King of Attacks: Sword and Buckler\nOne Technique in Attack and Defense",
+        "evidence": "The final drill transfers the same mechanics among parry-riposte, counterattack, and a prepared thrusting attack."
       }
     }
   ]

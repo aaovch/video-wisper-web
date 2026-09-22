@@ -1,293 +1,293 @@
 {
 	"slug": "ukol-korol-udarov-mech-i-bakler-stambul",
-	"title": "Укол — король атак: меч и баклер",
-	"subtitle": "Семинар Петра Васильева в Стамбуле о стойке, независимой работе рук, контратаке с оппозицией и уколах по разным уровням.",
+	"title": "Thrust — King of Attacks: Sword and Buckler",
+	"subtitle": "Petr Vasiliev’s seminar in Istanbul on stance, independent hand work, counterattacks with opposition, and thrusts at different levels.",
 	"source_name": "Workshop Thrust is a king of strikes",
 	"source_stem": "nL8fJniprNU",
 	"transcript_anchors_verified": true,
-	"note": "Семинар проходит преимущественно на английском языке. Конспект и смысловая разметка даны по-русски, а полная расшифровка сохраняет речь оригинала.",
+	"note": "The seminar is conducted primarily in English. The summary, semantic structure, and full transcript are presented in English.",
 	"duration": 5265.147937,
 	"tags": [
 		"HEMA",
-		"меч и баклер",
-		"укол",
-		"контратака",
-		"парирование",
-		"дистанция",
-		"Стамбул",
-		"Пётр Васильев"
+		"sword and buckler",
+		"thrust",
+		"counterattack",
+		"parry",
+		"distance",
+		"Istanbul",
+		"Petr Vasiliev"
 	],
 	"overview_theses": [
-		"В мече и баклере две руки должны уметь действовать раздельно и снова соединяться в общей атаке или защите.",
-		"Стойка и координация корпуса нужны не ради формы: они дают обеим рукам место для движения без лишней смены позиции.",
-		"Высокий защитный потенциал меча и баклера делает простую атаку менее надёжной и повышает ценность контратаки с оппозицией.",
-		"Баклер лучше направлять на клинок и линию атаки, а не просто бросать кулак или давить в плечо соперника.",
-		"Для укола по внутренней линии важны смена хвата, вращение кисти, движение корпуса и сохранение пространства для острия.",
-		"Провокация коротким полушагом помогает вызвать реакцию баклера и открыть верхний сектор для подготовленного укола.",
-		"Укол в корпус может быть длиннее удара по ноге и быстрее изменить счёт, но его нужно готовить и контролировать дистанцией."
+		"In sword and buckler fencing, the two hands must be able to act independently and then come together again in a coordinated attack or defense.",
+		"Stance and body coordination are not ends in themselves: they give both hands room to move without unnecessary repositioning.",
+		"The high defensive potential of sword and buckler makes a simple attack less reliable and increases the value of a counterattack with opposition.",
+		"The buckler should be directed toward the opponent’s blade and attacking line, rather than simply punching forward or pressing into the opponent’s shoulder.",
+		"An inside-line thrust depends on changing the grip, rotating the wrist, moving the body, and preserving space for the point.",
+		"A short half-step invitation can provoke a buckler reaction and open the upper line for a prepared thrust.",
+		"A thrust to the torso can reach farther than a cut to the leg and change the score faster, but it still requires preparation and distance control."
 	],
 	"chapters": [
 		{
 			"start": 1.04,
-			"title": "Организация площадки и снаряжения",
-			"summary": "Группа выстраивается, освобождает рабочее пространство и готовит мечи с баклерами перед началом темы.",
+			"title": "Organizing the Training Space and Equipment",
+			"summary": "The group lines up, clears working space, and prepares swords and bucklers before the main topic begins.",
 			"anchor": "Let's go, line up.",
 			"theses": [
-				"Для работы каждому нужна дистанция примерно в один шаг вперёд и назад.",
-				"Мечи и баклеры сначала кладут рядом, чтобы разобрать стойку без оружия."
+				"Each participant needs roughly one step of space forward and backward.",
+				"Swords and bucklers are first placed nearby so the stance can be introduced without weapons."
 			]
 		},
 		{
 			"start": 99.78,
-			"title": "Почему укол важен для баклера",
-			"summary": "Лектор формулирует тему семинара и связывает ценность укола со спецификой двух независимо работающих предметов.",
+			"title": "Why the Thrust Matters in Sword and Buckler",
+			"summary": "The instructor introduces the seminar topic and connects the value of the thrust to the use of two independently controlled weapons.",
 			"anchor": "Okay, so today's topic is the best strike is a thrust.",
 			"theses": [
-				"Для меча и баклера владение уколом рассматривается как более важная база, чем наработка одних рубящих ударов.",
-				"Раздельная работа меча и баклера расширяет число простых и составных действий.",
-				"Смыкать руки иногда полезно, но сначала участники учатся управлять ими независимо."
+				"In sword and buckler, mastering the thrust is treated as a more important foundation than practicing cuts alone.",
+				"Independent control of sword and buckler expands the range of simple and compound actions.",
+				"Bringing the hands together can sometimes be useful, but participants first learn to control them independently."
 			]
 		},
 		{
 			"start": 209.08,
-			"title": "Стойка для независимой работы рук",
-			"summary": "Участники перестраивают слишком боковую стойку в более фронтальную, чтобы свободнее двигать обе руки и корпус.",
+			"title": "A Stance for Independent Hand Work",
+			"summary": "Participants adjust an overly side-on stance into a more frontal one so both hands and the torso can move more freely.",
 			"anchor": "And we start with very simple exercise.",
 			"theses": [
-				"Стойка для одиночного оружия ограничивает потенциал второй руки с баклером.",
-				"Небольшой разворот корпуса и опора на носки упрощают смену сторон без потери темпа.",
-				"Положение оружия должно создавать направление, а не вынуждать обходить собственную гарду."
+				"A stance designed for a single weapon limits the potential of the buckler hand.",
+				"A slight turn of the torso and weight on the balls of the feet make it easier to change sides without losing tempo.",
+				"The weapon position should establish a direction rather than force the blade to travel around its own guard."
 			]
 		},
 		{
 			"start": 386.02,
-			"title": "Координация рук и корпуса",
-			"summary": "Базовое упражнение связывает шаг, разведение рук и вращение корпуса, а затем переносится на работу с оружием.",
+			"title": "Coordinating the Hands and Body",
+			"summary": "A basic drill connects stepping, separating the hands, and rotating the torso before transferring the movement to weapon work.",
 			"anchor": "Let's do exercise.",
 			"theses": [
-				"При шаге вперёд одна рука удлиняется, а другая компенсирует движение назад.",
-				"Кисти и таз вращаются вместе с движением, как части общей эллиптической траектории.",
-				"В бою движение не остаётся изолированным в руках: работает всё тело."
+				"During a forward step, one hand extends while the other compensates by moving back.",
+				"The wrists and pelvis rotate with the motion as parts of one elliptical path.",
+				"In fencing, the action is not isolated in the arms: the whole body contributes."
 			]
 		},
 		{
 			"start": 787.21,
-			"title": "Защитный потенциал разных оружий",
-			"summary": "Через сравнение сабли, рапиры, длинного меча и меча с баклером объясняется, почему выбор основного действия зависит от оружия.",
+			"title": "Defensive Potential of Different Weapons",
+			"summary": "By comparing saber, rapier, longsword, and sword and buckler, the instructor explains why the preferred action depends on the weapon.",
 			"anchor": "Ozgen, come closer.",
 			"theses": [
-				"Сабля требует активной работы ног, потому что ошибка в защите быстро приводит к попаданию.",
-				"Для укола важна точная линия острия: небольшое отклонение уже лишает действие результата.",
-				"Меч и баклер дают два независимых средства защиты и позволяют закрывать разные зоны."
+				"Saber requires active footwork because a defensive mistake can quickly lead to a hit.",
+				"A thrust depends on a precise point line: even a small deviation can make the action miss.",
+				"Sword and buckler provide two independent defensive tools that can close different target areas."
 			]
 		},
 		{
 			"start": 957.93,
-			"title": "Контратака с оппозицией",
-			"summary": "Вместо длинного обмена защитами и ответами предлагается встречать атаку одновременным уколом под прикрытием баклера.",
+			"title": "Counterattack with Opposition",
+			"summary": "Instead of a long exchange of parries and ripostes, the attacker is met with a simultaneous thrust covered by the buckler.",
 			"anchor": "before we land uh to the to the topic to the thrusts",
 			"theses": [
-				"Простая атака против двух средств защиты часто вязнет в серии парирований и ответов.",
-				"Провокация атаки делает момент соперника предсказуемее.",
-				"Контратака с оппозицией соединяет собственное попадание и закрытие линии в одном темпе."
+				"A simple attack against two defensive tools often gets caught in a series of parries and ripostes.",
+				"Inviting the attack makes the opponent’s timing more predictable.",
+				"A counterattack with opposition combines the hit and closure of the line in one tempo."
 			]
 		},
 		{
 			"start": 1287.01,
-			"title": "Поверхности баклера и угол защиты",
-			"summary": "Лектор показывает, как встречать клинок не кулаком, а рабочей поверхностью баклера с вытянутой рукой и подходящим углом.",
+			"title": "Buckler Surfaces and Defensive Angles",
+			"summary": "The instructor shows how to receive the blade with the working surface of the buckler rather than the fist, using an extended arm and a suitable angle.",
 			"anchor": "don't worry uh we continue at the same pairs",
 			"theses": [
-				"У баклера нет длинного сильного плеча, поэтому им не следует соревноваться с клинком в рычаге.",
-				"Клинок ловят между плоской и наклонной поверхностями, сохраняя вытянутую руку.",
-				"Пронация кисти и направление входящей атаки помогают подобрать устойчивый угол."
+				"A buckler has no long, powerful lever, so it should not try to overpower the blade through leverage.",
+				"The blade is caught between the flat and sloped surfaces while the arm stays extended.",
+				"Wrist pronation and the direction of the incoming attack help establish a stable angle."
 			]
 		},
 		{
 			"start": 1654.76,
-			"title": "Дистанция и шаг при защите",
-			"summary": "К работе рук добавляют работу ног: шаг назад при защите и движение вперёд при контратаке сохраняют безопасную дистанцию.",
+			"title": "Distance and Footwork in Defense",
+			"summary": "Footwork is added back to the hand actions: stepping back with the parry and moving forward with the counterattack preserve safe distance.",
 			"anchor": "We forget about arguably the most important part of fencing",
 			"theses": [
-				"Парирование на месте оставляет ноги уязвимыми и позволяет сопернику продолжать давление.",
-				"Полушаг назад часто достаточен, чтобы принять атаку и оставить пространство для ответа.",
-				"При контратаке движение вперёд поддерживает оппозицию и досягаемость укола."
+				"Parrying in place leaves the legs exposed and allows the opponent to keep pressing.",
+				"A half-step back is often enough to receive the attack and preserve room for the riposte.",
+				"Moving forward during the counterattack supports both opposition and thrusting distance."
 			]
 		},
 		{
 			"start": 1874.0,
-			"title": "Необычные углы для укола",
-			"summary": "Перед работой в полном снаряжении участникам предлагают исследовать непривычные углы, которые дополняют обычную технику укола.",
+			"title": "Unusual Thrusting Angles",
+			"summary": "Before putting on full protective gear, participants explore less familiar angles that complement standard thrusting mechanics.",
 			"anchor": "important concepts without them uh it's hard for you",
 			"theses": [
-				"Редкие углы не заменяют базовую механику, а опираются на неё.",
-				"Лектор отделяет собственный экспериментальный материал от стандартной школы рапиры.",
-				"Группа надевает защитное снаряжение перед более контактной частью."
+				"Unusual angles do not replace basic mechanics; they depend on them.",
+				"The instructor distinguishes his experimental material from standard rapier practice.",
+				"The group puts on protective equipment before the more contact-intensive section."
 			]
 		},
 		{
 			"start": 2114.77,
-			"title": "Полушаг и пространство для ответа",
-			"summary": "Ответ на вопрос уточняет, когда оставаться на месте, когда отходить и почему уколу нужно свободное пространство.",
+			"title": "Half-Step and Space for the Riposte",
+			"summary": "A response to a question clarifies when to stay in place, when to retreat, and why a thrust needs free space.",
 			"anchor": "yes that's uh that's the point because uh",
 			"theses": [
-				"Если дистанция уже подходит для контратаки, можно атаковать с места и затем выйти.",
-				"При обычном парировании полушаг назад мешает сопернику безостановочно продолжать давление.",
-				"Слишком тесная дистанция ограничивает укол в корпус и оставляет лишь близкие варианты."
+				"If the distance already suits a counterattack, the fencer can act from the spot and then exit.",
+				"During a conventional parry, a half-step back prevents the opponent from maintaining uninterrupted pressure.",
+				"At very close distance, torso thrusts are restricted and only close-range options remain."
 			]
 		},
 		{
 			"start": 2228.28,
-			"title": "Укол против повторных силовых атак",
-			"summary": "На примере бойцов HMB разбирается, почему центральный укол полезен против давления, повторных атак и сильной боковой защиты.",
+			"title": "Thrusting Against Repeated Power Attacks",
+			"summary": "Using HMB fighters as an example, the instructor explains why a central thrust is useful against pressure, repeated attacks, and strong lateral defense.",
 			"anchor": "we have our comrades HMB",
 			"theses": [
-				"Привычка останавливаться после первого контакта опасна против соперника, продолжающего атаку.",
-				"Сильная боковая защита не всегда столь же надёжно закрывает центральную линию корпуса.",
-				"Прямой укол требует точной дистанции, поэтому далее вводится вариант с меньшим требованием к пространству."
+				"Stopping after the first contact is dangerous against an opponent who continues attacking.",
+				"A strong lateral defense does not always protect the central line of the torso equally well.",
+				"A direct thrust requires precise distance, so the next section introduces a variation that needs less space."
 			]
 		},
 		{
 			"start": 2413.08,
-			"title": "Укол по внутренней линии баклера",
-			"summary": "Участники осваивают укол по внутренней линии по типу имброкаты: вращают кисть, меняют хват и ведут корпус вокруг защиты.",
+			"title": "Thrusting Along the Buckler’s Inside Line",
+			"summary": "Participants practice an inside-line thrust resembling an imbroccata by rotating the wrist, changing the grip, and moving the body around the defense.",
 			"anchor": "And that's what we're going to learn first.",
 			"theses": [
-				"Промежуточный хват примерно под 45 градусов позволяет быстрее переходить между рубящим и колющим действием.",
-				"Движение начинается не одним выпрямлением руки, а совместным входом руки и корпуса внутрь.",
-				"Клинок переводят к внутренней стороне баклера и завершают укол с шагом."
+				"An intermediate grip of roughly 45 degrees makes it easier to transition between cutting and thrusting actions.",
+				"The action begins not with arm extension alone, but with the arm and body entering inward together.",
+				"The blade is brought toward the inside of the buckler and the thrust is completed with a step."
 			]
 		},
 		{
 			"start": 2768.81,
-			"title": "Свобода движения вытянутой руки",
-			"summary": "Сравниваются два варианта хвата и объясняется, как подвижность плеча, локтя и кисти расширяет доступные углы укола.",
+			"title": "Freedom of Movement with an Extended Arm",
+			"summary": "Two grip options are compared to show how mobility in the shoulder, elbow, and wrist expands the available thrusting angles.",
 			"anchor": "We have two opinions on how to thrust properly.",
 			"theses": [
-				"Лектор не объявляет единственный хват правильным и прямо отмечает нехватку данных.",
-				"Вытянутая рука с подвижной кистью даёт больше степеней свободы для изменения линии.",
-				"Задача упражнения — удерживать контроль клинка и перемещать баклер без потери защиты."
+				"The instructor does not declare one grip uniquely correct and explicitly notes the lack of evidence.",
+				"An extended arm with a mobile wrist provides more degrees of freedom for changing the line.",
+				"The drill aims to maintain blade control while moving the buckler without losing protection."
 			]
 		},
 		{
 			"start": 2948.71,
-			"title": "Куда направлять давление баклером",
-			"summary": "В ответе на вопрос баклер направляют в клинок, а не в плечо, чтобы ограничить продолжения соперника и безопасно выйти после укола.",
+			"title": "Where to Direct Buckler Pressure",
+			"summary": "In response to a question, the buckler is directed into the blade rather than the shoulder to limit the opponent’s continuations and allow a safe exit after the thrust.",
 			"anchor": "So what happens?",
 			"theses": [
-				"Давление в плечо может быть запрещено правилами и не гарантирует контроля оружия.",
-				"Контроль клинка временно сокращает сопернику выбор линий ответа.",
-				"После укола нужно быстро пройти мимо или выйти, потому что атака по ногам остаётся доступной."
+				"Pressure into the shoulder may be prohibited by the rules and does not guarantee weapon control.",
+				"Controlling the blade temporarily reduces the opponent’s available lines for a response.",
+				"After the thrust, the fencer should pass quickly or withdraw because attacks to the legs remain available."
 			]
 		},
 		{
 			"start": 3100.3,
-			"title": "Продолжение укола вверх по внутренней линии",
-			"summary": "Траекторию укола по внутренней линии продолжают вверх, чтобы меч и баклер поочерёдно закрывали стороны, голову и ноги.",
+			"title": "Continuing the Thrust Up the Inside Line",
+			"summary": "The inside-line thrust continues upward so the sword and buckler alternately cover the sides, head, and legs.",
 			"anchor": "Let's see the next exercise.",
 			"theses": [
-				"Прямой укол с вытянутой рукой остаётся базой, но не исчерпывает ситуации меча и баклера.",
-				"Движение внутрь помогает блокировать клинок соперника и сближаться под защитой.",
-				"Баклер закрывает одну сторону, ноги защищаются дистанцией, а меч — вторую сторону и голову."
+				"A direct thrust with an extended arm remains the foundation, but it does not cover every sword-and-buckler situation.",
+				"Moving inward helps block the opponent’s blade and close under cover.",
+				"The buckler covers one side, distance protects the legs, and the sword covers the other side and the head."
 			]
 		},
 		{
 			"start": 3205.8,
-			"title": "Защита с ответом и контратака",
-			"summary": "Одна механика отрабатывается сначала как защита с ответом, затем как контратака с движением вперёд.",
+			"title": "Parry-Riposte and Counterattack",
+			"summary": "The same mechanics are practiced first as a parry-riposte and then as a counterattack moving forward.",
 			"anchor": "Now let's go for the tactical situation",
 			"theses": [
-				"При защите с ответом корпус сначала сжимается на отходе, затем раскрывается в укол.",
-				"В контратаке та же структура выполняется с движением вперёд, а руки и корпус расходятся по безопасным линиям.",
-				"Начинать рекомендуют с контролируемой защиты с ответом, чтобы понять угол, и лишь затем ускорять встречное действие."
+				"During the parry-riposte, the body compresses on the retreat and then opens into the thrust.",
+				"During the counterattack, the same structure is performed while moving forward as the hands and body separate along safe lines.",
+				"Participants are advised to begin with a controlled parry-riposte to understand the angle before accelerating the counteraction."
 			]
 		},
 		{
 			"start": 3396.62,
-			"title": "Контроль угла в отработке",
-			"summary": "В самостоятельной практике участники уточняют угол острия, разворот корпуса, работу баклера и направление шага.",
+			"title": "Controlling the Angle in Partner Practice",
+			"summary": "During independent practice, participants refine the point angle, torso rotation, buckler work, and stepping direction.",
 			"anchor": "Better start with parry riposte.",
 			"theses": [
-				"Слишком высокий подъём руки открывает корпус и делает направление укола неясным.",
-				"Плечо и корпус должны участвовать в движении, а не оставаться неподвижными при работе одних рук.",
-				"После контакта можно продолжить другой укол или перейти к удару по руке либо ноге, если соперник быстро уходит."
+				"Raising the arm too high opens the torso and makes the thrusting direction unclear.",
+				"The shoulder and torso must contribute rather than staying fixed while only the arms move.",
+				"After contact, the fencer can continue with another thrust or switch to a cut at the arm or leg if the opponent withdraws quickly."
 			]
 		},
 		{
 			"start": 3683.24,
-			"title": "Пауза перед финальным блоком",
-			"summary": "Группа снимает маски, ослабляет экипировку, пьёт воду и готовится к последней части семинара.",
+			"title": "Break Before the Final Section",
+			"summary": "The group removes masks, loosens equipment, drinks water, and prepares for the last part of the seminar.",
 			"anchor": "Guys, now please put down your masks.",
 			"theses": [
-				"Пауза отделяет техническую отработку укола по внутренней линии от финального тактического блока.",
-				"Участникам дают время остыть и восстановить внимание."
+				"The break separates technical work on the inside-line thrust from the final tactical section.",
+				"Participants are given time to cool down and restore their attention."
 			]
 		},
 		{
 			"start": 3778.69,
-			"title": "Провокация коротким полушагом",
-			"summary": "Короткая подготовка с опущенным баклером вызывает реакцию соперника и создаёт момент для контратаки или защиты с ответом.",
+			"title": "Invitation with a Short Half-Step",
+			"summary": "A short preparation with the buckler lowered provokes a reaction and creates an opportunity for a counterattack or parry-riposte.",
 			"anchor": "okay uh now uh we talking about uh another one concept",
 			"theses": [
-				"При высоком защитном потенциале важнее готовить действие, чем рассчитывать на простую скорость.",
-				"Полушаг и открытая линия служат приглашением, а не обязательством доводить финт до атаки.",
-				"Если соперник не реагирует, подготовку повторяют или отменяют; успешный обман не ожидается каждый раз."
+				"Against a highly defensive weapon system, preparing the action matters more than relying on speed alone.",
+				"The half-step and open line act as an invitation, not a commitment to complete the feint as an attack.",
+				"If the opponent does not react, the preparation is repeated or abandoned; the deception is not expected to work every time."
 			]
 		},
 		{
 			"start": 4107.11,
-			"title": "Нисходящий и восходящий уколы",
-			"summary": "Сначала группа завершает связку с нисходящим уколом, затем нижней угрозой смещает баклер и открывает линию для восходящего укола в корпус.",
+			"title": "Descending and Rising Thrusts",
+			"summary": "The group first completes the sequence with a descending thrust, then uses a low threat to move the buckler and open a line for a rising thrust to the torso.",
 			"anchor": "This is the last exercise for upward thrust",
 			"theses": [
-				"Нисходящий укол завершает предыдущую связку с угрозой по руке или бедру.",
-				"Нижняя угроза должна быть достаточно правдоподобной, чтобы соперник опустил баклер.",
-				"Связку сначала делают через защиту с ответом, затем — как контратаку восходящим уколом.",
-				"Короткий шаг позволяет дождаться реакции и не превращать подготовку в неуправляемый выпад."
+				"The descending thrust completes the previous sequence with a threat to the arm or thigh.",
+				"The low threat must be credible enough to make the opponent lower the buckler.",
+				"The sequence is first practiced as a parry-riposte, then as a counterattack with a rising thrust.",
+				"A short step gives time to read the reaction without turning the preparation into an uncontrolled lunge."
 			]
 		},
 		{
 			"start": 4450.03,
-			"title": "Дальность укола в корпус",
-			"summary": "Лектор объясняет ценность подготовленного укола в корпус геометрией дистанции и его влиянием на счёт.",
+			"title": "The Reach of a Thrust to the Torso",
+			"summary": "The instructor explains the value of a prepared torso thrust through distance geometry and its effect on scoring.",
 			"anchor": "I need a little more of your attention.",
 			"theses": [
-				"Соперник может закрыть голову или иметь преимущество роста, поэтому верхняя цель не считается автоматически доступной.",
-				"Попадание по ноге приносит меньше очков, тогда как два подготовленных укола способны быстро изменить счёт.",
-				"По геометрии укол в корпус может доставать дальше, чем рубящий удар по колену."
+				"The opponent may cover the head or have a height advantage, so the upper target is not automatically available.",
+				"A hit to the leg scores less, while two prepared thrusts can change the score quickly.",
+				"Geometrically, a thrust to the torso can reach farther than a cut to the knee."
 			]
 		},
 		{
 			"start": 4630.72,
-			"title": "Перевод и укол по внутренней линии",
-			"summary": "Участники поднимают клинок партнёра, делают перевод и ведут остриё по дуге к внутренней линии.",
+			"title": "Disengagement and the Inside-Line Thrust",
+			"summary": "Participants lift the partner’s blade, disengage, and guide the point in an arc toward the inside line.",
 			"anchor": "So, let us do an exercise.",
 			"theses": [
-				"Перевод освобождает линию для укола после контакта с клинком.",
-				"Хват постепенно переводят к положению клинка плашмя, создавая дополнительный угол.",
-				"Дугу отрабатывают медленно и доводят до крайних положений только как учебное исследование."
+				"The disengagement opens the line for a thrust after blade contact.",
+				"The grip gradually turns toward a flat-blade position, creating an additional angle.",
+				"The arc is practiced slowly and taken to extreme positions only as a learning exploration."
 			]
 		},
 		{
 			"start": 4854.84,
-			"title": "Хват с клинком плашмя",
-			"summary": "Коррекция хвата и траектории помогает обойти баклер, не уводя остриё далеко от цели.",
+			"title": "Flat-Blade Grip Around the Buckler",
+			"summary": "Adjusting the grip and path helps the point move around the buckler without drifting far from the target.",
 			"anchor": "Show me again your grip.",
 			"theses": [
-				"Разворот клинка плашмя облегчает создание угла для укола с другой стороны защиты.",
-				"Рука и меч движутся по дуге вокруг почти неподвижной области острия.",
-				"Если баклер давит внутрь, дополнительный угол позволяет всё равно завершить укол."
+				"Turning the blade flat makes it easier to create a thrusting angle on the other side of the defense.",
+				"The hand and sword move in an arc around an almost stationary point.",
+				"If the buckler presses inward, the additional angle still allows the thrust to finish."
 			]
 		},
 		{
 			"start": 4992.01,
-			"title": "Одна техника в атаке и защите",
-			"summary": "Финальное упражнение переносит изученную механику между защитой с ответом, контратакой и подготовленной атакой с уколом.",
+			"title": "One Technique in Attack and Defense",
+			"summary": "The final drill transfers the same mechanics among parry-riposte, counterattack, and a prepared thrusting attack.",
 			"anchor": "let's go to the very last exercise",
 			"theses": [
-				"Имброката используется и в защите против сближения, и как продолжение собственной атаки.",
-				"Подготовительные удары вызывают работу баклера, после чего полушаг и выпад открывают укол сбоку.",
-				"Выпад со скрестным шагом ограничивает контроль и может нагружать кисть, поэтому для упражнения рекомендуют обычный выпад."
+				"The imbroccata is used both defensively against an entry and as a continuation of the fencer’s own attack.",
+				"Preparatory cuts draw the buckler into motion, after which a half-step and lunge open the side thrust.",
+				"A cross-step lunge reduces control and can strain the wrist, so a standard lunge is recommended for the drill."
 			]
 		}
 	],
@@ -300,128 +300,128 @@
 	"materials": {
 		"notes": [
 			{
-				"title": "Логика семинара",
+				"title": "Seminar Structure",
 				"items": [
-					"Работа идёт от стойки и координации к выбору действия, затем к конкретным уколам и тактической подготовке. Каждая новая связка сохраняет механику предыдущей, но меняет направление шага или реакцию партнёра.",
-					"Лектор отделяет общие принципы от экспериментальных решений и не объявляет один хват или редкий угол единственно правильным."
+					"The seminar progresses from stance and coordination to action selection, then to specific thrusts and tactical preparation. Each new sequence retains the mechanics of the previous one while changing the stepping direction or the partner’s response.",
+					"The instructor distinguishes general principles from experimental solutions and does not present one grip or unusual angle as the only correct option."
 				]
 			},
 			{
-				"title": "Разделение функций рук",
+				"title": "Separating the Functions of the Hands",
 				"items": [
-					"Меч и баклер рассматриваются как два самостоятельных инструмента: одна рука может создавать угрозу, вторая — закрывать линию или контролировать клинок.",
-					"Смыкание рук допускается ситуативно, но базовая тренировка развивает независимость, чтобы не терять варианты составного действия."
+					"The sword and buckler are treated as two independent tools: one hand can create a threat while the other closes a line or controls the blade.",
+					"Bringing the hands together remains useful in some situations, but the basic training develops independence so compound-action options are not lost."
 				]
 			},
 			{
-				"title": "Дистанция и направление движения",
+				"title": "Distance and Direction of Movement",
 				"items": [
-					"Отход поддерживает парирование и сохраняет пространство для ответа; движение вперёд поддерживает встречный укол. Оставаться на месте имеет смысл только при уже подходящей дистанции.",
-					"После попадания или контроля клинка нужно завершить выход: близкая позиция оставляет сопернику ответ по ногам и продолжение давления."
+					"Retreating supports the parry and preserves room for the riposte; moving forward supports the counterthrust. Staying in place makes sense only when the distance is already suitable.",
+					"After landing or controlling the blade, the fencer must complete the exit: staying close leaves the opponent a response to the legs and continued pressure."
 				]
 			},
 			{
-				"title": "Подготовка укола",
+				"title": "Preparing the Thrust",
 				"items": [
-					"Короткий полушаг, открытая линия и нижняя угроза используются как проверяемые приглашения. Если соперник не реагирует, действие не доводят автоматически.",
-					"Задача провокации — сместить баклер или клинок и открыть линию, после чего та же механика работает как защита с ответом, контратака или собственная атака."
+					"A short half-step, an open line, and a low threat are used as testable invitations. If the opponent does not react, the action is not completed automatically.",
+					"The purpose of the invitation is to move the buckler or blade and open a line; the same mechanics can then function as a parry-riposte, counterattack, or initiated attack."
 				]
 			}
 		],
 		"exercises": [
 			{
-				"title": "Стойка и координация",
+				"title": "Stance and Coordination",
 				"items": [
 					{
 						"start": 209.08,
-						"text": "Без оружия перестроить стойку ближе к фронтальной, сохранив возможность независимо вытягивать обе руки."
+						"text": "Without weapons, shift to a more frontal stance while preserving the ability to extend both hands independently."
 					},
 					{
 						"start": 386.02,
-						"text": "Связать шаг вперёд и назад с разведением рук и лёгким вращением корпуса; затем повторить с мечом и баклером."
+						"text": "Connect forward and backward steps with separating the hands and lightly rotating the torso, then repeat with sword and buckler."
 					}
 				]
 			},
 			{
-				"title": "Защита и встречное действие",
+				"title": "Defense and Counteraction",
 				"items": [
 					{
 						"start": 1074.6,
-						"text": "Партнёр многократно атакует в голову, а защищающийся ловит темп и соединяет прикрытие баклером со встречным уколом."
+						"text": "The partner repeatedly attacks the head while the defender reads the tempo and combines buckler cover with a counterthrust."
 					},
 					{
 						"start": 1654.76,
-						"text": "Добавить к парированию полушаг назад, а к контратаке — движение вперёд, сохраняя рабочую дистанцию."
+						"text": "Add a half-step back to the parry and forward movement to the counterattack while maintaining working distance."
 					},
 					{
 						"start": 3205.8,
-						"text": "Сначала выполнить укол по внутренней линии как защиту с ответом на отходе, затем той же механикой — как контратаку вперёд."
+						"text": "First perform the inside-line thrust as a parry-riposte while retreating, then use the same mechanics as a forward counterattack."
 					}
 				]
 			},
 			{
-				"title": "Укол по внутренней линии и контроль клинка",
+				"title": "Inside-Line Thrust and Blade Control",
 				"items": [
 					{
 						"start": 2413.08,
-						"text": "Из центральной позиции повернуть кисть, перевести клинок на внутреннюю сторону баклера партнёра и завершить укол с шагом."
+						"text": "From the central position, rotate the wrist, bring the blade toward the inside of the partner’s buckler, and complete the thrust with a step."
 					},
 					{
 						"start": 2768.81,
-						"text": "С вытянутой рукой менять положение баклера и угол кисти, сохраняя контроль клинка и защиту от ответного действия."
+						"text": "With the arm extended, change the buckler position and wrist angle while maintaining blade control and protection against the opponent’s response."
 					},
 					{
 						"start": 2948.71,
-						"text": "После укола направить баклер в клинок, ограничить продолжение соперника и сразу выполнить безопасный выход."
+						"text": "After the thrust, direct the buckler into the blade, limit the opponent’s continuation, and exit safely at once."
 					}
 				]
 			},
 			{
-				"title": "Провокации и финальные связки",
+				"title": "Invitations and Final Sequences",
 				"items": [
 					{
 						"start": 3917.99,
-						"text": "Коротким полушагом и открытой верхней линией вызвать реакцию, затем выбрать отход, защиту с ответом или встречный укол."
+						"text": "Use a short half-step and an open upper line to provoke a reaction, then choose a retreat, parry-riposte, or counterthrust."
 					},
 					{
 						"start": 4107.11,
-						"text": "Показать нижнюю угрозу, дождаться смещения баклера и перейти к уколу в верхний сектор."
+						"text": "Present a low threat, wait for the buckler to move, and transition into a thrust to the upper line."
 					},
 					{
 						"start": 4630.72,
-						"text": "Поднять клинок партнёра, выполнить перевод и по дуге вывести остриё на укол по внутренней линии."
+						"text": "Lift the partner’s blade, disengage, and guide the point in an arc into an inside-line thrust."
 					},
 					{
 						"start": 4992.01,
-						"text": "Применить одну механику в защите и атаке: защита с ответом, контратака и подготовленный укол после серии ложных действий."
+						"text": "Apply the same mechanics in defense and attack: parry-riposte, counterattack, and a prepared thrust after a series of feints."
 					}
 				]
 			}
 		],
 		"glossary": [
 			{
-				"term": "Оппозиция",
-				"definition": "Закрытие линии клинком или баклером одновременно с собственной атакой либо контратакой."
+				"term": "Opposition",
+				"definition": "Closing the line with the blade or buckler at the same time as one’s own attack or counterattack."
 			},
 			{
-				"term": "Защита и ответ (parry-riposte)",
-				"definition": "Последовательность из защиты и немедленного ответного действия."
+				"term": "Parry-riposte",
+				"definition": "A parry followed immediately by a returning offensive action."
 			},
 			{
-				"term": "Имброката",
-				"definition": "Нисходящий укол сверху вниз; в семинаре термин служит ориентиром для траектории по внутренней линии."
+				"term": "Imbroccata",
+				"definition": "A descending thrust from above; in the seminar, the term serves as a reference for the inside-line trajectory."
 			},
 			{
-				"term": "Хват с клинком плашмя (flat grip)",
-				"definition": "Положение кисти и рукояти, при котором плоскость клинка развёрнута так, чтобы создать дополнительный угол для укола."
+				"term": "Flat grip",
+				"definition": "A hand and hilt position that turns the blade flat to create an additional thrusting angle."
 			},
 			{
-				"term": "Флеш-атака",
-				"definition": "Быстрое атакующее сближение с продолжением движения вперёд; здесь служит примером входа для защитной техники."
+				"term": "Flèche attack",
+				"definition": "A fast attacking entry that continues forward; here it serves as an example of an entry addressed by the defensive technique."
 			},
 			{
-				"term": "Ремиз (повторное действие)",
-				"definition": "Немедленное повторение укола или удара после неудачного либо закрытого первого действия без полного возврата в исходную позицию."
+				"term": "Remise",
+				"definition": "An immediate renewal of the thrust or cut after the first action fails or is closed, without fully returning to the initial position."
 			}
 		]
 	},

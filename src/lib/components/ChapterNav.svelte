@@ -7,8 +7,9 @@
 	let {
 		chapters,
 		onSelect,
-		active = 0
-	}: { chapters: Chapter[]; onSelect: (index: number, start: number) => void; active?: number } =
+		active = 0,
+		language = 'ru'
+	}: { chapters: Chapter[]; onSelect: (index: number, start: number) => void; active?: number; language?: 'ru' | 'en' } =
 		$props();
 
 	let navEl = $state<HTMLElement | null>(null);
@@ -36,8 +37,8 @@
 </script>
 
 <details class="chapter-nav" bind:open bind:this={navEl}>
-	<summary class="nav-title label" aria-label="Содержание">
-		Содержание
+	<summary class="nav-title label" aria-label={language === 'en' ? 'Contents' : 'Содержание'}>
+		{language === 'en' ? 'Contents' : 'Содержание'}
 		<span class="count mono">{chapters.length}</span>
 		<span class="chevron" aria-hidden="true"><CaretRight size={13} weight="bold" /></span>
 	</summary>

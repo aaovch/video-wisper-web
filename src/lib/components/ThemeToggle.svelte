@@ -2,6 +2,7 @@
 	import Moon from 'phosphor-svelte/lib/Moon';
 	import Sun from 'phosphor-svelte/lib/Sun';
 	import { theme } from '$lib/theme.svelte';
+	let { language = 'ru' }: { language?: 'ru' | 'en' } = $props();
 
 	const isDark = $derived(theme.current === 'dark');
 </script>
@@ -11,8 +12,8 @@
 	class="theme-toggle"
 	onclick={() => theme.toggle()}
 	aria-pressed={isDark}
-	aria-label={isDark ? 'Включить светлую тему' : 'Включить тёмную тему'}
-	title={isDark ? 'Светлая тема' : 'Тёмная тема'}
+	aria-label={language === 'en' ? (isDark ? 'Use light theme' : 'Use dark theme') : (isDark ? 'Включить светлую тему' : 'Включить тёмную тему')}
+	title={language === 'en' ? (isDark ? 'Light theme' : 'Dark theme') : (isDark ? 'Светлая тема' : 'Тёмная тема')}
 >
 	{#if isDark}
 		<Sun size={18} weight="regular" aria-hidden="true" />

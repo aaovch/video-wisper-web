@@ -12,7 +12,7 @@
 	import type { ReportMaterials } from '$lib/types';
 
 	type MaterialsTab = 'notes' | 'visuals' | 'glossary' | 'transcript';
-	let { slug, materials, hasTranscript }: { slug: string; materials: Required<ReportMaterials>; hasTranscript: boolean } = $props();
+	let { slug, materials, hasTranscript, language = 'ru' }: { slug: string; materials: Required<ReportMaterials>; hasTranscript: boolean; language?: 'ru' | 'en' } = $props();
 	let requestedTab = $state<MaterialsTab>('notes');
 	let transcriptText = $state('');
 	let transcriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
@@ -92,43 +92,43 @@
 	}
 </script>
 
-<section class="study-materials" aria-label="Материалы лекции">
-	<div class="tablist" role="tablist" aria-label="Разделы материалов">
+<section class="study-materials" aria-label={language === 'en' ? 'Lecture materials' : 'Материалы лекции'}>
+	<div class="tablist" role="tablist" aria-label={language === 'en' ? 'Material sections' : 'Разделы материалов'}>
 		{#each tabs as tab (tab)}
 			<button id={`materials-tab-${tab}`} type="button" role="tab" class:active={activeTab === tab} aria-selected={activeTab === tab} aria-controls={`materials-panel-${tab}`} tabindex={activeTab === tab ? 0 : -1} onclick={() => selectTab(tab)} onkeydown={handleTabKeydown}>
-				{#if tab === 'notes'}<BookOpenText size={17} aria-hidden="true" /><span>Конспект</span><span class="count">{materials.notes.length}</span>
-				{:else if tab === 'visuals'}<ImageSquare size={17} aria-hidden="true" /><span>{materials.visuals.length === 1 ? 'Памятка' : 'Памятки'}</span>{#if materials.visuals.length > 1}<span class="count">{materials.visuals.length}</span>{/if}
-				{:else if tab === 'glossary'}<Cards size={17} aria-hidden="true" /><span>Глоссарий</span><span class="count">{materials.glossary.length}</span>
-				{:else}<TextAlignLeft size={17} aria-hidden="true" /><span>Расшифровка</span>{/if}
+				{#if tab === 'notes'}<BookOpenText size={17} aria-hidden="true" /><span>{language === 'en' ? 'Notes' : 'Конспект'}</span><span class="count">{materials.notes.length}</span>
+				{:else if tab === 'visuals'}<ImageSquare size={17} aria-hidden="true" /><span>{language === 'en' ? (materials.visuals.length === 1 ? 'Guide' : 'Guides') : (materials.visuals.length === 1 ? 'Памятка' : 'Памятки')}</span>{#if materials.visuals.length > 1}<span class="count">{materials.visuals.length}</span>{/if}
+				{:else if tab === 'glossary'}<Cards size={17} aria-hidden="true" /><span>{language === 'en' ? 'Glossary' : 'Глоссарий'}</span><span class="count">{materials.glossary.length}</span>
+				{:else}<TextAlignLeft size={17} aria-hidden="true" /><span>{language === 'en' ? 'Transcript' : 'Расшифровка'}</span>{/if}
 			</button>
 		{/each}
 	</div>
 
 	{#if activeTab === 'notes'}
 		<div id="materials-panel-notes" class="panel" role="tabpanel" aria-labelledby="materials-tab-notes">
-			<header class="panel-head"><span class="kicker"><BookOpenText size={16} aria-hidden="true" /> Короткий конспект</span><span>{materials.notes.length} {materials.notes.length === 1 ? 'раздел' : materials.notes.length < 5 ? 'раздела' : 'разделов'}</span></header>
+			<header class="panel-head"><span class="kicker"><BookOpenText size={16} aria-hidden="true" /> {language === 'en' ? 'Lecture notes' : 'Короткий конспект'}</span><span>{materials.notes.length} {language === 'en' ? (materials.notes.length === 1 ? 'section' : 'sections') : (materials.notes.length === 1 ? 'раздел' : materials.notes.length < 5 ? 'раздела' : 'разделов')}</span></header>
 			<div class="notes-grid">{#each materials.notes as section, index (section.title)}<article><header><span>{String(index + 1).padStart(2, '0')}</span><h3>{section.title}</h3></header><ul>{#each section.items as item}<li>{item}</li>{/each}</ul></article>{/each}</div>
 		</div>
 	{:else if activeTab === 'visuals'}
 		<div id="materials-panel-visuals" class="panel" role="tabpanel" aria-labelledby="materials-tab-visuals">
-			<header class="panel-head"><span class="kicker"><ImageSquare size={16} aria-hidden="true" /> Визуальные памятки</span><span>{materials.visuals.length} {materials.visuals.length === 1 ? 'материал' : 'материала'}</span></header>
-			<div class="visuals">{#each materials.visuals as visual (`${visual.kind}:${visual.src}`)}<figure>{#if materials.visuals.length > 1}<figcaption>{materialVisualLabel(visual)}</figcaption>{/if}<a href={`${base}/${visual.src}`} target="_blank" rel="noreferrer" aria-label={`Открыть «${materialVisualLabel(visual)}» в полном размере`}><img src={`${base}/${visual.src}`} alt={visual.alt} loading="lazy" decoding="async" /></a></figure>{/each}</div>
+			<header class="panel-head"><span class="kicker"><ImageSquare size={16} aria-hidden="true" /> {language === 'en' ? 'Visual guides' : 'Визуальные памятки'}</span><span>{materials.visuals.length} {language === 'en' ? (materials.visuals.length === 1 ? 'item' : 'items') : (materials.visuals.length === 1 ? 'материал' : 'материала')}</span></header>
+			<div class="visuals">{#each materials.visuals as visual (`${visual.kind}:${visual.src}`)}<figure>{#if materials.visuals.length > 1}<figcaption>{materialVisualLabel(visual, language)}</figcaption>{/if}<a href={`${base}/${visual.src}`} target="_blank" rel="noreferrer" aria-label={language === 'en' ? `Open “${materialVisualLabel(visual, language)}” full size` : `Открыть «${materialVisualLabel(visual, language)}» в полном размере`}><img src={`${base}/${visual.src}`} alt={visual.alt} loading="lazy" decoding="async" /></a></figure>{/each}</div>
 		</div>
 	{:else if activeTab === 'glossary'}
 		<div id="materials-panel-glossary" class="panel" role="tabpanel" aria-labelledby="materials-tab-glossary">
-			<header class="panel-head"><span class="kicker"><Cards size={16} aria-hidden="true" /> Термины и определения</span><span>{materials.glossary.length} терминов</span></header>
+			<header class="panel-head"><span class="kicker"><Cards size={16} aria-hidden="true" /> {language === 'en' ? 'Terms and definitions' : 'Термины и определения'}</span><span>{materials.glossary.length} {language === 'en' ? 'terms' : 'терминов'}</span></header>
 			<dl class="glossary-grid">{#each materials.glossary as item (item.term)}<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>{/each}</dl>
 		</div>
 	{:else}
 		<div id="materials-panel-transcript" class="panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
 			<header class="panel-head">
-				<span class="kicker"><TextAlignLeft size={16} aria-hidden="true" /> Полный текст лекции</span>
-				<span class="font-controls" aria-label="Размер текста"><button type="button" onclick={() => adjustTranscriptScale(-0.1)} disabled={transcriptScale <= 0.8} aria-label="Уменьшить текст">А−</button><button type="button" onclick={() => adjustTranscriptScale(0.1)} disabled={transcriptScale >= 1.3} aria-label="Увеличить текст">А+</button></span>
-				<button type="button" class="copy" class:copied={copyState === 'copied'} aria-label={copyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку'} onclick={copyTranscript}>{#if copyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}</button>
-				<span class="copy-status" role="status" aria-live="polite">{copyState === 'copied' ? 'Расшифровка скопирована' : copyState === 'error' ? 'Не удалось скопировать расшифровку' : ''}</span>
+				<span class="kicker"><TextAlignLeft size={16} aria-hidden="true" /> {language === 'en' ? 'Full lecture transcript' : 'Полный текст лекции'}</span>
+				<span class="font-controls" aria-label={language === 'en' ? 'Text size' : 'Размер текста'}><button type="button" onclick={() => adjustTranscriptScale(-0.1)} disabled={transcriptScale <= 0.8} aria-label={language === 'en' ? 'Decrease text size' : 'Уменьшить текст'}>A−</button><button type="button" onclick={() => adjustTranscriptScale(0.1)} disabled={transcriptScale >= 1.3} aria-label={language === 'en' ? 'Increase text size' : 'Увеличить текст'}>A+</button></span>
+				<button type="button" class="copy" class:copied={copyState === 'copied'} aria-label={language === 'en' ? (copyState === 'copied' ? 'Transcript copied' : 'Copy full transcript') : (copyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку')} onclick={copyTranscript}>{#if copyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}</button>
+				<span class="copy-status" role="status" aria-live="polite">{language === 'en' ? (copyState === 'copied' ? 'Transcript copied' : copyState === 'error' ? 'Could not copy transcript' : '') : (copyState === 'copied' ? 'Расшифровка скопирована' : copyState === 'error' ? 'Не удалось скопировать расшифровку' : '')}</span>
 			</header>
 			<div class="transcript" style={`--transcript-scale: ${transcriptScale}`}>
-				{#if transcriptLoadState === 'ready'}<p>{transcriptText}</p>{:else if transcriptLoadState === 'error'}<p class="status">Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.</p>{:else}<p class="status">Загрузка расшифровки…</p>{/if}
+				{#if transcriptLoadState === 'ready'}<p>{transcriptText}</p>{:else if transcriptLoadState === 'error'}<p class="status">{language === 'en' ? 'The transcript could not be loaded. Refresh the page and try again.' : 'Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.'}</p>{:else}<p class="status">{language === 'en' ? 'Loading transcript…' : 'Загрузка расшифровки…'}</p>{/if}
 			</div>
 		</div>
 	{/if}

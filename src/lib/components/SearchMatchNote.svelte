@@ -1,15 +1,22 @@
 <script lang="ts">
 	import type { SearchHit } from '$lib/search-types';
 	import { highlightParts } from '$lib/text-highlight';
-	let { hit, query }: { hit: SearchHit; query: string } = $props();
+	let { hit, query, language = 'ru' }: { hit: SearchHit; query: string; language?: 'ru' | 'en' } = $props();
 	const inSnippet = $derived(highlightParts(hit.snippet, query).some(part => part.match));
 	const inTitle = $derived(highlightParts(hit.title, query).some(part => part.match));
-	const label = $derived(hit.matchReasonKind === 'tag' ? 'Метка материала'
-		: hit.matchKind === 'semantic' ? 'Связано по смыслу'
-		: hit.matchKind === 'correction' ? 'С учётом опечатки'
-		: hit.matchKind === 'prefix' ? 'По началу слова'
-		: !inSnippet && inTitle ? 'Совпадение в заголовке'
-		: !inSnippet && highlightParts(hit.reportTitle, query).some(part => part.match) ? 'Совпадение в названии материала' : '');
+	const label = $derived(language === 'en'
+		? hit.matchReasonKind === 'tag' ? 'Material tag'
+			: hit.matchKind === 'semantic' ? 'Semantically related'
+			: hit.matchKind === 'correction' ? 'Including spelling correction'
+			: hit.matchKind === 'prefix' ? 'Word-prefix match'
+			: !inSnippet && inTitle ? 'Match in heading'
+			: !inSnippet && highlightParts(hit.reportTitle, query).some(part => part.match) ? 'Match in material title' : ''
+		: hit.matchReasonKind === 'tag' ? 'Метка материала'
+			: hit.matchKind === 'semantic' ? 'Связано по смыслу'
+			: hit.matchKind === 'correction' ? 'С учётом опечатки'
+			: hit.matchKind === 'prefix' ? 'По началу слова'
+			: !inSnippet && inTitle ? 'Совпадение в заголовке'
+			: !inSnippet && highlightParts(hit.reportTitle, query).some(part => part.match) ? 'Совпадение в названии материала' : '');
 </script>
 
 {#if label}<p class="match-note">{label}{#if hit.matchReason?.length && hit.matchReasonKind !== 'correction'}: {hit.matchReason.join(' · ')}{/if}</p>{/if}

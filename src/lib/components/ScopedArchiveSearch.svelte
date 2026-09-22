@@ -36,6 +36,7 @@
 		reportSlug = '',
 		reportSlugs = [],
 		collectionSlug = '',
+		language = 'ru',
 		onCollectionFilterChange,
 		onHit,
 		onResults
@@ -44,6 +45,7 @@
 		reportSlug?: string;
 		reportSlugs?: string[];
 		collectionSlug?: string;
+		language?: 'ru' | 'en';
 		onCollectionFilterChange?: (reportSlugs: string[]) => void;
 		onHit?: (hit: SearchHit, seek: boolean, href: string) => void;
 		onResults?: (hits: SearchHit[], loading: boolean) => void;
@@ -113,7 +115,7 @@
 	}
 
 
-	const label = $derived(kind === 'report' ? 'Поиск в отчёте' : 'Поиск в коллекции');
+	const label = $derived(language === 'en' ? (kind === 'report' ? 'Search this report' : 'Search this collection') : (kind === 'report' ? 'Поиск в отчёте' : 'Поиск в коллекции'));
 	const placeholder = $derived(`${label}…`);
 	const activeCollection = $derived(getCollection(collectionSlug));
 	const scopedCollection = $derived(kind === 'collection' ? activeCollection : undefined);
@@ -154,6 +156,12 @@
 	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
 	const resultsHeading = $derived.by(() => {
 		const suffix = '';
+		if (language === 'en') {
+			if (resultKind === 'prefix') return `Word-prefix matches ${suffix}`;
+			if (resultKind === 'correction') return `Possible matches ${suffix}`;
+			if (resultKind === 'semantic') return `Semantically related ${suffix}`;
+			return 'Results';
+		}
 		if (resultKind === 'prefix') return `Совпадения по началу слова ${suffix}`;
 		if (resultKind === 'correction') return `Возможные совпадения ${suffix}`;
 		if (resultKind === 'semantic') return `Связанные по смыслу ${suffix}`;
@@ -161,11 +169,11 @@
 	});
 	const statusText = $derived(
 		loading
-			? 'Ищем'
+			? language === 'en' ? 'Searching' : 'Ищем'
 			: searchError
-				? 'Поиск временно недоступен'
+				? language === 'en' ? 'Search is temporarily unavailable' : 'Поиск временно недоступен'
 				: query.trim().length >= 2
-					? `${uniqueHits.length} совпадений`
+					? language === 'en' ? `${uniqueHits.length} matches` : `${uniqueHits.length} совпадений`
 					: ''
 	);
 
@@ -193,6 +201,7 @@
 	}
 
 	function matchCountLabel(count: number): string {
+		if (language === 'en') return count === 1 ? 'match' : 'matches';
 		const mod100 = count % 100;
 		if (mod100 >= 11 && mod100 <= 14) return 'совпадений';
 		const mod10 = count % 10;
@@ -241,7 +250,7 @@
 		if (scopedCollection?.sections?.length) {
 			groups.push({
 				id: 'sections',
-				label: 'Раздел',
+				label: language === 'en' ? 'Section' : 'Раздел',
 				options: scopedCollection.sections.map((section) => ({
 					value: section.title,
 					label: section.title,
@@ -250,19 +259,24 @@
 			});
 		}
 		for (const [id, groupLabel] of [
-			['authors', 'Автор'],
-			['places', 'Место'],
-			['weapons', 'Оружие']
+			['authors', language === 'en' ? 'Author' : 'Автор'],
+			['places', language === 'en' ? 'Place' : 'Место'],
+			['weapons', language === 'en' ? 'Weapon' : 'Оружие']
 		] as const) groups.push({ id, label: groupLabel, options: facetOptions(id) });
 		return groups;
 	}
 
-	const zoneLabels = {
+	const zoneLabels = $derived(language === 'en' ? {
+		chapters: 'Chapters',
+		theses: 'Key points',
+		transcript: 'Transcript',
+		additional: 'Additional materials'
+	} : {
 		chapters: 'Главы',
 		theses: 'Тезисы',
 		transcript: 'Расшифровка',
 		additional: 'Дополнительные материалы'
-	} as const;
+	});
 
 	function reportFilterGroups(results: SearchHit[], current: SearchFilterSelections): SearchFilterGroup[] {
 		const selectedZones = current.zones ?? [];
@@ -273,7 +287,7 @@
 				count: results.filter((hit) => hit.zone === value).length
 			}))
 			.filter((option) => option.count > 0 || selectedZones.includes(option.value));
-		return options.length ? [{ id: 'zones', label: 'Зона поиска', options }] : [];
+		return options.length ? [{ id: 'zones', label: language === 'en' ? 'Search area' : 'Зона поиска', options }] : [];
 	}
 
 	function reportMatchesCollectionFilters(slug: string): boolean {
@@ -353,13 +367,13 @@
 	function buildSearchScopes(): SearchScope[] {
 		const archiveScope: SearchScope = {
 			kind: 'archive',
-			label: 'во всём архиве',
+			label: language === 'en' ? 'across the full archive' : 'во всём архиве',
 			reportSlugs: visibleArchiveSlugs
 		};
 		if (kind === 'report') {
 			const scopes: SearchScope[] = [{
 				kind: 'report',
-				label: 'в этом отчёте',
+				label: language === 'en' ? 'in this report' : 'в этом отчёте',
 				reportSlug,
 				zones: selections.zones.length ? selections.zones as SearchZone[] : undefined
 			}];
@@ -368,7 +382,7 @@
 			if (activeCollection && siblingSlugs.length) {
 				scopes.push({
 					kind: 'collection',
-					label: `в коллекции «${activeCollection.title}»`,
+					label: language === 'en' ? `in the “${activeCollection.title}” collection` : `в коллекции «${activeCollection.title}»`,
 					reportSlugs: siblingSlugs
 				});
 			}
@@ -378,7 +392,7 @@
 
 		const scopes: SearchScope[] = [{
 			kind: 'collection',
-			label: activeCollection ? `в коллекции «${activeCollection.title}»` : 'в этой коллекции',
+			label: language === 'en' ? (activeCollection ? `in the “${activeCollection.title}” collection` : 'in this collection') : (activeCollection ? `в коллекции «${activeCollection.title}»` : 'в этой коллекции'),
 			reportSlugs: filteredCollectionSlugs
 		}];
 		if (activeFilterCount === 0 && !activeCollection?.isolated) scopes.push(archiveScope);
@@ -470,7 +484,7 @@
 			autocomplete="off"
 			spellcheck="false"
 		/>
-		{#if loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
+		{#if loading}<span class="loading label" aria-hidden="true">{language === 'en' ? 'searching' : 'ищем'}</span>{/if}
 	</label>
 	<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
@@ -484,11 +498,11 @@
 					onclick={openFilters}
 				>
 					<FunnelSimple size={18} weight="regular" aria-hidden="true" />
-					<span>Фильтры</span>
+					<span>{language === 'en' ? 'Filters' : 'Фильтры'}</span>
 					{#if activeFilterCount > 0}<span class="filter-badge mono">{activeFilterCount}</span>{/if}
 				</button>
 			{/if}
-			<SearchFilterChips filters={activeFilters} onRemove={toggleFilter} />
+			<SearchFilterChips filters={activeFilters} onRemove={toggleFilter} {language} />
 		</div>
 	{/if}
 
@@ -499,6 +513,7 @@
 		onToggle={toggleFilter}
 		onClear={clearFilters}
 		onClose={closeFilters}
+		{language}
 	/>
 
 	{#if query.trim().length >= 2}
@@ -508,7 +523,7 @@
 					<div class="results-head">
 						<p>{resultsHeading}</p>
 						<div class="results-tools">
-							{#if !loading}<span class="label">{visibleHits.length} из {uniqueHits.length}</span>{/if}
+							{#if !loading}<span class="label">{visibleHits.length} {language === 'en' ? 'of' : 'из'} {uniqueHits.length}</span>{/if}
 							{#if hasFilterGroups && !showingFallback}
 								<button
 									type="button"
@@ -517,7 +532,7 @@
 									onclick={openFilters}
 								>
 									<FunnelSimple size={16} weight="regular" aria-hidden="true" />
-									<span>Фильтры</span>
+									<span>{language === 'en' ? 'Filters' : 'Фильтры'}</span>
 									{#if activeFilterCount > 0}<span class="filter-badge mono">{activeFilterCount}</span>{/if}
 								</button>
 							{/if}
@@ -525,19 +540,21 @@
 					</div>
 					{#if showingFallback}
 						<p class="scope-note">
-							{kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений и совпадений по началу слова нет. Показываем результаты {resultScopeLabel}.
+							{language === 'en'
+								? `${kind === 'report' ? 'This report' : 'This collection'} has no exact or word-prefix matches. Showing results ${resultScopeLabel}.`
+								: `${kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений и совпадений по началу слова нет. Показываем результаты ${resultScopeLabel}.`}
 						</p>
 					{/if}
 			{#if correctedQuery && !loading && !searchError}
-				<p class="scope-note">Возможно, вы имели в виду «{correctedQuery}».</p>
+				<p class="scope-note">{language === 'en' ? `Did you mean “${correctedQuery}”?` : `Возможно, вы имели в виду «${correctedQuery}».`}</p>
 			{/if}
 			{#if searchError}
 				<div class="search-error" role="alert">
-					<p>Поиск временно недоступен.</p>
-					<button type="button" onclick={retrySearch}>Повторить</button>
+					<p>{language === 'en' ? 'Search is temporarily unavailable.' : 'Поиск временно недоступен.'}</p>
+					<button type="button" onclick={retrySearch}>{language === 'en' ? 'Retry' : 'Повторить'}</button>
 				</div>
 			{:else if !loading && visibleHits.length === 0}
-				<div class="empty"><p>Ничего не найдено. Попробуйте короче или другое название.</p><button type="button" onclick={clearSearch}>Очистить поиск</button>{#if activeFilterCount > 0}<button type="button" onclick={clearFilters}>Сбросить фильтры</button>{/if}</div>
+				<div class="empty"><p>{language === 'en' ? 'Nothing found. Try a shorter query or a different term.' : 'Ничего не найдено. Попробуйте короче или другое название.'}</p><button type="button" onclick={clearSearch}>{language === 'en' ? 'Clear search' : 'Очистить поиск'}</button>{#if activeFilterCount > 0}<button type="button" onclick={clearFilters}>{language === 'en' ? 'Reset filters' : 'Сбросить фильтры'}</button>{/if}</div>
 			{:else}
 				<ol>
 					{#each visibleHits as hit (uniqueHitKey(hit))}
@@ -549,6 +566,7 @@
 							showReportTitle={kind !== 'report' || hit.reportSlug !== reportSlug}
 							hrefFor={resultHref}
 							onOpen={openResult}
+							{language}
 						/>
 					{/each}
 				</ol>
@@ -560,7 +578,7 @@
 						aria-expanded={showAllHits}
 						onclick={() => { showAllHits = !showAllHits; saveSearch(); }}
 					>
-						<span>{showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`}</span>
+						<span>{language === 'en' ? (showAllHits ? 'Collapse to 5 matches' : `Show all ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`) : (showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`)}</span>
 						<CaretDown size={16} weight="bold" aria-hidden="true" />
 					</button>
 				{/if}

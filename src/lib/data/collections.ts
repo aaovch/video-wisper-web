@@ -45,6 +45,7 @@ export interface CollectionAccess {
 export interface Collection {
 	slug: string;
 	title: string;
+	language?: 'ru' | 'en';
 	/** HEMA-коллекции образуют основной каталог; остальные остаются в архиве вторым слоем. */
 	hema?: boolean;
 	/** Скрыта из основного каталога и поиска; доступна в архиве. */

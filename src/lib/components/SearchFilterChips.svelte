@@ -4,20 +4,22 @@
 
 	let {
 		filters,
-		onRemove
+		onRemove,
+		language = 'ru'
 	}: {
 		filters: ActiveSearchFilter[];
 		onRemove: (groupId: string, value: string) => void;
+		language?: 'ru' | 'en';
 	} = $props();
 </script>
 
 {#if filters.length > 0}
-	<div class="chips" aria-label="Выбранные фильтры">
+	<div class="chips" aria-label={language === 'en' ? 'Selected filters' : 'Выбранные фильтры'}>
 		{#each filters as filter (`${filter.groupId}:${filter.value}`)}
 			<button type="button" onclick={() => onRemove(filter.groupId, filter.value)}>
 				<span>{filter.label}</span>
 				<X size={14} weight="bold" aria-hidden="true" />
-				<span class="sr-only">Убрать фильтр</span>
+				<span class="sr-only">{language === 'en' ? 'Remove filter' : 'Убрать фильтр'}</span>
 			</button>
 		{/each}
 	</div>

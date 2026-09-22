@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { getVideoSourceUrl } from './utils';
+import { formatDuration, getVideoSourceUrl } from './utils';
+
+describe('formatDuration', () => {
+	it('uses the requested language without changing the Russian default', () => {
+		expect(formatDuration(4500)).toBe('1 ч 15 мин');
+		expect(formatDuration(4500, 'en')).toBe('1 hr 15 min');
+	});
+});
 
 describe('getVideoSourceUrl', () => {
 	it('prefers the report source URL', () => {

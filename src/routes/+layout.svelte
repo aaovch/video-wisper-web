@@ -13,11 +13,24 @@
 		initPrerenderedReveals
 	} from '$lib/attachments';
 	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
+	import { collectionsForReport, getCollection } from '$lib/data/collections';
 	import { trackPageVisit } from '$lib/visit-tracker';
 	import { onMount, tick } from 'svelte';
 
 	let { children } = $props();
 	const home = $derived(page.route.id === '/');
+	const language = $derived.by<'ru' | 'en'>(() => {
+		const slug = page.params.slug;
+		if (!slug) return 'ru';
+		if (page.route.id === '/collections/[slug]') return getCollection(slug)?.language ?? 'ru';
+		if (page.route.id === '/reports/[slug]') {
+			return collectionsForReport(slug).some((collection) => collection.language === 'en') ? 'en' : 'ru';
+		}
+		return 'ru';
+	});
+	$effect(() => {
+		if (typeof document !== 'undefined') document.documentElement.lang = language;
+	});
 
 	let progressEl = $state<HTMLDivElement | null>(null);
 	let progressRaf = 0;
@@ -73,12 +86,12 @@
 
 <svelte:window onscroll={updateProgress} onresize={updateProgress} />
 
-<a class="skip-link" href="#main-content">К содержимому</a>
+<a class="skip-link" href="#main-content">{language === 'en' ? 'Skip to content' : 'К содержимому'}</a>
 
 <div class="progress" bind:this={progressEl} aria-hidden="true"></div>
 
 <div class="floating-controls">
-	<ThemeToggle />
+	<ThemeToggle {language} />
 </div>
 
 <button
@@ -86,8 +99,8 @@
 	class="to-top"
 	class:visible={showTop}
 	onclick={scrollToTop}
-	aria-label="Наверх"
-	title="Наверх"
+	aria-label={language === 'en' ? 'Back to top' : 'Наверх'}
+	title={language === 'en' ? 'Back to top' : 'Наверх'}
 	tabindex={showTop ? 0 : -1}
 	aria-hidden={!showTop}
 >
@@ -114,11 +127,11 @@
 	<footer class="colophon">
 		<hr class="rule" />
 		<div class="container colophon-inner">
-			<p class="label">{SITE_NAME} · Whisper Turbo + смысловая LLM-разметка</p>
+			<p class="label">{SITE_NAME} · {language === 'en' ? 'Whisper Turbo + semantic LLM structuring' : 'Whisper Turbo + смысловая LLM-разметка'}</p>
 			<p class="label">
-				собрано на SvelteKit ·
+				{language === 'en' ? 'built with SvelteKit' : 'собрано на SvelteKit'} ·
 				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>
-				· {new Date().getFullYear()} · <VisitCounter target={{ kind: 'site' }} />
+				· {new Date().getFullYear()} · <VisitCounter target={{ kind: 'site' }} suffix={language === 'en' ? 'visits' : 'посещений'} />
 			</p>
 		</div>
 	</footer>

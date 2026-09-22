@@ -19,6 +19,7 @@
 
 	let { data }: { data: PageData } = $props();
 	const collection = $derived(data.collection);
+	const language = $derived(collection.language ?? 'ru');
 	const reports = $derived(data.reports);
 	const intro = $derived(collection.description ?? collection.subtitle);
 	const reportIndex = $derived(new Map(reports.map((report, i) => [report.slug, i])));
@@ -75,39 +76,39 @@
 	<Lock
 		targets={gate}
 		title={collection.title}
-		subtitle="Введите общий пароль коллекции или ключ доступа к части материалов."
+		subtitle={language === 'en' ? 'Enter the collection password or an access key for selected materials.' : 'Введите общий пароль коллекции или ключ доступа к части материалов.'}
 	/>
 {:else}
 	<header class="container hero reveal" {@attach reveal()}>
 		{#if !collection.isolated}
-			<nav class="breadcrumbs" aria-label="Хлебные крошки">
-				<a href="{base}/{collection.archived ? 'archive/' : ''}"><ArrowLeft size={16} /> {collection.archived ? 'Архив' : 'Каталог'}</a>
+			<nav class="breadcrumbs" aria-label={language === 'en' ? 'Breadcrumbs' : 'Хлебные крошки'}>
+				<a href="{base}/{collection.archived ? 'archive/' : ''}"><ArrowLeft size={16} /> {language === 'en' ? (collection.archived ? 'Archive' : 'Catalog') : (collection.archived ? 'Архив' : 'Каталог')}</a>
 				<span aria-hidden="true">/</span>
 				<span>{collection.title}</span>
 			</nav>
 		{/if}
-		<p class="eyebrow label">Коллекция</p>
+		<p class="eyebrow label">{language === 'en' ? 'Collection' : 'Коллекция'}</p>
 		<h1>{collection.title}</h1>
 		<p class="intro">{intro}</p>
 		{#if partialAccess && master}
-			<aside class="partial-access" aria-label="Частичный доступ">
+			<aside class="partial-access" aria-label={language === 'en' ? 'Partial access' : 'Частичный доступ'}>
 				<div>
-					<p class="label">Открыта часть материалов</p>
-					<p>Общий пароль коллекции откроет остальные видео и полный анализ.</p>
+					<p class="label">{language === 'en' ? 'Some materials are available' : 'Открыта часть материалов'}</p>
+					<p>{language === 'en' ? 'The collection password unlocks the remaining videos and the full analysis.' : 'Общий пароль коллекции откроет остальные видео и полный анализ.'}</p>
 				</div>
 				<form onsubmit={unlockMaster}>
 					<input
 						type="password"
 						bind:value={masterValue}
-						placeholder="Общий пароль"
+						placeholder={language === 'en' ? 'Collection password' : 'Общий пароль'}
 						autocomplete="off"
-						aria-label="Общий пароль коллекции"
+						aria-label={language === 'en' ? 'Collection password' : 'Общий пароль коллекции'}
 						aria-invalid={masterFailed}
 						oninput={() => (masterFailed = false)}
 					/>
-					<button type="submit">Открыть всё</button>
+					<button type="submit">{language === 'en' ? 'Unlock all' : 'Открыть всё'}</button>
 				</form>
-				{#if masterFailed}<p class="partial-error label" role="alert">Неверный пароль</p>{/if}
+				{#if masterFailed}<p class="partial-error label" role="alert">{language === 'en' ? 'Incorrect password' : 'Неверный пароль'}</p>{/if}
 			</aside>
 		{/if}
 	</header>
@@ -117,6 +118,7 @@
 			kind="collection"
 			reportSlugs={collection.items}
 			collectionSlug={collection.slug}
+			{language}
 			onCollectionFilterChange={updateCollectionFilter}
 		/>
 	</div>
@@ -125,15 +127,15 @@
 		<section class="container analysis reveal" {@attach reveal()}>
 			<div class="section-title">
 				<span class="section-num mono">00</span>
-				<div><p class="label">Сверка практикой</p><h2>Что заявляли — и как вышло</h2></div>
+				<div><p class="label">{language === 'en' ? 'Practice check' : 'Сверка практикой'}</p><h2>{language === 'en' ? 'What was claimed — and what happened' : 'Что заявляли — и как вышло'}</h2></div>
 			</div>
 			<p class="lede">{collection.analysis.lede}</p>
 			<ol class="findings">
 				{#each collection.analysis.findings as finding, i (i)}
 					<li class="finding reveal" {@attach reveal({ delay: revealDelay(i, 45) })}>
 						<span class="finding-num mono">{String(i + 1).padStart(2, '0')}</span>
-						<div><span class="finding-tag label">Заявляли</span><p>{finding.claim}</p></div>
-						<div><span class="finding-tag label reality-label">В боях</span><p>{finding.reality}</p></div>
+						<div><span class="finding-tag label">{language === 'en' ? 'Claim' : 'Заявляли'}</span><p>{finding.claim}</p></div>
+						<div><span class="finding-tag label reality-label">{language === 'en' ? 'In fights' : 'В боях'}</span><p>{finding.reality}</p></div>
 					</li>
 				{/each}
 			</ol>
@@ -143,8 +145,8 @@
 
 	<section class="container index">
 		{#if browser && page.url.searchParams.get('q')}
-			<h2>Материалы коллекции</h2>
-			<p>Список с учётом выбранных фильтров. Результаты поиска — выше.</p>
+			<h2>{language === 'en' ? 'Collection materials' : 'Материалы коллекции'}</h2>
+			<p>{language === 'en' ? 'The list reflects the selected filters. Search results appear above.' : 'Список с учётом выбранных фильтров. Результаты поиска — выше.'}</p>
 		{/if}
 		{#if visibleSections?.length}
 			{#each visibleSections as section (section.title)}
@@ -152,14 +154,14 @@
 				<section class="report-section">
 					<header class="section-title">
 						<span class="section-num mono">{String(sectionIndex + 1).padStart(2, '0')}</span>
-						<div><p class="label">Раздел</p><h2>{section.title}</h2>{#if section.subtitle}<p class="section-copy">{section.subtitle}</p>{/if}</div>
+						<div><p class="label">{language === 'en' ? 'Section' : 'Раздел'}</p><h2>{section.title}</h2>{#if section.subtitle}<p class="section-copy">{section.subtitle}</p>{/if}</div>
 					</header>
 					<ul class="index-list">
 						{#each section.items as slug (slug)}
 							{@const report = reportBySlug.get(slug)}
 							{@const i = reportIndex.get(slug)}
 							{#if report && i !== undefined}
-								<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} /></li>
+								<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} {language} /></li>
 							{/if}
 						{/each}
 					</ul>
@@ -170,12 +172,12 @@
 				<ul class="index-list index-list--flat">
 					{#each reports.filter((report) => visibleReportSlugSet.has(report.slug)) as report (report.slug)}
 						{@const i = reportIndex.get(report.slug) ?? 0}
-						<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} /></li>
+						<li class="reveal" {@attach reveal({ delay: revealDelay(i, 55) })}><ReportCard {report} index={i + 1} collectionSlug={collection.slug} {language} /></li>
 					{/each}
 				</ul>
 			</section>
 		{:else}
-			<p class="filter-empty" role="status">По выбранным фильтрам материалов нет.</p>
+			<p class="filter-empty" role="status">{language === 'en' ? 'No materials match the selected filters.' : 'По выбранным фильтрам материалов нет.'}</p>
 		{/if}
 	</section>
 {/if}

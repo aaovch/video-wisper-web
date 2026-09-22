@@ -12,7 +12,8 @@
 		seekTo = 0,
 		autoplay = false,
 		onTime,
-		onPlaying
+		onPlaying,
+		language = 'ru'
 	}: {
 		video: VideoSource;
 		sourceUrl?: string;
@@ -20,18 +21,19 @@
 		autoplay?: boolean;
 		onTime?: (time: number) => void;
 		onPlaying?: (playing: boolean) => void;
+		language?: 'ru' | 'en';
 	} = $props();
 
 	const start = $derived(Math.max(0, Math.floor(seekTo)));
 	const externalUrl = $derived(getVideoSourceUrl(video, sourceUrl, base));
 	const externalLabel = $derived.by(() => {
 		switch (video.provider) {
-			case 'youtube': return 'Открыть на YouTube';
-			case 'vk': return 'Открыть в VK Видео';
-			case 'rutube': return 'Открыть на Rutube';
-			case 'vimeo': return 'Открыть на Vimeo';
-			case 'yadisk': return 'Открыть на Яндекс Диске';
-			case 'file': return 'Открыть видео отдельно';
+			case 'youtube': return language === 'en' ? 'Open on YouTube' : 'Открыть на YouTube';
+			case 'vk': return language === 'en' ? 'Open on VK Video' : 'Открыть в VK Видео';
+			case 'rutube': return language === 'en' ? 'Open on Rutube' : 'Открыть на Rutube';
+			case 'vimeo': return language === 'en' ? 'Open on Vimeo' : 'Открыть на Vimeo';
+			case 'yadisk': return language === 'en' ? 'Open on Yandex Disk' : 'Открыть на Яндекс Диске';
+			case 'file': return language === 'en' ? 'Open video separately' : 'Открыть видео отдельно';
 		}
 	});
 
@@ -392,21 +394,21 @@
 				></video>
 			{:else if failed}
 				<div class="state">
-					<p>Не удалось загрузить видео в плеере.</p>
+					<p>{language === 'en' ? 'The video could not be loaded in the player.' : 'Не удалось загрузить видео в плеере.'}</p>
 					{#if fallbackUrl}
 						<a href={fallbackUrl} target="_blank" rel="noopener noreferrer"
-							>Открыть на Яндекс.Диске →</a
+							>{language === 'en' ? 'Open on Yandex Disk →' : 'Открыть на Яндекс.Диске →'}</a
 						>
 					{/if}
 				</div>
 			{:else}
-				<div class="state"><p>Загрузка видео…</p></div>
+				<div class="state"><p>{language === 'en' ? 'Loading video…' : 'Загрузка видео…'}</p></div>
 			{/if}
 		{:else if video.provider === 'youtube'}
 			<iframe
 				id={ytId}
 				src={ytSrc}
-				title="Видео"
+				title={language === 'en' ? 'Video' : 'Видео'}
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				allowfullscreen
 			></iframe>
@@ -415,7 +417,7 @@
 				<iframe
 					bind:this={vkFrame}
 					src={iframeSrc}
-					title="Видео"
+					title={language === 'en' ? 'Video' : 'Видео'}
 					loading="lazy"
 					onload={() => {
 						if (video.provider === 'vk') vkReady = true;
@@ -428,7 +430,7 @@
 	</div>
 	{#if externalUrl}
 		<a class="source-link" href={externalUrl} target="_blank" rel="noopener noreferrer">
-			<span><small>Плеер не открывается?</small><strong>{externalLabel}</strong></span>
+			<span><small>{language === 'en' ? 'Player not opening?' : 'Плеер не открывается?'}</small><strong>{externalLabel}</strong></span>
 			<ArrowSquareOut size={18} weight="bold" aria-hidden="true" />
 		</a>
 	{/if}

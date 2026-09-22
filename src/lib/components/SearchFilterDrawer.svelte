@@ -9,7 +9,8 @@
 		selections,
 		onToggle,
 		onClear,
-		onClose
+		onClose,
+		language = 'ru'
 	}: {
 		open: boolean;
 		groups: SearchFilterGroup[];
@@ -17,13 +18,14 @@
 		onToggle: (groupId: string, value: string) => void;
 		onClear: () => void;
 		onClose: () => void;
+		language?: 'ru' | 'en';
 	} = $props();
 </script>
 
 {#if open}
-	<button class="backdrop" type="button" aria-label="Закрыть фильтры" onclick={onClose}></button>
-	<div use:modalFocus class="sheet" role="dialog" aria-modal="true" aria-label="Фильтры поиска">
-		<SearchFilterPanel {groups} {selections} {onToggle} {onClear} {onClose} />
+	<button class="backdrop" type="button" aria-label={language === 'en' ? 'Close filters' : 'Закрыть фильтры'} onclick={onClose}></button>
+	<div use:modalFocus class="sheet" role="dialog" aria-modal="true" aria-label={language === 'en' ? 'Search filters' : 'Фильтры поиска'}>
+		<SearchFilterPanel {groups} {selections} {onToggle} {onClear} {onClose} {language} />
 	</div>
 {/if}
 

@@ -35,6 +35,7 @@
 	const report = $derived(data.report);
 	const gate = $derived(reportGate(report.slug));
 	const reportCollections = $derived(collectionsForReport(report.slug));
+	const language = $derived(reportCollections.some((collection) => collection.language === 'en') ? 'en' : 'ru');
 	const locked = $derived(gate.length > 0 && !gate.some((target) => lock.isUnlocked(target)));
 	let highlightQuery = $state('');
 	let searchHits = $state<SearchHit[]>([]);
@@ -207,7 +208,7 @@
 	let quoteResetTimer: ReturnType<typeof setTimeout> | undefined;
 
 	async function copyQuote(text: string) {
-		const quote = `«${text}» — ${report.title}`;
+		const quote = language === 'en' ? `“${text}” — ${report.title}` : `«${text}» — ${report.title}`;
 		const copied = await copyText(quote);
 		if (!copied) return;
 		copiedQuote = text;
@@ -389,30 +390,30 @@
 		<Lock
 			targets={gate}
 			title={report.title}
-			subtitle="Введите пароль коллекции или ключ доступа к этому материалу."
+			subtitle={language === 'en' ? 'Enter the collection password or an access key for this material.' : 'Введите пароль коллекции или ключ доступа к этому материалу.'}
 		/>
 {:else}
 <article class="report container">
 	<header class="report-head reveal" {@attach reveal()}>
-		<nav class="breadcrumbs" aria-label="Хлебные крошки">
+		<nav class="breadcrumbs" aria-label={language === 'en' ? 'Breadcrumbs' : 'Хлебные крошки'}>
 			{#if !returnCollection?.isolated}
-				<a href="{base}/{returnCollection?.archived ? 'archive/' : ''}">{returnCollection?.archived ? 'Архив' : 'Каталог'}</a><span aria-hidden="true">/</span>
+				<a href="{base}/{returnCollection?.archived ? 'archive/' : ''}">{language === 'en' ? (returnCollection?.archived ? 'Archive' : 'Catalog') : (returnCollection?.archived ? 'Архив' : 'Каталог')}</a><span aria-hidden="true">/</span>
 			{/if}
 			{#if returnCollection}
 				<a href="{base}/collections/{returnCollection.slug}/">{returnCollection.title}</a><span aria-hidden="true">/</span>
 			{/if}
 			<span>{report.title}</span>
 		</nav>
-		<p class="eyebrow label">Отчёт</p>
+		<p class="eyebrow label">{language === 'en' ? 'Report' : 'Отчёт'}</p>
 		<h1>{report.title}</h1>
 		<p class="subtitle">{report.subtitle}</p>
 		<div class="report-meta">
-			<span><Clock size={18} /> {formatDuration(report.duration)}</span>
-			<span><FilmStrip size={18} /> {report.chapters.length} смысловых блоков</span>
-			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} /></span>
+			<span><Clock size={18} /> {formatDuration(report.duration, language)}</span>
+			<span><FilmStrip size={18} /> {report.chapters.length} {language === 'en' ? 'semantic chapters' : 'смысловых блоков'}</span>
+			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} suffix={language === 'en' ? 'visits' : 'посещений'} /></span>
 		</div>
 		{#if otherCollections.length && !returnCollection?.isolated}
-			<p class="memberships label">Также в коллекциях:
+			<p class="memberships label">{language === 'en' ? 'Also in collections:' : 'Также в коллекциях:'}
 				{#each otherCollections as collection, i (collection.slug)}
 					<a href="{base}/collections/{collection.slug}/">{collection.title}</a>{i < otherCollections.length - 1 ? ', ' : ''}
 				{/each}
@@ -421,15 +422,15 @@
 	</header>
 
 	{#if highlightQuery.trim()}
-		<div bind:this={searchContextEl} class="search-context" aria-label="Активный поиск">
-			<span class="search-query">Поиск: <strong>{highlightQuery}</strong></span>
-			<div class="fragment-navigation" role="group" aria-label="Навигация по найденным фрагментам">
-				<button type="button" aria-label="Предыдущий фрагмент" disabled={searchBusy || searchFragmentIndex <= 0} onclick={() => stepSearchFragment(-1)}>Предыдущий</button>
-				<span role="status" aria-live="polite">{searchBusy ? 'Ищем…' : searchFragmentIndex >= 0 ? `Фрагмент ${searchFragmentIndex + 1} из ${searchFragments.length}` : `Фрагментов: ${searchFragments.length}`}</span>
-				<button type="button" aria-label="Следующий фрагмент" disabled={searchBusy || !searchFragments.length || searchFragmentIndex >= searchFragments.length - 1} onclick={() => stepSearchFragment(1)}>Следующий</button>
+		<div bind:this={searchContextEl} class="search-context" aria-label={language === 'en' ? 'Active search' : 'Активный поиск'}>
+			<span class="search-query">{language === 'en' ? 'Search:' : 'Поиск:'} <strong>{highlightQuery}</strong></span>
+			<div class="fragment-navigation" role="group" aria-label={language === 'en' ? 'Search match navigation' : 'Навигация по найденным фрагментам'}>
+				<button type="button" aria-label={language === 'en' ? 'Previous match' : 'Предыдущий фрагмент'} disabled={searchBusy || searchFragmentIndex <= 0} onclick={() => stepSearchFragment(-1)}>{language === 'en' ? 'Previous' : 'Предыдущий'}</button>
+				<span role="status" aria-live="polite">{language === 'en' ? (searchBusy ? 'Searching…' : searchFragmentIndex >= 0 ? `Match ${searchFragmentIndex + 1} of ${searchFragments.length}` : `Matches: ${searchFragments.length}`) : (searchBusy ? 'Ищем…' : searchFragmentIndex >= 0 ? `Фрагмент ${searchFragmentIndex + 1} из ${searchFragments.length}` : `Фрагментов: ${searchFragments.length}`)}</span>
+				<button type="button" aria-label={language === 'en' ? 'Next match' : 'Следующий фрагмент'} disabled={searchBusy || !searchFragments.length || searchFragmentIndex >= searchFragments.length - 1} onclick={() => stepSearchFragment(1)}>{language === 'en' ? 'Next' : 'Следующий'}</button>
 			</div>
-			<button type="button" onclick={() => { document.getElementById('report-search')?.scrollIntoView({ block: 'start' }); document.querySelector<HTMLInputElement>('#report-search input')?.focus({ preventScroll: true }); }}>К результатам</button>
-			<button type="button" onclick={() => { const url = new URL(page.url); url.searchParams.delete('q'); url.searchParams.delete('results'); void goto(url, { replaceState: true, noScroll: true, keepFocus: true }); }}>Убрать подсветку</button>
+			<button type="button" onclick={() => { document.getElementById('report-search')?.scrollIntoView({ block: 'start' }); document.querySelector<HTMLInputElement>('#report-search input')?.focus({ preventScroll: true }); }}>{language === 'en' ? 'View results' : 'К результатам'}</button>
+			<button type="button" onclick={() => { const url = new URL(page.url); url.searchParams.delete('q'); url.searchParams.delete('results'); void goto(url, { replaceState: true, noScroll: true, keepFocus: true }); }}>{language === 'en' ? 'Remove highlight' : 'Убрать подсветку'}</button>
 		</div>
 	{/if}
 
@@ -448,12 +449,13 @@
 							videoPlaying = p;
 							if (p) playbackStarted = true;
 						}}
+						{language}
 					/>
-					<p class="video-hint label">Таймкод в блоке перематывает видео</p>
+					<p class="video-hint label">{language === 'en' ? 'Chapter timecodes seek the video' : 'Таймкод в блоке перематывает видео'}</p>
 				</div>
 			{/if}
 			<div class="nav-scroll">
-				<ChapterNav chapters={report.chapters} onSelect={selectChapter} active={navActive} />
+				<ChapterNav chapters={report.chapters} onSelect={selectChapter} active={navActive} {language} />
 			</div>
 		</aside>
 
@@ -464,6 +466,7 @@
 					reportSlug={report.slug}
 					reportSlugs={returnCollection?.items ?? [report.slug]}
 					collectionSlug={returnCollection?.slug ?? ''}
+					{language}
 					onHit={onSearchHit}
 					onResults={updateSearchResults}
 				/>
@@ -478,8 +481,8 @@
 						class="copy-quote"
 						class:copied={copiedQuote === thesis}
 						onclick={() => copyQuote(thesis)}
-						aria-label={copiedQuote === thesis ? 'Тезис скопирован' : 'Скопировать тезис цитатой'}
-						title={copiedQuote === thesis ? 'Скопировано' : 'Скопировать цитатой'}
+						aria-label={language === 'en' ? (copiedQuote === thesis ? 'Key point copied' : 'Copy key point as a quote') : (copiedQuote === thesis ? 'Тезис скопирован' : 'Скопировать тезис цитатой')}
+						title={language === 'en' ? (copiedQuote === thesis ? 'Copied' : 'Copy as quote') : (copiedQuote === thesis ? 'Скопировано' : 'Скопировать цитатой')}
 					>
 						{#if copiedQuote === thesis}<Check size={14} weight="bold" />{:else}<CopySimple size={14} />{/if}
 					</button>
@@ -487,13 +490,13 @@
 			{/snippet}
 
 			<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'overview-title'} class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
-				<div class="section-heading section-heading--plain"><h2 id="overview-title">Главное</h2></div>
+				<div class="section-heading section-heading--plain"><h2 id="overview-title">{language === 'en' ? 'Overview' : 'Главное'}</h2></div>
 				<ul>
 					{#each report.overview_theses.slice(0, 3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}
 				</ul>
 				{#if report.overview_theses.length > 3}
 					<details class="more-theses" bind:open={overviewExpanded}>
-						<summary>Все тезисы <CaretDown size={16} /></summary>
+						<summary>{language === 'en' ? 'All key points' : 'Все тезисы'} <CaretDown size={16} /></summary>
 						<ul>{#each report.overview_theses.slice(3) as thesis (thesis)}{@render thesisItem(thesis)}{/each}</ul>
 					</details>
 				{/if}
@@ -504,24 +507,24 @@
 						{/each}
 					</div>
 				{/if}
-				<span class="sr-only" role="status" aria-live="polite">{copiedQuote ? 'Тезис скопирован' : ''}</span>
+				<span class="sr-only" role="status" aria-live="polite">{copiedQuote ? (language === 'en' ? 'Key point copied' : 'Тезис скопирован') : ''}</span>
 			</section>
 
 			{#if hasAdditional}
 				<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'additional-title'} class="additional" aria-labelledby="additional-title">
 					<details class="additional-disclosure" bind:open={additionalOpen}>
 						<summary id="additional-title" class="additional-summary">
-							<span class="additional-title" role="heading" aria-level="2">Материалы лекции</span>
+							<span class="additional-title" role="heading" aria-level="2">{language === 'en' ? 'Lecture Materials' : 'Материалы лекции'}</span>
 							<span class="additional-summary-action">
-								<span>{additionalOpen ? 'Свернуть' : 'Раскрыть'}</span>
+								<span>{language === 'en' ? (additionalOpen ? 'Collapse' : 'Expand') : (additionalOpen ? 'Свернуть' : 'Раскрыть')}</span>
 								<CaretDown size={18} aria-hidden="true" />
 							</span>
 						</summary>
 						<div class="additional-content">
 
 			{#if reportFocusTabs.length > 0}
-				<section class="focus-section reveal extra-block" aria-label="Тематические срезы" {@attach reveal()}>
-					<h3 class="extra-title">Тематические срезы</h3>
+				<section class="focus-section reveal extra-block" aria-label={language === 'en' ? 'Topic views' : 'Тематические срезы'} {@attach reveal()}>
+					<h3 class="extra-title">{language === 'en' ? 'Topic Views' : 'Тематические срезы'}</h3>
 					<div class="focus-tablist" role="tablist">
 						{#each reportFocusTabs as tab (tab.id)}
 							<button
@@ -562,7 +565,7 @@
 														type="button"
 														class="focus-time"
 														onclick={() => seekVideo(item.start)}
-													title="Смотреть с этого момента"
+												title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}
 												>
 													<Play size={11} weight="fill" aria-hidden="true" />
 														<span class="mono">{formatTime(item.start)}</span>
@@ -590,9 +593,9 @@
 			{/if}
 
 			{#if reportExercises.length > 0}
-				<section class="seminar-exercises-section reveal extra-block" aria-label="Упражнения семинара" {@attach reveal()}>
+				<section class="seminar-exercises-section reveal extra-block" aria-label={language === 'en' ? 'Seminar exercises' : 'Упражнения семинара'} {@attach reveal()}>
 					<details class="seminar-exercises">
-						<summary><span>Упражнения</span><CaretDown size={17} /></summary>
+						<summary><span>{language === 'en' ? 'Exercises' : 'Упражнения'}</span><CaretDown size={17} /></summary>
 						<div class="seminar-exercises-body">
 							{#each reportExercises as exerciseSection (exerciseSection.title)}
 								<section class="seminar-exercise-block">
@@ -605,7 +608,7 @@
 														type="button"
 														class="exercise-time"
 														onclick={() => seekVideo(exercise.start)}
-														title="Смотреть упражнение с этого момента"
+												title={language === 'en' ? 'Watch exercise from this point' : 'Смотреть упражнение с этого момента'}
 													>
 												<Play size={11} weight="fill" aria-hidden="true" />
 														<span class="mono">{formatTime(exercise.start)}</span>
@@ -625,7 +628,7 @@
 			{/if}
 
 			{#if hasStudyMaterials || hasTranscript}
-				<ReportStudyMaterials slug={report.slug} materials={reportMaterials} {hasTranscript} />
+				<ReportStudyMaterials slug={report.slug} materials={reportMaterials} {hasTranscript} {language} />
 			{/if}
 						</div>
 					</details>
@@ -634,7 +637,7 @@
 			</div>
 
 			<section class="chapters" aria-labelledby="chapters-title">
-				<div class="section-heading section-heading--plain"><h2 id="chapters-title">Смысловые блоки</h2></div>
+				<div class="section-heading section-heading--plain"><h2 id="chapters-title">{language === 'en' ? 'Semantic Chapters' : 'Смысловые блоки'}</h2></div>
 				{#each report.chapters as chapter, i (chapter.start)}
 					<div class="reveal" {@attach reveal()}>
 						<ChapterCard
@@ -647,6 +650,7 @@
 							searchSelected={Boolean(highlightQuery) && selectedSearchAnchor === `ch-${i + 1}`}
 							transcriptAvailable={hasTranscript}
 							onOpenTranscript={(trigger) => openTranscriptReader(i, trigger)}
+							{language}
 						/>
 					</div>
 				{/each}
@@ -668,6 +672,7 @@
 			autoplay={readerAutoplay}
 			loadState={chapterTranscriptLoadState}
 			highlight={highlightQuery}
+			{language}
 			onClose={closeTranscriptReader}
 			onNext={openChapterTranscriptIndex < report.chapters.length - 1 ? showNextTranscriptChapter : undefined}
 			onRetry={() => ensureTranscriptChapters().catch(() => {})}
