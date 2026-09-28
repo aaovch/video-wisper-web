@@ -779,6 +779,76 @@
 		"protectedReports": true
 	},
 	{
+		"slug": "petr-vasilev",
+		"title": "Пётр Васильев",
+		"hema": true,
+		"facets": {
+			"authors": ["Пётр Васильев"],
+			"weapons": ["Длинный меч", "Меч и баклер"]
+		},
+		"subtitle": "Семинары, тренировки и беседы Петра Васильева о фехтовании.",
+		"description": "Практика длинного меча, работа с мечом и баклером, тренировки во Владивостоке и разговор об анализе боёв.",
+		"items": [
+			"tsentralnaya-pozitsiya-dlinnyy-mech",
+			"gruppa-a-1-vvodnaya",
+			"vid-20260708-200742",
+			"pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+			"manevrovo-atakuyushchiy-stil",
+			"manevrovo-atakuyushchiy-stil-4-2",
+			"manevrovo-oboronitelnyi-tip",
+			"ataka-prosche-ne-byvaet-udar",
+			"gruppa-b-2-ataki-fendenti-na-vypade",
+			"gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+			"gruppa-b-4-ataki-na-fone-manevrirovaniya",
+			"gruppa-b-5-kakari-keiko",
+			"ukol-korol-udarov-mech-i-bakler-stambul",
+			"clean-execution-cut-and-avoid-being-hit-stambul",
+			"ii-dlya-analiza-hema-boev"
+		],
+		"sections": [
+			{
+				"title": "Отдельный семинар",
+				"subtitle": "Центральная позиция на длинном мече.",
+				"items": ["tsentralnaya-pozitsiya-dlinnyy-mech"]
+			},
+			{
+				"title": "Лагерь Владивосток: группа А",
+				"subtitle": "Позиционная работа и индивидуальные стили.",
+				"items": [
+					"gruppa-a-1-vvodnaya",
+					"vid-20260708-200742",
+					"pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+					"manevrovo-atakuyushchiy-stil",
+					"manevrovo-atakuyushchiy-stil-4-2",
+					"manevrovo-oboronitelnyi-tip"
+				]
+			},
+			{
+				"title": "Лагерь Владивосток: группа Б",
+				"subtitle": "Базовая атака и прогрессия упражнений.",
+				"items": [
+					"ataka-prosche-ne-byvaet-udar",
+					"gruppa-b-2-ataki-fendenti-na-vypade",
+					"gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+					"gruppa-b-4-ataki-na-fone-manevrirovaniya",
+					"gruppa-b-5-kakari-keiko"
+				]
+			},
+			{
+				"title": "Семинары в Стамбуле",
+				"subtitle": "Длинный меч, меч и баклер; материалы на английском языке.",
+				"items": [
+					"ukol-korol-udarov-mech-i-bakler-stambul",
+					"clean-execution-cut-and-avoid-being-hit-stambul"
+				]
+			},
+			{
+				"title": "Разговор об ИИ и фехтовании",
+				"items": ["ii-dlya-analiza-hema-boev"]
+			}
+		]
+	},
+	{
 		"slug": "seminary-petra-vasileva-stambul",
 		"title": "Petr Vasiliev’s Seminars in Istanbul",
 		"hema": true,

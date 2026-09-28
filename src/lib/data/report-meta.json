@@ -3533,6 +3533,29 @@
 		}
 	},
 	{
+		"slug": "tsentralnaya-pozitsiya-dlinnyy-mech",
+		"title": "Центральная позиция на длинном мече",
+		"subtitle": "Семинар Петра Васильева: стойка, атака, защита после удара и подготовка действий из центра",
+		"tags": [
+			"HEMA",
+			"длинный меч",
+			"Пётр Васильев",
+			"центральная позиция",
+			"Posta Breve",
+			"семинар"
+		],
+		"duration": 3909.775964,
+		"overview_theses": [
+			"Центральная позиция сохраняет угрозу уколом и рубящим ударом по верхнему сектору, но требует точной механики и выбора момента.",
+			"Базу составляют фронтальная стойка с активной задней ногой, управляемый корпус и мягкие перемещения, позволяющие менять дистанцию."
+		],
+		"chapterCount": 24,
+		"video": {
+			"provider": "youtube",
+			"id": "KImncsIJdC8"
+		}
+	},
+	{
 		"slug": "ukol-korol-udarov-mech-i-bakler-stambul",
 		"title": "Thrust — King of Attacks: Sword and Buckler",
 		"subtitle": "Petr Vasiliev’s seminar in Istanbul on stance, independent hand work, counterattacks with opposition, and thrusts at different levels.",
