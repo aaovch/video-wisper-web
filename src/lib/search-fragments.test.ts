@@ -22,4 +22,9 @@ describe('reader fragment navigation', () => {
 		const aggregate: SearchHit = { ...overview, kind: 'report', zone: 'reports', href: '/reports/a/' };
 		expect(reportSearchFragments([hit(0), overview, material, aggregate], 'a').map(fragmentAnchor)).toEqual(['overview-title', 'additional-title', 'ch-1']);
 	});
+	it('keeps individual exercise destinations visible in fragment navigation', () => {
+		const first: SearchHit = { ...hit(0), chapterIndex: undefined, kind: 'material', zone: 'additional', title: 'Упражнения: шаги', href: '/reports/a/#exercise-21730', start: 217.3 };
+		const second = { ...first, href: '/reports/a/#exercise-42388', start: 423.88 };
+		expect(reportSearchFragments([second, first], 'a').map(fragmentAnchor)).toEqual(['exercise-21730', 'exercise-42388']);
+	});
 });

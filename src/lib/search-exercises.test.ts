@@ -12,6 +12,7 @@ it('makes both real jumping exercises reachable from their shared search result 
   const seen=new Set<string>();const visible=result.hits.filter(h=>{const k=searchHitKey(h);if(seen.has(k))return false;seen.add(k);return true;});
   expect(visible.some(h=>h.start===318.39)).toBe(true);
   expect(visible.some(h=>h.start===528.89)).toBe(true);
+	 expect(visible.filter(h=>h.title.startsWith('Упражнения:')).every(h=>h.href.includes('#exercise-'))).toBe(true);
   const destinations=new Set(visible.map(h=>`${h.href}?t=${h.start}`));
   expect(destinations.size).toBe(visible.length);
  }finally{resetSearchIndex();vi.unstubAllGlobals();}

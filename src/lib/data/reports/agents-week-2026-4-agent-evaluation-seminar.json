@@ -275,6 +275,55 @@
 		}
 	],
 	"materials": {
+		"exercises": [
+			{
+				"title": "Agent и набор задач",
+				"items": [
+					{
+						"start": 111.16,
+						"text": "Соберите минимального airline-agent с mock-базой, tools и harness, который сохраняет полную trajectory."
+					},
+					{
+						"start": 459.2,
+						"text": "Создайте ручной suite с ожидаемым состоянием базы, policy checks и контекстом Iron User."
+					},
+					{
+						"start": 600.84,
+						"text": "Сгенерируйте дополнительные JSON-задачи по tools и policies и объедините их с ручным suite."
+					}
+				]
+			},
+			{
+				"title": "Grading и многоходовые кейсы",
+				"items": [
+					{
+						"start": 678.16,
+						"text": "Добавьте state, policy и смысловые graders и прогоните их по trajectory агента."
+					},
+					{
+						"start": 901.2,
+						"text": "Подключите Iron User и max_turns, чтобы проверить задачи, где агент должен продолжить диалог."
+					},
+					{
+						"start": 1127.76,
+						"text": "Вручную разметьте trajectories по usefulness, groundedness и efficiency как эталон для LLM judges."
+					}
+				]
+			},
+			{
+				"title": "Сравнение judges",
+				"items": [
+					{
+						"start": 1251.52,
+						"text": "Оцените trajectories одним базовым LLM judge и сохраните ответы по трём критериям."
+					},
+					{
+						"start": 1482.56,
+						"text": "Добавьте явную rubric и затем сравните раздельные, few-shot и более сильные judges по agreement и стоимости."
+					}
+				]
+			}
+		],
 		"notes": [
 			{
 				"title": "Упражнение: minimal harness",

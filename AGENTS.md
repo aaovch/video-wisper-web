@@ -17,6 +17,7 @@ npm run build              # индекс + prod-сборка в build/
 npm run build-search-index # MiniSearch-индекс + report-meta.json
 npm run verify-search-index -- <slug>  # проверка нового отчёта в индексе
 npm run validate-site -- <slug>        # отчёт, sidecar, source, коллекции/sections
+node scripts/audit-exercise-cues.mjs <slug> --json # подсказки для ручной сверки практических заданий
 npm run qa-report -- <slug>            # полный gate: index + data + check + tests + build
 npm run qa-report                      # тот же gate для всех отчётов (режим CI)
 npm run inject-transcripts # legacy: sidecar-транскрипты из output/ (не нужен после build-report CLI)

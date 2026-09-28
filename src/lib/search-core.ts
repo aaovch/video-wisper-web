@@ -10,6 +10,7 @@ import type {
 } from '$lib/search-types';
 import { stemRu } from '$lib/stem-ru';
 import { getReportSummary } from '$lib/data/report-meta';
+import { exerciseAnchor } from '$lib/report-materials';
 import { techniqueAliases, normalizeTechnique } from '$lib/search-techniques';
 import { orderSearchPassages } from '$lib/search-passage-order';
 
@@ -87,7 +88,9 @@ function docHref(doc: IndexedDoc): string {
 		case 'overview':
 			return `${baseHref}#overview-title`;
 		case 'material':
-			return `${baseHref}#additional-title`;
+			return doc.title?.startsWith('Упражнения:') && doc.start !== undefined
+				? `${baseHref}#${exerciseAnchor(doc.start)}`
+				: `${baseHref}#additional-title`;
 		default:
 			return `${baseHref}#ch-${(doc.chapterIndex ?? 0) + 1}`;
 	}

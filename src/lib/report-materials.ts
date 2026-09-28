@@ -17,6 +17,11 @@ export function getReportMaterials(report: Report): Required<ReportMaterials> {
 	};
 }
 
+/** Stable destination for a reviewed exercise with a transcript timestamp. */
+export function exerciseAnchor(start: number): string {
+	return `exercise-${Math.round(start * 100)}`;
+}
+
 export function materialVisualLabel(visual: ReportMaterialVisual, language: 'ru' | 'en' = 'ru'): string {
 	if (visual.label) return visual.label;
 	if (language === 'en') {

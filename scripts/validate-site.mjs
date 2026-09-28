@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { validateExercises } from './exercise-validation.mjs';
 
 const root = process.cwd();
 const reportsDir = join(root, 'src/lib/data/reports');
@@ -32,7 +33,7 @@ for (const file of reportFiles) {
 	if (!report.source_stem?.trim()) issue(errors, 'SOURCE_STEM_MISSING', fileSlug);
 	if (!Array.isArray(report.overview_theses) || report.overview_theses.length === 0) issue(errors, 'OVERVIEW_MISSING', `Нет overview_theses: ${fileSlug}`);
 	if (report.long_summary !== undefined && !report.long_summary?.trim()) issue(errors, 'LONG_SUMMARY_INVALID', fileSlug);
-	if (report.materials !== undefined && (typeof report.materials !== 'object' || Array.isArray(report.materials))) {
+	if (report.materials !== undefined && (!report.materials || typeof report.materials !== 'object' || Array.isArray(report.materials))) {
 		issue(errors, 'MATERIALS_INVALID', fileSlug);
 	} else if (report.materials) {
 		for (const field of ['notes', 'exercises', 'glossary', 'visuals']) {
@@ -55,12 +56,14 @@ for (const file of reportFiles) {
 		if (previous && previous !== fileSlug) issue(errors, 'DUPLICATE_VIDEO_SOURCE', `${key}: ${previous}, ${fileSlug}`);
 		sources.set(key, fileSlug);
 	}
+	let exerciseSidecar;
 	if (report.has_transcript) {
 		const transcriptPath = join(transcriptsDir, `${fileSlug}.json`);
 		if (!existsSync(transcriptPath)) {
 			issue(errors, 'TRANSCRIPT_SIDECAR_MISSING', fileSlug);
 		} else {
 			const sidecar = readJson(transcriptPath);
+			exerciseSidecar = sidecar;
 			if (!sidecar.transcript?.trim()) issue(errors, 'TRANSCRIPT_TEXT_MISSING', fileSlug);
 			if ((sidecar.chapters?.length ?? 0) !== (report.chapters?.length ?? 0)) issue(errors, 'SIDECAR_CHAPTER_MISMATCH', fileSlug);
 			for (const [index, chapter] of (report.chapters ?? []).entries()) {
@@ -73,6 +76,9 @@ for (const file of reportFiles) {
 			}
 		}
 	}
+	const exerciseIssues = validateExercises(report, exerciseSidecar);
+	for (const message of exerciseIssues.errors) issue(errors, 'EXERCISE_INVALID', `${fileSlug}: ${message}`);
+	for (const message of exerciseIssues.warnings) issue(warnings, 'EXERCISE_TIMECODE_REVIEW', `${fileSlug}: ${message}`);
 }
 
 let collections;

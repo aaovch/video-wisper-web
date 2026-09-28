@@ -25,10 +25,10 @@
 	import { formatDuration, formatTime } from '$lib/utils';
 	import { highlightParts } from '$lib/text-highlight';
 	import { fragmentAnchor, reportSearchFragments } from '$lib/search-fragments';
-	import { getReportMaterials } from '$lib/report-materials';
+	import { exerciseAnchor, getReportMaterials } from '$lib/report-materials';
 	import { tick } from 'svelte';
 	import type { SearchHit } from '$lib/search';
-	import type { TranscriptChapter } from '$lib/types';
+	import type { SeminarExercise, TranscriptChapter } from '$lib/types';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -130,6 +130,13 @@
 	let additionalOpen = $state(false);
 	let overviewExpanded = $state(false);
 	$effect(() => { if (highlightQuery && selectedSearchAnchor === 'overview-title') overviewExpanded = true; });
+	let exercisesExpanded = $state(page.url.hash.startsWith('#exercise-'));
+	$effect(() => {
+		const anchor = selectedSearchAnchor;
+		if (!browser || !anchor.startsWith('exercise-')) return;
+		exercisesExpanded = true;
+		void tick().then(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ block: 'start' })));
+	});
 	let activeFocusTab = $state('');
 
 	const hasTranscript = $derived(Boolean(report.has_transcript));
@@ -218,6 +225,7 @@
 
 	const reportMaterials = $derived(getReportMaterials(report));
 	const reportExercises = $derived(reportMaterials.exercises);
+	const exerciseItems = $derived(reportExercises.flatMap((section) => section.items.map((item) => ({ ...item, section: section.title }))).sort((a, b) => a.start - b.start));
 	const reportFocusTabs = $derived(report.focus_tabs ?? []);
 	const hasStudyMaterials = $derived(
 		reportMaterials.notes.length > 0 ||
@@ -226,7 +234,6 @@
 	);
 	const hasAdditional = $derived(
 		reportFocusTabs.length > 0 ||
-			reportExercises.length > 0 ||
 			hasStudyMaterials ||
 			hasTranscript
 	);
@@ -357,17 +364,31 @@
 			document.getElementById(`ch-${hit.chapterIndex + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			return;
 		}
+		if (hit.zone === 'additional') {
+			if (selectedSearchAnchor.startsWith('exercise-')) {
+				exercisesExpanded = true;
+				if (seek && hit.start != null) seekVideo(hit.start);
+				void tick().then(() => requestAnimationFrame(() => {
+					const target = document.getElementById(selectedSearchAnchor);
+					if (!target) return;
+					target.tabIndex = -1;
+					target.focus({ preventScroll: true });
+					target.scrollIntoView({ block: 'start' });
+				}));
+				return;
+			}
+			additionalOpen = true;
+			requestAnimationFrame(() => {
+				const target = document.getElementById('additional-title');
+				target?.focus({ preventScroll: true });
+				target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+			return;
+		}
 		void tick().then(() => {
 			const target = document.getElementById(selectedSearchAnchor);
 			if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
 		});
-		if (hit.zone === 'additional') {
-			additionalOpen = true;
-			requestAnimationFrame(() => {
-				document.getElementById('additional-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			});
-			return;
-		}
 		if (hit.zone === 'theses') {
 			document.getElementById('overview-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			return;
@@ -489,6 +510,19 @@
 				</li>
 			{/snippet}
 
+			{#snippet exerciseItem(exercise: SeminarExercise & { section: string })}
+				<li id={exerciseAnchor(exercise.start)} class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === exerciseAnchor(exercise.start)}>
+					{#if report.video}
+						<button type="button" class="exercise-time" onclick={() => seekVideo(exercise.start)} title={language === 'en' ? 'Watch exercise from this point' : 'Смотреть упражнение с этого момента'}>
+							<Play size={11} weight="fill" aria-hidden="true" /><span class="mono">{formatTime(exercise.start)}</span>
+						</button>
+					{:else}
+						<span class="exercise-time-static mono">{formatTime(exercise.start)}</span>
+					{/if}
+					<div><span class="exercise-group">{exercise.section}</span><span>{exercise.text}</span></div>
+				</li>
+			{/snippet}
+
 			<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'overview-title'} class="overview reveal" aria-labelledby="overview-title" {@attach reveal()}>
 				<div class="section-heading section-heading--plain"><h2 id="overview-title">{language === 'en' ? 'Overview' : 'Главное'}</h2></div>
 				<ul>
@@ -509,6 +543,19 @@
 				{/if}
 				<span class="sr-only" role="status" aria-live="polite">{copiedQuote ? (language === 'en' ? 'Key point copied' : 'Тезис скопирован') : ''}</span>
 			</section>
+
+			{#if exerciseItems.length > 0}
+				<section class="exercise-overview reveal" aria-labelledby="exercises-title" {@attach reveal()}>
+					<div class="section-heading section-heading--plain"><h2 id="exercises-title">{language === 'en' ? 'Exercises' : 'Упражнения'}</h2></div>
+					<ul>{#each exerciseItems.slice(0, 3) as exercise (exercise.start)}{@render exerciseItem(exercise)}{/each}</ul>
+					{#if exerciseItems.length > 3}
+						<details class="more-exercises" bind:open={exercisesExpanded}>
+							<summary>{language === 'en' ? `All ${exerciseItems.length} exercises` : `Все упражнения · ${exerciseItems.length}`} <CaretDown size={16} /></summary>
+							<ul>{#each exerciseItems.slice(3) as exercise (exercise.start)}{@render exerciseItem(exercise)}{/each}</ul>
+						</details>
+					{/if}
+				</section>
+			{/if}
 
 			{#if hasAdditional}
 				<section class:current-search-fragment={Boolean(highlightQuery) && selectedSearchAnchor === 'additional-title'} class="additional" aria-labelledby="additional-title">
@@ -592,41 +639,6 @@
 				</section>
 			{/if}
 
-			{#if reportExercises.length > 0}
-				<section class="seminar-exercises-section reveal extra-block" aria-label={language === 'en' ? 'Seminar exercises' : 'Упражнения семинара'} {@attach reveal()}>
-					<details class="seminar-exercises">
-						<summary><span>{language === 'en' ? 'Exercises' : 'Упражнения'}</span><CaretDown size={17} /></summary>
-						<div class="seminar-exercises-body">
-							{#each reportExercises as exerciseSection (exerciseSection.title)}
-								<section class="seminar-exercise-block">
-									<h2>{exerciseSection.title}</h2>
-									<ul>
-										{#each exerciseSection.items as exercise}
-											<li>
-												{#if report.video}
-													<button
-														type="button"
-														class="exercise-time"
-														onclick={() => seekVideo(exercise.start)}
-												title={language === 'en' ? 'Watch exercise from this point' : 'Смотреть упражнение с этого момента'}
-													>
-												<Play size={11} weight="fill" aria-hidden="true" />
-														<span class="mono">{formatTime(exercise.start)}</span>
-													</button>
-												{:else}
-													<span class="exercise-time-static mono">{formatTime(exercise.start)}</span>
-												{/if}
-												<span>{exercise.text}</span>
-											</li>
-										{/each}
-									</ul>
-								</section>
-							{/each}
-						</div>
-					</details>
-				</section>
-			{/if}
-
 			{#if hasStudyMaterials || hasTranscript}
 				<ReportStudyMaterials slug={report.slug} materials={reportMaterials} {hasTranscript} {language} />
 			{/if}
@@ -688,7 +700,7 @@
 
 <style>
 	.current-search-fragment { outline: 2px solid var(--accent); outline-offset: 8px; }
-	:global(#report-search), :global(#overview-title), :global(#additional-title) { scroll-margin-top: calc(var(--search-context-height, 150px) + 20px); }
+	:global(#report-search), :global(#overview-title), :global(#exercises-title), :global(#additional-title) { scroll-margin-top: calc(var(--search-context-height, 150px) + 20px); }
 	.fragment-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 	.fragment-navigation span { min-width: 130px; text-align: center; font-family: var(--font-ui); font-size: 12px; }
 	.search-context .search-query { flex: 1 1 180px; }
@@ -809,7 +821,13 @@
 	.memberships { margin: 14px 0 0; color: var(--ink-faint); }
 	.memberships a { color: var(--accent); text-transform: none; letter-spacing: 0; }
 
-	.overview { max-width: 920px; padding: 0 0 4px; }
+	.overview, .exercise-overview {
+		max-width: 920px;
+		padding: clamp(18px, 2.5vw, 28px);
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		background: color-mix(in srgb, var(--paper-2) 38%, var(--paper));
+	}
 	.top-sections {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
@@ -818,6 +836,7 @@
 		margin-top: 40px;
 	}
 	.top-sections > .overview,
+	.top-sections > .exercise-overview,
 	.top-sections > .additional { min-width: 0; max-width: 920px; }
 	.top-sections .section-heading h2 { font-size: clamp(27px, 2.8vw, 36px); }
 	.section-heading { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: baseline; }
@@ -865,37 +884,17 @@
 	.long-summary { max-width: var(--measure); margin: 24px 0 0 54px; color: var(--ink-soft); }
 	.long-summary p:last-child { margin-bottom: 0; }
 
-	.seminar-exercises {
-		border: 0;
-	}
-
-	.seminar-exercises summary {
-		cursor: pointer;
-		min-height: 50px;
-		margin: 0 -12px;
-		padding: 13px 12px;
-		border-radius: 8px;
-		list-style: none;
-		display: flex;
-		align-items: center;
-		gap: 12px;
-		font-size: 17px;
-		transition:
-			background-color 0.18s ease,
-			color 0.18s ease;
-	}
-
-	.seminar-exercises summary:hover,
-	.seminar-exercises[open] summary {
-		background: color-mix(in srgb, var(--paper-2) 58%, transparent);
-	}
-
-	.seminar-exercises summary > :global(svg) { margin-left: auto; color: var(--accent); transition: transform 0.2s ease; }
-	.seminar-exercises[open] summary > :global(svg) { transform: rotate(180deg); }
-
-	.seminar-exercises summary::-webkit-details-marker {
-		display: none;
-	}
+	.exercise-overview ul { display: grid; gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+	.exercise-overview li { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 10px; font-size: 17px; line-height: 1.5; scroll-margin-top: calc(var(--search-context-height, 150px) + var(--mobile-sticky-h, 0px) + 20px); }
+	.exercise-overview li > div { min-width: 0; }
+	.exercise-group { display: block; color: var(--ink-faint); font-size: 12px; line-height: 1.4; }
+	.more-exercises { margin-top: 14px; }
+	.more-exercises summary { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; list-style: none; }
+	.more-exercises summary::-webkit-details-marker { display: none; }
+	.more-exercises summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+	.more-exercises summary :global(svg) { transition: transform 0.2s ease; }
+	.more-exercises[open] summary :global(svg) { transform: rotate(180deg); }
+	.more-exercises ul { margin-top: 14px; }
 
 	.chapters { margin-top: 56px; }
 
@@ -939,7 +938,6 @@
 	.additional-disclosure[open] .additional-summary-action :global(svg) { transform: rotate(180deg); }
 	.additional-content { padding-top: 2px; }
 	.extra-block { margin-top: 0; }
-	.extra-block + .extra-block { margin-top: 2px; }
 	.extra-title { margin: 0 0 14px; font-size: 20px; font-weight: 500; }
 
 	.focus-section {
@@ -1079,47 +1077,6 @@
 		cursor: default;
 	}
 
-	.seminar-exercises-section {
-		margin-top: 0;
-	}
-
-	.seminar-exercises {
-		border-top: 0;
-	}
-
-	.seminar-exercises-body {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 18px 24px;
-		max-width: var(--measure);
-		padding: 2px 0 26px;
-	}
-
-	.seminar-exercise-block h2 {
-		margin: 0 0 8px;
-		color: var(--ink);
-		font-size: 17px;
-		line-height: 1.3;
-	}
-
-	.seminar-exercise-block ul {
-		display: grid;
-		gap: 6px;
-		margin: 0;
-		padding-left: 0;
-		list-style: none;
-		color: var(--ink-soft);
-		font-size: 15px;
-		line-height: 1.55;
-	}
-
-	.seminar-exercise-block li {
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr);
-		align-items: baseline;
-		gap: 9px;
-	}
-
 	.exercise-time,
 	.exercise-time-static {
 		display: inline-flex;
@@ -1203,6 +1160,7 @@
 
 		.chapters :global(.chapter),
 		#overview-title,
+		#exercises-title,
 		#additional-title {
 			scroll-margin-top: calc(var(--search-context-height, 0px) + var(--mobile-sticky-h, 0px) + 16px);
 		}
@@ -1215,10 +1173,6 @@
 			max-width: none;
 		}
 
-		.seminar-exercises-body {
-			grid-template-columns: 1fr;
-			gap: 16px;
-		}
 	}
 
 	@media (max-width: 520px) {
@@ -1229,6 +1183,8 @@
 		.overview > ul, .more-theses ul { margin-left: 38px; }
 		.more-theses { margin-left: 38px; }
 		.long-summary { margin-left: 38px; }
+		.exercise-overview li { gap: 8px; font-size: 15px; }
+		.exercise-group { font-size: 11px; }
 		.focus-item header { grid-template-columns: 1fr; }
 	}
 </style>
