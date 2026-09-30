@@ -24,6 +24,19 @@ describe('search visibility', () => {
 		expect(searchableReportSlugs(['report:taktika-4-0-balenko'], 'all')).toContain('taktika-4-0-balenko');
 	});
 
+	it('gates the central-position seminar without locking Petr Vasiliev’s other reports', () => {
+		const slug = 'tsentralnaya-pozitsiya-dlinnyy-mech';
+		const collection = getCollection('petr-vasilev')!;
+		const [target] = reportGate(slug);
+		expect(collection.access?.master).toBeUndefined();
+		expect(target.id).toBe(`report:${slug}`);
+		expect(canAccessReport(slug, [])).toBe(false);
+		expect(searchableReportSlugs([], 'all')).not.toContain(slug);
+		expect(canAccessReport(slug, [accessTargetToken(target)])).toBe(true);
+		expect(searchableReportSlugs([accessTargetToken(target)], 'all')).toContain(slug);
+		expect(canAccessReport('gruppa-a-1-vvodnaya', [])).toBe(true);
+	});
+
 	it('opens both selected NoName reports with one package key', () => {
 		const selected = [
 			'prostaya-ataka-mikrotsikl-1-dlinnyy-mech',

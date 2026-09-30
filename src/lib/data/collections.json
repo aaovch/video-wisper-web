@@ -805,6 +805,21 @@
 			"clean-execution-cut-and-avoid-being-hit-stambul",
 			"ii-dlya-analiza-hema-boev"
 		],
+		"access": {
+			"passes": [
+				{
+					"id": "report:tsentralnaya-pozitsiya-dlinnyy-mech",
+					"title": "Семинар «Центральная позиция на длинном мече»",
+					"items": ["tsentralnaya-pozitsiya-dlinnyy-mech"],
+					"password": "postabrevetop",
+					"passwordHint": "Для оплаты доступа напишите Петру Васильеву:",
+					"passwordContact": {
+						"label": "Пётр Васильев во ВКонтакте",
+						"url": "https://vk.ru/nerd_fencing_coach"
+					}
+				}
+			]
+		},
 		"sections": [
 			{
 				"title": "Отдельный семинар",
