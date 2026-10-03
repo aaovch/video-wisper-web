@@ -23,6 +23,14 @@
 	const authors = [...new Set(publicCollections.flatMap(c => c.facets?.authors ?? []))].sort((a,b) => a.localeCompare(b,'ru'));
 	const end = $derived(snapshot?.endDate ?? '');
 	const from = $derived(snapshot ? period === 'all' ? snapshot.startDate : [snapshot.startDate, periodStart(end, Number(period))].sort().at(-1)! : '');
+	const partialPeriod = $derived(snapshot && period !== 'all' && periodStart(end, Number(period)) < snapshot.startDate);
+	const filtered = $derived(Boolean(query.trim() || collection || author || area !== 'all'));
+	const selection = $derived([
+		query.trim() ? `Поиск: ${query.trim()}` : '',
+		publicCollections.find(c => c.slug === collection)?.title ?? '',
+		author,
+		area === 'archive' ? 'Архив' : area === 'main' ? 'Основной каталог' : ''
+	].filter(Boolean).join(' · '));
 	const rows = $derived.by(() => {
 		const bySlug = new Map(snapshot?.rows.map(row => [row.slug, row]) ?? []);
 		return reports.map(report => {
@@ -54,9 +62,12 @@
 		return [...days].map(([day, visits]) => ({day, visits}));
 	});
 	const maximum = $derived(Math.max(1,...chart.map(point => point.visits)));
+	const noNewVisits = $derived(snapshot && snapshot.rows.every(row => row.visits === 0));
 	const stale = $derived(snapshot ? Date.now() - Date.parse(snapshot.generatedAt) > 48*3600000 : false);
 	const format = (n: number | null) => n === null ? '—' : n.toLocaleString('ru-RU');
 	function changeSort(value: string) { if (sort === value) ascending = !ascending; else { sort = value; ascending = value === 'title'; } }
+	function resetFilters() { query = ''; collection = ''; author = ''; area = 'all'; }
+	const formatDay = (day: string) => day.split('-').reverse().join('.');
 	async function load() {
 		loading = true; failed = false;
 		try {
@@ -85,11 +96,19 @@
 	<p class="intro">Какие отчёты открывают и как меняется интерес к ним. Повторные открытия учитываются по правилам GoatCounter; запуск видео и время просмотра сюда не входят.</p>
 	{#if failed}<div class="notice" role="status"><strong>Статистика пока недоступна.</strong><p>Отчёты показаны ниже. Сбор данных и выгрузка должны быть подключены; отсутствие данных не означает ноль посещений.</p><button onclick={load} disabled={loading}>Повторить загрузку</button></div>{/if}
 	<div class="filters">
-		<label>Период<select bind:value={period}><option value="7">7 дней</option><option value="30">30 дней</option><option value="all">С начала учёта</option></select></label>
-		<label>Поиск<input type="search" bind:value={query} placeholder="Название материала" /></label>
-		<label>Коллекция<select bind:value={collection}><option value="">Все коллекции</option>{#each publicCollections as c}<option value={c.slug}>{c.title}</option>{/each}</select></label>
-		<label>Автор<select bind:value={author}><option value="">Все авторы</option>{#each authors as name}<option value={name}>{name}</option>{/each}</select></label>
-		<label>Раздел<select bind:value={area}><option value="all">Весь каталог</option><option value="main">Основной каталог</option><option value="archive">Архив</option></select></label>
+		<label for="stats-period">Период</label><select id="stats-period" bind:value={period} aria-describedby="period-help"><option value="7">7 дней</option><option value="30">30 дней</option><option value="all">С начала учёта</option></select>
+		<label for="stats-query">Поиск</label><input id="stats-query" type="search" bind:value={query} placeholder="Название материала" />
+		<label for="stats-collection">Коллекция</label><select id="stats-collection" bind:value={collection}><option value="">Все коллекции</option>{#each publicCollections as c}<option value={c.slug}>{c.title}</option>{/each}</select>
+		<label for="stats-author">Автор</label><select id="stats-author" bind:value={author}><option value="">Все авторы</option>{#each authors as name}<option value={name}>{name}</option>{/each}</select>
+		<label for="stats-area">Раздел</label><select id="stats-area" bind:value={area}><option value="all">Весь каталог</option><option value="main">Основной каталог</option><option value="archive">Архив</option></select>
+	</div>
+	<div class="filter-result" aria-live="polite"><p><strong>Показано {rows.length} из {reports.length} материалов</strong>{#if filtered}<span>{selection}</span>{/if}</p>{#if filtered}<button onclick={resetFilters}>Сбросить фильтры</button>{/if}</div>
+	<div id="period-help" class="period-help">
+		{#if snapshot}
+			{#if partialPeriod}<p><strong>Выбрано {period} дней, но учёт ведётся только с {formatDay(snapshot.startDate)}.</strong> Данные доступны за {formatDay(from)} — {formatDay(end)}. Пока история короче выбранных периодов, их итоги могут совпадать.</p>{/if}
+			{#if noNewVisits}<p>В текущей выгрузке ещё нет новых посещений материалов. Обновление — ежедневно в 08:23 по Кызылорде; свежие посещения можно посмотреть в кабинете GoatCounter.</p>{/if}
+		{/if}
+		<p>Период меняет колонку «За период» и график. Колонка «Ранее» — сохранённый общий итог без дат.</p>
 	</div>
 	<div class="summary" aria-live="polite" aria-busy={loading}><div><span>GoatCounter за период</span><strong>{format(total)}</strong></div><div><span>До перехода</span><strong>{format(legacyTotal)}</strong></div><div><span>С посещениями за период</span><strong>{format(viewed)}</strong></div><div><span>Материалы в выборке</span><strong>{rows.length}</strong></div></div>
 	<p class="freshness">Старые счётчики сохранены {new Date(legacy.capturedAt).toLocaleString('ru-RU',{timeZone:'Asia/Qyzylorda'})} (Кызылорда). Колонка «Ранее» содержит весь накопленный итог и не зависит от выбранного периода.</p>
@@ -113,7 +132,13 @@
 	h2 { font-size:26px; }
 	.intro,.footnote { max-width:82ch; color:var(--ink-soft); }
 	.dashboard,.freshness,.footnote { font-size:14px; }
-	.filters { display:grid; grid-template-columns: .7fr 1.4fr 1.3fr 1fr 1fr; gap:16px; margin:28px 0; }
+	.filters { display:grid; grid-template-columns: .7fr 1.4fr 1.3fr 1fr 1fr; grid-template-rows:auto auto; grid-auto-flow:column; gap:8px 16px; margin:28px 0 16px; }
+	.filter-result { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
+	.filter-result p { margin:0; }
+	.filter-result span { display:block; color:var(--ink-soft); font-size:14px; margin-top:4px; }
+	.period-help { background:var(--paper-3); border-left:3px solid var(--accent); padding:12px 16px; margin-bottom:20px; font-size:14px; }
+	.period-help p { margin:0; }
+	.period-help p + p { margin-top:8px; }
 	label { display:flex; flex-direction:column; gap:8px; font-family:var(--font-mono); font-size:12px; min-width:0; }
 	input,select,button { font:inherit; color:var(--ink); background:var(--paper); border:1px solid var(--line-strong); border-radius:var(--radius); padding:10px 12px; min-height:44px; }
 	input,select { width:100%; min-width:0; }
@@ -137,6 +162,6 @@
 	th button { border:0; padding:0; background:transparent; text-align:inherit; }
 	.numeric { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
 	td:nth-child(2) { color:var(--ink-soft); font-size:14px; }
-	@media(max-width:900px) { .filters { grid-template-columns:repeat(2,1fr); } }
-	@media(max-width:540px) { .statistics { padding-block:24px 40px; } .summary { grid-template-columns:1fr; gap:14px; } .summary div { display:flex; justify-content:space-between; align-items:center; gap:12px; } .summary strong { font-size:28px; } .filters { grid-template-columns:1fr; } th,td { padding:12px 5px; } td:nth-child(2),th:nth-child(2) { display:none; } th:first-child,td:first-child { width:60%; } table { font-size:15px; } th { font-size:11px; } }
+	@media(max-width:900px) { .filters { grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(6,auto); } }
+	@media(max-width:540px) { .statistics { padding-block:24px 40px; } .summary { grid-template-columns:1fr; gap:14px; } .summary div { display:flex; justify-content:space-between; align-items:center; gap:12px; } .summary strong { font-size:28px; } .filters { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; } .filters label:not(:first-child) { margin-top:8px; } th,td { padding:12px 5px; } td:nth-child(2),th:nth-child(2) { display:none; } th:first-child,td:first-child { width:60%; } table { font-size:15px; } th { font-size:11px; } }
 </style>
