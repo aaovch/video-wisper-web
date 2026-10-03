@@ -1,23 +1,13 @@
-import { ensureVisitCount, bumpVisitCount } from '$lib/visit-counter.svelte';
-import { reportSlugFromPath, trackVisit } from '$lib/visit-counter';
+import { reportSlugFromPath } from '$lib/visit-counter';
 import { recordRecentReport } from '$lib/recent-reports';
+import { trackGoatcounter } from '$lib/goatcounter';
 
 /** Учёт визита текущей страницы — один раз за навигацию, вне UI-компонентов. */
-export async function trackPageVisit(pathname: string): Promise<void> {
+export async function trackPageVisit(url: URL, title: string): Promise<void> {
 	try {
-		const recentSlug = reportSlugFromPath(pathname);
+		const recentSlug = reportSlugFromPath(url.pathname);
 		if (recentSlug) recordRecentReport(recentSlug);
-
-		await trackVisit({ kind: 'site' });
-		bumpVisitCount({ kind: 'site' });
-		void ensureVisitCount({ kind: 'site' });
-
-		const slug = reportSlugFromPath(pathname);
-		if (slug) {
-			await trackVisit({ kind: 'report', slug });
-			bumpVisitCount({ kind: 'report', slug });
-			void ensureVisitCount({ kind: 'report', slug });
-		}
+		await trackGoatcounter(url, title);
 	} catch {
 		// Счётчик не должен ломать навигацию.
 	}

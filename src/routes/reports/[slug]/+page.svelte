@@ -431,7 +431,7 @@
 		<div class="report-meta">
 			<span><Clock size={18} /> {formatDuration(report.duration, language)}</span>
 			<span><FilmStrip size={18} /> {report.chapters.length} {language === 'en' ? 'semantic chapters' : 'смысловых блоков'}</span>
-			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} suffix={language === 'en' ? 'visits' : 'посещений'} /></span>
+			<span class="views"><VisitCounter target={{ kind: 'report', slug: report.slug }} suffix={language === 'en' ? 'historical visits' : 'исторических открытий'} /></span>
 		</div>
 		{#if otherCollections.length && !returnCollection?.isolated}
 			<p class="memberships label">{language === 'en' ? 'Also in collections:' : 'Также в коллекциях:'}

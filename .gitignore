@@ -16,6 +16,7 @@ vite.config.js.timestamp-*
 # Генерируется scripts/build-search-index.mjs (predev/precheck/prebuild)
 static/search/
 static/transcripts/
+static/analytics/
 
 # Optional local search experiments
 scripts/search-lab/__pycache__/

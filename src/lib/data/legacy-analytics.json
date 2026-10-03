@@ -1,0 +1,529 @@
+{
+  "version": 1,
+  "source": "Page Views API",
+  "capturedFrom": "2026-10-03T09:14:43.364Z",
+  "capturedAt": "2026-10-03T09:16:25.975Z",
+  "siteVisits": 1237,
+  "rows": [
+    {
+      "slug": "2026-07-06-19-26-42",
+      "visits": 8
+    },
+    {
+      "slug": "agentic-engineering-ai-workflow-deksden-1",
+      "visits": 5
+    },
+    {
+      "slug": "agents-week-2026-1-1-intro-ai-agents-llm",
+      "visits": 7
+    },
+    {
+      "slug": "agents-week-2026-1-2-tools-mcp",
+      "visits": 2
+    },
+    {
+      "slug": "agents-week-2026-2-memory-guardrails-lecture",
+      "visits": 0
+    },
+    {
+      "slug": "agents-week-2026-2-memory-guardrails-seminar",
+      "visits": 0
+    },
+    {
+      "slug": "agents-week-2026-3-workflow-multi-agent-multimodality-lecture",
+      "visits": 2
+    },
+    {
+      "slug": "agents-week-2026-3-workflow-multi-agent-multimodality-seminar",
+      "visits": 0
+    },
+    {
+      "slug": "agents-week-2026-4-agent-evaluation-lecture",
+      "visits": 1
+    },
+    {
+      "slug": "agents-week-2026-4-agent-evaluation-seminar",
+      "visits": 0
+    },
+    {
+      "slug": "agents-week-2026-5-1-production-engineering",
+      "visits": 0
+    },
+    {
+      "slug": "agents-week-2026-5-2-production-engineering",
+      "visits": 0
+    },
+    {
+      "slug": "ataka-prosche-ne-byvaet-udar",
+      "visits": 15
+    },
+    {
+      "slug": "berezhnoy-ai",
+      "visits": 2
+    },
+    {
+      "slug": "bioenergetika-trenirovki-tri-energosistemy",
+      "visits": 1
+    },
+    {
+      "slug": "biomehanika-i-myshechnye-rychagi",
+      "visits": 2
+    },
+    {
+      "slug": "clean-execution-cut-and-avoid-being-hit-stambul",
+      "visits": 7
+    },
+    {
+      "slug": "context-engineering-29min",
+      "visits": 8
+    },
+    {
+      "slug": "deti-ne-malenkie-vzroslye",
+      "visits": 0
+    },
+    {
+      "slug": "dofamin-neyronnye-svyazi-pasha",
+      "visits": 13
+    },
+    {
+      "slug": "dolgovremennye-adaptatsii-aerobnaya-trenirovka",
+      "visits": 3
+    },
+    {
+      "slug": "dzhentlmenskiy-nabor-priemov-aslamov",
+      "visits": 12
+    },
+    {
+      "slug": "faktory-myshechnoy-sily-i-moshchnosti",
+      "visits": 2
+    },
+    {
+      "slug": "fedotikov-mironov",
+      "visits": 4
+    },
+    {
+      "slug": "fehtovalnye-shkoly-v-germanii-aslamov",
+      "visits": 7
+    },
+    {
+      "slug": "fehtovanie-s-prioritetom-v-atake-korotovskih",
+      "visits": 2
+    },
+    {
+      "slug": "fehtovat-dolgo-ne-travmirovatsya",
+      "visits": 7
+    },
+    {
+      "slug": "gormon-myshechnye-vzaimodeystviya",
+      "visits": 1
+    },
+    {
+      "slug": "gruppa-a-1-vvodnaya",
+      "visits": 49
+    },
+    {
+      "slug": "gruppa-b-2-ataki-fendenti-na-vypade",
+      "visits": 9
+    },
+    {
+      "slug": "gruppa-b-3-vybor-zony-i-distantsii-v-atake",
+      "visits": 9
+    },
+    {
+      "slug": "gruppa-b-4-ataki-na-fone-manevrirovaniya",
+      "visits": 2
+    },
+    {
+      "slug": "gruppa-b-5-kakari-keiko",
+      "visits": 5
+    },
+    {
+      "slug": "hema-english-snaryazhenie",
+      "visits": 6
+    },
+    {
+      "slug": "hema-prednamerennye-ekspromtnye",
+      "visits": 1
+    },
+    {
+      "slug": "hema-reflections",
+      "visits": 2
+    },
+    {
+      "slug": "ii-dlya-analiza-hema-boev",
+      "visits": 103
+    },
+    {
+      "slug": "istoschenie-i-vosstanovlenie-substratov",
+      "visits": 1
+    },
+    {
+      "slug": "kompresiya-taktiki-lektsiya",
+      "visits": 9
+    },
+    {
+      "slug": "kontseptsiya-monitoringa",
+      "visits": 4
+    },
+    {
+      "slug": "kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka",
+      "visits": 1
+    },
+    {
+      "slug": "laktatnyi-porog-bioenergetika",
+      "visits": 1
+    },
+    {
+      "slug": "llm-deep-dive-karpathy",
+      "visits": 1
+    },
+    {
+      "slug": "longsword-a",
+      "visits": 21
+    },
+    {
+      "slug": "manevrovo-atakuyushchiy-stil-4-2",
+      "visits": 7
+    },
+    {
+      "slug": "manevrovo-atakuyushchiy-stil",
+      "visits": 2
+    },
+    {
+      "slug": "manevrovo-oboronitelnyi-tip",
+      "visits": 4
+    },
+    {
+      "slug": "mcwilliams-10-aspects",
+      "visits": 2
+    },
+    {
+      "slug": "mech-i-bakler-mikrotsikl-1-osnovy",
+      "visits": 7
+    },
+    {
+      "slug": "metabolicheskaya-spetsifichnost-trenirovki",
+      "visits": 1
+    },
+    {
+      "slug": "metodichka",
+      "visits": 5
+    },
+    {
+      "slug": "motivatsiya-vnimanie-fokus-v-sporte",
+      "visits": 2
+    },
+    {
+      "slug": "myshechnye-adaptatsii-anaerobnaya-trenirovka",
+      "visits": 0
+    },
+    {
+      "slug": "neyromyshechnaya-sistema-motornye-edinitsy",
+      "visits": 5
+    },
+    {
+      "slug": "neyronnye-adaptatsii-k-anaerobnoy-trenirovke",
+      "visits": 1
+    },
+    {
+      "slug": "nikitin-muzhchiny-zhenshiny",
+      "visits": 2
+    },
+    {
+      "slug": "nri-staraya-shahta",
+      "visits": 10
+    },
+    {
+      "slug": "obsidian-wiki-karpathy",
+      "visits": 4
+    },
+    {
+      "slug": "obuchenie-situatsiya-subtaktika",
+      "visits": 15
+    },
+    {
+      "slug": "obuchenie-trenerov-poisk-znaniy",
+      "visits": 11
+    },
+    {
+      "slug": "optimizatsiya-parad-ripost-hema",
+      "visits": 8
+    },
+    {
+      "slug": "osnovnye-anabolicheskie-gormony",
+      "visits": 0
+    },
+    {
+      "slug": "ostrye-reaktsii-aerobnaya-nagruzka",
+      "visits": 1
+    },
+    {
+      "slug": "pliometrika-hema",
+      "visits": 12
+    },
+    {
+      "slug": "podgotovka-ataki-na-sable-korotovskih",
+      "visits": 14
+    },
+    {
+      "slug": "podlodka-ai-vygoranie-493",
+      "visits": 6
+    },
+    {
+      "slug": "podlodka-naim-ai-482",
+      "visits": 0
+    },
+    {
+      "slug": "podlodka-slm-468",
+      "visits": 2
+    },
+    {
+      "slug": "podlodka-vector-search",
+      "visits": 1
+    },
+    {
+      "slug": "poisk-novogo-ruchya",
+      "visits": 4
+    },
+    {
+      "slug": "pozitsionno-oboronitelnyi-tip-osnovnaya-chast",
+      "visits": 7
+    },
+    {
+      "slug": "printsipy-silovoy-konditsionnoy-podgotovki",
+      "visits": 5
+    },
+    {
+      "slug": "prostaya-ataka-mikrotsikl-1-dlinnyy-mech",
+      "visits": 18
+    },
+    {
+      "slug": "protivnik-fehtuet-nepravilno",
+      "visits": 15
+    },
+    {
+      "slug": "psihologiya-3-isterechnaya",
+      "visits": 1
+    },
+    {
+      "slug": "psihologiya-4-depressivnaya",
+      "visits": 3
+    },
+    {
+      "slug": "psihologiya-5-shizoidnaya-paranoidnaya",
+      "visits": 2
+    },
+    {
+      "slug": "psihologiya-6-narcissicheskaya",
+      "visits": 1
+    },
+    {
+      "slug": "psihologiya-tyazhest-klinicheskaya",
+      "visits": 1
+    },
+    {
+      "slug": "rabota-paltsev-pri-prostoy-atake",
+      "visits": 10
+    },
+    {
+      "slug": "rapira-almaty-2026",
+      "visits": 6
+    },
+    {
+      "slug": "rapira-protiv-vstrechnogo-ukola-korotovskih",
+      "visits": 15
+    },
+    {
+      "slug": "retention-club",
+      "visits": 4
+    },
+    {
+      "slug": "retention",
+      "visits": 0
+    },
+    {
+      "slug": "sablya-10",
+      "visits": 1
+    },
+    {
+      "slug": "sablya-12",
+      "visits": 2
+    },
+    {
+      "slug": "sablya-4",
+      "visits": 0
+    },
+    {
+      "slug": "sablya-6",
+      "visits": 0
+    },
+    {
+      "slug": "sablya-8",
+      "visits": 2
+    },
+    {
+      "slug": "sablya-a-2",
+      "visits": 92
+    },
+    {
+      "slug": "sablya-a-3",
+      "visits": 0
+    },
+    {
+      "slug": "sablya-a-5",
+      "visits": 1
+    },
+    {
+      "slug": "sablya-a-7",
+      "visits": 2
+    },
+    {
+      "slug": "sablya-a-9",
+      "visits": 1
+    },
+    {
+      "slug": "sablya-vvodnaya",
+      "visits": 6
+    },
+    {
+      "slug": "sem-dvigatelnyh-patternov",
+      "visits": 4
+    },
+    {
+      "slug": "sila-moshchnost-i-rabota-v-biomehanike",
+      "visits": 2
+    },
+    {
+      "slug": "silovaya-konditsiya-hema",
+      "visits": 10
+    },
+    {
+      "slug": "silovaya-plan-hema",
+      "visits": 4
+    },
+    {
+      "slug": "silovaya-trenirovka-detey",
+      "visits": 0
+    },
+    {
+      "slug": "silovaya-trenirovka-pozhilyh",
+      "visits": 0
+    },
+    {
+      "slug": "silovye-porezy-katanoy",
+      "visits": 1
+    },
+    {
+      "slug": "software-3-0",
+      "visits": 1
+    },
+    {
+      "slug": "struktura-i-funktsiya-myshtsy",
+      "visits": 2
+    },
+    {
+      "slug": "subtaktika-teh-realizacii",
+      "visits": 14
+    },
+    {
+      "slug": "sudya-gayd-dlya-nachinayushchikh",
+      "visits": 2
+    },
+    {
+      "slug": "tenouti-i-tyakin-sibori",
+      "visits": 17
+    },
+    {
+      "slug": "tokarev-silovaya-ofp-2",
+      "visits": 10
+    },
+    {
+      "slug": "trenerskiy-kurs-3-planirovanie-zanyatiy",
+      "visits": 7
+    },
+    {
+      "slug": "trenerskiy-kurs-4-tekhnika-bezopasnosti",
+      "visits": 4
+    },
+    {
+      "slug": "trenerskoe-sobranie-dva-zala",
+      "visits": 3
+    },
+    {
+      "slug": "trenerskoe-sobranie-novyi-zal-chast-2",
+      "visits": 16
+    },
+    {
+      "slug": "trenerskoe-sobranie-novyi-zal-chast-3",
+      "visits": 11
+    },
+    {
+      "slug": "trenerskoe-sobranie-novyi-zal-chast-4",
+      "visits": 7
+    },
+    {
+      "slug": "trenerskoe-sobranie-novyi-zal",
+      "visits": 21
+    },
+    {
+      "slug": "trenerskoe-sobranie",
+      "visits": 7
+    },
+    {
+      "slug": "trenerstvo-2-zadachi-uprazhneniya",
+      "visits": 7
+    },
+    {
+      "slug": "trenirovka-muzhchin-i-zhenshchin",
+      "visits": 1
+    },
+    {
+      "slug": "tri-rezhima-myshechnogo-deystviya",
+      "visits": 1
+    },
+    {
+      "slug": "tsena-adaptatsii-tehnicheskogo-priema",
+      "visits": 20
+    },
+    {
+      "slug": "tsentralnaya-pozitsiya-dlinnyy-mech",
+      "visits": 22
+    },
+    {
+      "slug": "ukol-korol-udarov-mech-i-bakler-stambul",
+      "visits": 9
+    },
+    {
+      "slug": "ukol-po-centralnoy-linii",
+      "visits": 10
+    },
+    {
+      "slug": "ukoly-mezotsikl-1-dlinnyy-mech",
+      "visits": 11
+    },
+    {
+      "slug": "ukreplenie-stopy-i-golenostopa",
+      "visits": 4
+    },
+    {
+      "slug": "vibe-coding-lovushki-myshleniya",
+      "visits": 7
+    },
+    {
+      "slug": "vid-20260708-200742",
+      "visits": 14
+    },
+    {
+      "slug": "vozbuzhdenie-trevoga-stress-v-sporte",
+      "visits": 1
+    },
+    {
+      "slug": "vysota-krovyanoi-doping-peretrenirovannost",
+      "visits": 0
+    },
+    {
+      "slug": "woodcreek-ch1",
+      "visits": 1
+    }
+  ]
+}

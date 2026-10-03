@@ -1,5 +1,8 @@
 import { base } from '$app/paths';
 import { dev } from '$app/environment';
+import legacy from '$lib/data/legacy-analytics.json';
+
+const legacyCounts = new Map(legacy.rows.map(row=>[row.slug,row.visits]));
 
 const API_BASE = 'https://page-views-api.ratneshc.com/api/v1';
 
@@ -45,19 +48,15 @@ export function targetCacheKey(target: CounterTarget): string {
 	}
 }
 
-function counterUrl(endpoint: 'track' | 'views', target: CounterTarget): string {
+function counterUrl(endpoint: 'views', target: CounterTarget): string {
 	const params = new URLSearchParams(counterKey(target));
 	return `${API_BASE}/${endpoint}?${params}`;
 }
 
-/** Учесть визит (дедупликация на стороне API — раз в 30 мин на посетителя). */
-export async function trackVisit(target: CounterTarget): Promise<void> {
-	if (target.kind === 'reports-sum') return;
-	await fetch(counterUrl('track', target), { keepalive: true });
-}
-
 /** Запрос к API без кэша. */
 export async function fetchVisitCount(target: CounterTarget): Promise<number> {
+	if (!dev && target.kind === 'site') return legacy.siteVisits;
+	if (!dev && target.kind === 'report' && legacyCounts.has(target.slug)) return legacyCounts.get(target.slug)!;
 	if (target.kind === 'reports-sum') {
 		if (!target.slugs.length) return 0;
 		const counts = await Promise.all(

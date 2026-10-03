@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * *'
 
 permissions:
   contents: read
@@ -29,6 +31,25 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Generate current report metadata
+        run: npm run build-search-index
+
+      - name: Export public analytics aggregates
+        env:
+          GOATCOUNTER_API_TOKEN: ${{ secrets.GOATCOUNTER_API_TOKEN }}
+          GOATCOUNTER_START_DATE: '2026-10-03'
+          BASE_PATH: /${{ github.event.repository.name }}
+        shell: bash
+        run: |
+          if [ -n "$GOATCOUNTER_API_TOKEN" ]; then
+            npm run analytics:export
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "::error::GOATCOUNTER_API_TOKEN is required for analytics refresh"
+            exit 1
+          else
+            echo "Analytics export not configured; statistics will show unavailable data"
+          fi
 
       - name: Validate, test and build
         env:

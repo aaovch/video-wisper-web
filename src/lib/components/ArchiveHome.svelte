@@ -410,6 +410,7 @@
 		<nav class="catalog-navigation" aria-label="Раздел каталога">
 			<a href="{base}/" aria-current={!archived ? 'page' : undefined}>Каталог</a>
 			<a href="{base}/archive/" aria-current={archived ? 'page' : undefined}>Архив</a>
+			<a href="{base}/stats/">Статистика</a>
 		</nav>
 		<h1 id="archive-search-title">{archived ? 'Архив' : 'Найдите мысль в каталоге'}</h1>
 		<label class="search-field" onpointerenter={preloadSearchIndex}>

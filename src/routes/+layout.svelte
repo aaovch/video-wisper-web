@@ -79,7 +79,8 @@
 			endNavInstant();
 		})();
 		resetProgress();
-		void trackPageVisit(page.url.pathname);
+		const visitUrl = new URL(page.url);
+		void tick().then(() => trackPageVisit(visitUrl, document.title));
 		updateProgress();
 	});
 </script>
@@ -131,7 +132,8 @@
 			<p class="label">
 				{language === 'en' ? 'built with SvelteKit' : 'собрано на SvelteKit'} ·
 				<a href="https://github.com/aaovch" target="_blank" rel="noopener noreferrer">GitHub</a>
-				· {new Date().getFullYear()} · <VisitCounter target={{ kind: 'site' }} suffix={language === 'en' ? 'visits' : 'посещений'} />
+				· {new Date().getFullYear()} · <a href="{base}/stats/">{language === 'en' ? 'Statistics' : 'Статистика'}</a>
+				· <VisitCounter target={{ kind: 'site' }} suffix={language === 'en' ? 'historical visits' : 'исторических посещений'} />
 			</p>
 		</div>
 	</footer>

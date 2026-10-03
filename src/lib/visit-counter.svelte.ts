@@ -38,9 +38,8 @@ export async function ensureVisitCount(target: CounterTarget): Promise<number> {
 	if (!pending) {
 		pending = fetchVisitCount(target).then((n) => {
 			visitCache[key] = n;
-			inflight.delete(key);
 			return n;
-		});
+		}).finally(() => inflight.delete(key));
 		inflight.set(key, pending);
 	}
 	return pending;
@@ -49,12 +48,6 @@ export async function ensureVisitCount(target: CounterTarget): Promise<number> {
 export function invalidateVisitCount(target: CounterTarget): void {
 	if (target.kind === 'reports-sum') return;
 	delete visitCache[targetCacheKey(target)];
-}
-
-export function bumpVisitCount(target: CounterTarget): void {
-	if (target.kind === 'reports-sum') return;
-	const key = targetCacheKey(target);
-	if (key in visitCache) visitCache[key] += 1;
 }
 
 export function prefetchReportCounts(slugs: string[]): void {
