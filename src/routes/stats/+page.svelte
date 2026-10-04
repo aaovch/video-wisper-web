@@ -13,6 +13,7 @@
 	let snapshot = $state<AnalyticsSnapshot | null>(null);
 	let loading = $state(true);
 	let failed = $state(false);
+	let refreshMessage = $state('');
 	let query = $state('');
 	let collection = $state('');
 	let author = $state('');
@@ -68,12 +69,16 @@
 	function changeSort(value: string) { if (sort === value) ascending = !ascending; else { sort = value; ascending = value === 'title'; } }
 	function resetFilters() { query = ''; collection = ''; author = ''; area = 'all'; }
 	const formatDay = (day: string) => day.split('-').reverse().join('.');
-	async function load() {
-		loading = true; failed = false;
+	async function load(manual = false) {
+		if (manual && loading) return;
+		loading = true; failed = false; refreshMessage = '';
 		try {
-			const response = await fetch(`${base}/analytics/summary.json`, { cache: 'no-cache' });
+			const response = await fetch(`${base}/analytics/summary.json`, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
 			if (!response.ok) throw new Error('Unavailable');
-			snapshot = parseSnapshot(await response.json());
+			const next = parseSnapshot(await response.json());
+			if (manual) refreshMessage = snapshot?.generatedAt === next.generatedAt
+				? 'Уже показана последняя опубликованная выгрузка.' : 'Статистика обновлена.';
+			snapshot = next;
 		} catch { failed = true; }
 		finally { loading = false; }
 	}
@@ -92,9 +97,11 @@
 
 <div class="container statistics">
 	<nav class="navigation" aria-label="Раздел каталога"><a href="{base}/">Каталог</a><a href="{base}/archive/">Архив</a><a href="{base}/stats/" aria-current="page">Статистика</a></nav>
-	<div class="heading"><div><p class="label">Интерес к материалам</p><h1>Статистика</h1></div><a class="dashboard" href={GOATCOUNTER_URL} target="_blank" rel="noopener noreferrer">Кабинет GoatCounter ↗</a></div>
+	<div class="heading"><div><p class="label">Интерес к материалам</p><h1>Статистика</h1></div><div class="heading-actions"><button onclick={() => load(true)} disabled={loading} aria-describedby="refresh-help">{loading ? 'Обновляем…' : 'Обновить статистику'}</button><a class="dashboard" href={GOATCOUNTER_URL} target="_blank" rel="noopener noreferrer">Кабинет GoatCounter ↗</a></div></div>
 	<p class="intro">Какие отчёты открывают и как меняется интерес к ним. Повторные открытия учитываются по правилам GoatCounter; запуск видео и время просмотра сюда не входят.</p>
-	{#if failed}<div class="notice" role="status"><strong>Статистика пока недоступна.</strong><p>Отчёты показаны ниже. Сбор данных и выгрузка должны быть подключены; отсутствие данных не означает ноль посещений.</p><button onclick={load} disabled={loading}>Повторить загрузку</button></div>{/if}
+	<p id="refresh-help" class="freshness">Кнопка загружает последнюю опубликованную выгрузку. Новая выгрузка из GoatCounter публикуется ежедневно около 08:23 по Кызылорде.</p>
+	<p class="refresh-status" role="status" aria-live="polite">{loading ? 'Загружаем статистику…' : refreshMessage}</p>
+	{#if failed}<div class="notice" role="status"><strong>{snapshot ? 'Не удалось обновить статистику.' : 'Статистика пока недоступна.'}</strong><p>{snapshot ? 'Показана предыдущая выгрузка. Попробуйте обновить ещё раз.' : 'Отчёты показаны ниже. Отсутствие данных не означает ноль посещений. Попробуйте обновить ещё раз.'}</p></div>{/if}
 	<div class="filters">
 		<label for="stats-period">Период</label><select id="stats-period" bind:value={period} aria-describedby="period-help"><option value="7">7 дней</option><option value="30">30 дней</option><option value="all">С начала учёта</option></select>
 		<label for="stats-query">Поиск</label><input id="stats-query" type="search" bind:value={query} placeholder="Название материала" />
@@ -128,6 +135,8 @@
 	.navigation { display:flex; gap:24px; margin-bottom:32px; font-family:var(--font-mono); font-size:13px; flex-wrap:wrap; }
 	.navigation a[aria-current] { color:var(--accent); text-decoration:underline; text-underline-offset:6px; }
 	.heading,.table-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+	.heading-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+	.refresh-status { min-height:1.5em; margin:8px 0; font-size:14px; color:var(--ink-soft); }
 	h1 { font-size:clamp(36px,6vw,64px); margin:0; }
 	h2 { font-size:26px; }
 	.intro,.footnote { max-width:82ch; color:var(--ink-soft); }
