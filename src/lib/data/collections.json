@@ -888,6 +888,23 @@
 		]
 	},
 	{
+		"slug": "seminary-kashitsina",
+		"title": "Семинары Кашицина",
+		"hema": true,
+		"facets": {
+			"authors": [
+				"Кашицин"
+			],
+			"weapons": [
+				"Сабля"
+			]
+		},
+		"subtitle": "Практические семинары по сабельному фехтованию.",
+		"items": [
+			"sablya-oruzhie-v-liniyu-kashitsin"
+		]
+	},
+	{
 		"slug": "seminary-korotovskih",
 		"title": "Семинары Вячеслава Коротовских",
 		"hema": true,
