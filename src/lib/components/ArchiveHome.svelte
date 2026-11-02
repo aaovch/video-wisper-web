@@ -2,32 +2,25 @@
 	import SearchResultItem from '$lib/components/SearchResultItem.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { onMount } from 'svelte';
-	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
-	import { page } from '$app/state';
-	import { untrack, tick } from 'svelte';
-	import { readSearchState, writeSearchState } from '$lib/search-url-state';
+	import { goto } from '$app/navigation';
+	import { createSearchController } from '$lib/search-controller.svelte';
+	import { hasSearchQuery } from '$lib/search-tokenizer.js';
 	import { base } from '$app/paths';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
 	import FunnelSimple from 'phosphor-svelte/lib/FunnelSimple';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
+	import { collectionReportFacets, collectionReportsMatchingFacets } from '$lib/collection-facets';
+	import { groupCatalogCollections } from '$lib/catalog-groups';
 	import CollectionCard from '$lib/components/CollectionCard.svelte';
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
 	import SearchFilterDrawer from '$lib/components/SearchFilterDrawer.svelte';
 	import { collections, collectionsForReport, reportGate, type Collection } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
-	import {
-		preloadSearchIndex,
-		searchScoped,
-		whenSearchComplete,
-		type SearchHit,
-		type SearchResultKind,
-		type SearchScope
-	} from '$lib/search';
+	import type { SearchHit } from '$lib/search';
 	import {
 		activeSearchFilters,
 		selectedFilterCount,
-		type SearchFilterGroup,
-		type SearchFilterSelections
+		type SearchFilterGroup
 	} from '$lib/search-filters';
 	import { readRecentReports } from '$lib/recent-reports';
 	import { getReportSummary } from '$lib/data/report-meta';
@@ -45,66 +38,17 @@
 		)
 	);
 	const searchAreaLabel = $derived(archived ? 'в архиве' : 'в каталоге');
-	let query = $state('');
-	let selections = $state<SearchFilterSelections>({ authors: [], places: [], weapons: [], collections: [] });
-	let filterSheetOpen = $state(false);
-	let hits = $state<SearchHit[]>([]);
-	let linkScope = $state<SearchScope | undefined>();
-	let showAllHits = $state(false);
-	let loading = $state(false);
-	let searchError = $state(false);
-	let resultKind = $state<SearchResultKind>('empty');
-	let correctedQuery = $state<string | undefined>();
-	let timer: ReturnType<typeof setTimeout> | undefined;
-	let requestId = 0;
-	let filterReturnFocus: HTMLButtonElement | null = null;
-	let restoreScroll = $state<number | null>(null);
-	beforeNavigate(() => {
-		try { sessionStorage.setItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`, String(window.scrollY)); } catch { /* Storage can be disabled; URL state still works. */ }
+	const controller = createSearchController({
+		defaults: { authors: [], places: [], weapons: [], collections: [] },
+		scopes: () => [{ kind: 'archive', label: searchAreaLabel, reportSlugs: scopeSlugs }],
+		limit: 30
 	});
-	afterNavigate(({ type }) => {
-		if (type === 'popstate') {
-			try {
-				const stored = sessionStorage.getItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`);
-				restoreScroll = stored === null ? null : Number(stored);
-			} catch { restoreScroll = null; }
-		}
-	});
-	$effect(() => {
-		if (!loading && restoreScroll !== null) {
-			const y = restoreScroll;
-			restoreScroll = null;
-			void tick().then(() => window.scrollTo(0, y));
-		}
-	});
-	const searchParameters = $derived(page.url.search);
-	$effect(() => {
-		searchParameters;
-		untrack(() => {
-			const state = readSearchState(page.url, selections);
-			query = state.query;
-			selections = state.selections;
-			showAllHits = state.expanded;
-			scheduleSearch();
-		});
-	});
-	function saveSearch() {
-		const url = writeSearchState(page.url, query, selections, showAllHits);
-		if (url.href !== page.url.href) void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
-	}
-	function editSearch() {
-		showAllHits = false;
-		saveSearch();
-		scheduleSearch();
-	}
-	function clearSearch() {
-		query = '';
-		editSearch();
-		inputEl?.focus();
-	}
+	const search = controller.state;
+	function clearSearch() { controller.clear(); inputEl?.focus(); }
 
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let activeHit = $state(-1);
+	$effect(() => { search.query; search.selections; activeHit = -1; });
 
 	// «Недавно открывали» живёт только в localStorage — читаем после маунта, чтобы не ломать гидрацию.
 	let recentSlugs = $state<string[]>([]);
@@ -138,25 +82,18 @@
 			}))
 		}
 	]);
-	const activeFilters = $derived(activeSearchFilters(filterGroups, selections));
-	const activeFilterCount = $derived(selectedFilterCount(selections));
+	const activeFilters = $derived(activeSearchFilters(filterGroups, search.selections));
+	const activeFilterCount = $derived(selectedFilterCount(search.selections));
 	const hasFilterGroups = $derived(filterGroups.some((group) => group.options.length > 1));
 
 	const filteredCollections = $derived(
 		catalogCollections.filter(
 			(collection) =>
-				matchesSelection(selections.authors, collection.facets?.authors) &&
-				matchesSelection(selections.places, collection.facets?.places) &&
-				matchesSelection(selections.weapons, collection.facets?.weapons) &&
-				(selections.collections.length === 0 || selections.collections.includes(collection.slug))
+				collectionReportsMatchingFacets(collection, search.selections).length > 0 &&
+				(search.selections.collections.length === 0 || search.selections.collections.includes(collection.slug))
 		)
 	);
-	const nonameCollections = $derived(
-		filteredCollections.filter((collection) => collection.catalogGroup === 'noname')
-	);
-	const standalonePrimaryCollections = $derived(
-		filteredCollections.filter((collection) => collection.catalogGroup !== 'noname')
-	);
+	const catalog = $derived(groupCatalogCollections(filteredCollections));
 	const filtersActive = $derived(activeFilterCount > 0);
 	const areaReportSlugs = $derived(catalogReportSlugs(archived ? 'archive' : 'main'));
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked, archived ? 'archive' : 'main'));
@@ -169,12 +106,12 @@
 	);
 	const scopeSlugs = $derived(
 		filtersActive
-			? visibleSubset(filteredCollections.flatMap((collection) => collection.items), areaReportSlugs)
+			? visibleSubset(filteredCollections.flatMap((collection) => collectionReportsMatchingFacets(collection, search.selections)), areaReportSlugs)
 			: areaReportSlugs
 	);
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
-		return hits
+		return search.hits
 			.filter((hit) => {
 				// A locked video is deliberately one opaque result: no separate chapter,
 				// thesis or transcript rows until its password has been entered.
@@ -184,19 +121,19 @@
 				return true;
 			});
 	});
-	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
+	const visibleHits = $derived(search.expanded ? uniqueHits : uniqueHits.slice(0, 5));
 	const resultsHeading = $derived.by(() => {
-		if (resultKind === 'prefix') return `Совпадения по началу слова ${searchAreaLabel}`;
-		if (resultKind === 'correction') return `Возможные совпадения ${searchAreaLabel}`;
-		if (resultKind === 'semantic') return `Связанные по смыслу ${searchAreaLabel}`;
+		if (search.matchKind === 'prefix') return `Совпадения по началу слова ${searchAreaLabel}`;
+		if (search.matchKind === 'correction') return `Возможные совпадения ${searchAreaLabel}`;
+		if (search.matchKind === 'semantic') return `Связанные по смыслу ${searchAreaLabel}`;
 		return `Совпадения по запросу ${searchAreaLabel}`;
 	});
 	const statusText = $derived(
-		loading
+		search.loading
 			? 'Ищем'
-			: searchError
+			: search.error
 				? 'Поиск временно недоступен'
-				: query.trim().length >= 2
+				: hasSearchQuery(search.query)
 					? `${uniqueHits.length} совпадений`
 					: ''
 	);
@@ -209,22 +146,10 @@
 		].sort((a, b) => a.localeCompare(b, 'ru'));
 	}
 
-
-
-	function openFilters(event: MouseEvent) {
-		filterReturnFocus = event.currentTarget as HTMLButtonElement;
-		filterSheetOpen = true;
-	}
-
-	function closeFilters() {
-		filterSheetOpen = false;
-		queueMicrotask(() => filterReturnFocus?.focus());
-	}
-
 	function handleWindowKeydown(event: KeyboardEvent) {
-		if (filterSheetOpen && event.key === 'Escape') {
+		if (search.filterOpen && event.key === 'Escape') {
 			event.preventDefault();
-			closeFilters();
+			controller.closeFilters();
 			return;
 		}
 		// Быстрый фокус в поиск: «/» или Cmd/Ctrl-K, если фокус не в поле ввода.
@@ -244,8 +169,8 @@
 		if (!visibleHits.length) return;
 		if (event.key === 'ArrowDown') {
 			event.preventDefault();
-			if (activeHit >= visibleHits.length - 1 && !showAllHits && uniqueHits.length > visibleHits.length) {
-				showAllHits = true;
+			if (activeHit >= visibleHits.length - 1 && !search.expanded && uniqueHits.length > visibleHits.length) {
+				search.expanded = true;
 			}
 			activeHit = Math.min(activeHit + 1, uniqueHits.length - 1);
 			focusActiveHit();
@@ -279,13 +204,9 @@
 			count: new Set(
 				catalogCollections
 					.filter((collection) => collection.facets?.[key]?.includes(value))
-					.flatMap((collection) => collection.items)
+					.flatMap((collection) => collection.items.filter(slug => collectionReportFacets(collection, slug)[key]?.includes(value)))
 			).size
 		}));
-	}
-
-	function matchesSelection(selected: string[], values: string[] | undefined): boolean {
-		return selected.length === 0 || selected.some((value) => values?.includes(value));
 	}
 
 	function resultIsLocked(hit: SearchHit): boolean {
@@ -312,78 +233,9 @@
 		return `${count} ${noun}`;
 	}
 
-	function toggleFilter(groupId: string, value: string) {
-		const current = selections[groupId] ?? [];
-		selections = {
-			...selections,
-			[groupId]: current.includes(value)
-				? current.filter((item) => item !== value)
-				: [...current, value]
-		};
-		showAllHits = false;
-		saveSearch();
-	}
-
-	function scheduleSearch() {
-		clearTimeout(timer);
-		const runId = ++requestId;
-		searchError = false;
-		activeHit = -1;
-		const normalized = query.trim();
-		if (normalized.length < 2) {
-			hits = [];
-			resultKind = 'empty';
-			correctedQuery = undefined;
-			loading = false;
-			return;
-		}
-		loading = true;
-		timer = setTimeout(async () => {
-			const current = query.trim();
-			const scope: SearchScope = {
-				kind: 'archive',
-				label: searchAreaLabel,
-				reportSlugs: scopeSlugs
-			};
-			try {
-				const response = await searchScoped(current, [scope], 30);
-				if (runId === requestId && current === query.trim()) {
-					hits = response.hits;
-					linkScope = response.resultScope;
-					resultKind = response.matchKind;
-					correctedQuery = response.correctedQuery;
-					loading = false;
-					// Transcript-шард ещё грузился — дозапустим запрос, когда доедет.
-					if (response.pending) {
-						void whenSearchComplete().then(() => {
-							if (runId === requestId && current === query.trim()) scheduleSearch();
-						});
-					}
-				}
-			} catch {
-				if (runId === requestId && current === query.trim()) {
-					hits = [];
-					resultKind = 'empty';
-					correctedQuery = undefined;
-					searchError = true;
-					loading = false;
-				}
-			}
-		}, 180);
-	}
-
-	$effect(() => {
-		selections.authors;
-		selections.places;
-		selections.weapons;
-		selections.collections;
-		scopeSlugs;
-		scheduleSearch();
-	});
-
 	function resultHref(hit: SearchHit, seek = false): string {
 		const [pathname, hash] = hit.href.split('#');
-		const params = new URLSearchParams({ q: query.trim() });
+		const params = new URLSearchParams({ q: search.query.trim() });
 		if (seek && hit.start != null) params.set('t', String(Math.ceil(hit.start)));
 		return `${base}${pathname}?${params.toString()}${hash ? `#${hash}` : ''}`;
 	}
@@ -392,11 +244,6 @@
 		if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 		event.preventDefault();
 		void goto(resultHref(hit, seek));
-	}
-
-	function resetFilters() {
-		selections = { authors: [], places: [], weapons: [], collections: [] };
-		saveSearch();
 	}
 
 </script>
@@ -411,56 +258,56 @@
 			<a href="{base}/stats/">Статистика</a>
 		</nav>
 		<h1 id="archive-search-title">{archived ? 'Архив' : 'Найдите мысль в каталоге'}</h1>
-		<label class="search-field" onpointerenter={preloadSearchIndex}>
+		<label class="search-field" onpointerenter={controller.preload}>
 			<MagnifyingGlass size={30} weight="thin" aria-hidden="true" />
 			<span class="sr-only">{archived ? 'Поиск по архиву' : 'Поиск по каталогу'}</span>
 			<input
 				type="search"
 				aria-label={archived ? 'Поиск по архиву' : 'Поиск по каталогу'}
 				bind:this={inputEl}
-				bind:value={query}
-				onfocus={preloadSearchIndex}
-				oninput={editSearch}
+				bind:value={search.query}
+				onfocus={controller.preload}
+				oninput={controller.edit}
 				onkeydown={onSearchKeydown}
 				placeholder="Например: подготовка атаки"
 				autocomplete="off"
 				spellcheck="false"
 			/>
-			{#if loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
+			{#if search.loading}<span class="loading label" aria-hidden="true">ищем</span>{/if}
 			<kbd class="search-kbd mono" aria-hidden="true">/</kbd>
 		</label>
 		<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
-		{#if activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2)}
+		{#if activeFilters.length > 0 || (hasFilterGroups && !hasSearchQuery(search.query))}
 		<div class="filter-controls">
-			{#if hasFilterGroups && query.trim().length < 2}
+			{#if hasFilterGroups && !hasSearchQuery(search.query)}
 				<button
 					type="button"
 					class="filter-trigger"
-					aria-expanded={filterSheetOpen}
-					onclick={openFilters}
+					aria-expanded={search.filterOpen}
+					onclick={controller.openFilters}
 				>
 					<FunnelSimple size={19} weight="regular" aria-hidden="true" />
 					<span>Фильтры</span>
 					{#if activeFilterCount > 0}<span class="filter-badge mono">{activeFilterCount}</span>{/if}
 				</button>
 			{/if}
-			<SearchFilterChips filters={activeFilters} onRemove={toggleFilter} />
+			<SearchFilterChips filters={activeFilters} onRemove={controller.toggleFilter} />
 		</div>
 		{/if}
 	</div>
 </section>
 
 <SearchFilterDrawer
-	open={filterSheetOpen && hasFilterGroups}
+	open={search.filterOpen && hasFilterGroups}
 	groups={filterGroups}
-	{selections}
-	onToggle={toggleFilter}
-	onClear={resetFilters}
-	onClose={closeFilters}
+	selections={search.selections}
+	onToggle={controller.toggleFilter}
+	onClear={controller.clearFilters}
+	onClose={controller.closeFilters}
 />
 
-{#if recentReports.length > 0 && query.trim().length < 2}
+{#if recentReports.length > 0 && !hasSearchQuery(search.query)}
 	<section class="container recent" aria-label="Недавно открывали">
 		<span class="label">Недавно открывали</span>
 		<ul>
@@ -471,20 +318,20 @@
 	</section>
 {/if}
 
-{#if query.trim().length >= 2}
+{#if hasSearchQuery(search.query)}
 	<section class="container results">
 		<div class="results-layout">
 		<div class="results-main">
-		<div class="section-title">
+		<div class="section-title search-results-heading">
 			<h2>{resultsHeading}</h2>
 			<div class="results-tools">
-				{#if !loading}<span class="label">{visibleHits.length} из {uniqueHits.length}</span>{/if}
+				{#if !search.loading}<span class="label">{visibleHits.length} из {uniqueHits.length}</span>{/if}
 				{#if hasFilterGroups}
 					<button
 						type="button"
 						class="filter-trigger filter-trigger--compact"
-						aria-expanded={filterSheetOpen}
-						onclick={openFilters}
+						aria-expanded={search.filterOpen}
+						onclick={controller.openFilters}
 					>
 						<FunnelSimple size={17} weight="regular" aria-hidden="true" />
 						<span>Фильтры</span>
@@ -493,16 +340,16 @@
 				{/if}
 			</div>
 		</div>
-		{#if correctedQuery && !loading && !searchError}
-			<p class="search-note">Возможно, вы имели в виду «{correctedQuery}».</p>
+		{#if search.correctedQuery && !search.loading && !search.error}
+			<p class="search-note">Возможно, вы имели в виду «{search.correctedQuery}».</p>
 		{/if}
-		{#if searchError}
+		{#if search.error}
 			<div class="search-error" role="alert">
 				<p>Поиск временно недоступен.</p>
-				<button type="button" onclick={scheduleSearch}>Повторить</button>
+				<button type="button" onclick={controller.retry}>Повторить</button>
 			</div>
-		{:else if !loading && visibleHits.length === 0}
-			<div class="empty"><p>Ничего не найдено. Попробуйте короче или другое название.</p><button type="button" onclick={clearSearch}>Очистить поиск</button>{#if activeFilterCount > 0}<button type="button" onclick={resetFilters}>Сбросить фильтры</button>{/if}</div>
+		{:else if !search.loading && visibleHits.length === 0}
+			<div class="empty"><p>Ничего не найдено. Попробуйте короче или другое название.</p><button type="button" onclick={clearSearch}>Очистить поиск</button>{#if activeFilterCount > 0}<button type="button" onclick={controller.clearFilters}>Сбросить фильтры</button>{/if}</div>
 		{:else}
 			<ol class="result-list">
 				{#each visibleHits as hit, index (uniqueHitKey(hit))}
@@ -511,8 +358,8 @@
 					<SearchResultItem
 						id={`hit-${index}`}
 						{hit}
-						{query}
-						scope={linkScope}
+						query={search.query}
+						scope={search.scope}
 						layout="archive"
 						locked={lockedResult}
 						lockedCollectionTitle={hitCollection?.title ?? ''}
@@ -526,11 +373,11 @@
 				<button
 					type="button"
 					class="show-all"
-					class:expanded={showAllHits}
-					aria-expanded={showAllHits}
-					onclick={() => { showAllHits = !showAllHits; saveSearch(); }}
+					class:expanded={search.expanded}
+					aria-expanded={search.expanded}
+					onclick={() => { search.expanded = !search.expanded; controller.save(); }}
 				>
-					<span>{showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} совпадений`}</span>
+					<span>{search.expanded ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} совпадений`}</span>
 					<CaretDown size={17} weight="bold" aria-hidden="true" />
 				</button>
 			{/if}
@@ -542,32 +389,32 @@
 
 <section class="container catalog" aria-labelledby="collection-title">
 	<div class="section-title">
-		<h2 id="collection-title">{query.trim().length >= 2 ? 'Все коллекции' : archived ? 'Коллекции архива' : 'Коллекции'}</h2>
+		<h2 id="collection-title">{hasSearchQuery(search.query) ? 'Все коллекции' : archived ? 'Коллекции архива' : 'Коллекции'}</h2>
 		<span class="label">{collectionCountLabel(filteredCollections.length)}</span>
 	</div>
 
 	{#if filteredCollections.length === 0}
 		<p class="empty">Нет коллекций с таким сочетанием фильтров.</p>
 	{:else}
-		{#if nonameCollections.length}
-			<section class="collection-group" aria-labelledby="noname-group-title">
+		{#each catalog.groups as group (group.id)}
+			<section class="collection-group" aria-labelledby={`catalog-group-${group.id}`}>
 				<div class="collection-group__head">
 					<div>
-						<p class="label">Клубная библиотека</p>
-						<h3 id="noname-group-title">NoName</h3>
+						<p class="label">{group.label}</p>
+						<h3 id={`catalog-group-${group.id}`}>{group.title}</h3>
 					</div>
-					<p>Учебные циклы, лагерь 2026, курс тренеров и собрания Core — в своих режимах доступа.</p>
+					{#if group.description}<p>{group.description}</p>{/if}
 				</div>
 				<div class="catalog-grid">
-					{#each nonameCollections as collection (collection.slug)}
+					{#each group.collections as collection (collection.slug)}
 						<CollectionCard {collection} />
 					{/each}
 				</div>
 			</section>
-		{/if}
-		{#if standalonePrimaryCollections.length}
+		{/each}
+		{#if catalog.standalone.length}
 			<div class="catalog-grid">
-				{#each standalonePrimaryCollections as collection (collection.slug)}
+				{#each catalog.standalone as collection (collection.slug)}
 					<CollectionCard {collection} />
 				{/each}
 			</div>

@@ -212,6 +212,17 @@ p {
 	font-family: var(--font-mono);
 }
 
+/* Search headings and controls share the same wrapping behavior at every scope. */
+.search-results-heading {
+	flex-wrap: wrap;
+	min-width: 0;
+}
+
+.search-results-heading > .results-tools {
+	flex-wrap: wrap;
+	max-width: 100%;
+}
+
 /* Метки-теги */
 .tag {
 	display: inline-flex;

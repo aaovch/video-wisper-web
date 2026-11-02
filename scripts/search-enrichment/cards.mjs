@@ -7,6 +7,8 @@ import {extractiveContext,CONTEXT_PROMPT_VERSION} from './extractive-context.mjs
 export const CARD_PROMPT_VERSION='hema-situation-card-v1';
 export const CARD_FIELDS=['context','situation','problem','action','conditions','limitations'];
 const assert=(ok,message)=>{if(!ok)throw Error(message);};
+const dictionary=JSON.parse(readFileSync(new URL('../../src/lib/data/hema-search-dictionary.json',import.meta.url),'utf8'));
+const dictionaryIds=new Set(dictionary.entries.map(e=>e.id));
 export function validateCards(report,data){
  assert(data?.version===1&&data.reportSlug===report.slug,'Invalid card version/report');
  assert(data.sourceMode===undefined||data.sourceMode==='extractive-context','Invalid card source mode');
@@ -34,8 +36,7 @@ export function validateCards(report,data){
    assert(c.termIds?.length===0,'Extractive context cannot infer terms');
   }
   assert(Array.isArray(c.termIds),'Missing term IDs');
-  const dictionary=JSON.parse(readFileSync(new URL('../../src/lib/data/hema-search-dictionary.json',import.meta.url),'utf8'));
-  assert(c.termIds.every(id=>dictionary.entries.some(e=>e.id===id)),'Unknown dictionary ID');
+  assert(c.termIds.every(id=>dictionaryIds.has(id)),'Unknown dictionary ID');
  }
  return data;
 }

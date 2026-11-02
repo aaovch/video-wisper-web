@@ -1,8 +1,9 @@
+import { getReportMaterials } from '../src/lib/report-material-data.js';
 /** Validate the reviewed, timestamped exercise list used by the report card and search. */
 export function validateExercises(report, sidecar) {
 	const errors = [];
 	const warnings = [];
-	const sections = report.materials?.exercises ?? report.seminar_exercises;
+	const sections = getReportMaterials(report).exercises;
 	if (sections === undefined) return { errors, warnings };
 	if (!Array.isArray(sections)) return { errors: ['exercises must be an array'], warnings };
 	const anchors = new Set();

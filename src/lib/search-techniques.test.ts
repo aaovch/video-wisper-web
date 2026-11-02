@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { techniqueAliases } from './search-techniques';
+import { techniqueAliases, requiredSourcePhrases, matchesSourcePhrases } from './search-techniques';
 
 it('expands whole named techniques but never shared properties or question words', () => {
     expect(techniqueAliases('ZORNHAU')).toContain('цорнхау');
@@ -10,4 +10,12 @@ it('expands whole named techniques but never shared properties or question words
         'После батмана соперник прикрывает руку. Как обойти эту защиту для укола?']) {
         expect(techniqueAliases(text), text).toEqual([]);
     }
+});
+
+it('applies arbitrary configured compound names without joining separate fields', () => {
+	const phrases = requiredSourcePhrases('Как удерживать синюю линию?', ['синяя линия']);
+	expect(phrases).toHaveLength(1);
+	expect(matchesSourcePhrases(['Удержание синей линии'], phrases)).toBe(true);
+	expect(matchesSourcePhrases(['Синяя стойка', 'Линия атаки'], phrases)).toBe(false);
+	expect(requiredSourcePhrases('Синяя стойка на линии', ['синяя линия'])).toEqual([]);
 });

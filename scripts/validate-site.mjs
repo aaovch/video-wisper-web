@@ -90,6 +90,13 @@ try {
 }
 const collectionSlugs = new Set();
 const accessIds = new Set();
+const groupRegistry = readJson(join(root, 'src/lib/data/catalog-groups.json'));
+const groupIds = new Set();
+for (const group of groupRegistry) {
+	if (!group.id?.trim() || groupIds.has(group.id) || !group.title?.trim() || !group.label?.trim())
+		issue(errors, 'CATALOG_GROUP_INVALID', group.id ?? 'missing ID');
+	groupIds.add(group.id);
+}
 function validateCredential(credential, context) {
 	if (!credential?.id?.trim()) issue(errors, 'ACCESS_ID_INVALID', context);
 	else if (accessIds.has(credential.id)) issue(errors, 'ACCESS_ID_DUPLICATE', credential.id);
@@ -104,6 +111,21 @@ for (const collection of collections) {
 	if (collectionSlugs.has(collection.slug)) issue(errors, 'COLLECTION_SLUG_DUPLICATE', collection.slug);
 	collectionSlugs.add(collection.slug);
 	const items = collection.items ?? [];
+	if (collection.catalogGroup && !groupIds.has(collection.catalogGroup)) issue(errors, 'CATALOG_GROUP_MISSING', collection.slug);
+	for (const [slug, facets] of Object.entries(collection.itemFacets ?? {})) {
+		if (!items.includes(slug)) issue(errors, 'FACET_REPORT_OUTSIDE_COLLECTION', `${collection.slug}: ${slug}`);
+		for (const [key, values] of Object.entries(facets)) {
+			if (!['authors', 'places', 'weapons'].includes(key) || !Array.isArray(values) ||
+				new Set(values).size !== values.length || values.some(value => !collection.facets?.[key]?.includes(value)))
+				issue(errors, 'ITEM_FACETS_INVALID', `${collection.slug}: ${slug}: ${key}`);
+		}
+	}
+	for (const key of ['authors', 'places', 'weapons']) {
+		if ((collection.facets?.[key]?.length ?? 0) > 1) for (const slug of items) {
+			if (!Array.isArray(collection.itemFacets?.[slug]?.[key]))
+				issue(errors, 'ITEM_FACETS_MISSING', `${collection.slug}: ${slug}: ${key}`);
+		}
+	}
 	if (new Set(items).size !== items.length) issue(errors, 'COLLECTION_ITEM_DUPLICATE', collection.slug);
 	for (const slug of items) if (!reports.has(slug)) issue(errors, 'COLLECTION_REPORT_MISSING', `${collection.slug}: ${slug}`);
 	if (collection.access?.master) validateCredential(collection.access.master, `${collection.slug}: master`);

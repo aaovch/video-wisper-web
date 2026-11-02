@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import { getAllReportSummaries } from '$lib/data/report-meta';
+	import { collectionReportFacets } from '$lib/collection-facets';
 	import { collections } from '$lib/data/collections';
 	import { parseSnapshot, periodStart, periodVisits, csvCell, type AnalyticsSnapshot } from '$lib/analytics';
 	import { GOATCOUNTER_URL } from '$lib/goatcounter';
@@ -40,7 +41,7 @@
 			return { ...report, memberships, legacyVisits:legacyBySlug.get(report.slug) ?? null, visits: snapshot ? period === 'all' ? data?.visits ?? null : periodVisits(data, from, end) : null };
 		}).filter(row => (!query || row.title.toLocaleLowerCase('ru').includes(query.trim().toLocaleLowerCase('ru'))) &&
 			(!collection || row.memberships.some(c => c.slug === collection)) &&
-			(!author || row.memberships.some(c => c.facets?.authors?.includes(author))) &&
+			(!author || row.memberships.some(c => collectionReportFacets(c, row.slug).authors?.includes(author))) &&
 			(area === 'all' || row.memberships.some(c => Boolean(c.archived) === (area === 'archive'))))
 		.sort((a,b) => {
 			const av=sort==='legacy'?a.legacyVisits:a.visits, bv=sort==='legacy'?b.legacyVisits:b.visits;

@@ -1,3 +1,4 @@
+import { getReportMaterials } from '../src/lib/report-material-data.js';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -19,7 +20,7 @@ for (const file of reportFiles) {
 	const cues = (sidecar?.chapters ?? []).flatMap((chapter) => (chapter.segments ?? []).flatMap((segment) =>
 		cue.test(segment.text) ? [{ start: segment.start, text: segment.text }] : []
 	));
-	const exerciseCount = (report.materials?.exercises ?? report.seminar_exercises ?? [])
+	const exerciseCount = getReportMaterials(report).exercises
 		.reduce((sum, section) => sum + (section.items?.length ?? 0), 0);
 	reports.push({ slug, title: report.title, exerciseCount, hasTranscript: Boolean(sidecar), cues });
 }

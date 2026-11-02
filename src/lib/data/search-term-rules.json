@@ -2,6 +2,7 @@
  "version":1,
  "source":"hema_fight_analysator/techniques.yaml",
  "sourceSha256":"4495dd1fd040deeb7c0608419a65f3b20514730f3cf923f387b5e2900624091e",
+ "sourcePhrases":["длинное острие"],
  "groups":[
   {"id":"zornhau","canonicalId":"technique_presets.presets.zornhau","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"zornhau","to":"цорнхау"},{"type":"spelling","from":"цорн-хау","to":"цорнхау"}],"negative":["хау","оберхау","нисходящий рубящий удар"]},
   {"id":"mezzano","canonicalId":"technique_presets.presets.mezzano","scope":"whole-named-query","enabled":true,"relations":[{"type":"translation","from":"mezzano","to":"мецано"},{"type":"asr","from":"митсана","to":"мецано"}],"negative":["горизонтальный удар","mittelhau"]},

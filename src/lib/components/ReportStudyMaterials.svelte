@@ -12,7 +12,7 @@
 	import type { ReportMaterials } from '$lib/types';
 
 	type MaterialsTab = 'notes' | 'visuals' | 'glossary' | 'transcript';
-	let { slug, materials, hasTranscript, language = 'ru' }: { slug: string; materials: Required<ReportMaterials>; hasTranscript: boolean; language?: 'ru' | 'en' } = $props();
+	let { slug, materials, hasTranscript, active = true, language = 'ru' }: { slug: string; materials: Required<ReportMaterials>; hasTranscript: boolean; active?: boolean; language?: 'ru' | 'en' } = $props();
 	let requestedTab = $state<MaterialsTab>('notes');
 	let transcriptText = $state('');
 	let transcriptLoadState = $state<'idle' | 'loading' | 'ready' | 'error'>('idle');
@@ -69,7 +69,7 @@
 	}
 
 	$effect(() => {
-		if (activeTab === 'transcript') void ensureTranscript().catch(() => {});
+		if (active && activeTab === 'transcript') void ensureTranscript().catch(() => {});
 	});
 
 	function selectTab(tab: MaterialsTab) { requestedTab = tab; }

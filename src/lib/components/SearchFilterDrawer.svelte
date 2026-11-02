@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SearchFilterPanel from '$lib/components/SearchFilterPanel.svelte';
-	import { modalFocus } from '$lib/modal-focus';
 	import type { SearchFilterGroup, SearchFilterSelections } from '$lib/search-filters';
 
 	let {
@@ -20,25 +19,37 @@
 		onClose: () => void;
 		language?: 'ru' | 'en';
 	} = $props();
+	let dialog = $state<HTMLDialogElement | null>(null);
+	$effect(() => {
+		if (open && dialog && !dialog.open) dialog.showModal();
+	});
 </script>
 
 {#if open}
-	<button class="backdrop" type="button" aria-label={language === 'en' ? 'Close filters' : 'Закрыть фильтры'} onclick={onClose}></button>
-	<div use:modalFocus class="sheet" role="dialog" aria-modal="true" aria-label={language === 'en' ? 'Search filters' : 'Фильтры поиска'}>
-		<SearchFilterPanel {groups} {selections} {onToggle} {onClear} {onClose} {language} />
-	</div>
+	<dialog bind:this={dialog} class="filter-dialog" aria-label={language === 'en' ? 'Search filters' : 'Фильтры поиска'}
+		oncancel={(event) => { event.preventDefault(); onClose(); }}
+		onclick={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+		<div class="sheet">
+			<SearchFilterPanel {groups} {selections} {onToggle} {onClear} {onClose} {language} />
+		</div>
+	</dialog>
 {/if}
 
 <style>
-	.backdrop {
+	.filter-dialog {
 		position: fixed;
 		inset: 0;
-		z-index: 80;
 		width: 100%;
-		height: 100%;
+		height: 100dvh;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0;
 		border: 0;
+		background: transparent;
+	}
+	.filter-dialog::backdrop {
 		background: color-mix(in srgb, var(--ink) 28%, transparent);
-		cursor: default;
 	}
 
 	.sheet {

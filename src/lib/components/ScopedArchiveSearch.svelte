@@ -1,25 +1,21 @@
 <script lang="ts">
 	import SearchResultItem from '$lib/components/SearchResultItem.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
-	import { goto, beforeNavigate, afterNavigate } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { untrack, tick } from 'svelte';
-	import { readSearchState, writeSearchState } from '$lib/search-url-state';
+	import { createSearchController } from '$lib/search-controller.svelte';
+	import { hasSearchQuery } from '$lib/search-tokenizer.js';
 	import { base } from '$app/paths';
 	import CaretDown from 'phosphor-svelte/lib/CaretDown';
 	import FunnelSimple from 'phosphor-svelte/lib/FunnelSimple';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import SearchFilterChips from '$lib/components/SearchFilterChips.svelte';
 	import SearchFilterDrawer from '$lib/components/SearchFilterDrawer.svelte';
-	import { collections, getCollection } from '$lib/data/collections';
-	import { getReportSummary } from '$lib/data/report-meta';
+	import { getCollection } from '$lib/data/collections';
+	import { buildReportFacetMap } from '$lib/collection-facets';
 	import { lock } from '$lib/lock.svelte';
 	import {
-		preloadSearchIndex,
-		searchScoped,
-		whenSearchComplete,
 		type SearchHit,
-		type SearchResultKind,
 		type SearchScope,
 		type SearchZone
 	} from '$lib/search';
@@ -51,69 +47,15 @@
 		onResults?: (hits: SearchHit[], loading: boolean) => void;
 	} = $props();
 
-	let query = $state('');
-	let debouncedQuery = $state('');
-	let hits = $state<SearchHit[]>([]);
-	let linkScope = $state<SearchScope | undefined>();
-	let selections = $state<SearchFilterSelections>({ zones: [], sections: [], authors: [], places: [], weapons: [] });
-	let filterSheetOpen = $state(false);
-	let showAllHits = $state(false);
-	let loading = $state(false);
-	let showingFallback = $state(false);
-	let searchError = $state(false);
-	let resultKind = $state<SearchResultKind>('empty');
-	let resultScopeLabel = $state('');
-	let correctedQuery = $state<string | undefined>();
-	let retryNonce = $state(0);
-	let timer: ReturnType<typeof setTimeout> | undefined;
-	let indexRequested = false;
-	let filterReturnFocus: HTMLButtonElement | null = null;
-	let restoreScroll = $state<number | null>(null);
+	const controller = createSearchController({
+		defaults: { zones: [], sections: [], authors: [], places: [], weapons: [] },
+		scopes: buildSearchScopes,
+		limit: 120,
+		preserveHashScroll: () => kind === 'report' && Boolean(page.url.hash)
+	});
+	const search = controller.state;
+	function clearSearch() { controller.clear(); searchInput?.focus(); }
 	let searchInput: HTMLInputElement;
-	beforeNavigate(() => {
-		try { sessionStorage.setItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`, String(window.scrollY)); } catch { /* Storage can be disabled; URL state still works. */ }
-	});
-	afterNavigate(({ type }) => {
-		if (type === 'popstate' && !(kind === 'report' && page.url.hash)) {
-			try {
-				const stored = sessionStorage.getItem(`search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`);
-				restoreScroll = stored === null ? null : Number(stored);
-			} catch { restoreScroll = null; }
-		}
-	});
-	$effect(() => {
-		if (!loading && restoreScroll !== null) {
-			const y = restoreScroll;
-			restoreScroll = null;
-			void tick().then(() => window.scrollTo(0, y));
-		}
-	});
-	const searchParameters = $derived(page.url.search);
-	$effect(() => {
-		searchParameters;
-		untrack(() => {
-			const state = readSearchState(page.url, selections);
-			query = state.query;
-			selections = state.selections;
-			showAllHits = state.expanded;
-			scheduleSearch();
-		});
-	});
-	function saveSearch() {
-		const url = writeSearchState(page.url, query, selections, showAllHits);
-		if (url.href !== page.url.href) void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
-	}
-	function editSearch() {
-		showAllHits = false;
-		saveSearch();
-		scheduleSearch();
-	}
-	function clearSearch() {
-		query = '';
-		editSearch();
-		searchInput?.focus();
-	}
-
 
 	const label = $derived(language === 'en' ? (kind === 'report' ? 'Search this report' : 'Search this collection') : (kind === 'report' ? 'Поиск в отчёте' : 'Поиск в коллекции'));
 	const placeholder = $derived(`${label}…`);
@@ -121,7 +63,7 @@
 	const scopedCollection = $derived(kind === 'collection' ? activeCollection : undefined);
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked));
 	const visibleCollectionSlugs = $derived(visibleSubset(reportSlugs, searchableReportSlugs(lock.unlocked, 'all')));
-	const reportFacetMap = $derived.by(() => buildReportFacetMap(reportSlugs, collectionSlug));
+	const reportFacetMap = $derived.by(() => buildReportFacetMap(activeCollection, reportSlugs));
 	// Cards remain available as entry points to password-protected reports.
 	const filteredCardSlugs = $derived(
 		kind === 'collection'
@@ -130,18 +72,18 @@
 	);
 	const filteredCollectionSlugs = $derived(visibleSubset(filteredCardSlugs, visibleCollectionSlugs));
 	const filterGroups = $derived.by<SearchFilterGroup[]>(() =>
-		kind === 'report' ? reportFilterGroups(hits, selections) : collectionFilterGroups()
+		kind === 'report' ? reportFilterGroups(search.hits, search.selections) : collectionFilterGroups()
 	);
-	const activeFilters = $derived(activeSearchFilters(filterGroups, selections));
-	const activeFilterCount = $derived(selectedFilterCount(selections));
+	const activeFilters = $derived(activeSearchFilters(filterGroups, search.selections));
+	const activeFilterCount = $derived(selectedFilterCount(search.selections));
 	const hasFilterGroups = $derived(
 		filterGroups.some(
 			(group) =>
 				group.options.length > 1 ||
-				group.options.some((option) => selections[group.id]?.includes(option.value))
+				group.options.some((option) => search.selections[group.id]?.includes(option.value))
 		)
 	);
-	const filteredHits = $derived(hits.filter(hitMatchesFilters));
+	const filteredHits = $derived(search.hits.filter(hitMatchesFilters));
 	const uniqueHits = $derived.by(() => {
 		const seen = new Set<string>();
 		return filteredHits
@@ -152,51 +94,35 @@
 				return true;
 			});
 	});
-	$effect(() => { onResults?.(loading ? [] : uniqueHits, loading); });
-	const visibleHits = $derived(showAllHits ? uniqueHits : uniqueHits.slice(0, 5));
+	$effect(() => { onResults?.(search.loading ? [] : uniqueHits, search.loading); });
+	const visibleHits = $derived(search.expanded ? uniqueHits : uniqueHits.slice(0, 5));
 	const resultsHeading = $derived.by(() => {
 		const suffix = '';
 		if (language === 'en') {
-			if (resultKind === 'prefix') return `Word-prefix matches ${suffix}`;
-			if (resultKind === 'correction') return `Possible matches ${suffix}`;
-			if (resultKind === 'semantic') return `Semantically related ${suffix}`;
+			if (search.matchKind === 'prefix') return `Word-prefix matches ${suffix}`;
+			if (search.matchKind === 'correction') return `Possible matches ${suffix}`;
+			if (search.matchKind === 'semantic') return `Semantically related ${suffix}`;
 			return 'Results';
 		}
-		if (resultKind === 'prefix') return `Совпадения по началу слова ${suffix}`;
-		if (resultKind === 'correction') return `Возможные совпадения ${suffix}`;
-		if (resultKind === 'semantic') return `Связанные по смыслу ${suffix}`;
+		if (search.matchKind === 'prefix') return `Совпадения по началу слова ${suffix}`;
+		if (search.matchKind === 'correction') return `Возможные совпадения ${suffix}`;
+		if (search.matchKind === 'semantic') return `Связанные по смыслу ${suffix}`;
 		return 'Результаты';
 	});
 	const statusText = $derived(
-		loading
+		search.loading
 			? language === 'en' ? 'Searching' : 'Ищем'
-			: searchError
+			: search.error
 				? language === 'en' ? 'Search is temporarily unavailable' : 'Поиск временно недоступен'
-				: query.trim().length >= 2
+				: hasSearchQuery(search.query)
 					? language === 'en' ? `${uniqueHits.length} matches` : `${uniqueHits.length} совпадений`
 					: ''
 	);
 
-	function normalize(value: string): string {
-		return value.toLocaleLowerCase('ru').replace(/ё/g, 'е');
-	}
-
-
-
-	function openFilters(event: MouseEvent) {
-		filterReturnFocus = event.currentTarget as HTMLButtonElement;
-		filterSheetOpen = true;
-	}
-
-	function closeFilters() {
-		filterSheetOpen = false;
-		queueMicrotask(() => filterReturnFocus?.focus());
-	}
-
 	function handleWindowKeydown(event: KeyboardEvent) {
-		if (filterSheetOpen && event.key === 'Escape') {
+		if (search.filterOpen && event.key === 'Escape') {
 			event.preventDefault();
-			closeFilters();
+			controller.closeFilters();
 		}
 	}
 
@@ -208,29 +134,6 @@
 		if (mod10 === 1) return 'совпадение';
 		if (mod10 >= 2 && mod10 <= 4) return 'совпадения';
 		return 'совпадений';
-	}
-
-	function buildReportFacetMap(slugs: string[], activeCollectionSlug: string) {
-		const map = new Map<string, Record<'authors' | 'places' | 'weapons', Set<string>>>();
-		for (const slug of slugs) {
-			const summary = getReportSummary(slug);
-			const haystack = normalize([summary?.title, summary?.subtitle, ...(summary?.tags ?? [])].filter(Boolean).join(' '));
-			const values = { authors: new Set<string>(), places: new Set<string>(), weapons: new Set<string>() };
-			for (const membership of collections.filter((collection) => collection.items.includes(slug))) {
-				for (const key of ['authors', 'places', 'weapons'] as const) {
-					const facetValues = membership.facets?.[key] ?? [];
-					for (const value of facetValues) {
-						if (
-							membership.slug !== activeCollectionSlug ||
-							facetValues.length === 1 ||
-							haystack.includes(normalize(value))
-						) values[key].add(value);
-					}
-				}
-			}
-			map.set(slug, values);
-		}
-		return map;
 	}
 
 	function facetOptions(key: 'authors' | 'places' | 'weapons') {
@@ -292,76 +195,24 @@
 
 	function reportMatchesCollectionFilters(slug: string): boolean {
 		if (kind !== 'collection') return true;
-		if (selections.sections.length > 0) {
+		if (search.selections.sections.length > 0) {
 			const matchesSection = scopedCollection?.sections?.some(
-				(section) => selections.sections.includes(section.title) && section.items.includes(slug)
+				(section) => search.selections.sections.includes(section.title) && section.items.includes(slug)
 			);
 			if (!matchesSection) return false;
 		}
 
 		const facets = reportFacetMap.get(slug);
 		for (const key of ['authors', 'places', 'weapons'] as const) {
-			const selected = selections[key] ?? [];
+			const selected = search.selections[key] ?? [];
 			if (selected.length > 0 && !selected.some((value) => facets?.[key].has(value))) return false;
 		}
 		return true;
 	}
 
 	function hitMatchesFilters(hit: SearchHit): boolean {
-		if (selections.zones.length > 0 && !selections.zones.includes(hit.zone)) return false;
+		if (search.selections.zones.length > 0 && !search.selections.zones.includes(hit.zone)) return false;
 		return reportMatchesCollectionFilters(hit.reportSlug);
-	}
-
-	function toggleFilter(groupId: string, value: string) {
-		showAllHits = false;
-		const current = selections[groupId] ?? [];
-		selections = {
-			...selections,
-			[groupId]: current.includes(value)
-				? current.filter((item) => item !== value)
-				: [...current, value]
-		};
-		showAllHits = false;
-		saveSearch();
-	}
-
-	function clearFilters() {
-		showAllHits = false;
-		selections = { zones: [], sections: [], authors: [], places: [], weapons: [] };
-		saveSearch();
-	}
-
-	function requestIndex() {
-		if (indexRequested) return;
-		indexRequested = true;
-		preloadSearchIndex();
-	}
-
-	function scheduleSearch() {
-		clearTimeout(timer);
-		searchError = false;
-		const normalized = query.trim();
-		if (normalized.length < 2) {
-			debouncedQuery = '';
-			hits = [];
-			showingFallback = false;
-			resultKind = 'empty';
-			resultScopeLabel = '';
-			correctedQuery = undefined;
-			loading = false;
-			return;
-		}
-		requestIndex();
-		loading = true;
-		timer = setTimeout(() => {
-			debouncedQuery = query.trim();
-		}, 180);
-	}
-
-	function retrySearch() {
-		searchError = false;
-		loading = true;
-		retryNonce += 1;
 	}
 
 	function buildSearchScopes(): SearchScope[] {
@@ -375,7 +226,7 @@
 				kind: 'report',
 				label: language === 'en' ? 'in this report' : 'в этом отчёте',
 				reportSlug,
-				zones: selections.zones.length ? selections.zones as SearchZone[] : undefined
+				zones: search.selections.zones.length ? search.selections.zones as SearchZone[] : undefined
 			}];
 			if (activeFilterCount > 0) return scopes;
 			const siblingSlugs = visibleCollectionSlugs.filter((slug) => slug !== reportSlug);
@@ -403,52 +254,9 @@
 		if (kind === 'collection') onCollectionFilterChange?.(filteredCardSlugs);
 	});
 
-	$effect(() => {
-		const q = debouncedQuery.trim();
-		retryNonce;
-		visibleArchiveSlugs;
-		filteredCollectionSlugs;
-		activeFilterCount;
-		if (q.length < 2) return;
-		let cancelled = false;
-		loading = true;
-		void searchScoped(q, buildSearchScopes(), 120)
-			.then((response) => {
-				if (!cancelled && q === debouncedQuery.trim()) {
-					hits = response.hits;
-					linkScope = response.resultScope;
-					showingFallback = response.fallback;
-					resultKind = response.matchKind;
-					resultScopeLabel = response.resultScope.label;
-					correctedQuery = response.correctedQuery;
-					searchError = false;
-					loading = false;
-					// Transcript-шард ещё грузился — повторим запрос по готовности.
-					if (response.pending) {
-						void whenSearchComplete().then(() => {
-							if (!cancelled && q === debouncedQuery.trim()) retryNonce += 1;
-						});
-					}
-				}
-			})
-			.catch(() => {
-				if (!cancelled && q === debouncedQuery.trim()) {
-					hits = [];
-					showingFallback = false;
-					resultKind = 'empty';
-					correctedQuery = undefined;
-					searchError = true;
-					loading = false;
-				}
-			});
-		return () => {
-			cancelled = true;
-		};
-	});
-
 	function resultHref(hit: SearchHit, seek = false): string {
 		const [pathname, hash] = hit.href.split('#');
-		const params = new URLSearchParams({ q: query.trim() });
+		const params = new URLSearchParams({ q: search.query.trim() });
 		if (collectionSlug) params.set('from', collectionSlug);
 		if (seek && hit.start != null) params.set('t', String(Math.ceil(hit.start)));
 		return `${base}${pathname}?${params.toString()}${hash ? `#${hash}` : ''}`;
@@ -476,60 +284,60 @@
 			type="search"
 			aria-label={label}
 			bind:this={searchInput}
-			bind:value={query}
+			bind:value={search.query}
 			onkeydown={(event) => { if (event.key === 'Enter' && visibleHits[0]) { event.preventDefault(); const hit = visibleHits[0]; if (kind === 'report' && hit.reportSlug === reportSlug && onHit) onHit(hit, false, resultHref(hit)); else void goto(resultHref(hit)); } }}
-			onfocus={requestIndex}
-			oninput={editSearch}
+			onfocus={controller.preload}
+			oninput={controller.edit}
 			{placeholder}
 			autocomplete="off"
 			spellcheck="false"
 		/>
-		{#if loading}<span class="loading label" aria-hidden="true">{language === 'en' ? 'searching' : 'ищем'}</span>{/if}
+		{#if search.loading}<span class="loading label" aria-hidden="true">{language === 'en' ? 'searching' : 'ищем'}</span>{/if}
 	</label>
 	<p class="sr-only" role="status" aria-live="polite">{statusText}</p>
 
-	{#if !showingFallback && (activeFilters.length > 0 || (hasFilterGroups && query.trim().length < 2))}
+	{#if !search.fallback && (activeFilters.length > 0 || (hasFilterGroups && !hasSearchQuery(search.query)))}
 		<div class="filter-controls">
-			{#if hasFilterGroups && query.trim().length < 2}
+			{#if hasFilterGroups && !hasSearchQuery(search.query)}
 				<button
 					type="button"
 					class="filter-trigger"
-					aria-expanded={filterSheetOpen}
-					onclick={openFilters}
+					aria-expanded={search.filterOpen}
+					onclick={controller.openFilters}
 				>
 					<FunnelSimple size={18} weight="regular" aria-hidden="true" />
 					<span>{language === 'en' ? 'Filters' : 'Фильтры'}</span>
 					{#if activeFilterCount > 0}<span class="filter-badge mono">{activeFilterCount}</span>{/if}
 				</button>
 			{/if}
-			<SearchFilterChips filters={activeFilters} onRemove={toggleFilter} {language} />
+			<SearchFilterChips filters={activeFilters} onRemove={controller.toggleFilter} {language} />
 		</div>
 	{/if}
 
 	<SearchFilterDrawer
-		open={filterSheetOpen && hasFilterGroups}
+		open={search.filterOpen && hasFilterGroups}
 		groups={filterGroups}
-		{selections}
-		onToggle={toggleFilter}
-		onClear={clearFilters}
-		onClose={closeFilters}
+		selections={search.selections}
+		onToggle={controller.toggleFilter}
+		onClear={controller.clearFilters}
+		onClose={controller.closeFilters}
 		{language}
 	/>
 
-	{#if query.trim().length >= 2}
+	{#if hasSearchQuery(search.query)}
 		<div class="results">
 			<div class="results-layout">
 				<div class="results-main">
-					<div class="results-head">
+					<div class="results-head search-results-heading">
 						<p>{resultsHeading}</p>
 						<div class="results-tools">
-							{#if !loading}<span class="label">{visibleHits.length} {language === 'en' ? 'of' : 'из'} {uniqueHits.length}</span>{/if}
-							{#if hasFilterGroups && !showingFallback}
+							{#if !search.loading}<span class="label">{visibleHits.length} {language === 'en' ? 'of' : 'из'} {uniqueHits.length}</span>{/if}
+							{#if hasFilterGroups && !search.fallback}
 								<button
 									type="button"
 									class="filter-trigger filter-trigger--compact"
-									aria-expanded={filterSheetOpen}
-									onclick={openFilters}
+									aria-expanded={search.filterOpen}
+									onclick={controller.openFilters}
 								>
 									<FunnelSimple size={16} weight="regular" aria-hidden="true" />
 									<span>{language === 'en' ? 'Filters' : 'Фильтры'}</span>
@@ -538,30 +346,30 @@
 							{/if}
 						</div>
 					</div>
-					{#if showingFallback}
+					{#if search.fallback}
 						<p class="scope-note">
 							{language === 'en'
-								? `${kind === 'report' ? 'This report' : 'This collection'} has no exact or word-prefix matches. Showing results ${resultScopeLabel}.`
-								: `${kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений и совпадений по началу слова нет. Показываем результаты ${resultScopeLabel}.`}
+								? `${kind === 'report' ? 'This report' : 'This collection'} has no exact or word-prefix matches. Showing results ${search.scopeLabel}.`
+								: `${kind === 'report' ? 'В этом отчёте' : 'В этой коллекции'} точных совпадений и совпадений по началу слова нет. Показываем результаты ${search.scopeLabel}.`}
 						</p>
 					{/if}
-			{#if correctedQuery && !loading && !searchError}
-				<p class="scope-note">{language === 'en' ? `Did you mean “${correctedQuery}”?` : `Возможно, вы имели в виду «${correctedQuery}».`}</p>
+			{#if search.correctedQuery && !search.loading && !search.error}
+				<p class="scope-note">{language === 'en' ? `Did you mean “${search.correctedQuery}”?` : `Возможно, вы имели в виду «${search.correctedQuery}».`}</p>
 			{/if}
-			{#if searchError}
+			{#if search.error}
 				<div class="search-error" role="alert">
 					<p>{language === 'en' ? 'Search is temporarily unavailable.' : 'Поиск временно недоступен.'}</p>
-					<button type="button" onclick={retrySearch}>{language === 'en' ? 'Retry' : 'Повторить'}</button>
+					<button type="button" onclick={controller.retry}>{language === 'en' ? 'Retry' : 'Повторить'}</button>
 				</div>
-			{:else if !loading && visibleHits.length === 0}
-				<div class="empty"><p>{language === 'en' ? 'Nothing found. Try a shorter query or a different term.' : 'Ничего не найдено. Попробуйте короче или другое название.'}</p><button type="button" onclick={clearSearch}>{language === 'en' ? 'Clear search' : 'Очистить поиск'}</button>{#if activeFilterCount > 0}<button type="button" onclick={clearFilters}>{language === 'en' ? 'Reset filters' : 'Сбросить фильтры'}</button>{/if}</div>
+			{:else if !search.loading && visibleHits.length === 0}
+				<div class="empty"><p>{language === 'en' ? 'Nothing found. Try a shorter query or a different term.' : 'Ничего не найдено. Попробуйте короче или другое название.'}</p><button type="button" onclick={clearSearch}>{language === 'en' ? 'Clear search' : 'Очистить поиск'}</button>{#if activeFilterCount > 0}<button type="button" onclick={controller.clearFilters}>{language === 'en' ? 'Reset filters' : 'Сбросить фильтры'}</button>{/if}</div>
 			{:else}
 				<ol>
 					{#each visibleHits as hit (uniqueHitKey(hit))}
 						<SearchResultItem
 							{hit}
-							{query}
-							scope={linkScope}
+							query={search.query}
+							scope={search.scope}
 							layout={kind === 'report' ? 'report' : 'scoped'}
 							showReportTitle={kind !== 'report' || hit.reportSlug !== reportSlug}
 							hrefFor={resultHref}
@@ -574,11 +382,11 @@
 					<button
 						type="button"
 						class="show-all"
-						class:expanded={showAllHits}
-						aria-expanded={showAllHits}
-						onclick={() => { showAllHits = !showAllHits; saveSearch(); }}
+						class:expanded={search.expanded}
+						aria-expanded={search.expanded}
+						onclick={() => { search.expanded = !search.expanded; controller.save(); }}
 					>
-						<span>{language === 'en' ? (showAllHits ? 'Collapse to 5 matches' : `Show all ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`) : (showAllHits ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`)}</span>
+						<span>{language === 'en' ? (search.expanded ? 'Collapse to 5 matches' : `Show all ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`) : (search.expanded ? 'Свернуть до 5 совпадений' : `Показать все ${uniqueHits.length} ${matchCountLabel(uniqueHits.length)}`)}</span>
 						<CaretDown size={16} weight="bold" aria-hidden="true" />
 					</button>
 				{/if}

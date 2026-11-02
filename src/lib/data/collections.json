@@ -70,7 +70,15 @@
 		"description": "Разговоры и разборы о том, как применять языковые модели и спортивную аналитику в HEMA, не подменяя данными тренерскую модель и проверку гипотез.",
 		"items": [
 			"ii-dlya-analiza-hema-boev"
-		]
+		],
+		"itemFacets": {
+			"ii-dlya-analiza-hema-boev": {
+				"authors": [
+					"Пётр Васильев",
+					"Александр Овчинников"
+				]
+			}
+		}
 	},
 	{
 		"slug": "hema-english",
@@ -89,7 +97,8 @@
 		"facets": {
 			"authors": [
 				"Tokarev Coach",
-				"Jacob Goodin"
+				"Jacob Goodin",
+				"E3 Rehab"
 			]
 		},
 		"subtitle": "Научные основы, силовой и аэробный тренинг, адаптации, специальные популяции и спортивная психология.",
@@ -194,7 +203,158 @@
 					"motivatsiya-vnimanie-fokus-v-sporte"
 				]
 			}
-		]
+		],
+		"itemFacets": {
+			"tokarev-silovaya-ofp-2": {
+				"authors": [
+					"Tokarev Coach"
+				]
+			},
+			"pliometrika-hema": {
+				"authors": []
+			},
+			"silovaya-konditsiya-hema": {
+				"authors": []
+			},
+			"silovaya-plan-hema": {
+				"authors": []
+			},
+			"printsipy-silovoy-konditsionnoy-podgotovki": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"sem-dvigatelnyh-patternov": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"ukreplenie-stopy-i-golenostopa": {
+				"authors": [
+					"E3 Rehab"
+				]
+			},
+			"struktura-i-funktsiya-myshtsy": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"neyromyshechnaya-sistema-motornye-edinitsy": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"biomehanika-i-myshechnye-rychagi": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"sila-moshchnost-i-rabota-v-biomehanike": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"tri-rezhima-myshechnogo-deystviya": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"faktory-myshechnoy-sily-i-moshchnosti": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"bioenergetika-trenirovki-tri-energosistemy": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"laktatnyi-porog-bioenergetika": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"metabolicheskaya-spetsifichnost-trenirovki": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"istoschenie-i-vosstanovlenie-substratov": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"gormon-myshechnye-vzaimodeystviya": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"osnovnye-anabolicheskie-gormony": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"neyronnye-adaptatsii-k-anaerobnoy-trenirovke": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"myshechnye-adaptatsii-anaerobnaya-trenirovka": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"kosti-suhozhiliya-gormony-serdtse-anaerobnaya-trenirovka": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"ostrye-reaktsii-aerobnaya-nagruzka": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"dolgovremennye-adaptatsii-aerobnaya-trenirovka": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"vysota-krovyanoi-doping-peretrenirovannost": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"deti-ne-malenkie-vzroslye": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"trenirovka-muzhchin-i-zhenshchin": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"silovaya-trenirovka-pozhilyh": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"silovaya-trenirovka-detey": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"vozbuzhdenie-trevoga-stress-v-sporte": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			},
+			"motivatsiya-vnimanie-fokus-v-sporte": {
+				"authors": [
+					"Jacob Goodin"
+				]
+			}
+		}
 	},
 	{
 		"slug": "almaty-2026",
@@ -258,7 +418,74 @@
 					"rapira-almaty-2026"
 				]
 			}
-		]
+		],
+		"itemFacets": {
+			"sablya-a-2": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-a-3": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-a-5": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-a-7": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-a-9": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-vvodnaya": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-4": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-6": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-8": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-10": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"sablya-12": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"longsword-a": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"rapira-almaty-2026": {
+				"weapons": [
+					"Рапира"
+				]
+			}
+		}
 	},
 	{
 		"slug": "lager-vladivostok",
@@ -519,7 +746,64 @@
 					"rabota-paltsev-pri-prostoy-atake"
 				]
 			}
-		]
+		],
+		"itemFacets": {
+			"protivnik-fehtuet-nepravilno": {
+				"weapons": []
+			},
+			"optimizatsiya-parad-ripost-hema": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"hema-prednamerennye-ekspromtnye": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"obuchenie-situatsiya-subtaktika": {
+				"weapons": []
+			},
+			"subtaktika-teh-realizacii": {
+				"weapons": []
+			},
+			"2026-07-06-19-26-42": {
+				"weapons": []
+			},
+			"kompresiya-taktiki-lektsiya": {
+				"weapons": []
+			},
+			"tsena-adaptatsii-tehnicheskogo-priema": {
+				"weapons": []
+			},
+			"kontseptsiya-monitoringa": {
+				"weapons": []
+			},
+			"fehtovat-dolgo-ne-travmirovatsya": {
+				"weapons": []
+			},
+			"retention-club": {
+				"weapons": []
+			},
+			"hema-reflections": {
+				"weapons": []
+			},
+			"tenouti-i-tyakin-sibori": {
+				"weapons": [
+					"Катана"
+				]
+			},
+			"silovye-porezy-katanoy": {
+				"weapons": [
+					"Катана"
+				]
+			},
+			"rabota-paltsev-pri-prostoy-atake": {
+				"weapons": [
+					"Длинный меч"
+				]
+			}
+		}
 	},
 	{
 		"slug": "mech-i-bakler-noname",
@@ -633,7 +917,27 @@
 					"fedotikov-mironov"
 				]
 			}
-		]
+		],
+		"itemFacets": {
+			"prostaya-ataka-mikrotsikl-1-dlinnyy-mech": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"ukoly-mezotsikl-1-dlinnyy-mech": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"mech-i-bakler-mikrotsikl-1-osnovy": {
+				"weapons": [
+					"Меч и баклер"
+				]
+			},
+			"fedotikov-mironov": {
+				"weapons": []
+			}
+		}
 	},
 	{
 		"slug": "noname",
@@ -725,7 +1029,139 @@
 					"avstriyskaya-sablya-trenirovka-6-batmany-vybor"
 				]
 			}
-		]
+		],
+		"itemFacets": {
+			"fizpodgotovka-dlya-fekhtovalshchika-turin": {
+				"authors": [
+					"Турин"
+				],
+				"weapons": []
+			},
+			"pitanie-i-ves-fekhtovalshchika-turin": {
+				"authors": [
+					"Турин"
+				],
+				"weapons": []
+			},
+			"kinezio-trenirovka-1-razminka-koordinatsiya": {
+				"authors": [
+					"Евген"
+				],
+				"weapons": []
+			},
+			"kinezio-trenirovka-2-stopa-golenostop": {
+				"authors": [
+					"Евген"
+				],
+				"weapons": []
+			},
+			"kinezio-trenirovka-3-tazobedrennyy-sustav": {
+				"authors": [
+					"Евген"
+				],
+				"weapons": []
+			},
+			"kinezio-trenirovka-4-kisti-paltsy-lokti": {
+				"authors": [
+					"Евген"
+				],
+				"weapons": []
+			},
+			"kinezio-trenirovka-5-plechevoy-poyas": {
+				"authors": [
+					"Евген"
+				],
+				"weapons": []
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-1": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-2-utro": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-3": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-4": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-poteryannaya": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"soedinenie-dlinnyi-mech-lager-noname-7": {
+				"authors": [
+					"Пётр Васильев"
+				],
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"avstriyskaya-sablya-2": {
+				"authors": [
+					"Александр Овчинников"
+				],
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"avstriyskaya-sablya-trenirovka-3": {
+				"authors": [
+					"Александр Овчинников"
+				],
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"avstriyskaya-sablya-obratnoe-lezvie": {
+				"authors": [
+					"Александр Овчинников"
+				],
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"avstriyskaya-sablya-trenirovka-5-povtorenie": {
+				"authors": [
+					"Александр Овчинников"
+				],
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"avstriyskaya-sablya-trenirovka-6-batmany-vybor": {
+				"authors": [
+					"Александр Овчинников"
+				],
+				"weapons": [
+					"Сабля"
+				]
+			}
+		}
 	},
 	{
 		"slug": "sobraniya-core-noname",
@@ -783,8 +1219,13 @@
 		"title": "Пётр Васильев",
 		"hema": true,
 		"facets": {
-			"authors": ["Пётр Васильев"],
-			"weapons": ["Длинный меч", "Меч и баклер"]
+			"authors": [
+				"Пётр Васильев"
+			],
+			"weapons": [
+				"Длинный меч",
+				"Меч и баклер"
+			]
 		},
 		"subtitle": "Семинары, тренировки и беседы Петра Васильева о фехтовании.",
 		"description": "Практика длинного меча, работа с мечом и баклером, тренировки во Владивостоке и разговор об анализе боёв.",
@@ -810,7 +1251,9 @@
 				{
 					"id": "report:tsentralnaya-pozitsiya-dlinnyy-mech",
 					"title": "Семинар «Центральная позиция на длинном мече»",
-					"items": ["tsentralnaya-pozitsiya-dlinnyy-mech"],
+					"items": [
+						"tsentralnaya-pozitsiya-dlinnyy-mech"
+					],
 					"password": "postabrevetop",
 					"passwordHint": "Для оплаты доступа напишите Петру Васильеву:",
 					"passwordContact": {
@@ -824,7 +1267,9 @@
 			{
 				"title": "Отдельный семинар",
 				"subtitle": "Центральная позиция на длинном мече.",
-				"items": ["tsentralnaya-pozitsiya-dlinnyy-mech"]
+				"items": [
+					"tsentralnaya-pozitsiya-dlinnyy-mech"
+				]
 			},
 			{
 				"title": "Лагерь Владивосток: группа А",
@@ -859,9 +1304,84 @@
 			},
 			{
 				"title": "Разговор об ИИ и фехтовании",
-				"items": ["ii-dlya-analiza-hema-boev"]
+				"items": [
+					"ii-dlya-analiza-hema-boev"
+				]
 			}
-		]
+		],
+		"itemFacets": {
+			"tsentralnaya-pozitsiya-dlinnyy-mech": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"gruppa-a-1-vvodnaya": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"vid-20260708-200742": {
+				"weapons": []
+			},
+			"pozitsionno-oboronitelnyi-tip-osnovnaya-chast": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"manevrovo-atakuyushchiy-stil": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"manevrovo-atakuyushchiy-stil-4-2": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"manevrovo-oboronitelnyi-tip": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"ataka-prosche-ne-byvaet-udar": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"gruppa-b-2-ataki-fendenti-na-vypade": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"gruppa-b-3-vybor-zony-i-distantsii-v-atake": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"gruppa-b-4-ataki-na-fone-manevrirovaniya": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"gruppa-b-5-kakari-keiko": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"ukol-korol-udarov-mech-i-bakler-stambul": {
+				"weapons": [
+					"Меч и баклер"
+				]
+			},
+			"clean-execution-cut-and-avoid-being-hit-stambul": {
+				"weapons": [
+					"Длинный меч"
+				]
+			},
+			"ii-dlya-analiza-hema-boev": {
+				"weapons": []
+			}
+		}
 	},
 	{
 		"slug": "seminary-petra-vasileva-stambul",
@@ -885,7 +1405,19 @@
 		"items": [
 			"ukol-korol-udarov-mech-i-bakler-stambul",
 			"clean-execution-cut-and-avoid-being-hit-stambul"
-		]
+		],
+		"itemFacets": {
+			"ukol-korol-udarov-mech-i-bakler-stambul": {
+				"weapons": [
+					"Sword and Buckler"
+				]
+			},
+			"clean-execution-cut-and-avoid-being-hit-stambul": {
+				"weapons": [
+					"Longsword"
+				]
+			}
+		}
 	},
 	{
 		"slug": "seminary-kashitsina",
@@ -910,7 +1442,9 @@
 				{
 					"id": "report:sablya-oruzhie-v-liniyu-kashitsin",
 					"title": "Семинар «Сабля: оружие в линию»",
-					"items": ["sablya-oruzhie-v-liniyu-kashitsin"],
+					"items": [
+						"sablya-oruzhie-v-liniyu-kashitsin"
+					],
 					"password": "pointinline",
 					"passwordHint": "За паролем обратитесь к Ивану Кашицыну:",
 					"passwordContact": {
@@ -921,7 +1455,9 @@
 				{
 					"id": "report:rapira-rabota-v-soedinenii-kashitsin",
 					"title": "Семинар «Рапира: работа в соединении»",
-					"items": ["rapira-rabota-v-soedinenii-kashitsin"],
+					"items": [
+						"rapira-rabota-v-soedinenii-kashitsin"
+					],
 					"password": "pointinline",
 					"passwordHint": "За паролем обратитесь к Ивану Кашицыну:",
 					"passwordContact": {
@@ -930,6 +1466,18 @@
 					}
 				}
 			]
+		},
+		"itemFacets": {
+			"sablya-oruzhie-v-liniyu-kashitsin": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"rapira-rabota-v-soedinenii-kashitsin": {
+				"weapons": [
+					"Рапира"
+				]
+			}
 		}
 	},
 	{
@@ -950,7 +1498,25 @@
 			"podgotovka-ataki-na-sable-korotovskih",
 			"rapira-protiv-vstrechnogo-ukola-korotovskih",
 			"fehtovanie-s-prioritetom-v-atake-korotovskih"
-		]
+		],
+		"itemFacets": {
+			"podgotovka-ataki-na-sable-korotovskih": {
+				"weapons": [
+					"Сабля"
+				]
+			},
+			"rapira-protiv-vstrechnogo-ukola-korotovskih": {
+				"weapons": [
+					"Рапира"
+				]
+			},
+			"fehtovanie-s-prioritetom-v-atake-korotovskih": {
+				"weapons": [
+					"Сабля",
+					"Рапира"
+				]
+			}
+		}
 	},
 	{
 		"slug": "noname-sparring",

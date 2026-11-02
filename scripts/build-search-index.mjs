@@ -29,8 +29,9 @@ const outChapterTitles = join(searchDir, 'chapter-titles.json');
 const outMeta = join(root, 'src/lib/data/report-meta.json');
 
 import { stemRu } from '../src/lib/stem-ru.js';
+import { INDEX_VERSION, searchIndexOptions as miniSearchOptions } from '../src/lib/search-index-schema.js';
+import { getReportMaterials } from '../src/lib/report-material-data.js';
 
-const INDEX_VERSION = 5;
 // Deterministic rollback/ablation; no network or model runs during site build.
 const useEnrichment = process.env.SEARCH_ENRICHMENT !== '0';
 // Opt-in experiments: combined ranking regressed an archive holdout question.
@@ -76,11 +77,6 @@ function storedText(text) {
 	const cut = text.slice(0, STORED_TEXT_MAX_CHARS);
 	const lastSpace = cut.lastIndexOf(' ');
 	return (lastSpace > STORED_TEXT_MAX_CHARS * 0.6 ? cut.slice(0, lastSpace) : cut) + '…';
-}
-
-function processTerm(term) {
-	const token = norm(term).replace(/[^\p{L}\p{N}]/gu, '');
-	return token.length >= 2 ? stemRu(token) : null;
 }
 
 function addDoc(doc) {
@@ -248,7 +244,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 	for (const tab of report.focus_tabs ?? []) {
 		for (const item of tab.items ?? []) {
 			addDoc({
-				kind: 'material', ...common, start: item.start,
+				kind: 'material', materialKind: 'focus', ...common, start: item.start,
 				title: `${tab.title}: ${item.title}`,
 				text: joined([item.summary, ...(item.theses ?? [])]),
 				field_title: `${tab.title} ${item.title}`,
@@ -258,20 +254,12 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		}
 	}
 
-	const materials = {
-		notes: report.materials?.notes ?? report.seminar_notes ?? [],
-		exercises: report.materials?.exercises ?? report.seminar_exercises ?? [],
-		glossary: report.materials?.glossary ?? report.glossary ?? [],
-		visuals: report.materials?.visuals ?? [
-			report.infographic && { kind: 'infographic', ...report.infographic },
-			report.exercise_memo && { kind: 'exercise-memo', ...report.exercise_memo }
-		].filter(Boolean)
-	};
+	const materials = getReportMaterials(report);
 
 	for (const section of materials.exercises) {
 		for (const item of section.items ?? []) {
 			addDoc({
-				kind: 'material', ...common, start: item.start,
+				kind: 'material', materialKind: 'exercise', ...common, start: item.start,
 				title: `Упражнения: ${section.title}`, text: item.text,
 				field_title: `Упражнения ${section.title}`, field_body: item.text,
 				field_tags: 'дополнительные материалы упражнение практика'
@@ -281,7 +269,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 
 	for (const section of materials.notes) {
 		addDoc({
-			kind: 'material', ...common,
+			kind: 'material', materialKind: 'note', ...common,
 			title: `Конспект: ${section.title}`, text: (section.items ?? []).join(' '),
 			field_title: `Конспект ${section.title}`, field_body: (section.items ?? []).join(' '),
 			field_tags: 'дополнительные материалы конспект'
@@ -290,7 +278,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 
 	for (const item of materials.glossary) {
 		addDoc({
-			kind: 'material', ...common,
+			kind: 'material', materialKind: 'glossary', ...common,
 			title: `Глоссарий: ${item.term}`, text: item.definition,
 			field_title: `Глоссарий ${item.term}`, field_body: item.definition,
 			field_tags: 'дополнительные материалы глоссарий термин'
@@ -300,7 +288,7 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 	for (const asset of materials.visuals) {
 		const title = asset.label ?? (asset.kind === 'exercise-memo' ? 'Памятка по упражнениям' : 'Инфографика');
 		addDoc({
-			kind: 'material', ...common,
+			kind: 'material', materialKind: 'visual', ...common,
 			title, text: asset.alt ?? title,
 			field_title: title, field_body: asset.alt ?? '',
 			field_tags: 'дополнительные материалы инфографика памятка'
@@ -319,13 +307,6 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 }
 
 enrichedChapters = docs.filter(doc => doc.field_context).length;
-const miniSearchOptions = {
-	idField: 'id',
-	fields: ['field_title', 'field_body', 'field_tags', 'field_context', 'field_questions'],
-	// zone/href/reportTitle и заголовки глав вычисляются на клиенте — не храним.
-	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags', 'signalTerms'],
-	processTerm
-};
 
 // Ядро (отчёты/главы/тезисы/материалы) мало и парсится мгновенно;
 // transcript-окна — ~90% объёма, уезжают в отдельный фоновый шард.

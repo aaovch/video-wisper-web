@@ -53,9 +53,11 @@ export interface Collection {
 	/** Сохраняет старый URL коллекции, но убирает её из каталога и навигации по отчётам. */
 	catalogHidden?: boolean;
 	/** Объединяет самостоятельные коллекции в общий навигационный блок без смешивания доступа. */
-	catalogGroup?: 'noname';
+	catalogGroup?: string;
 	/** Автор, место и оружие для фильтров главной страницы. */
 	facets?: CollectionFacets;
+	/** Explicit per-report overrides; omitted fields inherit the collection facets. */
+	itemFacets?: Record<string, CollectionFacets>;
 	/** Короткая строка для карточки на главной и meta description. */
 	subtitle: string;
 	/** Развёрнутое описание на странице коллекции (опционально). */

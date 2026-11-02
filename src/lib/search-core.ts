@@ -9,9 +9,11 @@ import type {
 	SearchZone
 } from '$lib/search-types';
 import { stemRu } from '$lib/stem-ru';
+import { STOP_WORDS, normalizeSearchText as norm, searchWords as queryWords, hasSearchQuery } from './search-tokenizer.js';
+import { searchIndexOptions as miniSearchOptions } from './search-index-schema.js';
 import { getReportSummary } from '$lib/data/report-meta';
 import { exerciseAnchor } from '$lib/report-materials';
-import { techniqueAliases, normalizeTechnique } from '$lib/search-techniques';
+import { techniqueAliases, normalizeTechnique, requiredSourcePhrases, matchesSourcePhrases } from '$lib/search-techniques';
 import { orderSearchPassages } from '$lib/search-passage-order';
 import { weaponMatchMultiplier } from '$lib/search-weapon-match';
 
@@ -33,6 +35,7 @@ interface IndexedDoc {
 	kind: SearchHitKind;
 	/** Не хранится в индексе v3 — вычисляется из kind (фолбэк для старых фикстур). */
 	zone?: SearchZone;
+	materialKind?: 'exercise' | 'note' | 'glossary' | 'visual' | 'focus';
 	reportSlug: string;
 	/** Не хранится в индексе v3 — берётся из report-meta. */
 	reportTitle?: string;
@@ -89,7 +92,7 @@ function docHref(doc: IndexedDoc): string {
 		case 'overview':
 			return `${baseHref}#overview-title`;
 		case 'material':
-			return doc.title?.startsWith('Упражнения:') && doc.start !== undefined
+			return doc.materialKind === 'exercise' && doc.start !== undefined
 				? `${baseHref}#${exerciseAnchor(doc.start)}`
 				: `${baseHref}#additional-title`;
 		default:
@@ -104,26 +107,7 @@ interface ParsedQuery {
 	stems: string[];
 }
 
-const STOP_WORDS = new Set([
-	'а', 'без', 'бы', 'был', 'была', 'были', 'было', 'быть', 'в', 'вам', 'вас', 'весь', 'во',
-	'вот', 'все', 'всего', 'вы', 'где', 'да', 'для', 'до', 'его', 'ее', 'если', 'есть', 'еще',
-	'же', 'за', 'и', 'из', 'или', 'им', 'их', 'к', 'как', 'какая', 'какие', 'какой', 'когда',
-	'который', 'кто', 'ли', 'мне', 'можно', 'мы', 'на', 'над', 'надо', 'наш', 'не', 'него',
-	'нее', 'нет', 'ни', 'но', 'ну', 'о', 'об', 'один', 'он', 'она', 'они', 'оно', 'от', 'по',
-	'под', 'при', 'про', 'против', 'с', 'со', 'так', 'такой', 'там', 'то', 'того', 'тоже', 'только', 'у',
-	'уже', 'что', 'чтобы', 'это', 'этот', 'я'
-]);
 const QUESTION_STEMS = new Set(['почему', 'зачем'].map(stemRu));
-
-function norm(value: string): string {
-	return value.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim();
-}
-
-function queryWords(query: string): string[] {
-	return norm(query)
-		.split(/[^\p{L}\p{N}]+/u)
-		.filter((word) => word.length >= 2);
-}
 
 function parseQuery(query: string): ParsedQuery {
 	const raw = norm(query);
@@ -137,20 +121,6 @@ function parseQuery(query: string): ParsedQuery {
 		stems: [...new Set(effectiveWords.map((word) => stemRu(word)))]
 	};
 }
-
-function processTerm(term: string): string | null {
-	const token = norm(term).replace(/[^\p{L}\p{N}]/gu, '');
-	if (token.length < 2 || STOP_WORDS.has(token)) return null;
-	return stemRu(token);
-}
-
-const miniSearchOptions = {
-	idField: 'id',
-	fields: ['field_title', 'field_body', 'field_tags', 'field_context', 'field_questions'],
-	// Должно совпадать со scripts/build-search-index.mjs (индекс v5).
-	storeFields: ['kind', 'reportSlug', 'chapterIndex', 'start', 'title', 'text', 'reasonTags', 'signalTerms'],
-	processTerm
-};
 
 /**
  * Индекс порезан на два шарда (см. scripts/build-search-index.mjs):
@@ -254,7 +224,6 @@ function suggestShards(query: string, options: SearchOptions): string | undefine
 	].sort((a, b) => b.score - a.score);
 	return suggestions[0]?.suggestion;
 }
-
 
 function matchReason(
 	result: SearchResult,
@@ -397,6 +366,7 @@ function signalMultiplier(result: SearchResult, parsed: ParsedQuery, indexedCove
 }
 
 const adaptiveFuzzy: SearchOptions['fuzzy'] = (term) => {
+	if (/^\d+$/.test(term)) return false;
 	if (term.length >= 8) return 0.2;
 	if (term.length >= 6) return 0.16;
 	if (term.length >= 5) return 0.12;
@@ -405,7 +375,7 @@ const adaptiveFuzzy: SearchOptions['fuzzy'] = (term) => {
 };
 
 const adaptivePrefix: SearchOptions['prefix'] = (term, index, terms) =>
-	index === terms.length - 1 && term.length >= 3;
+	index === terms.length - 1 && term.length >= 3 && !/^\d+$/.test(term);
 
 function mergeResults(target: Map<string, SearchResult>, results: SearchResult[], weight: number) {
 	for (const result of results) {
@@ -475,14 +445,11 @@ async function executeTieredSearch(
 	insideSingleReport: boolean
 ): Promise<TieredSearchResult> {
 	const parsed = parseQuery(query);
-	if (parsed.raw.length < 2 || !parsed.meaningfulWords.length) return { hits: [], matchKind: 'empty' };
+	if (!hasSearchQuery(parsed.raw) || !parsed.meaningfulWords.length) return { hits: [], matchKind: 'empty' };
 	await loadCore();
 	void loadTranscripts();
 	const directQuery = parsed.meaningfulWords.join(' ');
-	// This position name is a single concept, not independent mentions of
-	// a long sword and a point elsewhere in an aggregated report.
-	const positionPhrase = queryWords('длинное острие').map(stemRu).join(' ');
-	const requiresPosition = ` ${queryWords(query).map(stemRu).join(' ')} `.includes(` ${positionPhrase} `);
+	const requiredPhrases = requiredSourcePhrases(query);
 	const requiredNumbers = import.meta.env.VITE_SEARCH_NUMERIC_EVIDENCE !== '0'
 		? parsed.stems.filter(term => /^\d+$/.test(term)) : [];
 	// Generated metadata helps recall only. It must never turn a synthetic
@@ -490,8 +457,7 @@ async function executeTieredSearch(
 	const baseOptions = { fields: ['field_title', 'field_body', 'field_tags'],
 		boost: { field_title: 4.2, field_tags: 1.55, field_context: 0.65, field_questions: 0.8 },
 		filter: (result: SearchResult) => (!filter || filter(result)) &&
-			(!requiresPosition || [docTitle(result as unknown as IndexedDoc), (result as unknown as IndexedDoc).text ?? '']
-				.some(text => ` ${queryWords(text).map(stemRu).join(' ')} `.includes(` ${positionPhrase} `))) &&
+			matchesSourcePhrases([docTitle(result as unknown as IndexedDoc), (result as unknown as IndexedDoc).text ?? ''], requiredPhrases) &&
 			requiredNumbers.every(term => result.terms.includes(term)) };
 	const named = new Map<string, SearchResult>();
 	if (import.meta.env.VITE_SEARCH_TECHNIQUE_ALIASES !== '0') {

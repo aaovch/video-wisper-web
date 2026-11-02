@@ -30,6 +30,27 @@ function serve(overrides: Partial<Record<string, () => Promise<Response>>> = {})
 }
 
 describe('search fault injection and metamorphic contracts', () => {
+	it('preserves single-digit identifiers and never corrects or prefixes numbers', async () => {
+		serve({ 'index-core.json': async () => new Response(shard('chapter', 'Тренировка 1: правила соревнования.')),
+			'index-transcripts.json': async () => new Response(shard('transcript', 'Тренировка 19: захват клинка.')) });
+		await whenSearchComplete();
+		for (const query of ['тренировка 9', 'тренировка 0', 'правила 9', 'правила турнира 9'])
+			expect((await searchScoped(query, [scope])).hits, query).toEqual([]);
+		for (const query of ['тренировка 1', 'тренирвка 1', '1']) {
+			const response = await searchScoped(query, [scope]);
+			expect(response.hits.length, query).toBeGreaterThan(0);
+			expect(response.hits.every(hit => hit.snippet.includes('Тренировка 1:')), query).toBe(true);
+		}
+	});
+	it('links exercises by their indexed type even after a title is translated', async () => {
+		const mini = new MiniSearch({ fields: ['field_title', 'field_body', 'field_tags'],
+			storeFields: ['kind', 'materialKind', 'reportSlug', 'start', 'text', 'title'] });
+		mini.add({ id: 'exercise', kind: 'material', materialKind: 'exercise', reportSlug: 'fixture', start: 12.5,
+			title: 'Practice: footwork', text: 'Footwork', field_title: 'Footwork', field_body: 'Footwork', field_tags: '' });
+		serve({ 'index-core.json': async () => new Response(JSON.stringify(mini)) });
+		const response = await searchScoped('footwork', [scope]);
+		expect(response.hits[0]?.href).toBe('/reports/fixture/#exercise-1250');
+	});
 	it('requires literal numbers across exact, prefix, correction and semantic results', async () => {
 		serve({ 'index-core.json': async () => new Response(shard('chapter', 'Турнир 2026: правила соревнования и захват клинка.')),
 			'index-transcripts.json': async () => new Response(shard('transcript', 'Занятие 2025 по правилам турнира.')) });
