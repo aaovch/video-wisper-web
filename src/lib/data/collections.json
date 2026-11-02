@@ -896,12 +896,14 @@
 				"Кашицин"
 			],
 			"weapons": [
-				"Сабля"
+				"Сабля",
+				"Рапира"
 			]
 		},
-		"subtitle": "Практические семинары по сабельному фехтованию.",
+		"subtitle": "Практические семинары по сабельному и рапирному фехтованию.",
 		"items": [
-			"sablya-oruzhie-v-liniyu-kashitsin"
+			"sablya-oruzhie-v-liniyu-kashitsin",
+			"rapira-rabota-v-soedinenii-kashitsin"
 		]
 	},
 	{

@@ -13,6 +13,7 @@ import { getReportSummary } from '$lib/data/report-meta';
 import { exerciseAnchor } from '$lib/report-materials';
 import { techniqueAliases, normalizeTechnique } from '$lib/search-techniques';
 import { orderSearchPassages } from '$lib/search-passage-order';
+import { weaponMatchMultiplier } from '$lib/search-weapon-match';
 
 export type {
 	SearchHitKind,
@@ -390,7 +391,9 @@ function signalMultiplier(result: SearchResult, parsed: ParsedQuery, indexedCove
 	else if (title.startsWith(parsed.raw)) multiplier += 0.42;
 	else if (parsed.stems.every((stem) => queryWords(title).map(stemRu).includes(stem))) multiplier += 0.24;
 	if (parsed.stems.length > 1 && coverage < 0.5) multiplier *= 0.72;
-	return multiplier * rankKind(result);
+	return multiplier * rankKind(result) * (indexedCoverage
+		? weaponMatchMultiplier(parsed.raw, `${docReportTitle(doc)} ${getReportSummary(doc.reportSlug)?.tags?.join(' ') ?? ''}`)
+		: 1);
 }
 
 const adaptiveFuzzy: SearchOptions['fuzzy'] = (term) => {
