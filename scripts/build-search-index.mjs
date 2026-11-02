@@ -10,8 +10,10 @@ import { fileURLToPath } from 'node:url';
 import { readEnrichment } from './search-enrichment/core.mjs';
 import { readCards, cardText } from './search-enrichment/cards.mjs';
 import { auditSourceLinks } from './search-enrichment/source-links.mjs';
+import { hiddenTopicReportSlugs } from '../src/lib/catalog-visibility.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const hiddenTopics = hiddenTopicReportSlugs(JSON.parse(readFileSync(join(root, 'src/lib/data/collections.json'), 'utf8')));
 auditSourceLinks(root);
 const reportsDir = join(root, 'src/lib/data/reports');
 const transcriptsDir = join(root, 'src/lib/data/transcripts');
@@ -139,10 +141,6 @@ function readTranscriptSidecar(slug) {
 for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json')).sort()) {
 	const report = JSON.parse(readFileSync(join(reportsDir, file), 'utf8'));
 	const slug = report.slug;
-	const enrichment = useEnrichment && !excludedEnrichment.has(slug) ? readEnrichment(root, report) : null;
-	const cards = process.env.SEARCH_CARDS !== '0' ? readCards(root, report) : null;
-	const situationCards = new Map((cards?.cards ?? []).map(card => [card.chapterIndex, cardText(card)]));
-	const expansions = new Map((enrichment?.chapters ?? []).map(entry => [entry.chapterIndex, entry]));
 	const common = { reportSlug: slug };
 	const sidecar = readTranscriptSidecar(slug);
 	if (sidecar?.transcript) {
@@ -166,6 +164,12 @@ for (const file of readdirSync(reportsDir).filter((name) => name.endsWith('.json
 		chapterCount: report.chapters?.length ?? 0,
 		...(report.video ? { video: report.video } : {})
 	});
+	// Keep summaries and transcript assets for existing direct URLs, but publish no search documents.
+	if (hiddenTopics.has(slug)) continue;
+	const enrichment = useEnrichment && !excludedEnrichment.has(slug) ? readEnrichment(root, report) : null;
+	const cards = process.env.SEARCH_CARDS !== '0' ? readCards(root, report) : null;
+	const situationCards = new Map((cards?.cards ?? []).map(card => [card.chapterIndex, cardText(card)]));
+	const expansions = new Map((enrichment?.chapters ?? []).map(entry => [entry.chapterIndex, entry]));
 	chapterTitlesBySlug[slug] = (report.chapters ?? []).map((chapter) => chapter.title);
 
 	// title не задаём у report/overview/chapter/thesis/transcript-документов:
@@ -338,7 +342,8 @@ function serializeIndex(shardDocs) {
 const serializedCore = serializeIndex(coreDocs);
 const serializedTranscripts = serializeIndex(transcriptDocs);
 const kinds = Object.fromEntries([...new Set(docs.map((doc) => doc.kind))].map((kind) => [kind, docs.filter((doc) => doc.kind === kind).length]));
-const reportDocuments = Object.fromEntries(meta.map(({ slug }) => {
+const indexedMeta = meta.filter(({ slug }) => !hiddenTopics.has(slug));
+const reportDocuments = Object.fromEntries(indexedMeta.map(({ slug }) => {
 	const reportDocs = docs.filter((doc) => doc.reportSlug === slug);
 	return [slug, Object.fromEntries([...new Set(reportDocs.map((doc) => doc.kind))].map((kind) => [kind, reportDocs.filter((doc) => doc.kind === kind).length]))];
 }));
@@ -354,7 +359,7 @@ writeFileSync(outManifest, JSON.stringify({
 	ranking: { wholeChapters, indexedCoverage },
 	situationCards: { enabled: process.env.SEARCH_CARDS !== '0' },
 	documents: docs.length,
-	reports: meta.length,
+	reports: indexedMeta.length,
 	kinds,
 	reportDocuments,
 	bytes: {
@@ -367,5 +372,5 @@ writeFileSync(outMeta, JSON.stringify(meta, null, '\t') + '\n');
 const mib = (value) => (value / 1048576).toFixed(2);
 console.log(
 	`search-index v${INDEX_VERSION}: ${docs.length} docs (core ${coreDocs.length} / transcripts ${transcriptDocs.length}), ` +
-	`core ${mib(Buffer.byteLength(serializedCore))} MiB + transcripts ${mib(Buffer.byteLength(serializedTranscripts))} MiB, ${meta.length} reports`
+	`core ${mib(Buffer.byteLength(serializedCore))} MiB + transcripts ${mib(Buffer.byteLength(serializedTranscripts))} MiB, ${indexedMeta.length} reports`
 );

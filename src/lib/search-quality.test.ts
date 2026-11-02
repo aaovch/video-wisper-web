@@ -2,11 +2,15 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { afterAll, beforeAll, expect, it, vi } from 'vitest';
 import { collections } from '$lib/data/collections';
+import { hiddenTopicReportSlugs } from '$lib/catalog-visibility';
 import { searchableReportSlugs } from '$lib/search-visibility';
 import { groupByReport, resetSearchIndex, searchScoped, whenSearchComplete } from '$lib/search-core';
 import type { SearchScope } from '$lib/search-types';
 import { searchHitKey } from './search-hit-key';
 import cases from './search-quality-cases.json';
+
+const hiddenTopics = hiddenTopicReportSlugs(collections);
+const activeCases = cases.filter(item => !hiddenTopics.has(item.reportSlug));
 
 // Actual build artifacts: same shards, loader, ranking and grouping as the UI.
 // Run npm run test:search-quality to rebuild them before evaluation.
@@ -30,7 +34,7 @@ it('evaluates grounded questions across report, collection and public archive', 
 	const alternativeRaw = readFileSync('scripts/search-enrichment/quality-alternatives.json', 'utf8');
 	expect(createHash('sha256').update(alternativeRaw).digest('hex')).toBe(readFileSync('scripts/search-enrichment/quality-alternatives.sha256','utf8').trim());
 	const alternativeReview = JSON.parse(alternativeRaw);
-	for (const item of cases) {
+	for (const item of activeCases) {
 		const report = JSON.parse(readFileSync(`src/lib/data/reports/${item.reportSlug}.json`, 'utf8'));
 		for (const evidence of item.evidence) {
 			expect(report.chapters[evidence.chapterIndex].title).toBe(evidence.title);
@@ -79,7 +83,7 @@ it('evaluates grounded questions across report, collection and public archive', 
 	const metrics = scopesMetrics(rows);
 	console.log(JSON.stringify(metrics, null, 2));
 	if (process.env.SEARCH_EVAL_OUTPUT) writeFileSync(process.env.SEARCH_EVAL_OUTPUT, JSON.stringify({ metrics, rows }, null, 2) + '\n');
-	expect(rows).toHaveLength(cases.length * 3);
+	expect(rows).toHaveLength(activeCases.length * 3);
 	// Incomplete relevance judgments: these questions remain visible in the
 	// report, but are not a license to regress any currently successful case.
 	const knownMisses = new Set(['q11:collection', 'q11:archive', 'q22:archive']);
@@ -89,9 +93,20 @@ it('evaluates grounded questions across report, collection and public archive', 
 		expect(row.sourceRank, `${row.id} ${row.scope}: ${row.query}`).toBeLessThanOrEqual(5);
 	}
 	for (const [index, floor] of [24, 23, 21].entries()) {
-		expect(metrics[index].reportHit3).toBeGreaterThanOrEqual(floor);
+		// The historical corpus also contains eight questions from unpublished topics.
+		// Retain the same allowed misses for the remaining HEMA questions.
+		expect(metrics[index].reportHit3).toBeGreaterThanOrEqual(floor - (cases.length - activeCases.length));
 	}
 }, 120000);
+
+it('returns no results for unpublished topics even when their report is explicitly requested', async () => {
+	for (const item of cases.filter(item => hiddenTopics.has(item.reportSlug))) {
+		const response = await searchScoped(item.query, [{
+			kind: 'report', label: item.reportSlug, reportSlug: item.reportSlug
+		}], 30);
+		expect(response.hits, item.id).toEqual([]);
+	}
+});
 
 function scopesMetrics(rows: { scope: string; reportRank: number; passageRank: number; sourceRank: number }[]) {
 	return ['report', 'collection', 'archive'].map(scope => {

@@ -12,6 +12,7 @@ import {
 	getCollection,
 	hasFullCollectionAccess,
 	reportGate,
+	collections,
 	type Collection
 } from '$lib/data/collections';
 
@@ -152,10 +153,23 @@ describe('search visibility', () => {
 		expect(searchableReportSlugs(['sobraniya-core-noname@2'])).toContain('sobranie-core-noname-1');
 	});
 
-	it('keeps public and unassigned reports searchable', () => {
+	it('keeps public HEMA reports searchable', () => {
 		const visible = searchableReportSlugs([]);
 		expect(visible).toContain('longsword-a');
-		expect(visible).toContain('nikitin-muzhchiny-zhenshiny');
+		expect(visible).not.toContain('nikitin-muzhchiny-zhenshiny');
+	});
+
+	it('excludes every other-topic report from all catalog and search areas even after unlocking', () => {
+		const otherTopics = collections.filter(collection => !collection.hema).flatMap(collection => collection.items);
+		const unlocked = collections.flatMap(collection => collection.access?.master ? [collection.access.master.id] : []);
+		for (const area of ['main', 'archive', 'all'] as const) {
+			const catalog = catalogReportSlugs(area);
+			const searchable = searchableReportSlugs(unlocked, area);
+			for (const slug of otherTopics) {
+				expect(catalog, slug).not.toContain(slug);
+				expect(searchable, slug).not.toContain(slug);
+			}
+		}
 	});
 
 	it('keeps an explicitly empty filtered scope empty', () => {

@@ -41,7 +41,7 @@
 	let { archived = false }: { archived?: boolean } = $props();
 	const catalogCollections = $derived(
 		collections.filter(
-			(collection) => !collection.catalogHidden && Boolean(collection.archived) === archived
+			(collection) => collection.hema && !collection.catalogHidden && Boolean(collection.archived) === archived
 		)
 	);
 	const searchAreaLabel = $derived(archived ? 'в архиве' : 'в каталоге');
@@ -151,14 +151,12 @@
 				(selections.collections.length === 0 || selections.collections.includes(collection.slug))
 		)
 	);
-	const primaryCollections = $derived(filteredCollections.filter((collection) => collection.hema));
 	const nonameCollections = $derived(
-		primaryCollections.filter((collection) => collection.catalogGroup === 'noname')
+		filteredCollections.filter((collection) => collection.catalogGroup === 'noname')
 	);
 	const standalonePrimaryCollections = $derived(
-		primaryCollections.filter((collection) => collection.catalogGroup !== 'noname')
+		filteredCollections.filter((collection) => collection.catalogGroup !== 'noname')
 	);
-	const otherCollections = $derived(filteredCollections.filter((collection) => !collection.hema));
 	const filtersActive = $derived(activeFilterCount > 0);
 	const areaReportSlugs = $derived(catalogReportSlugs(archived ? 'archive' : 'main'));
 	const visibleArchiveSlugs = $derived(searchableReportSlugs(lock.unlocked, archived ? 'archive' : 'main'));
@@ -574,17 +572,6 @@
 				{/each}
 			</div>
 		{/if}
-		{#if otherCollections.length}
-			<div class="other-head">
-				<h2>Другие темы</h2>
-				<p>Материалы личного архива за пределами HEMA.</p>
-			</div>
-			<div class="catalog-grid catalog-grid--other">
-				{#each otherCollections as collection (collection.slug)}
-					<CollectionCard {collection} />
-				{/each}
-			</div>
-		{/if}
 	{/if}
 </section>
 
@@ -744,8 +731,7 @@
 		border-bottom: 1px solid var(--ink-soft);
 	}
 
-	.section-title h2,
-	.other-head h2 {
+	.section-title h2 {
 		font-size: 22px;
 		line-height: 1.2;
 	}
@@ -833,25 +819,6 @@
 		line-height: 1.5;
 	}
 
-	.other-head {
-		display: flex;
-		align-items: baseline;
-		gap: 16px;
-		margin-top: 52px;
-		padding-bottom: 12px;
-		border-bottom: 1px solid var(--line-strong);
-	}
-
-	.other-head p {
-		margin: 0;
-		font-size: 15px;
-		color: var(--ink-faint);
-	}
-
-	.catalog-grid--other {
-		opacity: 0.86;
-	}
-
 	@media (max-width: 760px) {
 		.search-stage {
 			margin-top: 0;
@@ -891,11 +858,6 @@
 			gap: 10px;
 		}
 
-		.other-head {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 6px;
-		}
 	}
 
 	@media (max-width: 960px) {

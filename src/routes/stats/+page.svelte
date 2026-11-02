@@ -8,7 +8,7 @@
 	import legacy from '$lib/data/legacy-analytics.json';
 	const legacyBySlug = new Map(legacy.rows.map(row=>[row.slug,row.visits]));
 
-	const publicCollections = collections.filter(c => !c.catalogHidden && !c.isolated);
+	const publicCollections = collections.filter(c => c.hema && !c.catalogHidden && !c.isolated);
 	const reports = getAllReportSummaries().filter(r => publicCollections.some(c => c.items.includes(r.slug)));
 	let snapshot = $state<AnalyticsSnapshot | null>(null);
 	let loading = $state(true);

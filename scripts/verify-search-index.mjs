@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { hiddenTopicReportSlugs } from '../src/lib/catalog-visibility.js';
 
 const requested = process.argv[2];
 if (!requested) {
@@ -9,6 +10,7 @@ if (!requested) {
 
 const root = process.cwd();
 const reportsDir = join(root, 'src/lib/data/reports');
+const hiddenTopics = hiddenTopicReportSlugs(JSON.parse(readFileSync(join(root, 'src/lib/data/collections.json'), 'utf8')));
 const manifest = JSON.parse(readFileSync(join(root, 'static/search/manifest.json'), 'utf8'));
 const slugs = requested === '--all'
 	? readdirSync(reportsDir)
@@ -20,6 +22,11 @@ const slugs = requested === '--all'
 function verify(slug) {
 	const report = JSON.parse(readFileSync(join(reportsDir, `${slug}.json`), 'utf8'));
 	const indexed = manifest.reportDocuments?.[slug];
+	if (hiddenTopics.has(slug)) {
+		if (indexed) throw new Error(`Hidden report ${slug} must not be indexed`);
+		console.log(`search-index EXCLUDED: ${slug} (other topic)`);
+		return;
+	}
 	if (!indexed) throw new Error(`Report ${slug} is absent from the preliminary search index`);
 	if (indexed.report !== 1) throw new Error(`Expected one report document for ${slug}, got ${indexed.report ?? 0}`);
 

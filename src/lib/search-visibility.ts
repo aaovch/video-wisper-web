@@ -1,5 +1,8 @@
 import { canAccessReport, collections } from '$lib/data/collections';
 import { getAllReportSummaries } from '$lib/data/report-meta';
+import { hiddenTopicReportSlugs } from '$lib/catalog-visibility';
+
+const hiddenTopics = hiddenTopicReportSlugs(collections);
 
 export type SearchArea = 'main' | 'archive' | 'all';
 
@@ -8,6 +11,7 @@ export function catalogReportSlugs(area: SearchArea = 'main'): string[] {
 	return getAllReportSummaries()
 		.map((report) => report.slug)
 		.filter((slug) => {
+			if (hiddenTopics.has(slug)) return false;
 			const memberships = collections.filter((collection) => collection.items.includes(slug));
 			const archived = memberships.some((collection) => collection.archived);
 			if (area === 'main' && archived) return false;
