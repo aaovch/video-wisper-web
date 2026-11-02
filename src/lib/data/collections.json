@@ -904,7 +904,33 @@
 		"items": [
 			"sablya-oruzhie-v-liniyu-kashitsin",
 			"rapira-rabota-v-soedinenii-kashitsin"
-		]
+		],
+		"access": {
+			"passes": [
+				{
+					"id": "report:sablya-oruzhie-v-liniyu-kashitsin",
+					"title": "Семинар «Сабля: оружие в линию»",
+					"items": ["sablya-oruzhie-v-liniyu-kashitsin"],
+					"password": "pointinline",
+					"passwordHint": "За паролем обратитесь к Ивану Кашицыну:",
+					"passwordContact": {
+						"label": "Иван Кашицын во ВКонтакте",
+						"url": "https://vk.ru/ivan__vin"
+					}
+				},
+				{
+					"id": "report:rapira-rabota-v-soedinenii-kashitsin",
+					"title": "Семинар «Рапира: работа в соединении»",
+					"items": ["rapira-rabota-v-soedinenii-kashitsin"],
+					"password": "pointinline",
+					"passwordHint": "За паролем обратитесь к Ивану Кашицыну:",
+					"passwordContact": {
+						"label": "Иван Кашицын во ВКонтакте",
+						"url": "https://vk.ru/ivan__vin"
+					}
+				}
+			]
+		}
 	},
 	{
 		"slug": "seminary-korotovskih",
