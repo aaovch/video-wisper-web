@@ -1458,7 +1458,8 @@
 					"items": [
 						"rapira-rabota-v-soedinenii-kashitsin"
 					],
-					"password": "pointinline",
+					"password": "forcegrip",
+					"credentialVersion": 2,
 					"passwordHint": "За паролем обратитесь к Ивану Кашицыну:",
 					"passwordContact": {
 						"label": "Иван Кашицын во ВКонтакте",
