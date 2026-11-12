@@ -2494,28 +2494,6 @@
 		}
 	},
 	{
-		"slug": "retention",
-		"title": "Почему атлеты остаются в группе",
-		"subtitle": "Retention в HEMA-клубе: разбор факторов удачи и тренерских решений",
-		"tags": [
-			"HEMA",
-			"Тренерство",
-			"Retention",
-			"17 блоков"
-		],
-		"duration": 4519.66,
-		"overview_theses": [
-			"Одной формулы retention нет — это микс удачи, среды и решений тренера.",
-			"В HEMA нужен каждый атлет, а не модель отсева «лучших»."
-		],
-		"chapterCount": 17,
-		"video": {
-			"provider": "file",
-			"src": "media/retention.mp4",
-			"poster": "media/retention.jpg"
-		}
-	},
-	{
 		"slug": "sablya-10",
 		"title": "Сабля, общая, 10 тренировка",
 		"subtitle": "Сборка недели, счёт на пять и пирамида",

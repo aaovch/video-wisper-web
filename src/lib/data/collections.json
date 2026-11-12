@@ -570,10 +570,9 @@
 		"slug": "hema-theory",
 		"title": "HEMA: теория и тренерство",
 		"hema": true,
-		"subtitle": "Контекст HEMA, методика защит и удержание атлетов в клубе.",
+		"subtitle": "Контекст HEMA и методика защит.",
 		"items": [
-			"metodichka",
-			"retention"
+			"metodichka"
 		],
 		"access": {
 			"master": {

@@ -133,27 +133,6 @@
       ]
     },
     {
-      "id": "context-7",
-      "query": "Какие условия помогают разным атлетам оставаться в одной группе?",
-      "kind": "single",
-      "split": "holdout",
-      "coverage": "single",
-      "scopes": [
-        "report",
-        "collection",
-        "archive"
-      ],
-      "judgments": [
-        {
-          "reportSlug": "retention",
-          "chapterIndex": 8,
-          "grade": 3,
-          "evidence": "Комфорт, интерес, разные атлеты в одной группе и переход к обсуждению.",
-          "sourceHash": "942dee3860bb2da80cfde69aeab504ec0821b94633d66152ee7820455c772f62"
-        }
-      ]
-    },
-    {
       "id": "context-8",
       "query": "У опытного бойца одна огромная тактическая модель или несколько маленьких?",
       "kind": "single",

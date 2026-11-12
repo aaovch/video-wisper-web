@@ -128,13 +128,13 @@ describe('search visibility', () => {
 		expect(canAccessReport('a', ['versioned@2'], [fixture])).toBe(true);
 	});
 	it('hides reports that only belong to locked collections', () => {
-		expect(searchableReportSlugs([])).not.toContain('retention');
+		expect(searchableReportSlugs([])).not.toContain('metodichka');
 	});
 
 	it('keeps locked reports discoverable in the catalog scope without exposing their content', () => {
-		expect(catalogReportSlugs()).toContain('retention');
-		expect(isReportLocked('retention', [])).toBe(true);
-		expect(isReportLocked('retention', ['hema-theory'])).toBe(false);
+		expect(catalogReportSlugs()).toContain('metodichka');
+		expect(isReportLocked('metodichka', [])).toBe(true);
+		expect(isReportLocked('metodichka', ['hema-theory'])).toBe(false);
 	});
 
 	it('keeps individually gated videos discoverable until their own password is entered', () => {
@@ -144,7 +144,7 @@ describe('search visibility', () => {
 	});
 
 	it('restores locked reports after their collection is unlocked', () => {
-		expect(searchableReportSlugs(['hema-theory'])).toContain('retention');
+		expect(searchableReportSlugs(['hema-theory'])).toContain('metodichka');
 	});
 
 	it('gates Core NoName meeting reports with their collection', () => {
@@ -186,6 +186,6 @@ describe('archived collections', () => {
   expect(searchableReportSlugs([], 'archive')).toContain('hema-english-snaryazhenie');
   expect(searchableReportSlugs([], 'archive')).not.toContain('longsword-a');
   expect(searchableReportSlugs([], 'all')).toContain('hema-english-snaryazhenie');
-  expect(searchableReportSlugs([], 'all')).not.toContain('retention');
+  expect(searchableReportSlugs([], 'all')).not.toContain('metodichka');
  });
 });
