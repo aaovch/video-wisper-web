@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { passwordShareTargets, passwordAccessMessage } from './password-share.mjs';
+import { PASSWORD_ERROR } from './password-policy.mjs';
 
 const styles = readFileSync(new URL('./submissions/style.css', import.meta.url), 'utf8');
 const copyScript = readFileSync(new URL('./password-share-client.js', import.meta.url), 'utf8');
@@ -42,7 +43,7 @@ export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,c
     try { store.setPassword(scope,data.get('password')); }
     catch (cause) {
       // Only validation errors are suitable for display, never database errors.
-      if (!['Этот пароль уже используется. Выберите другой.','Задайте пароль длиной от 8 до 128 символов без пробелов по краям.'].includes(cause.message)) throw cause;
+      if (!['Этот пароль уже используется. Выберите другой.',PASSWORD_ERROR].includes(cause.message)) throw cause;
       error = cause.message;
     }
     if (!error) {
@@ -57,7 +58,7 @@ export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,c
     const keys = passwords.filter(key => key.scope === scope);
     return `<li><h3>${escape(target.title)}</h3><p class="hint">${escape(target.label)}</p>
       ${keys.length ? keys.map(key => passwordEntry(target,key.password)).join('') : '<p class="hint">Пароль ещё не задан.</p>'}
-      <form class="password-form" method="post" action="/admin/passwords"><input type="hidden" name="scope" value="${escape(scope)}"><label for="password-${i}">Новый пароль<input id="password-${i}" name="password" type="text" required minlength="8" maxlength="128" autocomplete="off" autocapitalize="none" spellcheck="false"></label><button>Сохранить пароль</button></form></li>`;
+      <form class="password-form" method="post" action="/admin/passwords"><input type="hidden" name="scope" value="${escape(scope)}"><label for="password-${i}">Новый пароль<input id="password-${i}" name="password" type="text" required minlength="4" maxlength="8" placeholder="От 4 до 8 символов" autocomplete="off" autocapitalize="none" spellcheck="false"></label><button>Сохранить пароль</button></form></li>`;
   }).join('');
-  return send(error ? 400 : 200, `<h2>Пароли доступа</h2><p>Здесь видны пароли коллекций и отдельных записей. Смена пароля заменяет все прежние пароли выбранной группы и закрывает доступ по ним.</p><p class="hint">Старые пароли, текст которых не сохранён, появятся после следующего входа с ними. Их также можно заменить здесь.</p>${error ? `<p role="alert">${escape(error)}</p>` : catalog.has(saved) ? `<p class="notice" role="status">Пароль для «${escape(catalog.get(saved).title)}» сохранён.</p>` : ''}<ul class="passwords">${entries}</ul>`);
+  return send(error ? 400 : 200, `<h2>Пароли доступа</h2><p>У каждой коллекции или записи один пароль от 4 до 8 символов. Смена пароля сразу отзывает прежний.</p>${error ? `<p role="alert">${escape(error)}</p>` : catalog.has(saved) ? `<p class="notice" role="status">Пароль для «${escape(catalog.get(saved).title)}» сохранён.</p>` : ''}<ul class="passwords">${entries}</ul>`);
 }
