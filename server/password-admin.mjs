@@ -4,18 +4,19 @@ import { PASSWORD_ERROR } from './password-policy.mjs';
 
 const styles = readFileSync(new URL('./submissions/style.css', import.meta.url), 'utf8');
 const copyScript = readFileSync(new URL('./password-share-client.js', import.meta.url), 'utf8');
+const adminStyles = readFileSync(new URL('./password-admin.css', import.meta.url), 'utf8');
+const adminScript = readFileSync(new URL('./password-admin-client.js', import.meta.url), 'utf8');
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 function page(content,manageVideos) {
   return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Админка — HEMA архив</title><link rel="icon" href="/favicon.svg"><style>${styles}
-    main{max-width:960px}.admin-nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin:0 0 32px;font:16px/1.5 var(--font-ui)}.admin-nav form{margin:0 0 0 auto}.passwords{list-style:none;padding:0}.passwords>li{padding:24px 0;border-top:1px solid var(--line)}.passwords h3{font-size:22px}.passwords code{display:block;overflow-wrap:anywhere;white-space:pre-wrap;padding:12px 16px;background:var(--paper-3);font:16px/1.5 var(--font-mono)}.password-form{display:flex;align-items:end;gap:12px;margin:20px 0 0}.password-form label{flex:1;margin:0}.password-form input{margin-top:6px}.password-form button{flex-shrink:0}.notice{padding:16px;border-left:3px solid var(--success);background:var(--surface)}[role=alert]{color:var(--danger)}@media(max-width:600px){.password-form{align-items:stretch;flex-direction:column}.admin-nav form{margin:0}}
-    .password-access{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:start;margin:12px 0}.password-access code{margin:0}.access-message,.copy-status{grid-column:1/-1}.access-message{width:100%;min-height:120px;padding:12px;background:var(--paper);color:var(--ink);border:1px solid var(--edge);font:16px/1.5 var(--font-ui)}.copy-status{margin:0}@media(max-width:600px){.password-access{grid-template-columns:minmax(0,1fr)}.copy-access{width:100%}}
-    </style><script>(()=>{let theme;try{theme=localStorage.getItem('theme')}catch{}document.documentElement.dataset.theme=theme==='light'||theme==='dark'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'})()</script></head><body><div class="sheet"><main id="main-content"><nav class="admin-nav" aria-label="Навигация"><a href="/">← В архив</a>${manageVideos ? '<a href="/submit/">Управление видео</a>' : ''}<form method="post" action="/admin/logout"><button class="secondary">Выйти</button></form></nav><h1>Админка</h1>${content}</main></div><script type="module">${copyScript}</script></body></html>`;
+    ${adminStyles}
+    </style><script>(()=>{let theme;try{theme=localStorage.getItem('theme')}catch{}document.documentElement.dataset.theme=theme==='light'||theme==='dark'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'})()</script></head><body><a class="skip" href="#main-content">К содержимому</a><div class="sheet"><main id="main-content"><nav class="admin-nav" aria-label="Навигация"><a href="/">← В архив</a>${manageVideos ? '<a href="/submit/">Управление видео</a>' : ''}<form method="post" action="/admin/logout"><button class="secondary">Выйти</button></form></nav><header class="admin-heading"><h1>Админка</h1><p>Найдите материал и скопируйте готовый текст со ссылкой и паролем для пересылки.</p></header>${content}</main></div><script type="module">${copyScript}\n${adminScript}</script></body></html>`;
 }
 
-function passwordEntry(target,password) {
+function passwordEntry(target,password,index) {
   if (password === null) return '<p class="hint">Текст старого пароля не сохранён. Задайте новый пароль ниже.</p>';
-  return `<div class="password-access" data-password-access><code>${escape(password)}</code><button class="secondary copy-access" data-copy-access type="button" hidden>Скопировать доступ</button><textarea class="access-message" data-access-message readonly hidden aria-label="Текст доступа для пересылки">${escape(passwordAccessMessage(target,password))}</textarea><p class="hint copy-status" data-copy-status role="status" aria-live="polite"></p></div>`;
+  return `<div class="password-access" data-password-access><div class="password-value"><span>Пароль</span><code>${escape(password)}</code></div><button class="copy-access" data-copy-access type="button" aria-describedby="title-${index}" hidden>Скопировать доступ</button><textarea class="access-message" data-access-message readonly hidden aria-label="Текст доступа для пересылки: ${escape(target.title)}">${escape(passwordAccessMessage(target,password))}</textarea><p class="hint copy-status" data-copy-status role="status" aria-live="polite"></p></div>`;
 }
 
 export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,collections,manageVideos=false}) {
@@ -29,6 +30,7 @@ export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,c
   if (!owner) return send(403,'<p>Админка доступна по мастер-ключу владельца. Введите его через кнопку «Ввести ключ» на <a href="/">главной странице</a>.</p>');
   const catalog = passwordShareTargets(collections(),origin);
   let error = '';
+  let errorScope = '';
   if (pathname === '/admin/passwords') {
     if (req.method !== 'POST') return send(405,'<p>Используйте форму изменения пароля.</p>');
     if (req.headers.origin !== origin) return send(403,'<p>Запрос отклонён. Откройте админку на сайте архива.</p>');
@@ -45,9 +47,10 @@ export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,c
       // Only validation errors are suitable for display, never database errors.
       if (!['Этот пароль уже используется. Выберите другой.',PASSWORD_ERROR].includes(cause.message)) throw cause;
       error = cause.message;
+      errorScope = scope;
     }
     if (!error) {
-      res.writeHead(303,{Location:'/admin/?saved=' + encodeURIComponent(scope)});
+      res.writeHead(303,{Location:'/admin/?saved=' + encodeURIComponent(scope) + '#access-' + encodeURIComponent(scope)});
       res.end();
       return true;
     }
@@ -56,9 +59,15 @@ export async function handlePasswordAdmin({req,res,pathname,origin,owner,store,c
   const passwords = store.passwords();
   const entries = [...catalog].map(([scope,target],i) => {
     const keys = passwords.filter(key => key.scope === scope);
-    return `<li><h3>${escape(target.title)}</h3><p class="hint">${escape(target.label)}</p>
-      ${keys.length ? keys.map(key => passwordEntry(target,key.password)).join('') : '<p class="hint">Пароль ещё не задан.</p>'}
-      <form class="password-form" method="post" action="/admin/passwords"><input type="hidden" name="scope" value="${escape(scope)}"><label for="password-${i}">Новый пароль<input id="password-${i}" name="password" type="text" required minlength="4" maxlength="8" placeholder="От 4 до 8 символов" autocomplete="off" autocapitalize="none" spellcheck="false"></label><button>Сохранить пароль</button></form></li>`;
+    const failed=errorScope===scope;
+    const kind=target.kind==='collection'?'Коллекция':target.kind==='recording'?'Запись':'Набор записей';
+    const linkLabel=target.kind==='collection'?'Открыть коллекцию':target.kind==='recording'?'Открыть запись':'Открыть набор';
+    return `<li class="access-card" id="access-${escape(scope)}" data-access-row data-kind="${target.kind}" data-search="${escape(target.title+' '+target.collectionTitle)}">
+      <header><p class="access-kind">${kind}</p><h3 id="title-${i}">${escape(target.title)}</h3>${target.kind!=='collection'?`<p class="collection-name">${escape(target.collectionTitle)}</p>`:''}<a class="material-link" href="${escape(target.url)}">${linkLabel}</a></header>
+      ${keys.length ? keys.map(key => passwordEntry(target,key.password,i)).join('') : '<p class="access-unavailable">Пароль ещё не задан.</p>'}
+      ${saved===scope?'<p class="row-notice" role="status">Пароль сохранён. Прежний пароль больше не действует.</p>':''}
+      <details class="password-editor"${failed?' open':''}><summary aria-describedby="title-${i}">${keys.length?'Изменить пароль':'Задать пароль'}</summary>
+      <form class="password-form" method="post" action="/admin/passwords"><input type="hidden" name="scope" value="${escape(scope)}"><p class="change-hint" id="change-hint-${i}">Один пароль, от 4 до 8 символов. После сохранения прежний пароль перестанет действовать.</p><label for="password-${i}">Новый пароль<input id="password-${i}" name="password" type="text" required minlength="4" maxlength="8" placeholder="4–8 символов" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="change-hint-${i}${failed?' password-error-'+i:''}"${failed?' aria-invalid="true" autofocus':''}></label>${failed?`<p id="password-error-${i}" role="alert">${escape(error)}</p>`:''}<div class="password-actions"><button>Сохранить пароль</button><button class="secondary" data-cancel-password type="button" hidden>Отмена</button></div></form></details></li>`;
   }).join('');
-  return send(error ? 400 : 200, `<h2>Пароли доступа</h2><p>У каждой коллекции или записи один пароль от 4 до 8 символов. Смена пароля сразу отзывает прежний.</p>${error ? `<p role="alert">${escape(error)}</p>` : catalog.has(saved) ? `<p class="notice" role="status">Пароль для «${escape(catalog.get(saved).title)}» сохранён.</p>` : ''}<ul class="passwords">${entries}</ul>`);
+  return send(error ? 400 : 200, `<section aria-labelledby="passwords-heading"><h2 class="admin-section-title" id="passwords-heading">Пароли доступа</h2><div class="admin-tools" data-admin-tools hidden><div class="admin-filter-fields"><label>Найти доступ<input type="search" data-access-search placeholder="Название записи или коллекции" autocomplete="off" aria-controls="password-list"></label><label>Тип доступа<select data-access-filter aria-controls="password-list"><option value="all">Все доступы</option><option value="collection">Коллекции</option><option value="recording">Записи и наборы</option></select></label></div><div class="admin-results"><span data-access-count role="status" aria-live="polite" aria-atomic="true"></span><button class="admin-reset" type="button" data-reset-access hidden>Сбросить</button></div></div><noscript><p class="no-js-note">Для быстрого поиска и копирования включите JavaScript. Пароли и формы доступны ниже.</p></noscript><ul class="passwords" id="password-list">${entries}</ul><div class="admin-empty" data-access-empty hidden><h3>Ничего не найдено</h3><p>Попробуйте другое название или сбросьте фильтры.</p><button class="secondary" type="button" data-reset-access>Сбросить поиск</button></div></section>`);
 }
