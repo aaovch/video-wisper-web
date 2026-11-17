@@ -1,6 +1,6 @@
 # video-wisper-web — агентам
 
-Статичный SvelteKit-сайт (Svelte 5, adapter-static) с отчётами Video Wisper: смысловые блоки, тезисы, расшифровки, клиентский поиск (MiniSearch). Деплой — GitHub Pages через `.github/workflows/deploy.yml`.
+Основной сайт и адрес публикации — https://hema-archive.com/. GitHub Pages обслуживает только перенаправления со старых адресов. При обычном переходе сохраняются путь, параметры запроса и фрагмент ссылки.
 
 Пайплайн, который порождает данные для сайта, живёт в родительской папке `video_wisper` — см. её `AGENTS.md` и `.cursor/rules/`.
 
