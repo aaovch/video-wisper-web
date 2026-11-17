@@ -489,11 +489,14 @@ async function executeTieredSearch(
 	if (exact.length) {
 		// A catalog document aggregates the entire report. An AND match there
 		// need not exist in any one passage; still surface passages from that report.
-		if (!insideSingleReport && exact.every(result => (result as unknown as IndexedDoc).kind === 'report')) {
-			const slugs = new Set(exact.map(result => (result as unknown as IndexedDoc).reportSlug));
+		const exactDocs = exact as unknown as IndexedDoc[];
+		const summariesOnly = exactDocs.every(doc => doc.kind === 'report' || doc.kind === 'overview');
+		if (!insideSingleReport && summariesOnly && exactDocs.some(doc => doc.kind === 'report')) {
+			const slugs = new Set(exactDocs.filter(doc => doc.kind === 'report').map(doc => doc.reportSlug));
+			const hasOverview = exactDocs.some(doc => doc.kind === 'overview');
 			const passages = await executeTieredSearch(query, Math.max(1, limit - exact.length), result => {
 				const doc = result as unknown as IndexedDoc;
-				return doc.kind !== 'report' && slugs.has(doc.reportSlug) && (!filter || filter(result));
+				return (hasOverview ? doc.chapterIndex != null : doc.kind !== 'report') && slugs.has(doc.reportSlug) && (!filter || filter(result));
 			}, true);
 			return { hits: appendNamedHits([...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits].slice(0, limit)), matchKind: 'exact' };
 		}
@@ -701,6 +704,29 @@ function scopeFilter(scope: SearchScope): {
 	};
 }
 
+async function searchWholeRecordings(query: string, limit: number, filter: (result: SearchResult) => boolean) {
+	// A leading format request ("лекции по …") describes the desired result, not its subject.
+	const subject = query.replace(/^(?:лекци[яию]|семинар(?:ы)?)\s+(?:по|о|об|про)\s+(?=\S)/iu, '');
+	const result = await executeTieredSearch(subject, limit, filter, false);
+	const topic = subject.replace(/\s+на\s+тренировк(?:е|ах)[?.!]?$/iu, '');
+	if (topic === subject) return result;
+
+	// For a topic qualified by a training setting, also admit titles naming the
+	// full topic. Keep the full-query candidates, including contextual matches.
+	const parsed = parseQuery(topic);
+	if (parsed.stems.length < 2) return result;
+	const requiredPhrases = requiredSourcePhrases(subject);
+	const titleMatches = searchShards(parsed.meaningfulWords.join(' '), {
+		fields: ['field_title'], combineWith: 'AND', fuzzy: false, prefix: false,
+		filter: hit => filter(hit) && matchesSourcePhrases([docTitle(hit as unknown as IndexedDoc)], requiredPhrases)
+	});
+	if (!titleMatches.length) return result;
+	const titles = rankedHits(titleMatches, parsed, 'exact', limit, false);
+	const titleSlugs = new Set(titles.map(hit => hit.reportSlug));
+	const hits = [...titles, ...result.hits.filter(hit => !titleSlugs.has(hit.reportSlug))];
+	return { hits: hits.slice(0, limit), matchKind: 'exact' as const };
+}
+
 /** Search ordered scopes, preferring exact or prefix matches in a broader scope over local fuzzy noise. */
 export async function searchScoped(
 	query: string,
@@ -718,7 +744,11 @@ export async function searchScoped(
 	for (let index = 0; index < scopes.length; index += 1) {
 		const scope = scopes[index];
 		const { filter, insideSingleReport } = scopeFilter(scope);
-		const result = await executeTieredSearch(normalizedQuery, limit, filter, insideSingleReport);
+		const recordingsOnly = scope.kind === 'archive' && scope.zones?.length === 1 && scope.zones[0] === 'reports';
+		const result = recordingsOnly
+			? await searchWholeRecordings(normalizedQuery, limit, filter)
+			: await executeTieredSearch(normalizedQuery, limit, filter, insideSingleReport);
+
 		if (index === 0) requestedResult = result;
 		if ((result.matchKind === 'exact' || result.matchKind === 'prefix') && result.hits.length) {
 			return {

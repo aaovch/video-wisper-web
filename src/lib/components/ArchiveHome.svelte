@@ -2,6 +2,8 @@
 	import SearchResultItem from '$lib/components/SearchResultItem.svelte';
 	import { searchHitKey as uniqueHitKey } from '$lib/search-hit-key';
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import { writeSearchState } from '$lib/search-url-state';
 	import { goto } from '$app/navigation';
 	import { createSearchController } from '$lib/search-controller.svelte';
 	import { hasSearchQuery } from '$lib/search-tokenizer.js';
@@ -38,17 +40,32 @@
 		)
 	);
 	const searchAreaLabel = $derived(archived ? 'в архиве' : 'в каталоге');
+	const views = [
+		{ value: '', zone: undefined, label: 'Везде' },
+		{ value: 'recordings', zone: 'reports', label: 'Записи целиком' },
+		{ value: 'chapters', zone: 'chapters', label: 'Главы' },
+		{ value: 'theses', zone: 'theses', label: 'Тезисы' },
+		{ value: 'transcript', zone: 'transcript', label: 'Расшифровки' },
+		{ value: 'additional', zone: 'additional', label: 'Доп. материалы' }
+	] as const;
+	const view = $derived(views.find(option => option.value === page.url.searchParams.get('view')) ?? views[0]);
 	const controller = createSearchController({
 		defaults: { authors: [], places: [], weapons: [], collections: [] },
-		scopes: () => [{ kind: 'archive', label: searchAreaLabel, reportSlugs: scopeSlugs }],
+		scopes: () => [{ kind: 'archive', label: searchAreaLabel, reportSlugs: scopeSlugs, zones: view.zone ? [view.zone] : undefined }],
 		limit: 30
 	});
 	const search = controller.state;
+	function switchView(value: string) {
+		const url = writeSearchState(page.url, search.query, search.selections, false);
+		if (value) url.searchParams.set('view', value);
+		else url.searchParams.delete('view');
+		void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
+	}
 	function clearSearch() { controller.clear(); inputEl?.focus(); }
 
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let activeHit = $state(-1);
-	$effect(() => { search.query; search.selections; activeHit = -1; });
+	$effect(() => { search.query; search.selections; view; activeHit = -1; });
 
 	// «Недавно открывали» живёт только в localStorage — читаем после маунта, чтобы не ломать гидрацию.
 	let recentSlugs = $state<string[]>([]);
@@ -340,6 +357,11 @@
 				{/if}
 			</div>
 		</div>
+		<div class="zone-picker" role="group" aria-label="Где искать">
+			{#each views as option}
+				<button type="button" aria-pressed={view === option} onclick={() => switchView(option.value)}>{option.label}</button>
+			{/each}
+		</div>
 		{#if search.correctedQuery && !search.loading && !search.error}
 			<p class="search-note">Возможно, вы имели в виду «{search.correctedQuery}».</p>
 		{/if}
@@ -423,6 +445,10 @@
 </section>
 
 <style>
+	.zone-picker { display: flex; flex-wrap: wrap; gap: 4px 8px; padding: 10px 0; }
+	.zone-picker button { min-height: 40px; padding: 4px 12px; font: inherit; font-size: 14px; color: var(--ink-soft); border: 1px solid transparent; border-radius: 999px; background: transparent; cursor: pointer; }
+	.zone-picker button[aria-pressed='true'] { border-color: currentColor; color: var(--accent-ink); }
+	.zone-picker button:hover { text-decoration: underline; }
 	.empty button { min-height: 44px; margin: 8px 12px 0 0; padding: 8px 12px; background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); color: var(--accent-ink); font: inherit; cursor: pointer; }
 	.empty button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 	.catalog-navigation { display: flex; gap: 24px; margin-bottom: 24px; }

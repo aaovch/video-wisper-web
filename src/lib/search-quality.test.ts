@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { afterAll, beforeAll, expect, it, vi } from 'vitest';
 import { collections } from '$lib/data/collections';
 import { hiddenTopicReportSlugs } from '$lib/catalog-visibility';
-import { searchableReportSlugs } from '$lib/search-visibility';
+import { catalogReportSlugs, searchableReportSlugs } from '$lib/search-visibility';
 import { groupByReport, resetSearchIndex, searchScoped, whenSearchComplete } from '$lib/search-core';
 import type { SearchScope } from '$lib/search-types';
 import { searchHitKey } from './search-hit-key';
@@ -27,6 +27,32 @@ beforeAll(async () => {
 }, 60000);
 
 afterAll(() => { resetSearchIndex(); vi.unstubAllGlobals(); });
+
+it('returns whole recordings for a topic in the archive recordings view', async () => {
+	const scope: SearchScope = {
+		kind: 'archive', label: 'Архив', reportSlugs: searchableReportSlugs([], 'all'), zones: ['reports']
+	};
+	const { hits } = await searchScoped('укол', [scope], 30);
+	expect(hits.length).toBeGreaterThan(0);
+	expect(new Set(hits.map(hit => hit.reportSlug)).size).toBe(hits.length);
+	for (const hit of hits) {
+		expect(hit.kind).toBe('report');
+		expect(hit.href).toBe(`/reports/${hit.reportSlug}/`);
+		expect(scope.reportSlugs).toContain(hit.reportSlug);
+	}
+});
+
+it('prioritizes safety lectures and ignores a leading format request in recordings view', async () => {
+	const scope: SearchScope = { kind: 'archive', label: 'Каталог', reportSlugs: catalogReportSlugs('main'), zones: ['reports'] };
+	const search = (query: string) => searchScoped(query, [scope], 30);
+	const safety = await search('техника безопасности на тренировке');
+	expect(safety.hits.slice(0, 2).map(hit => hit.reportSlug).sort()).toEqual([
+		'kurs-dlya-trenerov-noname-4-tehnika-bezopasnosti', 'trenerskiy-kurs-4-tekhnika-bezopasnosti'
+	]);
+	const plain = await search('уколу');
+	expect(plain.hits.length).toBeGreaterThan(0);
+	expect((await search('лекции по уколу')).hits).toEqual(plain.hits);
+});
 
 it('evaluates grounded questions across report, collection and public archive', async () => {
 	const visible = searchableReportSlugs([], 'all');
