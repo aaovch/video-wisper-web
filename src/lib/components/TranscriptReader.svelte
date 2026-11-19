@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { Dialog, DialogContent } from '@ui-sdk/svelte/dialog';
+	import { MediaQuery } from 'svelte/reactivity';
+	import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '@ui-sdk/svelte/collapsible';
+	import { Button } from '@ui-sdk/svelte/button';
 	import type { Chapter, TranscriptChapter, VideoSource } from '$lib/types';
 	import { highlightParts } from '$lib/text-highlight';
 	import { timedTranscriptParagraphs } from '$lib/transcript-reading';
@@ -6,6 +10,8 @@
 	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import Crosshair from 'phosphor-svelte/lib/Crosshair';
+	import CaretDown from 'phosphor-svelte/lib/CaretDown';
+	import CaretUp from 'phosphor-svelte/lib/CaretUp';
 	import Play from 'phosphor-svelte/lib/Play';
 	import VideoPlayer from './VideoPlayer.svelte';
 	import { tick } from 'svelte';
@@ -23,6 +29,7 @@
 		highlight = '',
 		language = 'ru',
 		onClose,
+		onPrevious,
 		onNext,
 		onRetry,
 		onTime,
@@ -40,7 +47,8 @@
 		loadState?: 'idle' | 'loading' | 'ready' | 'error';
 		highlight?: string;
 		language?: 'ru' | 'en';
-		onClose: () => void;
+		onClose: (position: number) => void;
+		onPrevious?: () => void;
 		onNext?: () => void;
 		onRetry?: () => void;
 		onTime?: (time: number) => void;
@@ -48,10 +56,12 @@
 		onSeek?: (start: number) => void;
 	} = $props();
 
-	let readerEl = $state<HTMLDialogElement | null>(null);
-	let closeButton = $state<HTMLButtonElement | null>(null);
 	let transcriptScrollEl = $state<HTMLElement | null>(null);
-	let playerComp = $state<{ seekAndPlay?: (time: number) => void } | null>(null);
+	let chapterTitleEl = $state<HTMLHeadingElement | null>(null);
+	let playerComp = $state<VideoPlayer | null>(null);
+	const compact = new MediaQuery('(max-width: 1099px)');
+	let compactVideoOpen = $state(true);
+	const videoOpen = $derived(!compact.current || compactVideoOpen);
 	let playbackTime = $state(0);
 	let playerSeek = $state(0);
 	let playing = $state(false);
@@ -70,39 +80,36 @@
 		}
 		return active;
 	});
-	const focusableSelector = [
-		'button:not([disabled])',
-		'a[href]',
-		'iframe',
-		'video[controls]',
-		'input:not([disabled])',
-		'select:not([disabled])',
-		'textarea:not([disabled])',
-		'[tabindex]:not([tabindex="-1"])'
-	].join(',');
-
 	function handleReaderKeydown(event: KeyboardEvent) {
-		if (event.key !== 'Tab' || !readerEl) return;
-		const focusable = Array.from(readerEl.querySelectorAll<HTMLElement>(focusableSelector))
-			.filter((element) => element.getClientRects().length > 0);
-		if (!focusable.length) return;
-
-		const first = focusable[0];
-		const last = focusable[focusable.length - 1];
-		const active = document.activeElement;
-		if (event.shiftKey && (active === first || !readerEl.contains(active))) {
-			event.preventDefault();
-			last.focus();
-		} else if (!event.shiftKey && (active === last || !readerEl.contains(active))) {
-			event.preventDefault();
-			first.focus();
-		}
+		if (transcriptScrollEl?.contains(event.target as Node) && ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) pauseFollowing();
 	}
 
-	function scrollToActive(behavior: ScrollBehavior = 'smooth') {
+	function closeReader() {
+		onClose(playerComp?.currentTime() ?? playbackTime);
+	}
+
+	let chapterChangeRequested = false;
+	function previousChapter() {
+		if (!onPrevious) return;
+		chapterChangeRequested = true;
+		onPrevious();
+	}
+
+	function nextChapter() {
+		if (!onNext) return;
+		chapterChangeRequested = true;
+		onNext();
+	}
+
+	function scrollToActive() {
 		void tick().then(() => {
-			const active = transcriptScrollEl?.querySelector<HTMLElement>('[data-active="true"]');
-			active?.scrollIntoView({ behavior, block: 'center' });
+			const pane = transcriptScrollEl;
+			const active = pane?.querySelector<HTMLElement>('[data-active="true"]');
+			if (!pane || !active) return;
+			const bounds = pane.getBoundingClientRect();
+			const phrase = active.getBoundingClientRect();
+			if (phrase.top >= bounds.top && phrase.bottom <= bounds.bottom) return;
+			pane.scrollBy({ top: phrase.top - bounds.top - pane.clientHeight / 3, behavior: 'instant' });
 		});
 	}
 
@@ -131,7 +138,6 @@
 		playerSeek = start;
 		onSeek?.(start);
 		playerComp?.seekAndPlay?.(start);
-		scrollToActive();
 	}
 
 	$effect(() => {
@@ -143,24 +149,23 @@
 		renderedChapterIndex = chapterIndex;
 	});
 
-	$effect(() => {
-		if (!readerEl) return;
-		if (!readerEl.open) readerEl.showModal();
-		void tick().then(() => closeButton?.focus());
-		return () => {
-			if (readerEl?.open) readerEl.close();
-		};
-	});
 
 	$effect(() => {
 		const nextIndex = chapterIndex;
 		if (nextIndex === renderedChapterIndex) return;
 		renderedChapterIndex = nextIndex;
 		followPlayback = true;
-		playbackTime = chapter.start;
-		playerSeek = chapter.start;
-		onSeek?.(chapter.start);
-		void tick().then(() => transcriptScrollEl?.scrollTo({ top: 0, behavior: 'instant' }));
+		const requested = chapterChangeRequested;
+		chapterChangeRequested = false;
+		if (requested) {
+			playbackTime = chapter.start;
+			playerSeek = chapter.start;
+			onSeek?.(chapter.start);
+		}
+		void tick().then(() => {
+			transcriptScrollEl?.scrollTo({ top: 0, behavior: 'instant' });
+			if (requested) chapterTitleEl?.focus({ preventScroll: true });
+		});
 	});
 
 	$effect(() => {
@@ -169,56 +174,67 @@
 	});
 </script>
 
-<dialog
-	class="reader"
-	aria-labelledby={titleId}
-	bind:this={readerEl}
-	onkeydown={handleReaderKeydown}
-	oncancel={(event) => {
-		event.preventDefault();
-		onClose();
-	}}
->
+<Dialog defaultOpen closeOnOutsidePress={false} onOpenChange={(open) => { if (!open) closeReader(); }}>
+<DialogContent aria-labelledby={titleId} initialFocus=".back" onkeydown={handleReaderKeydown}>
+{#snippet render({ props })}
+<div {...props} class="reader">
 	<div class="reader-inner">
 		<header class="reader-nav">
-			<button bind:this={closeButton} type="button" class="back" onclick={onClose}>
+			<Button type="button" onclick={closeReader}>
+				{#snippet render({ props })}
+					<button {...props} class="back">
 				<ArrowLeft size={18} weight="bold" aria-hidden="true" />
 				<span>{language === 'en' ? 'Back to notes' : 'К конспекту'}</span>
 			</button>
-			<span class="mode-label">{language === 'en' ? 'Video + transcript' : 'Видео + расшифровка'}</span>
-			<span class="progress" aria-label={language === 'en' ? `Chapter ${chapterIndex + 1} of ${chapterCount}` : `Блок ${chapterIndex + 1} из ${chapterCount}`}>
-				{String(chapterIndex + 1).padStart(2, '0')} {language === 'en' ? 'of' : 'из'} {String(chapterCount).padStart(2, '0')}
+				{/snippet}
+			</Button>
+			<span class="mode-label">{language === 'en' ? 'Transcript' : 'Расшифровка'}</span>
+			<span class="progress" aria-label={language === 'en' ? `Chapter ${chapterIndex + 1} of ${chapterCount}` : `Глава ${chapterIndex + 1} из ${chapterCount}`}>
+				{language === 'en' ? 'Chapter' : 'Глава'} {chapterIndex + 1} {language === 'en' ? 'of' : 'из'} {String(chapterCount).padStart(2, '0')}
 			</span>
 		</header>
 
-		<div class="reader-workspace">
+		<div class="reader-workspace" class:video-collapsed={!videoOpen}>
 			<aside class="video-pane" aria-label={language === 'en' ? 'Video' : 'Видео'}>
-				<div class="video-stage">
+				<Collapsible bind:open={() => videoOpen, (open) => compactVideoOpen = open}>
 					{#if video}
-						<VideoPlayer
-							bind:this={playerComp}
-							{video}
-							{sourceUrl}
-							seekTo={playerSeek}
-							{autoplay}
-							onTime={handleTime}
-							onPlaying={handlePlaying}
-							{language}
-						/>
-					{:else}
-						<div class="video-empty">{language === 'en' ? 'This material has no embedded video.' : 'Для этого материала нет встроенного видео.'}</div>
+						<CollapsibleTrigger>
+							{#snippet render({ props })}
+								<button {...props} class="video-toggle">
+									<span>{videoOpen
+										? (language === 'en' ? 'Collapse video' : 'Свернуть видео')
+										: (language === 'en' ? 'Show video' : 'Показать видео')}</span>
+									{#if videoOpen}<CaretUp size={16} aria-hidden="true" />{:else}<CaretDown size={16} aria-hidden="true" />{/if}
+								</button>
+							{/snippet}
+						</CollapsibleTrigger>
 					{/if}
-				</div>
-				<div class="video-caption">
-					<span class:live={playing}><i></i>{language === 'en' ? (playing ? 'Synchronization enabled' : 'Press Play to synchronize') : (playing ? 'Синхронизация включена' : 'Нажмите Play для синхронизации')}</span>
-					<time>{formatTime(playbackTime)}</time>
-				</div>
+					<CollapsiblePanel keepMounted>
+						<div class="video-stage">
+							{#if video}
+								<VideoPlayer
+									bind:this={playerComp}
+									{video}
+									{sourceUrl}
+									seekTo={playerSeek}
+									{autoplay}
+									onTime={handleTime}
+									onPlaying={handlePlaying}
+									{language}
+								/>
+							{:else}
+								<div class="video-empty">{language === 'en' ? 'This material has no embedded video.' : 'Для этого материала нет встроенного видео.'}</div>
+							{/if}
+						</div>
+					</CollapsiblePanel>
+				</Collapsible>
 			</aside>
 
 			<main
 				class="transcript-pane"
 				bind:this={transcriptScrollEl}
 				onwheel={pauseFollowing}
+				ontouchmove={pauseFollowing}
 				onpointerdown={(event) => {
 					if ((event.target as HTMLElement).closest('.phrase')) return;
 					pauseFollowing();
@@ -226,24 +242,31 @@
 			>
 				<div class="reader-content">
 					<div class="chapter-meta">
-						<span class="chapter-number">{String(chapterIndex + 1).padStart(2, '0')}</span>
-						<button type="button" class="timecode" onclick={() => seekPhrase(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
+						<Button type="button" onclick={() => seekPhrase(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
+							{#snippet render({ props })}
+								<button {...props} class="timecode">
 							<Play size={10} weight="fill" aria-hidden="true" />
 							<span>{formatTime(chapter.start)}</span>
 						</button>
+							{/snippet}
+						</Button>
 					</div>
 
-					<h2 id={titleId}>
+					<h2 id={titleId} bind:this={chapterTitleEl} tabindex="-1">
 						{#each highlightParts(chapter.title, highlight) as part}
 							{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
 						{/each}
 					</h2>
 
 					{#if !followPlayback && activePhraseStart !== null}
-						<button type="button" class="follow-button" onclick={resumeFollowing}>
+						<Button type="button" onclick={resumeFollowing}>
+							{#snippet render({ props })}
+								<button {...props} class="follow-button">
 							<Crosshair size={16} weight="bold" aria-hidden="true" />
 							{language === 'en' ? 'Return to current position' : 'Вернуться к текущему месту'}
 						</button>
+							{/snippet}
+						</Button>
 					{/if}
 
 					{#if loadState === 'ready' && readableParagraphs.length}
@@ -251,15 +274,11 @@
 							{#each readableParagraphs as paragraph}
 								<p>
 									{#each paragraph.spans as span, spanIndex}
-										{#if spanIndex > 0}{' '}{/if}<button
-											type="button"
-											class="phrase"
-											class:active={span.start === activePhraseStart}
-											data-active={span.start === activePhraseStart ? 'true' : undefined}
-											aria-current={span.start === activePhraseStart ? 'true' : undefined}
-										title={`${language === 'en' ? 'Watch from' : 'Смотреть с'} ${formatTime(span.start)}`}
-											onclick={() => seekPhrase(span.start)}
-										>{#each highlightParts(span.text, highlight) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</button>
+										{#if spanIndex > 0}{' '}{/if}<Button type="button" data-active={span.start === activePhraseStart ? 'true' : undefined} aria-current={span.start === activePhraseStart ? 'true' : undefined} title={`${language === 'en' ? 'Watch from' : 'Смотреть с'} ${formatTime(span.start)}`} onclick={() => seekPhrase(span.start)}>
+											{#snippet render({ props })}
+												<button {...props} class="phrase" class:active={span.start === activePhraseStart}>{#each highlightParts(span.text, highlight) as part}{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}</button>
+											{/snippet}
+										</Button>
 									{/each}
 								</p>
 							{/each}
@@ -267,7 +286,11 @@
 					{:else if loadState === 'error'}
 						<div class="message" role="alert">
 							<p>{language === 'en' ? 'The transcript could not be loaded.' : 'Не удалось загрузить расшифровку.'}</p>
-							{#if onRetry}<button type="button" onclick={onRetry}>{language === 'en' ? 'Try again' : 'Попробовать ещё раз'}</button>{/if}
+							{#if onRetry}<Button type="button" onclick={onRetry}>
+								{#snippet render({ props })}
+									<button {...props}>{language === 'en' ? 'Try again' : 'Попробовать ещё раз'}</button>
+								{/snippet}
+							</Button>{/if}
 						</div>
 					{:else if loadState === 'ready'}
 						<p class="message">{language === 'en' ? 'This chapter has no transcript text.' : 'Для этого блока нет текста расшифровки.'}</p>
@@ -278,65 +301,83 @@
 					{/if}
 
 					<footer class="reader-footer">
+						{#if onPrevious}
+							<Button type="button" onclick={previousChapter}>
+								{#snippet render({ props })}
+									<button {...props} class="previous">
+								<ArrowLeft size={18} weight="bold" aria-hidden="true" />
+								<span>{language === 'en' ? 'Previous chapter' : 'Предыдущая глава'}</span>
+							</button>
+								{/snippet}
+							</Button>
+						{/if}
 						{#if onNext}
-							<button type="button" class="next" onclick={onNext}>
-								<span>{language === 'en' ? 'Next chapter' : 'Следующий блок'}</span>
+							<Button type="button" onclick={nextChapter}>
+								{#snippet render({ props })}
+									<button {...props} class="next">
+								<span>{language === 'en' ? 'Next chapter' : 'Следующая глава'}</span>
 								<ArrowRight size={18} weight="bold" aria-hidden="true" />
 							</button>
+								{/snippet}
+							</Button>
 						{:else}
-							<button type="button" class="next" onclick={onClose}>
+							<Button type="button" onclick={closeReader}>
+								{#snippet render({ props })}
+									<button {...props} class="next">
 								<span>{language === 'en' ? 'Back to notes' : 'Вернуться к конспекту'}</span>
 								<ArrowLeft size={18} weight="bold" aria-hidden="true" />
 							</button>
+								{/snippet}
+							</Button>
 						{/if}
 					</footer>
 				</div>
 			</main>
 		</div>
 	</div>
-</dialog>
+</div>
+{/snippet}
+</DialogContent>
+</Dialog>
 
 <style>
 	.reader { position: fixed; inset: 0; z-index: 200; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: var(--paper); color: var(--ink); }
 	.reader::backdrop { background: var(--paper); }
 	.reader-inner { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100dvh; }
 	.reader-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; min-height: 72px; padding: 12px clamp(20px, 3vw, 42px); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 96%, transparent); }
-	.back, .next, .follow-button { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; border: 0; background: transparent; color: var(--accent); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+	.back, .previous, .next, .follow-button, .video-toggle { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; border: 0; background: transparent; color: var(--accent); font-family: var(--font-ui); font-size: var(--text-control); font-weight: 600; cursor: pointer; }
 	.back { justify-self: start; padding: 7px 2px; }
-	.back:hover :global(svg) { transform: translateX(-4px); }
+	.back:hover :global(svg), .previous:hover :global(svg) { transform: translateX(-4px); }
 	.next:hover :global(svg) { transform: translateX(4px); }
-	.back :global(svg), .next :global(svg) { flex: 0 0 auto; transition: transform 0.18s ease; }
-	.back:focus-visible, .next:focus-visible, .timecode:focus-visible, .follow-button:focus-visible, .phrase:focus-visible, .message button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-	.mode-label, .progress { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+	.back :global(svg), .previous :global(svg), .next :global(svg) { flex: 0 0 auto; transition: transform 0.18s ease; }
+	.back:focus-visible, .previous:focus-visible, .next:focus-visible, .video-toggle:focus-visible, .timecode:focus-visible, .follow-button:focus-visible, .phrase:focus-visible, .message button:focus-visible, h2:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+	.mode-label, .progress { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-faint); }
 	.mode-label { justify-self: center; }
 	.progress { justify-self: end; }
-	.reader-workspace { display: grid; grid-template-columns: minmax(380px, 45%) minmax(0, 1fr); min-height: 0; }
+	.reader-workspace { display: grid; grid-template-columns: minmax(300px, 38%) minmax(0, 1fr); min-height: 0; }
 	.video-pane { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: clamp(22px, 4vw, 62px); border-right: 1px solid var(--line); background: color-mix(in srgb, var(--ink) 4%, var(--paper)); }
-	.video-stage { width: 100%; overflow: hidden; border-radius: 10px; box-shadow: 0 18px 60px color-mix(in srgb, var(--ink) 13%, transparent); }
+	.video-stage { width: 100%; overflow: hidden; border-radius: 10px; }
+	.video-toggle { display: none; }
 	.video-stage :global(.player) { width: 100%; }
 	.video-empty { display: grid; min-height: 220px; place-items: center; padding: 24px; color: var(--ink-faint); text-align: center; }
-	.video-caption { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 14px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
-	.video-caption span { display: inline-flex; align-items: center; gap: 8px; }
-	.video-caption i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); }
-	.video-caption span.live { color: var(--accent); }
-	.video-caption span.live i { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent); }
 	.transcript-pane { min-width: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
 	.reader-content { width: min(100%, 760px); min-height: 100%; margin: 0 auto; padding: clamp(40px, 7vh, 72px) clamp(24px, 5vw, 68px) 36px; }
 	.chapter-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 17px; }
-	.chapter-number { font-family: var(--font-display); font-size: 30px; font-weight: 500; line-height: 1; color: var(--accent); }
-	.timecode { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 5px 11px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; cursor: pointer; }
+	.timecode { display: inline-flex; align-items: center; gap: 7px; min-height: var(--hit); padding: 5px 11px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; cursor: pointer; }
 	.timecode :global(svg) { color: var(--accent); }
 	.timecode:hover { color: var(--paper); background: var(--accent); border-color: var(--accent); }
 	.timecode:hover :global(svg) { color: var(--paper); }
-	h2 { max-width: 20ch; margin: 0 0 clamp(30px, 5vh, 48px); font-family: var(--font-display); font-size: clamp(34px, 4.3vw, 54px); font-weight: 450; line-height: 1.04; letter-spacing: -0.025em; text-wrap: balance; }
+	h2 { max-width: 20ch; margin: 0 0 clamp(30px, 5vh, 48px); font-family: var(--font-display); font-size: clamp(34px, 4.3vw, 54px); font-weight: 450; line-height: 1.15; letter-spacing: -0.025em; text-wrap: balance; }
 	.follow-button { position: sticky; top: 12px; z-index: 2; margin: -18px 0 24px; padding: 8px 13px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--paper); box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 10%, transparent); }
 	.transcript-copy { max-width: 65ch; }
-	.transcript-copy p { margin: 0 0 1.38em; color: var(--ink-soft); font-size: clamp(18px, 1.6vw, 20px); line-height: 1.76; text-wrap: pretty; }
+	.transcript-copy p { margin: 0 0 1.38em; color: var(--ink-soft); font-size: clamp(18px, 1.6vw, 20px); line-height: 1.62; text-wrap: pretty; }
 	.phrase { display: inline; margin: 0; padding: 2px 1px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; line-height: inherit; text-align: left; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; transition: color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease; }
 	.phrase:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 7%, transparent); }
-	.phrase.active { color: var(--ink); background: color-mix(in srgb, var(--accent) 15%, var(--paper)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
-	.reader-footer { display: flex; justify-content: flex-end; margin-top: clamp(36px, 7vh, 70px); padding-top: 22px; border-top: 1px solid var(--line); }
-	.next { padding: 7px 2px; }
+	.phrase.active { color: var(--ink); background: color-mix(in srgb, var(--accent) 15%, var(--paper)); }
+	.reader-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: clamp(36px, 7vh, 70px); padding-top: 22px; border-top: 1px solid var(--line); }
+	.previous, .next { min-width: 0; max-width: calc(50% - 8px); padding: 7px 2px; }
+	.previous { text-align: left; }
+	.next { margin-left: auto; text-align: right; }
 	.message { color: var(--ink-faint); font-size: 17px; line-height: 1.6; }
 	.message button { min-height: 44px; padding: 8px 13px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: transparent; color: var(--accent); font-family: var(--font-ui); cursor: pointer; }
 	.loading { display: grid; gap: 13px; max-width: 65ch; padding-top: 4px; }
@@ -345,27 +386,36 @@
 	.loading span:nth-child(3) { width: 98%; animation-delay: 0.2s; }
 	.loading span:nth-child(4) { width: 68%; animation-delay: 0.3s; }
 	@keyframes pulse { to { opacity: 0.42; } }
-	mark { background: color-mix(in srgb, var(--accent) 13%, var(--paper)); color: var(--accent-ink); font-weight: 600; }
-	@media (max-width: 760px) {
+	mark { background: var(--mark); color: var(--mark-ink); font-weight: 600; }
+	@media (max-width: 1099px) {
 		.reader-nav { grid-template-columns: 1fr auto; min-height: 60px; padding: 8px 18px; }
 		.mode-label { display: none; }
 		.reader-workspace { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); }
 		.video-pane { padding: 12px 16px 10px; border-right: 0; border-bottom: 1px solid var(--line); }
-		.video-stage { width: min(100%, 520px); margin: 0 auto; border-radius: 7px; }
-		.video-caption { width: min(100%, 520px); margin: 0 auto; padding-top: 8px; }
+		.video-stage { width: min(100%, 520px, 48dvh); margin: 0 auto; border-radius: 7px; }
+		.video-toggle { display: flex; justify-content: flex-end; width: min(100%, 520px, 48dvh); margin: 0 auto; padding: 4px 2px; font-size: var(--text-label); }
 		.reader-content { padding: 32px 21px 28px; }
 		h2 { margin-bottom: 30px; font-size: clamp(32px, 9vw, 43px); }
 		.transcript-copy p { font-size: 18px; line-height: 1.7; }
 		.reader-footer { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
 	}
 	@media (max-width: 520px) {
-		.video-caption span { font-size: 9px; letter-spacing: 0.04em; }
 		.video-pane { padding-inline: 10px; }
 		.reader-nav { padding-inline: 14px; }
-		.back span { font-size: 10px; }
+		.back span { font-size: var(--text-label); }
+		.previous, .next { font-size: var(--text-label); }
+	}
+	@media (orientation: landscape) and (max-height: 500px) {
+		.reader-nav { min-height: 48px; padding-block: 2px; }
+		.reader-workspace { grid-template-columns: 42% minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+		.video-pane { padding: 8px; overflow-y: auto; border-right: 1px solid var(--line); border-bottom: 0; }
+		.reader-content { padding: 20px; }
+	}
+	@media (max-width: 1099px) and (orientation: landscape) and (max-height: 500px) {
+		.reader-workspace.video-collapsed { grid-template-columns: auto minmax(0, 1fr); }
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.loading span { animation: none; }
-		.back :global(svg), .next :global(svg), .phrase { transition: none; }
+		.back :global(svg), .previous :global(svg), .next :global(svg), .phrase { transition: none; }
 	}
 </style>

@@ -1,5 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { formatDuration, getVideoSourceUrl } from './utils';
+import { formatDuration, formatTime, getVideoSourceUrl, russianPlural } from './utils';
+
+it('formats fractional chapter starts consistently without rounding into the next second', () => {
+	expect(formatTime(602.1)).toBe('10:02');
+	expect(formatTime(2.61)).toBe('0:02');
+	expect(formatTime(3599.99)).toBe('59:59');
+});
+
+it('uses Russian count forms across teens and hundreds', () => {
+	const forms = ['совпадение', 'совпадения', 'совпадений'] as const;
+	for (const n of [1, 21, 101]) expect(russianPlural(n, forms)).toBe('совпадение');
+	for (const n of [2, 4, 23, 104]) expect(russianPlural(n, forms)).toBe('совпадения');
+	for (const n of [0, 5, 11, 12, 14, 111]) expect(russianPlural(n, forms)).toBe('совпадений');
+});
 
 describe('formatDuration', () => {
 	it('uses the requested language without changing the Russian default', () => {

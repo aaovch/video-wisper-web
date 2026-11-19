@@ -33,8 +33,8 @@ test('only the owner sees and changes archive passwords; changes revoke old acce
   const old = store.issue('hema-theory');
   const second = store.issue('hema-theory');
   assert.equal(second,old);
-  const other = store.issue('report:batmany-na-meche');
-  const otherSession = store.login(other,['report:batmany-na-meche']);
+  const other = store.issue('report:tsentralnaya-pozitsiya-dlinnyy-mech');
+  const otherSession = store.login(other,['report:tsentralnaya-pozitsiya-dlinnyy-mech']);
   const regular = await login(old);
   const owner = await login(ownerKey);
   assert.equal(owner.response.headers['x-archive-admin'],'/admin/');
@@ -57,7 +57,7 @@ test('only the owner sees and changes archive passwords; changes revoke old acce
   assert(!admin.text.includes('class="password-editor" open'));
   assert(admin.text.includes('aria-describedby="title-'));
   assert(admin.text.includes('https://hema-archive.com/collections/hema-theory/'));
-  assert(admin.text.includes('https://hema-archive.com/reports/batmany-na-meche/?from=petr-vasilev'));
+  assert(admin.text.includes('https://hema-archive.com/reports/tsentralnaya-pozitsiya-dlinnyy-mech/?from=petr-vasilev'));
   assert(admin.text.includes('Пароль: '+old));assert(admin.text.includes('Пароль: '+second));
   assert(JSON.parse((await call('/',owner.cookie)).text.match(/globalThis\.__hema=(.*?)<\/script>/s)[1]).owner);
   assert.equal((await call('/admin/',owner.cookie,undefined,{},'HEAD')).text,'');
@@ -82,9 +82,9 @@ test('only the owner sees and changes archive passwords; changes revoke old acce
   assert.equal(store.login(second,['hema-theory']),undefined);
   assert.equal(store.scope(oldSession),undefined);
   assert.deepEqual(store.syncDevice('password-admin-test',[],86400000),[]);
-  assert.equal(store.scope(otherSession),'report:batmany-na-meche');
+  assert.equal(store.scope(otherSession),'report:tsentralnaya-pozitsiya-dlinnyy-mech');
   assert(store.login(replacement,['hema-theory']));
-  assert(store.login(ownerKey,['report:batmany-na-meche']));
+  assert(store.login(ownerKey,['report:tsentralnaya-pozitsiya-dlinnyy-mech']));
   const updated = await call(saved.headers.location,owner.cookie);
   assert.equal(updated.status,200);assert.match(updated.text,/role="status"/);
   assert(updated.text.includes('&lt;img&amp;&gt;'));

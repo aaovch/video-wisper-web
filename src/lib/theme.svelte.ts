@@ -1,47 +1,19 @@
 import { browser } from '$app/environment';
 
-export type Theme = 'light' | 'dark';
-
-function readInitial(): Theme {
-	if (!browser) return 'light';
-	const attr = document.documentElement.dataset.theme;
-	if (attr === 'light' || attr === 'dark') return attr;
-	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
+import { applyTheme, syncThemeColor, type Theme } from './theme-preference';
+export type { Theme } from './theme-preference';
 
 /** Тема оформления: применяется к <html data-theme> и запоминается в localStorage. */
 class ThemeState {
-	current = $state<Theme>(readInitial());
+	current = $state<Theme>(browser && document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 
 	constructor() {
-		this.#syncMeta();
+		if (browser) syncThemeColor(this.current);
 	}
 
 	set(next: Theme) {
 		this.current = next;
-		this.#apply();
-	}
-
-	toggle() {
-		this.set(this.current === 'dark' ? 'light' : 'dark');
-	}
-
-	#apply() {
-		if (!browser) return;
-		document.documentElement.dataset.theme = this.current;
-		try {
-			localStorage.setItem('theme', this.current);
-		} catch {
-			// приватный режим/квота — не критично
-		}
-		this.#syncMeta();
-	}
-
-	#syncMeta() {
-		if (!browser) return;
-		document
-			.querySelector('meta[name="theme-color"]')
-			?.setAttribute('content', this.current === 'dark' ? '#17140f' : '#f3efe6');
+		if (browser) applyTheme(next);
 	}
 }
 

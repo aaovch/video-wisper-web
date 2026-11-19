@@ -85,3 +85,7 @@ git add -- ':(literal)src/routes/reports/[slug]/+page.svelte'
 
 - Перед push: `npm run qa-report -- <slug>` успешен, staged diff содержит только ожидаемое.
 - `.codex/`, `.claude/` — рабочие артефакты агентов, в git не добавлять.
+
+## UI SDK
+
+Для работы с UI SDK используй проектный навык `.agents/skills/ui-sdk/SKILL.md`.

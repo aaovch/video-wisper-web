@@ -26,6 +26,8 @@ describe('periods and missing data', () => {
 	it('rejects duplicate rows and malformed counts rather than displaying them', () => {
 		const data = {version:1,timezone:'Asia/Qyzylorda',generatedAt:'2026-10-03T12:00:00Z',startDate:'2026-10-03',endDate:'2026-10-03',rows:[{slug:'test',visits:2,daily:[{day:'2026-10-03',visits:2}]}]};
 		expect(parseSnapshot(data).rows[0].visits).toBe(2);
+		const videoRow = { ...data.rows[0], slug: 'video-0RDp8n0y1sE' };
+		expect(parseSnapshot({ ...data, rows: [...data.rows, videoRow] }).rows[1]).toEqual(videoRow);
 		expect(()=>parseSnapshot({...data,rows:[...data.rows,...data.rows]})).toThrow();
 		expect(()=>parseSnapshot({...data,rows:[{...data.rows[0],visits:-1}]})).toThrow();
 		expect(()=>parseSnapshot({...data,startDate:'2026-02-30'})).toThrow();

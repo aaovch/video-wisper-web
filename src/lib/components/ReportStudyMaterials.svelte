@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Tabs, TabsList, TabsTab, TabsPanel } from '@ui-sdk/svelte/tabs';
+	import { Button } from '@ui-sdk/svelte/button';
 	import { browser } from '$app/environment';
 	import { base } from '$app/paths';
 	import BookOpenText from 'phosphor-svelte/lib/BookOpenText';
@@ -72,16 +74,6 @@
 		if (active && activeTab === 'transcript') void ensureTranscript().catch(() => {});
 	});
 
-	function selectTab(tab: MaterialsTab) { requestedTab = tab; }
-	function handleTabKeydown(event: KeyboardEvent) {
-		if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key) || tabs.length < 2) return;
-		event.preventDefault();
-		const currentIndex = Math.max(0, tabs.indexOf(activeTab));
-		const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (currentIndex + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-		requestedTab = tabs[nextIndex];
-		queueMicrotask(() => document.getElementById(`materials-tab-${requestedTab}`)?.focus());
-	}
-
 	async function copyTranscript() {
 		try {
 			const text = await ensureTranscript();
@@ -93,52 +85,66 @@
 </script>
 
 <section class="study-materials" aria-label={language === 'en' ? 'Lecture materials' : 'Материалы лекции'}>
-	<div class="tablist" role="tablist" aria-label={language === 'en' ? 'Material sections' : 'Разделы материалов'}>
+	<Tabs value={activeTab} onValueChange={(next) => { if (tabs.includes(next as MaterialsTab)) requestedTab = next as MaterialsTab; }}>
+	<TabsList class="tablist" aria-label={language === 'en' ? 'Material sections' : 'Разделы материалов'}>
 		{#each tabs as tab (tab)}
-			<button id={`materials-tab-${tab}`} type="button" role="tab" class:active={activeTab === tab} aria-selected={activeTab === tab} aria-controls={`materials-panel-${tab}`} tabindex={activeTab === tab ? 0 : -1} onclick={() => selectTab(tab)} onkeydown={handleTabKeydown}>
+			<TabsTab value={tab}>
 				{#if tab === 'notes'}<BookOpenText size={17} aria-hidden="true" /><span>{language === 'en' ? 'Notes' : 'Конспект'}</span><span class="count">{materials.notes.length}</span>
 				{:else if tab === 'visuals'}<ImageSquare size={17} aria-hidden="true" /><span>{language === 'en' ? (materials.visuals.length === 1 ? 'Guide' : 'Guides') : (materials.visuals.length === 1 ? 'Памятка' : 'Памятки')}</span>{#if materials.visuals.length > 1}<span class="count">{materials.visuals.length}</span>{/if}
 				{:else if tab === 'glossary'}<Cards size={17} aria-hidden="true" /><span>{language === 'en' ? 'Glossary' : 'Глоссарий'}</span><span class="count">{materials.glossary.length}</span>
 				{:else}<TextAlignLeft size={17} aria-hidden="true" /><span>{language === 'en' ? 'Transcript' : 'Расшифровка'}</span>{/if}
-			</button>
+			</TabsTab>
 		{/each}
-	</div>
+	</TabsList>
 
 	{#if activeTab === 'notes'}
-		<div id="materials-panel-notes" class="panel" role="tabpanel" aria-labelledby="materials-tab-notes">
+		<TabsPanel value="notes" class="panel">
 			<header class="panel-head"><span class="kicker"><BookOpenText size={16} aria-hidden="true" /> {language === 'en' ? 'Lecture notes' : 'Короткий конспект'}</span><span>{materials.notes.length} {language === 'en' ? (materials.notes.length === 1 ? 'section' : 'sections') : (materials.notes.length === 1 ? 'раздел' : materials.notes.length < 5 ? 'раздела' : 'разделов')}</span></header>
 			<div class="notes-grid">{#each materials.notes as section, index (section.title)}<article><header><span>{String(index + 1).padStart(2, '0')}</span><h3>{section.title}</h3></header><ul>{#each section.items as item}<li>{item}</li>{/each}</ul></article>{/each}</div>
-		</div>
+		</TabsPanel>
 	{:else if activeTab === 'visuals'}
-		<div id="materials-panel-visuals" class="panel" role="tabpanel" aria-labelledby="materials-tab-visuals">
+		<TabsPanel value="visuals" class="panel">
 			<header class="panel-head"><span class="kicker"><ImageSquare size={16} aria-hidden="true" /> {language === 'en' ? 'Visual guides' : 'Визуальные памятки'}</span><span>{materials.visuals.length} {language === 'en' ? (materials.visuals.length === 1 ? 'item' : 'items') : (materials.visuals.length === 1 ? 'материал' : 'материала')}</span></header>
 			<div class="visuals">{#each materials.visuals as visual (`${visual.kind}:${visual.src}`)}<figure>{#if materials.visuals.length > 1}<figcaption>{materialVisualLabel(visual, language)}</figcaption>{/if}<a href={`${base}/${visual.src}`} target="_blank" rel="noreferrer" aria-label={language === 'en' ? `Open “${materialVisualLabel(visual, language)}” full size` : `Открыть «${materialVisualLabel(visual, language)}» в полном размере`}><img src={`${base}/${visual.src}`} alt={visual.alt} loading="lazy" decoding="async" /></a></figure>{/each}</div>
-		</div>
+		</TabsPanel>
 	{:else if activeTab === 'glossary'}
-		<div id="materials-panel-glossary" class="panel" role="tabpanel" aria-labelledby="materials-tab-glossary">
+		<TabsPanel value="glossary" class="panel">
 			<header class="panel-head"><span class="kicker"><Cards size={16} aria-hidden="true" /> {language === 'en' ? 'Terms and definitions' : 'Термины и определения'}</span><span>{materials.glossary.length} {language === 'en' ? 'terms' : 'терминов'}</span></header>
 			<dl class="glossary-grid">{#each materials.glossary as item (item.term)}<div><dt>{item.term}</dt><dd>{item.definition}</dd></div>{/each}</dl>
-		</div>
+		</TabsPanel>
 	{:else}
-		<div id="materials-panel-transcript" class="panel" role="tabpanel" aria-labelledby="materials-tab-transcript">
+		<TabsPanel value="transcript" class="panel">
 			<header class="panel-head">
 				<span class="kicker"><TextAlignLeft size={16} aria-hidden="true" /> {language === 'en' ? 'Full lecture transcript' : 'Полный текст лекции'}</span>
-				<span class="font-controls" aria-label={language === 'en' ? 'Text size' : 'Размер текста'}><button type="button" onclick={() => adjustTranscriptScale(-0.1)} disabled={transcriptScale <= 0.8} aria-label={language === 'en' ? 'Decrease text size' : 'Уменьшить текст'}>A−</button><button type="button" onclick={() => adjustTranscriptScale(0.1)} disabled={transcriptScale >= 1.3} aria-label={language === 'en' ? 'Increase text size' : 'Увеличить текст'}>A+</button></span>
-				<button type="button" class="copy" class:copied={copyState === 'copied'} aria-label={language === 'en' ? (copyState === 'copied' ? 'Transcript copied' : 'Copy full transcript') : (copyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку')} onclick={copyTranscript}>{#if copyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}</button>
+				<span class="font-controls" aria-label={language === 'en' ? 'Text size' : 'Размер текста'}><Button type="button" onclick={() => adjustTranscriptScale(-0.1)} disabled={transcriptScale <= 0.8} aria-label={language === 'en' ? 'Decrease text size' : 'Уменьшить текст'}>
+					{#snippet render({ props })}
+						<button {...props}>A−</button>
+					{/snippet}
+				</Button><Button type="button" onclick={() => adjustTranscriptScale(0.1)} disabled={transcriptScale >= 1.3} aria-label={language === 'en' ? 'Increase text size' : 'Увеличить текст'}>
+					{#snippet render({ props })}
+						<button {...props}>A+</button>
+					{/snippet}
+				</Button></span>
+				<Button type="button" aria-label={language === 'en' ? (copyState === 'copied' ? 'Transcript copied' : 'Copy full transcript') : (copyState === 'copied' ? 'Расшифровка скопирована' : 'Скопировать полную расшифровку')} onclick={copyTranscript}>
+					{#snippet render({ props })}
+						<button {...props} class="copy" class:copied={copyState === 'copied'}>{#if copyState === 'copied'}<Check size={18} weight="bold" />{:else}<CopySimple size={18} />{/if}</button>
+					{/snippet}
+				</Button>
 				<span class="copy-status" role="status" aria-live="polite">{language === 'en' ? (copyState === 'copied' ? 'Transcript copied' : copyState === 'error' ? 'Could not copy transcript' : '') : (copyState === 'copied' ? 'Расшифровка скопирована' : copyState === 'error' ? 'Не удалось скопировать расшифровку' : '')}</span>
 			</header>
 			<div class="transcript" style={`--transcript-scale: ${transcriptScale}`}>
 				{#if transcriptLoadState === 'ready'}<p>{transcriptText}</p>{:else if transcriptLoadState === 'error'}<p class="status">{language === 'en' ? 'The transcript could not be loaded. Refresh the page and try again.' : 'Не удалось загрузить расшифровку. Обновите страницу и попробуйте ещё раз.'}</p>{:else}<p class="status">{language === 'en' ? 'Loading transcript…' : 'Загрузка расшифровки…'}</p>{/if}
 			</div>
-		</div>
+		</TabsPanel>
 	{/if}
+</Tabs>
 </section>
 
 <style>
 	.study-materials { overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper); }
-	.tablist { display: flex; gap: 4px; overflow-x: auto; padding: 6px; border-bottom: 1px solid var(--line-strong); background: var(--paper-2); scrollbar-width: thin; }
-	.tablist button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 12px; border: 1px solid transparent; border-radius: var(--radius); background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; white-space: nowrap; cursor: pointer; }
-	.tablist button.active { border-color: color-mix(in srgb, var(--accent) 28%, var(--line)); background: var(--paper); color: var(--accent); }
+	:global(.study-materials .tablist) { display: flex; gap: 4px; overflow-x: auto; padding: 6px; border-bottom: 1px solid var(--line-strong); background: var(--paper-2); scrollbar-width: thin; }
+	:global(.study-materials [data-slot=tabs-tab]) { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 12px; border: 1px solid transparent; border-radius: var(--radius); background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; white-space: nowrap; cursor: pointer; }
+	:global(.study-materials [data-slot=tabs-tab][aria-selected=true]) { border-color: color-mix(in srgb, var(--accent) 28%, var(--line)); background: var(--paper); color: var(--accent); }
 	.count { min-width: 20px; padding: 1px 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink-faint) 10%, transparent); font-family: var(--font-mono); font-size: 10px; text-align: center; }
 	.panel-head { min-height: 56px; padding: 16px 18px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 16px; color: var(--ink-faint); font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 	.kicker { display: inline-flex; align-items: center; gap: 8px; margin-right: auto; color: var(--ink); font-weight: 600; }
@@ -169,9 +175,9 @@
 	button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 	@media (max-width: 520px) {
-		.tablist { gap: 2px; padding: 4px; }
-		.tablist button { padding: 7px 8px; gap: 5px; font-size: 12px; }
-		.tablist button :global(svg) { display: none; }
+		:global(.study-materials .tablist) { gap: 2px; padding: 4px; }
+		:global(.study-materials [data-slot=tabs-tab]) { padding: 7px 8px; gap: 5px; font-size: 12px; }
+		:global(.study-materials [data-slot=tabs-tab]) :global(svg) { display: none; }
 		.panel-head { align-items: flex-start; flex-wrap: wrap; padding: 14px; }
 		.notes-grid, .glossary-grid { grid-template-columns: 1fr; }
 		.notes-grid article, .glossary-grid > div { padding: 17px 15px; }

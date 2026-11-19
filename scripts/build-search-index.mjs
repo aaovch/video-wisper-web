@@ -4,6 +4,8 @@
  * ASR segment boundaries and the browser does not have to index 100k+ tiny docs.
  */
 import MiniSearch from 'minisearch';
+import { createHash } from 'node:crypto';
+import { gzipSync } from 'node:zlib';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -31,6 +33,8 @@ const outMeta = join(root, 'src/lib/data/report-meta.json');
 import { stemRu } from '../src/lib/stem-ru.js';
 import { INDEX_VERSION, searchIndexOptions as miniSearchOptions } from '../src/lib/search-index-schema.js';
 import { getReportMaterials } from '../src/lib/report-material-data.js';
+import { packSearchIndex, unpackSearchIndex, SEARCH_WIRE_VERSION } from '../src/lib/search-index-codec.js';
+import { isDeepStrictEqual } from 'node:util';
 
 // Deterministic rollback/ablation; no network or model runs during site build.
 const useEnrichment = process.env.SEARCH_ENRICHMENT !== '0';
@@ -334,8 +338,33 @@ rmSync(legacyIndex, { force: true });
 writeFileSync(outCoreIndex, serializedCore);
 writeFileSync(outTranscriptIndex, serializedTranscripts);
 writeFileSync(outChapterTitles, JSON.stringify(chapterTitlesBySlug));
+// Keep legacy JSONs for older clients and offline quality tools. The UI reads
+// content-addressed compact assets; remove only this builder's stale files.
+for (const name of readdirSync(searchDir)) {
+	if (/^packed-(core|transcripts|titles)-[a-f0-9]{20}\.json$/.test(name)) rmSync(join(searchDir, name));
+}
+const assets = {};
+const transfer = {};
+for (const [kind, original] of [
+	['core', serializedCore], ['transcripts', serializedTranscripts],
+	['titles', JSON.stringify(chapterTitlesBySlug)]
+]) {
+	const source = JSON.parse(original);
+	const packed = kind === 'titles' ? source : packSearchIndex(source);
+	if (kind !== 'titles' && !isDeepStrictEqual(unpackSearchIndex(packed), source)) {
+		throw new Error(`Lossy search transport: ${kind}`);
+	}
+	const json = JSON.stringify(packed);
+	const hash = createHash('sha256').update(json).digest('hex').slice(0, 20);
+	const file = `packed-${kind}-${hash}.json`;
+	writeFileSync(join(searchDir, file), json);
+	assets[kind] = { file, bytes: Buffer.byteLength(json) };
+	transfer[kind] = { original: Buffer.byteLength(original), packed: Buffer.byteLength(json),
+		originalGzip: gzipSync(original).length, packedGzip: gzipSync(json).length };
+}
 writeFileSync(outManifest, JSON.stringify({
 	version: INDEX_VERSION,
+	transport: { version: SEARCH_WIRE_VERSION, assets },
 	enrichment: { enabled: useEnrichment, chapters: enrichedChapters },
 	ranking: { wholeChapters, indexedCoverage },
 	situationCards: { enabled: process.env.SEARCH_CARDS !== '0' },
@@ -343,6 +372,7 @@ writeFileSync(outManifest, JSON.stringify({
 	reports: indexedMeta.length,
 	kinds,
 	reportDocuments,
+	transfer,
 	bytes: {
 		core: Buffer.byteLength(serializedCore),
 		transcripts: Buffer.byteLength(serializedTranscripts)
@@ -355,3 +385,11 @@ console.log(
 	`search-index v${INDEX_VERSION}: ${docs.length} docs (core ${coreDocs.length} / transcripts ${transcriptDocs.length}), ` +
 	`core ${mib(Buffer.byteLength(serializedCore))} MiB + transcripts ${mib(Buffer.byteLength(serializedTranscripts))} MiB, ${indexedMeta.length} reports`
 );
+const beforeGzip = transfer.core.originalGzip + transfer.transcripts.originalGzip;
+const afterGzip = transfer.core.packedGzip + transfer.transcripts.packedGzip;
+console.log(`search-transfer: ${mib(afterGzip)} MiB gzip (${(100 * (1 - afterGzip / beforeGzip)).toFixed(1)}% smaller); lossless round-trip verified`);
+
+if (process.env.HEMA_INDEX_DIR) {
+  const { buildPrivateIndexes } = await import('../server/build-indexes.mjs');
+  buildPrivateIndexes(process.env.HEMA_INDEX_DIR, JSON.parse(readFileSync(join(root,'src/lib/data/collections.json'),'utf8')), docs, chapterTitlesBySlug, indexedMeta);
+}

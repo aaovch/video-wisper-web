@@ -3,13 +3,14 @@ import { page } from '$app/state';
 import { tick, untrack } from 'svelte';
 import { readSearchState, writeSearchState } from './search-url-state';
 import { hasSearchQuery } from './search-tokenizer.js';
-import { preloadSearchIndex, searchScoped, whenSearchComplete } from './search';
+import { preloadSearchIndex, searchScoped, whenSearchComplete } from './search-client';
 import type { SearchHit, SearchScope, SearchResultKind } from './search-types';
 import type { SearchFilterSelections } from './search-filters';
 
 /** Shared URL, request and dialog state for catalog, collection and report search. */
 export function createSearchController(options: {
 	defaults: SearchFilterSelections;
+	normalizeSelections?: (values: SearchFilterSelections) => SearchFilterSelections;
 	scopes: () => SearchScope[];
 	limit: number;
 	preserveHashScroll?: () => boolean;
@@ -17,20 +18,24 @@ export function createSearchController(options: {
 	const state = $state({
 		query: '', selections: structuredClone(options.defaults), expanded: false,
 		hits: [] as SearchHit[], scope: undefined as SearchScope | undefined,
+		total: 0,
 		loading: false, error: false, matchKind: 'empty' as SearchResultKind,
 		correctedQuery: undefined as string | undefined, fallback: false, scopeLabel: '',
-		filterOpen: false
 	});
 	let retryNonce = $state(0);
+	let debounceNextSearch = false;
 	let restoreScroll = $state<number | null>(null);
-	let filterTrigger: HTMLElement | null = null;
 	const scrollKey = () => `search-scroll:${page.url.pathname}${page.url.search}${page.url.hash}`;
 
 	beforeNavigate(() => {
 		try { sessionStorage.setItem(scrollKey(), String(window.scrollY)); } catch { /* optional storage */ }
 	});
-	afterNavigate(({ type }) => {
-		if (type !== 'popstate' || options.preserveHashScroll?.()) return;
+	afterNavigate(({ type, from }) => {
+		const previous = from?.url ?? (type === 'enter' && document.referrer ? new URL(document.referrer) : null);
+		const returningToArchive = previous?.origin === page.url.origin &&
+			!page.url.searchParams.has('archiveSearch')
+			&& previous.searchParams.get('archiveSearch') === page.url.search.slice(1);
+		if ((type !== 'popstate' && !returningToArchive) || options.preserveHashScroll?.()) return;
 		try {
 			const stored = sessionStorage.getItem(scrollKey());
 			const value = stored === null ? NaN : Number(stored);
@@ -41,6 +46,7 @@ export function createSearchController(options: {
 		const url = page.url;
 		untrack(() => {
 			const next = readSearchState(url, options.defaults);
+			if (options.normalizeSelections) next.selections = options.normalizeSelections(next.selections);
 			state.query = next.query;
 			if (JSON.stringify(next.selections) !== JSON.stringify(state.selections)) state.selections = next.selections;
 			state.expanded = next.expanded;
@@ -49,10 +55,15 @@ export function createSearchController(options: {
 	$effect(() => {
 		const query = state.query.trim();
 		const scopes = options.scopes();
+		const includeAll = state.expanded;
 		retryNonce;
+		const delay = debounceNextSearch ? 180 : 0;
+		debounceNextSearch = false;
 		let cancelled = false;
 		state.error = false;
-		state.hits = [];
+		// Keep the last result's geometry while the next request is in flight.
+		// Views make retained rows inert until they belong to the current query.
+		if (!hasSearchQuery(query)) { state.hits = []; state.total = 0; }
 		state.correctedQuery = undefined;
 		state.matchKind = 'empty';
 		state.fallback = false;
@@ -62,9 +73,11 @@ export function createSearchController(options: {
 		if (!hasSearchQuery(query)) return;
 		async function run() {
 			try {
-				const response = await searchScoped(query, scopes, options.limit);
+				// Svelte state proxies cannot cross a worker's structured-clone boundary.
+				const response = await searchScoped(query, $state.snapshot(scopes), options.limit, includeAll);
 				if (cancelled) return;
 				state.hits = response.hits;
+				state.total = response.total;
 				state.scope = response.resultScope;
 				state.matchKind = response.matchKind;
 				state.correctedQuery = response.correctedQuery;
@@ -76,35 +89,41 @@ export function createSearchController(options: {
 					if (!cancelled) await run();
 				}
 			} catch {
-				if (!cancelled) { state.hits = []; state.error = true; state.loading = false; }
+				if (!cancelled) { state.hits = []; state.total = 0; state.error = true; state.loading = false; }
 			}
 		}
-		const timer = setTimeout(() => void run(), 180);
+		const timer = setTimeout(() => void run(), delay);
 		return () => { cancelled = true; clearTimeout(timer); };
 	});
 	$effect(() => {
 		if (state.loading || restoreScroll === null) return;
 		const y = restoreScroll;
 		restoreScroll = null;
-		void tick().then(() => window.scrollTo(0, y));
+		void tick().then(() => window.scrollTo({ top: y, behavior: 'instant' }));
 	});
 	const save = () => {
 		const url = writeSearchState(page.url, state.query, state.selections, state.expanded);
 		if (url.href !== page.url.href) void goto(url, { replaceState: true, noScroll: true, keepFocus: true });
 	};
 	return {
-		state, save,
-		edit: () => { state.expanded = false; save(); },
+		state,
+		toggleExpanded: () => { state.expanded = !state.expanded; save(); },
+		edit: () => { debounceNextSearch = true; state.expanded = false; save(); },
 		clear: () => { state.query = ''; state.expanded = false; save(); },
-		toggleFilter: (id: string, value: string) => {
+		toggleFilter: (id: string, value: string, keepList = false) => {
 			const current = state.selections[id] ?? [];
 			state.selections = { ...state.selections, [id]: current.includes(value) ? current.filter(v => v !== value) : [...current, value] };
-			state.expanded = false; save();
+			if (!keepList) state.expanded = false;
+			save();
+		},
+		setGroup: (id: string, values: string[]) => {
+			if (JSON.stringify(state.selections[id]) === JSON.stringify(values)) return;
+			state.selections = { ...state.selections, [id]: [...values] };
+			state.expanded = false;
+			save();
 		},
 		clearFilters: () => { state.selections = structuredClone(options.defaults); state.expanded = false; save(); },
 		retry: () => { retryNonce += 1; },
 		preload: preloadSearchIndex,
-		openFilters: (event: MouseEvent) => { filterTrigger = event.currentTarget as HTMLElement; state.filterOpen = true; },
-		closeFilters: () => { state.filterOpen = false; queueMicrotask(() => filterTrigger?.focus()); }
 	};
 }

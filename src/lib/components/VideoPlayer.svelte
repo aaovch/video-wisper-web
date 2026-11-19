@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { base } from '$app/paths';
 	import type { VideoSource } from '$lib/types';
-	import { getVideoSourceUrl } from '$lib/utils';
+	import { formatTime, getVideoSourceUrl } from '$lib/utils';
 	import ArrowSquareOut from 'phosphor-svelte/lib/ArrowSquareOut';
 	import { untrack } from 'svelte';
 
@@ -24,8 +24,27 @@
 		language?: 'ru' | 'en';
 	} = $props();
 
-	const start = $derived(Math.max(0, Math.floor(seekTo)));
-	const externalUrl = $derived(getVideoSourceUrl(video, sourceUrl, base));
+	const position = $derived(Math.max(0, seekTo));
+	const start = $derived(Math.floor(position));
+	const source = $derived(getVideoSourceUrl(video, sourceUrl, base));
+	const externalUrl = $derived.by(() => {
+		if (!source || !start) return source;
+		if (video.provider === 'file') return source.split('#')[0] + '#t=' + start;
+		if (!URL.canParse(source)) return source;
+		const url = new URL(source);
+		switch (video.provider) {
+			case 'youtube':
+			case 'rutube':
+			case 'vk':
+				url.searchParams.set('t', String(start));
+				break;
+			case 'vimeo':
+				url.hash = 't=' + start + 's';
+				break;
+			default: return source;
+		}
+		return url.href;
+	});
 	const externalLabel = $derived.by(() => {
 		switch (video.provider) {
 			case 'youtube': return language === 'en' ? 'Open on YouTube' : 'Открыть на YouTube';
@@ -54,9 +73,10 @@
 	// Клик одновременно вызывает seekAndPlay и обновляет seekTo. Запоминаем уже
 	// выполненную команду, чтобы реактивная синхронизация не перематывала повторно.
 	let appliedSeekKey = '';
+	let playRequested = false;
 
 	function seekKey(t: number) {
-		return `${seekSourceKey}:${Math.max(0, Math.floor(t))}`;
+		return `${seekSourceKey}:${Math.max(0, t)}`;
 	}
 
 	function claimSeek(t: number) {
@@ -104,7 +124,7 @@
 	}
 
 	function seekVk(t: number, shouldPlay: boolean) {
-		postVk('seek', { time: Math.max(0, Math.floor(t)) });
+		postVk('seek', { time: Math.max(0, t) });
 		if (shouldPlay) postVk('play');
 	}
 
@@ -116,8 +136,9 @@
 			if (!data || typeof data !== 'object') return;
 			if (data.event === 'inited') {
 				vkReady = true;
-				rememberSeek(start);
-				seekVk(start, untrack(() => autoplay));
+				rememberSeek(position);
+				seekVk(position, playRequested || untrack(() => autoplay));
+				playRequested = false;
 			} else if (data.event === 'started' || data.event === 'resumed' || data.state === 'playing') {
 				onPlaying?.(true);
 			} else if (data.event === 'paused' || data.event === 'ended' || data.state === 'paused') {
@@ -133,7 +154,7 @@
 	});
 
 	$effect(() => {
-		const t = start;
+		const t = position;
 		if (video.provider === 'vk' && vkReady && claimSeek(t)) {
 			seekVk(t, untrack(() => autoplay));
 		}
@@ -153,6 +174,7 @@
 
 	let ytPlayer = $state<any>(null);
 	let ytReady = $state(false);
+	let pauseAfterSeek = false;
 	let pollTimer: ReturnType<typeof setInterval> | null = null;
 	let ytAutoplayTimer: ReturnType<typeof setTimeout> | null = null;
 	let ytApiPromise: Promise<void> | null = null;
@@ -221,6 +243,11 @@
 					},
 					onStateChange: (e: any) => {
 						if (e.data === YT.PlayerState.PLAYING) {
+							if (pauseAfterSeek) {
+								pauseAfterSeek = false;
+								e.target.pauseVideo();
+								return;
+							}
 							onPlaying?.(true);
 							startPoll();
 						} else {
@@ -248,10 +275,15 @@
 
 	// Перемотка YouTube по клику на блок (через API, без пересоздания iframe).
 	$effect(() => {
-		const t = start;
+		const t = position;
 		if (video.provider === 'youtube' && ytReady && ytPlayer?.seekTo && claimSeek(t)) {
-			ytPlayer.seekTo(t, true);
-			if (untrack(() => autoplay)) playYoutubeWithFallback();
+			const shouldPlay = playRequested || untrack(() => autoplay);
+			if (t > 0 || shouldPlay) {
+				pauseAfterSeek = !shouldPlay;
+				ytPlayer.seekTo(t, true);
+				if (shouldPlay) playYoutubeWithFallback();
+			}
+			playRequested = false;
 		}
 	});
 
@@ -330,13 +362,14 @@
 
 	// Перемотка нативного видео по тайм-коду блока.
 	$effect(() => {
-		const t = start;
+		const t = position;
 		if (isNative && videoEl && directSrc && t >= 0 && claimSeek(t)) {
 			const el = videoEl;
 			const seek = () => {
 				try {
 					el.currentTime = t;
-					if (untrack(() => autoplay)) playNativeWithFallback(el);
+					if (playRequested || untrack(() => autoplay)) playNativeWithFallback(el);
+					playRequested = false;
 				} catch {
 					/* перемотаем, когда появятся метаданные */
 				}
@@ -346,14 +379,20 @@
 		}
 	});
 
+	export function currentTime(): number | undefined {
+		if (isNative && videoEl && videoEl.readyState >= 1) return videoEl.currentTime;
+		if (ytReady && ytPlayer?.getPlayerState?.() >= 1) return ytPlayer.getCurrentTime();
+		return undefined;
+	}
+
 	// Императивная перемотка прямо в обработчике клика. Это важно для мобильных:
 	// play() должен вызываться синхронно внутри жеста пользователя, иначе браузер
 	// блокирует запуск (через отложенный $effect он бы не сработал).
 	export function seekAndPlay(t: number) {
-		const s = Math.max(0, Math.floor(t));
+		const s = Math.max(0, t);
 		if (isNative) {
 			const el = videoEl;
-			if (!el) return;
+			if (!el) { playRequested = true; return; }
 			rememberSeek(s);
 			const go = () => {
 				try {
@@ -366,12 +405,15 @@
 			if (el.readyState >= 1) go();
 			else el.addEventListener('loadedmetadata', go, { once: true });
 		} else if (video.provider === 'youtube' && ytReady && ytPlayer?.seekTo) {
+			pauseAfterSeek = false;
 			rememberSeek(s);
 			ytPlayer.seekTo(s, true);
 			playYoutubeWithFallback();
 		} else if (video.provider === 'vk' && vkReady) {
 			rememberSeek(s);
 			seekVk(s, true);
+		} else if (video.provider === 'youtube' || video.provider === 'vk') {
+			playRequested = true;
 		}
 	}
 </script>
@@ -430,8 +472,8 @@
 	</div>
 	{#if externalUrl}
 		<a class="source-link" href={externalUrl} target="_blank" rel="noopener noreferrer">
-			<span><small>{language === 'en' ? 'Player not opening?' : 'Плеер не открывается?'}</small><strong>{externalLabel}</strong></span>
-			<ArrowSquareOut size={18} weight="bold" aria-hidden="true" />
+			<span>{externalLabel}{#if start && externalUrl !== source} · {formatTime(start)}{/if}</span>
+			<ArrowSquareOut size={14} aria-hidden="true" />
 		</a>
 	{/if}
 </div>
@@ -482,67 +524,7 @@
 		color: var(--accent-2);
 	}
 
-	.source-link {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 14px;
-		margin-top: 8px;
-		padding: 10px 12px;
-		border: 1px solid var(--line);
-		border-radius: 9px;
-		background: color-mix(in srgb, var(--accent) 7%, var(--paper));
-		color: var(--ink);
-		text-decoration: none;
-		transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
-	}
-
-	.source-link span {
-		display: flex;
-		align-items: baseline;
-		gap: 8px;
-		min-width: 0;
-	}
-
-	.source-link small {
-		color: var(--ink-faint);
-		font-family: var(--font-mono);
-		font-size: 9px;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
-	.source-link strong {
-		color: var(--accent-2);
-		font-size: 13px;
-		font-weight: 650;
-	}
-
-	.source-link :global(svg) {
-		flex: 0 0 auto;
-		color: var(--accent-2);
-	}
-
-	.source-link:hover {
-		border-color: var(--accent-2);
-		background: color-mix(in srgb, var(--accent) 12%, var(--paper));
-		transform: translateY(-1px);
-	}
-
-	.source-link:focus-visible {
-		outline: 2px solid var(--accent-2);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 520px) {
-		.source-link span {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 2px;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.source-link { transition: none; }
-	}
+	.source-link { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; color: var(--ink-soft); font: 14px/1.4 var(--font-ui); }
+	.source-link:hover { color: var(--accent-ink); text-decoration: underline; }
+	.source-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>

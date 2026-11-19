@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Collapsible, CollapsibleTrigger, CollapsiblePanel } from '@ui-sdk/svelte/collapsible';
+	import { Button } from '@ui-sdk/svelte/button';
 	import { onMount } from 'svelte';
 	import type { Chapter } from '$lib/types';
 	import { formatTime } from '$lib/utils';
@@ -36,31 +38,44 @@
 	}
 </script>
 
-<details class="chapter-nav" bind:open bind:this={navEl}>
-	<summary class="nav-title label" aria-label={language === 'en' ? 'Contents' : 'Содержание'}>
+<div class="chapter-nav" bind:this={navEl}><Collapsible bind:open>
+	<CollapsibleTrigger>
+		{#snippet render({ props })}
+			<button {...props} class="disclosure-trigger nav-title label" aria-label={language === 'en' ? 'Contents' : 'Содержание'}>
 		{language === 'en' ? 'Contents' : 'Содержание'}
 		<span class="count mono">{chapters.length}</span>
 		<span class="chevron" aria-hidden="true"><CaretRight size={13} weight="bold" /></span>
-	</summary>
+	</button>
+		{/snippet}
+	</CollapsibleTrigger>
+	<CollapsiblePanel keepMounted>
 	<ol>
 		{#each chapters as chapter, i (chapter.start)}
 			<li class:active={active === i}>
-				<button type="button" onclick={() => select(i, chapter.start)}>
+				<Button type="button" aria-current={active === i ? 'location' : undefined} onclick={() => select(i, chapter.start)}>
+					{#snippet render({ props })}
+						<button {...props}>
 					<span class="idx mono">{String(i + 1).padStart(2, '0')}</span>
 					<span class="ttl">{chapter.title}</span>
 					<span class="tc mono">{formatTime(chapter.start)}</span>
 				</button>
+					{/snippet}
+				</Button>
 			</li>
 		{/each}
 	</ol>
-</details>
+</CollapsiblePanel>
+</Collapsible></div>
 
 <style>
+	.disclosure-trigger { text-align: start; font: inherit; color: inherit; background: transparent; border: 0; padding: 0; cursor: pointer; }
 	.chapter-nav {
 		padding-top: 4px;
 	}
 
 	.nav-title {
+		min-height: var(--hit);
+		font-size: var(--text-label);
 		display: flex;
 		align-items: center;
 		gap: 8px;
@@ -69,12 +84,10 @@
 		user-select: none;
 	}
 
-	.nav-title::-webkit-details-marker {
-		display: none;
-	}
+
 
 	.count {
-		font-size: 11px;
+		font-size: var(--text-label);
 		color: var(--ink-faint);
 	}
 
@@ -86,7 +99,7 @@
 		transition: transform 0.2s ease;
 	}
 
-	.chapter-nav[open] .chevron {
+	.nav-title[data-open] .chevron {
 		transform: rotate(90deg);
 	}
 
@@ -106,6 +119,7 @@
 		align-items: baseline;
 		gap: 10px;
 		width: 100%;
+		min-height: var(--hit);
 		text-align: left;
 		background: none;
 		border: 0;
@@ -114,7 +128,7 @@
 		cursor: pointer;
 		color: var(--ink-faint);
 		font-family: var(--font-body);
-		font-size: 15px;
+		font-size: var(--text-control);
 		line-height: 1.35;
 		transition:
 			color 0.2s ease,
@@ -128,31 +142,23 @@
 	}
 
 	.idx {
-		font-size: 11px;
+		font-size: var(--text-label);
 		color: var(--ink-faint);
 	}
 
 	.ttl {
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: nowrap;
+		white-space: normal;
 	}
 
 	.tc {
-		font-size: 11px;
+		font-size: var(--text-label);
 		color: var(--ink-faint);
 	}
 
-	.active button {
-		color: var(--accent-ink);
-		border-left-color: var(--accent);
-		background: var(--paper-2);
-	}
-
-	.active .idx,
-	.active .tc {
-		color: var(--accent);
-	}
+	.active .ttl { color: var(--ink); font-weight: 600; }
+	.active .idx { color: var(--accent-ink); }
 
 	@media (max-width: 960px) {
 		.nav-title {

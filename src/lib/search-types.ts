@@ -10,6 +10,9 @@ export type SearchScope =
 export interface SearchResponse {
 	query: string;
 	hits: SearchHit[];
+	/** Distinct destinations in the selected result tier, before the page limit. */
+	total: number;
+	hasMore: boolean;
 	matchKind: SearchResultKind;
 	requestedScope: SearchScope;
 	resultScope: SearchScope;

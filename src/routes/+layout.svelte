@@ -1,23 +1,32 @@
 <script lang="ts">
+	import { Button } from '@ui-sdk/svelte/button';
 	import '../app.css';
 	import { base } from '$app/paths';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import ArchiveKeyDialog from '$lib/components/ArchiveKeyDialog.svelte';
+
+	import LockSimple from 'phosphor-svelte/lib/LockSimple';
+	let accessDialog = $state<ArchiveKeyDialog>();
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import VisitCounter from '$lib/components/VisitCounter.svelte';
 	import ArrowUp from 'phosphor-svelte/lib/ArrowUp';
-	import {
-		beginNavInstant,
-		endNavInstant,
-		flushVisibleReveals,
-		initPrerenderedReveals
-	} from '$lib/attachments';
-	import { SITE_NAME, SITE_TAGLINE } from '$lib/site';
+
+	import { communityArchive, SITE_NAME, SITE_TAGLINE } from '$lib/site';
 	import { collectionsForReport, getCollection } from '$lib/data/collections';
 	import { trackPageVisit } from '$lib/visit-tracker';
-	import { onMount, tick } from 'svelte';
+	import { tick } from 'svelte';
 
 	let { children } = $props();
+	const owner = import.meta.env.VITE_HEMA_SERVER && (globalThis as typeof globalThis & { __hema?: { owner?: boolean } }).__hema?.owner;
+	// A direct report or statistics visit receives only the metadata used on that page.
+	beforeNavigate(({ from, to, cancel, willUnload }) => {
+		if (willUnload || !to || !from || from.url.pathname === to.url.pathname) return;
+		if (document.body.hasAttribute('data-page-catalog')) {
+			cancel();
+			location.assign(to.url.href);
+		}
+	});
 	const home = $derived(page.route.id === '/');
 	const language = $derived.by<'ru' | 'en'>(() => {
 		const slug = page.params.slug;
@@ -58,26 +67,7 @@
 		if (progressEl) progressEl.style.transform = 'scaleX(0)';
 	}
 
-	onMount(async () => {
-		await tick();
-		initPrerenderedReveals();
-		flushVisibleReveals();
-	});
-
-	beforeNavigate(({ type }) => {
-		if (type === 'popstate' || type === 'link' || type === 'goto') {
-			beginNavInstant();
-		}
-	});
-
 	afterNavigate(() => {
-		beginNavInstant();
-		void (async () => {
-			await tick();
-			initPrerenderedReveals();
-			flushVisibleReveals();
-			endNavInstant();
-		})();
 		resetProgress();
 		const visitUrl = new URL(page.url);
 		void tick().then(() => trackPageVisit(visitUrl, document.title));
@@ -95,27 +85,37 @@
 	<ThemeToggle {language} />
 </div>
 
-<button
-	type="button"
-	class="to-top"
-	class:visible={showTop}
-	onclick={scrollToTop}
-	aria-label={language === 'en' ? 'Back to top' : 'Наверх'}
-	title={language === 'en' ? 'Back to top' : 'Наверх'}
-	tabindex={showTop ? 0 : -1}
-	aria-hidden={!showTop}
->
+<Button type="button" onclick={scrollToTop} aria-label={language === 'en' ? 'Back to top' : 'Наверх'} title={language === 'en' ? 'Back to top' : 'Наверх'} tabindex={showTop ? 0 : -1} aria-hidden={!showTop}>
+	{#snippet render({ props })}
+		<button {...props} class="to-top" class:visible={showTop}>
 	<ArrowUp size={18} weight="bold" aria-hidden="true" />
 </button>
+	{/snippet}
+</Button>
 
 <div class="sheet">
-	{#if home}
+	{#if home || (communityArchive && page.route.id === '/archive')}
 		<header class="masthead home">
 			<div class="container masthead-inner home">
-				<a class="wordmark" href="{base}/">
-					<span class="wordmark-main">{SITE_NAME}</span>
+				<a class="wordmark" class:community={communityArchive} href="{base}/">
+					{#if communityArchive}<svg class="archive-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="5" fill="currentColor"/><path d="M12 8.5v13l11-6.5zM7 25h18" fill="none" stroke="var(--paper)" stroke-width="1.8" stroke-linejoin="round"/></svg>{/if}
+					<svelte:element this={communityArchive ? 'h1' : 'span'} class="wordmark-main">{SITE_NAME}</svelte:element>
 					<span class="wordmark-sub label">{SITE_TAGLINE}</span>
 				</a>
+				{#if communityArchive}
+					{#if owner}
+						<a class="key-trigger" href="/admin/">Админка</a>
+					{:else}
+					<Button type="button" aria-haspopup="dialog" onclick={() => accessDialog?.open()}>
+						{#snippet render({ props })}
+							<button {...props} class="key-trigger">
+						<LockSimple size={16} aria-hidden="true" /> Ввести ключ
+					</button>
+						{/snippet}
+					</Button>
+					<ArchiveKeyDialog bind:this={accessDialog} />
+					{/if}
+				{/if}
 			</div>
 			<hr class="rule" />
 		</header>
@@ -128,6 +128,12 @@
 	<footer class="colophon">
 		<hr class="rule" />
 		<div class="container colophon-inner">
+			{#if !home}<a class="label" href="{base}/">{language === 'en' ? 'Home' : 'На главную'}</a>{/if}
+			{#if owner}<a class="label" href="/admin/">Админка</a>{/if}
+			{#if communityArchive}
+				<p class="label">{SITE_NAME} · {language === 'en' ? 'Historical fencing videos' : 'Видео об историческом фехтовании'}</p>
+				<a class="label" href="{base}/stats/">{language === 'en' ? 'Statistics' : 'Статистика архива'}</a>
+			{:else}
 			<p class="label">{SITE_NAME} · {language === 'en' ? 'Whisper Turbo + semantic LLM structuring' : 'Whisper Turbo + смысловая LLM-разметка'}</p>
 			<p class="label">
 				{language === 'en' ? 'built with SvelteKit' : 'собрано на SvelteKit'} ·
@@ -135,7 +141,8 @@
 				· {new Date().getFullYear()} · <a href="{base}/stats/">{language === 'en' ? 'Statistics' : 'Статистика'}</a>
 				· <VisitCounter target={{ kind: 'site' }} suffix={language === 'en' ? 'historical visits' : 'исторических посещений'} />
 			</p>
-		</div>
+		{/if}
+        </div>
 	</footer>
 </div>
 
@@ -195,6 +202,9 @@
 		border-color: var(--accent);
 	}
 
+	@media (max-width: 760px) {
+		.floating-controls { position: absolute; }
+	}
 	@media (max-width: 520px) {
 		.floating-controls {
 			top: 10px;
@@ -255,6 +265,7 @@
 	}
 
 	.wordmark-main {
+		margin: 0;
 		font-family: var(--font-display);
 		font-weight: 600;
 		font-size: 30px;
@@ -337,4 +348,10 @@
 			font-size: 12px;
 		}
 	}
+	.wordmark.community { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 3px 12px; max-width: calc(100% - 48px); }
+	.archive-mark { grid-row: span 2; width: 38px; height: 38px; color: var(--accent); }
+	.community .wordmark-sub { line-height: 1.15; }
+.key-trigger { display: inline-flex; align-items: center; gap: 6px; margin: auto 44px auto auto; min-height: 44px; background: transparent; color: var(--ink-soft); padding: 4px 0; border: 0; font: 14px/1.4 var(--font-ui); cursor: pointer; }
+.key-trigger:hover { color: var(--accent-ink); text-decoration: underline; }
+ @media(max-width:600px){.masthead-inner.home { gap: 8px; padding-right: 52px; }.key-trigger {margin: 0; font-size: 14px;}}
 </style>

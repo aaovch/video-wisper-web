@@ -13,6 +13,7 @@ const STORAGE_KEY = 'vw-unlocked-v2';
 const LEGACY_STORAGE_KEY = 'vw-unlocked';
 
 function load(): string[] {
+	if (import.meta.env.VITE_HEMA_SERVER) return (globalThis as typeof globalThis & { __hema?: { unlocked: string[] } }).__hema?.unlocked ?? [];
 	if (typeof localStorage === 'undefined') return [];
 	try {
 		const raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
@@ -50,8 +51,22 @@ class LockState {
 	 * осознанно переиспользуемого пароля нескольких пакетов.
 	 * Возвращает true при успехе.
 	 */
-	tryUnlock(targets: AccessTarget[], password: string): boolean {
-		const matches = targets.filter((target) => target.password === password);
+	async tryUnlock(targets: AccessTarget[], password: string, destination?: string | ((target: AccessTarget | undefined) => string | undefined)): Promise<boolean> {
+		if (import.meta.env.VITE_HEMA_SERVER) {
+			const body = new URLSearchParams({ key: password });
+			for (const target of targets) body.append('target', target.id);
+			const response = await fetch('/api/login', { method: 'POST', body }).catch(() => null);
+			if (!response?.ok) return false;
+			if (response.headers.get('X-Archive-Admin') === '/admin/') {
+				location.assign('/admin/');
+				return true;
+			}
+			const matched = targets.find(target => encodeURIComponent(target.id) === response.headers.get('X-Archive-Target'));
+			const url = typeof destination === 'function' ? destination(matched) : destination;
+			location.assign(url ?? location.href);
+			return true;
+		}
+		const matches = targets.filter((target) => target.password !== 'server-managed-credential' && target.password === password);
 		if (matches.length === 0) return false;
 		const next = new Set(this.unlocked);
 		for (const match of matches) next.add(accessTargetToken(match));

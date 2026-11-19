@@ -1,17 +1,16 @@
 <script lang="ts">
+	import PageMetadata from '$lib/components/PageMetadata.svelte';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { SITE_NAME } from '$lib/site';
 </script>
 
-<svelte:head>
-	<title>{page.status} — {SITE_NAME}</title>
-</svelte:head>
+<PageMetadata title={`${page.status} — ${SITE_NAME}`} noindex />
 
 <section class="container err">
 	<p class="code">{page.status}</p>
 	<h1>{page.error?.message ?? 'Страница не найдена'}</h1>
-	<a class="label" href="{base}/">← Вернуться к указателю</a>
+	<a class="label" href="{base}/">← На главную</a>
 </section>
 
 <style>

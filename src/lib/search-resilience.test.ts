@@ -1,8 +1,9 @@
 import MiniSearch from 'minisearch';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { resetSearchIndex, searchScoped, searchReportExact, searchReportsExact, whenSearchComplete } from '$lib/search-core';
+import { resetSearchIndex, searchScoped, searchReportExact, searchReportsExact, whenSearchComplete, preloadSearchIndex, configureSearchReportMetadata } from '$lib/search-core';
 import { stemRu } from '$lib/stem-ru';
 import type { SearchScope } from '$lib/search-types';
+import { packSearchIndex, SEARCH_INDEX_MEDIA_TYPE } from './search-index-codec.js';
 
 function shard(kind: string, text: string) {
 	const mini = new MiniSearch({ fields: ['field_title', 'field_body', 'field_tags'],
@@ -17,7 +18,7 @@ const transcript = shard('transcript', 'Квазигармонический к�
 const scope: SearchScope = { kind: 'report', label: 'fixture', reportSlug: 'fixture' };
 
 beforeEach(() => resetSearchIndex());
-afterEach(() => { resetSearchIndex(); vi.unstubAllGlobals(); });
+afterEach(() => { resetSearchIndex(); configureSearchReportMetadata(undefined); vi.unstubAllGlobals(); });
 
 function serve(overrides: Partial<Record<string, () => Promise<Response>>> = {}) {
 	const fetch = vi.fn(async (input: RequestInfo | URL) => {
@@ -30,6 +31,39 @@ function serve(overrides: Partial<Record<string, () => Promise<Response>>> = {})
 }
 
 describe('search fault injection and metamorphic contracts', () => {
+	it('uses the session report metadata supplied to the worker', async () => {
+		serve();
+		configureSearchReportMetadata([{ slug: 'fixture', title: 'Сабля: техника', tags: ['Сабля'] }]);
+		expect((await searchScoped('подъёмы', [scope])).hits[0]?.reportTitle).toBe('Сабля: техника');
+	});
+	it('loads negotiated compact server indexes and still adds authorized extra documents', async () => {
+		const extra = { id: 'extra', kind: 'chapter', reportSlug: 'fixture', chapterIndex: 1,
+			title: 'Новая глава', text: 'Контроль клинка', field_body: 'Контроль клинка' };
+		serve({
+			'index-core.json': async () => new Response(JSON.stringify(packSearchIndex(JSON.parse(core))), {
+				headers: { 'Content-Type': SEARCH_INDEX_MEDIA_TYPE, 'X-Archive-Search-Extras': '1' }
+			}),
+			'extra-core.json': async () => new Response(JSON.stringify([[extra]]))
+		});
+		expect((await searchScoped('клинка', [scope])).hits[0]?.chapterIndex).toBe(1);
+	});
+	it('requests the original server format if a negotiated compact response is corrupt', async () => {
+		let calls = 0;
+		serve({ 'index-core.json': async () => ++calls === 1
+			? new Response('{}', { headers: { 'Content-Type': SEARCH_INDEX_MEDIA_TYPE } })
+			: new Response(core) });
+		expect((await searchScoped('подъёмы', [scope])).hits.length).toBeGreaterThan(0);
+		expect(calls).toBe(2);
+	});
+	it('warms only the core on focus, but searches transcript-only content after a real query', async () => {
+		const fetch = serve();
+		preloadSearchIndex();
+		await vi.waitFor(() => expect(fetch.mock.calls.some(([url]) => String(url).endsWith('index-core.json'))).toBe(true));
+		expect(fetch.mock.calls.some(([url]) => String(url).includes('index-transcripts'))).toBe(false);
+		await searchScoped('квазигармонический', [scope]);
+		await whenSearchComplete();
+		expect((await searchScoped('квазигармонический', [scope])).hits[0]?.kind).toBe('transcript');
+	});
 	it('preserves single-digit identifiers and never corrects or prefixes numbers', async () => {
 		serve({ 'index-core.json': async () => new Response(shard('chapter', 'Тренировка 1: правила соревнования.')),
 			'index-transcripts.json': async () => new Response(shard('transcript', 'Тренировка 19: захват клинка.')) });

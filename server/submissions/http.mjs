@@ -1,5 +1,5 @@
 import {hasReadableResult,passedReview} from './result-ready.mjs';
-import { readFileSync } from 'node:fs';
+import { formStyles } from '../form-styles.mjs';
 import { createHash } from 'node:crypto';
 import { TRANSCRIPTION_SUNSET } from './transcription.mjs';
 import { youtubeUrl } from './store.mjs';
@@ -12,12 +12,30 @@ const activeStates = ['queued','launching','downloading','transcribing','summari
 function ownerControls(row) {
   const action = activeStates.includes(row.state) ? 'stop' : ['failed','stopped'].includes(row.state) ? 'retry' : null;
   if (!action) return '';
-  return `<form method="post" action="/submit/${row.id}/${action}"><input type="hidden" name="attempt" value="${row.attempt}"><button class="secondary">${action === 'stop' ? 'Остановить обработку' : 'Перезапустить обработку'}</button></form>`;
+  return `<form method="post" action="/submit/${row.id}/${action}"><input type="hidden" name="attempt" value="${row.attempt}"><ui-button><button type="submit" class="secondary">${action === 'stop' ? 'Остановить обработку' : 'Перезапустить обработку'}</button></ui-button></form>`;
 }
 const states = { stopped:'Остановлено владельцем', local_ready:'Локальная обработка завершена', queued:'В очереди', launching:'Запускаем обработку', downloading:'Получаем аудио', transcribing:'Распознаём речь', summarizing:'Готовим и проверяем разбор', review:'Разбор готов', published:'Опубликовано', failed:'Не удалось обработать видео', rejected:'Не опубликовано', consent_required:'Нужно согласие на облачную обработку' };
-const css = readFileSync(new URL('./style.css', import.meta.url), 'utf8');
 const time = n => `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, '0')}`;
-const listScript = `document.addEventListener('DOMContentLoaded',()=>{const list=document.querySelector('[data-owner-list]');if(!list)return;let busy=false;setInterval(async()=>{if(busy||document.hidden||list.contains(document.activeElement))return;busy=true;try{const r=await fetch('/submit/',{cache:'no-store'});if(!r.ok)return;const page=new DOMParser().parseFromString(await r.text(),'text/html');const updated=page.querySelector('[data-owner-list]');if(updated&&!list.contains(document.activeElement)&&list.innerHTML!==updated.innerHTML)list.innerHTML=updated.innerHTML}catch{}finally{busy=false}},15000)});`;
+const listScript = `document.addEventListener('DOMContentLoaded', () => {
+  const list = document.querySelector('[data-owner-list]');
+  if (!list) return;
+  let busy = false, etag;
+  setInterval(async () => {
+    if (busy || document.hidden || list.contains(document.activeElement)) return;
+    busy = true;
+    try {
+      const response = await fetch('/submit/owner-list', {
+        cache: 'no-store', headers: etag ? {'If-None-Match': etag} : {}
+      });
+      if (!response.ok || response.status === 304) return;
+      const html = await response.text();
+      if (!list.contains(document.activeElement)) {
+        list.innerHTML = html;
+        etag = response.headers.get('ETag');
+      }
+    } catch {} finally { busy = false; }
+  }, 15000);
+});`;
 function bindIntakeForm(validateUrl) {
   const form = document.querySelector('form[data-submit-once]');
   if (!form) return;
@@ -53,22 +71,10 @@ function bindIntakeForm(validateUrl) {
   sync();
 }
 const intakeScript = `document.addEventListener('DOMContentLoaded', () => (${bindIntakeForm})(${youtubeUrl}));`.replace(/\r\n?/g, '\n');
-const themeScript = intakeScript + listScript + "(()=>{let t;try{t=localStorage.getItem('theme')}catch{}document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('theme-toggle');b.hidden=false;const sync=()=>{b.setAttribute('aria-label',document.documentElement.dataset.theme==='dark'?'Включить светлую тему':'Включить тёмную тему')};sync();b.addEventListener('click',()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch{}sync()})})})();document.addEventListener('DOMContentLoaded',()=>{\n const copy=document.getElementById('copy-link'),link=document.getElementById('submission-link'),status=document.getElementById('copy-status');\n if(copy&&link){copy.hidden=false;copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(link.value);status.textContent='Ссылка скопирована. Отправьте её Александру.'}catch{link.focus();link.select();status.textContent='Скопируйте выделенную ссылку и отправьте Александру.'}})}\n\n});;document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('a[href=\"#placement\"]').forEach(a=>a.addEventListener('click',()=>{const d=document.getElementById('placement');if(d)d.open=true}))});";
+const formScript = intakeScript + listScript + "document.addEventListener('DOMContentLoaded',()=>{\n const copy=document.getElementById('copy-link'),link=document.getElementById('submission-link'),status=document.getElementById('copy-status');\n if(copy&&link){copy.hidden=false;copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(link.value);status.textContent='Ссылка скопирована. Отправьте её Александру.'}catch{link.focus();link.select();status.textContent='Скопируйте выделенную ссылку и отправьте Александру.'}})}\n\n});;document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('a[href=\"#placement\"]').forEach(a=>a.addEventListener('click',()=>{const d=document.getElementById('placement');if(d)d.open=true}))});";
 function syncPlacementFields() {
-  for (const field of document.querySelectorAll('input[data-facet-list]')) {
-    const list = field.list;
-    const choices = Array.from(list.options, option => option.value);
-    const update = () => {
-      const prefix = field.value.slice(0, field.value.lastIndexOf(',') + 1).trim();
-      const selected = new Set(prefix.split(',').map(value => value.trim().toLocaleLowerCase('ru')));
-      const options = choices.filter(choice => !selected.has(choice.toLocaleLowerCase('ru')));
-      list.replaceChildren(...options.map(choice => new Option(choice, prefix ? prefix + ' ' + choice : choice)));
-    };
-    field.addEventListener('input', update);
-    update();
-  }
-  for (const checkbox of document.querySelectorAll('input[name="reviewed"]')) {
-    const button = checkbox.form.querySelector('button:not([type]),button[type="submit"]');
+  for (const checkbox of document.querySelectorAll('[name="reviewed"]')) {
+    const button = checkbox.closest('form').querySelector('button:not([type]),button[type="submit"]');
     const syncReview = () => { button.disabled = !checkbox.checked; };
     checkbox.addEventListener('change', syncReview);
     window.addEventListener('pageshow', syncReview);
@@ -81,18 +87,18 @@ function syncPlacementFields() {
   const newName = document.getElementById('new_collection');
   let previousCollection = collection.value==='new' ? '' : collection.value;
   toggle.hidden = false;
-  collection.querySelector('option[value="new"]').hidden = true;
+  collection.querySelector('[value="new"]').hidden = true;
   const collectionMode=mode.querySelector('[value="key"]');
   const sync=()=>{
-    const creating=collection.value==='new', locked=collection.selectedOptions[0]?.dataset.locked==='true';
+    const creating=collection.value==='new', locked=collection.querySelector('[value="'+CSS.escape(collection.value || '')+'"]')?.dataset.locked==='true';
     collection.hidden = creating;
     toggle.textContent = creating ? 'Выбрать существующую' : 'Создать коллекцию';
     toggle.setAttribute('aria-expanded',String(creating));
     document.getElementById('new-collection-fields').hidden=!creating;
     document.getElementById('new_collection').required=creating;
-    collectionMode.disabled=collectionMode.hidden=!creating;
+    collectionMode.toggleAttribute('disabled',!creating);collectionMode.hidden=!creating;
     if(!creating && mode.value==='key')mode.value='report';
-    mode.options[0].textContent=locked?'По ключу коллекции':'Открытый доступ';
+    mode.querySelector('[value]').textContent=locked?'По ключу коллекции':'Открытый доступ';
     const needsKey=mode.value==='key'||mode.value==='report';
     document.getElementById('password-fields').hidden=!needsKey;
     key.disabled=!needsKey;
@@ -109,7 +115,7 @@ function syncPlacementFields() {
       collection.value = 'new';
     }
     sync();
-    (collection.value==='new' ? newName : collection).focus();
+    (collection.value==='new' ? newName : (collection.querySelector('button') || collection)).focus();
   });
   collection.addEventListener('change',sync);
   mode.addEventListener('change',sync);
@@ -136,28 +142,28 @@ function watchProcessing() {
   }
   update();
 }
-const pageScript=(themeScript+';document.addEventListener("DOMContentLoaded",'+syncPlacementFields.toString()+');'+';document.addEventListener("DOMContentLoaded",'+watchProcessing.toString()+');').replace(/\r\n?/g,'\n');
-const themeHash = createHash('sha256').update(pageScript).digest('base64');
+const pageScript=(formScript+';document.addEventListener("DOMContentLoaded",'+syncPlacementFields.toString()+');'+';document.addEventListener("DOMContentLoaded",'+watchProcessing.toString()+');').replace(/\r\n?/g,'\n');
+const pageScriptHash = createHash('sha256').update(pageScript).digest('base64');
 function page(title, content, privatePage = true, refresh = false) {
-  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${privatePage ? '<meta name="robots" content="noindex,nofollow">' : ''}${refresh ? '<noscript><meta http-equiv="refresh" content="15"></noscript>' : ''}<title>${escape(title)} · HEMA-архив</title><link rel="icon" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap"><script>${pageScript}</script><style>${css}</style></head><body><a class="skip" href="#content">К содержимому</a><button id="theme-toggle" class="theme-toggle" type="button" hidden aria-label="Сменить тему"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="sheet"><header class="masthead"><a class="wordmark" href="/"><svg class="archive-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="5" fill="currentColor"/><path d="M12 8.5v13l11-6.5zM7 25h18" fill="none" stroke="var(--paper)" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="wordmark-main">HEMA-архив</span><span class="wordmark-sub">Видео об историческом фехтовании</span></a><a class="header-back" href="/">← В архив</a></header><main id="content"><nav class="breadcrumbs" aria-label="Навигация"><a href="/">Архив</a><span aria-hidden="true">/</span><a href="/submit/#my-videos">Мои видео</a></nav><h1>${escape(title)}</h1>${content}</main><footer><span>HEMA-архив · Видео об историческом фехтовании</span><a href="/stats/">Статистика архива</a></footer></div></body></html>`;
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><script src="/initial-theme.js"></script><meta name="viewport" content="width=device-width,initial-scale=1">${privatePage ? '<meta name="robots" content="noindex,nofollow">' : ''}${refresh ? '<noscript><meta http-equiv="refresh" content="15"></noscript>' : ''}<title>${escape(title)} · HEMA-архив</title><link rel="icon" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap"><script>${pageScript}</script><style>${formStyles}</style><script type="module" src="/_app/server-forms.js"></script></head><body data-sdk-forms><a class="skip" href="#content">К содержимому</a><ui-toggle><button id="theme-toggle" class="theme-toggle" type="button" hidden aria-label="Тёмная тема"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></ui-toggle><div class="sheet"><header class="masthead"><a class="wordmark" href="/"><svg class="archive-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="5" fill="currentColor"/><path d="M12 8.5v13l11-6.5zM7 25h18" fill="none" stroke="var(--paper)" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="wordmark-main">HEMA-архив</span><span class="wordmark-sub">Видео об историческом фехтовании</span></a><a class="header-back" href="/">← На главную</a></header><main id="content"><nav class="breadcrumbs" aria-label="Навигация"><a href="/">На главную</a><span aria-hidden="true">/</span><a href="/submit/#my-videos">Мои видео</a></nav><h1>${escape(title)}</h1>${content}</main><footer><span>HEMA-архив · Видео об историческом фехтовании</span><a href="/stats/">Статистика архива</a></footer></div></body></html>`;
 }
-const login = `<p>Добавляйте записи об историческом фехтовании. После обработки владелец проверит материал и добавит его в выбранную коллекцию архива.</p><form method="post" action="/submit/login"><label for="key">Ключ автора</label><input id="key" name="key" type="password" autocomplete="current-password" required maxlength="100"><p class="hint">Для участия в пробном запуске получите личный ключ у владельца архива.</p><button>Войти</button></form>`;
+const login = `<p>Добавляйте записи об историческом фехтовании. После обработки владелец проверит материал и добавит его в выбранную коллекцию архива.</p><form method="post" action="/submit/login"><label for="key">Ключ автора</label><ui-input data-agent-secret><input id="key" name="key" type="password" autocomplete="current-password" required maxlength="100"></ui-input><p class="hint">Для участия в пробном запуске получите личный ключ у владельца архива.</p><ui-button><button type="submit">Войти</button></ui-button></form>`;
 const authorContacts = '<div class="author-contacts"><a href="https://vk.ru/alex_liam" target="_blank" rel="noopener noreferrer">Написать в ВКонтакте ↗</a><a href="https://t.me/Alex_Liam" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a></div>';
-const shareLink = url => `<div class="share-link"><label for="submission-link">Ссылка для Александра</label><div class="row"><input id="submission-link" value="${escape(url)}" readonly><button id="copy-link" class="secondary" type="button" hidden>Скопировать</button></div><p id="copy-status" class="hint" role="status"></p></div>`;
+const shareLink = url => `<div class="share-link"><label for="submission-link">Ссылка для Александра</label><div class="row"><ui-input><input id="submission-link" value="${escape(url)}" readonly></ui-input><ui-button><button id="copy-link" class="secondary" type="button" hidden>Скопировать</button></ui-button></div><p id="copy-status" class="hint" role="status"></p></div>`;
 const intakeForm = (fields, values = {}, error = '') => `
   <form class="intake-form" method="post" action="/submit/new" data-submit-once>
     <input type="hidden" name="processing" value="archive-publication-v2">
     <input type="hidden" name="intent" value="archive">
     ${error ? '<p class="form-error" role="alert">'+escape(error)+'</p>' : ''}
     <label for="url">Ссылка на видео YouTube</label>
-    <input id="url" name="url" type="url" placeholder="https://youtu.be/…" value="${escape(values.url ?? '')}" maxlength="500" aria-describedby="url-error" required>
+    <ui-input><input id="url" name="url" type="url" placeholder="https://youtu.be/…" value="${escape(values.url ?? '')}" maxlength="500" aria-describedby="url-error" required></ui-input>
     <p id="url-error" class="form-error" aria-live="polite" hidden></p>
     <p class="hint">После одобрения администратором разбор появится в архиве.</p>
     <label class="check"><input type="checkbox" name="consent" value="yes" required>У меня есть право на публикацию видео. Разрешаю передать аудио и расшифровку в OpenAI для разбора.</label>
     <details ${error && values.custom?'open':''}><summary>Коллекция, название и доступ</summary>
       ${fields}
     </details>
-    <button type="submit">Разобрать видео</button>
+    <ui-button><button type="submit">Разобрать видео</button></ui-button>
   </form>`;
 
 async function form(req) {
@@ -170,6 +176,10 @@ async function form(req) {
 }
 
 
+
+function videoList(rows, owner) {
+  return `<h2>${owner ? 'Все видео' : 'Мои видео'}</h2>${rows.length ? `<ul class="cards">${rows.map(row => `<li><a class="video-entry" href="/submit/${row.id}"><span>${escape(row.title || 'Видео с YouTube')}<small>${escape(new Date(row.created).toLocaleDateString('ru-RU',{day:'numeric',month:'long',timeZone:'Asia/Qyzylorda'}))}</small></span><span class="entry-action">${row.state==='review'||row.state==='published'?'Открыть разбор':'Подробнее'} →</span></a><span class="status">${owner ? (row.source === 'skill' ? 'Локальный скилл · ' : 'Заявка с сайта · ') : ''}${row.state==='review'&&row.requested?'Ожидает публикации':states[row.state]}</span>${owner&&row.state==='review'&&row.requested?'<a href="/submit/'+row.id+'/settings">Проверить и опубликовать</a>':''}${owner ? ownerControls(row) : ''}</li>`).join('')}</ul>` : '<p class="hint">Здесь появятся отправленные видео и готовые разборы.</p>'}`;
+}
 
 function parsePlacement(data,collections,previous,allowUnassigned,sealPassword) {
   const placement=placementInput(data,collections,allowUnassigned);
@@ -193,7 +203,7 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
     const accepting = (enabled || (pilot && owner)) && Date.now() < Date.parse(TRANSCRIPTION_SUNSET);
     if (!/^\/(submit|community)(\/|$)/.test(pathname)) return false;
     const send = (code, title, content, privatePage = true, refresh = false) => {
-      res.writeHead(code, { 'Content-Type':'text/html; charset=utf-8', 'Cache-Control':privatePage?'private, no-store':'no-cache', 'Content-Security-Policy':`default-src 'none'; connect-src 'self'; script-src 'sha256-${themeHash}'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; form-action 'self'; base-uri 'none'; frame-ancestors 'self'` });
+      res.writeHead(code, { 'Content-Type':'text/html; charset=utf-8', 'Cache-Control':privatePage?'private, no-store':'no-cache', 'Content-Security-Policy':`default-src 'none'; connect-src 'self'; script-src 'sha256-${pageScriptHash}' ${new URL('/initial-theme.js',origin).href} ${new URL('/_app/server-forms.js',origin).href}; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; form-action 'self'; base-uri 'none'; frame-ancestors 'self'` });
       res.end(req.method === 'HEAD' ? undefined : page(title, content, privatePage, refresh));
       return true;
     };
@@ -203,6 +213,18 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
     const cookieName = secure ? '__Host-hema_author' : 'hema_author';
     const key = (req.headers.cookie ?? '').split(/; */).find(c => c.startsWith(cookieName + '='))?.slice(cookieName.length + 1);
     let author = owner ? 'owner' : store.author(key);
+    if (pathname === '/submit/owner-list') {
+      if (!owner) return send(403, 'Доступ ограничен', '');
+      if (!['GET','HEAD'].includes(req.method)) return send(405, 'Метод не поддерживается', '');
+      const html = videoList(store.list(author, true), true);
+      const etag = '"' + createHash('sha256').update(html).digest('base64url') + '"';
+      res.setHeader('ETag', etag);
+      res.setHeader('Cache-Control', 'private, no-store');
+      if (req.headers['if-none-match'] === etag) res.writeHead(304);
+      else res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+      res.end(req.method === 'HEAD' || res.statusCode === 304 ? undefined : html);
+      return true;
+    }
     const collections=archiveCollections().filter(c=>c.hema&&!c.catalogHidden);
     function facetInput(key, label, values) {
       const choices = new Set(values);
@@ -212,9 +234,15 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
         }
       }
       const options = [...choices].sort((a,b) => a.localeCompare(b,'ru'));
-      return `<label for="${key}">${label}</label><input id="${key}" name="${key}" list="${key}-choices" data-facet-list maxlength="250" value="${escape(values.join(', '))}" placeholder="Выберите из списка или введите своё"><datalist id="${key}-choices">${options.map(value => `<option value="${escape(value)}"></option>`).join('')}</datalist>`;
+      const text = escape(values.join(', '));
+      return `<ui-autocomplete name="${key}" default-value="${text}">
+        <ui-autocomplete-label><label for="${key}">${label}</label></ui-autocomplete-label>
+        <ui-autocomplete-input><input id="${key}" name="${key}" list="${key}-choices" maxlength="250" value="${text}" placeholder="Выберите из списка или введите своё"></ui-autocomplete-input>
+        <datalist id="${key}-choices">${options.map(value => `<option value="${escape(value)}"></option>`).join('')}</datalist>
+        <ui-autocomplete-content hidden><ui-autocomplete-list></ui-autocomplete-list></ui-autocomplete-content>
+      </ui-autocomplete>`;
     }
-    const placementFields=(p={}, sourceTitle='', optional=false)=>`<fieldset><legend>Куда добавить разбор</legend><div class="collection-choice"><label for="collection">Коллекция и раздел</label><button type="button" id="collection-toggle" aria-controls="new-collection-fields" hidden>Создать коллекцию</button></div><select id="collection" name="collection" ${optional?'':'required'}><option value="">${optional?'Выберет администратор':'Выберите коллекцию'}</option><option value="new" ${p.collection==='new'?'selected':''}>Создать новую коллекцию</option>${collections.map(c=>`<optgroup label="${escape(c.title)}"><option data-locked="${!!c.access?.master}" value="${escape(c.slug)}" ${p.collection===c.slug&&p.section==null?'selected':''}>${escape(c.title)}${c.access?.master?' · по ключу':''}</option>${(c.sections??[]).map((s,i)=>`<option data-locked="${!!c.access?.master}" value="${escape(c.slug)}:${i}" ${p.collection===c.slug&&p.section===i?'selected':''}>${escape(c.title)} — ${escape(s.title)}</option>`).join('')}</optgroup>`).join('')}</select><div id="new-collection-fields"><label for="new_collection">Название новой коллекции</label><input id="new_collection" name="new_collection" maxlength="120" value="${escape(p.newTitle??'')}"></div>
+    const placementFields=(p={}, sourceTitle='', optional=false)=>`<fieldset><legend>Куда добавить разбор</legend><div class="collection-choice"><label for="collection">Коллекция и раздел</label><ui-button><button type="button" id="collection-toggle" aria-controls="new-collection-fields" hidden>Создать коллекцию</button></ui-button></div><select id="collection" name="collection" ${optional?'':'required'}><option value="">${optional?'Выберет администратор':'Выберите коллекцию'}</option><option value="new" ${p.collection==='new'?'selected':''}>Создать новую коллекцию</option>${collections.map(c=>`<optgroup label="${escape(c.title)}"><option data-locked="${!!c.access?.master}" value="${escape(c.slug)}" ${p.collection===c.slug&&p.section==null?'selected':''}>${escape(c.title)}${c.access?.master?' · по ключу':''}</option>${(c.sections??[]).map((s,i)=>`<option data-locked="${!!c.access?.master}" value="${escape(c.slug)}:${i}" ${p.collection===c.slug&&p.section===i?'selected':''}>${escape(c.title)} — ${escape(s.title)}</option>`).join('')}</optgroup>`).join('')}</select><div id="new-collection-fields"><label for="new_collection">Название новой коллекции</label><ui-input><input id="new_collection" name="new_collection" maxlength="120" value="${escape(p.newTitle??'')}"></ui-input></div>
       <label for="new_access">Доступ</label>
       <select name="new_access" id="new_access">
         <option value="public">Как в коллекции</option>
@@ -222,10 +250,10 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
         <option value="key" ${p.newAccess==='key'?'selected':''}>Пароль для новой коллекции</option>
       </select>
       <div id="password-fields"><label for="collection_key">Пароль</label>
-        <input type="password" id="collection_key" name="collection_key" minlength="4" maxlength="8" autocomplete="new-password" data-saved="${p.keyHash?escape(p.newAccess):''}" placeholder="От 4 до 8 символов">
+        <ui-input data-agent-secret><input type="password" id="collection_key" name="collection_key" minlength="4" maxlength="8" autocomplete="new-password" data-saved="${p.keyHash?escape(p.newAccess):''}" placeholder="От 4 до 8 символов"></ui-input>
         <p class="hint" id="master-access-note" hidden>Общий ключ коллекции тоже откроет запись.</p>
       </div>
-      <details class="optional-fields"><summary>Изменить название, автора и оружие</summary><label for="title">Название записи</label><input id="title" name="title" maxlength="160" placeholder="Название из YouTube" value="${escape(p.title || sourceTitle)}">${facetInput('authors','Автор или преподаватель',p.authors??[])}${facetInput('weapons','Оружие',p.weapons??[])}<p class="hint">Несколько значений разделяйте запятыми.</p></details></fieldset>`;
+      <details class="optional-fields"><summary>Изменить название, автора и оружие</summary><label for="title">Название записи</label><ui-input><input id="title" name="title" maxlength="160" placeholder="Название из YouTube" value="${escape(p.title || sourceTitle)}"></ui-input>${facetInput('authors','Автор или преподаватель',p.authors??[])}${facetInput('weapons','Оружие',p.weapons??[])}<p class="hint">Несколько значений разделяйте запятыми.</p></details></fieldset>`;
     function intake(data, error) {
       const [collection, section] = (data?.get('collection') || '').split(':');
       const values = {collection, section:section===undefined?null:Number(section), title:data?.get('title') || '',
@@ -328,7 +356,7 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
       if(collections.length)return redirect('/');
       const q = (new URL(req.url, origin).searchParams.get('q') ?? '').slice(0, 200).trim();
       const rows = store.publicList().filter(row => !q || JSON.stringify(store.get(row.id).draft).toLocaleLowerCase('ru').includes(q.toLocaleLowerCase('ru')));
-      return send(200, 'Видео сообщества', `<p>Записи, добавленные авторами и проверенные владельцем архива.</p><form method="get"><label for="q">Поиск в материалах сообщества</label><div class="row"><input id="q" name="q" value="${escape(q)}" maxlength="200"><button>Найти</button></div></form>${rows.length ? `<ul class="cards">${rows.map(row => `<li><a href="/community/${row.id}">${escape(row.title)}</a></li>`).join('')}</ul>` : '<p>Пока нет опубликованных записей по этому запросу.</p>'}`, false);
+      return send(200, 'Видео сообщества', `<p>Записи, добавленные авторами и проверенные владельцем архива.</p><form method="get"><label for="q">Поиск в материалах сообщества</label><div class="row"><ui-input><input id="q" name="q" value="${escape(q)}" maxlength="200"></ui-input><ui-button><button type="submit">Найти</button></ui-button></div></form>${rows.length ? `<ul class="cards">${rows.map(row => `<li><a href="/community/${row.id}">${escape(row.title)}</a></li>`).join('')}</ul>` : '<p>Пока нет опубликованных записей по этому запросу.</p>'}`, false);
     }
     const textPage=/^\/submit\/([a-f0-9]{32})\/transcript$/.exec(pathname);
     if (textPage) {
@@ -363,7 +391,7 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
       const content=saved && blocked ? '<p role="status">Коллекция сохранена.</p>' : saved ? '<p role="status"><strong>Заявка на публикацию принята.</strong> Александр увидит выбранные параметры в списке заявок.</p>' :
         `<form method="post" ${owner&&modal?'target="_top"':''} action="/submit/${row.id}/${action}"><input type="hidden" name="modal" value="${modal?'1':'0'}">${placementFields(row.placement??{}, row.source_title || row.draft.title)}
         ${owner && !blocked?'<label class="check"><input type="checkbox" name="reviewed" value="yes" required>Одобряю разбор для публикации.</label>':owner?'':'<p class="hint">Публикацию подтвердит Александр.</p>'}
-        <button>${blocked?'Сохранить коллекцию':owner?'Опубликовать':row.placement?.requested?'Сохранить изменения':'Запросить публикацию'}</button></form>`;
+        <ui-button><button type="submit">${blocked?'Сохранить коллекцию':owner?'Опубликовать':row.placement?.requested?'Сохранить изменения':'Запросить публикацию'}</button></ui-button></form>`;
       return send(200,'Публикация разбора',compact+feedback+content+support);
     }
     const match = /^\/(submit|community)\/([a-f0-9]{32})\/?$/.exec(pathname);
@@ -396,7 +424,7 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
         content += help;
       }
       if(privatePage && row.state === 'published') content += `<p><a class="action-link" href="${row.publication?'/reports/'+row.publication.report.slug+'/':'/community/'+row.id}">Открыть разбор в архиве</a></p>`;
-      if (privatePage && row.state === 'consent_required' && row.author === author) content += `<form method="post" action="/submit/${row.id}/consent"><label class="check"><input type="checkbox" name="cloud_audio" value="yes" required>Разрешаю передать аудио OpenAI для распознавания речи и расшифровку для подготовки конспекта.</label><button>Подтвердить облачную обработку</button></form>`;
+      if (privatePage && row.state === 'consent_required' && row.author === author) content += `<form method="post" action="/submit/${row.id}/consent"><label class="check"><input type="checkbox" name="cloud_audio" value="yes" required>Разрешаю передать аудио OpenAI для распознавания речи и расшифровку для подготовки конспекта.</label><ui-button><button type="submit">Подтвердить облачную обработку</button></ui-button></form>`;
       if (draft) {
 
 
@@ -419,7 +447,7 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
         if (privatePage && owner && !draft.final_result) {
           if (draft.presentation && draft.review?.issues?.length) content += `<p role="status">${draft.review.issues.map(escape).join(' ')}</p>`;
           content += `<details><summary>Основания и диагностика для проверки</summary><pre>${escape(JSON.stringify({ overview:draft.overview, chapters:draft.chapters, materials:draft.materials, source_coverage:draft.source_coverage, terminology:draft.terminology, flags:draft.flags, review:draft.review }, null, 2))}</pre></details>`;
-          if (row.state === 'review') content += `<form method="post" action="/submit/${row.id}/publish"><label class="check"><input type="checkbox" name="reviewed" value="yes" required>Я сверил все тезисы и главы с источником, проверил спорные фрагменты, полноту тем и право на размещение в выбранной коллекции.</label><button>Одобрить и добавить в архив</button></form><form method="post" action="/submit/${row.id}/reject"><button class="secondary">Отклонить</button></form>`;
+          if (row.state === 'review') content += `<form method="post" action="/submit/${row.id}/publish"><label class="check"><input type="checkbox" name="reviewed" value="yes" required>Я сверил все тезисы и главы с источником, проверил спорные фрагменты, полноту тем и право на размещение в выбранной коллекции.</label><ui-button><button type="submit">Одобрить и добавить в архив</button></ui-button></form><form method="post" action="/submit/${row.id}/reject"><ui-button><button type="submit" class="secondary">Отклонить</button></ui-button></form>`;
         }
         if (privatePage && row.state === 'published') content += `<p><a href="${row.publication?'/reports/'+row.publication.report.slug+'/':'/community/'+row.id}">Открыть опубликованную страницу в архиве</a></p>`;
       }
@@ -431,6 +459,6 @@ export function submissionHandler(store, { enabled = false, pilot = false, maxMi
     if (pathname !== '/submit/') return send(404, 'Страница не найдена', '');
     if (!author && !enabled) return send(200, 'Добавить видео', login);
     const rows = author ? store.list(author, owner) : [];
-    return send(200, 'Добавить видео', `${accepting ? intake() : '<aside>Приём новых видео приостановлен. Ваши видео доступны ниже.</aside>'}<section class="my-videos" id="my-videos" ${owner ? 'data-owner-list' : ''}><h2>${owner ? 'Все видео' : 'Мои видео'}</h2>${rows.length ? `<ul class="cards">${rows.map(row => `<li><a class="video-entry" href="/submit/${row.id}"><span>${escape(row.title || 'Видео с YouTube')}<small>${escape(new Date(row.created).toLocaleDateString('ru-RU',{day:'numeric',month:'long',timeZone:'Asia/Qyzylorda'}))}</small></span><span class="entry-action">${row.state==='review'||row.state==='published'?'Открыть разбор':'Подробнее'} →</span></a><span class="status">${owner ? (row.source === 'skill' ? 'Локальный скилл · ' : 'Заявка с сайта · ') : ''}${row.state==='review'&&row.requested?'Ожидает публикации':states[row.state]}</span>${owner&&row.state==='review'&&row.requested?'<a href="/submit/'+row.id+'/settings">Проверить и опубликовать</a>':''}${owner ? ownerControls(row) : ''}</li>`).join('')}</ul>` : '<p class="hint">Здесь появятся отправленные видео и готовые разборы.</p>'}</section>${author && !owner ? '<details><summary>Доступ в этом браузере</summary><p class="hint">Выход скроет ваши видео в этом браузере. Сохранённая ссылка сама по себе не восстановит доступ.</p><form method="post" action="/submit/logout"><button class="secondary">Выйти</button></form></details>' : ''}`);
+    return send(200, 'Добавить видео', `${accepting ? intake() : '<aside>Приём новых видео приостановлен. Ваши видео доступны ниже.</aside>'}<section class="my-videos" id="my-videos" ${owner ? 'data-owner-list' : ''}>${videoList(rows, owner)}</section>${author && !owner ? '<details><summary>Доступ в этом браузере</summary><p class="hint">Выход скроет ваши видео в этом браузере. Сохранённая ссылка сама по себе не восстановит доступ.</p><form method="post" action="/submit/logout"><ui-button><button type="submit" class="secondary">Выйти</button></ui-button></form></details>' : ''}`);
   };
 }

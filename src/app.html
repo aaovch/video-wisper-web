@@ -2,25 +2,15 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8" />
-		<script>
-			// Тему ставим до первой отрисовки — иначе мигание светлым при dark-режиме.
-			(function () {
-				var t;
-				try {
-					t = localStorage.getItem('theme');
-					if (t !== 'light' && t !== 'dark') {
-						t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-					}
-				} catch (e) {
-					t = 'light';
-				}
-				document.documentElement.dataset.theme = t;
-				document.documentElement.classList.add('js');
-			})();
-		</script>
-		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+		<script src="%sveltekit.assets%/initial-theme.js"></script>
+		<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg?v=2" />
+		<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
+		<link rel="icon" sizes="any" href="%sveltekit.assets%/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
+		<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#f3efe6" />
+		<meta name="theme-color" content="#f4f0e6" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -29,7 +19,7 @@
 		/>
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
+	<body data-sveltekit-preload-data="hover" data-sveltekit-preload-code="viewport">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

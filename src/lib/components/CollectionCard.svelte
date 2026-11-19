@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { Button } from '@ui-sdk/svelte/button';
+	import { Input } from '@ui-sdk/svelte/input';
+	import { communityArchive } from '$lib/site';
+	import { accessibleRecordingCount } from '$lib/data/collections';
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
@@ -7,6 +11,7 @@
 	import {
 		canEnterCollection,
 		collectionGate,
+		reportGate,
 		collectionMasterTarget,
 		collectionStats,
 		hasFullCollectionAccess,
@@ -14,27 +19,34 @@
 	} from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
 
-	let { collection }: { collection: Collection } = $props();
+	let { collection, onUnlock }: {
+		collection: Collection;
+		onUnlock?: () => void;
+	} = $props();
 
 	const stats = $derived(collectionStats(collection));
+	const materialForm = $derived(new Intl.PluralRules('ru').select(stats.videos));
+	const openCount = $derived(communityArchive ? accessibleRecordingCount(collection.items, lock.unlocked) : stats.videos);
 	const gate = $derived(collectionGate(collection));
 	const master = $derived(collectionMasterTarget(collection));
 	const fullAccess = $derived(hasFullCollectionAccess(collection, lock.unlocked));
 	const locked = $derived(!canEnterCollection(collection, lock.unlocked));
+	const unlockedItems = $derived(communityArchive && lock.unlocked.length > 0 &&
+		collection.items.some(slug => reportGate(slug).some(target => lock.isUnlocked(target))));
 	const partiallyUnlocked = $derived(Boolean(master) && !locked && !fullAccess);
 	const href = $derived(`${base}/collections/${collection.slug}/`);
 	const facets = $derived([
-		...(collection.facets?.authors ?? []),
+		...(collection.facets?.authors ?? []).filter(author => author !== collection.title),
 		...(collection.facets?.places ?? []),
 		...(collection.facets?.weapons ?? [])
-	].slice(0, 3));
+	].slice(0, onUnlock ? undefined : 3));
 
 	let value = $state('');
 	let failed = $state(false);
 
-	function submit(e: Event) {
+	async function submit(e: Event) {
 		e.preventDefault();
-		if (lock.tryUnlock(gate, value.trim())) {
+		if (await lock.tryUnlock(gate, value.trim(), href)) {
 			value = '';
 			failed = false;
 			goto(href);
@@ -47,42 +59,58 @@
 {#snippet content()}
 	<div class="copy">
 		<div class="title-line">
-			<h3>{collection.title}</h3>
-			{#if master}
-				<span class="lock-state" aria-label={locked ? 'Закрытая коллекция' : partiallyUnlocked ? 'Часть коллекции открыта' : 'Коллекция открыта'}>
-					{#if locked}<LockKey size={16} weight="regular" />{:else}<LockKeyOpen size={16} weight="regular" />{/if}
+			<h3>{#if onUnlock}<Button onclick={onUnlock}>
+				{#snippet render({ props })}
+					<button {...props} class="title-button">{collection.title}</button>
+				{/snippet}
+			</Button>{:else}{collection.title}{/if}</h3>
+			{#if gate.length || unlockedItems}
+				<span class="lock-state" role="img" aria-label={locked ? 'Закрытая коллекция' : openCount < stats.videos || partiallyUnlocked ? 'Полные материалы по ключу' : 'Доступ открыт'}>
+					{#if locked || openCount === 0}<LockKey size={16} weight="regular" />{:else}<LockKeyOpen size={16} weight="regular" />{/if}
 				</span>
 			{/if}
 		</div>
-		<p class="subtitle">{collection.subtitle}</p>
+		{#if collection.cardSubtitle ?? collection.subtitle}<p class="subtitle">{collection.cardSubtitle ?? collection.subtitle}</p>{/if}
 		{#if facets.length}
 			<p class="facets label">{facets.join(' · ')}</p>
 		{/if}
 	</div>
 	<div class="meta">
-		<span>{stats.videos} {stats.videos === 1 ? 'материал' : stats.videos < 5 ? 'материала' : 'материалов'}</span>
-		{#if partiallyUnlocked}<span class="partial label">частичный доступ</span>{/if}
+		<span>{stats.videos} {materialForm === 'one' ? 'материал' : materialForm === 'few' ? 'материала' : 'материалов'}</span>
+		{#if !onUnlock && communityArchive && openCount > 0 && openCount < stats.videos}<span>Открыто {openCount} из {stats.videos}</span>{/if}
+		{#if partiallyUnlocked && !communityArchive}<span class="partial label">частичный доступ</span>{/if}
 		{#if !locked}<span class="arrow"><ArrowRight size={22} weight="thin" aria-hidden="true" /></span>{/if}
 	</div>
 {/snippet}
 
-{#if locked}
+{#if onUnlock}
+	<article class="collection compact">
+		<div>
+			{@render content()}
+			<Button onclick={onUnlock}>
+				{#snippet render({ props })}
+					<button {...props} class="access-link">Открыть доступ <ArrowRight size={15} aria-hidden="true" /></button>
+				{/snippet}
+			</Button>
+		</div>
+	</article>
+{:else if locked}
 	<div class="collection collection--locked">
 		{@render content()}
 		<form class="lock-form" onsubmit={submit}>
-			<input
-				type="password"
-				bind:value
-				placeholder="Пароль"
-				autocomplete="off"
-				aria-label="Пароль для «{collection.title}»"
-				aria-invalid={failed}
-				oninput={() => (failed = false)}
-			/>
-			<button type="submit">Открыть</button>
+			<Input type="text" bind:value placeholder="Ключ доступа" autocomplete="off" autocapitalize="none" spellcheck={false} aria-label="Ключ для «{collection.title}»" aria-invalid={failed} onValueChange={() => (failed = false)} data-agent-secret>
+				{#snippet render({ props })}
+					<input {...props} />
+				{/snippet}
+			</Input>
+			<Button type="submit">
+				{#snippet render({ props })}
+					<button {...props}>Открыть</button>
+				{/snippet}
+			</Button>
 		</form>
 		{#if failed}
-			<p class="message error" role="alert">Неверный пароль</p>
+			<p class="message error" role="alert">Ключ не подошёл</p>
 		{/if}
 		{#each gate.filter((target) => target.passwordHint) as target (target.id)}
 			<p class="message">
@@ -108,7 +136,6 @@
 		align-items: start;
 		min-height: 132px;
 		padding: 22px 14px 22px 0;
-		border-top: 1px solid var(--line-strong);
 		color: var(--ink);
 		transition:
 			color 0.2s ease,
@@ -152,8 +179,9 @@
 
 	.facets {
 		margin: 12px 0 0;
-		font-size: 10px;
-		letter-spacing: 0.13em;
+		font: 14px/1.45 var(--font-ui);
+		text-transform: none;
+		letter-spacing: normal;
 		line-height: 1.5;
 	}
 
@@ -169,7 +197,7 @@
 
 	.partial {
 		color: var(--accent);
-		font-size: 9px;
+		font-size: 13px;
 		letter-spacing: 0.08em;
 	}
 
@@ -237,10 +265,10 @@
 		color: var(--ink-soft);
 	}
 
-	@media (max-width: 760px) {
+	@media (max-width: 1100px) {
 		.collection,
 		.collection--locked {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 			gap: 10px;
 			padding-right: 0;
 		}
@@ -250,8 +278,19 @@
 		}
 
 		.meta {
+			flex-wrap: wrap;
 			justify-content: space-between;
 			padding-top: 0;
 		}
 	}
+	@media (max-width: 760px) {
+		.collection { border-top: 1px solid var(--line-strong); }
+	}
+	.collection.compact { grid-template-columns: minmax(0,1fr); gap: 14px; padding: 16px 0; min-height: 0; }
+	.compact h3 { font-size: clamp(20px, 1.9vw, 25px); }
+	.compact .meta, .compact .facets, .compact .subtitle { margin-top: 5px; padding: 0; font-size: 14px; }
+	.title-button { padding: 0; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+	.access-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; background: transparent; border: 0; padding: 0; color: var(--accent-ink); font: 14px/1.4 var(--font-ui); cursor: pointer; }
+	.access-link:hover { text-decoration: underline; }
+	.title-button:hover { color: var(--accent-ink); }
 </style>

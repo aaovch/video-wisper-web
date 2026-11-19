@@ -1,0 +1,82 @@
+:root {
+	/* Палитра «бумага / архив» */
+	--paper: #f4f0e6;
+	--surface: #fffaf0;
+	--edge: #81796a;
+	--focus: #245da0;
+	--mark: #f4d891;
+	--mark-ink: #35270e;
+	--on-action: #fffaf0;
+	--danger: #972f32;
+	--hit: 44px;
+	--text-control: 16px;
+	--text-label: 14px;
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-6: 24px;
+	--space-8: 32px;
+	--space-12: 48px;
+	--space-16: 64px;
+	--page-gutter: 28px;
+	--success: #336446;
+	--font-ui: system-ui, 'Segoe UI', sans-serif;
+	--paper-2: #eee8da;
+	--paper-3: #e6dfcc;
+	--ink: #211e18;
+	--ink-soft: #524d43;
+	--ink-faint: #6f6857; /* затемнён до WCAG AA (~4.6:1 на бумаге) */
+	--line: #d9d1be;
+	--line-strong: #c3b9a0;
+	--accent: #882e23; /* охра-кровь */
+	--accent-ink: #6f221b;
+	--accent-2: #9c7a33; /* античное золото */
+	--screen: #15120e; /* тёмная рамка плеера */
+	--screen-edge: #2a241b;
+
+	--radius: 4px;
+	--radius-sm: 3px;
+	--maxw: 1200px;
+	--measure: 65ch;
+
+	--font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+	--font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+	--shadow: 0 1px 0 var(--line), 0 18px 40px -28px rgba(31, 28, 23, 0.5);
+
+	color-scheme: light;
+}
+
+/* Ночной «пергамент»: тёплые тёмные тона, тот же характер, что и днём */
+html[data-theme='dark'] {
+	--success: #9dd7b0;
+	--paper: #17140f;
+	--surface: #231f19;
+	--edge: #918674;
+	--focus: #9bc8ff;
+	--mark: #705526;
+	--mark-ink: #fff2cf;
+	--on-action: #28170e;
+	--danger: #ffa8a4;
+	--paper-2: #1e1a14;
+	--paper-3: #26211a;
+	--ink: #f1e9dc;
+	--ink-soft: #c0b6a3;
+	--ink-faint: #978c78; /* ~4.6:1 на --paper */
+	--line: #322b21;
+	--line-strong: #473d2e;
+	--accent: #f09d80; /* терракота — светлее дневной охры-крови */
+	--accent-ink: #e79475;
+	--accent-2: #cba85f; /* тёплое золото */
+	--screen: #0c0a07;
+	--screen-edge: #2a241b;
+
+	--shadow: 0 1px 0 var(--line), 0 24px 48px -30px rgba(0, 0, 0, 0.75);
+
+	color-scheme: dark;
+}
+
+@media (max-width: 1099px) { :root { --page-gutter: 24px; } }
+@media (max-width: 760px) { :root { --page-gutter: 16px; } }

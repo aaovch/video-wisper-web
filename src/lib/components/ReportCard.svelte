@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { communityArchive } from '$lib/site';
+	import LockKeyOpen from 'phosphor-svelte/lib/LockKeyOpen';
+	import LockKey from 'phosphor-svelte/lib/LockKey';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import Clock from 'phosphor-svelte/lib/Clock';
 	import ListBullets from 'phosphor-svelte/lib/ListBullets';
@@ -7,19 +10,21 @@
 	import type { ReportSummary } from '$lib/types';
 	import { reportGate } from '$lib/data/collections';
 	import { lock } from '$lib/lock.svelte';
-	import { formatDuration, getVideoPosterUrl } from '$lib/utils';
+	import { formatDuration, getVideoPosterUrl, russianPlural } from '$lib/utils';
+	import { reportOverview } from '$lib/report-overview.js';
 
 	let {
 		report,
 		index,
 		collectionSlug,
-		language = 'ru'
-	}: { report: ReportSummary; index: number; collectionSlug: string; language?: 'ru' | 'en' } = $props();
+		cover, byline, language = 'ru'
+	}: { report: ReportSummary; index: number; collectionSlug: string; cover?: string; byline?: string; language?: 'ru' | 'en' } = $props();
 
-	const posterUrl = $derived(getVideoPosterUrl(report.video, base));
+	const posterUrl = $derived(cover ?? getVideoPosterUrl(report.video, base));
 	const gate = $derived(reportGate(report.slug));
 	const locked = $derived(gate.length > 0 && !gate.some((target) => lock.isUnlocked(target)));
 	const href = $derived(`${base}/reports/${report.slug}/?from=${encodeURIComponent(collectionSlug)}`);
+	const synopsis = $derived(reportOverview(report).join(' '));
 	let posterFailed = $state(false);
 </script>
 
@@ -30,26 +35,30 @@
 		{:else}
 			<div class="placeholder" aria-hidden="true"><span>{String(index).padStart(2, '0')}</span></div>
 		{/if}
-		<span class="play" aria-hidden="true"><Play size={24} weight="fill" /></span>
+		<span class="play" aria-hidden="true">{#if communityArchive && locked}<LockKey size={24} />{:else if communityArchive && gate.length}<LockKeyOpen size={24} />{:else}<Play size={24} weight="fill" />{/if}</span>
 	</div>
 
 	<div class="body">
 		<div class="meta mono">
 			<span><Clock size={14} /> {formatDuration(report.duration, language)}</span>
-			<span><ListBullets size={14} /> {report.chapterCount} {language === 'en' ? 'chapters' : 'блоков'}</span>
+			<span><ListBullets size={14} /> {report.chapterCount} {language === 'en' ? (report.chapterCount === 1 ? 'chapter' : 'chapters') : russianPlural(report.chapterCount, ['блок', 'блока', 'блоков'])}</span>
 		</div>
 		<h3>{report.title}</h3>
-		<p class="subtitle">{report.subtitle}</p>
+		{#if communityArchive && gate.length && !locked}<span class="sr-access">{language === 'en' ? 'Unlocked' : 'Открыто по ключу'}</span>{/if}
+		{#if byline}<p class="byline">{byline}</p>{/if}
+		<p class="subtitle">{synopsis || report.subtitle}</p>
 		{#if !locked}<ul class="leads">
 			{#each report.overview_theses.slice(0, 2) as thesis (thesis)}
 				<li>{thesis}</li>
 			{/each}
 		</ul>{/if}
-		<span class="open">{language === 'en' ? (locked ? 'Password-protected video' : 'Open report') : (locked ? 'Видео по паролю' : 'Открыть отчёт')} <ArrowRight size={18} /></span>
+		<span class="open">{language === 'en' ? (locked ? 'Read synopsis · full material requires a key' : 'Open report') : (locked ? 'Краткий пересказ · полный материал по ключу' : 'Открыть отчёт')} <ArrowRight size={18} /></span>
 	</div>
 </a>
 
 <style>
+	.sr-access { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+	.byline { margin: 0 0 6px; color: var(--ink-faint); font: 14px/1.45 var(--font-ui); }
 	.entry {
 		display: flex;
 		flex-direction: column;
@@ -93,7 +102,7 @@
 	.entry:hover .play { background: var(--accent); transform: translateY(-2px); }
 	.body { display: flex; flex: 1; flex-direction: column; padding-top: 10px; }
 
-	.meta { display: flex; flex-wrap: wrap; gap: 7px 14px; color: var(--ink-faint); font-size: 10px; }
+	.meta { display: flex; flex-wrap: wrap; gap: 7px 14px; color: var(--ink-faint); font: 14px/1.45 var(--font-ui); letter-spacing: normal; text-transform: none; }
 	.meta span { display: inline-flex; align-items: center; gap: 6px; }
 
 	h3 {
@@ -125,7 +134,7 @@
 	.leads li { position: relative; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.45; }
 	.leads li::before { content: ''; position: absolute; left: 1px; top: 0.68em; width: 8px; height: 1px; background: var(--accent); }
 
-	.open { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--accent); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; }
+	.open { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--accent); font-family: var(--font-mono); font: 14px/1.45 var(--font-ui); }
 	.open :global(svg) { transition: transform 0.2s ease; }
 	.entry:hover .open :global(svg) { transform: translateX(4px); }
 

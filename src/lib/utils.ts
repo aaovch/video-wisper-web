@@ -75,3 +75,10 @@ export function formatDuration(totalSeconds: number, language: 'ru' | 'en' = 'ru
 	}
 	return `${Math.max(1, minutes)} мин`;
 }
+
+/** Russian noun form shared by result counts and recording metadata. */
+export function russianPlural(count: number, forms: readonly [string, string, string]): string {
+	const n = Math.abs(Math.trunc(count));
+	if (n % 100 >= 11 && n % 100 <= 14) return forms[2];
+	return n % 10 === 1 ? forms[0] : n % 10 >= 2 && n % 10 <= 4 ? forms[1] : forms[2];
+}

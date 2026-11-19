@@ -30,14 +30,14 @@ export function bindPasswordAdmin(root=document) {
   });
   for(const reset of resets)reset.addEventListener('click',()=>{search.value='';filter.value='all';update();search.focus();});
   for(const row of rows) {
-    const editor=row.querySelector('details');
+    const editor=row.querySelector('ui-collapsible') || row.querySelector('details');
     const cancel=row.querySelector('[data-cancel-password]');
     if (!editor||!cancel) continue;
     cancel.hidden=false;
     cancel.addEventListener('click',()=>{
       row.querySelector('form').reset();
       editor.open=false;
-      editor.querySelector('summary').focus();
+      (editor.querySelector('ui-collapsible-trigger button') || editor.querySelector('summary')).focus();
     });
   }
   tools.hidden=false;

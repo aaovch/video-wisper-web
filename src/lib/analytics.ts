@@ -26,7 +26,7 @@ export function parseSnapshot(value: unknown): AnalyticsSnapshot {
 		data.startDate > data.endDate || !Array.isArray(data.rows)) throw new Error('Invalid analytics snapshot');
 	const slugs = new Set<string>();
 	for (const row of data.rows) {
-		if (!/^[a-z0-9-]+$/.test(row.slug) || slugs.has(row.slug) || !Number.isSafeInteger(row.visits) || row.visits < 0 || !Array.isArray(row.daily))
+		if (typeof row.slug !== 'string' || !/^[A-Za-z0-9_-]+$/.test(row.slug) || slugs.has(row.slug) || !Number.isSafeInteger(row.visits) || row.visits < 0 || !Array.isArray(row.daily))
 			throw new Error('Invalid analytics row');
 		slugs.add(row.slug);
 		const days = new Set<string>();

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Button } from '@ui-sdk/svelte/button';
 	import type { Chapter } from '$lib/types';
 	import { highlightParts } from '$lib/text-highlight';
 	import { formatTime } from '$lib/utils';
@@ -28,57 +29,69 @@
 		onOpenTranscript?: (trigger: HTMLButtonElement) => void;
 		language?: 'ru' | 'en';
 	} = $props();
+	const firstMatch = $derived.by(() => {
+		if (!searchSelected || !highlight) return null;
+		const fields = [chapter.title, chapter.summary, ...chapter.theses];
+		for (const [index, text] of fields.entries()) {
+			const parts = highlightParts(text, highlight);
+			const match = parts.findIndex(part => part.match);
+			if (match >= 0) return { index, parts, match };
+		}
+		return null;
+	});
 </script>
+
+{#snippet chapterText(text: string, index: number)}
+	{#if firstMatch?.index === index}
+		{#each firstMatch.parts as part, i}{#if i === firstMatch.match}<mark>{part.text}</mark>{:else}{part.text}{/if}{/each}
+	{:else}{text}{/if}
+{/snippet}
 
 <article class="chapter" class:playing class:search-selected={searchSelected} id="ch-{index + 1}">
 	<header class="head">
-		{#if searchSelected}<span class="current-fragment">{language === 'en' ? 'Current match' : 'Текущий фрагмент'}</span>{/if}
-		<a class="num" href="#ch-{index + 1}" title={language === 'en' ? 'Link to this chapter' : 'Ссылка на этот блок'} aria-label={language === 'en' ? `Link to chapter ${index + 1}` : `Ссылка на блок ${index + 1}`}
+		<a class="num" href="#ch-{index + 1}" title={language === 'en' ? 'Link to this chapter' : 'Ссылка на эту главу'} aria-label={language === 'en' ? `Link to chapter ${index + 1}` : `Ссылка на главу ${index + 1}`}
 			>{String(index + 1).padStart(2, '0')}</a
 		>
 		{#if onSeek}
-			<button type="button" class="tc" onclick={() => onSeek?.(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
+			<Button type="button" onclick={() => onSeek?.(chapter.start)} title={language === 'en' ? 'Watch from this point' : 'Смотреть с этого момента'}>
+				{#snippet render({ props })}
+					<button {...props} class="tc">
 				<span class="tc-play" aria-hidden="true"><Play size={10} weight="fill" /></span>
 				<span class="mono">{formatTime(chapter.start)}</span>
 			</button>
+				{/snippet}
+			</Button>
 		{:else}
 			<span class="tc tc-static mono">{formatTime(chapter.start)}</span>
 		{/if}
 		{#if playing}
-			<span class="now" class:live aria-label={language === 'en' ? (live ? 'Playing now' : 'Player paused here') : (live ? 'Сейчас воспроизводится' : 'Плеер остановлен здесь')}>
-				<span class="now-dot"></span>{language === 'en' ? (live ? 'now' : 'paused') : (live ? 'сейчас' : 'пауза')}</span>
+			<span class="now" aria-label={language === 'en' ? (live ? 'Playing now' : 'Player paused here') : (live ? 'Сейчас воспроизводится' : 'Плеер остановлен здесь')}>
+				{language === 'en' ? (live ? 'now' : 'paused') : (live ? 'сейчас' : 'пауза')}</span>
 		{/if}
 	</header>
 
 	<h3 class="title">
-		{#each highlightParts(chapter.title, highlight) as part}
-			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-		{/each}
+		{@render chapterText(chapter.title, 0)}
 	</h3>
 	{#if transcriptAvailable && onOpenTranscript}
-		<button
-			type="button"
-			class="read-transcript"
-			id="chapter-transcript-trigger-{index + 1}"
-			onclick={(event) => onOpenTranscript?.(event.currentTarget)}
-		>
+		<Button type="button" id="chapter-transcript-trigger-{index + 1}" onclick={(event) => event.currentTarget instanceof HTMLButtonElement && onOpenTranscript?.(event.currentTarget)}>
+			{#snippet render({ props })}
+				<button {...props} class="read-transcript">
 			<span>{language === 'en' ? 'Read transcript' : 'Читать расшифровку'}</span>
 			<ArrowRight size={17} weight="bold" aria-hidden="true" />
 		</button>
+			{/snippet}
+		</Button>
 	{/if}
 	<p class="summary">
-		{#each highlightParts(chapter.summary, highlight) as part}
-			{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-		{/each}
+		{@render chapterText(chapter.summary, 1)}
 	</p>
 
 	{#if chapter.theses.length}
 		<ul class="theses">
-			{#each chapter.theses as thesis (thesis)}
+			{#each chapter.theses as thesis, i (thesis)}
 				<li>
-					{#each highlightParts(thesis, highlight) as part}
-						{#if part.match}<mark>{part.text}</mark>{:else}{part.text}{/if}
-					{/each}
+					{@render chapterText(thesis, i + 2)}
 				</li>
 			{/each}
 		</ul>
@@ -87,33 +100,14 @@
 </article>
 
 <style>
-	.current-fragment { color: var(--accent-ink); font-family: var(--font-ui); font-size: 11px; }
-	.search-selected mark { background: color-mix(in srgb, var(--accent) 22%, var(--paper)); }
-	.chapter.search-selected { border-left: 3px solid var(--accent); padding-left: 14px; background: color-mix(in srgb, var(--accent) 4%, transparent); }
 	.chapter {
+		overflow-wrap: anywhere;
 		position: relative;
 		padding: 26px 0;
 		border-top: 1px solid var(--line);
 		scroll-margin-top: calc(var(--search-context-height, 150px) + 20px);
 	}
 
-	/* Блок, на котором сейчас воспроизведение — тонкая пометка на полях, без заливки */
-	.chapter.playing::before {
-		content: '';
-		position: absolute;
-		left: -16px;
-		top: 28px;
-		bottom: 28px;
-		width: 2px;
-		border-radius: 2px;
-		background: var(--accent);
-	}
-
-	@media (max-width: 960px) {
-		.chapter.playing::before {
-			left: -10px;
-		}
-	}
 
 	.head {
 		flex-wrap: wrap;
@@ -128,54 +122,20 @@
 		align-items: center;
 		gap: 6px;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-label);
 		font-weight: 500;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--ink-faint);
 	}
 
-	.now.live {
-		color: var(--accent);
-	}
-
-	.now-dot {
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
-		background: var(--ink-faint);
-	}
-
-	.now.live .now-dot {
-		background: var(--accent);
-		box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent);
-		animation: now-pulse 1.8s ease-out infinite;
-	}
-
-	@keyframes now-pulse {
-		0% {
-			box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
-		}
-		70% {
-			box-shadow: 0 0 0 6px transparent;
-		}
-		100% {
-			box-shadow: 0 0 0 0 transparent;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.now-dot {
-			animation: none;
-		}
-	}
 
 	.num {
 		position: relative;
 		font-family: var(--font-display);
-		font-size: 26px;
+		font-size: 18px;
 		font-weight: 500;
-		color: var(--accent);
+		color: var(--ink-soft);
 		line-height: 1;
 		text-decoration: none;
 	}
@@ -200,7 +160,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 7px;
-		font-size: 12px;
+		font-size: var(--text-label);
 		padding: 4px 10px;
 		border: 1px solid var(--line-strong);
 		border-radius: 999px;
@@ -209,6 +169,7 @@
 	}
 
 	button.tc {
+		min-height: var(--hit);
 		cursor: pointer;
 		transition:
 			color 0.2s ease,
@@ -225,7 +186,7 @@
 	.tc-play {
 		display: grid;
 		place-items: center;
-		color: var(--accent);
+		color: inherit;
 		transition: color 0.2s ease;
 	}
 
@@ -249,18 +210,14 @@
 		padding: 8px 2px;
 		border: 0;
 		background: transparent;
-		color: var(--accent);
-		font-family: var(--font-ui);
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		color: var(--ink-soft);
+		font: 14px/1.4 var(--font-ui);
 		cursor: pointer;
 	}
 
 	.read-transcript :global(svg) { transition: transform 0.18s ease; }
 	.read-transcript:hover :global(svg) { transform: translateX(4px); }
-	.read-transcript:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+	.read-transcript:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
 
 	.summary {
 		margin: 0 0 16px;
@@ -293,12 +250,15 @@
 		top: 0.62em;
 		width: 9px;
 		height: 1px;
-		background: var(--accent-2);
+		background: var(--line-strong);
 	}
 
 	mark {
-		background: color-mix(in srgb, var(--accent) 13%, var(--paper));
-		color: var(--accent-ink);
-		font-weight: 600;
+		background: none;
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-color: var(--accent);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.16em;
 	}
 </style>

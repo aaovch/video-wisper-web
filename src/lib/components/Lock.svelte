@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Input } from '@ui-sdk/svelte/input';
+	import { Button } from '@ui-sdk/svelte/button';
 	import { base } from '$app/paths';
 	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
@@ -7,47 +9,59 @@
 	import type { AccessTarget } from '$lib/data/collections';
 
 	let {
-		targets,
+		targets, archiveReturn,
+		embedded = false,
 		title = 'Закрытая коллекция',
-		subtitle = 'Введите пароль, чтобы открыть доступ.'
-	}: { targets: AccessTarget[]; title?: string; subtitle?: string } = $props();
+		subtitle = 'Введите ключ, чтобы открыть доступ.'
+	}: { targets: AccessTarget[]; archiveReturn?: string; title?: string; subtitle?: string; embedded?: boolean } = $props();
 
-	const hintTargets = $derived(targets.filter((target) => target.passwordHint));
+	const hintTargets = $derived(targets.filter((target, i) => target.passwordHint && targets.findIndex(other =>
+		other.passwordHint === target.passwordHint && other.passwordContact?.url === target.passwordContact?.url) === i));
 
 	let value = $state('');
 	let failed = $state(false);
+	let busy = $state(false);
 
-	function submit(e: Event) {
+	async function submit(e: Event) {
 		e.preventDefault();
-		if (lock.tryUnlock(targets, value.trim())) {
+		if (busy) return;
+		busy = true;
+		try {
+		if (await lock.tryUnlock(targets, value.trim())) {
 			failed = false;
 			value = '';
 		} else {
 			failed = true;
 		}
+		} finally { busy = false; }
 	}
 </script>
 
-<section class="container gate-wrap">
-	<a class="back label" href="{base}/"><ArrowLeft size={16} /> Все коллекции</a>
+<section class="gate-wrap" class:container={!embedded} class:embedded>
+	{#if !embedded}
+		<nav aria-label="Навигация">
+			<a class="back label" href="{base}/"><ArrowLeft size={16} /> На главную</a>
+			{#if archiveReturn}<a class="back label" href={archiveReturn}>К результатам поиска</a>{/if}
+		</nav>
+	{/if}
 	<div class="gate">
-		<span class="lock-mark" aria-hidden="true"><LockKey size={34} /></span>
-		<h1>{title}</h1>
+		{#if !embedded}<span class="lock-mark" aria-hidden="true"><LockKey size={34} /></span>{/if}
+		{#if embedded}<h2>{title}</h2>{:else}<h1>{title}</h1>{/if}
 		<p class="subtitle">{subtitle}</p>
 		<form onsubmit={submit}>
-			<input
-				type="password"
-				bind:value
-				placeholder="Пароль"
-				autocomplete="off"
-				aria-label="Пароль"
-				aria-invalid={failed}
-				oninput={() => (failed = false)}
-			/>
-			<button type="submit">Открыть <ArrowRight size={16} /></button>
+			<Input type="text" bind:value placeholder="Ключ доступа" required autocomplete="off" autocapitalize="none" spellcheck={false} aria-label="Ключ доступа" aria-invalid={failed} onValueChange={() => (failed = false)} data-agent-secret>
+				{#snippet render({ props })}
+					<input {...props} />
+				{/snippet}
+			</Input>
+			<Button type="submit" disabled={busy}>
+				{#snippet render({ props })}
+					<button {...props}>{busy ? 'Проверяем…' : 'Открыть доступ'} <ArrowRight size={16} /></button>
+				{/snippet}
+			</Button>
 		</form>
 		{#if failed}
-			<p class="err label" role="alert">Неверный пароль</p>
+			<p class="err label" role="alert">Ключ не подошёл. Проверьте его и попробуйте ещё раз.</p>
 		{/if}
 		{#each hintTargets as target (target.id)}
 			<p class="hint">
@@ -62,10 +76,15 @@
 </section>
 
 <style>
+	.embedded { padding-top: 0; }
+	.embedded .gate { max-width: none; margin: 32px 0 0; text-align: left; padding: 28px 24px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); }
+	.gate h2 { margin: 0 0 10px; font-size: clamp(23px, 3vw, 30px); line-height: 1.2; }
+	@media (max-width: 520px) { form { flex-direction: column; } button { min-height: 44px; justify-content: center; } }
 	.gate-wrap {
 		padding-top: 24px;
 	}
 
+	nav { display: flex; flex-wrap: wrap; gap: 0 16px; }
 	.back {
 		display: inline-flex;
 		align-items: center;
@@ -171,4 +190,5 @@
 	}
 
 	.hint-label { display: block; color: var(--ink-soft); }
+	.hint a { display: flex; align-items: center; width: fit-content; min-height: 44px; margin-top: 6px; color: var(--accent-ink); font: 16px/1.4 var(--font-ui); text-decoration: underline; text-underline-offset: 3px; }
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Toggle } from '@ui-sdk/svelte/toggle';
 	import Moon from 'phosphor-svelte/lib/Moon';
 	import Sun from 'phosphor-svelte/lib/Sun';
 	import { theme } from '$lib/theme.svelte';
@@ -7,27 +8,27 @@
 	const isDark = $derived(theme.current === 'dark');
 </script>
 
-<button
-	type="button"
-	class="theme-toggle"
-	onclick={() => theme.toggle()}
-	aria-pressed={isDark}
-	aria-label={language === 'en' ? (isDark ? 'Use light theme' : 'Use dark theme') : (isDark ? 'Включить светлую тему' : 'Включить тёмную тему')}
+<Toggle bind:pressed={() => isDark, (pressed) => theme.set(pressed ? 'dark' : 'light')}
+	aria-label={language === 'en' ? 'Dark theme' : 'Тёмная тема'}
 	title={language === 'en' ? (isDark ? 'Light theme' : 'Dark theme') : (isDark ? 'Светлая тема' : 'Тёмная тема')}
 >
+	{#snippet render({ props })}
+	<button {...props} class="theme-toggle">
 	{#if isDark}
 		<Sun size={18} weight="regular" aria-hidden="true" />
 	{:else}
 		<Moon size={18} weight="regular" aria-hidden="true" />
 	{/if}
 </button>
+	{/snippet}
+</Toggle>
 
 <style>
 	.theme-toggle {
 		display: inline-grid;
 		place-items: center;
-		width: 38px;
-		height: 38px;
+		width: var(--hit);
+		height: var(--hit);
 		border: 1px solid var(--line-strong);
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--paper) 82%, transparent);

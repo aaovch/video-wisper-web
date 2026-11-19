@@ -28,5 +28,6 @@ run(npm, ['run', 'build-search-index']);
 run(process.execPath, ['scripts/validate-site.mjs', target]);
 run(process.execPath, ['scripts/verify-search-index.mjs', target]);
 run(npm, ['run', 'check']);
-run(npm, ['test']);
+// The index was built and verified above. Calling npm test would rebuild it in pretest.
+run(process.execPath, ['node_modules/vitest/vitest.mjs', 'run']);
 run(npm, ['run', 'build:site']);

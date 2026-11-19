@@ -1,4 +1,4 @@
-import { canAccessReport, collections } from '$lib/data/collections';
+import { canAccessReport, collections, isPrivateReport } from '$lib/data/collections';
 import { getAllReportSummaries } from '$lib/data/report-meta';
 import { hiddenTopicReportSlugs } from '$lib/catalog-visibility';
 
@@ -29,6 +29,11 @@ export function isReportLocked(slug: string, unlockedTargetSlugs: readonly strin
 export function searchableReportSlugs(unlockedCollectionSlugs: readonly string[], area: SearchArea = 'main'): string[] {
 	return catalogReportSlugs(area)
 		.filter((slug) => canAccessReport(slug, unlockedCollectionSlugs));
+}
+
+/** Server search includes public synopses; private meetings require their own grant. */
+export function discoverableReportSlugs(unlocked: readonly string[], area: SearchArea = 'main'): string[] {
+	return catalogReportSlugs(area).filter(slug => !isPrivateReport(slug, collections) || canAccessReport(slug, unlocked));
 }
 
 export function visibleSubset(slugs: readonly string[], visibleSlugs: readonly string[]): string[] {

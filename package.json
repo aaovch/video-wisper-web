@@ -12,6 +12,8 @@
 	"verify-search-index": "node scripts/verify-search-index.mjs",
 	"pretest": "npm run build-search-index",
 	"test": "vitest run",
+	"pretest:ui-sdk": "node server/build.mjs",
+	"test:ui-sdk": "playwright test --config scripts/ui-sdk/playwright.config.ts",
 	"test:search-quality": "npm run build-search-index && vitest run src/lib/search-quality.test.ts",
 	"test:search-lab": "node scripts/search-lab/run.mjs",
 	"search:enrichment": "node scripts/search-enrichment/cli.mjs",
@@ -28,17 +30,21 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@types/node": "^24.13.3",
+    "@playwright/test": "1.65.1",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/kit": "^2.20.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
-    "svelte": "^5.20.0",
+    "@types/node": "^24.13.3",
+    "svelte": "^5.33.0",
 	"svelte-check": "^4.1.4",
 	"typescript": "^5.7.3",
-	"vitest": "^3.2.4",
-    "vite": "^6.0.11"
+    "vite": "^6.0.11",
+	"vitest": "^3.2.4"
   },
   "dependencies": {
+    "@ui-sdk/core": "0.1.0-beta.10",
+    "@ui-sdk/svelte": "0.1.0-beta.10",
+    "@ui-sdk/web": "0.1.0-beta.10",
     "minisearch": "^7.2.0",
     "phosphor-svelte": "^3.1.0"
   }

@@ -1,6 +1,5 @@
 import { searchSnippet } from '$lib/search-snippet';
-import { base } from '$app/paths';
-import MiniSearch, { type SearchOptions, type SearchResult } from 'minisearch';
+import MiniSearch, { type AsPlainObject, type SearchOptions, type SearchResult } from 'minisearch';
 import type {
 	SearchHitKind,
 	SearchMatchKind,
@@ -15,7 +14,21 @@ import { getReportSummary } from '$lib/data/report-meta';
 import { exerciseAnchor } from '$lib/report-materials';
 import { techniqueAliases, normalizeTechnique, requiredSourcePhrases, matchesSourcePhrases } from '$lib/search-techniques';
 import { orderSearchPassages } from '$lib/search-passage-order';
+import { uniqueSearchHits } from '$lib/search-hit-key';
 import { weaponMatchMultiplier } from '$lib/search-weapon-match';
+import { loadSearchAsset, resetSearchTransport } from './search-transport';
+import { unpackSearchIndex, SEARCH_INDEX_MEDIA_TYPE } from './search-index-codec.js';
+import type { SearchReportMetadata } from './search-worker-protocol';
+
+// Supplied by the browser bridge. Keeping the engine free of $app imports
+// also keeps SvelteKit's window-based runtime out of the worker bundle.
+let base = '';
+export function configureSearchBase(value: string): void { base = value; }
+let workerReports: Map<string, SearchReportMetadata> | undefined;
+export function configureSearchReportMetadata(reports: SearchReportMetadata[] | undefined): void {
+	workerReports = reports ? new Map(reports.map(report => [report.slug, report])) : undefined;
+}
+const reportMetadata = (slug: string) => workerReports?.get(slug) ?? getReportSummary(slug);
 
 export type {
 	SearchHitKind,
@@ -67,12 +80,12 @@ function docZone(doc: IndexedDoc): SearchZone {
 }
 
 function docReportTitle(doc: IndexedDoc): string {
-	return doc.reportTitle ?? getReportSummary(doc.reportSlug)?.title ?? doc.reportSlug;
+	return doc.reportTitle ?? reportMetadata(doc.reportSlug)?.title ?? doc.reportSlug;
 }
 
 function docTitle(doc: IndexedDoc): string {
 	if (doc.title !== undefined) return doc.title;
-	if (doc.kind === 'overview') return 'Главное';
+	if (doc.kind === 'overview') return 'Кратко о видео';
 	if (doc.kind === 'chapter' || doc.kind === 'thesis' || doc.kind === 'transcript') {
 		const chapterTitle =
 			doc.chapterIndex !== undefined
@@ -141,6 +154,8 @@ let chapterTitles: Record<string, string[]> | null = null;
 async function loadChapterTitles(): Promise<void> {
 	if (chapterTitles) return;
 	try {
+		const compact = await loadSearchAsset(base, 'titles');
+		if (compact) { chapterTitles = compact as Record<string, string[]>; return; }
 		const response = await fetch(`${base}/search/chapter-titles.json`);
 		if (!response.ok) return;
 		const parsed: unknown = await response.json();
@@ -152,13 +167,36 @@ async function loadChapterTitles(): Promise<void> {
 	}
 }
 
-function fetchShard(file: string): Promise<MiniSearch<IndexedDoc>> {
-	return fetch(`${base}/search/${file}`)
-		.then((response) => {
+async function fetchShard(file: string): Promise<MiniSearch<IndexedDoc>> {
+	const compact = await loadSearchAsset(base, file === 'index-core.json' ? 'core' : 'transcripts');
+	if (compact) {
+		try { return await MiniSearch.loadJSAsync<IndexedDoc>(compact as AsPlainObject, miniSearchOptions); }
+		catch { /* A mixed/corrupt deployment can still use the original shard. */ }
+	}
+	let response = await fetch(`${base}/search/${file}`, { headers: { Accept: `${SEARCH_INDEX_MEDIA_TYPE}, application/json` } });
+	if (!response.ok) throw new Error(`Search index HTTP ${response.status}`);
+	let index: MiniSearch<IndexedDoc>;
+	if (response.headers.get('Content-Type')?.includes(SEARCH_INDEX_MEDIA_TYPE)) {
+		try {
+			index = await MiniSearch.loadJSAsync<IndexedDoc>(unpackSearchIndex(await response.json()) as AsPlainObject, miniSearchOptions);
+		} catch {
+			response = await fetch(`${base}/search/${file}`, { headers: { Accept: 'application/json' } });
 			if (!response.ok) throw new Error(`Search index HTTP ${response.status}`);
-			return response.text();
-		})
-		.then((serialized) => MiniSearch.loadJSONAsync<IndexedDoc>(serialized, miniSearchOptions));
+			index = await MiniSearch.loadJSONAsync<IndexedDoc>(await response.text(), miniSearchOptions);
+		}
+	} else index = await MiniSearch.loadJSONAsync<IndexedDoc>(await response.text(), miniSearchOptions);
+	if (response.headers.get('X-Archive-Search-Extras') === '1') {
+		const extras = await fetch(`${base}/search/${file.replace('index-', 'extra-')}`);
+		if (!extras.ok) throw new Error(`Search documents HTTP ${extras.status}`);
+		for (const recording of await extras.json()) {
+			for (const doc of recording) {
+				const previewId = `preview:${doc.reportSlug}`;
+				if (doc.id !== previewId && index.has(previewId)) index.discard(previewId);
+			}
+			await index.addAllAsync(recording);
+		}
+	}
+	return index;
 }
 
 function loadCore(): Promise<MiniSearch<IndexedDoc>> {
@@ -361,7 +399,7 @@ function signalMultiplier(result: SearchResult, parsed: ParsedQuery, indexedCove
 	else if (parsed.stems.every((stem) => queryWords(title).map(stemRu).includes(stem))) multiplier += 0.24;
 	if (parsed.stems.length > 1 && coverage < 0.5) multiplier *= 0.72;
 	return multiplier * rankKind(result) * (indexedCoverage
-		? weaponMatchMultiplier(parsed.raw, `${docReportTitle(doc)} ${getReportSummary(doc.reportSlug)?.tags?.join(' ') ?? ''}`)
+		? weaponMatchMultiplier(parsed.raw, `${docReportTitle(doc)} ${reportMetadata(doc.reportSlug)?.tags?.join(' ') ?? ''}`)
 		: 1);
 }
 
@@ -373,6 +411,14 @@ const adaptiveFuzzy: SearchOptions['fuzzy'] = (term) => {
 	if (term.length === 4) return 0.25;
 	return false;
 };
+
+function oneLetterApart(a: string, b: string): boolean {
+	if (Math.abs(a.length - b.length) > 1) return false;
+	let i = 0;
+	while (i < a.length && a[i] === b[i]) i++;
+	if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+	return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
+}
 
 const adaptivePrefix: SearchOptions['prefix'] = (term, index, terms) =>
 	index === terms.length - 1 && term.length >= 3 && !/^\d+$/.test(term);
@@ -387,14 +433,15 @@ function mergeResults(target: Map<string, SearchResult>, results: SearchResult[]
 	}
 }
 
-function diversify(results: SearchResult[], limit: number, insideSingleReport: boolean): SearchResult[] {
-	const selected: SearchResult[] = [];
-	const deferred: SearchResult[] = [];
+/** Order complete, distinct candidates; pagination happens after counting. */
+function diversify(results: import('$lib/search-types').SearchHit[], limit: number, insideSingleReport: boolean): import('$lib/search-types').SearchHit[] {
+	const selected: import('$lib/search-types').SearchHit[] = [];
+	const deferred: import('$lib/search-types').SearchHit[] = [];
 	const chapterCounts = new Map<string, number>();
 	const reportCounts = new Map<string, number>();
 
 	for (const result of results) {
-		const doc = result as unknown as IndexedDoc;
+		const doc = result;
 		const chapterKey = `${doc.reportSlug}:${doc.chapterIndex ?? doc.kind}`;
 		const chapterCount = chapterCounts.get(chapterKey) ?? 0;
 		const reportCount = reportCounts.get(doc.reportSlug) ?? 0;
@@ -407,14 +454,8 @@ function diversify(results: SearchResult[], limit: number, insideSingleReport: b
 		selected.push(result);
 		chapterCounts.set(chapterKey, chapterCount + 1);
 		reportCounts.set(doc.reportSlug, reportCount + 1);
-		if (selected.length >= limit) return selected;
 	}
-
-	for (const result of deferred) {
-		if (selected.length >= limit) break;
-		selected.push(result);
-	}
-	return selected;
+	return [...selected, ...deferred];
 }
 
 interface TieredSearchResult {
@@ -434,7 +475,8 @@ function rankedHits(
 	const ranked = results
 		.map((result) => ({ ...result, score: result.score * weight * signalMultiplier(result, parsed, matchKind === 'semantic') }))
 		.sort((a, b) => b.score - a.score);
-	const hits = diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed, matchKind));
+	const distinct = uniqueSearchHits(ranked.map(result => toHit(result, parsed, matchKind)));
+	const hits = diversify(distinct, limit, insideSingleReport);
 	return import.meta.env.VITE_SEARCH_PASSAGES_FIRST === '0' ? hits : orderSearchPassages(hits, matchKind);
 }
 
@@ -473,11 +515,9 @@ async function executeTieredSearch(
 		}
 	}
 	const appendNamedHits = (primary: import('$lib/search-types').SearchHit[]) => {
-		if (!named.size || primary.length >= limit) return primary;
-		const seen = new Set(primary.map(hit => hit.href));
-		const aliases = rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport)
-			.filter(hit => !seen.has(hit.href));
-		return [...primary, ...aliases].slice(0, limit);
+		if (!named.size) return primary;
+		const aliases = rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport);
+		return uniqueSearchHits([...primary, ...aliases]);
 	};
 
 	const exact = searchShards(directQuery, {
@@ -494,11 +534,11 @@ async function executeTieredSearch(
 		if (!insideSingleReport && summariesOnly && exactDocs.some(doc => doc.kind === 'report')) {
 			const slugs = new Set(exactDocs.filter(doc => doc.kind === 'report').map(doc => doc.reportSlug));
 			const hasOverview = exactDocs.some(doc => doc.kind === 'overview');
-			const passages = await executeTieredSearch(query, Math.max(1, limit - exact.length), result => {
+			const passages = await executeTieredSearch(query, limit, result => {
 				const doc = result as unknown as IndexedDoc;
 				return (hasOverview ? doc.chapterIndex != null : doc.kind !== 'report') && slugs.has(doc.reportSlug) && (!filter || filter(result));
 			}, true);
-			return { hits: appendNamedHits([...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits].slice(0, limit)), matchKind: 'exact' };
+			return { hits: appendNamedHits([...rankedHits(exact, parsed, 'exact', limit, false, 2.05), ...passages.hits]), matchKind: 'exact' };
 		}
 		return { hits: appendNamedHits(rankedHits(exact, parsed, 'exact', limit, insideSingleReport, 2.05)), matchKind: 'exact' };
 	}
@@ -515,7 +555,7 @@ async function executeTieredSearch(
 
 	// A known alternative name is more reliable than an unrelated fuzzy typo.
 	// Exact/prefix source matches above retain priority while reviewed aliases
-	// fill remaining slots instead of disappearing behind a new exact source.
+	// follow direct matches without disappearing behind a page boundary.
 	if (named.size) return { hits: rankedHits([...named.values()], parsed, 'semantic', limit, insideSingleReport), matchKind: 'semantic' };
 
 	const correctionRanked = new Map<string, SearchResult>();
@@ -536,7 +576,18 @@ async function executeTieredSearch(
 			prefix: false
 		});
 		if (corrected.length) {
-			correctedQuery = suggestion;
+			// MiniSearch suggests indexed stems and sometimes adds unrelated words.
+			// Only offer a clickable correction recovered verbatim from a source.
+			const tokens = queryWords(suggestion);
+			if (tokens.length === 1 && parsed.words.length === 1) {
+				const original = parsed.words[0];
+				const words = corrected.slice(0, 12).flatMap(result => {
+					const doc = result as unknown as IndexedDoc;
+					return queryWords(docTitle(doc) + ' ' + (doc.text ?? ''));
+				});
+				correctedQuery = words.find(word => word !== original && stemRu(word) === tokens[0] &&
+					oneLetterApart(original, word));
+			}
 			mergeResults(correctionRanked, corrected, 1.72);
 		}
 	}
@@ -592,18 +643,27 @@ async function executeTieredSearch(
 			0.26
 		);
 	}
+	// Two-word topic queries need evidence for both terms in the same result.
+	// Keep the separate correction and reviewed alias paths above.
+	if (parsed.words.length === 2 && parsed.stems.length === 2 && expandedTerms.length === 2) {
+		for (const [id, result] of semanticRanked) {
+			if (!parsed.stems.every(term => result.queryTerms.includes(term))) semanticRanked.delete(id);
+		}
+	}
 	if (semanticRanked.size) {
+		// This is a relevance cutoff for related suggestions, independent of
+		// pagination. Do not count the rest of a broad fuzzy-OR pool as matches.
+		const candidateLimit = Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT) > 0
+			? Math.min(120, Math.floor(Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT)))
+			: insideSingleReport ? 8 : 16;
 		return {
 			hits: rankedHits(
 				[...semanticRanked.values()],
 				parsed,
 				'semantic',
-				// Offline diagnostic only: inspect candidates hidden by the normal cap.
-				Math.min(limit, Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT) > 0
-					? Math.min(120, Math.floor(Number(import.meta.env.VITE_SEARCH_CANDIDATE_LIMIT)))
-					: insideSingleReport ? 8 : 16),
+				candidateLimit,
 				insideSingleReport
-			),
+			).slice(0, candidateLimit),
 			matchKind: 'semantic'
 		};
 	}
@@ -632,7 +692,7 @@ async function executeExactSearch(
 	const ranked = results
 		.map((result) => ({ ...result, score: result.score * 2.05 * signalMultiplier(result, parsed) }))
 		.sort((a, b) => b.score - a.score);
-	return diversify(ranked, limit, insideSingleReport).map((result) => toHit(result, parsed));
+	return diversify(uniqueSearchHits(ranked.map(result => toHit(result, parsed))), limit, insideSingleReport).slice(0, limit);
 }
 
 /** Search the archive. `scopeSlugs` narrows the index to a collection or active facets. */
@@ -641,7 +701,7 @@ export async function searchReports(query: string, limit = 40, scopeSlugs?: stri
 	const filter = scoped
 		? (result: SearchResult) => scoped.has((result as unknown as IndexedDoc).reportSlug)
 		: undefined;
-	return (await executeTieredSearch(query, limit, filter, false)).hits;
+	return (await executeTieredSearch(query, limit, filter, false)).hits.slice(0, limit);
 }
 
 /** Strict lexical search without typo correction, prefix matching, or semantic expansion. */
@@ -663,7 +723,7 @@ export async function searchReport(reportSlug: string, query: string, limit = 40
 			return doc.reportSlug === reportSlug && docZone(doc) !== 'reports';
 		},
 		true
-	)).hits;
+	)).hits.slice(0, limit);
 }
 
 /** Strict lexical search inside one report. */
@@ -722,16 +782,15 @@ async function searchWholeRecordings(query: string, limit: number, filter: (resu
 	});
 	if (!titleMatches.length) return result;
 	const titles = rankedHits(titleMatches, parsed, 'exact', limit, false);
-	const titleSlugs = new Set(titles.map(hit => hit.reportSlug));
-	const hits = [...titles, ...result.hits.filter(hit => !titleSlugs.has(hit.reportSlug))];
-	return { hits: hits.slice(0, limit), matchKind: 'exact' as const };
+	return { hits: uniqueSearchHits([...titles, ...result.hits]), matchKind: 'exact' as const };
 }
 
 /** Search ordered scopes, preferring exact or prefix matches in a broader scope over local fuzzy noise. */
 export async function searchScoped(
 	query: string,
 	scopes: readonly SearchScope[],
-	limit = 40
+	limit = 40,
+	includeAll = false
 ): Promise<SearchResponse> {
 	if (!scopes.length) throw new Error('searchScoped requires at least one scope');
 	const normalizedQuery = query.trim();
@@ -748,12 +807,13 @@ export async function searchScoped(
 		const result = recordingsOnly
 			? await searchWholeRecordings(normalizedQuery, limit, filter)
 			: await executeTieredSearch(normalizedQuery, limit, filter, insideSingleReport);
-
 		if (index === 0) requestedResult = result;
 		if ((result.matchKind === 'exact' || result.matchKind === 'prefix') && result.hits.length) {
 			return {
 				query: normalizedQuery,
-				hits: result.hits,
+				hits: includeAll ? result.hits : result.hits.slice(0, limit),
+				total: result.hits.length,
+				hasMore: !includeAll && result.hits.length > limit,
 				matchKind: result.matchKind,
 				requestedScope,
 				resultScope: scope,
@@ -767,7 +827,9 @@ export async function searchScoped(
 	const result = requestedResult ?? { hits: [], matchKind: 'empty' as const };
 	return {
 		query: normalizedQuery,
-		hits: result.hits,
+		hits: includeAll ? result.hits : result.hits.slice(0, limit),
+		total: result.hits.length,
+		hasMore: !includeAll && result.hits.length > limit,
 		matchKind: result.matchKind,
 		requestedScope,
 		resultScope: requestedScope,
@@ -785,11 +847,12 @@ export function resetSearchIndex(): void {
 	transcriptPromise = null;
 	transcriptFailed = false;
 	chapterTitles = null;
+	resetSearchTransport();
 }
 
 /** Warm the prebuilt index on focus without blocking first paint. */
 export function preloadSearchIndex(): void {
-	void loadCore()
-		.then(() => loadTranscripts())
-		.catch(() => undefined);
+	// Focus/hover only warms the core. Transcript loading still starts for
+	// every real query, preserving the complete search without speculative MBs.
+	void loadCore().catch(() => undefined);
 }

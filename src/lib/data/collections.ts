@@ -1,3 +1,4 @@
+import { normalizeCollections, collectionMasterTarget, isPrivateReport, resolveReportGate } from './report-access.js';
 import type { ReportSummary } from '$lib/types';
 import { getReportSummary } from './report-meta';
 import collectionsData from './collections.json';
@@ -60,6 +61,7 @@ export interface Collection {
 	itemFacets?: Record<string, CollectionFacets>;
 	/** Короткая строка для карточки на главной и meta description. */
 	subtitle: string;
+	cardSubtitle?: string;
 	/** Развёрнутое описание на странице коллекции (опционально). */
 	description?: string;
 	/** Содержательный разбор коллекции (опционально). */
@@ -78,10 +80,12 @@ export interface Collection {
 	access?: CollectionAccess;
 	/** Требовать ключ и для прямого URL отчёта при членстве в открытой подборке. */
 	protectedReports?: boolean;
+	/** Internal collection: require a key before showing its program or synopses. */
+	private?: boolean;
 }
 
 // Порядок здесь = порядок карточек на главной.
-export const collections: Collection[] = collectionsData as Collection[];
+export const collections: Collection[] = normalizeCollections(collectionsData as Collection[]);
 
 export function getCollection(slug: string): Collection | undefined {
 	return collections.find((c) => c.slug === slug);
@@ -109,7 +113,7 @@ export interface AccessTarget extends AccessCredential {
 	title: string;
 }
 
-export function accessTargetToken(target: AccessTarget): string {
+export function accessTargetToken(target: Pick<AccessCredential, 'id' | 'credentialVersion'>): string {
 	return `${target.id}@${target.credentialVersion ?? 1}`;
 }
 
@@ -119,16 +123,7 @@ export function isAccessTargetUnlocked(target: AccessTarget, unlocked: readonly 
 		((target.credentialVersion ?? 1) === 1 && unlocked.includes(target.id));
 }
 
-export function collectionMasterTarget(collection: Collection): AccessTarget | undefined {
-	const master = collection.access?.master;
-	if (!master) return undefined;
-	return {
-		...master,
-		kind: 'master',
-		collectionSlug: collection.slug,
-		title: collection.title
-	};
-}
+export { collectionMasterTarget, isPrivateReport };
 
 export function collectionAccessTargets(collection: Collection): AccessTarget[] {
 	const master = collectionMasterTarget(collection);
@@ -145,7 +140,11 @@ export function allAccessTargets(source: readonly Collection[] = collections): A
 }
 
 export function collectionGate(collection: Collection): AccessTarget[] {
-	return collectionAccessTargets(collection);
+	const own = collectionAccessTargets(collection);
+	if (collection.private) return own;
+	// Shared recordings also accept the keys of their other collections.
+	return [...new Map([...own, ...collection.items.flatMap((slug) => reportGate(slug))]
+		.map((target) => [target.id, target])).values()];
 }
 
 export function hasFullCollectionAccess(collection: Collection, unlocked: readonly string[]): boolean {
@@ -154,7 +153,7 @@ export function hasFullCollectionAccess(collection: Collection, unlocked: readon
 }
 
 export function canEnterCollection(collection: Collection, unlocked: readonly string[]): boolean {
-	if (!collection.access?.master) return true;
+	if (!collection.private || !collection.access?.master) return true;
 	return collectionAccessTargets(collection).some((target) => isAccessTargetUnlocked(target, unlocked));
 }
 
@@ -165,26 +164,7 @@ export function canEnterCollection(collection: Collection, unlocked: readonly st
  * другая коллекция явно требует доступ и к каждому своему отчёту.
  */
 export function reportGate(slug: string, source: readonly Collection[] = collections): AccessTarget[] {
-	const containing = source.filter((collection) => collection.items.includes(slug));
-	if (containing.length === 0) return [];
-	const masters = containing
-		.map(collectionMasterTarget)
-		.filter((target): target is AccessTarget => Boolean(target));
-	const passes = containing.flatMap((collection) =>
-		(collection.access?.passes ?? [])
-			.filter((pass) => pass.items.includes(slug))
-			.map((pass) => ({
-				...pass,
-				kind: 'pass' as const,
-				collectionSlug: collection.slug
-			}))
-	);
-	if (passes.length > 0) return [...masters, ...passes];
-	if (
-		!containing.some((collection) => collection.protectedReports && collection.access?.master) &&
-		containing.some((collection) => !collection.access?.master)
-	) return [];
-	return masters;
+	return resolveReportGate(slug, source);
 }
 
 export function canAccessReport(
@@ -194,6 +174,11 @@ export function canAccessReport(
 ): boolean {
 	const gate = reportGate(slug, source);
 	return gate.length === 0 || gate.some((target) => isAccessTargetUnlocked(target, unlocked));
+}
+
+/** Number of distinct recordings the visitor can open with the current access key. */
+export function accessibleRecordingCount(items: readonly string[], unlocked: readonly string[]): number {
+	return [...new Set(items)].filter(slug => canAccessReport(slug, unlocked)).length;
 }
 
 export interface CollectionStats {

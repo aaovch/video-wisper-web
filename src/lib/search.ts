@@ -1,3 +1,7 @@
+import { base } from '$app/paths';
+import { configureSearchBase } from '$lib/search-core';
+configureSearchBase(base);
+
 export type {
 	SearchHitKind,
 	SearchMatchKind,

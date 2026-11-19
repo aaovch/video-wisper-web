@@ -10,10 +10,11 @@ const base = process.env.BASE_PATH ?? '';
 const config = {
 	preprocess: vitePreprocess(),
 	kit: {
+        ...(process.env.HEMA_SERVER_UI ? { files: { assets: 'server/public' }, outDir: '.svelte-kit-server' } : {}),
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: undefined,
+			pages: process.env.HEMA_SERVER_UI ? '.codex/server-ui' : 'build',
+			assets: process.env.HEMA_SERVER_UI ? '.codex/server-ui' : 'build',
+			fallback: process.env.HEMA_SERVER_UI ? 'shell.html' : undefined,
 			// GitHub Pages гзипует ответы на лету и игнорирует заранее сжатые
 			// .gz/.br-соседи, поэтому precompress только раздул бы артефакт.
 			// Крупный static/search/index.json (~16 МБ) отдаётся уже сжатым хостом.

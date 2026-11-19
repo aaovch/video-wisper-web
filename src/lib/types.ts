@@ -113,6 +113,9 @@ export type VideoSource =
 	  };
 
 export interface Report {
+	/** Public teaser supplied by the server, without chapter bodies or video links. */
+	preview?: { topics: string[]; exerciseCount: number };
+	chapterCount?: number;
 	/** URL-идентификатор отчёта */
 	slug: string;
 	/** Заголовок для карточки/страницы */
